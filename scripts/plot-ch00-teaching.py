@@ -1,11 +1,13 @@
 """Generate original, light-background Chapter 0 SVGs from saved plot data."""
 import json
+import math
 from pathlib import Path
 
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import font_manager
 from matplotlib.path import Path as MplPath
 from matplotlib.patches import PathPatch, Rectangle
 
@@ -23,10 +25,19 @@ def load(name):
     return json.loads((DATA/(name+'.json')).read_text())
 
 
-def finish(fig,name,source,metadata=None):
-    fig.text(.01,.012,'Source: '+source,fontsize=7,color=GREY,ha='left',va='bottom',wrap=True)
-    fig.tight_layout(rect=(0,.065,1,1))
+def configure_fonts():
+    for font in (ROOT/'fonts').glob('*.otf'):
+        font_manager.fontManager.addfont(font)
+    plt.rcParams.update({'font.family':['STIX Two Text','STIX Two Math'],
+        'mathtext.fontset':'custom', 'mathtext.rm':'STIX Two Text',
+        'mathtext.it':'STIX Two Text:italic', 'mathtext.bf':'STIX Two Text:bold'})
+
+
+def finish(fig,name,source,metadata=None,source_size=7,footer=.065):
+    fig.text(.01,.012,'Source: '+source,fontsize=source_size,color=GREY,ha='left',va='bottom',wrap=True)
+    fig.tight_layout(rect=(0,footer,1,1))
     fig.savefig(OUT/(name+'.svg'),facecolor='white',metadata=metadata)
+    fig.savefig(OUT/(name+'.png'),facecolor='white',dpi=96)
     plt.close(fig)
 
 
@@ -70,24 +81,78 @@ def energy_boundaries():
     finish(fig,'micro-macro',d['source'])
 
 
-def austria_sankey():
-    d=load('05-austria-flow'); nodes={n['id']:n for n in d['nodes']}; links=d['links']
+def austria_sankey_panels(d, threshold=2):
+    """Pool final allocations and merge minor carriers without discarding energy.
+
+    The complete published carrier-by-sector matrix remains in the input data.
+    Each panel is an accounting balance, not a causal primary-to-sector path.
+    """
+    original={n['id']:n for n in d['nodes']}
+    primary=[dict(l) for l in d['links'] if l['target']=='gross' or l['source']=='gross']
+    final=[{**l, 'source':l['target'], 'target':'final'}
+           for l in d['links'] if l['source']=='final']
+    for node in d['nodes']:
+        if node['stage']==4:
+            cells=[l for l in d['links'] if l['target']==node['id']]
+            final.append({'source':'final', 'target':node['id'],
+                'value':sum(l['value'] for l in cells),
+                'value_TJ':sum(l['value_TJ'] for l in cells)})
+    panels=[]
+    for pool,links in [('gross',primary),('final',final)]:
+        left={l['source'] for l in links if l['target']==pool}
+        right={l['target'] for l in links if l['source']==pool}
+        nodes={key:{**original[key], 'stage':0 if key in left else 2}
+               for key in left|right}
+        nodes[pool]={**original[pool], 'stage':1}
+        for side,keys in [('supply',left),('use',right)]:
+            small={key for key in keys if sum(l['value'] for l in links
+                   if l['source']==key or l['target']==key)<threshold}
+            if not small:continue
+            other=pool+'_other_'+side
+            nodes[other]={'id':other,'label':'Other','stage':0 if side=='supply' else 2}
+            for key in small:del nodes[key]
+            for link in links:
+                for endpoint in ('source','target'):
+                    if link[endpoint] in small:link[endpoint]=other
+        combined={}
+        for link in links:
+            key=(link['source'],link['target'])
+            if key not in combined:
+                combined[key]={**link,'value':0.,'value_TJ':0.}
+            for quantity in ('value','value_TJ'):combined[key][quantity]+=link[quantity]
+        links=list(combined.values())
+        for key,node in nodes.items():
+            incoming=sum(l['value'] for l in links if l['target']==key)
+            outgoing=sum(l['value'] for l in links if l['source']==key)
+            if incoming and outgoing and not math.isclose(incoming,outgoing,abs_tol=1e-8):
+                raise ValueError(f'Unbalanced Sankey node: {key}')
+            node['value']=max(incoming,outgoing)
+        panels.append({'nodes':list(nodes.values()),'links':links})
+    return panels
+
+
+def draw_sankey_panel(ax,panel,total):
+    nodes={n['id']:n for n in panel['nodes']};links=panel['links']
     incoming={key:[] for key in nodes}; outgoing={key:[] for key in nodes}
     for link in links:
         incoming[link['target']].append(link);outgoing[link['source']].append(link)
-    scale=9.5/d['gross_kWh_person_day']; gap=.16
+    # One scale in both panels; reserve label space independently of ribbon width.
+    scale=1/total;gap=.05
+    short={'gross':'Gross inland\nbalance pool','final':'Final energy\nbalance pool',
+        'conversion':'Net transformation\nlosses','own':'Energy sector /\ntransport losses',
+        'final_35':'Renewable fuels /\ndirect heat'}
+    labels={key:short.get(key,n['label'])+f"\n{n['value']:.1f}" for key,n in nodes.items()}
     positions={}; centers={}
-    for stage in range(5):
-        group=[n for n in nodes.values() if n['stage']==stage]
-        if stage==4: group=[n for n in group if n['id'].startswith('sector_')]
-        if stage==3: group=[n for n in group if n['id'].startswith('final_')]
-        if stage==2: group=[n for n in group if n['id'] in ('conversion','own','nonenergy','final')]
-        if stage==1: group=[n for n in group if n['id']=='gross']
-        if stage==0: group=[n for n in group if n['id'].startswith('primary_')]
-        heights={n['id']:sum(l['value'] for l in outgoing[n['id']])*scale for n in group}
-        total=sum(heights.values())+gap*max(0,len(group)-1); y=-total/2
+    for stage in range(3):
+        group=sorted((n for n in nodes.values() if n['stage']==stage),
+                     key=lambda n:(-n['value'],n['id']))
+        slots_height={n['id']:max(n['value']*scale,
+            .16*len(labels[n['id']].splitlines())+.05) for n in group}
+        extent=sum(slots_height.values())+gap*max(0,len(group)-1);y=extent/2
         for n in group:
-            key=n['id']; h=heights[key]; positions[key]=(y,y+h);centers[key]=y+h/2;y+=h+gap
+            key=n['id'];h=n['value']*scale;center=y-slots_height[key]/2
+            positions[key]=(center-h/2,center+h/2);centers[key]=center
+            y-=slots_height[key]+gap
     def slots(node_id, collection, rank_key):
         items=sorted(collection[node_id],key=rank_key)
         lo,hi=positions[node_id];cursor=lo;result={}
@@ -97,30 +162,43 @@ def austria_sankey():
         return result
     source_order=lambda link: centers.get(link['target'],0)
     target_order=lambda link: centers.get(link['source'],0)
-    color_lookup={key:color for key,color in zip(
-        [n['id'] for n in nodes.values() if n['stage']==0],
-        [BLUE,ORANGE,GREEN,PURPLE,'#CC79A7',GREY])}
-    fig,ax=plt.subplots(figsize=(11,5.2))
+    # Okabe–Ito blue; position and direct labels carry all distinctions.
+    color='#0072B2'
     for link in links:
         a=link['source'];b=link['target']
         src=slots(a,outgoing,source_order)[(a,b)]
         dst=slots(b,incoming,target_order)[(a,b)]
-        x0=nodes[a]['stage']*1.25; x1=nodes[b]['stage']*1.25
-        dx=x1-x0; bend=dx*.38; color=color_lookup.get(a,BLUE if not a.startswith('primary_') else GREY)
+        x0=nodes[a]['stage'];x1=nodes[b]['stage']
+        dx=x1-x0;bend=dx*.38
         vertices=[(x0,src[0]),(x0+bend,src[0]),(x1-bend,dst[0]),(x1,dst[0]),
             (x1,dst[1]),(x1-bend,dst[1]),(x0+bend,src[1]),(x0,src[1]),(x0,src[0])]
         codes=[MplPath.MOVETO,MplPath.CURVE4,MplPath.CURVE4,MplPath.CURVE4,
             MplPath.LINETO,MplPath.CURVE4,MplPath.CURVE4,MplPath.CURVE4,MplPath.CLOSEPOLY]
         ax.add_patch(PathPatch(MplPath(vertices,codes),facecolor=color,edgecolor='none',alpha=.36,zorder=1))
     for key,(lo,hi) in positions.items():
-        node=nodes[key];x=node['stage']*1.25
-        ax.add_patch(Rectangle((x-.045,lo),.09,hi-lo,facecolor=GREY,edgecolor='white',lw=.5,zorder=3))
-        if hi-lo>.30:
-            ax.text(x,hi+.10,node['label'],ha='center',va='bottom',fontsize=7,rotation=0,zorder=4)
-    ax.set_xlim(-.5,5.5);ax.set_ylim(-5.8,5.8);ax.axis('off')
-    for x,label in [(0,'Primary carriers'),(1.25,'Gross inland'),(2.5,'Gross partitions'),(3.75,'Final carriers'),(5,'Final sectors')]:
-        ax.text(x,5.3,label,ha='center',va='top',fontsize=9,weight='bold')
-    finish(fig,'austria-sankey',d['source']+'; 2025 preliminary, kWh/(person day)')
+        node=nodes[key];x=node['stage']
+        ax.add_patch(Rectangle((x-.025,lo),.05,hi-lo,facecolor=color,
+                              edgecolor='white',lw=.5,zorder=3,gid=key))
+        label_x=x-.06 if x==0 else x+.06 if x==2 else x
+        ax.text(label_x,centers[key],labels[key],ha='right' if x==0 else 'left' if x==2 else 'center',
+            va='center',fontsize=12,zorder=4,
+            bbox=dict(facecolor='white',edgecolor='none',pad=2))
+    ax.set(xlim=(-1.05,3.05),ylim=(-1.65,1.65));ax.axis('off')
+
+
+def austria_sankey():
+    d=load('05-austria-flow')
+    fig,axes=plt.subplots(2,1,figsize=(8,10.6))
+    for ax,panel,title in zip(axes,austria_sankey_panels(d),[
+        'Primary supply and gross inland partitions',
+        'Final carriers and use sectors (pooled balance)']):
+        draw_sankey_panel(ax,panel,d['gross_kWh_person_day'])
+        ax.set_title(title,fontsize=12,pad=12)
+    finish(fig,'austria-sankey',
+        'Statistics Austria, 2025 preliminary; all values in kWh/(person d).\n'
+        'Carriers below 2 grouped as Other; final allocations shown as pooled totals.\n'
+        'Both panels use the same flow scale; they show successive energy boundaries.',
+        source_size=12,footer=.11)
 
 
 def solar_chain():
@@ -198,9 +276,13 @@ def wildlife():
 def risk_energy():
     d=load('14-energy-deaths'); rows=d['observations']
     fig,ax=plt.subplots(figsize=(7.4,3.6))
-    rows=sorted(rows,key=lambda r:r['deaths_per_TWh'])
-    ax.barh([r['source_type'] for r in rows],[r['deaths_per_TWh'] for r in rows],color=GREEN)
+    # CSV/legacy JSON strings must not reach Matplotlib's categorical converter.
+    rows=sorted(rows,key=lambda r:float(r['deaths_per_TWh']))
+    bars=ax.barh([r['source_type'] for r in rows],
+                 [float(r['deaths_per_TWh']) for r in rows],color=GREEN)
+    ax.bar_label(bars,labels=[f"{float(r['deaths_per_TWh']):g}" for r in rows],padding=4)
     ax.set(xscale='log',xlabel='Deaths per TWh of electricity [deaths / TWh; 2021 estimates]')
+    ax.set_xlim(.01,100)
     ax.grid(True,axis='x',which='major',alpha=.18)
     finish(fig,'energy-deaths-twh',d['source'])
 
@@ -221,8 +303,10 @@ def emissions():
 
 def build():
     OUT.mkdir(parents=True,exist_ok=True)
+    configure_fonts()
     plt.rcParams.update({'font.size':9,'axes.spines.top':False,'axes.spines.right':False,
-        'svg.fonttype':'none','axes.labelcolor':'#17202A','text.color':'#17202A',
+        # Outline the bundled STIX glyphs: SVG images cannot inherit page webfonts.
+        'svg.fonttype':'path','axes.labelcolor':'#17202A','text.color':'#17202A',
         'xtick.color':'#17202A','ytick.color':'#17202A'})
     for make in (income_energy,income_levels,energy_boundaries,austria_sankey,solar_chain,pv_trend,land_density,true_scale,wildlife,risk_energy,emissions):make()
     print('Wrote 11 original light-theme Chapter 0 SVGs.')

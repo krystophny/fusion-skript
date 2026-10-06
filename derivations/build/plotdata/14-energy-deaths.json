@@ -3,72 +3,72 @@
   "observations": [
     {
       "source_type": "Biomass",
-      "year": "2021",
-      "deaths_per_TWh": "4.63",
+      "year": 2021,
+      "deaths_per_TWh": 4.63,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Brown coal",
-      "year": "2021",
-      "deaths_per_TWh": "32.72",
+      "year": 2021,
+      "deaths_per_TWh": 32.72,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Coal",
-      "year": "2021",
-      "deaths_per_TWh": "24.62",
+      "year": 2021,
+      "deaths_per_TWh": 24.62,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Gas",
-      "year": "2021",
-      "deaths_per_TWh": "2.821",
+      "year": 2021,
+      "deaths_per_TWh": 2.821,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Hydropower",
-      "year": "2021",
-      "deaths_per_TWh": "1.3",
+      "year": 2021,
+      "deaths_per_TWh": 1.3,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Nuclear",
-      "year": "2021",
-      "deaths_per_TWh": "0.03",
+      "year": 2021,
+      "deaths_per_TWh": 0.03,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Oil",
-      "year": "2021",
-      "deaths_per_TWh": "18.43",
+      "year": 2021,
+      "deaths_per_TWh": 18.43,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Solar",
-      "year": "2021",
-      "deaths_per_TWh": "0.019",
+      "year": 2021,
+      "deaths_per_TWh": 0.019,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"
     },
     {
       "source_type": "Wind",
-      "year": "2021",
-      "deaths_per_TWh": "0.035",
+      "year": 2021,
+      "deaths_per_TWh": 0.035,
       "unit": "deaths/TWh electricity",
       "source": "owid_deaths",
       "licence_status": "OWID compilation CC BY 4.0; source methods combine heterogeneous air-pollution and accident estimates"

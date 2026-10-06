@@ -533,7 +533,10 @@ def build():
     emit('14-wildlife-risk',14,{'annual_estimates':bird_rows,
         'notes':'United States estimates cover different years, models, and taxa; ranges must not be summed as a common-year census. European wind-farm result is a median per-turbine rate from the reviewed sites, not a Europe-wide total.'},
         'Loss et al. 2013/2014 US studies; Naturvårdsverket Vindval Report 6511, review of European facilities; figures are independently plotted numeric estimates.')
-    death_rows = [dict(r) for r in csv.DictReader((DATA/'energy-deaths-per-TWh.csv').open())]
+    with (DATA/'energy-deaths-per-TWh.csv').open() as stream:
+        death_rows = [{**r, 'year':int(r['year']),
+                       'deaths_per_TWh':float(r['deaths_per_TWh'])}
+                      for r in csv.DictReader(stream)]
     emit('14-energy-deaths',14,{'observations':death_rows,
         'notes':'2021 processed rates per TWh of electricity combine air-pollution and accidents using studies with different boundaries and observation periods. They are contextual estimates, not direct counts from a single harmonized life-cycle study.'},
         'Our World in Data, based on Markandya & Wilkinson (2007), Sovacool et al. (2016), UNSCEAR (2008/2018); OWID compilation CC BY 4.0.')
