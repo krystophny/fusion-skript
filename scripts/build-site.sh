@@ -8,7 +8,6 @@ mkdir -p public/slides slides/build
 bash scripts/script-outline.sh slides/build/script-outline.json
 TYPST_FEATURES=bundle,html typst compile --root . --font-path fonts --ignore-system-fonts --format bundle src/main.typ public
 typst compile --root . --font-path fonts --ignore-system-fonts src/print.typ public/fusion-physics.pdf
-typst compile --root . --font-path fonts --ignore-system-fonts slides/00-energy-context.typ public/slides/00-energy-context.pdf
 bash scripts/build-slides.sh
 python3 scripts/build-present.py --course "Fusion Physics" --short-name Fusion --strict-metadata
 echo "Local fusion draft written to public/"
