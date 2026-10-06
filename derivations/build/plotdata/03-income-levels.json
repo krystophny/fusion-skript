@@ -1,0 +1,47 @@
+{
+  "page": 3,
+  "observations": [
+    {
+      "level": "1",
+      "income_threshold": "<2",
+      "currency_unit": "2011 PPP USD per person per day",
+      "population_billions": "0.75",
+      "year": "2017",
+      "source": "gapminder_income_levels",
+      "licence_status": "CC BY 4.0; Gapminder Factfulness notes, version 3"
+    },
+    {
+      "level": "2",
+      "income_threshold": "2–8",
+      "currency_unit": "2011 PPP USD per person per day",
+      "population_billions": "3.3",
+      "year": "2017",
+      "source": "gapminder_income_levels",
+      "licence_status": "CC BY 4.0; Gapminder Factfulness notes, version 3"
+    },
+    {
+      "level": "3",
+      "income_threshold": "8–32",
+      "currency_unit": "2011 PPP USD per person per day",
+      "population_billions": "2.5",
+      "year": "2017",
+      "source": "gapminder_income_levels",
+      "licence_status": "CC BY 4.0; Gapminder Factfulness notes, version 3"
+    },
+    {
+      "level": "4",
+      "income_threshold": ">32",
+      "currency_unit": "2011 PPP USD per person per day",
+      "population_billions": "0.9",
+      "year": "2017",
+      "source": "gapminder_income_levels",
+      "licence_status": "CC BY 4.0; Gapminder Factfulness notes, version 3"
+    }
+  ],
+  "income_unit": "2011 PPP USD/(person day)",
+  "population_unit": "billion people",
+  "year": 2017,
+  "notes": "Rounded Gapminder estimates use a PovcalNet 2013 survey base extended to 2017; not a current survey or precise census.",
+  "source": "Gapminder Factfulness notes p.32 and Income Levels; CC BY 4.0. Original plot.",
+  "licence_status": "cleared"
+}

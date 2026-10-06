@@ -1,0 +1,422 @@
+{
+  "page": 5,
+  "year": 2025,
+  "status": "preliminary",
+  "population": 9204460.875,
+  "nodes": [
+    {
+      "id": "gross",
+      "label": "Gross inland balance pool",
+      "stage": 1
+    },
+    {
+      "id": "final",
+      "label": "Final energy balance pool",
+      "stage": 2
+    },
+    {
+      "id": "primary_32",
+      "label": "Coal",
+      "stage": 0
+    },
+    {
+      "id": "primary_33",
+      "label": "Oil",
+      "stage": 0
+    },
+    {
+      "id": "primary_34",
+      "label": "Gas",
+      "stage": 0
+    },
+    {
+      "id": "primary_35",
+      "label": "Renewables",
+      "stage": 0
+    },
+    {
+      "id": "primary_36",
+      "label": "Waste",
+      "stage": 0
+    },
+    {
+      "id": "primary_31",
+      "label": "Net electricity imports",
+      "stage": 0
+    },
+    {
+      "id": "conversion",
+      "label": "Net transformation losses",
+      "stage": 2
+    },
+    {
+      "id": "own",
+      "label": "Energy sector / transport losses",
+      "stage": 2
+    },
+    {
+      "id": "nonenergy",
+      "label": "Non-energy uses",
+      "stage": 2
+    },
+    {
+      "id": "final_32",
+      "label": "Coal",
+      "stage": 3
+    },
+    {
+      "id": "sector_14",
+      "label": "Industry",
+      "stage": 4
+    },
+    {
+      "id": "sector_15",
+      "label": "Transport",
+      "stage": 4
+    },
+    {
+      "id": "sector_17",
+      "label": "Services",
+      "stage": 4
+    },
+    {
+      "id": "sector_18",
+      "label": "Households",
+      "stage": 4
+    },
+    {
+      "id": "sector_19",
+      "label": "Agriculture",
+      "stage": 4
+    },
+    {
+      "id": "final_33",
+      "label": "Oil products",
+      "stage": 3
+    },
+    {
+      "id": "final_34",
+      "label": "Gas",
+      "stage": 3
+    },
+    {
+      "id": "final_35",
+      "label": "Renewable fuels / direct heat",
+      "stage": 3
+    },
+    {
+      "id": "final_36",
+      "label": "Waste",
+      "stage": 3
+    },
+    {
+      "id": "final_27",
+      "label": "District heat",
+      "stage": 3
+    },
+    {
+      "id": "final_31",
+      "label": "Electricity",
+      "stage": 3
+    }
+  ],
+  "links": [
+    {
+      "source": "primary_32",
+      "target": "gross",
+      "value_TJ": 103026.47681021082,
+      "value": 8.518343076049671
+    },
+    {
+      "source": "primary_33",
+      "target": "gross",
+      "value_TJ": 451749.0483362518,
+      "value": 37.351111065323295
+    },
+    {
+      "source": "primary_34",
+      "target": "gross",
+      "value_TJ": 265925.997395073,
+      "value": 21.987055646140636
+    },
+    {
+      "source": "primary_35",
+      "target": "gross",
+      "value_TJ": 490177.4587525081,
+      "value": 40.528414550095754
+    },
+    {
+      "source": "primary_36",
+      "target": "gross",
+      "value_TJ": 28995.38922987577,
+      "value": 2.397370857771566
+    },
+    {
+      "source": "primary_31",
+      "target": "gross",
+      "value_TJ": 14800.864564799966,
+      "value": 1.2237518557231417
+    },
+    {
+      "source": "gross",
+      "target": "conversion",
+      "value_TJ": 77738.6457732286,
+      "value": 6.427517231165083
+    },
+    {
+      "source": "gross",
+      "target": "own",
+      "value_TJ": 145333.02502083647,
+      "value": 12.016295283863379
+    },
+    {
+      "source": "gross",
+      "target": "nonenergy",
+      "value_TJ": 77478.15494577996,
+      "value": 6.405979561382789
+    },
+    {
+      "source": "gross",
+      "target": "final",
+      "value_TJ": 1054125.4093488748,
+      "value": 87.15625497469283
+    },
+    {
+      "source": "final",
+      "target": "final_32",
+      "value_TJ": 12523.160666533287,
+      "value": 1.035428777696966
+    },
+    {
+      "source": "final_32",
+      "target": "sector_14",
+      "value_TJ": 12342.738369332295,
+      "value": 1.0205112625716237
+    },
+    {
+      "source": "final_32",
+      "target": "sector_18",
+      "value_TJ": 175.64794485498248,
+      "value": 0.014522766391731112
+    },
+    {
+      "source": "final_32",
+      "target": "sector_19",
+      "value_TJ": 4.774352346013376,
+      "value": 0.00039474873361149273
+    },
+    {
+      "source": "final",
+      "target": "final_33",
+      "value_TJ": 349648.0266144123,
+      "value": 28.909285639767916
+    },
+    {
+      "source": "final_33",
+      "target": "sector_14",
+      "value_TJ": 14359.132351584129,
+      "value": 1.1872289476667313
+    },
+    {
+      "source": "final_33",
+      "target": "sector_15",
+      "value_TJ": 295321.0742644674,
+      "value": 24.417473120103377
+    },
+    {
+      "source": "final_33",
+      "target": "sector_17",
+      "value_TJ": 4949.915813897558,
+      "value": 0.40926451535382513
+    },
+    {
+      "source": "final_33",
+      "target": "sector_18",
+      "value_TJ": 25659.602889308426,
+      "value": 2.121564352908763
+    },
+    {
+      "source": "final_33",
+      "target": "sector_19",
+      "value_TJ": 9358.30129515488,
+      "value": 0.7737547037352303
+    },
+    {
+      "source": "final",
+      "target": "final_34",
+      "value_TJ": 160839.92773924637,
+      "value": 13.298423155184038
+    },
+    {
+      "source": "final_34",
+      "target": "sector_14",
+      "value_TJ": 91747.95468019658,
+      "value": 7.585822389437606
+    },
+    {
+      "source": "final_34",
+      "target": "sector_15",
+      "value_TJ": 2554.400806021907,
+      "value": 0.21120068445624918
+    },
+    {
+      "source": "final_34",
+      "target": "sector_17",
+      "value_TJ": 16954.473506566872,
+      "value": 1.401814625465459
+    },
+    {
+      "source": "final_34",
+      "target": "sector_18",
+      "value_TJ": 49008.04843532264,
+      "value": 4.0520396599484885
+    },
+    {
+      "source": "final_34",
+      "target": "sector_19",
+      "value_TJ": 575.0506833495393,
+      "value": 0.0475458266510643
+    },
+    {
+      "source": "final",
+      "target": "final_35",
+      "value_TJ": 217189.79686293064,
+      "value": 17.957492671559734
+    },
+    {
+      "source": "final_35",
+      "target": "sector_14",
+      "value_TJ": 57347.194642910916,
+      "value": 4.7415294936000185
+    },
+    {
+      "source": "final_35",
+      "target": "sector_15",
+      "value_TJ": 22707.324031886423,
+      "value": 1.8774666710088406
+    },
+    {
+      "source": "final_35",
+      "target": "sector_17",
+      "value_TJ": 13916.637918853243,
+      "value": 1.150643018457609
+    },
+    {
+      "source": "final_35",
+      "target": "sector_18",
+      "value_TJ": 113904.18829356458,
+      "value": 9.417724294997742
+    },
+    {
+      "source": "final_35",
+      "target": "sector_19",
+      "value_TJ": 9314.451975715494,
+      "value": 0.7701291934955268
+    },
+    {
+      "source": "final",
+      "target": "final_36",
+      "value_TJ": 10305.501935877495,
+      "value": 0.8520703005540243
+    },
+    {
+      "source": "final_36",
+      "target": "sector_14",
+      "value_TJ": 10305.501935877497,
+      "value": 0.8520703005540244
+    },
+    {
+      "source": "final",
+      "target": "final_27",
+      "value_TJ": 73679.33998959842,
+      "value": 6.091889338354063
+    },
+    {
+      "source": "final_27",
+      "target": "sector_14",
+      "value_TJ": 7848.666333087292,
+      "value": 0.6489364150328017
+    },
+    {
+      "source": "final_27",
+      "target": "sector_17",
+      "value_TJ": 22797.421365554605,
+      "value": 1.8849160182269997
+    },
+    {
+      "source": "final_27",
+      "target": "sector_18",
+      "value_TJ": 42439.104823428526,
+      "value": 3.5089121352014407
+    },
+    {
+      "source": "final_27",
+      "target": "sector_19",
+      "value_TJ": 594.1474675279993,
+      "value": 0.04912476989282017
+    },
+    {
+      "source": "final",
+      "target": "final_31",
+      "value_TJ": 229939.6555402762,
+      "value": 19.011665091576084
+    },
+    {
+      "source": "final_31",
+      "target": "sector_14",
+      "value_TJ": 90066.80451668882,
+      "value": 7.446823034140844
+    },
+    {
+      "source": "final_31",
+      "target": "sector_15",
+      "value_TJ": 15174.669307223612,
+      "value": 1.254658445349464
+    },
+    {
+      "source": "final_31",
+      "target": "sector_17",
+      "value_TJ": 40938.09847219964,
+      "value": 3.3848072695885856
+    },
+    {
+      "source": "final_31",
+      "target": "sector_18",
+      "value_TJ": 78547.99973422626,
+      "value": 6.494435512010871
+    },
+    {
+      "source": "final_31",
+      "target": "sector_19",
+      "value_TJ": 5212.083509937822,
+      "value": 0.4309408304863168
+    }
+  ],
+  "unit": "kWh/(person day)",
+  "gross_TJ": 1354675.2350887195,
+  "final_TJ": 1054125.4093488748,
+  "gross_kWh_person_day": 112.00604705110405,
+  "final_kWh_person_day": 87.15625497469283,
+  "conversion_loss_kWh_person_day": 6.427517231165083,
+  "own_use_and_transport_losses_kWh_person_day": 12.016295283863379,
+  "nonenergy_kWh_person_day": 6.405979561382789,
+  "sectors_kWh_person_day": {
+    "Industry": 23.48292184300365,
+    "Transport": 27.76079892091794,
+    "Services": 8.23144544709248,
+    "Households": 25.609198721459038,
+    "Agriculture": 2.0718900729945706
+  },
+  "carriers_kWh_person_day": {
+    "Coal": 1.035428777696966,
+    "Oil products": 28.909285639767916,
+    "Gas": 13.298423155184038,
+    "Renewable fuels / direct heat": 17.957492671559734,
+    "Waste": 0.8520703005540243,
+    "District heat": 6.091889338354063,
+    "Electricity": 19.011665091576084
+  },
+  "notes": "Aggregated balance pools: primary inputs cannot be traced causally to final sectors. Actual published final-carrier × sector cells are retained. Row 16 is an aggregate and is not added again. Conversion losses are net input minus output, not all gross minus final.",
+  "source": "Statistics Austria preliminary energy balance 2025, Balance rows 8–19; author aggregation and unit conversion.",
+  "licence_status": "Statistics Austria custom attributed-reuse terms accepted for original data figures; not represented as CC."
+}

@@ -1,0 +1,116 @@
+{
+  "page": 12,
+  "enriched_t_U": 24.579124579124578,
+  "natural_t_U": 214.25387616833646,
+  "tails_t_U": 189.67475158921187,
+  "natural_specific_thermal_J_kg": 446029906542.0561,
+  "historical_benchmark": {
+    "coverage": [
+      1954,
+      2024
+    ],
+    "grid_peak_units_per_year": 33,
+    "grid_peak_years": [
+      1984,
+      1985
+    ],
+    "construction_peak_units_per_year": 43,
+    "construction_peak_years": [
+      1976
+    ],
+    "grid_capacity_peak_GWe_per_year": 31.129,
+    "grid_capacity_peak_years": [
+      1985
+    ],
+    "grid_connections_2024": 6,
+    "grid_capacity_2024_GWe": 6.803
+  },
+  "once_through_assumptions": {
+    "nuclear_efficiency": {
+      "value": 0.33,
+      "unit": "1",
+      "year": "model",
+      "source": "wna_fuel",
+      "notes": ""
+    },
+    "nuclear_burnup": {
+      "value": 45,
+      "unit": "GW day/t",
+      "year": "model",
+      "source": "wna_fuel",
+      "notes": ""
+    },
+    "enrichment_product": {
+      "value": 0.045,
+      "unit": "1",
+      "year": "model",
+      "source": "wna_fuel",
+      "notes": ""
+    },
+    "enrichment_feed": {
+      "value": 0.00711,
+      "unit": "1",
+      "year": "model",
+      "source": "wna_fuel",
+      "notes": ""
+    },
+    "enrichment_tails": {
+      "value": 0.0022,
+      "unit": "1",
+      "year": "model",
+      "source": "wna_fuel",
+      "notes": ""
+    }
+  },
+  "deployment_world_population_2025": 8215424893.0,
+  "reactors_1GWe_at_90percent_CF": {
+    "Austria": 37.14010828361501,
+    "world_at_Austrian_final_demand": 33149.33642128456
+  },
+  "reactors_per_year_over_30_years": {
+    "Austria": 1.2380036094538336,
+    "world_at_Austrian_final_demand": 1104.9778807094854
+  },
+  "historical_grid_connections_per_year": 33,
+  "historical_grid_peak_years": [
+    1984,
+    1985
+  ],
+  "historical_construction_starts_per_year": 43,
+  "historical_construction_peak_year": 1976,
+  "plant_photo_candidates": [
+    {
+      "file": "davis-besse-nrc.jpg",
+      "download": "https://upload.wikimedia.org/wikipedia/commons/6/65/David_Besse_NPP.jpg",
+      "title": "David Besse NPP.jpg",
+      "author": "US Nuclear Regulatory Commission",
+      "source_url": "https://commons.wikimedia.org/wiki/File:David_Besse_NPP.jpg",
+      "licence": "Public domain (US NRC)",
+      "licence_url": "https://www.nrc.gov/reading-rm/photo-gallery/guide",
+      "status": "download failed",
+      "error": "429 Client Error: Too Many Requests (015d12c) for url: https://upload.wikimedia.org/wikipedia/commons/6/65/David_Besse_NPP.jpg?raw=1"
+    },
+    {
+      "file": "goesgen-nuclear-plant.jpg",
+      "download": "https://upload.wikimedia.org/wikipedia/commons/6/60/G%C3%B6sgen-Nuclear-Plant.jpg?download=1",
+      "title": "Gösgen Nuclear Power Plant",
+      "author": "GabrielleMerk",
+      "source_url": "https://commons.wikimedia.org/wiki/File:G%C3%B6sgen-Nuclear-Plant.jpg",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "date": "2019-10-03",
+      "status": "downloaded",
+      "original_pixels": [
+        3000,
+        1686
+      ],
+      "modifications": "Original retained at full resolution; slide JPEG resized to 2400 px longest edge and recompressed, no crop.",
+      "error": null,
+      "sha256_original": "40a3bd475210c514b68b3a45a56c1397feb0acefa3740ffd3c8a6833beb7105d"
+    }
+  ],
+  "goesgen_net_MWe": 1010,
+  "notes": "Fuel is uranium heavy metal, not UO2 or initial core loading; full-power 1 GW(e) × 365 days. Deployment uses 2025 world population and compares a stated world-at-Austrian-final-energy scenario with first grid connections, not construction starts. Historical reactors vary in size; the scenario units are 1 GW(e). This accounting substitution is not a transition plan. IAEA 2025 historical peak verified over 1954–2024; capacities revised since the 2014 edition.",
+  "source": "WNA Nuclear Fuel Cycle Overview fuel-cycle assumptions and rounded 24.3 t product / 211 t natural U benchmark; IAEA Nuclear Power Reactors in the World 2025 table 7; KKG technical data.",
+  "licence_status": "Numerical facts and original calculations; candidate photo licence verified, download status explicit."
+}

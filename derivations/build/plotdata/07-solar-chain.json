@@ -1,0 +1,95 @@
+{
+  "page": 7,
+  "horizontal_kWh_m2_year": 1286.6147368421052,
+  "horizontal_W_m2": 146.873828406633,
+  "inclined_kWh_m2_year": 1542.13,
+  "specific_yield_kWh_kWp_year": 1221.69,
+  "module_W_m2": 27.89246575342466,
+  "monthly_horizontal_kWh_m2": [
+    41.33315789473684,
+    59.939473684210526,
+    104.48,
+    137.18736842105264,
+    159.69947368421052,
+    175.2242105263158,
+    183.18,
+    156.86894736842106,
+    114.53,
+    78.52157894736843,
+    41.96421052631579,
+    33.68631578947368
+  ],
+  "months": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "factors": {
+    "day_night": 0.3183098861837907,
+    "latitude": 0.681095388799623,
+    "season": 1.008737604802486,
+    "atmosphere_weather_residual": 0.671596055599662,
+    "tilt_gain": 1.198595007379627,
+    "module_efficiency": 0.2,
+    "performance_ratio": 0.7922094765032779
+  },
+  "stages": [
+    {
+      "stage": "noon_peak",
+      "W_m2": 1000.0
+    },
+    {
+      "stage": "day_night",
+      "W_m2": 318.3098861837907
+    },
+    {
+      "stage": "latitude",
+      "W_m2": 216.79939568911263
+    },
+    {
+      "stage": "season",
+      "W_m2": 218.6937031300619
+    },
+    {
+      "stage": "atmosphere_weather_residual",
+      "W_m2": 146.873828406633
+    },
+    {
+      "stage": "tilt_gain",
+      "W_m2": 176.04223744292236
+    },
+    {
+      "stage": "module_efficiency",
+      "W_m2": 35.208447488584476
+    },
+    {
+      "stage": "performance_ratio",
+      "W_m2": 27.892465753424656
+    }
+  ],
+  "pvgis_loss_percent": {
+    "l_aoi": -2.79,
+    "l_spec": "1.48",
+    "l_tg": -6.62,
+    "l_total": -20.78
+  },
+  "year_range": [
+    2005,
+    2023
+  ],
+  "latitude_deg": 47.0707,
+  "tilt_deg": 35,
+  "system_loss_percent": 14,
+  "notes": "Satellite-derived climatology and PVGIS model, not a ground-station measurement. Weather residual is calibrated and includes atmosphere/horizon, not an independently measured weather factor. Geometry toy model uses 12 equal-duration midpoint samples. No factor is applied twice.",
+  "source": "EU JRC PVGIS 5.3, SARAH3/ERA5 2005–2023; Graz 47.0707°N, 15.4395°E; 35° south, c-Si 1 kWp, 14% system loss; own SymPy factorization.",
+  "licence_status": "PVGIS free reuse with attribution; source terms are not described as a CC licence."
+}

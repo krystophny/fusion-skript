@@ -1,0 +1,23 @@
+{
+  "source": "https://github.com/krystophny/plasma-skript",
+  "base_commit": "0c60c3e4914d4178eecef4d3dcf5c00c04999b96",
+  "worktree_patch_sha256": "37abba1f27c4a5bf32abe233b38b317796a05466721dca235c7f638f3e8bd1ef",
+  "file_sha256": {
+    "deck.html": "45aa88b254ebff022a55ff44816e5aea5976320023a41b8343ab5fddb9c74419",
+    "icon-180.png": "aeb03807c1712b80a5dcf6f8606557c05c9aa09f6f30a09a6f8cb079fae2a997",
+    "icon-512.png": "85b4714c1af05e9dba09baa123de574320708c2681ae313268e6ac6103ddceeb",
+    "icon.svg": "86522519ceb88855fdc9faad612b6043d449bf1ec5eba62f5bed808e1171ec7a",
+    "index.html": "cabcea6e6b890153b4214d91b5fe3339e5f8012f24019906f6c35bcd3d4a3803",
+    "manifest.webmanifest": "e6e4caaa6875d14d02e4762d00672e49be6be94805540af0bc9d83388adab875",
+    "present.css": "10b1ec7ff053016d600a3c595643d958189bee3212c3871d43491d6b20792579",
+    "present.js": "2d9a0f71c4bb12002d7a16f789371224a91a7859ed2285360f086945dc75afea",
+    "sw.js": "83d30b71e62ba06430ca1678b0c7c8f6bb84fff556223b5081ccda61dd28ba74"
+  },
+  "license": "MIT",
+  "adaptations": [
+    "Data-driven launcher course and author",
+    "Build-time course identity in HTML/web manifest and service-worker cache prefix",
+    "Cache the launcher directory URL as well as index.html for offline navigation"
+  ],
+  "note": "Snapshot includes uncommitted presenter updates; file hashes identify the exact assets."
+}

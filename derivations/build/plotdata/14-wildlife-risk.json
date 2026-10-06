@@ -1,0 +1,68 @@
+{
+  "page": 14,
+  "annual_estimates": [
+    {
+      "cause": "Free-ranging domestic cats",
+      "low": "1300000000.0",
+      "high": "4000000000.0",
+      "median": "",
+      "unit": "birds/year",
+      "year": "2013 corrected",
+      "scope": "contiguous United States",
+      "source": "loss_cats"
+    },
+    {
+      "cause": "Building collisions",
+      "low": "365000000.0",
+      "high": "988000000.0",
+      "median": "599000000.0",
+      "unit": "birds/year",
+      "year": "2014",
+      "scope": "United States",
+      "source": "loss_buildings"
+    },
+    {
+      "cause": "Vehicle collisions",
+      "low": "89000000.0",
+      "high": "340000000.0",
+      "median": "",
+      "unit": "birds/year",
+      "year": "2014",
+      "scope": "United States roads",
+      "source": "loss_vehicles"
+    },
+    {
+      "cause": "Power lines, collision + electrocution",
+      "low": "12000000.0",
+      "high": "64000000.0",
+      "median": "",
+      "unit": "birds/year",
+      "year": "2014",
+      "scope": "United States",
+      "source": "loss_powerlines"
+    },
+    {
+      "cause": "Wind turbine collisions, monopole estimate",
+      "low": "140438",
+      "high": "327586",
+      "median": "234012",
+      "unit": "birds/year",
+      "year": "2013",
+      "scope": "contiguous United States",
+      "source": "loss_wind"
+    },
+    {
+      "cause": "European wind-farm fatality rate (median)",
+      "low": "",
+      "high": "",
+      "median": "6.5",
+      "unit": "birds/turbine/year",
+      "year": "2012 review",
+      "scope": "surveyed European wind farms",
+      "source": "naturvardsverket_birds"
+    }
+  ],
+  "notes": "United States estimates cover different years, models, and taxa; ranges must not be summed as a common-year census. European wind-farm result is a median per-turbine rate from the reviewed sites, not a Europe-wide total.",
+  "source": "Loss et al. 2013/2014 US studies; Naturvårdsverket Vindval Report 6511, review of European facilities; figures are independently plotted numeric estimates.",
+  "licence_status": "cleared"
+}

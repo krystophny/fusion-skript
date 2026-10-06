@@ -1,0 +1,43 @@
+{
+  "source": "irena_capacity",
+  "unit": "MW",
+  "year_end": true,
+  "licence_status": "IRENA 2026 publication permits free reuse with attribution; © IRENA 2026",
+  "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "world_PV": [
+    293159,
+    386711,
+    481485,
+    583393,
+    714728,
+    859674,
+    1051471,
+    1415161,
+    1872813,
+    2383162
+  ],
+  "austria_PV": [
+    1103,
+    1276,
+    1462,
+    1710,
+    2051,
+    2791,
+    3800,
+    6394,
+    8904,
+    10304
+  ],
+  "notes": "Explicit Solar photovoltaic table, not OWID total-solar slug which also includes CSP. IRENA Renewable capacity statistics March 2026 pp. 38–42."
+}

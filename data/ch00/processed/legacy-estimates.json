@@ -1,0 +1,21 @@
+{
+  "source": "legacy_handwriting",
+  "page": 10,
+  "unit": "kWh/(person day)",
+  "components": {
+    "Home electricity": 5,
+    "Heating / hot water": 20,
+    "Car": 20,
+    "Bus / train / plane": 10,
+    "Things": 20,
+    "Work / industry": 45
+  },
+  "gdp_EUR_per_person_year": 60000,
+  "intensity_kWh_per_EUR": 1,
+  "car_example": {
+    "kWh_per_litre": 10,
+    "litres_per_100km": 5,
+    "km_per_day": 30
+  },
+  "notes": "Transcribed from rendered handwriting; components are estimates, not independent sectors. Car example gives 15 rather than rounded 20."
+}

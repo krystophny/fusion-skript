@@ -1,0 +1,426 @@
+[
+  {
+    "file": "data/ch00/raw/arable-land-use-per-person.csv",
+    "bytes": 393931,
+    "sha256": "dda90a223b34160052bf4a86bfc31513b7220a9cff4b08ceb66895e411b4c563",
+    "source_keys": [
+      "faostat_arable"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/arable-land-use-per-person.metadata.json",
+    "bytes": 1647,
+    "sha256": "93d58c29aa1f401b1df35c21aa0ba0e6c42146a3a1b6f751ef6d8549882ad66c",
+    "source_keys": [
+      "faostat_arable"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/austria_2025.ods",
+    "bytes": 16011,
+    "sha256": "d50d75c694e37c62b3e59d9fd9317be21209a1e50f69d9161dfbd68b082962d6",
+    "source_keys": [
+      "stat_balance"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/austria_2025_cells.json",
+    "bytes": 62141,
+    "sha256": "e5c59ca3b02f2f01667164126ca5b70932d4515d1ce1e99c1a257c5ca0e346f5",
+    "source_keys": [
+      "stat_balance"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/cropland-per-person-over-the-long-term.csv",
+    "bytes": 778224,
+    "sha256": "8c414c590ba3b17d3d63aea3fec510e5184e52e5841d37ae2c9cef974fddc669",
+    "source_keys": [
+      "hyde_cropland"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/cropland-per-person-over-the-long-term.metadata.json",
+    "bytes": 1565,
+    "sha256": "7a8bbcbb4155810a7be725b0e2a40171111c27a2e29ac7b1e5fb2115a661cb24",
+    "source_keys": [
+      "hyde_cropland"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/death-rates-from-energy-production-per-twh.csv",
+    "bytes": 214,
+    "sha256": "62d0d7a6db1cc8676a276a1699beaec21e30306e672cb94c7d9e7b55a987297d",
+    "source_keys": [
+      "owid_deaths"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/death-rates-from-energy-production-per-twh.metadata.json",
+    "bytes": 1343,
+    "sha256": "ae918950b04a49cd68a6547260e53bc69e35e8d80b2505dc0c4d2ff49d437d88",
+    "source_keys": [
+      "owid_deaths"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/doe-ethanol-basics.pdf",
+    "bytes": 558232,
+    "sha256": "3a7c63d21a9645c2ee20029830023b8886283dcef77aaa46d3bf1b43f88777a5",
+    "source_keys": [
+      "doe_ethanol"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/doe-us-ethanol-industry.pdf",
+    "bytes": 1076324,
+    "sha256": "21228a892d7bda90a00eee34c1019b512d2cb1f56bfd22e85673981e5f12e4cd",
+    "source_keys": [
+      "doe_ethanol"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/dollarstreet-5d4be196cf0b3a0f3f33b4c5.json",
+    "bytes": 2867743,
+    "sha256": "6dc285002c4697db0e47dafab20db26e415a472058b1e06c403a21f5f186e1a4",
+    "source_keys": [
+      "dollarstreet"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/dollarstreet-5d4bec73cf0b3a0f3f34df4c.json",
+    "bytes": 2871778,
+    "sha256": "74922ce10f186d473f6c0b5d5ec4ffaf69422429c4de889469123077e014fa31",
+    "source_keys": [
+      "dollarstreet"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/dollarstreet-5d4bf44ccf0b3a0f3f35b67a.json",
+    "bytes": 2863468,
+    "sha256": "db09e3345cf96bc78a73e46fd152d9396d486a8738da2a5d9b624a698b682733",
+    "source_keys": [
+      "dollarstreet"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/dollarstreet-5ec4f926f0611d7ddd7414e9.json",
+    "bytes": 2870839,
+    "sha256": "ff334ff96e4c32d43aff7c5db7f1bf5f2512d868a38bcbdc1e2d1aee0572d361",
+    "source_keys": [
+      "dollarstreet"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/dollarstreet_next.json",
+    "bytes": 3710313,
+    "sha256": "826f98c6aaf2fdc3a9da125678c74b98f6904c7432d08aca56a318a911bbf5f5",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/dollarstreet_stoves.json",
+    "bytes": 2832710,
+    "sha256": "eccb69fb49b5da3671cd71ad650b897c9ac6a97fbdc1c3c1c2e80debd8aaaa46",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/eia_2023.json",
+    "bytes": 97255,
+    "sha256": "622faad4face88c7b9cc67597f86b4eea0c8196fb5e7824de4384726d14ab09e",
+    "source_keys": [
+      "eia"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/eia_2024.json",
+    "bytes": 96915,
+    "sha256": "9263469db67490d5d603c4062128d57e5eb08d54a314e5fc8d1522092d71feed",
+    "source_keys": [
+      "eia"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/eia_2025.json",
+    "bytes": 566,
+    "sha256": "fc4cb22c8c20d9fe3468832ceba5402f2e56c67caff91ea4fe2c78afd296a3bd",
+    "source_keys": [
+      "eia"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/eia_facets_activityId.json",
+    "bytes": 502,
+    "sha256": "1589ff2ed54e01a397c29bbc5fdef0160bfdb91007927271d88b7e39c3f0981e",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/eia_facets_productId.json",
+    "bytes": 1707,
+    "sha256": "dac230a6da119083dc0348c813d4a29a811e0df065a8dfb12b11628baad86911",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/eia_facets_unit.json",
+    "bytes": 464,
+    "sha256": "866851557a851a3ecb8a894deb50f2c3c3777050b4b745c6b9245ebee7cfdfbf",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/eia_world_electricity_2024.json",
+    "bytes": 846,
+    "sha256": "6f71aede444958413e7044015111895cfdd3256983f8cbdb5c3ba90ad5c8d56a",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/gapminder_income_levels_2017.json",
+    "bytes": 1039,
+    "sha256": "65ff66e1a60b0687bbeb8ad95789527d7bf5a3b1f5343c98426291ca74a3de3f",
+    "source_keys": [
+      "gapminder_income_levels"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/graz_boundary.geojson",
+    "bytes": 140155,
+    "sha256": "7098820ccaa2a36e66d2ed9dfc1ffe2cd2270e0de18fee256cf7be63d828dbee",
+    "source_keys": [
+      "graz_boundary"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/graz_boundary_layer.json",
+    "bytes": 2600,
+    "sha256": "04b2d8823697aa0fdb4cd8838c1e2a82c38fafe4b6055d9604e7c84f436bfcca",
+    "source_keys": [
+      "graz_boundary"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/iaea-history-1954-2024.json",
+    "bytes": 15235,
+    "sha256": "3e789d622f7faec79a36eec7d40f8f2108279108da62c2fdf09dfe98ffe1ad79",
+    "source_keys": [
+      "iaea_history"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/installed-solar-pv-capacity.csv",
+    "bytes": 130425,
+    "sha256": "b67451e97291c42cd655f8658e785b980216f26fdfb0725aaf7bc5e846ae8c95",
+    "source_keys": [
+      "irena_capacity"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/installed-solar-pv-capacity.metadata.json",
+    "bytes": 1116,
+    "sha256": "17edecf905c2e2cacc57d8e9c00919620e17402a3eb28c3cd45cede5b467f4ff",
+    "source_keys": [
+      "irena_capacity"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/photos.json",
+    "bytes": 6832,
+    "sha256": "f9afbcd51cad6d07b28a87cc2717c488f2450f4714f724a6ec27981611ad1541",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/pvgis_graz.json",
+    "bytes": 5215,
+    "sha256": "24c6d579fa8252e2fb67231d8671337822893a3f6fedf4b50a31138041053c5d",
+    "source_keys": [
+      "pvgis"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/pvgis_graz_horizontal.json",
+    "bytes": 23789,
+    "sha256": "e17546b53584bd3bc0f023c7b85c24f5272a1b9822041670e9dd0d3ecab15b17",
+    "source_keys": [
+      "pvgis"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/sentinel_park_search.json",
+    "bytes": 40490,
+    "sha256": "86f1216a4763e2572dd9667763e25ff39ddb5944b00b38b40b04299991197843",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/sentinel_park_search_all.json",
+    "bytes": 3945835,
+    "sha256": "41ad4897e4bf3918df3dec9894cf7287e46ad128ab6cbb325b2963a59723c620",
+    "source_keys": [
+      "sentinel"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/sentinel_search.json",
+    "bytes": 790072,
+    "sha256": "25d2635fad1b09cea797bad9dccfbf204111e2001747472c9f2767056b041b57",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/sentinel_selected.json",
+    "bytes": 33624,
+    "sha256": "e9b30504078c329d3e90809541f92f3290e9f05fdf244834dea507653cad2b6d",
+    "source_keys": [
+      "sentinel"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/share-of-the-population-with-access-to-electricity.csv",
+    "bytes": 179348,
+    "sha256": "6cd126be44ace07600f782018bab8dc6079f6ae35ce134480ec474d315d615e1",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/share-of-the-population-with-access-to-electricity.metadata.json",
+    "bytes": 2865,
+    "sha256": "8163e3c8a2835d08ef6042d7247b9b910cff21ef619230282e9f622611eef64c",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/solar-pv-prices.csv",
+    "bytes": 1525,
+    "sha256": "26941d3ff4f7bb11916bf6e36937064fe9f65f91c281d2f5250cb6e24da589dc",
+    "source_keys": [
+      "owid_prices"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/solar-pv-prices.metadata.json",
+    "bytes": 2898,
+    "sha256": "c4a1b2e0502897a9bf1dd366d818073a17571cb3c93747d6172ca8ea2e0fbc8e",
+    "source_keys": [
+      "owid_prices"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/statistik_js.js",
+    "bytes": 548,
+    "sha256": "9f7c46b8c557698294b64465a31f0cde8de8c2df5dd32dad34be80e4f7ffacf4",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/uranium-redbook-2024.pdf",
+    "bytes": 12914815,
+    "sha256": "88abc1112a96af219d59b105394134709944c06081f25c85f8fd2ac0c0f98287",
+    "source_keys": [
+      "redbook"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/usda-corn-yield-2024.pdf",
+    "bytes": 2358486,
+    "sha256": "0e3add3bc4c95c8ea5061d8e1e75d166e5d9a4a73dcf9204784be6697e94c0c9",
+    "source_keys": [
+      "usda_corn"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/usgs-lithium-2026.pdf",
+    "bytes": 138422,
+    "sha256": "53f92ea45c367c36f05919151f7784feda5776095afaf3a25aec795a27be106f",
+    "source_keys": [
+      "usgs_lithium"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/wb_austria_gdp_eur.json",
+    "bytes": 745,
+    "sha256": "652b828b7bd71e85c2ebe9446d2e27c8ac7ec435ab702747a24f881d41782c59",
+    "source_keys": [
+      "wb_gdp_austria"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/wb_countries.json",
+    "bytes": 113590,
+    "sha256": "d29d57f8adf954c5e2a1520a02fb2c7b45575d8db3bd327a9dff47d66914231c",
+    "source_keys": [],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/wb_electricity.json",
+    "bytes": 14603,
+    "sha256": "c437a35d0a4fb5dc7b3813d1c384e114d59d09a1ba20d9d1c19eb40446cc31be",
+    "source_keys": [
+      "wb_electricity"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/wb_gdp_ppp.json",
+    "bytes": 395006,
+    "sha256": "c70140408aba1306cfc0d3aca814cae7e5c0ed0bb435488ffa67b5905a6ac9e7",
+    "source_keys": [
+      "wb_gdp_ppp"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/wb_population.json",
+    "bytes": 319735,
+    "sha256": "de0d0be8a31c2716b0106704bce8e04e18e808ac42a9aa9a931e65fa6da7e663",
+    "source_keys": [
+      "wb_population"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  },
+  {
+    "file": "data/ch00/raw/wind_corrigendum.pdf",
+    "bytes": 8473294,
+    "sha256": "e38a1ccc9fd8de99da1ca2603ef9dfbffc55220f3a8c75bc7cc257aae8c35f7b",
+    "source_keys": [
+      "miller_corrigendum"
+    ],
+    "release_status": "RESEARCH EVIDENCE ONLY: not automatically cleared for public distribution"
+  }
+]

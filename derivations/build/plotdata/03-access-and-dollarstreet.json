@@ -1,0 +1,102 @@
+{
+  "page": 3,
+  "access": [
+    {
+      "series": "electricity",
+      "source": "wb_electricity",
+      "year": 2024,
+      "value": 91.9264843853681,
+      "unit": "% of world population",
+      "licence_status": "CC BY 4.0"
+    }
+  ],
+  "photos": [
+    {
+      "file": "dollarstreet-stove-5ec4f926f0611d7ddd7414e9.jpg",
+      "download": "https://media.dollarstreet.org/5ec4f926f0611d7ddd7414e9/5ec4f926f0611d7ddd7414e9.jpg",
+      "title": "Stove/hob, Spain",
+      "author": "Omar Havana",
+      "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5ec4f926f0611d7ddd7414e9",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "date": "2019-10-16",
+      "income": 7639,
+      "income_unit": "PPP-adjusted USD per equivalent adult per month",
+      "family": "Family 391",
+      "status": "downloaded",
+      "error": null,
+      "original_pixels": [
+        4261,
+        2841
+      ],
+      "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+      "sha256_original": "92575e0412cd151719ed4f7e0b396428dcd945ec583680acf7f3c41108bd7cee"
+    },
+    {
+      "file": "dollarstreet-stove-5d4be196cf0b3a0f3f33b4c5.jpg",
+      "download": "https://media.dollarstreet.org/5d4be196cf0b3a0f3f33b4c5/5d4be196cf0b3a0f3f33b4c5.jpg",
+      "title": "Stove/hob, Brazil",
+      "author": "Leony Carvalho",
+      "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5d4be196cf0b3a0f3f33b4c5",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "date": "2018-05-02",
+      "income": 685,
+      "income_unit": "PPP-adjusted USD per equivalent adult per month",
+      "family": "Family 266",
+      "status": "downloaded",
+      "error": null,
+      "original_pixels": [
+        5184,
+        3456
+      ],
+      "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+      "sha256_original": "341bb16155a70d02afcfbc2a4af5789ff4ff35d88099683beaf8ea879da02be6"
+    },
+    {
+      "file": "dollarstreet-stove-5d4bec73cf0b3a0f3f34df4c.jpg",
+      "download": "https://media.dollarstreet.org/5d4bec73cf0b3a0f3f34df4c/5d4bec73cf0b3a0f3f34df4c.jpg",
+      "title": "Stove/hob, Bolivia",
+      "author": "Zoriah Miller",
+      "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5d4bec73cf0b3a0f3f34df4c",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "date": "2015-01-19",
+      "income": 180,
+      "income_unit": "PPP-adjusted USD per equivalent adult per month",
+      "family": "Family 148",
+      "status": "downloaded",
+      "error": null,
+      "original_pixels": [
+        4608,
+        3072
+      ],
+      "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+      "sha256_original": "b34264d58ce270b418eaf4f6982f14306675418b2ed99b6880e0f719d71f976e"
+    },
+    {
+      "file": "dollarstreet-stove-5d4bf44ccf0b3a0f3f35b67a.jpg",
+      "download": "https://media.dollarstreet.org/5d4bf44ccf0b3a0f3f35b67a/5d4bf44ccf0b3a0f3f35b67a.jpg",
+      "title": "Stove/hob, Haiti",
+      "author": "Zoriah Miller",
+      "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5d4bf44ccf0b3a0f3f35b67a",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "date": "2014-11-28",
+      "income": 39.9,
+      "income_unit": "PPP-adjusted USD per equivalent adult per month",
+      "family": "Family 7",
+      "status": "downloaded",
+      "error": null,
+      "original_pixels": [
+        2700,
+        1800
+      ],
+      "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+      "sha256_original": "abf9578bec5849d00265509dbc6b682ce210677e31c375f72fcbd67f6b8d1b2c"
+    }
+  ],
+  "notes": "Dollar Street PPP monthly amounts are per equivalent adult, not whole-household totals. Global washing-machine, car and refrigerator ownership shares are not included because a comparable sourced series was not verified. Clean-cooking figures are excluded: the WDI indicator source note specifies CC BY-NC 3.0 IGO.",
+  "source": "World Bank WDI EG.ELC.ACCS.ZS (latest world observation, CC BY 4.0); Gapminder Dollar Street, individual photographers, CC BY 4.0.",
+  "licence_status": "cleared"
+}

@@ -1,0 +1,43 @@
+{
+  "page": 10,
+  "eu_onshore_cf": 0.23,
+  "eu_offshore_cf": 0.35,
+  "eu_new_onshore_cf_range": [
+    0.3,
+    0.35
+  ],
+  "eu_new_offshore_cf_range": [
+    0.42,
+    0.55
+  ],
+  "austria_actual_generation_TWh": 8.577926627000002,
+  "austria_yearend_MW": 4221.0,
+  "austria_cf_endyear_proxy": 0.23198658336389377,
+  "us_onshore_W_m2": 0.9,
+  "us_solar_W_m2": 5.7,
+  "offshore_HornsRev_W_m2_scenario": 2.765,
+  "offshore_site_MW": 158,
+  "offshore_site_km2": 20,
+  "photos": [
+    {
+      "file": "wind-freilaenderalm.jpg",
+      "download": "https://upload.wikimedia.org/wikipedia/commons/2/24/Windpark_Freil%C3%A4nderalm%2C_Baustufe_2%2C_am_Ausl%C3%A4ufer_der_Koralpe_in_der_Steiermark_23.jpg?download=1",
+      "title": "Windpark Freiländeralm, Baustufe 2, am Ausläufer der Koralpe in der Steiermark 23.jpg",
+      "author": "Naturpuur",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Windpark_Freil%C3%A4nderalm%2C_Baustufe_2%2C_am_Ausl%C3%A4ufer_der_Koralpe_in_der_Steiermark_23.jpg",
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "status": "downloaded",
+      "error": null,
+      "original_pixels": [
+        6000,
+        4000
+      ],
+      "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+      "sha256_original": "2ea551637e9b53d9f7eab1f9887421483669f5a7ab2f63b6766545b62fd84c56"
+    }
+  ],
+  "notes": "Horns Rev area × current 158 MW operator capacity × EU fleet CF = scenario, not a measured site-specific mean. Austria year-end denominator is a CF proxy, not time-weighted capacity. Corrected US densities are capacity-weighted samples and use different land boundaries from the area-budget assumptions.",
+  "source": "Miller & Keith 2019 corrigendum, DOI 10.1088/1748-9326/aaf9cf (CC BY 3.0); WindEurope Statistics 2024 p.20; Statistics Austria wind generation 2025; IG Windkraft year-end 2025; Vattenfall Horns Rev 1; Naturpuur photo (CC BY-SA 4.0).",
+  "licence_status": "CC paper/photo cleared; WindEurope/IG/operator numerical facts only; Austrian raw balance custom terms."
+}

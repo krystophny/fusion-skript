@@ -1,0 +1,648 @@
+{
+  "source_url": "https://www-pub.iaea.org/MTCD/Publications/PDF/RDS-2-45_web.pdf",
+  "table": 7,
+  "access_date": "2026-10-06",
+  "licence_status": "No explicit CC licence found; research evidence; numerical facts only",
+  "transformation": "pdftotext -layout; Table 7 fixed-width numeric fields; blanks become zero",
+  "rows": [
+    {
+      "year": 1954,
+      "construction_starts": 1,
+      "construction_MWe": 60,
+      "grid_connections": 1,
+      "grid_MWe": 5,
+      "operating_units": 1,
+      "operating_MWe": 5
+    },
+    {
+      "year": 1955,
+      "construction_starts": 8,
+      "construction_MWe": 260,
+      "grid_connections": 0,
+      "grid_MWe": 0,
+      "operating_units": 1,
+      "operating_MWe": 5
+    },
+    {
+      "year": 1956,
+      "construction_starts": 5,
+      "construction_MWe": 577,
+      "grid_connections": 1,
+      "grid_MWe": 35,
+      "operating_units": 2,
+      "operating_MWe": 65
+    },
+    {
+      "year": 1957,
+      "construction_starts": 13,
+      "construction_MWe": 1836,
+      "grid_connections": 3,
+      "grid_MWe": 119,
+      "operating_units": 5,
+      "operating_MWe": 209
+    },
+    {
+      "year": 1958,
+      "construction_starts": 5,
+      "construction_MWe": 461,
+      "grid_connections": 1,
+      "grid_MWe": 35,
+      "operating_units": 6,
+      "operating_MWe": 269
+    },
+    {
+      "year": 1959,
+      "construction_starts": 7,
+      "construction_MWe": 976,
+      "grid_connections": 5,
+      "grid_MWe": 176,
+      "operating_units": 11,
+      "operating_MWe": 548
+    },
+    {
+      "year": 1960,
+      "construction_starts": 11,
+      "construction_MWe": 1010,
+      "grid_connections": 4,
+      "grid_MWe": 438,
+      "operating_units": 15,
+      "operating_MWe": 1087
+    },
+    {
+      "year": 1961,
+      "construction_starts": 7,
+      "construction_MWe": 1529,
+      "grid_connections": 0,
+      "grid_MWe": 0,
+      "operating_units": 15,
+      "operating_MWe": 1088
+    },
+    {
+      "year": 1962,
+      "construction_starts": 8,
+      "construction_MWe": 1379,
+      "grid_connections": 9,
+      "grid_MWe": 955,
+      "operating_units": 24,
+      "operating_MWe": 2207
+    },
+    {
+      "year": 1963,
+      "construction_starts": 5,
+      "construction_MWe": 1722,
+      "grid_connections": 9,
+      "grid_MWe": 500,
+      "operating_units": 32,
+      "operating_MWe": 2661
+    },
+    {
+      "year": 1964,
+      "construction_starts": 9,
+      "construction_MWe": 2849,
+      "grid_connections": 8,
+      "grid_MWe": 1022,
+      "operating_units": 39,
+      "operating_MWe": 3670
+    },
+    {
+      "year": 1965,
+      "construction_starts": 8,
+      "construction_MWe": 3268,
+      "grid_connections": 8,
+      "grid_MWe": 1879,
+      "operating_units": 47,
+      "operating_MWe": 5894
+    },
+    {
+      "year": 1966,
+      "construction_starts": 14,
+      "construction_MWe": 6952,
+      "grid_connections": 8,
+      "grid_MWe": 1528,
+      "operating_units": 54,
+      "operating_MWe": 7523
+    },
+    {
+      "year": 1967,
+      "construction_starts": 25,
+      "construction_MWe": 16287,
+      "grid_connections": 11,
+      "grid_MWe": 2165,
+      "operating_units": 63,
+      "operating_MWe": 9579
+    },
+    {
+      "year": 1968,
+      "construction_starts": 37,
+      "construction_MWe": 26859,
+      "grid_connections": 7,
+      "grid_MWe": 1086,
+      "operating_units": 68,
+      "operating_MWe": 10632
+    },
+    {
+      "year": 1969,
+      "construction_starts": 13,
+      "construction_MWe": 9277,
+      "grid_connections": 9,
+      "grid_MWe": 3647,
+      "operating_units": 76,
+      "operating_MWe": 14080
+    },
+    {
+      "year": 1970,
+      "construction_starts": 37,
+      "construction_MWe": 25552,
+      "grid_connections": 6,
+      "grid_MWe": 3410,
+      "operating_units": 82,
+      "operating_MWe": 17615
+    },
+    {
+      "year": 1971,
+      "construction_starts": 18,
+      "construction_MWe": 12676,
+      "grid_connections": 16,
+      "grid_MWe": 7711,
+      "operating_units": 98,
+      "operating_MWe": 24304
+    },
+    {
+      "year": 1972,
+      "construction_starts": 28,
+      "construction_MWe": 21163,
+      "grid_connections": 16,
+      "grid_MWe": 8880,
+      "operating_units": 112,
+      "operating_MWe": 32781
+    },
+    {
+      "year": 1973,
+      "construction_starts": 30,
+      "construction_MWe": 24627,
+      "grid_connections": 19,
+      "grid_MWe": 12544,
+      "operating_units": 130,
+      "operating_MWe": 43645
+    },
+    {
+      "year": 1974,
+      "construction_starts": 38,
+      "construction_MWe": 35230,
+      "grid_connections": 26,
+      "grid_MWe": 17212,
+      "operating_units": 153,
+      "operating_MWe": 61005
+    },
+    {
+      "year": 1975,
+      "construction_starts": 38,
+      "construction_MWe": 36434,
+      "grid_connections": 15,
+      "grid_MWe": 10289,
+      "operating_units": 168,
+      "operating_MWe": 70398
+    },
+    {
+      "year": 1976,
+      "construction_starts": 43,
+      "construction_MWe": 41845,
+      "grid_connections": 19,
+      "grid_MWe": 14232,
+      "operating_units": 185,
+      "operating_MWe": 83977
+    },
+    {
+      "year": 1977,
+      "construction_starts": 23,
+      "construction_MWe": 21849,
+      "grid_connections": 18,
+      "grid_MWe": 13199,
+      "operating_units": 198,
+      "operating_MWe": 96187
+    },
+    {
+      "year": 1978,
+      "construction_starts": 23,
+      "construction_MWe": 21735,
+      "grid_connections": 20,
+      "grid_MWe": 15782,
+      "operating_units": 217,
+      "operating_MWe": 111725
+    },
+    {
+      "year": 1979,
+      "construction_starts": 27,
+      "construction_MWe": 23017,
+      "grid_connections": 8,
+      "grid_MWe": 6909,
+      "operating_units": 224,
+      "operating_MWe": 117799
+    },
+    {
+      "year": 1980,
+      "construction_starts": 20,
+      "construction_MWe": 19086,
+      "grid_connections": 21,
+      "grid_MWe": 15088,
+      "operating_units": 244,
+      "operating_MWe": 133022
+    },
+    {
+      "year": 1981,
+      "construction_starts": 17,
+      "construction_MWe": 16029,
+      "grid_connections": 23,
+      "grid_MWe": 20352,
+      "operating_units": 266,
+      "operating_MWe": 153820
+    },
+    {
+      "year": 1982,
+      "construction_starts": 18,
+      "construction_MWe": 19115,
+      "grid_connections": 19,
+      "grid_MWe": 15313,
+      "operating_units": 283,
+      "operating_MWe": 168302
+    },
+    {
+      "year": 1983,
+      "construction_starts": 15,
+      "construction_MWe": 11936,
+      "grid_connections": 23,
+      "grid_MWe": 19246,
+      "operating_units": 305,
+      "operating_MWe": 187744
+    },
+    {
+      "year": 1984,
+      "construction_starts": 13,
+      "construction_MWe": 11332,
+      "grid_connections": 33,
+      "grid_MWe": 31038,
+      "operating_units": 335,
+      "operating_MWe": 218437
+    },
+    {
+      "year": 1985,
+      "construction_starts": 19,
+      "construction_MWe": 15337,
+      "grid_connections": 33,
+      "grid_MWe": 31129,
+      "operating_units": 363,
+      "operating_MWe": 245779
+    },
+    {
+      "year": 1986,
+      "construction_starts": 8,
+      "construction_MWe": 7286,
+      "grid_connections": 27,
+      "grid_MWe": 27134,
+      "operating_units": 389,
+      "operating_MWe": 272074
+    },
+    {
+      "year": 1987,
+      "construction_starts": 13,
+      "construction_MWe": 11434,
+      "grid_connections": 22,
+      "grid_MWe": 22191,
+      "operating_units": 407,
+      "operating_MWe": 295812
+    },
+    {
+      "year": 1988,
+      "construction_starts": 7,
+      "construction_MWe": 7722,
+      "grid_connections": 14,
+      "grid_MWe": 13574,
+      "operating_units": 416,
+      "operating_MWe": 305212
+    },
+    {
+      "year": 1989,
+      "construction_starts": 6,
+      "construction_MWe": 4018,
+      "grid_connections": 12,
+      "grid_MWe": 10536,
+      "operating_units": 420,
+      "operating_MWe": 311913
+    },
+    {
+      "year": 1990,
+      "construction_starts": 5,
+      "construction_MWe": 3267,
+      "grid_connections": 10,
+      "grid_MWe": 10543,
+      "operating_units": 416,
+      "operating_MWe": 318224
+    },
+    {
+      "year": 1991,
+      "construction_starts": 2,
+      "construction_MWe": 2246,
+      "grid_connections": 4,
+      "grid_MWe": 3669,
+      "operating_units": 415,
+      "operating_MWe": 321924
+    },
+    {
+      "year": 1992,
+      "construction_starts": 3,
+      "construction_MWe": 3094,
+      "grid_connections": 6,
+      "grid_MWe": 4809,
+      "operating_units": 418,
+      "operating_MWe": 325261
+    },
+    {
+      "year": 1993,
+      "construction_starts": 4,
+      "construction_MWe": 3515,
+      "grid_connections": 9,
+      "grid_MWe": 9012,
+      "operating_units": 427,
+      "operating_MWe": 333914
+    },
+    {
+      "year": 1994,
+      "construction_starts": 2,
+      "construction_MWe": 1334,
+      "grid_connections": 5,
+      "grid_MWe": 4302,
+      "operating_units": 429,
+      "operating_MWe": 336904
+    },
+    {
+      "year": 1995,
+      "construction_starts": 0,
+      "construction_MWe": 0,
+      "grid_connections": 5,
+      "grid_MWe": 3536,
+      "operating_units": 434,
+      "operating_MWe": 341387
+    },
+    {
+      "year": 1996,
+      "construction_starts": 1,
+      "construction_MWe": 610,
+      "grid_connections": 6,
+      "grid_MWe": 7080,
+      "operating_units": 438,
+      "operating_MWe": 347281
+    },
+    {
+      "year": 1997,
+      "construction_starts": 5,
+      "construction_MWe": 4410,
+      "grid_connections": 3,
+      "grid_MWe": 3557,
+      "operating_units": 434,
+      "operating_MWe": 347880
+    },
+    {
+      "year": 1998,
+      "construction_starts": 3,
+      "construction_MWe": 2150,
+      "grid_connections": 4,
+      "grid_MWe": 2973,
+      "operating_units": 430,
+      "operating_MWe": 344900
+    },
+    {
+      "year": 1999,
+      "construction_starts": 4,
+      "construction_MWe": 4540,
+      "grid_connections": 4,
+      "grid_MWe": 2729,
+      "operating_units": 432,
+      "operating_MWe": 347353
+    },
+    {
+      "year": 2000,
+      "construction_starts": 6,
+      "construction_MWe": 5336,
+      "grid_connections": 6,
+      "grid_MWe": 3178,
+      "operating_units": 435,
+      "operating_MWe": 349984
+    },
+    {
+      "year": 2001,
+      "construction_starts": 1,
+      "construction_MWe": 1304,
+      "grid_connections": 3,
+      "grid_MWe": 2696,
+      "operating_units": 438,
+      "operating_MWe": 352715
+    },
+    {
+      "year": 2002,
+      "construction_starts": 6,
+      "construction_MWe": 3440,
+      "grid_connections": 6,
+      "grid_MWe": 5166,
+      "operating_units": 439,
+      "operating_MWe": 357481
+    },
+    {
+      "year": 2003,
+      "construction_starts": 1,
+      "construction_MWe": 202,
+      "grid_connections": 2,
+      "grid_MWe": 1627,
+      "operating_units": 437,
+      "operating_MWe": 359827
+    },
+    {
+      "year": 2004,
+      "construction_starts": 2,
+      "construction_MWe": 1336,
+      "grid_connections": 5,
+      "grid_MWe": 4785,
+      "operating_units": 437,
+      "operating_MWe": 364539
+    },
+    {
+      "year": 2005,
+      "construction_starts": 3,
+      "construction_MWe": 2907,
+      "grid_connections": 4,
+      "grid_MWe": 3823,
+      "operating_units": 440,
+      "operating_MWe": 368035
+    },
+    {
+      "year": 2006,
+      "construction_starts": 5,
+      "construction_MWe": 4769,
+      "grid_connections": 2,
+      "grid_MWe": 1492,
+      "operating_units": 434,
+      "operating_MWe": 369491
+    },
+    {
+      "year": 2007,
+      "construction_starts": 7,
+      "construction_MWe": 5305,
+      "grid_connections": 3,
+      "grid_MWe": 1842,
+      "operating_units": 436,
+      "operating_MWe": 369483
+    },
+    {
+      "year": 2008,
+      "construction_starts": 10,
+      "construction_MWe": 10588,
+      "grid_connections": 0,
+      "grid_MWe": 0,
+      "operating_units": 434,
+      "operating_MWe": 368266
+    },
+    {
+      "year": 2009,
+      "construction_starts": 12,
+      "construction_MWe": 13626,
+      "grid_connections": 2,
+      "grid_MWe": 1068,
+      "operating_units": 433,
+      "operating_MWe": 367406
+    },
+    {
+      "year": 2010,
+      "construction_starts": 16,
+      "construction_MWe": 15968,
+      "grid_connections": 5,
+      "grid_MWe": 3776,
+      "operating_units": 436,
+      "operating_MWe": 370930
+    },
+    {
+      "year": 2011,
+      "construction_starts": 4,
+      "construction_MWe": 1888,
+      "grid_connections": 6,
+      "grid_MWe": 3993,
+      "operating_units": 414,
+      "operating_MWe": 350655
+    },
+    {
+      "year": 2012,
+      "construction_starts": 7,
+      "construction_MWe": 7019,
+      "grid_connections": 3,
+      "grid_MWe": 2963,
+      "operating_units": 412,
+      "operating_MWe": 350942
+    },
+    {
+      "year": 2013,
+      "construction_starts": 10,
+      "construction_MWe": 11309,
+      "grid_connections": 4,
+      "grid_MWe": 4060,
+      "operating_units": 409,
+      "operating_MWe": 349472
+    },
+    {
+      "year": 2014,
+      "construction_starts": 2,
+      "construction_MWe": 2420,
+      "grid_connections": 5,
+      "grid_MWe": 4660,
+      "operating_units": 413,
+      "operating_MWe": 353959
+    },
+    {
+      "year": 2015,
+      "construction_starts": 9,
+      "construction_MWe": 8624,
+      "grid_connections": 10,
+      "grid_MWe": 9450,
+      "operating_units": 416,
+      "operating_MWe": 360504
+    },
+    {
+      "year": 2016,
+      "construction_starts": 3,
+      "construction_MWe": 3014,
+      "grid_connections": 10,
+      "grid_MWe": 9531,
+      "operating_units": 422,
+      "operating_MWe": 368188
+    },
+    {
+      "year": 2017,
+      "construction_starts": 5,
+      "construction_MWe": 4896,
+      "grid_connections": 4,
+      "grid_MWe": 3373,
+      "operating_units": 423,
+      "operating_MWe": 369418
+    },
+    {
+      "year": 2018,
+      "construction_starts": 5,
+      "construction_MWe": 6364,
+      "grid_connections": 9,
+      "grid_MWe": 10323,
+      "operating_units": 424,
+      "operating_MWe": 374110
+    },
+    {
+      "year": 2019,
+      "construction_starts": 5,
+      "construction_MWe": 6046,
+      "grid_connections": 6,
+      "grid_MWe": 5174,
+      "operating_units": 417,
+      "operating_MWe": 369590
+    },
+    {
+      "year": 2020,
+      "construction_starts": 5,
+      "construction_MWe": 5115,
+      "grid_connections": 5,
+      "grid_MWe": 5561,
+      "operating_units": 414,
+      "operating_MWe": 369804
+    },
+    {
+      "year": 2021,
+      "construction_starts": 10,
+      "construction_MWe": 8836,
+      "grid_connections": 6,
+      "grid_MWe": 5218,
+      "operating_units": 410,
+      "operating_MWe": 366790
+    },
+    {
+      "year": 2022,
+      "construction_starts": 8,
+      "construction_MWe": 9125,
+      "grid_connections": 6,
+      "grid_MWe": 7400,
+      "operating_units": 411,
+      "operating_MWe": 370941
+    },
+    {
+      "year": 2023,
+      "construction_starts": 6,
+      "construction_MWe": 6764,
+      "grid_connections": 5,
+      "grid_MWe": 5007,
+      "operating_units": 413,
+      "operating_MWe": 371539
+    },
+    {
+      "year": 2024,
+      "construction_starts": 9,
+      "construction_MWe": 10183,
+      "grid_connections": 6,
+      "grid_MWe": 6803,
+      "operating_units": 417,
+      "operating_MWe": 377014
+    }
+  ]
+}

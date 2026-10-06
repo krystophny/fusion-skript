@@ -1,0 +1,18 @@
+{
+  "source_url": "https://www.gapminder.org/factfulness-book/notes/",
+  "definitions_url": "https://www.gapminder.org/fw/income-levels/",
+  "access_date": "2026-10-06",
+  "year": 2017,
+  "table": "Page 32, Graph: Four income levels",
+  "currency_unit": "2011 PPP USD per person per day",
+  "licence": "CC BY 4.0; Gapminder Factfulness notes, version 3",
+  "licence_url": "https://www.gapminder.org/free-material/",
+  "transformation": "Transcribe the four published rounded population estimates and the thresholds defined by Gapminder; no interpolation or rescaling.",
+  "notes": "The estimates use World Bank PovcalNet 2013 data with Gapminder extensions/IMF forecasts to 2017; rounded estimates, not a current survey.",
+  "levels": [
+    {"level": 1, "income_threshold": "<2", "population_billions": 0.75},
+    {"level": 2, "income_threshold": "2–8", "population_billions": 3.3},
+    {"level": 3, "income_threshold": "8–32", "population_billions": 2.5},
+    {"level": 4, "income_threshold": ">32", "population_billions": 0.9}
+  ]
+}

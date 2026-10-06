@@ -1,0 +1,30 @@
+{
+  "park": "Weesow-Willmersdorf",
+  "park_coordinates_wgs84": {
+    "latitude": 52.650568,
+    "longitude": 13.686692
+  },
+  "coordinate_source": "https://www.wikidata.org/wiki/Q71147169",
+  "scene_id": "S2A_33UVU_20250911_0_L2A",
+  "datetime": "2025-09-11T10:16:20.908000Z",
+  "source_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/VU/2025/9/S2A_33UVU_20250911_0_L2A/TCI.tif",
+  "resolution_m": 10,
+  "map_extent_relative_to_park_m": [
+    -8005.540217936796,
+    7994.459782063204,
+    -7999.750137207098,
+    8000.249862792902
+  ],
+  "graz_projected_area_km2": 127.46638809124123,
+  "graz_published_area_km2": 127.58,
+  "map_crs": "EPSG:32633",
+  "graz_origin_m": [
+    533354.7081490323,
+    5213605.157462877
+  ],
+  "credit": "Contains modified Copernicus Sentinel data 2025; Datenquelle: Stadt Graz \u2013 data.graz.gv.at",
+  "licence_url": "https://cds.climate.copernicus.eu/licences/ec-sentinel",
+  "boundary_licence": "CC BY 4.0",
+  "boundary_terms": "https://data.graz.gv.at/graz/nutzungsbedingungen/",
+  "modifications": "Native 10 m TCI window; boundary projected and translated. Same metre axes, equal aspect; no map screenshots."
+}

@@ -1,0 +1,534 @@
+{
+  "world_population": {
+    "value": 8140897523,
+    "unit": "person",
+    "year": 2024,
+    "source": "wb_population",
+    "notes": ""
+  },
+  "world_population_2025": {
+    "value": 8215424893,
+    "unit": "person",
+    "year": 2025,
+    "source": "wb_population",
+    "notes": ""
+  },
+  "austria_population": {
+    "value": 9204460.875,
+    "unit": "person",
+    "year": 2025,
+    "source": "stat_population",
+    "notes": "Annual average, not year-end."
+  },
+  "austria_area": {
+    "value": 83884,
+    "unit": "km^2",
+    "year": 2024,
+    "source": "bml_area",
+    "notes": ""
+  },
+  "austria_gdp": {
+    "value": 55691.1276440263,
+    "unit": "EUR/(person year)",
+    "year": 2025,
+    "source": "wb_gdp_austria",
+    "notes": ""
+  },
+  "btu_IT": {
+    "value": "1055.05585262",
+    "unit": "J",
+    "year": "definition",
+    "source": "nist_units",
+    "notes": "Energy corresponding to one International Table Btu."
+  },
+  "seconds_per_year": {
+    "value": 31536000,
+    "unit": "s/year",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "365-day engineering year throughout; calendar 2024 is leap year."
+  },
+  "solar_noon": {
+    "value": 1000,
+    "unit": "W/m^2",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "STC reference irradiance; not a measured Graz noon average."
+  },
+  "pv_efficiency": {
+    "value": 0.2,
+    "unit": "1",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "Assumed module efficiency at STC."
+  },
+  "graz_latitude": {
+    "value": 47.0707,
+    "unit": "degree",
+    "year": "2005–2023",
+    "source": "pvgis",
+    "notes": ""
+  },
+  "obliquity": {
+    "value": 23.44,
+    "unit": "degree",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "Simple declination model, ignoring Earth-orbit eccentricity."
+  },
+  "park_area": {
+    "value": 1.64,
+    "unit": "km^2",
+    "year": 2021,
+    "source": "enbw_weesow",
+    "notes": ""
+  },
+  "park_peak": {
+    "value": 187,
+    "unit": "MWp",
+    "year": 2021,
+    "source": "enbw_weesow",
+    "notes": ""
+  },
+  "park_annual_energy": {
+    "value": 180,
+    "unit": "GWh/year",
+    "year": 2021,
+    "source": "enbw_weesow",
+    "notes": "Operator expectation, NOT measured annual generation."
+  },
+  "hornsrev_area": {
+    "value": 20,
+    "unit": "km^2",
+    "year": "2026-10-06",
+    "source": "vattenfall_hornsrev",
+    "notes": ""
+  },
+  "hornsrev_peak": {
+    "value": 158,
+    "unit": "MW",
+    "year": "2026-10-06",
+    "source": "vattenfall_hornsrev",
+    "notes": "Current operator factbox; original design was 160 MW."
+  },
+  "eu_onshore_cf": {
+    "value": 0.23,
+    "unit": "1",
+    "year": 2024,
+    "source": "windeurope",
+    "notes": ""
+  },
+  "eu_offshore_cf": {
+    "value": 0.35,
+    "unit": "1",
+    "year": 2024,
+    "source": "windeurope",
+    "notes": ""
+  },
+  "eu_new_onshore_cf_low": {
+    "value": 0.3,
+    "unit": "1",
+    "year": 2024,
+    "source": "windeurope",
+    "notes": "Estimate for new farms; not operating-fleet observation."
+  },
+  "eu_new_onshore_cf_high": {
+    "value": 0.35,
+    "unit": "1",
+    "year": 2024,
+    "source": "windeurope",
+    "notes": ""
+  },
+  "eu_new_offshore_cf_low": {
+    "value": 0.42,
+    "unit": "1",
+    "year": 2024,
+    "source": "windeurope",
+    "notes": ""
+  },
+  "eu_new_offshore_cf_high": {
+    "value": 0.55,
+    "unit": "1",
+    "year": 2024,
+    "source": "windeurope",
+    "notes": ""
+  },
+  "austria_wind_capacity": {
+    "value": 4221,
+    "unit": "MW",
+    "year": 2025,
+    "source": "igwind",
+    "notes": "Year-end installed capacity; CF computed with this is only a proxy."
+  },
+  "us_wind_density": {
+    "value": 0.9,
+    "unit": "W/m^2",
+    "year": 2016,
+    "source": "miller_corrigendum",
+    "notes": "Corrected capacity-weighted 430-plant sample; Voronoi footprint."
+  },
+  "us_solar_density": {
+    "value": 5.7,
+    "unit": "W/m^2",
+    "year": 2016,
+    "source": "miller_corrigendum",
+    "notes": "Corrected 1047-plant sample; footprint methodology differs from wind."
+  },
+  "nuclear_efficiency": {
+    "value": 0.33,
+    "unit": "1",
+    "year": "model",
+    "source": "wna_fuel",
+    "notes": ""
+  },
+  "nuclear_burnup": {
+    "value": 45,
+    "unit": "GW day/t",
+    "year": "model",
+    "source": "wna_fuel",
+    "notes": ""
+  },
+  "enrichment_product": {
+    "value": 0.045,
+    "unit": "1",
+    "year": "model",
+    "source": "wna_fuel",
+    "notes": ""
+  },
+  "enrichment_feed": {
+    "value": 0.00711,
+    "unit": "1",
+    "year": "model",
+    "source": "wna_fuel",
+    "notes": ""
+  },
+  "enrichment_tails": {
+    "value": 0.0022,
+    "unit": "1",
+    "year": "model",
+    "source": "wna_fuel",
+    "notes": ""
+  },
+  "nuclear_capacity_factor": {
+    "value": 0.9,
+    "unit": "1",
+    "year": "model",
+    "source": "assumptions",
+    "notes": ""
+  },
+  "deployment_horizon": {
+    "value": 30,
+    "unit": "year",
+    "year": "model",
+    "source": "assumptions",
+    "notes": ""
+  },
+  "historical_grid_connections": {
+    "value": 33,
+    "unit": "reactor/year",
+    "year": "1984 and 1985",
+    "source": "iaea_history",
+    "notes": "Maximum in IAEA 2025 table 7 covering 1954–2024."
+  },
+  "historical_construction_starts": {
+    "value": 43,
+    "unit": "reactor/year",
+    "year": 1976,
+    "source": "iaea_history",
+    "notes": "Different event from first grid connection."
+  },
+  "goesgen_net_power": {
+    "value": 1010,
+    "unit": "MW(e)",
+    "year": "2026-10-06",
+    "source": "kkg",
+    "notes": ""
+  },
+  "dt_energy": {
+    "value": 17.6,
+    "unit": "MeV/reaction",
+    "year": "physical value",
+    "source": "iaea_fusion",
+    "notes": ""
+  },
+  "elementary_charge": {
+    "value": "1.602176634e-19",
+    "unit": "C",
+    "year": 2019,
+    "source": "nist_constants",
+    "notes": "Exact SI eV conversion."
+  },
+  "atomic_mass": {
+    "value": "1.66053906892e-27",
+    "unit": "kg",
+    "year": 2022,
+    "source": "nist_constants",
+    "notes": "Mass corresponding to one unified atomic mass unit (1 u)."
+  },
+  "deuterium_atomic_mass": {
+    "value": "2.01410177812",
+    "unit": "u",
+    "year": "NIST isotopes",
+    "source": "nist_isotopes",
+    "notes": ""
+  },
+  "tritium_atomic_mass": {
+    "value": "3.0160492779",
+    "unit": "u",
+    "year": "NIST isotopes",
+    "source": "nist_isotopes",
+    "notes": ""
+  },
+  "coal_heat": {
+    "value": 24,
+    "unit": "MJ/kg",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "Illustrative coal lower heating value, not universal."
+  },
+  "ocean_volume": {
+    "value": 1335000000.0,
+    "unit": "km^3",
+    "year": "2026-10-06",
+    "source": "noaa_ocean",
+    "notes": ""
+  },
+  "seawater_density": {
+    "value": 1025,
+    "unit": "kg/m^3",
+    "year": "model",
+    "source": "assumptions",
+    "notes": ""
+  },
+  "seawater_water_fraction": {
+    "value": 0.965,
+    "unit": "1",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "35 g/kg salinity model."
+  },
+  "water_molecular_mass": {
+    "value": "18.01528",
+    "unit": "u",
+    "year": "model",
+    "source": "nist_isotopes",
+    "notes": ""
+  },
+  "deuterium_hydrogen_ratio": {
+    "value": "155.76e-6",
+    "unit": "1",
+    "year": "VSMOW standard",
+    "source": "nist_vsmow",
+    "notes": "D/H atomic ratio; not a mass fraction."
+  },
+  "lithium_reserves": {
+    "value": 37000000,
+    "unit": "t Li",
+    "year": 2025,
+    "source": "usgs_lithium",
+    "notes": ""
+  },
+  "lithium_production": {
+    "value": 290000,
+    "unit": "t Li/year",
+    "year": 2025,
+    "source": "usgs_lithium",
+    "notes": "Excludes withheld US production."
+  },
+  "uranium_identified": {
+    "value": 7934500,
+    "unit": "t U",
+    "year": "2023-01-01",
+    "source": "redbook",
+    "notes": "RAR + inferred, recoverable below USD 260/kg; resources, not reserves."
+  },
+  "uranium_identified_130": {
+    "value": 5925700,
+    "unit": "t U",
+    "year": "2023-01-01",
+    "source": "redbook",
+    "notes": ""
+  },
+  "uranium_production_2023": {
+    "value": 54345,
+    "unit": "t U/year",
+    "year": 2023,
+    "source": "redbook",
+    "notes": "Reported/provisional 2023 production in 2024 Red Book."
+  },
+  "sustainable_horizon": {
+    "value": 1000,
+    "unit": "year",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "Finite inventory divided over horizon; not sustainability certification."
+  },
+  "legacy_world_population": {
+    "value": 10000000000.0,
+    "unit": "person",
+    "year": 2025,
+    "source": "legacy_handwriting",
+    "notes": "Teaching assumption, not actual 2025 population."
+  },
+  "legacy_daily_demand": {
+    "value": 100,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source": "legacy_handwriting",
+    "notes": "World stock-lifetime teaching demand on pp.14/29."
+  },
+  "legacy_coal_stock": {
+    "value": 1000000000000000.0,
+    "unit": "kg",
+    "year": 2025,
+    "source": "legacy_handwriting",
+    "notes": ""
+  },
+  "legacy_coal_heat": {
+    "value": 10,
+    "unit": "kWh/kg",
+    "year": 2025,
+    "source": "legacy_handwriting",
+    "notes": ""
+  },
+  "legacy_uranium_stock": {
+    "value": 10000000000.0,
+    "unit": "kg",
+    "year": 2025,
+    "source": "legacy_handwriting",
+    "notes": ""
+  },
+  "legacy_uranium_heat": {
+    "value": 10000000.0,
+    "unit": "kWh/kg",
+    "year": 2025,
+    "source": "legacy_handwriting",
+    "notes": "Near-complete fission potential; NOT once-through LWR."
+  },
+  "corn_yield": {
+    "value": 179.3,
+    "unit": "bushel/(acre year)",
+    "year": 2024,
+    "source": "usda_corn",
+    "notes": "US corn average yield; illustrative crop-to-ethanol chain, not an Austrian field measurement."
+  },
+  "ethanol_yield": {
+    "value": 2.8,
+    "unit": "gal/bushel",
+    "year": 2024,
+    "source": "doe_ethanol",
+    "notes": "Dry-mill output; coproduct allocation is not included."
+  },
+  "ethanol_lhv": {
+    "value": 76330,
+    "unit": "Btu/gal",
+    "year": "definition",
+    "source": "doe_ethanol",
+    "notes": "Pure ethanol lower heating value; gross fuel energy before process inputs."
+  },
+  "oil_stock": {
+    "value": 252374,
+    "unit": "Mt",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-10 Erdölreserven 2024!C25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "oil_production": {
+    "value": 4553.5,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-11 Erdölförderung 2024!H25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "gas_stock": {
+    "value": 207714,
+    "unit": "billion m^3",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-17 Erdgasreserven 2024!C25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "gas_production": {
+    "value": 4273.2,
+    "unit": "billion m^3/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-18 Erdgasförderung 2024!H25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "hardcoal_stock": {
+    "value": 802334,
+    "unit": "Mt",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-23 Übersicht Hartkohle 2024!D87; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "hardcoal_production": {
+    "value": 8038.7,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-23 Übersicht Hartkohle 2024!C87; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "lignite_stock": {
+    "value": 319500,
+    "unit": "Mt",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-30 Übersicht Weichbraunkohle!D67; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "lignite_production": {
+    "value": 1142.8,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-30 Übersicht Weichbraunkohle!C67; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "uranium_lowcost_stock": {
+    "value": 1181,
+    "unit": "kt U",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-35 Übersicht Uran 2024!E65; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "uranium_production": {
+    "value": 62.4,
+    "unit": "kt U/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-35 Übersicht Uran 2024!C65; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "oil_stock_energy": {
+    "value": 10549,
+    "unit": "EJ",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "Published summary rounded energy-equivalent reserve; uranium uses BGR conventional-cycle basis."
+  },
+  "gas_stock_energy": {
+    "value": 7893,
+    "unit": "EJ",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "Published summary rounded energy-equivalent reserve; uranium uses BGR conventional-cycle basis."
+  },
+  "hardcoal_stock_energy": {
+    "value": 19908,
+    "unit": "EJ",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "Published summary rounded energy-equivalent reserve; uranium uses BGR conventional-cycle basis."
+  },
+  "lignite_stock_energy": {
+    "value": 3593,
+    "unit": "EJ",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "Published summary rounded energy-equivalent reserve; uranium uses BGR conventional-cycle basis."
+  },
+  "uranium_lowcost_stock_energy": {
+    "value": 590,
+    "unit": "EJ",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "Published summary rounded energy-equivalent reserve; uranium uses BGR conventional-cycle basis."
+  }
+}

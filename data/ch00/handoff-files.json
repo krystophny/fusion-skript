@@ -1,0 +1,993 @@
+{
+  "created": "2026-10-06",
+  "scope": "Files created or edited by this Chapter 0 research task; no commits or staging. Generated site output is described separately.",
+  "files": [
+    {
+      "path": "NUMBERS.md",
+      "change": "new",
+      "bytes": 36785,
+      "sha256": "58e84f3ddf98942194e566755ca7d1ab554be6a6f1c894ea1144d41973d03f12"
+    },
+    {
+      "path": "data/README.md",
+      "change": "modified",
+      "bytes": 12276,
+      "sha256": "82fe1413655e421764a1f33ffbcbec62865c184db5249f9839f0107d6850da89"
+    },
+    {
+      "path": "data/ch00/README.md",
+      "change": "new",
+      "bytes": 7390,
+      "sha256": "b352fec9e6e08e6fa3094e992ad649725e33dc2c50de586ffc3097b34cd7bd99"
+    },
+    {
+      "path": "data/ch00/processed/access.json",
+      "change": "new",
+      "bytes": 11082,
+      "sha256": "7acb94d69d0a23e6a04c7eee340fc7549ccab5972a126bbae97746c47d739d32"
+    },
+    {
+      "path": "data/ch00/processed/area-budget.csv",
+      "change": "new",
+      "bytes": 740,
+      "sha256": "56fd9336a4a8c72a2573d58bc29f5425b0b876d1d832f2f1a392b2e28034e7c1"
+    },
+    {
+      "path": "data/ch00/processed/austria-balance-TJ.csv",
+      "change": "new",
+      "bytes": 8212,
+      "sha256": "f475b10e9d32505df219a1307228af336663b0942ccbdf2c41a6841bd27af548"
+    },
+    {
+      "path": "data/ch00/processed/austria-balance.json",
+      "change": "new",
+      "bytes": 13486,
+      "sha256": "4f85b4530bf03871a9a0b7b579343552c38034cf5ef4bda445d6dbb4ed28541f"
+    },
+    {
+      "path": "data/ch00/processed/austria-sankey-links.csv",
+      "change": "new",
+      "bytes": 4199,
+      "sha256": "2abe7d5de5ba0f69bd51c138bda6e1b044312818c639626cc598c414d883ac3c"
+    },
+    {
+      "path": "data/ch00/processed/austria-sankey-nodes.csv",
+      "change": "new",
+      "bytes": 617,
+      "sha256": "1f71743392adac534ddffdd7e1494b534afe08b00ada3648b4a3ea0060776d4f"
+    },
+    {
+      "path": "data/ch00/processed/energy-gdp-exclusions.json",
+      "change": "new",
+      "bytes": 6394,
+      "sha256": "335474545c18f3a67c60ec86dac0e8b562a51f81bc65e81323285c8f075cc03c"
+    },
+    {
+      "path": "data/ch00/processed/energy-gdp-input.csv",
+      "change": "new",
+      "bytes": 15776,
+      "sha256": "0391fe79d064dd8cca5f0eabb3ba3ba224288b770803332042aa07be65db37a8"
+    },
+    {
+      "path": "data/ch00/processed/geography.json",
+      "change": "new",
+      "bytes": 1181,
+      "sha256": "da01af1178d1017b2860dac7d344edb47760420bd9eb08cfa94c68ac4d3663b7"
+    },
+    {
+      "path": "data/ch00/processed/graz-monthly-horizontal.csv",
+      "change": "new",
+      "bytes": 490,
+      "sha256": "a1fbd03e4a5009e3733919a5b0d79ec0504d5f03baf375448d19102e061bc184"
+    },
+    {
+      "path": "data/ch00/processed/graz-outline-metres.geojson",
+      "change": "new",
+      "bytes": 335727,
+      "sha256": "2d1776f95cdf2322c148ef4acc2f87df813d2d4fb7c0c7be82eeab97e7794ef9"
+    },
+    {
+      "path": "data/ch00/processed/inputs.json",
+      "change": "new",
+      "bytes": 12383,
+      "sha256": "000c6b0e415454df35267c1ea78b936c4c18afb9648b51127ed6a55c65e1a513"
+    },
+    {
+      "path": "data/ch00/processed/legacy-estimates.json",
+      "change": "new",
+      "bytes": 564,
+      "sha256": "b71e8a0de3f0653e7a1acc6da4ae7f7c707e87f308ef5530f7c06584688a719a"
+    },
+    {
+      "path": "data/ch00/processed/numbers.json",
+      "change": "new",
+      "bytes": 69578,
+      "sha256": "5f6fc19aa6f1056931ee84c62b9edfbae4fe0996bf7da45d42e6c75514c15a28"
+    },
+    {
+      "path": "data/ch00/processed/photos.json",
+      "change": "new",
+      "bytes": 7308,
+      "sha256": "6d060116ee656b61b40cc6b1dc1f18892bdcabc59f9b9e68a5bb05487b108a61"
+    },
+    {
+      "path": "data/ch00/processed/pv-capacity.json",
+      "change": "new",
+      "bytes": 727,
+      "sha256": "c0d6d0f1fadfc1749cb1fc3c22c97c70e521b64cdbaa3af2dfad4134ea287510"
+    },
+    {
+      "path": "data/ch00/processed/pv-module-prices.csv",
+      "change": "new",
+      "bytes": 2822,
+      "sha256": "03b8a943e09dceccd7e6a3d6fe7f55c433885d08358eb6370b3738e0954f0cf6"
+    },
+    {
+      "path": "data/ch00/processed/resource-lifetimes.csv",
+      "change": "new",
+      "bytes": 1152,
+      "sha256": "cd61444b027d2fb0bbb84929daa18c222aac38ed9cf50b34a5a48fabfd6fba99"
+    },
+    {
+      "path": "data/ch00/raw-manifest.json",
+      "change": "new",
+      "bytes": 23748,
+      "sha256": "32d4ac324483f472c6cb6fbf9500d94e54a0a082286ff86eca717108fe6676de"
+    },
+    {
+      "path": "data/ch00/raw/access-to-clean-fuels-and-technologies-for-cooking.csv",
+      "change": "new",
+      "bytes": 123204,
+      "sha256": "5fd36e1854e8b06744633ea51a99554a1d384471875958305d393c67de00240c"
+    },
+    {
+      "path": "data/ch00/raw/access-to-clean-fuels-and-technologies-for-cooking.metadata.json",
+      "change": "new",
+      "bytes": 1767,
+      "sha256": "ff8ea51323c28b5fc8840b6085f289189df981e8fa95d7f0108432dcab1fd100"
+    },
+    {
+      "path": "data/ch00/raw/austria_2025.ods",
+      "change": "new",
+      "bytes": 16011,
+      "sha256": "d50d75c694e37c62b3e59d9fd9317be21209a1e50f69d9161dfbd68b082962d6"
+    },
+    {
+      "path": "data/ch00/raw/austria_2025_cells.json",
+      "change": "new",
+      "bytes": 62141,
+      "sha256": "e5c59ca3b02f2f01667164126ca5b70932d4515d1ce1e99c1a257c5ca0e346f5"
+    },
+    {
+      "path": "data/ch00/raw/austria_population.html",
+      "change": "new",
+      "bytes": 133771,
+      "sha256": "f60d9b5bcfa0326fa73e6bb3a402c7274e339178031a5ccf2f0a0344beae3273"
+    },
+    {
+      "path": "data/ch00/raw/bgr_2024.xlsx",
+      "change": "new",
+      "bytes": 214301,
+      "sha256": "7c628163ac7b411941845a75a209bfdc558486d9ddffd1d7a7a26fc6822010f2"
+    },
+    {
+      "path": "data/ch00/raw/bgr_2025.xlsx",
+      "change": "new",
+      "bytes": 228807,
+      "sha256": "9feb211b33e44f5f9167867cb81963a8a1873bdc8e8295a942cededa71e65ba8"
+    },
+    {
+      "path": "data/ch00/raw/bgr_figures.html",
+      "change": "new",
+      "bytes": 146353,
+      "sha256": "8a251cff97ce82a6bbb6a0602bce39ec4cff9a5f55036be9dac0f4b5023dc8e4"
+    },
+    {
+      "path": "data/ch00/raw/dollarstreet-5d4be196cf0b3a0f3f33b4c5.json",
+      "change": "new",
+      "bytes": 2867743,
+      "sha256": "6dc285002c4697db0e47dafab20db26e415a472058b1e06c403a21f5f186e1a4"
+    },
+    {
+      "path": "data/ch00/raw/dollarstreet-5d4bec73cf0b3a0f3f34df4c.json",
+      "change": "new",
+      "bytes": 2871778,
+      "sha256": "74922ce10f186d473f6c0b5d5ec4ffaf69422429c4de889469123077e014fa31"
+    },
+    {
+      "path": "data/ch00/raw/dollarstreet-5d4bf44ccf0b3a0f3f35b67a.json",
+      "change": "new",
+      "bytes": 2863468,
+      "sha256": "db09e3345cf96bc78a73e46fd152d9396d486a8738da2a5d9b624a698b682733"
+    },
+    {
+      "path": "data/ch00/raw/dollarstreet-5ec4f926f0611d7ddd7414e9.json",
+      "change": "new",
+      "bytes": 2870839,
+      "sha256": "ff334ff96e4c32d43aff7c5db7f1bf5f2512d868a38bcbdc1e2d1aee0572d361"
+    },
+    {
+      "path": "data/ch00/raw/dollarstreet.html",
+      "change": "new",
+      "bytes": 2204936,
+      "sha256": "734c3b91f06f21991563cfa920227908a3d1418dc3635a0ff17e65be84d4ad55"
+    },
+    {
+      "path": "data/ch00/raw/dollarstreet_next.json",
+      "change": "new",
+      "bytes": 3710313,
+      "sha256": "826f98c6aaf2fdc3a9da125678c74b98f6904c7432d08aca56a318a911bbf5f5"
+    },
+    {
+      "path": "data/ch00/raw/dollarstreet_stoves.json",
+      "change": "new",
+      "bytes": 2832710,
+      "sha256": "eccb69fb49b5da3671cd71ad650b897c9ac6a97fbdc1c3c1c2e80debd8aaaa46"
+    },
+    {
+      "path": "data/ch00/raw/eia_2023.json",
+      "change": "new",
+      "bytes": 97255,
+      "sha256": "622faad4face88c7b9cc67597f86b4eea0c8196fb5e7824de4384726d14ab09e"
+    },
+    {
+      "path": "data/ch00/raw/eia_2024.json",
+      "change": "new",
+      "bytes": 96915,
+      "sha256": "9263469db67490d5d603c4062128d57e5eb08d54a314e5fc8d1522092d71feed"
+    },
+    {
+      "path": "data/ch00/raw/eia_2025.json",
+      "change": "new",
+      "bytes": 566,
+      "sha256": "fc4cb22c8c20d9fe3468832ceba5402f2e56c67caff91ea4fe2c78afd296a3bd"
+    },
+    {
+      "path": "data/ch00/raw/eia_facets_activityId.json",
+      "change": "new",
+      "bytes": 502,
+      "sha256": "1589ff2ed54e01a397c29bbc5fdef0160bfdb91007927271d88b7e39c3f0981e"
+    },
+    {
+      "path": "data/ch00/raw/eia_facets_productId.json",
+      "change": "new",
+      "bytes": 1707,
+      "sha256": "dac230a6da119083dc0348c813d4a29a811e0df065a8dfb12b11628baad86911"
+    },
+    {
+      "path": "data/ch00/raw/eia_facets_unit.json",
+      "change": "new",
+      "bytes": 464,
+      "sha256": "866851557a851a3ecb8a894deb50f2c3c3777050b4b745c6b9245ebee7cfdfbf"
+    },
+    {
+      "path": "data/ch00/raw/eia_world_electricity_2024.json",
+      "change": "new",
+      "bytes": 846,
+      "sha256": "6f71aede444958413e7044015111895cfdd3256983f8cbdb5c3ba90ad5c8d56a"
+    },
+    {
+      "path": "data/ch00/raw/energy-use-per-person-vs-gdp-per-capita.csv",
+      "change": "new",
+      "bytes": 513917,
+      "sha256": "b4b509573e68742a43aabc91dc0e3fd2dc3c848132d3ecfb561b046cb5c7346c"
+    },
+    {
+      "path": "data/ch00/raw/energy-use-per-person-vs-gdp-per-capita.metadata.json",
+      "change": "new",
+      "bytes": 4982,
+      "sha256": "33bb656a9f0448063ce546a5b43ec15b9596ba2480c0faf5226097f7c160f078"
+    },
+    {
+      "path": "data/ch00/raw/graz_all_data.html",
+      "change": "new",
+      "bytes": 145178,
+      "sha256": "1fcb024954871ff356e6f7fdb4f60d9e5fa7e62a53f1c7bb8bfc4d2d896278d0"
+    },
+    {
+      "path": "data/ch00/raw/graz_boundary.geojson",
+      "change": "new",
+      "bytes": 140155,
+      "sha256": "7098820ccaa2a36e66d2ed9dfc1ffe2cd2270e0de18fee256cf7be63d828dbee"
+    },
+    {
+      "path": "data/ch00/raw/graz_boundary_layer.json",
+      "change": "new",
+      "bytes": 2600,
+      "sha256": "04b2d8823697aa0fdb4cd8838c1e2a82c38fafe4b6055d9604e7c84f436bfcca"
+    },
+    {
+      "path": "data/ch00/raw/graz_data.html",
+      "change": "new",
+      "bytes": 136229,
+      "sha256": "840cddfec156ad3d6aaa02b0d38d4de458e580198313ba21adf0e144d4ee0449"
+    },
+    {
+      "path": "data/ch00/raw/graz_terms.html",
+      "change": "new",
+      "bytes": 133247,
+      "sha256": "d416da885e193fc385b5ffa33972bc3364a6eec674caeb93b72c09aaba026748"
+    },
+    {
+      "path": "data/ch00/raw/hornsrev_operator.html",
+      "change": "new",
+      "bytes": 151418,
+      "sha256": "fca32dfe94e7a9805441556a5fe0c7ae32998ba58650be2d6fe6a27e41ffc347"
+    },
+    {
+      "path": "data/ch00/raw/iaea-history-1954-2024.json",
+      "change": "new",
+      "bytes": 15235,
+      "sha256": "3e789d622f7faec79a36eec7d40f8f2108279108da62c2fdf09dfe98ffe1ad79"
+    },
+    {
+      "path": "data/ch00/raw/iaea-reactors-2014.pdf",
+      "change": "new",
+      "bytes": 1033056,
+      "sha256": "9abb5bdd0b3c5b5d270294530f920937e4741bfaf9c86169b6964eb643268ecc"
+    },
+    {
+      "path": "data/ch00/raw/iaea-reactors-2025.pdf",
+      "change": "new",
+      "bytes": 2191911,
+      "sha256": "13d54c9049491f7701e4e42dc657f4707c3d5aed1c890e9c044864a08d971204"
+    },
+    {
+      "path": "data/ch00/raw/igwind_2025.html",
+      "change": "new",
+      "bytes": 467152,
+      "sha256": "f2153cc509582b1f6982753bcf8abd453c298f36ff03f71a93b12d13a319c8f0"
+    },
+    {
+      "path": "data/ch00/raw/indicator-1255654.json",
+      "change": "new",
+      "bytes": 15537,
+      "sha256": "3ba9ed5331f5c5bfab4bc60e6281883748a9489140aff742987f52cfb786e35d"
+    },
+    {
+      "path": "data/ch00/raw/indicator-1293777.json",
+      "change": "new",
+      "bytes": 19746,
+      "sha256": "f1e129005184a94d10d8dd65e6b10079cd5ffd0be2ce271993d3e27885761716"
+    },
+    {
+      "path": "data/ch00/raw/indicator-1294305.json",
+      "change": "new",
+      "bytes": 24702,
+      "sha256": "dea503acb63d2a835178c8336f1ec5f2430fe082158a9295c4db57449a69ae03"
+    },
+    {
+      "path": "data/ch00/raw/indicator-1295475.json",
+      "change": "new",
+      "bytes": 17326,
+      "sha256": "6d744f5ce31eb53934a83f9b3dd72b2dc0c6eb72d2fd0f3b9697faf4264416f6"
+    },
+    {
+      "path": "data/ch00/raw/indicator-1305867.json",
+      "change": "new",
+      "bytes": 7024,
+      "sha256": "d065aa8eaf988e8c437295c457ee11bd54e0ba5bbdd3188fa215406caa193710"
+    },
+    {
+      "path": "data/ch00/raw/indicator-1305908.json",
+      "change": "new",
+      "bytes": 14995,
+      "sha256": "efea9ff8b81a310c463805a0e7294930dbec88ff1ba0ba4a3af341aba0f59e3a"
+    },
+    {
+      "path": "data/ch00/raw/indicator-900801.json",
+      "change": "new",
+      "bytes": 14924,
+      "sha256": "22703b42ec3e270a87c0d4f0c193eeb154baf7d262b1e4b185814f6b97d8c0d9"
+    },
+    {
+      "path": "data/ch00/raw/installed-solar-pv-capacity.csv",
+      "change": "new",
+      "bytes": 130425,
+      "sha256": "b67451e97291c42cd655f8658e785b980216f26fdfb0725aaf7bc5e846ae8c95"
+    },
+    {
+      "path": "data/ch00/raw/installed-solar-pv-capacity.metadata.json",
+      "change": "new",
+      "bytes": 1116,
+      "sha256": "17edecf905c2e2cacc57d8e9c00919620e17402a3eb28c3cd45cede5b467f4ff"
+    },
+    {
+      "path": "data/ch00/raw/irena_capacity_2026.pdf",
+      "change": "new",
+      "bytes": 1681315,
+      "sha256": "fc580bd4f4ee39ef20de6b1ce3926005a4e3e3b8e2c92fd6a16d175a52515921"
+    },
+    {
+      "path": "data/ch00/raw/nasa_maps.html",
+      "change": "new",
+      "bytes": 318539,
+      "sha256": "d2eace35a139509e6e0545dda87d5ccf034b709511700428410e512b5b14df86"
+    },
+    {
+      "path": "data/ch00/raw/owid_energy.csv",
+      "change": "new",
+      "bytes": 9229369,
+      "sha256": "266f2e2baad7975351bc9bb4aa061d22b1da9fe4c47d51d2ac6071e01e171f76"
+    },
+    {
+      "path": "data/ch00/raw/owid_energy_codebook.csv",
+      "change": "new",
+      "bytes": 45793,
+      "sha256": "3cc9b7db0d921496e2988568ce3aee5ed41f50431dd234a0663b5f0a4b2e32bb"
+    },
+    {
+      "path": "data/ch00/raw/photos.json",
+      "change": "new",
+      "bytes": 6762,
+      "sha256": "7aec60dce1b81b4b411753e1845eebcf4b8b4c0b58e56eb8687c0456f7dceb5f"
+    },
+    {
+      "path": "data/ch00/raw/pvgis_graz.json",
+      "change": "new",
+      "bytes": 5215,
+      "sha256": "24c6d579fa8252e2fb67231d8671337822893a3f6fedf4b50a31138041053c5d"
+    },
+    {
+      "path": "data/ch00/raw/pvgis_graz_horizontal.json",
+      "change": "new",
+      "bytes": 23789,
+      "sha256": "e17546b53584bd3bc0f023c7b85c24f5272a1b9822041670e9dd0d3ecab15b17"
+    },
+    {
+      "path": "data/ch00/raw/sentinel_park_search.json",
+      "change": "new",
+      "bytes": 40490,
+      "sha256": "86f1216a4763e2572dd9667763e25ff39ddb5944b00b38b40b04299991197843"
+    },
+    {
+      "path": "data/ch00/raw/sentinel_park_search_all.json",
+      "change": "new",
+      "bytes": 3945835,
+      "sha256": "41ad4897e4bf3918df3dec9894cf7287e46ad128ab6cbb325b2963a59723c620"
+    },
+    {
+      "path": "data/ch00/raw/sentinel_search.json",
+      "change": "new",
+      "bytes": 790072,
+      "sha256": "25d2635fad1b09cea797bad9dccfbf204111e2001747472c9f2767056b041b57"
+    },
+    {
+      "path": "data/ch00/raw/sentinel_selected.json",
+      "change": "new",
+      "bytes": 33624,
+      "sha256": "e9b30504078c329d3e90809541f92f3290e9f05fdf244834dea507653cad2b6d"
+    },
+    {
+      "path": "data/ch00/raw/share-of-the-population-with-access-to-electricity.csv",
+      "change": "new",
+      "bytes": 179348,
+      "sha256": "6cd126be44ace07600f782018bab8dc6079f6ae35ce134480ec474d315d615e1"
+    },
+    {
+      "path": "data/ch00/raw/share-of-the-population-with-access-to-electricity.metadata.json",
+      "change": "new",
+      "bytes": 2865,
+      "sha256": "8163e3c8a2835d08ef6042d7247b9b910cff21ef619230282e9f622611eef64c"
+    },
+    {
+      "path": "data/ch00/raw/solar-pv-prices.csv",
+      "change": "new",
+      "bytes": 1525,
+      "sha256": "26941d3ff4f7bb11916bf6e36937064fe9f65f91c281d2f5250cb6e24da589dc"
+    },
+    {
+      "path": "data/ch00/raw/solar-pv-prices.metadata.json",
+      "change": "new",
+      "bytes": 2898,
+      "sha256": "c4a1b2e0502897a9bf1dd366d818073a17571cb3c93747d6172ca8ea2e0fbc8e"
+    },
+    {
+      "path": "data/ch00/raw/statistik_catalog.html",
+      "change": "new",
+      "bytes": 1079545,
+      "sha256": "ff64165c24d050bf060e09107fe04cd04822b04b4cb60931377e4538cfd0e4ab"
+    },
+    {
+      "path": "data/ch00/raw/statistik_datasets.html",
+      "change": "new",
+      "bytes": 9771,
+      "sha256": "f7c32d15e96da6a184d8c8ff6a31720f484af45f33381bb084a98fb66f159d57"
+    },
+    {
+      "path": "data/ch00/raw/statistik_js.js",
+      "change": "new",
+      "bytes": 548,
+      "sha256": "9f7c46b8c557698294b64465a31f0cde8de8c2df5dd32dad34be80e4f7ffacf4"
+    },
+    {
+      "path": "data/ch00/raw/statistik_legal_notice.html",
+      "change": "new",
+      "bytes": 88601,
+      "sha256": "ec4438dcf6a81d8e1e783640e4cef7c0f87d6f4363172b3c3fbbae71f073a529"
+    },
+    {
+      "path": "data/ch00/raw/statistik_portal.html",
+      "change": "new",
+      "bytes": 9762,
+      "sha256": "25192fdd7e65d17350e7b3e797ccec2076280d2e15b313310ac1edda5476382c"
+    },
+    {
+      "path": "data/ch00/raw/statistik_reuse.html",
+      "change": "new",
+      "bytes": 91224,
+      "sha256": "0dd15442678891e3c5c7e4e06d5ddcaa81ccab259d13ea0b139743333bf2ea8f"
+    },
+    {
+      "path": "data/ch00/raw/uranium-redbook-2024.pdf",
+      "change": "new",
+      "bytes": 12914815,
+      "sha256": "88abc1112a96af219d59b105394134709944c06081f25c85f8fd2ac0c0f98287"
+    },
+    {
+      "path": "data/ch00/raw/usgs-lithium-2026.pdf",
+      "change": "new",
+      "bytes": 138422,
+      "sha256": "53f92ea45c367c36f05919151f7784feda5776095afaf3a25aec795a27be106f"
+    },
+    {
+      "path": "data/ch00/raw/wb_EG.ELC.ACCS.ZS_licence.html",
+      "change": "new",
+      "bytes": 959310,
+      "sha256": "2c8c981da733f50126bf9706545f294c27f05a018ed6173a7267d20818384a70"
+    },
+    {
+      "path": "data/ch00/raw/wb_NY.GDP.PCAP.PP.KD_licence.html",
+      "change": "new",
+      "bytes": 1081595,
+      "sha256": "7206f0f284f4e0255b2a5ea003d5b45c354603536eaafb0b9f253a94a82d6dc8"
+    },
+    {
+      "path": "data/ch00/raw/wb_SP.POP.TOTL_licence.html",
+      "change": "new",
+      "bytes": 1178766,
+      "sha256": "0547d58de240c478585bdf0ab47502c8b05a6e90199069d1e8a1645a66c4ad94"
+    },
+    {
+      "path": "data/ch00/raw/wb_austria_gdp_eur.json",
+      "change": "new",
+      "bytes": 745,
+      "sha256": "652b828b7bd71e85c2ebe9446d2e27c8ac7ec435ab702747a24f881d41782c59"
+    },
+    {
+      "path": "data/ch00/raw/wb_cooking.json",
+      "change": "new",
+      "bytes": 16484,
+      "sha256": "f7eeca57433aaabe77f33fecfbc123c400b9fd537d646b5aff37b0a2daad4eef"
+    },
+    {
+      "path": "data/ch00/raw/wb_cooking_licence.html",
+      "change": "new",
+      "bytes": 898218,
+      "sha256": "cec6b0fd0bf5c0d1e10dff193029652b8a010fed76f76898cd66de03a8302981"
+    },
+    {
+      "path": "data/ch00/raw/wb_countries.json",
+      "change": "new",
+      "bytes": 113590,
+      "sha256": "d29d57f8adf954c5e2a1520a02fb2c7b45575d8db3bd327a9dff47d66914231c"
+    },
+    {
+      "path": "data/ch00/raw/wb_electricity.json",
+      "change": "new",
+      "bytes": 14603,
+      "sha256": "c437a35d0a4fb5dc7b3813d1c384e114d59d09a1ba20d9d1c19eb40446cc31be"
+    },
+    {
+      "path": "data/ch00/raw/wb_gdp_ppp.json",
+      "change": "new",
+      "bytes": 395006,
+      "sha256": "c70140408aba1306cfc0d3aca814cae7e5c0ed0bb435488ffa67b5905a6ac9e7"
+    },
+    {
+      "path": "data/ch00/raw/wb_population.json",
+      "change": "new",
+      "bytes": 319735,
+      "sha256": "de0d0be8a31c2716b0106704bce8e04e18e808ac42a9aa9a931e65fa6da7e663"
+    },
+    {
+      "path": "data/ch00/raw/wind_corrigendum.pdf",
+      "change": "new",
+      "bytes": 8473294,
+      "sha256": "e38a1ccc9fd8de99da1ca2603ef9dfbffc55220f3a8c75bc7cc257aae8c35f7b"
+    },
+    {
+      "path": "data/ch00/raw/windeurope-2024.pdf",
+      "change": "new",
+      "bytes": 5769533,
+      "sha256": "f4cd2486bd4ffde1a3f20520806476e29b1cada92eec0b6276335bc422932542"
+    },
+    {
+      "path": "data/ch00/sources.json",
+      "change": "new",
+      "bytes": 26332,
+      "sha256": "75bef16366b7534aaf2f6192962684cee495604062e13a86cd4e1859f6eafa17"
+    },
+    {
+      "path": "derivations/build/check/02-energy-gdp.png",
+      "change": "new",
+      "bytes": 67338,
+      "sha256": "f86732480092570eb6e1d71e07ce88b88bc025399a011b13dd093001dcec5a24"
+    },
+    {
+      "path": "derivations/build/check/03-dollarstreet.png",
+      "change": "new",
+      "bytes": 552626,
+      "sha256": "d37ebd37dc2ce807171f09b6750be9a1a3b50001f67cf2bfa68ed4cf007d73c6"
+    },
+    {
+      "path": "derivations/build/check/04-micro-macro.png",
+      "change": "new",
+      "bytes": 39560,
+      "sha256": "f938667adf4065aba784fd206d2fb82ed65e8e6439ef198e4781611058129b63"
+    },
+    {
+      "path": "derivations/build/check/05-flow-conservation.png",
+      "change": "new",
+      "bytes": 52939,
+      "sha256": "d9daf44c8875bbaad7892b08ee8c29fc08dab94b840dd48dc528934cf87f1573"
+    },
+    {
+      "path": "derivations/build/check/06-resource-lifetimes.png",
+      "change": "new",
+      "bytes": 69724,
+      "sha256": "b6fce7048b0dd647b414092c8ab67dd8dcef71f9bcb7412d5ee7adfd78dc34b5"
+    },
+    {
+      "path": "derivations/build/check/07-solar-chain.png",
+      "change": "new",
+      "bytes": 60783,
+      "sha256": "f08ac4fa069ef4f2200608ae01f9dc1cbf272a1015e3b8956975a90fe38edeef"
+    },
+    {
+      "path": "derivations/build/check/08-same-scale.png",
+      "change": "new",
+      "bytes": 971986,
+      "sha256": "4b6136120cb109d1cf740c2d3bddfcac33509e098f0e51bf8f63de6dc2bff030"
+    },
+    {
+      "path": "derivations/build/check/09-pv-capacity.png",
+      "change": "new",
+      "bytes": 49050,
+      "sha256": "8c53ccf3bd2c48de362764fbb7d83cb723b4e26124edbb04c1dfe0f4476fb397"
+    },
+    {
+      "path": "derivations/build/check/09-pv-prices.png",
+      "change": "new",
+      "bytes": 39630,
+      "sha256": "68e0a1e86c70b77a36818fe11c428954a768b63daa51aff65f8bee22b60c4998"
+    },
+    {
+      "path": "derivations/build/check/10-wind.png",
+      "change": "new",
+      "bytes": 37568,
+      "sha256": "667d67b667ae9026a68f2c7a7f9fc0c88649ab924c82e01f88f1aaaa2b429aa7"
+    },
+    {
+      "path": "derivations/build/check/11-area-budget.png",
+      "change": "new",
+      "bytes": 22261,
+      "sha256": "19e03c5f4d4cf12202febdd0da9a5ff893a975292c5687f9e6e09d51d6072624"
+    },
+    {
+      "path": "derivations/build/check/12-fission.png",
+      "change": "new",
+      "bytes": 40808,
+      "sha256": "a24a0ee33c3e2a7c1ef178e6c6f7f37a4934bfeea4f1f2b488cb0a1529b4f6b1"
+    },
+    {
+      "path": "derivations/build/check/13-fusion.png",
+      "change": "new",
+      "bytes": 24096,
+      "sha256": "ef08887772c35f8d2db4654552580c16912a7723d685ae829e05fab97b34fb63"
+    },
+    {
+      "path": "derivations/build/check/asset-contact-sheet.jpg",
+      "change": "new",
+      "bytes": 222855,
+      "sha256": "17215ff88a04107908a83c629ae3da6652550b2916deac44c6b31a4bb4a0be5c"
+    },
+    {
+      "path": "derivations/build/check/plot-contact-sheet.jpg",
+      "change": "new",
+      "bytes": 274494,
+      "sha256": "2f752bfb39a827005849910e649fe4198e9b59f5e7274f336e1e7e466525e9b5"
+    },
+    {
+      "path": "derivations/build/plotdata/01-earth-at-night.json",
+      "change": "new",
+      "bytes": 1062,
+      "sha256": "375fdf1ddc63fe6a7578e0f33d0e25c02e945c8a9301b8fc185cbc1fe68ca764"
+    },
+    {
+      "path": "derivations/build/plotdata/02-energy-gdp.json",
+      "change": "new",
+      "bytes": 42630,
+      "sha256": "13443f9b49a0fa9dc5bed92c524625b2c0fd8d36894c2c68a496d53eb066de83"
+    },
+    {
+      "path": "derivations/build/plotdata/03-access-and-dollarstreet.json",
+      "change": "new",
+      "bytes": 4957,
+      "sha256": "252eb46e3f7c4322c93087d50f53961859eef19e61e908f515443dff93098e93"
+    },
+    {
+      "path": "derivations/build/plotdata/04-micro-macro.json",
+      "change": "new",
+      "bytes": 1475,
+      "sha256": "8b6af5863d301b4762be157fa861419c3743ce4241d782db67a93c448573b8db"
+    },
+    {
+      "path": "derivations/build/plotdata/05-austria-flow.json",
+      "change": "new",
+      "bytes": 9807,
+      "sha256": "297df27f6ee3d16efd30973aed1a4856de8e4a860ad6a1b271e9478a4d011b4d"
+    },
+    {
+      "path": "derivations/build/plotdata/06-resource-lifetimes.json",
+      "change": "new",
+      "bytes": 13373,
+      "sha256": "4ca27d59d22da8de6e45a159af83f9961a41b8b3f0b39ae37932d744bfea3447"
+    },
+    {
+      "path": "derivations/build/plotdata/07-solar-chain.json",
+      "change": "new",
+      "bytes": 2303,
+      "sha256": "fe09d11da5bcc30e9ad21e871ec7304ffe3666e1228ba4bdf23630eb1407fba5"
+    },
+    {
+      "path": "derivations/build/plotdata/08-park-and-graz.json",
+      "change": "new",
+      "bytes": 2172,
+      "sha256": "af83386b62b6b6d2425ba3b35e9287ab690e26402ee69f94ccd9b5e6c78ba22e"
+    },
+    {
+      "path": "derivations/build/plotdata/09-pv-capacity.json",
+      "change": "new",
+      "bytes": 827,
+      "sha256": "af110ba85dfb0079893245cd9327ca8fef478fd994aba953b70a714c10b78e81"
+    },
+    {
+      "path": "derivations/build/plotdata/09-pv-prices.json",
+      "change": "new",
+      "bytes": 1768,
+      "sha256": "d9bf456822f9e16b554bdf3a487800c1a54ac9991cc6c5c9918441a107354efd"
+    },
+    {
+      "path": "derivations/build/plotdata/10-wind.json",
+      "change": "new",
+      "bytes": 2138,
+      "sha256": "4c0df571bb6f1cd78cc36072ee11c197bdd76166c7c327d445164e899c5c8f64"
+    },
+    {
+      "path": "derivations/build/plotdata/11-area-budget.json",
+      "change": "new",
+      "bytes": 2488,
+      "sha256": "599b44567b173791e32c272e148ff3ab90309ebe960602fe079c5abfa2e8fa8b"
+    },
+    {
+      "path": "derivations/build/plotdata/12-fission.json",
+      "change": "new",
+      "bytes": 4021,
+      "sha256": "74cfea3ec9eb4bfacaca769ee9ff60b439d35bf3a26b9202a9a30c925660659b"
+    },
+    {
+      "path": "derivations/build/plotdata/13-fusion.json",
+      "change": "new",
+      "bytes": 2032,
+      "sha256": "7b667578b508506e6846ae4881b9a9d1036ece877664fb969125419c6adff439"
+    },
+    {
+      "path": "derivations/build/plotdata/formulas.json",
+      "change": "new",
+      "bytes": 4064,
+      "sha256": "d6afbcbb4478e297821b545e89b7349891b1c9f2229c4283fadc4c59d11283b9"
+    },
+    {
+      "path": "derivations/chapters/__init__.py",
+      "change": "new",
+      "bytes": 77,
+      "sha256": "89df6fe55d46aea4a20d8256dab19e72b72e9ca575563cea7da780a55a3ac031"
+    },
+    {
+      "path": "derivations/chapters/ch00_energy_context.py",
+      "change": "new",
+      "bytes": 52326,
+      "sha256": "6e59f577afef8dd6b97076eff789f4285896f89330b44971e294593c692618b3"
+    },
+    {
+      "path": "derivations/si.py",
+      "change": "new",
+      "bytes": 912,
+      "sha256": "8de5e4cc106a1d2d671c8984cfb7131a12d834008b31e426c280fdc96df5364f"
+    },
+    {
+      "path": "derivations/tool-repairs/README.md",
+      "change": "new",
+      "bytes": 2346,
+      "sha256": "019e8a1905ec74032e3e5e7e966af17b0b07fb95e882e603d8eb5629a3a2bffa"
+    },
+    {
+      "path": "derivations/tool-repairs/reproduce_sympy.py",
+      "change": "new",
+      "bytes": 729,
+      "sha256": "ba417a38ab55c5ff73946ec9dbf587f9f044ce2a5e074d04d0e3ac6775197f1f"
+    },
+    {
+      "path": "derivations/tool-repairs/sympy-perfect-power.patch",
+      "change": "new",
+      "bytes": 2092,
+      "sha256": "6dc59e4b579fa0ab3813f654a0dbaa7703fdb34cc4690d09a8579bb93bc2fa1f"
+    },
+    {
+      "path": "scripts/check-ch00-plots.py",
+      "change": "new",
+      "bytes": 7437,
+      "sha256": "06dccb1744032f8bcfe6ce3d9d2a6be78b05db77d72e01a47d896933be7f5938"
+    },
+    {
+      "path": "scripts/prepare-ch00-data.py",
+      "change": "new",
+      "bytes": 13933,
+      "sha256": "d98b2c7bb2bc8f6224a81b696f8dac866db0ee124cc47e353aec83d58d8fcbbd"
+    },
+    {
+      "path": "scripts/prepare-ch00-geography.py",
+      "change": "new",
+      "bytes": 5442,
+      "sha256": "d4369d48d29287573c4cc5a83d0dfc6de73728b675b39722ad203ce55da73b2a"
+    },
+    {
+      "path": "scripts/write-ch00-provenance.py",
+      "change": "new",
+      "bytes": 19031,
+      "sha256": "fda4e09bb397bf8e6547d1a34cb9318b4325204b8838969605f66358a25af56d"
+    },
+    {
+      "path": "slides/photos/credits.md",
+      "change": "modified",
+      "bytes": 7306,
+      "sha256": "86ef862c20b7ab2e7c5fa75c500385e5bcff9f78041a63c495f0adb0e33657e4"
+    },
+    {
+      "path": "slides/photos/dollarstreet-stove-5d4be196cf0b3a0f3f33b4c5.jpg",
+      "change": "new",
+      "bytes": 680902,
+      "sha256": "64611be04bb8025f1e121e794fd5078f9285a588f51213b1a3ed7c1e067d4e88"
+    },
+    {
+      "path": "slides/photos/dollarstreet-stove-5d4bec73cf0b3a0f3f34df4c.jpg",
+      "change": "new",
+      "bytes": 894447,
+      "sha256": "b07494d1a2056efc0bd3aa6fef9ae043216c60c93f2aca343dea4b92d06ca87b"
+    },
+    {
+      "path": "slides/photos/dollarstreet-stove-5d4bf44ccf0b3a0f3f35b67a.jpg",
+      "change": "new",
+      "bytes": 1337062,
+      "sha256": "ff3cc95b58a32121af043636f0e1698e233fdd27cc3af7a4422e6dbd93b603e3"
+    },
+    {
+      "path": "slides/photos/dollarstreet-stove-5ec4f926f0611d7ddd7414e9.jpg",
+      "change": "new",
+      "bytes": 559673,
+      "sha256": "9f1e8c66191869f18b846b58d73ef0faebfce556c65a51551eca0a091a6729dc"
+    },
+    {
+      "path": "slides/photos/earth-at-night-2016.jpg",
+      "change": "new",
+      "bytes": 282420,
+      "sha256": "16dbb0b46e332e43c9850807d9ca179692f41cba957dc93b656fc76bd58dd8cc"
+    },
+    {
+      "path": "slides/photos/jet-vessel-interior.jpg",
+      "change": "new",
+      "bytes": 1309697,
+      "sha256": "419c7397ffa71f184b12409e57e7e8b4f4e2a1ce77bc6fa3b8fc8a1393d8422c"
+    },
+    {
+      "path": "slides/photos/originals/dollarstreet-stove-5d4be196cf0b3a0f3f33b4c5.jpg",
+      "change": "new",
+      "bytes": 6353864,
+      "sha256": "341bb16155a70d02afcfbc2a4af5789ff4ff35d88099683beaf8ea879da02be6"
+    },
+    {
+      "path": "slides/photos/originals/dollarstreet-stove-5d4bec73cf0b3a0f3f34df4c.jpg",
+      "change": "new",
+      "bytes": 3668238,
+      "sha256": "b34264d58ce270b418eaf4f6982f14306675418b2ed99b6880e0f719d71f976e"
+    },
+    {
+      "path": "slides/photos/originals/dollarstreet-stove-5d4bf44ccf0b3a0f3f35b67a.jpg",
+      "change": "new",
+      "bytes": 1344627,
+      "sha256": "abf9578bec5849d00265509dbc6b682ce210677e31c375f72fcbd67f6b8d1b2c"
+    },
+    {
+      "path": "slides/photos/originals/dollarstreet-stove-5ec4f926f0611d7ddd7414e9.jpg",
+      "change": "new",
+      "bytes": 836648,
+      "sha256": "92575e0412cd151719ed4f7e0b396428dcd945ec583680acf7f3c41108bd7cee"
+    },
+    {
+      "path": "slides/photos/originals/earth-at-night-2016.jpg",
+      "change": "new",
+      "bytes": 779638,
+      "sha256": "d87de751a264e4f8ff69c68de5dab9606daee87a6f15ae743c93200743bd7ec1"
+    },
+    {
+      "path": "slides/photos/originals/jet-vessel-interior.jpg",
+      "change": "new",
+      "bytes": 1215588,
+      "sha256": "a7497b4bd45a63968cbfbd492ca0603d7395fbfb69eac49b420bfb477aa9757a"
+    },
+    {
+      "path": "slides/photos/originals/weesow-sentinel-detail.jpg",
+      "change": "new",
+      "bytes": 129221,
+      "sha256": "a41ae9b4d8fd1b99ac0e35e6bdc569426300d697cf223b0d542c3071fb1d075b"
+    },
+    {
+      "path": "slides/photos/originals/weesow-sentinel-detail.tif",
+      "change": "new",
+      "bytes": 596909,
+      "sha256": "9a5e5dd8f71c4f5721404c7936fb466509c62d1cd8a40093b4db2cd40fd7c1fe"
+    },
+    {
+      "path": "slides/photos/originals/weesow-sentinel-same-scale.jpg",
+      "change": "new",
+      "bytes": 1417170,
+      "sha256": "45910768937cb6862795f6bbbd5f29c7f98785907258638c9809bc958e8d9835"
+    },
+    {
+      "path": "slides/photos/originals/weesow-sentinel-same-scale.tif",
+      "change": "new",
+      "bytes": 6056985,
+      "sha256": "4dc9e085a4ec153b9cb928ed68e4709fa884f92bec7a54cba32af3d8b7416f47"
+    },
+    {
+      "path": "slides/photos/originals/wind-freilaenderalm.jpg",
+      "change": "new",
+      "bytes": 4449673,
+      "sha256": "2ea551637e9b53d9f7eab1f9887421483669f5a7ab2f63b6766545b62fd84c56"
+    },
+    {
+      "path": "slides/photos/weesow-sentinel-detail.jpg",
+      "change": "new",
+      "bytes": 61027,
+      "sha256": "4eebe620fc358873a227845e2f930780a71544e1c6f9b8beb0b9bbab786bed36"
+    },
+    {
+      "path": "slides/photos/weesow-sentinel-same-scale.jpg",
+      "change": "new",
+      "bytes": 683302,
+      "sha256": "4cdfa530a5095078719343d3a7866a5b24e8379f658cd1c827c71a7b0e56c8a3"
+    },
+    {
+      "path": "slides/photos/wind-freilaenderalm.jpg",
+      "change": "new",
+      "bytes": 780483,
+      "sha256": "ed90812ea356c6e7bafbb329299d6edcfbf2e78deb23e80a404f5082a6a0f17b"
+    },
+    {
+      "path": "tests/test_ch00_energy_context.py",
+      "change": "new",
+      "bytes": 7099,
+      "sha256": "b3de512bb3cace21d4dcb166f1719d31b12c98b85fffe683e6728155e68d9d1c"
+    }
+  ],
+  "self_and_index": [
+    "data/ch00/handoff-files.json",
+    "CH00_FILES.md"
+  ],
+  "routine_generated_outputs": [
+    "public/",
+    "derivations/build/fig/"
+  ],
+  "environment_note": "uv rebuilt the local ignored .venv; pyproject.toml and uv.lock were not edited by this task."
+}

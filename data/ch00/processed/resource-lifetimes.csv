@@ -1,0 +1,8 @@
+resource,stock,stock_unit,production,production_unit,year,static_years,power_W_person_for_1000_years,source,licence_status
+hardcoal,802334.0,Mt,8038.7,Mt/year,2024,99.8089243285606,77.54409597090138,bgr,Free numeric data re-plotted with attribution per lecturer policy; not represented as CC
+lignite,319500.0,Mt,1142.8,Mt/year,2024,279.5764788239412,13.995174644537306,bgr,Free numeric data re-plotted with attribution per lecturer policy; not represented as CC
+oil,252374.0,Mt,4553.5,Mt/year,2024,55.424179202811025,41.089645790488184,bgr,Free numeric data re-plotted with attribution per lecturer policy; not represented as CC
+gas,207714.0,billion m^3,4273.2,billion m^3/year,2024,48.60853692782926,30.744200798589745,bgr,Free numeric data re-plotted with attribution per lecturer policy; not represented as CC
+uranium_lowcost,1181.0,kt U,62.4,kt U/year,2024,18.92628205128205,2.298122193230451,bgr,Free numeric data re-plotted with attribution per lecturer policy; not represented as CC
+coal_combined,1121834.0,Mt,9181.5,Mt/year,2024,122.18417469912323,91.5392706154387,bgr,Attributed numerical-data reuse per lecturer policy; coal mass R/P is not an energy-weighted R/P.
+uranium_identified_below_260_USD_kg,7934500.0,t U,54345.0,t U/year,resources at 2023-01-01 / production 2023,146.00239212439047,13.784932663012572,redbook + wna_fuel,CC BY 4.0 Red Book; independently derived cycle model

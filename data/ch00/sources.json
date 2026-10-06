@@ -1,0 +1,670 @@
+{
+  "nasa": {
+    "title": "Black Marble 2016",
+    "source_url": "https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/",
+    "access_date": "2026-10-06",
+    "year": 2016,
+    "licence": "US government public domain",
+    "licence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "release_status": "cleared",
+    "transformation": "Unchanged full-resolution source; separate ≤2400 px JPEG. Composite, not a single instantaneous exposure.",
+    "snapshot_files": []
+  },
+  "eia": {
+    "title": "EIA International primary energy consumption",
+    "source_url": "https://api.eia.gov/v2/international/data/",
+    "access_date": "2026-10-06",
+    "year": 2024,
+    "licence": "Public domain; acknowledge EIA",
+    "licence_url": "https://www.eia.gov/about/copyrights_reuse.php",
+    "release_status": "cleared",
+    "transformation": "Annual productId=44, activityId=2, unit=QBTU. Join ISO3 with WDI GDP/population; filter type c, positive/matching data. Convert IT Btu to J then kWh/person/day with 365-day year. No EI series used.",
+    "snapshot_files": [
+      "eia_2024.json",
+      "eia_2023.json",
+      "eia_2025.json"
+    ]
+  },
+  "wb_gdp_ppp": {
+    "title": "GDP per capita PPP, constant 2021 international dollars",
+    "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD",
+    "access_date": "2026-10-06",
+    "year": "2024 scatter; latest available otherwise",
+    "licence": "CC BY 4.0 as explicitly served by WDI",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared",
+    "transformation": "Use matching 2024 for country plot; latest 2025 population for fusion inventories and deployment. World aggregate is WLD. GDP PPP is not market-exchange-rate GDP. Country/economy metadata excludes World Bank aggregates.",
+    "snapshot_files": [
+      "wb_gdp_ppp.json",
+      "wb_NY.GDP.PCAP.PP.KD_licence.html"
+    ]
+  },
+  "wb_population": {
+    "title": "Population, total",
+    "source_url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+    "access_date": "2026-10-06",
+    "year": "2024 scatter; latest available otherwise",
+    "licence": "CC BY 4.0 as explicitly served by WDI",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared",
+    "transformation": "Use matching 2024 for country plot; latest 2025 population for fusion inventories and deployment. World aggregate is WLD. GDP PPP is not market-exchange-rate GDP. Country/economy metadata excludes World Bank aggregates.",
+    "snapshot_files": [
+      "wb_population.json",
+      "wb_SP.POP.TOTL_licence.html"
+    ]
+  },
+  "wb_gdp_austria": {
+    "title": "Austria GDP per capita, current local currency (EUR)",
+    "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN",
+    "access_date": "2026-10-06",
+    "year": "2024 scatter; latest available otherwise",
+    "licence": "CC BY 4.0 as explicitly served by WDI",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared",
+    "transformation": "Use matching 2024 for country plot; latest 2025 population for fusion inventories and deployment. World aggregate is WLD. GDP PPP is not market-exchange-rate GDP. Country/economy metadata excludes World Bank aggregates.",
+    "snapshot_files": [
+      "wb_austria_gdp_eur.json"
+    ]
+  },
+  "wb_electricity": {
+    "title": "Access to electricity, percent of population",
+    "source_url": "https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS",
+    "access_date": "2026-10-06",
+    "year": "2024 scatter; latest available otherwise",
+    "licence": "CC BY 4.0 as explicitly served by WDI",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared",
+    "transformation": "Use matching 2024 for country plot; latest 2025 population for fusion inventories and deployment. World aggregate is WLD. GDP PPP is not market-exchange-rate GDP. Country/economy metadata excludes World Bank aggregates.",
+    "snapshot_files": [
+      "wb_electricity.json",
+      "wb_EG.ELC.ACCS.ZS_licence.html"
+    ]
+  },
+  "wb_cooking": {
+    "title": "Clean cooking access, WDI EG.CFT.ACCS.ZS",
+    "source_url": "https://data.worldbank.org/indicator/EG.CFT.ACCS.ZS",
+    "access_date": "2026-10-06",
+    "year": 2023,
+    "licence": "Specific WDI source note says CC BY-NC 3.0 IGO; excluded despite the blanket CC BY label",
+    "licence_url": "https://creativecommons.org/licenses/by-nc/3.0/igo/",
+    "release_status": "excluded-from-cleared-output",
+    "transformation": "No value or series is copied into processed data, plot payloads, the numerical ledger or the chapter. The local research snapshot is ignored by Git. Specific source terms override blanket OWID/WDI terms.",
+    "snapshot_files": [
+      "wb_cooking.json",
+      "wb_cooking_licence.html"
+    ]
+  },
+  "dollarstreet": {
+    "title": "Four stoves across household living standards",
+    "source_url": "https://www.gapminder.org/dollar-street/about",
+    "access_date": "2026-10-06",
+    "year": "2014–2019",
+    "licence": "CC BY 4.0, credit individual photographer",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared",
+    "transformation": "Extract first-party currentThing metadata; income is PPP-adjusted monthly per equivalent adult (modified OECD scale), NOT total monthly household income. Displayed income estimates approximate ±25%. Download images.original; uncropped URLs return 404.",
+    "snapshot_files": [
+      "dollarstreet-5d4bf44ccf0b3a0f3f35b67a.json",
+      "dollarstreet-5d4bec73cf0b3a0f3f34df4c.json",
+      "dollarstreet-5d4be196cf0b3a0f3f33b4c5.json",
+      "dollarstreet-5ec4f926f0611d7ddd7414e9.json"
+    ]
+  },
+  "gapminder_income_levels": {
+    "title": "World population by four income levels, Factfulness notes p.32",
+    "source_url": "https://www.gapminder.org/factfulness-book/notes/",
+    "access_date": "2026-10-06",
+    "year": 2017,
+    "licence": "CC BY 4.0; Factfulness notes version 3 and Gapminder estimates",
+    "licence_url": "https://www.gapminder.org/free-material/",
+    "release_status": "cleared-attributed-data",
+    "transformation": "Transcribed the four rounded 2017 population estimates; thresholds are 2011 PPP USD/person/day. Counts derive from PovcalNet 2013 and Gapminder extensions/IMF forecasts, not a current survey.",
+    "snapshot_files": [
+      "gapminder_income_levels_2017.json"
+    ]
+  },
+  "legacy_handwriting": {
+    "title": "Chris bottom-up estimate and stock scenarios",
+    "source_url": "local:instructor-provided-2025-lecture-material",
+    "access_date": "2026-10-06",
+    "year": "2025, rendered pp.10/14/29",
+    "licence": "Lecturer original handwritten calculations; original teaching content CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared-own-calculations-only",
+    "transformation": "Transcribe handwriting independently; do not reuse underlying legacy pages, book charts, maps or photographs. All 35 pages inspected via rendered contact sheets; pages 10/14/29 also full size. No legacy page/image copied to repo.",
+    "snapshot_files": []
+  },
+  "stat_balance": {
+    "title": "Preliminary Austrian energy balance in TJ",
+    "source_url": "https://www.statistik.at/fileadmin/pages/99/preliminaryEnergyBalancesforAustriaInTerajoule.ods",
+    "access_date": "2026-10-06",
+    "year": 2025,
+    "licence": "Custom permission: accurate attributed reproduction/distribution/processing; not a named CC licence",
+    "licence_url": "https://www.statistik.at/en/about-us/responsibilities-and-principles/legal-basis/website-information",
+    "release_status": "attributed-data-reuse",
+    "transformation": "Extract Balance rows 3–19; AL total column (37 zero-based). Sankey uses aggregate coal/oil/gas/renewables/waste plus net-electricity imports. Transformation input minus output is net loss; final carrier × sector cells retained. Mark partial/processed and preliminary. data.statistik.gv.at CC terms do not automatically cover this ODS.",
+    "snapshot_files": [
+      "austria_2025.ods",
+      "austria_2025_cells.json",
+      "statistik_reuse.html"
+    ]
+  },
+  "stat_population": {
+    "title": "Austria annual-average population",
+    "source_url": "https://www.statistik.at/en/statistics/population-and-society/population/population-stock/annual-average-population",
+    "access_date": "2026-10-06",
+    "year": 2025,
+    "licence": "Same custom Statistics Austria attributed-reuse permission",
+    "licence_url": "https://www.statistik.at/en/about-us/responsibilities-and-principles/legal-basis/website-information",
+    "release_status": "attributed-data-reuse",
+    "transformation": "Use pre-existing project-authoritative 9204460.875 annual-average value, compiled 2026-06-29; do not replace with year-end WDI population. Existing data/energy.json remains unchanged.",
+    "snapshot_files": []
+  },
+  "bgr": {
+    "title": "BGR Energiedaten 2025, data 2024",
+    "source_url": "https://www.bgr.bund.de/DE/Themen/Rohstoffe/Downloads/Downloads_EN/Energiedaten/energiedaten_2025.xlsx?__blob=publicationFile&v=3",
+    "access_date": "2026-10-06",
+    "year": 2024,
+    "licence": "BGR workbook is free to download; BGR graphics carry a separate CC BY notice. Numerical data are re-plotted with attribution per lecturer data-reuse policy; no CC licence is asserted for the workbook.",
+    "licence_url": "https://www.bgr.bund.de/DE/Themen/Rohstoffe/Produkte/Energiedaten/energiedaten_inhalt.html",
+    "release_status": "attributed-data-reuse",
+    "transformation": "World rows of A-10/11 oil, A-17/18 gas, A-23 hard coal, A-30 lignite, A-35 uranium. Production 2024 is H, not C, in time-series sheets. Uranium reserves are low-cost RAR <USD80/kg; broad Red Book identified resources separate. Native mass/volume R/P; published rounded EJ for inventory-power scenarios.",
+    "snapshot_files": [
+      "bgr_2025.xlsx",
+      "bgr_2024.xlsx",
+      "bgr_figures.html"
+    ]
+  },
+  "redbook": {
+    "title": "IAEA/NEA Uranium 2024 (2025 publication)",
+    "source_url": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-04/7683_uranium_2024_-_resources_production_and_demand_2025-04-22_14-29-2_928.pdf",
+    "access_date": "2026-10-06",
+    "year": "Resources 2023-01-01 / production 2023",
+    "licence": "CC BY 4.0, explicit publication front matter",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared",
+    "transformation": "Identified recoverable RAR + inferred: 7,934,500 tU <USD260/kg and 5,925,700 tU <USD130/kg. Reported/provisional 2023 production 54,345 tU. Resource/P is not reserve/P. Apply independently derived once-through cycle energy per kg; no book figure reproduced.",
+    "snapshot_files": [
+      "uranium-redbook-2024.pdf"
+    ]
+  },
+  "pvgis": {
+    "title": "JRC PVGIS 5.3 SARAH3/ERA5 Graz",
+    "source_url": "https://re.jrc.ec.europa.eu/api/v5_3/PVcalc?lat=47.0707&lon=15.4395&peakpower=1&loss=14&angle=35&aspect=0&outputformat=json",
+    "access_date": "2026-10-06",
+    "year": "2005–2023",
+    "licence": "Free reuse with attribution, JRC PVGIS usage conditions",
+    "licence_url": "https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis/general-information/usage-conditions-data-protection_en",
+    "release_status": "attributed-data-reuse; not labelled CC",
+    "transformation": "MRcalc horirrad=1 optrad=1 selectrad=1 angle=35 d2g=1 avtemp=1. Sum 12 monthly horizontal means across 19 years. PVcalc 35° south, free-standing c-Si, 1 kWp, 14% system losses. Satellite-derived irradiation and modelled yield, not measured station/park output. Divide kWh/m²/year by 8760 h then ×1000.",
+    "snapshot_files": [
+      "pvgis_graz.json",
+      "pvgis_graz_horizontal.json"
+    ]
+  },
+  "enbw_weesow": {
+    "title": "Weesow-Willmersdorf solar park operator commissioning facts",
+    "source_url": "https://www.enbw.com/press/enbw-inaugurates-germany-s-largest-solar-park.html",
+    "access_date": "2026-10-06",
+    "year": 2021,
+    "licence": "Operator publication copyright; numerical facts only, no press image",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "187 MWp, 164 ha, 180 million kWh/year expected. Derive site-boundary average and 1 GW area. Expected output is NOT a measured annual yield.",
+    "snapshot_files": []
+  },
+  "graz_boundary": {
+    "title": "Graz municipal boundary OGD",
+    "source_url": "https://geodaten.graz.at/arcgis/rest/services/OGD/OGD_WFS/MapServer/12/query?where=1%3D1&outFields=*&outSR=4326&f=geojson",
+    "access_date": "2026-10-06",
+    "year": 2026,
+    "licence": "CC BY 4.0; Datenquelle: Stadt Graz – data.graz.gv.at",
+    "licence_url": "https://data.graz.gv.at/graz/nutzungsbedingungen/",
+    "release_status": "cleared",
+    "transformation": "Project boundary to EPSG32633; subtract centroid in metres, never rescale. Geometry area 127.466 km²; published city area 127.58 km² (https://www.graz.at/cms/beitrag/10034466/7772565/Zahlen_Fakten_Bevoelkerung_Bezirke_Wirtschaft.html). No OSM/ODbL data used.",
+    "snapshot_files": [
+      "graz_boundary.geojson",
+      "graz_boundary_layer.json",
+      "graz_terms.html"
+    ]
+  },
+  "sentinel": {
+    "title": "Sentinel-2A L2A true colour 2025-09-11",
+    "source_url": "https://earth-search.aws.element84.com/v1/search",
+    "access_date": "2026-10-06",
+    "year": "2025-09-11",
+    "licence": "Copernicus free/open Sentinel data policy",
+    "licence_url": "https://cds.climate.copernicus.eu/licences/ec-sentinel",
+    "release_status": "compatible-custom-open; requested Copernicus credit",
+    "transformation": "POST STAC collection sentinel-2-l2a, bbox [13.66,52.62,13.73,52.69], June–September 2025. Chosen S2A_33UVU_20250911_0_L2A, cloud 1.469683%. Read public assets.visual COG without credentials; crop native 10 m 16 km and 5 km windows. No synthetic replacement. Credit: Contains modified Copernicus Sentinel data 2025.",
+    "snapshot_files": [
+      "sentinel_selected.json",
+      "sentinel_park_search_all.json"
+    ]
+  },
+  "wikidata": {
+    "title": "Approximate park reference point",
+    "source_url": "https://www.wikidata.org/wiki/Q71147169",
+    "access_date": "2026-10-06",
+    "year": 2026,
+    "licence": "CC0",
+    "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "release_status": "cleared",
+    "transformation": "52.650568°N, 13.686692°E; approximate centre for imagery window, not surveyed park polygon.",
+    "snapshot_files": []
+  },
+  "owid_prices": {
+    "title": "Solar PV module price series",
+    "source_url": "https://ourworldindata.org/grapher/solar-pv-prices",
+    "access_date": "2026-10-06",
+    "year": "1975–2024",
+    "licence": "OWID processing CC BY 4.0; Nemet/SFI CC BY 3.0, Farmer/Lafond CC BY 4.0; IRENA 2025 report permits free attributed reuse and bears © IRENA 2025; pvXchange benchmark credited",
+    "licence_url": "https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024",
+    "release_status": "cleared-attributed-data",
+    "transformation": "Saved indicator 1305867 and metadata distinguish source licences. Prices constant 2025 USD/Wp. Global estimates through 2009; European pvXchange module benchmark thereafter. Module price, not installed cost.",
+    "snapshot_files": [
+      "solar-pv-prices.csv",
+      "solar-pv-prices.metadata.json",
+      "indicator-1305867.json"
+    ]
+  },
+  "irena_capacity": {
+    "title": "Explicit photovoltaic capacity, IRENA 2026",
+    "source_url": "https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026",
+    "access_date": "2026-10-06",
+    "year": "2016–2025",
+    "licence": "© IRENA 2026; publication explicitly permits free reuse with attribution; no named CC asserted",
+    "licence_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf",
+    "release_status": "cleared-attributed-data",
+    "transformation": "Explicit Solar photovoltaic world/Austria table, years 2016–2025, MW at year end. March table differs from later July OWID dataset. OWID installed-solar-pv-capacity slug now includes CSP; not used as PV-only. Notice: © IRENA 2026.",
+    "snapshot_files": [
+      "irena_capacity_2026.pdf",
+      "installed-solar-pv-capacity.csv",
+      "installed-solar-pv-capacity.metadata.json",
+      "indicator-1305908.json"
+    ]
+  },
+  "miller_corrigendum": {
+    "title": "Corrected empirical US wind/solar power densities",
+    "source_url": "https://doi.org/10.1088/1748-9326/aaf9cf",
+    "access_date": "2026-10-06",
+    "year": 2016,
+    "licence": "CC BY 3.0 (2019 publication)",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "release_status": "cleared",
+    "transformation": "Corrected capacity-weighted means: wind 0.90 W/m² (430 plants), solar 5.7 W/m² (1047 plants). Original 0.50 / 5.4 values superseded. Wind Voronoi area and solar assumed capacity-density methodology differ; preserve boundary caveat.",
+    "snapshot_files": [
+      "wind_corrigendum.pdf"
+    ]
+  },
+  "windeurope": {
+    "title": "Wind energy in Europe, 2024 statistics",
+    "source_url": "https://windeurope.org/intelligence-platform/product/wind-energy-in-europe-2024-statistics-and-the-outlook-for-2025-2030/",
+    "access_date": "2026-10-06",
+    "year": 2024,
+    "licence": "Copyright WindEurope; no explicit CC verified",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "Page 20 EU fleet annual CF: onshore 23%, offshore 35%, all 24%. New-farm estimates onshore 30–35%, offshore 42–55%. Facts quoted, no provider chart copied.",
+    "snapshot_files": [
+      "windeurope-2024.pdf"
+    ]
+  },
+  "igwind": {
+    "title": "Austria wind year-end 2025",
+    "source_url": "https://www.igwindkraft.at/",
+    "access_date": "2026-10-06",
+    "year": 2025,
+    "licence": "Copyright IG Windkraft; numerical facts only",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "Actual year-end homepage: 1447 turbines, 4221 MW. Do not use older forecast brochure 1516 turbines / 4392 MW or potential annual output 9.7 TWh as measured generation.",
+    "snapshot_files": [
+      "igwind_2025.html"
+    ]
+  },
+  "vattenfall_hornsrev": {
+    "title": "Horns Rev 1 current operator facts",
+    "source_url": "https://powerplants.vattenfall.com/de/horns-rev/",
+    "access_date": "2026-10-06",
+    "year": 2026,
+    "licence": "Operator copyright; numerical facts only",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "20 km², current 158 MW, 80 turbines. Multiplying by EU fleet 35% gives a scenario 2.765 W/m², not a measured Horns Rev yield.",
+    "snapshot_files": [
+      "hornsrev_operator.html"
+    ]
+  },
+  "bml_area": {
+    "title": "Austria Facts & Figures 2024",
+    "source_url": "https://www.bmluk.gv.at/dam/jcr%3A1e1f491f-bbfb-4387-9c3f-061a38578b94/BML_Broschuere_Zahlen_und_Fakten_EN_2024_BF_V02.pdf",
+    "access_date": "2026-10-06",
+    "year": 2024,
+    "licence": "Government publication; numerical geographical fact only",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "Use published Austria area 83,884 km²; no map/page reproduced.",
+    "snapshot_files": []
+  },
+  "wna_fuel": {
+    "title": "Nuclear fuel-cycle benchmark",
+    "source_url": "https://world-nuclear.org/information-library/nuclear-fuel-cycle/introduction/nuclear-fuel-cycle-overview",
+    "access_date": "2026-10-06",
+    "year": 2026,
+    "licence": "WNA copyright; numerical facts/assumptions only",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "Independently solve mass and isotope balances using 45 GWd/t heavy-metal burnup, 33% efficiency, 4.5% product, 0.711% natural feed, 0.22% tails. Full power year, not initial core. Compare rounded WNA 24.3 t enriched / 211 t natural U within rounding.",
+    "snapshot_files": []
+  },
+  "iaea_history": {
+    "title": "Nuclear Power Reactors in the World 2025, table 7",
+    "source_url": "https://www-pub.iaea.org/MTCD/Publications/PDF/RDS-2-45_web.pdf",
+    "access_date": "2026-10-06",
+    "year": "1954–2024",
+    "licence": "No explicit CC licence found in report; numerical facts only",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "Extract latest available 2025 table 7, covering 1954–2024; compute maxima with SymPy. First grid connections 33 in both 1984/1985; construction starts 43 in 1976; max connected capacity 31,129 MWe in 1985. 2024 connections 6 / 6803 MWe. Historical MW values were revised since 2014; use current edition.",
+    "snapshot_files": [
+      "iaea-reactors-2025.pdf",
+      "iaea-history-1954-2024.json",
+      "iaea-reactors-2014.pdf"
+    ]
+  },
+  "kkg": {
+    "title": "Gösgen technical main data",
+    "source_url": "https://www.kkg.ch/de/technik/technische-hauptdaten.html",
+    "access_date": "2026-10-06",
+    "year": 2026,
+    "licence": "Operator copyright; numerical facts only",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "Net 1010 MWe, gross 1060 MWe, thermal 3002 MW; use CC-licensed Commons photo, not operator press photo.",
+    "snapshot_files": []
+  },
+  "iaea_fusion": {
+    "title": "IAEA fusion physics FAQ",
+    "source_url": "https://www.iaea.org/topics/energy/fusion/faqs",
+    "access_date": "2026-10-06",
+    "year": "physical value",
+    "licence": "Numerical physical fact; no illustration reused",
+    "licence_url": "",
+    "release_status": "numeric-facts-only",
+    "transformation": "D–T Q=17.6 MeV, rounded total neutron+alpha kinetic energy.",
+    "snapshot_files": []
+  },
+  "nist_constants": {
+    "title": "NIST CODATA 2022",
+    "source_url": "https://physics.nist.gov/cuu/Constants/",
+    "access_date": "2026-10-06",
+    "year": "2022 / exact SI 2019",
+    "licence": "US government public domain",
+    "licence_url": "https://www.nist.gov/open/license",
+    "release_status": "cleared",
+    "transformation": "Atomic mass 1.66053906892e-27 kg; e=1.602176634e-19 C exact, used for eV→J.",
+    "snapshot_files": []
+  },
+  "nist_isotopes": {
+    "title": "NIST atomic weights / hydrogen isotopes",
+    "source_url": "https://physics.nist.gov/cgi-bin/Compositions/stand_alone.pl?ele=H",
+    "access_date": "2026-10-06",
+    "year": "NIST tabulation",
+    "licence": "US government public domain",
+    "licence_url": "https://www.nist.gov/open/license",
+    "release_status": "cleared",
+    "transformation": "D 2.01410177812 u; T 3.0160492779 u; molecular water model 18.01528 u. Atomic rather than bare-nucleus masses change fuel mass negligibly at teaching precision.",
+    "snapshot_files": []
+  },
+  "nist_units": {
+    "title": "NIST SP811 unit conversion",
+    "source_url": "https://www.nist.gov/pml/special-publication-811",
+    "access_date": "2026-10-06",
+    "year": "definition",
+    "licence": "US government public domain",
+    "licence_url": "https://www.nist.gov/open/license",
+    "release_status": "cleared",
+    "transformation": "International Table Btu=1055.05585262 J, not thermochemical Btu.",
+    "snapshot_files": []
+  },
+  "nist_vsmow": {
+    "title": "NIST TN1900 VSMOW isotope reference",
+    "source_url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=919610",
+    "access_date": "2026-10-06",
+    "year": "VSMOW reference",
+    "licence": "US government public domain",
+    "licence_url": "https://www.nist.gov/open/license",
+    "release_status": "cleared",
+    "transformation": "D/H atomic ratio 155.76e-6; D fraction is r/(1+r), with two H sites per water molecule. Seawater variation neglected in inventory estimate.",
+    "snapshot_files": []
+  },
+  "noaa_ocean": {
+    "title": "NOAA ocean volume",
+    "source_url": "https://oceanservice.noaa.gov/facts/oceanwater.html",
+    "access_date": "2026-10-06",
+    "year": 2026,
+    "licence": "US government public domain",
+    "licence_url": "https://www.noaa.gov/disclaimer",
+    "release_status": "cleared",
+    "transformation": "Ocean volume 1.335 billion km³; multiply model D concentration, not an extraction reserve.",
+    "snapshot_files": []
+  },
+  "usgs_lithium": {
+    "title": "USGS MCS 2026 lithium",
+    "source_url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lithium.pdf",
+    "access_date": "2026-10-06",
+    "year": 2025,
+    "licence": "US government public domain",
+    "licence_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+    "release_status": "cleared",
+    "transformation": "World Li reserves 37 Mt elemental Li; production 290 kt excludes withheld US value. Reserve is not all Li-6, nor recoverable tritium fuel.",
+    "snapshot_files": [
+      "usgs-lithium-2026.pdf"
+    ]
+  },
+  "assumptions": {
+    "title": "Explicit lecturer/model assumptions",
+    "source_url": "repo:derivations/chapters/ch00_energy_context.py",
+    "access_date": "2026-10-06",
+    "year": "model",
+    "licence": "Original teaching derivations CC BY 4.0; code MIT",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "release_status": "cleared-own",
+    "transformation": "365-day year; PV efficiency 20%; densities 0.5/2/10/20 W/m²; coal LHV 24 MJ/kg; seawater 1025 kg/m³, water fraction 0.965; 30-year deployment, 90% nuclear CF. These are scenario assumptions, not observed universal constants.",
+    "snapshot_files": []
+  },
+  "faostat_arable": {
+    "title": "Arable land per person, FAO via World Bank WDI",
+    "source_url": "https://ourworldindata.org/grapher/arable-land-use-per-person",
+    "access_date": "2026-10-06",
+    "year": "2023",
+    "licence": "FAO database default CC BY 4.0; WDI and OWID processing CC BY 4.0",
+    "licence_url": "https://www.fao.org/contact-us/terms/db-terms-of-use/en",
+    "release_status": "cleared-attributed-data",
+    "transformation": "World and Austria 2023, hectares per person. Values are replotted independently; credit FAO, World Bank and OWID processing.",
+    "snapshot_files": [
+      "arable-land-use-per-person.csv",
+      "arable-land-use-per-person.metadata.json"
+    ]
+  },
+  "hyde_cropland": {
+    "title": "Cropland per person, PBL HYDE 3.5 via OWID",
+    "source_url": "https://ourworldindata.org/grapher/cropland-per-person-over-the-long-term",
+    "access_date": "2026-10-06",
+    "year": "2023",
+    "licence": "OWID processing CC BY 4.0; source PBL HYDE 3.5 has no separate licence identified in available metadata",
+    "licence_url": "https://ourworldindata.org/how-to-use-our-world-in-data",
+    "release_status": "attributed-data-with-source-terms-recorded",
+    "transformation": "World and Austria 2023, hectares per person. Cropland comprises arable plus permanent crops; credit PBL/HYDE and OWID processing. No standalone CC licence asserted for HYDE.",
+    "snapshot_files": [
+      "cropland-per-person-over-the-long-term.csv",
+      "cropland-per-person-over-the-long-term.metadata.json"
+    ]
+  },
+  "usda_corn": {
+    "title": "US corn yield, USDA NASS Crop Production 2024 Summary",
+    "source_url": "https://www.nass.usda.gov/Publications/Todays_Reports/reports/cropan26.pdf",
+    "access_date": "2026-10-06",
+    "year": 2024,
+    "licence": "US federal government public domain",
+    "licence_url": "https://www.usda.gov/policies-and-links",
+    "release_status": "cleared-numeric-data",
+    "transformation": "National corn average yield 179.3 bushels/acre. Used only as an illustrative gross energy-per-cropland-area factor.",
+    "snapshot_files": [
+      "usda-corn-yield-2024.pdf"
+    ]
+  },
+  "doe_ethanol": {
+    "title": "Ethanol output and lower heating value, US DOE AFDC",
+    "source_url": "https://afdc.energy.gov/files/u/publication/ethanol_basics.pdf",
+    "access_date": "2026-10-06",
+    "year": "reference",
+    "licence": "US federal government public domain",
+    "licence_url": "https://www.energy.gov/copyright-and-license",
+    "release_status": "cleared-numeric-data",
+    "transformation": "Dry-mill ethanol output 2.8 gal/bushel and pure ethanol LHV 76,330 Btu/gal. Farm/distillery energy and coproduct credit are excluded.",
+    "snapshot_files": [
+      "doe-us-ethanol-industry.pdf",
+      "doe-ethanol-basics.pdf"
+    ]
+  },
+  "loss_cats": {
+    "title": "Free-ranging domestic cat bird mortality, Loss et al. 2013 corrected",
+    "source_url": "https://doi.org/10.1038/ncomms2380",
+    "access_date": "2026-10-06",
+    "year": "2013 corrected 2014",
+    "licence": "Only factual estimates re-plotted; source article rights remain separate",
+    "licence_url": "https://www.nature.com/articles/ncomms3961",
+    "release_status": "numeric-facts-only",
+    "transformation": "Corrected estimate 1.3–4.0 billion birds/year in contiguous US from free-ranging cats; a model estimate, not a count.",
+    "snapshot_files": []
+  },
+  "loss_buildings": {
+    "title": "Bird-building collisions, Loss et al. 2014",
+    "source_url": "https://doi.org/10.1650/CONDOR-13-090.1",
+    "access_date": "2026-10-06",
+    "year": 2014,
+    "licence": "Only numerical facts re-plotted; source article rights remain separate",
+    "licence_url": "https://academic.oup.com/journals/pages/open_access/funder_policies/chorus/standard_publication_model",
+    "release_status": "numeric-facts-only",
+    "transformation": "United States annual estimate 365–988 million, median 599 million.",
+    "snapshot_files": []
+  },
+  "loss_vehicles": {
+    "title": "Bird-vehicle collisions, Loss et al. 2014",
+    "source_url": "https://doi.org/10.1002/jwmg.721",
+    "access_date": "2026-10-06",
+    "year": 2014,
+    "licence": "Only numerical facts re-plotted; source article rights remain separate",
+    "licence_url": "https://onlinelibrary.wiley.com/terms-and-conditions",
+    "release_status": "numeric-facts-only",
+    "transformation": "United States road estimate 89–340 million birds/year.",
+    "snapshot_files": []
+  },
+  "loss_powerlines": {
+    "title": "Power-line bird mortality, Loss et al. 2014",
+    "source_url": "https://doi.org/10.1371/journal.pone.0101565",
+    "access_date": "2026-10-06",
+    "year": 2014,
+    "licence": "CC0",
+    "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "release_status": "cleared-numeric-data",
+    "transformation": "United States collision plus electrocution estimate 12–64 million birds/year; no source figure reproduced.",
+    "snapshot_files": []
+  },
+  "loss_wind": {
+    "title": "Bird mortality at US wind facilities, Loss et al. 2013",
+    "source_url": "https://doi.org/10.1016/j.biocon.2013.10.007",
+    "access_date": "2026-10-06",
+    "year": 2013,
+    "licence": "Only numerical facts re-plotted; source article rights remain separate",
+    "licence_url": "https://www.elsevier.com/about/policies-and-standards/copyright",
+    "release_status": "numeric-facts-only",
+    "transformation": "Contiguous US monopole turbine estimate 140,438–327,586 deaths/year; mean 234,012.",
+    "snapshot_files": []
+  },
+  "naturvardsverket_birds": {
+    "title": "European wind-farm mortality synthesis, Vindval Report 6511",
+    "source_url": "https://www.naturvardsverket.se/4ac35d/globalassets/media/publikationer-pdf/ovriga-pub/vindval/978-91-620-6511-9.pdf",
+    "access_date": "2026-10-06",
+    "year": 2012,
+    "licence": "Swedish Environmental Protection Agency review; numerical fact only",
+    "licence_url": "https://www.naturvardsverket.se/publikationer/",
+    "release_status": "numeric-facts-only",
+    "transformation": "Median 6.5 birds/turbine/year across reviewed European wind farms; site estimates are heterogeneous and skewed, not a Europe-wide total.",
+    "snapshot_files": []
+  },
+  "owid_deaths": {
+    "title": "Deaths per TWh electricity, OWID compilation",
+    "source_url": "https://ourworldindata.org/grapher/death-rates-from-energy-production-per-twh",
+    "access_date": "2026-10-06",
+    "year": 2021,
+    "licence": "OWID processing CC BY 4.0; cited underlying evidence has varied boundaries",
+    "licence_url": "https://ourworldindata.org/how-to-use-our-world-in-data",
+    "release_status": "cleared-attributed-data-with-method-caveat",
+    "transformation": "Markandya & Wilkinson (2007), Sovacool et al. (2016), UNSCEAR (2008/2018); air-pollution and accident estimates combined. Original plot only.",
+    "snapshot_files": [
+      "death-rates-from-energy-production-per-twh.csv",
+      "death-rates-from-energy-production-per-twh.metadata.json"
+    ]
+  },
+  "ipcc_candidate": {
+    "title": "IPCC AR5 WGIII Annex III lifecycle emissions candidate",
+    "source_url": "https://www.ipcc.ch/site/assets/uploads/2018/02/ipcc_wg3_ar5_annex-iii.pdf",
+    "access_date": "2026-10-06",
+    "year": 2014,
+    "licence": "IPCC default terms limit reuse to personal non-commercial use; excluded under course rule",
+    "licence_url": "https://www.ipcc.ch/copyright/",
+    "release_status": "excluded-from-cleared-output",
+    "transformation": "Checked Table A.III.2 values and then excluded the series because published reuse terms are non-commercial; no IPCC numbers or figure are in processed outputs.",
+    "snapshot_files": []
+  },
+  "nrel_lifecycle": {
+    "title": "Life Cycle Emissions Factors for Electricity Generation Technologies",
+    "source_url": "https://data.nlr.gov/submissions/171",
+    "access_date": "2026-10-06",
+    "year": "dataset updated 2026-05-22; source report 2021",
+    "licence": "DOE/NREL/ALLIANCE custom terms permit free use/copy with the full notice attached and require publication credit; no CC licence asserted",
+    "licence_url": "https://data.nlr.gov/node/171/license",
+    "release_status": "attributed-data-reuse",
+    "transformation": "Subset of total lifecycle min/median/max columns W/Y/AA for nine technology groups. Own plot; no source figure reproduced. Credit DOE/NREL/ALLIANCE. The full source notice is embedded in the processed CSV and each plot-data output.",
+    "snapshot_files": [
+      "nrel-lifecycle-emissions-2026.xlsx",
+      "nrel-lifecycle-license.html"
+    ],
+    "data_use_notice_file": "data/ch00/processed/nrel-lifecycle-notice.txt"
+  },
+  "who_cooking_candidate": {
+    "title": "OWID WHO clean-cooking grapher",
+    "source_url": "https://ourworldindata.org/grapher/access-to-clean-fuels-and-technologies-for-cooking",
+    "access_date": "2026-10-06",
+    "year": 2023,
+    "licence": "WHO CC BY-NC-SA 4.0; OWID processing CC BY 4.0 does not override it",
+    "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "release_status": "excluded-from-cleared-output",
+    "transformation": "Research candidate only. Original WHO indicator licence verified in OWID source metadata; do not relabel CC BY.",
+    "snapshot_files": [
+      "access-to-clean-fuels-and-technologies-for-cooking.csv",
+      "access-to-clean-fuels-and-technologies-for-cooking.metadata.json",
+      "indicator-1255654.json"
+    ]
+  },
+  "ei_candidate": {
+    "title": "OWID energy/GDP original candidate",
+    "source_url": "https://ourworldindata.org/grapher/energy-use-per-person-vs-gdp-per-capita",
+    "access_date": "2026-10-06",
+    "year": "2026 edition",
+    "licence": "OWID own processing CC BY 4.0; underlying Energy Institute copyright",
+    "licence_url": "https://www.energyinst.org/statistical-review",
+    "release_status": "excluded-from-cleared-output",
+    "transformation": "Saved for comparison only. EIA public-domain alternative used instead. OWID licensing cannot override EI source terms.",
+    "snapshot_files": [
+      "owid_energy.csv",
+      "owid_energy_codebook.csv",
+      "energy-use-per-person-vs-gdp-per-capita.csv",
+      "energy-use-per-person-vs-gdp-per-capita.metadata.json",
+      "indicator-1295475.json"
+    ]
+  }
+}

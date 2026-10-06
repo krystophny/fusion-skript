@@ -1,0 +1,207 @@
+[
+  {
+    "iso3": "ASM",
+    "name": "American Samoa",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "ATA",
+    "name": "Antarctica",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "COK",
+    "name": "Cook Islands",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "CSK",
+    "name": "Former Czechoslovakia",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "CUB",
+    "name": "Cuba",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "DDR",
+    "name": "Germany, East",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "DEUW",
+    "name": "Germany, West",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "ERI",
+    "name": "Eritrea",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "ESH",
+    "name": "Western Sahara",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "FLK",
+    "name": "Falkland Islands",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "GIB",
+    "name": "Gibraltar",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "GLP",
+    "name": "Guadeloupe",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "GRL",
+    "name": "Greenland",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "GUF",
+    "name": "French Guiana",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "GUM",
+    "name": "Guam",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "HITZ",
+    "name": "Hawaiian Trade Zone",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "MNP",
+    "name": "Northern Mariana Islands",
+    "reason": "GDP PPP unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "MSR",
+    "name": "Montserrat",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "MTQ",
+    "name": "Martinique",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "NCL",
+    "name": "New Caledonia",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "NIU",
+    "name": "Niue",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "NLDA",
+    "name": "Netherlands Antilles",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "PRK",
+    "name": "North Korea",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "PYF",
+    "name": "French Polynesia",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "REU",
+    "name": "Reunion",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "SCG",
+    "name": "Former Serbia and Montenegro",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "SHN",
+    "name": "Saint Helena",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "SPM",
+    "name": "Saint Pierre and Miquelon",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "SSD",
+    "name": "South Sudan",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "SUN",
+    "name": "Former U.S.S.R.",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "SYR",
+    "name": "Syria",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "TUV",
+    "name": "Tuvalu",
+    "reason": "energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "TWN",
+    "name": "Taiwan",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "USIQ",
+    "name": "U.S. Pacific Islands",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  },
+  {
+    "iso3": "VEN",
+    "name": "Venezuela",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "VGB",
+    "name": "British Virgin Islands",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "VIR",
+    "name": "U.S. Virgin Islands",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "WAK",
+    "name": "Wake Island",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "XKS",
+    "name": "Kosovo",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive"
+  },
+  {
+    "iso3": "YEM",
+    "name": "Yemen",
+    "reason": "GDP PPP unavailable/nonpositive"
+  },
+  {
+    "iso3": "YUG",
+    "name": "Former Yugoslavia",
+    "reason": "not a World Bank country/economy; GDP PPP unavailable/nonpositive; population unavailable/nonpositive; energy unavailable/nonpositive"
+  }
+]

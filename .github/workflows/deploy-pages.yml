@@ -1,0 +1,92 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TYPST_VERSION: "0.15.0"
+  RIPGREP_VERSION: "14.1.1"
+
+jobs:
+  derivations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install Typst
+        run: |
+          mkdir -p ~/.local/tools
+          curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" \
+            | tar -xJ --strip-components=1 -C ~/.local/tools typst-x86_64-unknown-linux-musl/typst
+          echo "$HOME/.local/tools" >> "$GITHUB_PATH"
+      - name: Check derivations against independent physics oracles
+        run: uv run python -m pytest -q
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/cache@v4
+        id: tools
+        with:
+          path: ~/.local/tools
+          key: tools-typst-${{ env.TYPST_VERSION }}-rg-${{ env.RIPGREP_VERSION }}
+      - name: Install Typst and ripgrep
+        if: steps.tools.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.local/tools
+          curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" \
+            | tar -xJ --strip-components=1 -C ~/.local/tools typst-x86_64-unknown-linux-musl/typst
+          curl -fsSL "https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz" \
+            | tar -xz --strip-components=1 -C ~/.local/tools "ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg"
+      - name: Put build tools on PATH
+        run: echo "$HOME/.local/tools" >> "$GITHUB_PATH"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/typst/packages
+          key: typst-packages-${{ hashFiles('src/**/*.typ', 'slides/**/*.typ') }}
+          restore-keys: typst-packages-
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Verify presenter and export behavior
+        run: uv run python -m pytest -q scripts/test-publishing.py
+      - name: Build site, PDF, slides and presenter
+        run: uv run bash scripts/build-site.sh
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v5
+      - name: Upload public bundle
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: [site, derivations]
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy main
+        id: deployment
+        uses: actions/deploy-pages@v4

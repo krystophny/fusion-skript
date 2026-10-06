@@ -1,0 +1,7 @@
+cause,low,high,median,unit,year,scope,source
+Free-ranging domestic cats,1300000000.0,4000000000.0,,birds/year,2013 corrected,contiguous United States,loss_cats
+Building collisions,365000000.0,988000000.0,599000000.0,birds/year,2014,United States,loss_buildings
+Vehicle collisions,89000000.0,340000000.0,,birds/year,2014,United States roads,loss_vehicles
+"Power lines, collision + electrocution",12000000.0,64000000.0,,birds/year,2014,United States,loss_powerlines
+"Wind turbine collisions, monopole estimate",140438,327586,234012,birds/year,2013,contiguous United States,loss_wind
+European wind-farm fatality rate (median),,,6.5,birds/turbine/year,2012 review,surveyed European wind farms,naturvardsverket_birds

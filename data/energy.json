@@ -1,0 +1,18 @@
+{
+  "as_of": "2026-10-05",
+  "austria_2025": {
+    "status": "preliminary energy balance, compiled 2026-05-22",
+    "primary_TJ": 1354675.23508871,
+    "final_TJ": 1054125.40934887,
+    "population_annual_average": 9204460.875,
+    "sectors_TJ": {
+      "Industry": 284017.992829677,
+      "Transport": 335757.468409599,
+      "Households": 309734.592120705,
+      "Services": 99556.5470770719,
+      "Agriculture": 25058.8092840317
+    },
+    "balance_source": "https://www.statistik.at/fileadmin/pages/99/preliminaryEnergyBalancesforAustriaInTerajoule.ods",
+    "population_source": "https://www.statistik.at/en/statistics/population-and-society/population/population-stock/annual-average-population"
+  }
+}

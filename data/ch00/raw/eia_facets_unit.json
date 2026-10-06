@@ -1,0 +1,27 @@
+{
+  "response": {
+    "totalFacets": 3,
+    "facets": [
+      {
+        "id": "MBBL",
+        "name": "millions barrels"
+      },
+      {
+        "id": "MT",
+        "name": "1000 metric tons"
+      },
+      {
+        "id": "TBPD",
+        "name": "thousand barrels per day"
+      }
+    ]
+  },
+  "request": {
+    "command": "/v2/international/facet/unit/",
+    "params": {
+      "length": "500"
+    }
+  },
+  "apiVersion": "2.1.14",
+  "ExcelAddInVersion": "2.1.0"
+}

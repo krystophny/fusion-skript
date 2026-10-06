@@ -1,0 +1,50 @@
+diff --git a/sympy/ntheory/factor_.py b/sympy/ntheory/factor_.py
+index 2dc6ac8..f2c817d 100644
+--- a/sympy/ntheory/factor_.py
++++ b/sympy/ntheory/factor_.py
+@@ -407,8 +407,8 @@ def done(n, factors, g, multi):
+     else:
+         # The maximum possible value of the exponent is `log_{next_p}(n)`.
+         # To compensate for the presence of computational error, 2 is added.
+-        prime_iter = primerange(3, int(math.log(n, next_p)) + 2)
+-    logn = math.log2(n)
++        prime_iter = primerange(3, int(math.log(int(n), next_p)) + 2)
++    logn = math.log2(int(n))
+     threshold = logn / 40 # Threshold for direct calculation
+     for p in prime_iter:
+         if threshold < p:
+@@ -419,7 +419,7 @@ def done(n, factors, g, multi):
+                 if abs(rb - b) < 0.01 and rb**p == n:
+                     n = rb
+                     multi *= p
+-                    logn = math.log2(n)
++                    logn = math.log2(int(n))
+                 else:
+                     break
+         else:
+@@ -428,7 +428,7 @@ def done(n, factors, g, multi):
+                 if _exact:
+                     n = m
+                     multi *= p
+-                    logn = math.log2(n)
++                    logn = math.log2(int(n))
+                 else:
+                     break
+         if n < next_p**(p + 2):
+diff --git a/sympy/ntheory/tests/test_factor_.py b/sympy/ntheory/tests/test_factor_.py
+index 5174b84..aa6a297 100644
+--- a/sympy/ntheory/tests/test_factor_.py
++++ b/sympy/ntheory/tests/test_factor_.py
+@@ -700,3 +700,12 @@ def test_deprecated_ntheory_symbolic_functions():
+         assert divisor_sigma(3) == 4
+     with warns_deprecated_sympy():
+         assert udivisor_sigma(3) == 4
++
++
++def test_perfect_power_large_logarithm_backend():
++    # iroot may return a flint/gmpy integer too large for __float__.
++    from sympy import Rational, log, simplify
++    expression = 1000 * log(Rational(34369, 31250))
++    from decimal import Decimal
++    expected = float((Decimal(34369) / Decimal(31250)).ln() * 1000)
++    assert abs(float(simplify(expression).evalf()) - expected) < 1e-9

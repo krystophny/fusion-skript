@@ -1,0 +1,167 @@
+[
+  {
+    "file": "dollarstreet-stove-5ec4f926f0611d7ddd7414e9.jpg",
+    "download": "https://media.dollarstreet.org/5ec4f926f0611d7ddd7414e9/5ec4f926f0611d7ddd7414e9.jpg",
+    "title": "Stove/hob, Spain",
+    "author": "Omar Havana",
+    "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5ec4f926f0611d7ddd7414e9",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "2019-10-16",
+    "income": 7639,
+    "income_unit": "PPP-adjusted USD per equivalent adult per month",
+    "family": "Family 391",
+    "status": "downloaded",
+    "error": null,
+    "original_pixels": [
+      4261,
+      2841
+    ],
+    "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+    "sha256_original": "92575e0412cd151719ed4f7e0b396428dcd945ec583680acf7f3c41108bd7cee"
+  },
+  {
+    "file": "dollarstreet-stove-5d4be196cf0b3a0f3f33b4c5.jpg",
+    "download": "https://media.dollarstreet.org/5d4be196cf0b3a0f3f33b4c5/5d4be196cf0b3a0f3f33b4c5.jpg",
+    "title": "Stove/hob, Brazil",
+    "author": "Leony Carvalho",
+    "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5d4be196cf0b3a0f3f33b4c5",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "2018-05-02",
+    "income": 685,
+    "income_unit": "PPP-adjusted USD per equivalent adult per month",
+    "family": "Family 266",
+    "status": "downloaded",
+    "error": null,
+    "original_pixels": [
+      5184,
+      3456
+    ],
+    "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+    "sha256_original": "341bb16155a70d02afcfbc2a4af5789ff4ff35d88099683beaf8ea879da02be6"
+  },
+  {
+    "file": "dollarstreet-stove-5d4bec73cf0b3a0f3f34df4c.jpg",
+    "download": "https://media.dollarstreet.org/5d4bec73cf0b3a0f3f34df4c/5d4bec73cf0b3a0f3f34df4c.jpg",
+    "title": "Stove/hob, Bolivia",
+    "author": "Zoriah Miller",
+    "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5d4bec73cf0b3a0f3f34df4c",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "2015-01-19",
+    "income": 180,
+    "income_unit": "PPP-adjusted USD per equivalent adult per month",
+    "family": "Family 148",
+    "status": "downloaded",
+    "error": null,
+    "original_pixels": [
+      4608,
+      3072
+    ],
+    "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+    "sha256_original": "b34264d58ce270b418eaf4f6982f14306675418b2ed99b6880e0f719d71f976e"
+  },
+  {
+    "file": "dollarstreet-stove-5d4bf44ccf0b3a0f3f35b67a.jpg",
+    "download": "https://media.dollarstreet.org/5d4bf44ccf0b3a0f3f35b67a/5d4bf44ccf0b3a0f3f35b67a.jpg",
+    "title": "Stove/hob, Haiti",
+    "author": "Zoriah Miller",
+    "source_url": "https://www.gapminder.org/dollar-street?topic=stoves&active=5d4bf44ccf0b3a0f3f35b67a",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "2014-11-28",
+    "income": 39.9,
+    "income_unit": "PPP-adjusted USD per equivalent adult per month",
+    "family": "Family 7",
+    "status": "downloaded",
+    "error": null,
+    "original_pixels": [
+      2700,
+      1800
+    ],
+    "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+    "sha256_original": "abf9578bec5849d00265509dbc6b682ce210677e31c375f72fcbd67f6b8d1b2c"
+  },
+  {
+    "file": "earth-at-night-2016.jpg",
+    "download": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/144000/144898/BlackMarble_2016_01deg.jpg",
+    "title": "Black Marble 2016 global night-lights composite",
+    "author": "NASA Earth Observatory; Joshua Stevens; Suomi NPP VIIRS data, Miguel Román/NASA GSFC",
+    "source_url": "https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/",
+    "licence": "Public domain (NASA)",
+    "licence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "date": "2016",
+    "original_pixels": [
+      3600,
+      1800
+    ],
+    "sha256_original": "d87de751a264e4f8ff69c68de5dab9606daee87a6f15ae743c93200743bd7ec1",
+    "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+    "status": "downloaded",
+    "error": null
+  },
+  {
+    "file": "jet-vessel-interior.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/2/2e/JET_vessel_internal_view.jpg?download=1",
+    "title": "JET vessel internal view.jpg",
+    "author": "EUROfusion",
+    "source_url": "https://commons.wikimedia.org/wiki/File:JET_vessel_internal_view.jpg",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "status": "downloaded",
+    "error": null,
+    "original_pixels": [
+      2000,
+      1333
+    ],
+    "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+    "sha256_original": "a7497b4bd45a63968cbfbd492ca0603d7395fbfb69eac49b420bfb477aa9757a"
+  },
+  {
+    "file": "wind-freilaenderalm.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/2/24/Windpark_Freil%C3%A4nderalm%2C_Baustufe_2%2C_am_Ausl%C3%A4ufer_der_Koralpe_in_der_Steiermark_23.jpg?download=1",
+    "title": "Windpark Freiländeralm, Baustufe 2, am Ausläufer der Koralpe in der Steiermark 23.jpg",
+    "author": "Naturpuur",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Windpark_Freil%C3%A4nderalm%2C_Baustufe_2%2C_am_Ausl%C3%A4ufer_der_Koralpe_in_der_Steiermark_23.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "status": "downloaded",
+    "error": null,
+    "original_pixels": [
+      6000,
+      4000
+    ],
+    "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+    "sha256_original": "2ea551637e9b53d9f7eab1f9887421483669f5a7ab2f63b6766545b62fd84c56"
+  },
+  {
+    "file": "davis-besse-nrc.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/6/65/David_Besse_NPP.jpg",
+    "title": "David Besse NPP.jpg",
+    "author": "US Nuclear Regulatory Commission",
+    "source_url": "https://commons.wikimedia.org/wiki/File:David_Besse_NPP.jpg",
+    "licence": "Public domain (US NRC)",
+    "licence_url": "https://www.nrc.gov/reading-rm/photo-gallery/guide",
+    "status": "download failed",
+    "error": "429 Client Error: Too Many Requests (015d12c) for url: https://upload.wikimedia.org/wikipedia/commons/6/65/David_Besse_NPP.jpg?raw=1"
+  },
+  {
+    "file": "goesgen-nuclear-plant.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/6/60/G%C3%B6sgen-Nuclear-Plant.jpg?download=1",
+    "title": "Gösgen Nuclear Power Plant",
+    "author": "GabrielleMerk",
+    "source_url": "https://commons.wikimedia.org/wiki/File:G%C3%B6sgen-Nuclear-Plant.jpg",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "2019-10-03",
+    "status": "downloaded",
+    "original_pixels": [
+      3000,
+      1686
+    ],
+    "modifications": "Original retained at full resolution; slide JPEG resized to 2400 px longest edge and recompressed, no crop.",
+    "error": null,
+    "sha256_original": "40a3bd475210c514b68b3a45a56c1397feb0acefa3740ffd3c8a6833beb7105d"
+  }
+]

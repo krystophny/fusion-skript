@@ -1,0 +1,42 @@
+public/
+build/
+slides/build/
+derivations/build/
+.cache/
+__pycache__/
+.pytest_cache/
+resources/
+solutions/
+*.pyc
+.venv/
+
+# Chapter 0 research evidence that must remain local: noncommercial series,
+# copyrighted source pages/reports and the pre-existing EI candidate dataset.
+data/ch00/raw/access-to-clean-fuels-and-technologies-for-cooking.csv
+data/ch00/raw/access-to-clean-fuels-and-technologies-for-cooking.metadata.json
+data/ch00/raw/wb_cooking.json
+data/ch00/raw/wb_cooking_licence.html
+data/ch00/raw/indicator-1255654.json
+data/ch00/raw/energy-use-per-person-vs-gdp-per-capita.csv
+data/ch00/raw/energy-use-per-person-vs-gdp-per-capita.metadata.json
+data/ch00/raw/owid_energy.csv
+data/ch00/raw/owid_energy_codebook.csv
+data/ch00/raw/indicator-1295475.json
+data/ch00/raw/indicator-*.json
+data/ch00/raw/*.html
+data/ch00/raw/bgr_2024.xlsx
+data/ch00/raw/nrel-lifecycle-emissions-2026.xlsx
+data/ch00/raw/irena_capacity_2026.pdf
+data/ch00/raw/bgr_2025.xlsx
+data/ch00/raw/iaea-reactors-2014.pdf
+data/ch00/raw/iaea-reactors-2025.pdf
+data/ch00/raw/windeurope-2024.pdf
+
+# Chapter 0 handoff products: preserve the clean plotting arrays and rough
+# diagnostic PNGs; keep rendered SVG/PDF/site products regenerable.
+!derivations/build/
+derivations/build/*
+!derivations/build/plotdata/
+!derivations/build/plotdata/*.json
+!derivations/build/check/
+!derivations/build/check/*.png

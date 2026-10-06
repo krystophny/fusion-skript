@@ -1,0 +1,25 @@
+{
+  "page": 1,
+  "photos": [
+    {
+      "file": "earth-at-night-2016.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/144000/144898/BlackMarble_2016_01deg.jpg",
+      "title": "Black Marble 2016 global night-lights composite",
+      "author": "NASA Earth Observatory; Joshua Stevens; Suomi NPP VIIRS data, Miguel Román/NASA GSFC",
+      "source_url": "https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/",
+      "licence": "Public domain (NASA)",
+      "licence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "date": "2016",
+      "original_pixels": [
+        3600,
+        1800
+      ],
+      "sha256_original": "d87de751a264e4f8ff69c68de5dab9606daee87a6f15ae743c93200743bd7ec1",
+      "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+      "status": "downloaded",
+      "error": null
+    }
+  ],
+  "source": "NASA Earth Observatory, Black Marble 2016; public domain.",
+  "licence_status": "cleared"
+}

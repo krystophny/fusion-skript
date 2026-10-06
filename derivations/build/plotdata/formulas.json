@@ -1,0 +1,138 @@
+{
+  "average_power_per_person": {
+    "expression": "E/(N*T)",
+    "latex": "\\frac{E}{N T}"
+  },
+  "area_per_person": {
+    "expression": "P/q",
+    "latex": "\\frac{P}{q}"
+  },
+  "static_stock_horizon": {
+    "expression": "R/D",
+    "latex": "\\frac{R}{D}"
+  },
+  "integrated_growing_demand": {
+    "expression": "D*exp(T*g)/g - D/g",
+    "latex": "\\frac{D e^{T g}}{g} - \\frac{D}{g}"
+  },
+  "growth_lifetime": {
+    "expression": "log((D + R*g)/D)/g",
+    "latex": "\\frac{\\log{\\left(\\frac{D + R g}{D} \\right)}}{g}"
+  },
+  "zero_growth_limit": {
+    "expression": "R/D",
+    "latex": "\\frac{R}{D}"
+  },
+  "continuous_growth_from_discrete": {
+    "expression": "log(r + 1)/Delta_t",
+    "latex": "\\frac{\\log{\\left(r + 1 \\right)}}{\\Delta_{t}}"
+  },
+  "finite_stock_power_per_person": {
+    "expression": "E/(N*T)",
+    "latex": "\\frac{E}{N T}"
+  },
+  "energy_intensity": {
+    "expression": "E/(GDP*N*T)",
+    "latex": "\\frac{E}{GDP N T}"
+  },
+  "economic_power": {
+    "expression": "GDP*I",
+    "latex": "GDP I"
+  },
+  "capacity_factor": {
+    "expression": "E/(P*T)",
+    "latex": "\\frac{E}{P T}"
+  },
+  "ground_power_density": {
+    "expression": "E/(A*T)",
+    "latex": "\\frac{E}{A T}"
+  },
+  "deployment_count": {
+    "expression": "P/(CF*P_unit)",
+    "latex": "\\frac{P}{CF P_{unit}}"
+  },
+  "deployment_rate": {
+    "expression": "P/(CF*P_unit*T)",
+    "latex": "\\frac{P}{CF P_{unit} T}"
+  },
+  "nameplate_for_mean": {
+    "expression": "P/CF",
+    "latex": "\\frac{P}{CF}"
+  },
+  "car_power": {
+    "expression": "C_distance*H_fuel*v_distance",
+    "latex": "C_{distance} H_{fuel} v_{distance}"
+  },
+  "biofuel_power_density": {
+    "expression": "H_ethanol*Y_crop*r_ethanol",
+    "latex": "H_{ethanol} Y_{crop} r_{ethanol}"
+  },
+  "daily_geometry": {
+    "expression": "(2*sqrt(-tan(delta)**2*tan(phi)**2 + 1)*cos(delta)*cos(phi) + 2*sin(delta)*sin(phi)*acos(-tan(delta)*tan(phi)))/(2*pi)",
+    "latex": "\\frac{2 \\sqrt{- \\tan^{2}{\\left(\\delta \\right)} \\tan^{2}{\\left(\\phi \\right)} + 1} \\cos{\\left(\\delta \\right)} \\cos{\\left(\\phi \\right)} + 2 \\sin{\\left(\\delta \\right)} \\sin{\\left(\\phi \\right)} \\operatorname{acos}{\\left(- \\tan{\\left(\\delta \\right)} \\tan{\\left(\\phi \\right)} \\right)}}{2 \\pi}"
+  },
+  "equinox_daynight": {
+    "expression": "1/pi",
+    "latex": "\\frac{1}{\\pi}"
+  },
+  "equinox_latitude": {
+    "expression": "cos(phi)",
+    "latex": "\\cos{\\left(\\phi \\right)}"
+  },
+  "module_annual_energy": {
+    "expression": "A*H_i*PR*eta",
+    "latex": "A H_{i} PR \\eta"
+  },
+  "module_STC_power": {
+    "expression": "A*P_STC*eta",
+    "latex": "A P_{STC} \\eta"
+  },
+  "specific_yield": {
+    "expression": "H_i*PR/P_STC",
+    "latex": "\\frac{H_{i} PR}{P_{STC}}"
+  },
+  "performance_ratio": {
+    "expression": "P_STC*Y/H_i",
+    "latex": "\\frac{P_{STC} Y}{H_{i}}"
+  },
+  "delivered_module_density": {
+    "expression": "H_i*PR*eta/T",
+    "latex": "\\frac{H_{i} PR \\eta}{T}"
+  },
+  "solar_factor_chain": {
+    "expression": "PR*P_STC*eta*f_latitude*f_night*f_season*f_tilt*f_weather",
+    "latex": "PR P_{STC} \\eta f_{latitude} f_{night} f_{season} f_{tilt} f_{weather}"
+  },
+  "enriched_uranium": {
+    "expression": "P*T/(B*eta)",
+    "latex": "\\frac{P T}{B \\eta}"
+  },
+  "natural_uranium": {
+    "expression": "(M*x_p - M*x_t)/(x_f - x_t)",
+    "latex": "\\frac{M x_{p} - M x_{t}}{x_{f} - x_{t}}"
+  },
+  "tails_uranium": {
+    "expression": "(-M*x_f + M*x_p)/(x_f - x_t)",
+    "latex": "\\frac{- M x_{f} + M x_{p}}{x_{f} - x_{t}}"
+  },
+  "reaction_count": {
+    "expression": "E/Q",
+    "latex": "\\frac{E}{Q}"
+  },
+  "fusion_fuel": {
+    "expression": "E*(m_D + m_T)/Q",
+    "latex": "\\frac{E \\left(m_{D} + m_{T}\\right)}{Q}"
+  },
+  "coal_mass": {
+    "expression": "E/q_coal",
+    "latex": "\\frac{E}{q_{coal}}"
+  },
+  "deuterium_concentration": {
+    "expression": "2*f_water*m_D*r_DH*rho/(m_water*(r_DH + 1))",
+    "latex": "\\frac{2 f_{water} m_{D} r_{DH} \\rho}{m_{water} \\left(r_{DH} + 1\\right)}"
+  },
+  "deuterium_inventory": {
+    "expression": "2*V*f_water*m_D*r_DH*rho/(m_water*(r_DH + 1))",
+    "latex": "\\frac{2 V f_{water} m_{D} r_{DH} \\rho}{m_{water} \\left(r_{DH} + 1\\right)}"
+  }
+}

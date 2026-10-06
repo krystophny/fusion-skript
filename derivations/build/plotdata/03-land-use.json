@@ -1,0 +1,28 @@
+{
+  "page": 3,
+  "observations": [
+    {
+      "iso3": "AUT",
+      "place": "Austria",
+      "year": "2023",
+      "faostat_arable_ha_person": "0.14474553",
+      "hyde_cropland_ha_person": "0.15801372",
+      "source": "FAO via World Bank / PBL HYDE 3.5 via OWID",
+      "licence_status": "FAO CC BY 4.0; OWID processing CC BY 4.0; HYDE source credited, no separate licence asserted"
+    },
+    {
+      "iso3": "OWID_WRL",
+      "place": "World",
+      "year": "2023",
+      "faostat_arable_ha_person": "0.17167939",
+      "hyde_cropland_ha_person": "0.20268911",
+      "source": "FAO via World Bank / PBL HYDE 3.5 via OWID",
+      "licence_status": "FAO CC BY 4.0; OWID processing CC BY 4.0; HYDE source credited, no separate licence asserted"
+    }
+  ],
+  "unit": "ha/person",
+  "year": 2023,
+  "notes": "Arable land is FAO/WDI cropland under temporary crops, temporary meadows, kitchen gardens and temporary fallow; cropland includes arable plus permanent crops under HYDE. The series differ in definition and source method; do not add them.",
+  "source": "FAO via World Bank WDI (CC BY 4.0); PBL HYDE 3.5 via OWID (OWID processing CC BY 4.0; source credited; no standalone source licence asserted).",
+  "licence_status": "cleared"
+}

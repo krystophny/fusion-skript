@@ -1,0 +1,24 @@
+id,label,stage
+gross,Gross inland balance pool,1
+final,Final energy balance pool,2
+primary_32,Coal,0
+primary_33,Oil,0
+primary_34,Gas,0
+primary_35,Renewables,0
+primary_36,Waste,0
+primary_31,Net electricity imports,0
+conversion,Net transformation losses,2
+own,Energy sector / transport losses,2
+nonenergy,Non-energy uses,2
+final_32,Coal,3
+sector_14,Industry,4
+sector_15,Transport,4
+sector_17,Services,4
+sector_18,Households,4
+sector_19,Agriculture,4
+final_33,Oil products,3
+final_34,Gas,3
+final_35,Renewable fuels / direct heat,3
+final_36,Waste,3
+final_27,District heat,3
+final_31,Electricity,3

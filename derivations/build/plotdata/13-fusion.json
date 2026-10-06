@@ -1,0 +1,40 @@
+{
+  "page": 13,
+  "Q_MeV": 17.6,
+  "Q_J": 2.81983087584e-12,
+  "reactions_per_GW_fusion_year": 1.1183649441601967e+28,
+  "deuterium_kg": 37.403656187351594,
+  "tritium_kg": 56.010709816254554,
+  "fuel_kg": 93.41436600360615,
+  "coal_kg": 1314000000.0,
+  "deuterium_g_m3": 34.44370562616916,
+  "ocean_deuterium_kg": 4.598234701093583e+16,
+  "ocean_deuterium_kg_per_person": 5597074.723440702,
+  "lithium_kg_per_person": 4.503723237921153,
+  "inventory_population": 8215424893.0,
+  "inventory_population_year": 2025,
+  "thermal_energy_GWh": 8760.0,
+  "fuel_thermal_energy_TJ_kg": 337.5926139538601,
+  "photos": [
+    {
+      "file": "jet-vessel-interior.jpg",
+      "download": "https://upload.wikimedia.org/wikipedia/commons/2/2e/JET_vessel_internal_view.jpg?download=1",
+      "title": "JET vessel internal view.jpg",
+      "author": "EUROfusion",
+      "source_url": "https://commons.wikimedia.org/wiki/File:JET_vessel_internal_view.jpg",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "status": "downloaded",
+      "error": null,
+      "original_pixels": [
+        2000,
+        1333
+      ],
+      "modifications": "Original unchanged; slide JPEG resized to at most 2400 pixels and recompressed, no crop.",
+      "sha256_original": "a7497b4bd45a63968cbfbd492ca0603d7395fbfb69eac49b420bfb477aa9757a"
+    }
+  ],
+  "notes": "GW(fusion) is thermal reaction power, not net electric output. Burned D+T only, excluding inventory, recycling losses and breeding overhead. Coal lower heating value assumed 24 MJ/kg. Seawater D is an inventory, not a recoverable reserve. Lithium reserves are elemental Li, not all Li-6; tritium must be bred, not extracted as a natural fuel reserve. Per-person normalization uses latest WDI 2025 population with 2025 lithium reserves.",
+  "source": "IAEA D–T 17.6 MeV; NIST atomic masses and VSMOW D/H; NOAA ocean volume; USGS MCS Lithium 2026 (2025 data, public domain); EUROfusion JET vessel photo, CC BY 4.0.",
+  "licence_status": "cleared"
+}

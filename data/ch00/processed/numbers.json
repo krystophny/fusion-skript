@@ -1,0 +1,3662 @@
+[
+  {
+    "page": 1,
+    "label": "Black Marble composite",
+    "value": 2016,
+    "unit": "year",
+    "year": 2016,
+    "source_key": "nasa",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Countries/economies plotted",
+    "value": 188,
+    "unit": "count",
+    "year": 2024,
+    "source_key": "eia + wb_gdp_ppp + wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Austria energy",
+    "value": 93.38229317304514,
+    "unit": "kWh/(person day)",
+    "year": 2024,
+    "source_key": "eia + wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Austria GDP PPP",
+    "value": 63787.9891749462,
+    "unit": "2021 international dollar/(person year)",
+    "year": 2024,
+    "source_key": "wb_gdp_ppp",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Austria population",
+    "value": 9177982,
+    "unit": "person",
+    "year": 2024,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Switzerland energy",
+    "value": 79.56161928084873,
+    "unit": "kWh/(person day)",
+    "year": 2024,
+    "source_key": "eia + wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Switzerland GDP PPP",
+    "value": 85448.0585577007,
+    "unit": "2021 international dollar/(person year)",
+    "year": 2024,
+    "source_key": "wb_gdp_ppp",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Switzerland population",
+    "value": 9005582,
+    "unit": "person",
+    "year": 2024,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "China energy",
+    "value": 97.20823619893082,
+    "unit": "kWh/(person day)",
+    "year": 2024,
+    "source_key": "eia + wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "China GDP PPP",
+    "value": 23841.4769141817,
+    "unit": "2021 international dollar/(person year)",
+    "year": 2024,
+    "source_key": "wb_gdp_ppp",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "China population",
+    "value": 1408975000,
+    "unit": "person",
+    "year": 2024,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Germany energy",
+    "value": 95.41825648722569,
+    "unit": "kWh/(person day)",
+    "year": 2024,
+    "source_key": "eia + wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Germany GDP PPP",
+    "value": 62654.602264023,
+    "unit": "2021 international dollar/(person year)",
+    "year": 2024,
+    "source_key": "wb_gdp_ppp",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "Germany population",
+    "value": 83516593,
+    "unit": "person",
+    "year": 2024,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "India energy",
+    "value": 20.74678641649819,
+    "unit": "kWh/(person day)",
+    "year": 2024,
+    "source_key": "eia + wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "India GDP PPP",
+    "value": 9416.05137044735,
+    "unit": "2021 international dollar/(person year)",
+    "year": 2024,
+    "source_key": "wb_gdp_ppp",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "India population",
+    "value": 1450935791,
+    "unit": "person",
+    "year": 2024,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "United States energy",
+    "value": 223.29752216497792,
+    "unit": "kWh/(person day)",
+    "year": 2024,
+    "source_key": "eia + wb_population",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "United States GDP PPP",
+    "value": 75698.1773354629,
+    "unit": "2021 international dollar/(person year)",
+    "year": 2024,
+    "source_key": "wb_gdp_ppp",
+    "note": ""
+  },
+  {
+    "page": 2,
+    "label": "United States population",
+    "value": 340003797,
+    "unit": "person",
+    "year": 2024,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "electricity access",
+    "value": 91.9264843853681,
+    "unit": "% of world population",
+    "year": 2024,
+    "source_key": "wb_electricity",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Level 1 income threshold <2",
+    "value": "<2",
+    "unit": "2011 PPP USD/(person day)",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Level 1 population",
+    "value": 0.75,
+    "unit": "billion people",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": "Rounded published estimate."
+  },
+  {
+    "page": 3,
+    "label": "Level 2 income threshold 2–8",
+    "value": "2–8",
+    "unit": "2011 PPP USD/(person day)",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Level 2 population",
+    "value": 3.3,
+    "unit": "billion people",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": "Rounded published estimate."
+  },
+  {
+    "page": 3,
+    "label": "Level 3 income threshold 8–32",
+    "value": "8–32",
+    "unit": "2011 PPP USD/(person day)",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Level 3 population",
+    "value": 2.5,
+    "unit": "billion people",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": "Rounded published estimate."
+  },
+  {
+    "page": 3,
+    "label": "Level 4 income threshold >32",
+    "value": ">32",
+    "unit": "2011 PPP USD/(person day)",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Level 4 population",
+    "value": 0.9,
+    "unit": "billion people",
+    "year": 2017,
+    "source_key": "gapminder_income_levels",
+    "note": "Rounded published estimate."
+  },
+  {
+    "page": 3,
+    "label": "Austria arable land",
+    "value": "0.14474553",
+    "unit": "ha/person",
+    "year": 2023,
+    "source_key": "faostat_arable",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Austria cropland",
+    "value": "0.15801372",
+    "unit": "ha/person",
+    "year": 2023,
+    "source_key": "hyde_cropland",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "World arable land",
+    "value": "0.17167939",
+    "unit": "ha/person",
+    "year": 2023,
+    "source_key": "faostat_arable",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "World cropland",
+    "value": "0.20268911",
+    "unit": "ha/person",
+    "year": 2023,
+    "source_key": "hyde_cropland",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Stove/hob, Spain",
+    "value": 7639,
+    "unit": "PPP-adjusted USD per equivalent adult per month",
+    "year": "2019-10-16",
+    "source_key": "dollarstreet",
+    "note": "Omar Havana; Family 391"
+  },
+  {
+    "page": 3,
+    "label": "Stove/hob, Brazil",
+    "value": 685,
+    "unit": "PPP-adjusted USD per equivalent adult per month",
+    "year": "2018-05-02",
+    "source_key": "dollarstreet",
+    "note": "Leony Carvalho; Family 266"
+  },
+  {
+    "page": 3,
+    "label": "Stove/hob, Bolivia",
+    "value": 180,
+    "unit": "PPP-adjusted USD per equivalent adult per month",
+    "year": "2015-01-19",
+    "source_key": "dollarstreet",
+    "note": "Zoriah Miller; Family 148"
+  },
+  {
+    "page": 3,
+    "label": "Stove/hob, Haiti",
+    "value": 39.9,
+    "unit": "PPP-adjusted USD per equivalent adult per month",
+    "year": "2014-11-28",
+    "source_key": "dollarstreet",
+    "note": "Zoriah Miller; Family 7"
+  },
+  {
+    "page": 4,
+    "label": "Home electricity",
+    "value": 5,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "Heating / hot water",
+    "value": 20,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "Car",
+    "value": 20,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "Bus / train / plane",
+    "value": 10,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "Things",
+    "value": 20,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "Work / industry",
+    "value": 45,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "legacy_total",
+    "value": 120.0,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "legacy_GDP_EUR_person_year",
+    "value": 60000,
+    "unit": "EUR/(person year)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "legacy_intensity_kWh_EUR",
+    "value": 1,
+    "unit": "kWh/EUR",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "legacy_GDP_crosscheck_kWh_person_day",
+    "value": 164.3835616438356,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "legacy_car_arithmetic_kWh_person_day",
+    "value": 15.0,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "gross_kWh_person_day",
+    "value": 112.00604705110405,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "final_kWh_person_day",
+    "value": 87.15625497469283,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "gross_W_person",
+    "value": 4666.918627129336,
+    "unit": "W/person",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "final_W_person",
+    "value": 3631.510623945535,
+    "unit": "W/person",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "gross_GW_average",
+    "value": 42.95646991022068,
+    "unit": "GW",
+    "year": 2025,
+    "source_key": "stat_balance",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "final_GW_average",
+    "value": 33.42609745525351,
+    "unit": "GW",
+    "year": 2025,
+    "source_key": "stat_balance",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "population",
+    "value": 9204460.875,
+    "unit": "person",
+    "year": 2025,
+    "source_key": "stat_population",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "GDP_EUR_person_year",
+    "value": 55691.1276440263,
+    "unit": "EUR/(person year)",
+    "year": 2025,
+    "source_key": "wb_gdp_austria",
+    "note": ""
+  },
+  {
+    "page": 4,
+    "label": "derived_gross_intensity_kWh_EUR",
+    "value": 0.7340883351288758,
+    "unit": "kWh/EUR",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population + wb_gdp_austria",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "gross_TJ",
+    "value": 1354675.2350887195,
+    "unit": "TJ",
+    "year": 2025,
+    "source_key": "stat_balance",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "final_TJ",
+    "value": 1054125.4093488748,
+    "unit": "TJ",
+    "year": 2025,
+    "source_key": "stat_balance",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "conversion_loss",
+    "value": 6.427517231165083,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "own_use_and_transport_losses",
+    "value": 12.016295283863379,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "nonenergy",
+    "value": 6.405979561382789,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "sectors: Industry",
+    "value": 23.48292184300365,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "sectors: Transport",
+    "value": 27.76079892091794,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "sectors: Services",
+    "value": 8.23144544709248,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "sectors: Households",
+    "value": 25.609198721459038,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "sectors: Agriculture",
+    "value": 2.0718900729945706,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "carriers: Coal",
+    "value": 1.035428777696966,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "carriers: Oil products",
+    "value": 28.909285639767916,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "carriers: Gas",
+    "value": 13.298423155184038,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "carriers: Renewable fuels / direct heat",
+    "value": 17.957492671559734,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "carriers: Waste",
+    "value": 0.8520703005540243,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "carriers: District heat",
+    "value": 6.091889338354063,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 5,
+    "label": "carriers: Electricity",
+    "value": 19.011665091576084,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "hardcoal stock",
+    "value": 802334.0,
+    "unit": "Mt",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "hardcoal production",
+    "value": 8038.7,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "hardcoal static_years",
+    "value": 99.8089243285606,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "hardcoal power_W_person_for_1000_years",
+    "value": 77.54409597090138,
+    "unit": "W(thermal)/person",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "hardcoal energy reserve",
+    "value": 19908.0,
+    "unit": "EJ",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "hardcoal lifetime at continuous 2%/year",
+    "value": 54.86688194187346,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr + assumptions",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "lignite stock",
+    "value": 319500.0,
+    "unit": "Mt",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "lignite production",
+    "value": 1142.8,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "lignite static_years",
+    "value": 279.5764788239412,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "lignite power_W_person_for_1000_years",
+    "value": 13.995174644537306,
+    "unit": "W(thermal)/person",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "lignite energy reserve",
+    "value": 3593.0,
+    "unit": "EJ",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "lignite lifetime at continuous 2%/year",
+    "value": 94.28927136346425,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr + assumptions",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "oil stock",
+    "value": 252374.0,
+    "unit": "Mt",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "oil production",
+    "value": 4553.5,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "oil static_years",
+    "value": 55.424179202811025,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "oil power_W_person_for_1000_years",
+    "value": 41.089645790488184,
+    "unit": "W(thermal)/person",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "oil energy reserve",
+    "value": 10549.0,
+    "unit": "EJ",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "oil lifetime at continuous 2%/year",
+    "value": 37.29845042856194,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr + assumptions",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "gas stock",
+    "value": 207714.0,
+    "unit": "billion m^3",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "gas production",
+    "value": 4273.2,
+    "unit": "billion m^3/year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "gas static_years",
+    "value": 48.60853692782926,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "gas power_W_person_for_1000_years",
+    "value": 30.744200798589745,
+    "unit": "W(thermal)/person",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "gas energy reserve",
+    "value": 7893.0,
+    "unit": "EJ",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "gas lifetime at continuous 2%/year",
+    "value": 33.956741692531786,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr + assumptions",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_lowcost stock",
+    "value": 1181.0,
+    "unit": "kt U",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_lowcost production",
+    "value": 62.4,
+    "unit": "kt U/year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_lowcost static_years",
+    "value": 18.92628205128205,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_lowcost power_W_person_for_1000_years",
+    "value": 2.298122193230451,
+    "unit": "W(thermal)/person",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_lowcost energy reserve",
+    "value": 590.0,
+    "unit": "EJ",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_lowcost lifetime at continuous 2%/year",
+    "value": 16.05072759901041,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr + assumptions",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "coal_combined stock",
+    "value": 1121834.0,
+    "unit": "Mt",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "coal_combined production",
+    "value": 9181.5,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "coal_combined static_years",
+    "value": 122.18417469912323,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "coal_combined power_W_person_for_1000_years",
+    "value": 91.5392706154387,
+    "unit": "W(thermal)/person",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "coal_combined energy reserve",
+    "value": 23501.0,
+    "unit": "EJ",
+    "year": 2024,
+    "source_key": "bgr",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "coal_combined lifetime at continuous 2%/year",
+    "value": 61.82708408202002,
+    "unit": "year",
+    "year": 2024,
+    "source_key": "bgr + assumptions",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_identified_below_260_USD_kg stock",
+    "value": 7934500.0,
+    "unit": "t U",
+    "year": "resources at 2023-01-01 / production 2023",
+    "source_key": "redbook + wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_identified_below_260_USD_kg production",
+    "value": 54345.0,
+    "unit": "t U/year",
+    "year": "resources at 2023-01-01 / production 2023",
+    "source_key": "redbook + wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_identified_below_260_USD_kg static_years",
+    "value": 146.00239212439047,
+    "unit": "year",
+    "year": "resources at 2023-01-01 / production 2023",
+    "source_key": "redbook + wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_identified_below_260_USD_kg power_W_person_for_1000_years",
+    "value": 13.784932663012572,
+    "unit": "W(thermal)/person",
+    "year": "resources at 2023-01-01 / production 2023",
+    "source_key": "redbook + wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "uranium_identified_below_260_USD_kg lifetime at continuous 2%/year",
+    "value": 68.3051929222086,
+    "unit": "year",
+    "year": "resources at 2023-01-01 / production 2023",
+    "source_key": "redbook + wna_fuel + assumptions",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "2025 handwritten coal 1000-year power",
+    "value": 114.15525114155251,
+    "unit": "W/person",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": "10 billion people; coal 10 kWh/kg; uranium 10 million kWh/kg near-complete fission potential."
+  },
+  {
+    "page": 6,
+    "label": "2025 handwritten coal 1000-year daily energy",
+    "value": 2.73972602739726,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "2025 handwritten coal lifetime at 100 kWh/person/day",
+    "value": 27.397260273972602,
+    "unit": "year",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "2025 handwritten uranium 1000-year power",
+    "value": 1141.552511415525,
+    "unit": "W/person",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": "10 billion people; coal 10 kWh/kg; uranium 10 million kWh/kg near-complete fission potential."
+  },
+  {
+    "page": 6,
+    "label": "2025 handwritten uranium 1000-year daily energy",
+    "value": 27.397260273972602,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 6,
+    "label": "2025 handwritten uranium lifetime at 100 kWh/person/day",
+    "value": 273.972602739726,
+    "unit": "year",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "horizontal_kWh_m2_year",
+    "value": 1286.6147368421052,
+    "unit": "kWh/(m² year)",
+    "year": "2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "horizontal_W_m2",
+    "value": 146.873828406633,
+    "unit": "W/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "inclined_kWh_m2_year",
+    "value": 1542.13,
+    "unit": "kWh/(m² year)",
+    "year": "2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "specific_yield_kWh_kWp_year",
+    "value": 1221.69,
+    "unit": "kWh/(kWp year)",
+    "year": "2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "module_W_m2",
+    "value": 27.89246575342466,
+    "unit": "W/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "day_night factor",
+    "value": 0.3183098861837907,
+    "unit": "1",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "latitude factor",
+    "value": 0.681095388799623,
+    "unit": "1",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "season factor",
+    "value": 1.008737604802486,
+    "unit": "1",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "atmosphere_weather_residual factor",
+    "value": 0.671596055599662,
+    "unit": "1",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "tilt_gain factor",
+    "value": 1.198595007379627,
+    "unit": "1",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "module_efficiency factor",
+    "value": 0.2,
+    "unit": "1",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "performance_ratio factor",
+    "value": 0.7922094765032779,
+    "unit": "1",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After noon_peak",
+    "value": 1000.0,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After day_night",
+    "value": 318.3098861837907,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After latitude",
+    "value": 216.79939568911263,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After season",
+    "value": 218.6937031300619,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After atmosphere_weather_residual",
+    "value": 146.873828406633,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After tilt_gain",
+    "value": 176.04223744292236,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After module_efficiency",
+    "value": 35.208447488584476,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "After performance_ratio",
+    "value": 27.892465753424656,
+    "unit": "W/m²",
+    "year": "model / 2005–2023",
+    "source_key": "pvgis + assumptions",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "l_aoi",
+    "value": -2.79,
+    "unit": "%",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": "Signed PVGIS model percentage; do not apply these again to the exported performance ratio."
+  },
+  {
+    "page": 7,
+    "label": "l_spec",
+    "value": "1.48",
+    "unit": "%",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": "Signed PVGIS model percentage; do not apply these again to the exported performance ratio."
+  },
+  {
+    "page": 7,
+    "label": "l_tg",
+    "value": -6.62,
+    "unit": "%",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": "Signed PVGIS model percentage; do not apply these again to the exported performance ratio."
+  },
+  {
+    "page": 7,
+    "label": "l_total",
+    "value": -20.78,
+    "unit": "%",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": "Signed PVGIS model percentage; do not apply these again to the exported performance ratio."
+  },
+  {
+    "page": 7,
+    "label": "Month 1 horizontal irradiation",
+    "value": 41.33315789473684,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 2 horizontal irradiation",
+    "value": 59.939473684210526,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 3 horizontal irradiation",
+    "value": 104.48,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 4 horizontal irradiation",
+    "value": 137.18736842105264,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 5 horizontal irradiation",
+    "value": 159.69947368421052,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 6 horizontal irradiation",
+    "value": 175.2242105263158,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 7 horizontal irradiation",
+    "value": 183.18,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 8 horizontal irradiation",
+    "value": 156.86894736842106,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 9 horizontal irradiation",
+    "value": 114.53,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 10 horizontal irradiation",
+    "value": 78.52157894736843,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 11 horizontal irradiation",
+    "value": 41.96421052631579,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Month 12 horizontal irradiation",
+    "value": 33.68631578947368,
+    "unit": "kWh/m²",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 8,
+    "label": "park_area_km2",
+    "value": 1.64,
+    "unit": "km²",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "peak_MWp",
+    "value": 187.0,
+    "unit": "MWp",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "expected_GWh_year",
+    "value": 180.0,
+    "unit": "GWh/year",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "ground_W_m2",
+    "value": 12.52923488138991,
+    "unit": "W/m²",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "capacity_factor_expected",
+    "value": 0.10988205992235,
+    "unit": "1",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "area_for_1_GW_average_km2",
+    "value": 79.81333333333333,
+    "unit": "km²",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "peak_GWp_for_1_GW_average",
+    "value": 9.100666666666667,
+    "unit": "GWp",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "park_equivalents_for_1_GW_average",
+    "value": 48.666666666666664,
+    "unit": "1",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "fraction_of_Graz_geometry_for_1_GW_average",
+    "value": 0.6261519960556382,
+    "unit": "1",
+    "year": 2021,
+    "source_key": "enbw_weesow",
+    "note": "Design expectation; not observed yield."
+  },
+  {
+    "page": 8,
+    "label": "Graz OGD projected boundary area",
+    "value": 127.46638809124123,
+    "unit": "km²",
+    "year": 2026,
+    "source_key": "graz_boundary",
+    "note": ""
+  },
+  {
+    "page": 8,
+    "label": "Graz published area",
+    "value": 127.58,
+    "unit": "km²",
+    "year": 2026,
+    "source_key": "graz_boundary",
+    "note": ""
+  },
+  {
+    "page": 8,
+    "label": "True-colour native pixel",
+    "value": 10,
+    "unit": "m",
+    "year": "2025-09-11",
+    "source_key": "sentinel",
+    "note": ""
+  },
+  {
+    "page": 8,
+    "label": "Each same-scale panel width/height",
+    "value": 16,
+    "unit": "km",
+    "year": "2025-09-11",
+    "source_key": "sentinel",
+    "note": ""
+  },
+  {
+    "page": 8,
+    "label": "Park latitude",
+    "value": 52.650568,
+    "unit": "degree",
+    "year": 2026,
+    "source_key": "wikidata",
+    "note": ""
+  },
+  {
+    "page": 8,
+    "label": "Park longitude",
+    "value": 13.686692,
+    "unit": "degree",
+    "year": 2026,
+    "source_key": "wikidata",
+    "note": ""
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 132.3757,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1975,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 99.59758,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1976,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 72.66112,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1977,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 51.408165,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1978,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 43.19512,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1979,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 36.604977,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1980,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 29.266363,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1981,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 26.295176,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1982,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 21.2281,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1983,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 19.725023,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1984,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 17.220385,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1985,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 14.24468,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1986,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 12.110387,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1987,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 11.311608,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1988,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 11.690053,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1989,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 12.091146,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1990,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 11.200797,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1991,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 10.435116,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1992,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 9.758667,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1993,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 9.231527,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1994,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 8.535535,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1995,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 7.9798346,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1996,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 7.952008,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1997,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 7.165558,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1998,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 6.6192613,
+    "unit": "constant 2025 USD/Wp",
+    "year": 1999,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 6.495887,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2000,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 6.284449,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2001,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 5.747254,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2002,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 5.463806,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2003,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 4.695495,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2004,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 4.7456656,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2005,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 5.172746,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2006,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 5.211057,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2007,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 4.7491965,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2008,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 3.1742926,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2009,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 2.5118067,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2010,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 2.060892,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2011,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 1.1107162,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2012,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.85660523,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2013,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.79053074,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2014,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.7357285,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2015,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.6802508,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2016,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.57135326,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2017,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.5090506,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2018,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.46694848,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2019,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.36974207,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2020,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.33192256,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2021,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.3658019,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2022,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.32176703,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2023,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "PV module price",
+    "value": 0.26518628,
+    "unit": "constant 2025 USD/Wp",
+    "year": 2024,
+    "source_key": "owid_prices",
+    "note": "IRENA segment: © IRENA 2025; pvXchange benchmark attribution retained."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 293159,
+    "unit": "MW, year-end",
+    "year": 2016,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 1103,
+    "unit": "MW, year-end",
+    "year": 2016,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 386711,
+    "unit": "MW, year-end",
+    "year": 2017,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 1276,
+    "unit": "MW, year-end",
+    "year": 2017,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 481485,
+    "unit": "MW, year-end",
+    "year": 2018,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 1462,
+    "unit": "MW, year-end",
+    "year": 2018,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 583393,
+    "unit": "MW, year-end",
+    "year": 2019,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 1710,
+    "unit": "MW, year-end",
+    "year": 2019,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 714728,
+    "unit": "MW, year-end",
+    "year": 2020,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 2051,
+    "unit": "MW, year-end",
+    "year": 2020,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 859674,
+    "unit": "MW, year-end",
+    "year": 2021,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 2791,
+    "unit": "MW, year-end",
+    "year": 2021,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 1051471,
+    "unit": "MW, year-end",
+    "year": 2022,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 3800,
+    "unit": "MW, year-end",
+    "year": 2022,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 1415161,
+    "unit": "MW, year-end",
+    "year": 2023,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 6394,
+    "unit": "MW, year-end",
+    "year": 2023,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 1872813,
+    "unit": "MW, year-end",
+    "year": 2024,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 8904,
+    "unit": "MW, year-end",
+    "year": 2024,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "World installed PV",
+    "value": 2383162,
+    "unit": "MW, year-end",
+    "year": 2025,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity; AC/DC conventions vary. © IRENA 2026."
+  },
+  {
+    "page": 9,
+    "label": "Austria installed PV",
+    "value": 10304,
+    "unit": "MW, year-end",
+    "year": 2025,
+    "source_key": "irena_capacity",
+    "note": "Provider-reported installed capacity. © IRENA 2026."
+  },
+  {
+    "page": 10,
+    "label": "eu_onshore_cf",
+    "value": 0.23,
+    "unit": "1",
+    "year": 2024,
+    "source_key": "windeurope",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "eu_offshore_cf",
+    "value": 0.35,
+    "unit": "1",
+    "year": 2024,
+    "source_key": "windeurope",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "austria_actual_generation_TWh",
+    "value": 8.577926627000002,
+    "unit": "TWh/year",
+    "year": 2025,
+    "source_key": "stat_balance",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "austria_yearend_MW",
+    "value": 4221.0,
+    "unit": "MW",
+    "year": 2025,
+    "source_key": "igwind",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "austria_cf_endyear_proxy",
+    "value": 0.23198658336389377,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "stat_balance + igwind",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "us_onshore_W_m2",
+    "value": 0.9,
+    "unit": "W/m²",
+    "year": 2016,
+    "source_key": "miller_corrigendum",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "us_solar_W_m2",
+    "value": 5.7,
+    "unit": "W/m²",
+    "year": 2016,
+    "source_key": "miller_corrigendum",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "offshore_HornsRev_W_m2_scenario",
+    "value": 2.765,
+    "unit": "W/m²",
+    "year": "scenario",
+    "source_key": "vattenfall_hornsrev + windeurope",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "eu_new_onshore_cf_range",
+    "value": [
+      0.3,
+      0.35
+    ],
+    "unit": "1",
+    "year": 2024,
+    "source_key": "windeurope",
+    "note": "New-farm estimate."
+  },
+  {
+    "page": 10,
+    "label": "eu_new_offshore_cf_range",
+    "value": [
+      0.42,
+      0.55
+    ],
+    "unit": "1",
+    "year": 2024,
+    "source_key": "windeurope",
+    "note": "New-farm estimate."
+  },
+  {
+    "page": 14,
+    "label": "Free-ranging domestic cats low",
+    "value": "1300000000.0",
+    "unit": "birds/year",
+    "year": "2013 corrected",
+    "source_key": "loss_cats",
+    "note": "contiguous United States"
+  },
+  {
+    "page": 14,
+    "label": "Free-ranging domestic cats high",
+    "value": "4000000000.0",
+    "unit": "birds/year",
+    "year": "2013 corrected",
+    "source_key": "loss_cats",
+    "note": "contiguous United States"
+  },
+  {
+    "page": 14,
+    "label": "Building collisions low",
+    "value": "365000000.0",
+    "unit": "birds/year",
+    "year": "2014",
+    "source_key": "loss_buildings",
+    "note": "United States"
+  },
+  {
+    "page": 14,
+    "label": "Building collisions median",
+    "value": "599000000.0",
+    "unit": "birds/year",
+    "year": "2014",
+    "source_key": "loss_buildings",
+    "note": "United States"
+  },
+  {
+    "page": 14,
+    "label": "Building collisions high",
+    "value": "988000000.0",
+    "unit": "birds/year",
+    "year": "2014",
+    "source_key": "loss_buildings",
+    "note": "United States"
+  },
+  {
+    "page": 14,
+    "label": "Vehicle collisions low",
+    "value": "89000000.0",
+    "unit": "birds/year",
+    "year": "2014",
+    "source_key": "loss_vehicles",
+    "note": "United States roads"
+  },
+  {
+    "page": 14,
+    "label": "Vehicle collisions high",
+    "value": "340000000.0",
+    "unit": "birds/year",
+    "year": "2014",
+    "source_key": "loss_vehicles",
+    "note": "United States roads"
+  },
+  {
+    "page": 14,
+    "label": "Power lines, collision + electrocution low",
+    "value": "12000000.0",
+    "unit": "birds/year",
+    "year": "2014",
+    "source_key": "loss_powerlines",
+    "note": "United States"
+  },
+  {
+    "page": 14,
+    "label": "Power lines, collision + electrocution high",
+    "value": "64000000.0",
+    "unit": "birds/year",
+    "year": "2014",
+    "source_key": "loss_powerlines",
+    "note": "United States"
+  },
+  {
+    "page": 14,
+    "label": "Wind turbine collisions, monopole estimate low",
+    "value": "140438",
+    "unit": "birds/year",
+    "year": "2013",
+    "source_key": "loss_wind",
+    "note": "contiguous United States"
+  },
+  {
+    "page": 14,
+    "label": "Wind turbine collisions, monopole estimate median",
+    "value": "234012",
+    "unit": "birds/year",
+    "year": "2013",
+    "source_key": "loss_wind",
+    "note": "contiguous United States"
+  },
+  {
+    "page": 14,
+    "label": "Wind turbine collisions, monopole estimate high",
+    "value": "327586",
+    "unit": "birds/year",
+    "year": "2013",
+    "source_key": "loss_wind",
+    "note": "contiguous United States"
+  },
+  {
+    "page": 14,
+    "label": "European wind-farm fatality rate (median) median",
+    "value": "6.5",
+    "unit": "birds/turbine/year",
+    "year": "2012 review",
+    "source_key": "naturvardsverket_birds",
+    "note": "surveyed European wind farms"
+  },
+  {
+    "page": 14,
+    "label": "Biomass deaths per TWh",
+    "value": "4.63",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Brown coal deaths per TWh",
+    "value": "32.72",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Coal deaths per TWh",
+    "value": "24.62",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Gas deaths per TWh",
+    "value": "2.821",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Hydropower deaths per TWh",
+    "value": "1.3",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Nuclear deaths per TWh",
+    "value": "0.03",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Oil deaths per TWh",
+    "value": "18.43",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Solar deaths per TWh",
+    "value": "0.019",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 14,
+    "label": "Wind deaths per TWh",
+    "value": "0.035",
+    "unit": "deaths/TWh electricity",
+    "year": "2021",
+    "source_key": "owid_deaths",
+    "note": "Processed source estimates mix air-pollution and accident evidence."
+  },
+  {
+    "page": 15,
+    "label": "Solar PV min",
+    "value": "10.9",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Solar PV median",
+    "value": "43.4",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Solar PV max",
+    "value": "226",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Concentrating solar power min",
+    "value": "11",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Concentrating solar power median",
+    "value": "28",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Concentrating solar power max",
+    "value": "241",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Geothermal min",
+    "value": "5.6",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Geothermal median",
+    "value": "36.7",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Geothermal max",
+    "value": "245.2",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Hydropower min",
+    "value": "0.574",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Hydropower median",
+    "value": "20.5",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Hydropower max",
+    "value": "74.8770828326524",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Wind min",
+    "value": "1.2999999933983777",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Wind median",
+    "value": "13",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Wind max",
+    "value": "81",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Nuclear (LWR) min",
+    "value": "3.1",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Nuclear (LWR) median",
+    "value": "13",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Nuclear (LWR) max",
+    "value": "220",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Natural gas (NGCC) min",
+    "value": "307",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Natural gas (NGCC) median",
+    "value": "450",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Natural gas (NGCC) max",
+    "value": "682",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Oil min",
+    "value": "510",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Oil median",
+    "value": "840",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Oil max",
+    "value": "1170",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Coal min",
+    "value": "675",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Coal median",
+    "value": "1001",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 15,
+    "label": "Coal max",
+    "value": "1689",
+    "unit": "g CO2-eq/kWh electricity",
+    "year": 2026,
+    "source_key": "nrel_lifecycle",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Austria area",
+    "value": 83884.0,
+    "unit": "km²",
+    "year": 2024,
+    "source_key": "bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Austria area per person",
+    "value": 0.009113407198876274,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "bml_area + stat_population",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final biofuel density_W_m2",
+    "value": 0.5,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final biofuel area_km2_person",
+    "value": 0.007263021247891069,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final biofuel national_area_km2",
+    "value": 66852.19491050702,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final biofuel fraction_of_Austria",
+    "value": 0.796960027067224,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final wind density_W_m2",
+    "value": 2,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final wind area_km2_person",
+    "value": 0.0018157553119727673,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final wind national_area_km2",
+    "value": 16713.048727626756,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final wind fraction_of_Austria",
+    "value": 0.199240006766806,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_low density_W_m2",
+    "value": 10,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_low area_km2_person",
+    "value": 0.0003631510623945534,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_low national_area_km2",
+    "value": 3342.609745525351,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_low fraction_of_Austria",
+    "value": 0.0398480013533612,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_high density_W_m2",
+    "value": 20,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_high area_km2_person",
+    "value": 0.0001815755311972767,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_high national_area_km2",
+    "value": 1671.3048727626756,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "final solar_high fraction_of_Austria",
+    "value": 0.0199240006766806,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland biofuel density_W_m2",
+    "value": 0.5,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland biofuel area_km2_person",
+    "value": 0.00933383725425867,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland biofuel national_area_km2",
+    "value": 85912.93982044136,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland biofuel fraction_of_Austria",
+    "value": 1.0241874471942367,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland wind density_W_m2",
+    "value": 2,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland wind area_km2_person",
+    "value": 0.0023334593135646677,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland wind national_area_km2",
+    "value": 21478.23495511034,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland wind fraction_of_Austria",
+    "value": 0.2560468617985592,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_low density_W_m2",
+    "value": 10,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_low area_km2_person",
+    "value": 0.00046669186271293346,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_low national_area_km2",
+    "value": 4295.6469910220685,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_low fraction_of_Austria",
+    "value": 0.05120937235971185,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_high density_W_m2",
+    "value": 20,
+    "unit": "W/m²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_high area_km2_person",
+    "value": 0.00023334593135646673,
+    "unit": "km²/person",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_high national_area_km2",
+    "value": 2147.8234955110343,
+    "unit": "km²",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "gross_inland solar_high fraction_of_Austria",
+    "value": 0.025604686179855923,
+    "unit": "1",
+    "year": 2025,
+    "source_key": "assumptions + stat_balance + stat_population + bml_area",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Corn ethanol gross power density",
+    "value": 0.3167996046101724,
+    "unit": "W/m²",
+    "year": 2024,
+    "source_key": "usda_corn + doe_ethanol + stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Corn ethanol area per person",
+    "value": 0.011463116023816295,
+    "unit": "km²/person",
+    "year": 2024,
+    "source_key": "usda_corn + doe_ethanol + stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Corn ethanol national area",
+    "value": 105511.80294680267,
+    "unit": "km²",
+    "year": 2024,
+    "source_key": "usda_corn + doe_ethanol + stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Corn ethanol fraction of Austria",
+    "value": 1.2578298954127445,
+    "unit": "1",
+    "year": 2024,
+    "source_key": "usda_corn + doe_ethanol + stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Wind 2 W/m² divided by corn ethanol",
+    "value": 6.313139192395886,
+    "unit": "1",
+    "year": 2024,
+    "source_key": "usda_corn + doe_ethanol + stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Solar 10 W/m² divided by corn ethanol",
+    "value": 31.565695961979433,
+    "unit": "1",
+    "year": 2024,
+    "source_key": "usda_corn + doe_ethanol + stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 11,
+    "label": "Solar 20 W/m² divided by corn ethanol",
+    "value": 63.131391923958866,
+    "unit": "1",
+    "year": 2024,
+    "source_key": "usda_corn + doe_ethanol + stat_balance + stat_population",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "enriched_t_U",
+    "value": 24.579124579124578,
+    "unit": "t U/(GW(e) full-power year)",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "natural_t_U",
+    "value": 214.25387616833646,
+    "unit": "t U/(GW(e) full-power year)",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "tails_t_U",
+    "value": 189.67475158921187,
+    "unit": "t U/(GW(e) full-power year)",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Natural uranium thermal energy per kg in once-through model",
+    "value": 446029906542.0561,
+    "unit": "J/kg U",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "reactors_1GWe_at_90percent_CF Austria",
+    "value": 37.14010828361501,
+    "unit": "reactor",
+    "year": "2025 / scenario",
+    "source_key": "stat_balance + stat_population + wb_population + assumptions",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "reactors_1GWe_at_90percent_CF world_at_Austrian_final_demand",
+    "value": 33149.33642128456,
+    "unit": "reactor",
+    "year": "2025 / scenario",
+    "source_key": "stat_balance + stat_population + wb_population + assumptions",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "reactors_per_year_over_30_years Austria",
+    "value": 1.2380036094538336,
+    "unit": "reactor/year",
+    "year": "2025 / scenario",
+    "source_key": "stat_balance + stat_population + wb_population + assumptions",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "reactors_per_year_over_30_years world_at_Austrian_final_demand",
+    "value": 1104.9778807094854,
+    "unit": "reactor/year",
+    "year": "2025 / scenario",
+    "source_key": "stat_balance + stat_population + wb_population + assumptions",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Maximum first grid connections in IAEA 1954–2024 table",
+    "value": 33,
+    "unit": "reactor/year",
+    "year": "1984 / 1985",
+    "source_key": "iaea_history",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Maximum construction starts in that table",
+    "value": 43,
+    "unit": "reactor/year",
+    "year": 1976,
+    "source_key": "iaea_history",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Maximum annually grid-connected net capacity",
+    "value": 31.129,
+    "unit": "GW(e)/year",
+    "year": 1985,
+    "source_key": "iaea_history",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "First grid connections 2024",
+    "value": 6,
+    "unit": "reactor/year",
+    "year": 2024,
+    "source_key": "iaea_history",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Grid-connected net capacity 2024",
+    "value": 6.803,
+    "unit": "GW(e)/year",
+    "year": 2024,
+    "source_key": "iaea_history",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Gösgen net electric capacity",
+    "value": 1010,
+    "unit": "MW(e)",
+    "year": 2026,
+    "source_key": "kkg",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "World population for deployment scenario",
+    "value": 8215424893.0,
+    "unit": "person",
+    "year": 2025,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Q_MeV",
+    "value": 17.6,
+    "unit": "MeV/reaction",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "iaea_fusion",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Q_J",
+    "value": 2.81983087584e-12,
+    "unit": "J/reaction",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "iaea_fusion + nist_constants",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "thermal_energy_GWh",
+    "value": 8760.0,
+    "unit": "GWh/(GW(fusion) year)",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "assumptions",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "reactions_per_GW_fusion_year",
+    "value": 1.1183649441601967e+28,
+    "unit": "reaction",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "iaea_fusion + nist_constants",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "fuel_thermal_energy_TJ_kg",
+    "value": 337.5926139538601,
+    "unit": "TJ/kg D+T",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "iaea_fusion + nist_isotopes + nist_constants",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "deuterium_kg",
+    "value": 37.403656187351594,
+    "unit": "kg/(GW(fusion) year)",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "iaea_fusion + nist_constants + nist_isotopes",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "tritium_kg",
+    "value": 56.010709816254554,
+    "unit": "kg/(GW(fusion) year)",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "iaea_fusion + nist_constants + nist_isotopes",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "fuel_kg",
+    "value": 93.41436600360615,
+    "unit": "kg/(GW(fusion) year)",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "iaea_fusion + nist_constants + nist_isotopes",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "coal_kg",
+    "value": 1314000000.0,
+    "unit": "kg/(GW(thermal) year)",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "assumptions",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "deuterium_g_m3",
+    "value": 34.44370562616916,
+    "unit": "g/m³",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "nist_vsmow + nist_isotopes + assumptions",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "ocean_deuterium_kg",
+    "value": 4.598234701093583e+16,
+    "unit": "kg D",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "noaa_ocean + nist_vsmow + assumptions",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "ocean_deuterium_kg_per_person",
+    "value": 5597074.723440702,
+    "unit": "kg D/person",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "noaa_ocean + nist_vsmow + assumptions + wb_population",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "lithium_kg_per_person",
+    "value": 4.503723237921153,
+    "unit": "kg Li/person",
+    "year": "physical constants / model; inventories 2024–2025",
+    "source_key": "usgs_lithium + wb_population",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Input: solar_noon",
+    "value": 1000,
+    "unit": "W/m^2",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": "STC reference irradiance; not a measured Graz noon average."
+  },
+  {
+    "page": 7,
+    "label": "Input: pv_efficiency",
+    "value": 0.2,
+    "unit": "1",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": "Assumed module efficiency at STC."
+  },
+  {
+    "page": 7,
+    "label": "Input: graz_latitude",
+    "value": 47.0707,
+    "unit": "degree",
+    "year": "2005–2023",
+    "source_key": "pvgis",
+    "note": ""
+  },
+  {
+    "page": 7,
+    "label": "Input: obliquity",
+    "value": 23.44,
+    "unit": "degree",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": "Simple declination model, ignoring Earth-orbit eccentricity."
+  },
+  {
+    "page": 6,
+    "label": "Input: sustainable_horizon",
+    "value": 1000,
+    "unit": "year",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": "Finite inventory divided over horizon; not sustainability certification."
+  },
+  {
+    "page": 6,
+    "label": "Input: legacy_world_population",
+    "value": 10000000000.0,
+    "unit": "person",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": "Teaching assumption, not actual 2025 population."
+  },
+  {
+    "page": 6,
+    "label": "Input: legacy_daily_demand",
+    "value": 100,
+    "unit": "kWh/(person day)",
+    "year": 2025,
+    "source_key": "legacy_handwriting",
+    "note": "World stock-lifetime teaching demand on pp.14/29."
+  },
+  {
+    "page": 6,
+    "label": "Input: world_population",
+    "value": 8140897523,
+    "unit": "person",
+    "year": 2024,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "Input: hornsrev_area",
+    "value": 20,
+    "unit": "km^2",
+    "year": "2026-10-06",
+    "source_key": "vattenfall_hornsrev",
+    "note": ""
+  },
+  {
+    "page": 10,
+    "label": "Input: hornsrev_peak",
+    "value": 158,
+    "unit": "MW",
+    "year": "2026-10-06",
+    "source_key": "vattenfall_hornsrev",
+    "note": "Current operator factbox; original design was 160 MW."
+  },
+  {
+    "page": 10,
+    "label": "Input: austria_wind_capacity",
+    "value": 4221,
+    "unit": "MW",
+    "year": 2025,
+    "source_key": "igwind",
+    "note": "Year-end installed capacity; CF computed with this is only a proxy."
+  },
+  {
+    "page": 11,
+    "label": "Input: corn_yield",
+    "value": 179.3,
+    "unit": "bushel/(acre year)",
+    "year": 2024,
+    "source_key": "usda_corn",
+    "note": "US corn average yield; illustrative crop-to-ethanol chain, not an Austrian field measurement."
+  },
+  {
+    "page": 11,
+    "label": "Input: ethanol_yield",
+    "value": 2.8,
+    "unit": "gal/bushel",
+    "year": 2024,
+    "source_key": "doe_ethanol",
+    "note": "Dry-mill output; coproduct allocation is not included."
+  },
+  {
+    "page": 11,
+    "label": "Input: ethanol_lhv",
+    "value": 76330,
+    "unit": "Btu/gal",
+    "year": "definition",
+    "source_key": "doe_ethanol",
+    "note": "Pure ethanol lower heating value; gross fuel energy before process inputs."
+  },
+  {
+    "page": 11,
+    "label": "Input: btu_IT",
+    "value": "1055.05585262",
+    "unit": "J",
+    "year": "definition",
+    "source_key": "nist_units",
+    "note": "Energy corresponding to one International Table Btu."
+  },
+  {
+    "page": 12,
+    "label": "Input: nuclear_efficiency",
+    "value": 0.33,
+    "unit": "1",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Input: nuclear_burnup",
+    "value": 45,
+    "unit": "GW day/t",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Input: enrichment_product",
+    "value": 0.045,
+    "unit": "1",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Input: enrichment_feed",
+    "value": 0.00711,
+    "unit": "1",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Input: enrichment_tails",
+    "value": 0.0022,
+    "unit": "1",
+    "year": "model",
+    "source_key": "wna_fuel",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Input: nuclear_capacity_factor",
+    "value": 0.9,
+    "unit": "1",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": ""
+  },
+  {
+    "page": 12,
+    "label": "Input: deployment_horizon",
+    "value": 30,
+    "unit": "year",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: world_population_2025",
+    "value": 8215424893,
+    "unit": "person",
+    "year": 2025,
+    "source_key": "wb_population",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: elementary_charge",
+    "value": "1.602176634e-19",
+    "unit": "C",
+    "year": 2019,
+    "source_key": "nist_constants",
+    "note": "Exact SI eV conversion."
+  },
+  {
+    "page": 13,
+    "label": "Input: atomic_mass",
+    "value": "1.66053906892e-27",
+    "unit": "kg",
+    "year": 2022,
+    "source_key": "nist_constants",
+    "note": "Mass corresponding to one unified atomic mass unit (1 u)."
+  },
+  {
+    "page": 13,
+    "label": "Input: deuterium_atomic_mass",
+    "value": "2.01410177812",
+    "unit": "u",
+    "year": "NIST isotopes",
+    "source_key": "nist_isotopes",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: tritium_atomic_mass",
+    "value": "3.0160492779",
+    "unit": "u",
+    "year": "NIST isotopes",
+    "source_key": "nist_isotopes",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: coal_heat",
+    "value": 24,
+    "unit": "MJ/kg",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": "Illustrative coal lower heating value, not universal."
+  },
+  {
+    "page": 13,
+    "label": "Input: ocean_volume",
+    "value": 1335000000.0,
+    "unit": "km^3",
+    "year": "2026-10-06",
+    "source_key": "noaa_ocean",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: seawater_density",
+    "value": 1025,
+    "unit": "kg/m^3",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: seawater_water_fraction",
+    "value": 0.965,
+    "unit": "1",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": "35 g/kg salinity model."
+  },
+  {
+    "page": 13,
+    "label": "Input: water_molecular_mass",
+    "value": "18.01528",
+    "unit": "u",
+    "year": "model",
+    "source_key": "nist_isotopes",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: deuterium_hydrogen_ratio",
+    "value": "155.76e-6",
+    "unit": "1",
+    "year": "VSMOW standard",
+    "source_key": "nist_vsmow",
+    "note": "D/H atomic ratio; not a mass fraction."
+  },
+  {
+    "page": 13,
+    "label": "Input: lithium_reserves",
+    "value": 37000000,
+    "unit": "t Li",
+    "year": 2025,
+    "source_key": "usgs_lithium",
+    "note": ""
+  },
+  {
+    "page": 13,
+    "label": "Input: lithium_production",
+    "value": 290000,
+    "unit": "t Li/year",
+    "year": 2025,
+    "source_key": "usgs_lithium",
+    "note": "Excludes withheld US production."
+  },
+  {
+    "page": 13,
+    "label": "Input: seconds_per_year",
+    "value": 31536000,
+    "unit": "s/year",
+    "year": "model",
+    "source_key": "assumptions",
+    "note": "365-day engineering year throughout; calendar 2024 is leap year."
+  }
+]

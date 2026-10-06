@@ -1,0 +1,5 @@
+level,income_threshold,currency_unit,population_billions,year,source,licence_status
+1,<2,2011 PPP USD per person per day,0.75,2017,gapminder_income_levels,"CC BY 4.0; Gapminder Factfulness notes, version 3"
+2,2–8,2011 PPP USD per person per day,3.3,2017,gapminder_income_levels,"CC BY 4.0; Gapminder Factfulness notes, version 3"
+3,8–32,2011 PPP USD per person per day,2.5,2017,gapminder_income_levels,"CC BY 4.0; Gapminder Factfulness notes, version 3"
+4,>32,2011 PPP USD per person per day,0.9,2017,gapminder_income_levels,"CC BY 4.0; Gapminder Factfulness notes, version 3"

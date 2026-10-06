@@ -1,0 +1,29 @@
+{
+  "page": 4,
+  "legacy_components": {
+    "Home electricity": 5,
+    "Heating / hot water": 20,
+    "Car": 20,
+    "Bus / train / plane": 10,
+    "Things": 20,
+    "Work / industry": 45
+  },
+  "legacy_total": 120.0,
+  "unit": "kWh/(person day)",
+  "legacy_GDP_EUR_person_year": 60000,
+  "legacy_intensity_kWh_EUR": 1,
+  "legacy_GDP_crosscheck_kWh_person_day": 164.3835616438356,
+  "legacy_car_arithmetic_kWh_person_day": 15.0,
+  "gross_kWh_person_day": 112.00604705110405,
+  "final_kWh_person_day": 87.15625497469283,
+  "gross_W_person": 4666.918627129336,
+  "final_W_person": 3631.510623945535,
+  "gross_GW_average": 42.95646991022068,
+  "final_GW_average": 33.42609745525351,
+  "population": 9204460.875,
+  "GDP_EUR_person_year": 55691.1276440263,
+  "derived_gross_intensity_kWh_EUR": 0.7340883351288758,
+  "notes": "GDP × intensity from the same energy balance is an accounting identity, not an independent validation. Handwritten 120 is a bottom-up estimate; car example arithmetic gives 15, while its budget line rounds to 20. Different accounting boundaries prevent interpreting differences as estimation error alone.",
+  "source": "Chris, 2025 handwritten Chapter00_Intro.pdf p.10; Statistics Austria preliminary 2025 Balance rows 8/13 and annual-average population; World Bank 2025 GDP in current Austrian EUR.",
+  "licence_status": "Statistics Austria custom attributed-reuse terms accepted for original data figures; not represented as CC."
+}

@@ -1,0 +1,72 @@
+{
+  "oil_stock": {
+    "value": 252374,
+    "unit": "Mt",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-10 Erdölreserven 2024!C25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "oil_production": {
+    "value": 4553.5,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-11 Erdölförderung 2024!H25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "gas_stock": {
+    "value": 207714,
+    "unit": "billion m^3",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-17 Erdgasreserven 2024!C25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "gas_production": {
+    "value": 4273.2,
+    "unit": "billion m^3/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-18 Erdgasförderung 2024!H25; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "hardcoal_stock": {
+    "value": 802334,
+    "unit": "Mt",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-23 Übersicht Hartkohle 2024!D87; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "hardcoal_production": {
+    "value": 8038.7,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-23 Übersicht Hartkohle 2024!C87; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "lignite_stock": {
+    "value": 319500,
+    "unit": "Mt",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-30 Übersicht Weichbraunkohle!D67; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "lignite_production": {
+    "value": 1142.8,
+    "unit": "Mt/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-30 Übersicht Weichbraunkohle!C67; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "uranium_lowcost_stock": {
+    "value": 1181,
+    "unit": "kt U",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-35 Übersicht Uran 2024!E65; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  },
+  "uranium_production": {
+    "value": 62.4,
+    "unit": "kt U/year",
+    "year": 2024,
+    "source": "bgr",
+    "notes": "A-35 Übersicht Uran 2024!C65; source attributed in our original data plot under lecturer data-reuse policy; not represented as CC-licensed."
+  }
+}

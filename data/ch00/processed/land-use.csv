@@ -1,0 +1,3 @@
+iso3,place,year,faostat_arable_ha_person,hyde_cropland_ha_person,source,licence_status
+AUT,Austria,2023,0.14474553,0.15801372,FAO via World Bank / PBL HYDE 3.5 via OWID,"FAO CC BY 4.0; OWID processing CC BY 4.0; HYDE source credited, no separate licence asserted"
+OWID_WRL,World,2023,0.17167939,0.20268911,FAO via World Bank / PBL HYDE 3.5 via OWID,"FAO CC BY 4.0; OWID processing CC BY 4.0; HYDE source credited, no separate licence asserted"

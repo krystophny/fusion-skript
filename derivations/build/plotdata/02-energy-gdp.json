@@ -1,0 +1,1706 @@
+{
+  "page": 2,
+  "observations": [
+    {
+      "iso3": "ABW",
+      "country": "Aruba",
+      "year": 2024,
+      "x": 45428.0027283518,
+      "y": 124.95653325908607,
+      "population": 107995,
+      "energy_kWh_person_year": 45609.134639566415
+    },
+    {
+      "iso3": "AFG",
+      "country": "Afghanistan",
+      "year": 2024,
+      "x": 1964.45228895456,
+      "y": 2.5344806257114216,
+      "population": 42647492,
+      "energy_kWh_person_year": 925.0854283846688
+    },
+    {
+      "iso3": "AGO",
+      "country": "Angola",
+      "year": 2024,
+      "x": 8752.7974709833,
+      "y": 7.286831581323601,
+      "population": 37885849,
+      "energy_kWh_person_year": 2659.693527183115
+    },
+    {
+      "iso3": "ALB",
+      "country": "Albania",
+      "year": 2024,
+      "x": 21640.9835773271,
+      "y": 29.4975527089285,
+      "population": 2377128,
+      "energy_kWh_person_year": 10766.606738758903
+    },
+    {
+      "iso3": "ARE",
+      "country": "United Arab Emirates",
+      "year": 2024,
+      "x": 69701.785835525,
+      "y": 366.7800374778305,
+      "population": 10986400,
+      "energy_kWh_person_year": 133874.71367940813
+    },
+    {
+      "iso3": "ARG",
+      "country": "Argentina",
+      "year": 2024,
+      "x": 26771.9657650571,
+      "y": 62.65871518561494,
+      "population": 45696159,
+      "energy_kWh_person_year": 22870.431042749453
+    },
+    {
+      "iso3": "ARM",
+      "country": "Armenia",
+      "year": 2024,
+      "x": 20078.7848984844,
+      "y": 44.95925718892209,
+      "population": 3033500,
+      "energy_kWh_person_year": 16410.128873956564
+    },
+    {
+      "iso3": "ATG",
+      "country": "Antigua and Barbuda",
+      "year": 2024,
+      "x": 29298.6474164727,
+      "y": 91.0845495620719,
+      "population": 93772,
+      "energy_kWh_person_year": 33245.86059015625
+    },
+    {
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2024,
+      "x": 60309.5831772339,
+      "y": 176.93870672962868,
+      "population": 27194286,
+      "energy_kWh_person_year": 64582.62795631446
+    },
+    {
+      "iso3": "AUT",
+      "country": "Austria",
+      "year": 2024,
+      "x": 63787.9891749462,
+      "y": 93.38229317304514,
+      "population": 9177982,
+      "energy_kWh_person_year": 34084.537008161475
+    },
+    {
+      "iso3": "AZE",
+      "country": "Azerbaijan",
+      "year": 2024,
+      "x": 22090.5298026929,
+      "y": 51.37950336675315,
+      "population": 10202830,
+      "energy_kWh_person_year": 18753.5187288649
+    },
+    {
+      "iso3": "BDI",
+      "country": "Burundi",
+      "year": 2024,
+      "x": 1048.05557098193,
+      "y": 0.7625782575124788,
+      "population": 14047786,
+      "energy_kWh_person_year": 278.3410639920548
+    },
+    {
+      "iso3": "BEL",
+      "country": "Belgium",
+      "year": 2024,
+      "x": 63311.2766917178,
+      "y": 154.56665675429008,
+      "population": 11858610,
+      "energy_kWh_person_year": 56416.82971531588
+    },
+    {
+      "iso3": "BEN",
+      "country": "Benin",
+      "year": 2024,
+      "x": 3901.32588494392,
+      "y": 5.9501973204027045,
+      "population": 14462724,
+      "energy_kWh_person_year": 2171.822021946987
+    },
+    {
+      "iso3": "BFA",
+      "country": "Burkina Faso",
+      "year": 2024,
+      "x": 2548.50247702504,
+      "y": 2.9109727055953627,
+      "population": 23548781,
+      "energy_kWh_person_year": 1062.5050375423075
+    },
+    {
+      "iso3": "BGD",
+      "country": "Bangladesh",
+      "year": 2024,
+      "x": 8486.78495660517,
+      "y": 9.107175789317182,
+      "population": 173562364,
+      "energy_kWh_person_year": 3324.1191631007714
+    },
+    {
+      "iso3": "BGR",
+      "country": "Bulgaria",
+      "year": 2024,
+      "x": 34221.3866940362,
+      "y": 80.99762802259374,
+      "population": 6441421,
+      "energy_kWh_person_year": 29564.134228246716
+    },
+    {
+      "iso3": "BHR",
+      "country": "Bahrain",
+      "year": 2024,
+      "x": 59060.1818363183,
+      "y": 421.36477290432634,
+      "population": 1588670,
+      "energy_kWh_person_year": 153798.14211007912
+    },
+    {
+      "iso3": "BHS",
+      "country": "The Bahamas",
+      "year": 2024,
+      "x": 36244.0500123244,
+      "y": 94.91298993076488,
+      "population": 401283,
+      "energy_kWh_person_year": 34643.24132472918
+    },
+    {
+      "iso3": "BIH",
+      "country": "Bosnia and Herzegovina",
+      "year": 2024,
+      "x": 20578.4995446816,
+      "y": 75.77160996548969,
+      "population": 3164253,
+      "energy_kWh_person_year": 27656.637637403735
+    },
+    {
+      "iso3": "BLR",
+      "country": "Belarus",
+      "year": 2024,
+      "x": 29135.9465139232,
+      "y": 87.44250765323953,
+      "population": 9132629,
+      "energy_kWh_person_year": 31916.515293432432
+    },
+    {
+      "iso3": "BLZ",
+      "country": "Belize",
+      "year": 2024,
+      "x": 12621.4081961897,
+      "y": 27.704763350969365,
+      "population": 417072,
+      "energy_kWh_person_year": 10112.238623103818
+    },
+    {
+      "iso3": "BMU",
+      "country": "Bermuda",
+      "year": 2024,
+      "x": 104299.944358815,
+      "y": 102.17562302910108,
+      "population": 64636,
+      "energy_kWh_person_year": 37294.10240562189
+    },
+    {
+      "iso3": "BOL",
+      "country": "Bolivia",
+      "year": 2024,
+      "x": 11329.1518061536,
+      "y": 25.699824514752514,
+      "population": 12413315,
+      "energy_kWh_person_year": 9380.435947884669
+    },
+    {
+      "iso3": "BRA",
+      "country": "Brazil",
+      "year": 2024,
+      "x": 19652.365499171,
+      "y": 40.4747626640987,
+      "population": 211998573,
+      "energy_kWh_person_year": 14773.288372396026
+    },
+    {
+      "iso3": "BRB",
+      "country": "Barbados",
+      "year": 2024,
+      "x": 21557.5276350385,
+      "y": 65.66052445028956,
+      "population": 282467,
+      "energy_kWh_person_year": 23966.091424355687
+    },
+    {
+      "iso3": "BRN",
+      "country": "Brunei",
+      "year": 2024,
+      "x": 79071.7333801445,
+      "y": 334.2006784462722,
+      "population": 462721,
+      "energy_kWh_person_year": 121983.24763288935
+    },
+    {
+      "iso3": "BTN",
+      "country": "Bhutan",
+      "year": 2024,
+      "x": 15603.8871298469,
+      "y": 61.596558329159144,
+      "population": 791524,
+      "energy_kWh_person_year": 22482.743790143086
+    },
+    {
+      "iso3": "BWA",
+      "country": "Botswana",
+      "year": 2024,
+      "x": 18107.614452913,
+      "y": 26.878845816848422,
+      "population": 2521139,
+      "energy_kWh_person_year": 9810.778723149673
+    },
+    {
+      "iso3": "CAF",
+      "country": "Central African Republic",
+      "year": 2024,
+      "x": 1111.21941638883,
+      "y": 0.9771248783811004,
+      "population": 5330690,
+      "energy_kWh_person_year": 356.65058060910167
+    },
+    {
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "x": 57534.0915185335,
+      "y": 246.73327944427913,
+      "population": 41262329,
+      "energy_kWh_person_year": 90057.64699716188
+    },
+    {
+      "iso3": "CHE",
+      "country": "Switzerland",
+      "year": 2024,
+      "x": 85448.0585577007,
+      "y": 79.56161928084873,
+      "population": 9005582,
+      "energy_kWh_person_year": 29039.991037509786
+    },
+    {
+      "iso3": "CHL",
+      "country": "Chile",
+      "year": 2024,
+      "x": 30267.6440919907,
+      "y": 55.01595816881356,
+      "population": 19764771,
+      "energy_kWh_person_year": 20080.82473161695
+    },
+    {
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2024,
+      "x": 23841.4769141817,
+      "y": 97.20823619893082,
+      "population": 1408975000,
+      "energy_kWh_person_year": 35481.00621260975
+    },
+    {
+      "iso3": "CIV",
+      "country": "Cote d'Ivoire",
+      "year": 2024,
+      "x": 6747.0379677706,
+      "y": 7.156384554067959,
+      "population": 31934230,
+      "energy_kWh_person_year": 2612.080362234805
+    },
+    {
+      "iso3": "CMR",
+      "country": "Cameroon",
+      "year": 2024,
+      "x": 4916.93354019494,
+      "y": 3.295203699804169,
+      "population": 29123744,
+      "energy_kWh_person_year": 1202.7493504285217
+    },
+    {
+      "iso3": "COD",
+      "country": "Congo-Kinshasa",
+      "year": 2024,
+      "x": 1601.70926640422,
+      "y": 0.8560604669497817,
+      "population": 109276265,
+      "energy_kWh_person_year": 312.4620704366703
+    },
+    {
+      "iso3": "COG",
+      "country": "Congo-Brazzaville",
+      "year": 2024,
+      "x": 6152.56509118442,
+      "y": 10.56971747283374,
+      "population": 6332961,
+      "energy_kWh_person_year": 3857.946877584315
+    },
+    {
+      "iso3": "COL",
+      "country": "Colombia",
+      "year": 2024,
+      "x": 18481.8374929368,
+      "y": 27.176024965776588,
+      "population": 52886363,
+      "energy_kWh_person_year": 9919.249112508454
+    },
+    {
+      "iso3": "COM",
+      "country": "Comoros",
+      "year": 2024,
+      "x": 3556.0384263801,
+      "y": 4.989706631907812,
+      "population": 866628,
+      "energy_kWh_person_year": 1821.2429206463514
+    },
+    {
+      "iso3": "CPV",
+      "country": "Cabo Verde",
+      "year": 2024,
+      "x": 9825.53410093619,
+      "y": 16.250741013838876,
+      "population": 524877,
+      "energy_kWh_person_year": 5931.5204700511895
+    },
+    {
+      "iso3": "CRI",
+      "country": "Costa Rica",
+      "year": 2024,
+      "x": 27325.0470476503,
+      "y": 26.37587136983028,
+      "population": 5129910,
+      "energy_kWh_person_year": 9627.193049988053
+    },
+    {
+      "iso3": "CYM",
+      "country": "Cayman Islands",
+      "year": 2024,
+      "x": 80996.6506641666,
+      "y": 130.7947844044182,
+      "population": 74457,
+      "energy_kWh_person_year": 47740.09630761264
+    },
+    {
+      "iso3": "CYP",
+      "country": "Cyprus",
+      "year": 2024,
+      "x": 52861.8359375,
+      "y": 60.99997525665539,
+      "population": 1358282,
+      "energy_kWh_person_year": 22264.990968679216
+    },
+    {
+      "iso3": "CZE",
+      "country": "Czechia",
+      "year": 2024,
+      "x": 47972.53171792,
+      "y": 107.68405296706135,
+      "population": 10905028,
+      "energy_kWh_person_year": 39304.679332977394
+    },
+    {
+      "iso3": "DEU",
+      "country": "Germany",
+      "year": 2024,
+      "x": 62654.602264023,
+      "y": 95.41825648722569,
+      "population": 83516593,
+      "energy_kWh_person_year": 34827.663617837374
+    },
+    {
+      "iso3": "DJI",
+      "country": "Djibouti",
+      "year": 2024,
+      "x": 6871.12440453129,
+      "y": 8.224347723192269,
+      "population": 1168722,
+      "energy_kWh_person_year": 3001.886918965178
+    },
+    {
+      "iso3": "DMA",
+      "country": "Dominica",
+      "year": 2024,
+      "x": 18739.3640404986,
+      "y": 32.04537383208802,
+      "population": 66205,
+      "energy_kWh_person_year": 11696.561448712126
+    },
+    {
+      "iso3": "DNK",
+      "country": "Denmark",
+      "year": 2024,
+      "x": 71034.5789667138,
+      "y": 77.4548139590614,
+      "population": 5976992,
+      "energy_kWh_person_year": 28271.00709505741
+    },
+    {
+      "iso3": "DOM",
+      "country": "Dominican Republic",
+      "year": 2024,
+      "x": 24229.8894872915,
+      "y": 33.56948112787933,
+      "population": 11427557,
+      "energy_kWh_person_year": 12252.860611675955
+    },
+    {
+      "iso3": "DZA",
+      "country": "Algeria",
+      "year": 2024,
+      "x": 15501.9197003966,
+      "y": 49.53285861719673,
+      "population": 46814308,
+      "energy_kWh_person_year": 18079.493395276808
+    },
+    {
+      "iso3": "ECU",
+      "country": "Ecuador",
+      "year": 2024,
+      "x": 13922.4222780744,
+      "y": 29.581771281080226,
+      "population": 18135478,
+      "energy_kWh_person_year": 10797.346517594282
+    },
+    {
+      "iso3": "EGY",
+      "country": "Egypt",
+      "year": 2024,
+      "x": 16798.151577838,
+      "y": 29.839254772488495,
+      "population": 116538258,
+      "energy_kWh_person_year": 10891.3279919583
+    },
+    {
+      "iso3": "ESP",
+      "country": "Spain",
+      "year": 2024,
+      "x": 48460.2914069661,
+      "y": 81.78605763636581,
+      "population": 48848840,
+      "energy_kWh_person_year": 29851.91103727352
+    },
+    {
+      "iso3": "EST",
+      "country": "Estonia",
+      "year": 2024,
+      "x": 41185.8348356109,
+      "y": 57.77304762154877,
+      "population": 1372341,
+      "energy_kWh_person_year": 21087.162381865302
+    },
+    {
+      "iso3": "ETH",
+      "country": "Ethiopia",
+      "year": 2024,
+      "x": 2892.22220162795,
+      "y": 1.8786510769487017,
+      "population": 132059767,
+      "energy_kWh_person_year": 685.7076430862761
+    },
+    {
+      "iso3": "FIN",
+      "country": "Finland",
+      "year": 2024,
+      "x": 55901.3202296588,
+      "y": 142.76813056511887,
+      "population": 5619911,
+      "energy_kWh_person_year": 52110.36765626838
+    },
+    {
+      "iso3": "FJI",
+      "country": "Fiji",
+      "year": 2024,
+      "x": 13592.4635937435,
+      "y": 30.001275762656533,
+      "population": 928784,
+      "energy_kWh_person_year": 10950.465653369634
+    },
+    {
+      "iso3": "FRA",
+      "country": "France",
+      "year": 2024,
+      "x": 54799.3482689389,
+      "y": 100.29302042605941,
+      "population": 68551653,
+      "energy_kWh_person_year": 36606.95245551169
+    },
+    {
+      "iso3": "FRO",
+      "country": "Faroe Islands",
+      "year": 2024,
+      "x": 72113.6513885269,
+      "y": 179.6256254775818,
+      "population": 54640,
+      "energy_kWh_person_year": 65563.35329931736
+    },
+    {
+      "iso3": "FSM",
+      "country": "Micronesia",
+      "year": 2024,
+      "x": 3911.26631940407,
+      "y": 16.999795204848166,
+      "population": 113160,
+      "energy_kWh_person_year": 6204.92524976958
+    },
+    {
+      "iso3": "GAB",
+      "country": "Gabon",
+      "year": 2024,
+      "x": 18923.6616609778,
+      "y": 18.529751905120083,
+      "population": 2538952,
+      "energy_kWh_person_year": 6763.359445368829
+    },
+    {
+      "iso3": "GBR",
+      "country": "United Kingdom",
+      "year": 2024,
+      "x": 53412.0647163589,
+      "y": 74.2957261756609,
+      "population": 69281000,
+      "energy_kWh_person_year": 27117.94005411623
+    },
+    {
+      "iso3": "GEO",
+      "country": "Georgia",
+      "year": 2024,
+      "x": 24146.6234108645,
+      "y": 51.43630577699278,
+      "population": 3812518,
+      "energy_kWh_person_year": 18774.251608602364
+    },
+    {
+      "iso3": "GHA",
+      "country": "Ghana",
+      "year": 2024,
+      "x": 7072.79879594445,
+      "y": 8.940662905399137,
+      "population": 34427414,
+      "energy_kWh_person_year": 3263.341960470685
+    },
+    {
+      "iso3": "GIN",
+      "country": "Guinea",
+      "year": 2024,
+      "x": 4016.34191385979,
+      "y": 4.0643003719006225,
+      "population": 14754785,
+      "energy_kWh_person_year": 1483.4696357437272
+    },
+    {
+      "iso3": "GMB",
+      "country": "Gambia, The",
+      "year": 2024,
+      "x": 3057.6841778633,
+      "y": 2.2839274307676782,
+      "population": 2759988,
+      "energy_kWh_person_year": 833.6335122302025
+    },
+    {
+      "iso3": "GNB",
+      "country": "Guinea-Bissau",
+      "year": 2024,
+      "x": 2717.54206972499,
+      "y": 1.8974074298386723,
+      "population": 2201352,
+      "energy_kWh_person_year": 692.5537118911153
+    },
+    {
+      "iso3": "GNQ",
+      "country": "Equatorial Guinea",
+      "year": 2024,
+      "x": 14997.7564392976,
+      "y": 44.97610425965842,
+      "population": 1892516,
+      "energy_kWh_person_year": 16416.278054775325
+    },
+    {
+      "iso3": "GRC",
+      "country": "Greece",
+      "year": 2024,
+      "x": 37474.2798239947,
+      "y": 79.4224971201086,
+      "population": 10405134,
+      "energy_kWh_person_year": 28989.21144883964
+    },
+    {
+      "iso3": "GRD",
+      "country": "Grenada",
+      "year": 2024,
+      "x": 17484.5153919556,
+      "y": 39.241146992165746,
+      "population": 117207,
+      "energy_kWh_person_year": 14323.018652140496
+    },
+    {
+      "iso3": "GTM",
+      "country": "Guatemala",
+      "year": 2024,
+      "x": 12643.9841235004,
+      "y": 14.877268612907878,
+      "population": 18406359,
+      "energy_kWh_person_year": 5430.203043711376
+    },
+    {
+      "iso3": "GUY",
+      "country": "Guyana",
+      "year": 2024,
+      "x": 70516.7027944836,
+      "y": 54.217293482655286,
+      "population": 831087,
+      "energy_kWh_person_year": 19789.31212116918
+    },
+    {
+      "iso3": "HKG",
+      "country": "Hong Kong",
+      "year": 2024,
+      "x": 66186.0448635456,
+      "y": 102.37347665880849,
+      "population": 7524100,
+      "energy_kWh_person_year": 37366.3189804651
+    },
+    {
+      "iso3": "HND",
+      "country": "Honduras",
+      "year": 2024,
+      "x": 6590.84384301553,
+      "y": 14.360685123831257,
+      "population": 10825703,
+      "energy_kWh_person_year": 5241.650070198409
+    },
+    {
+      "iso3": "HRV",
+      "country": "Croatia",
+      "year": 2024,
+      "x": 42828.7997273569,
+      "y": 65.9130820330126,
+      "population": 3866200,
+      "energy_kWh_person_year": 24058.274942049597
+    },
+    {
+      "iso3": "HTI",
+      "country": "Haiti",
+      "year": 2024,
+      "x": 2783.79140882788,
+      "y": 1.650093923954432,
+      "population": 11772557,
+      "energy_kWh_person_year": 602.2842822433677
+    },
+    {
+      "iso3": "HUN",
+      "country": "Hungary",
+      "year": 2024,
+      "x": 40747.1986679668,
+      "y": 79.25980391600069,
+      "population": 9562065,
+      "energy_kWh_person_year": 28929.828429340254
+    },
+    {
+      "iso3": "IDN",
+      "country": "Indonesia",
+      "year": 2024,
+      "x": 14470.7179806578,
+      "y": 32.2236541025337,
+      "population": 283487931,
+      "energy_kWh_person_year": 11761.6337474248
+    },
+    {
+      "iso3": "IND",
+      "country": "India",
+      "year": 2024,
+      "x": 9416.05137044735,
+      "y": 20.74678641649819,
+      "population": 1450935791,
+      "energy_kWh_person_year": 7572.577042021839
+    },
+    {
+      "iso3": "IRL",
+      "country": "Ireland",
+      "year": 2024,
+      "x": 118833.312071751,
+      "y": 89.61204449279685,
+      "population": 5395790,
+      "energy_kWh_person_year": 32708.396239870846
+    },
+    {
+      "iso3": "IRN",
+      "country": "Iran",
+      "year": 2024,
+      "x": 17484.1320140467,
+      "y": 122.41578646332503,
+      "population": 91567738,
+      "energy_kWh_person_year": 44681.76205911364
+    },
+    {
+      "iso3": "IRQ",
+      "country": "Iraq",
+      "year": 2024,
+      "x": 12725.0431260364,
+      "y": 50.83614047354655,
+      "population": 46042015,
+      "energy_kWh_person_year": 18555.191272844488
+    },
+    {
+      "iso3": "ISL",
+      "country": "Iceland",
+      "year": 2024,
+      "x": 68230.356652817,
+      "y": 232.72171329564645,
+      "population": 386506,
+      "energy_kWh_person_year": 84943.42535291096
+    },
+    {
+      "iso3": "ISR",
+      "country": "Israel",
+      "year": 2024,
+      "x": 47388.7236682364,
+      "y": 83.64868457550678,
+      "population": 10002200,
+      "energy_kWh_person_year": 30531.769870059972
+    },
+    {
+      "iso3": "ITA",
+      "country": "Italy",
+      "year": 2024,
+      "x": 53284.8745049149,
+      "y": 75.88199266441507,
+      "population": 58952704,
+      "energy_kWh_person_year": 27696.927322511496
+    },
+    {
+      "iso3": "JAM",
+      "country": "Jamaica",
+      "year": 2024,
+      "x": 11340.2638800451,
+      "y": 34.25890034452369,
+      "population": 2839175,
+      "energy_kWh_person_year": 12504.498625751146
+    },
+    {
+      "iso3": "JOR",
+      "country": "Jordan",
+      "year": 2024,
+      "x": 10468.265334284,
+      "y": 25.523845642542234,
+      "population": 11552876,
+      "energy_kWh_person_year": 9316.203659527915
+    },
+    {
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2024,
+      "x": 47479.8448545667,
+      "y": 101.45161355099494,
+      "population": 123975371,
+      "energy_kWh_person_year": 37029.83894611315
+    },
+    {
+      "iso3": "KAZ",
+      "country": "Kazakhstan",
+      "year": 2024,
+      "x": 35973.9633287017,
+      "y": 141.69574541850744,
+      "population": 20592571,
+      "energy_kWh_person_year": 51718.94707775521
+    },
+    {
+      "iso3": "KEN",
+      "country": "Kenya",
+      "year": 2024,
+      "x": 5841.59866001706,
+      "y": 4.593947457069391,
+      "population": 56432944,
+      "energy_kWh_person_year": 1676.790821830328
+    },
+    {
+      "iso3": "KGZ",
+      "country": "Kyrgyzstan",
+      "year": 2024,
+      "x": 7210.57669830499,
+      "y": 20.859058413346034,
+      "population": 7221868,
+      "energy_kWh_person_year": 7613.556320871302
+    },
+    {
+      "iso3": "KHM",
+      "country": "Cambodia",
+      "year": 2024,
+      "x": 7011.58146903703,
+      "y": 13.610884826548514,
+      "population": 17638801,
+      "energy_kWh_person_year": 4967.972961690208
+    },
+    {
+      "iso3": "KIR",
+      "country": "Kiribati",
+      "year": 2024,
+      "x": 3275.00186630433,
+      "y": 7.323427013420634,
+      "population": 134518,
+      "energy_kWh_person_year": 2673.050859898531
+    },
+    {
+      "iso3": "KNA",
+      "country": "Saint Kitts and Nevis",
+      "year": 2024,
+      "x": 30656.4410109367,
+      "y": 68.51270828479596,
+      "population": 46843,
+      "energy_kWh_person_year": 25007.13852395053
+    },
+    {
+      "iso3": "KOR",
+      "country": "South Korea",
+      "year": 2024,
+      "x": 55070.9386194121,
+      "y": 192.64051778783798,
+      "population": 51751065,
+      "energy_kWh_person_year": 70313.78899256088
+    },
+    {
+      "iso3": "KWT",
+      "country": "Kuwait",
+      "year": 2024,
+      "x": 46664.2195116056,
+      "y": 313.9980489597332,
+      "population": 4897263,
+      "energy_kWh_person_year": 114609.2878703026
+    },
+    {
+      "iso3": "LAO",
+      "country": "Laos",
+      "year": 2024,
+      "x": 8600.3245466568,
+      "y": 29.828197235847842,
+      "population": 7769819,
+      "energy_kWh_person_year": 10887.291991084463
+    },
+    {
+      "iso3": "LBN",
+      "country": "Lebanon",
+      "year": 2024,
+      "x": 10469.2210966932,
+      "y": 33.67223422557574,
+      "population": 5805962,
+      "energy_kWh_person_year": 12290.365492335148
+    },
+    {
+      "iso3": "LBR",
+      "country": "Liberia",
+      "year": 2024,
+      "x": 1646.05861366601,
+      "y": 1.5612398932410891,
+      "population": 5612817,
+      "energy_kWh_person_year": 569.8525610329975
+    },
+    {
+      "iso3": "LBY",
+      "country": "Libya",
+      "year": 2024,
+      "x": 12583.8338726816,
+      "y": 91.40541621176142,
+      "population": 7381023,
+      "energy_kWh_person_year": 33362.976917292915
+    },
+    {
+      "iso3": "LCA",
+      "country": "Saint Lucia",
+      "year": 2024,
+      "x": 24699.9694711589,
+      "y": 40.31822452816344,
+      "population": 179744,
+      "energy_kWh_person_year": 14716.151952779657
+    },
+    {
+      "iso3": "LKA",
+      "country": "Sri Lanka",
+      "year": 2024,
+      "x": 13793.0669827677,
+      "y": 8.633082179028516,
+      "population": 21916000,
+      "energy_kWh_person_year": 3151.0749953454083
+    },
+    {
+      "iso3": "LSO",
+      "country": "Lesotho",
+      "year": 2024,
+      "x": 2697.62738436647,
+      "y": 4.607400787867654,
+      "population": 2337423,
+      "energy_kWh_person_year": 1681.7012875716937
+    },
+    {
+      "iso3": "LTU",
+      "country": "Lithuania",
+      "year": 2024,
+      "x": 47462.0039386975,
+      "y": 69.61802805120078,
+      "population": 2888278,
+      "energy_kWh_person_year": 25410.58023868829
+    },
+    {
+      "iso3": "LUX",
+      "country": "Luxembourg",
+      "year": 2024,
+      "x": 128475.283540415,
+      "y": 181.71390949100604,
+      "population": 677012,
+      "energy_kWh_person_year": 66325.5769642172
+    },
+    {
+      "iso3": "LVA",
+      "country": "Latvia",
+      "year": 2024,
+      "x": 37615.0762450744,
+      "y": 50.847425061785096,
+      "population": 1866124,
+      "energy_kWh_person_year": 18559.31014755156
+    },
+    {
+      "iso3": "MAC",
+      "country": "Macau",
+      "year": 2024,
+      "x": 111693.502831434,
+      "y": 55.744009336529345,
+      "population": 687000,
+      "energy_kWh_person_year": 20346.563407833208
+    },
+    {
+      "iso3": "MAR",
+      "country": "Morocco",
+      "year": 2024,
+      "x": 9162.7470703125,
+      "y": 19.78841085170834,
+      "population": 38081173,
+      "energy_kWh_person_year": 7222.769960873544
+    },
+    {
+      "iso3": "MDA",
+      "country": "Moldova",
+      "year": 2024,
+      "x": 16393.8633257184,
+      "y": 41.01301338152031,
+      "population": 2402306,
+      "energy_kWh_person_year": 14969.74988425491
+    },
+    {
+      "iso3": "MDG",
+      "country": "Madagascar",
+      "year": 2024,
+      "x": 1659.15030770194,
+      "y": 1.4070378345842212,
+      "population": 31964956,
+      "energy_kWh_person_year": 513.5688096232407
+    },
+    {
+      "iso3": "MDV",
+      "country": "Maldives",
+      "year": 2024,
+      "x": 23034.4098404839,
+      "y": 40.25246688227559,
+      "population": 527799,
+      "energy_kWh_person_year": 14692.150412030589
+    },
+    {
+      "iso3": "MEX",
+      "country": "Mexico",
+      "year": 2024,
+      "x": 21970.3520412926,
+      "y": 47.79291386087876,
+      "population": 130861007,
+      "energy_kWh_person_year": 17444.413559220746
+    },
+    {
+      "iso3": "MKD",
+      "country": "North Macedonia",
+      "year": 2024,
+      "x": 24203.1855800189,
+      "y": 42.67689051008047,
+      "population": 1824359,
+      "energy_kWh_person_year": 15577.065036179369
+    },
+    {
+      "iso3": "MLI",
+      "country": "Mali",
+      "year": 2024,
+      "x": 2917.93245883671,
+      "y": 3.2494069412536426,
+      "population": 24478595,
+      "energy_kWh_person_year": 1186.0335335575794
+    },
+    {
+      "iso3": "MLT",
+      "country": "Malta",
+      "year": 2024,
+      "x": 62398.4892388947,
+      "y": 174.96189049305244,
+      "population": 568847,
+      "energy_kWh_person_year": 63861.090029964136
+    },
+    {
+      "iso3": "MMR",
+      "country": "Burma",
+      "year": 2024,
+      "x": 5276.29433987853,
+      "y": 7.051119231436646,
+      "population": 54500091,
+      "energy_kWh_person_year": 2573.6585194743757
+    },
+    {
+      "iso3": "MNE",
+      "country": "Montenegro",
+      "year": 2024,
+      "x": 28105.5927726624,
+      "y": 51.95842691986812,
+      "population": 623525,
+      "energy_kWh_person_year": 18964.82582575186
+    },
+    {
+      "iso3": "MNG",
+      "country": "Mongolia",
+      "year": 2024,
+      "x": 16842.6505873797,
+      "y": 59.721043600026434,
+      "population": 3524788,
+      "energy_kWh_person_year": 21798.18091400965
+    },
+    {
+      "iso3": "MOZ",
+      "country": "Mozambique",
+      "year": 2024,
+      "x": 1500.70758504856,
+      "y": 4.826877236393055,
+      "population": 34631766,
+      "energy_kWh_person_year": 1761.810191283465
+    },
+    {
+      "iso3": "MRT",
+      "country": "Mauritania",
+      "year": 2024,
+      "x": 6482.69016635936,
+      "y": 10.428943259735771,
+      "population": 5169395,
+      "energy_kWh_person_year": 3806.564289803556
+    },
+    {
+      "iso3": "MUS",
+      "country": "Mauritius",
+      "year": 2024,
+      "x": 27844.8956114831,
+      "y": 52.68912938383824,
+      "population": 1245779,
+      "energy_kWh_person_year": 19231.532225100957
+    },
+    {
+      "iso3": "MWI",
+      "country": "Malawi",
+      "year": 2024,
+      "x": 1634.24660266597,
+      "y": 1.093691821230175,
+      "population": 21655286,
+      "energy_kWh_person_year": 399.19751474901386
+    },
+    {
+      "iso3": "MYS",
+      "country": "Malaysia",
+      "year": 2024,
+      "x": 34116.2317848885,
+      "y": 97.97443202207614,
+      "population": 35557673,
+      "energy_kWh_person_year": 35760.667688057794
+    },
+    {
+      "iso3": "NAM",
+      "country": "Namibia",
+      "year": 2024,
+      "x": 10276.3686426386,
+      "y": 17.144264864793115,
+      "population": 3030131,
+      "energy_kWh_person_year": 6257.656675649487
+    },
+    {
+      "iso3": "NER",
+      "country": "Niger",
+      "year": 2024,
+      "x": 1795.65266888022,
+      "y": 1.4003630492320078,
+      "population": 27032412,
+      "energy_kWh_person_year": 511.13251296968286
+    },
+    {
+      "iso3": "NGA",
+      "country": "Nigeria",
+      "year": 2024,
+      "x": 7994.03754470824,
+      "y": 6.062856018688159,
+      "population": 232679478,
+      "energy_kWh_person_year": 2212.9424468211782
+    },
+    {
+      "iso3": "NIC",
+      "country": "Nicaragua",
+      "year": 2024,
+      "x": 7661.09410113202,
+      "y": 10.47327314283,
+      "population": 6916140,
+      "energy_kWh_person_year": 3822.7446971329496
+    },
+    {
+      "iso3": "NLD",
+      "country": "Netherlands",
+      "year": 2024,
+      "x": 70493.9051219267,
+      "y": 143.87364351629705,
+      "population": 17993485,
+      "energy_kWh_person_year": 52513.879883448426
+    },
+    {
+      "iso3": "NOR",
+      "country": "Norway",
+      "year": 2024,
+      "x": 94803.6704931641,
+      "y": 166.05998634081473,
+      "population": 5572279,
+      "energy_kWh_person_year": 60611.89501439738
+    },
+    {
+      "iso3": "NPL",
+      "country": "Nepal",
+      "year": 2024,
+      "x": 5047.42449022702,
+      "y": 4.866251172617418,
+      "population": 29651054,
+      "energy_kWh_person_year": 1776.1816780053575
+    },
+    {
+      "iso3": "NRU",
+      "country": "Nauru",
+      "year": 2024,
+      "x": 11957.8785504229,
+      "y": 87.92060184762093,
+      "population": 11947,
+      "energy_kWh_person_year": 32091.019674381638
+    },
+    {
+      "iso3": "NZL",
+      "country": "New Zealand",
+      "year": 2024,
+      "x": 48325.3650985684,
+      "y": 94.5018422776823,
+      "population": 5290000,
+      "energy_kWh_person_year": 34493.17243135404
+    },
+    {
+      "iso3": "OMN",
+      "country": "Oman",
+      "year": 2024,
+      "x": 36721.0804548374,
+      "y": 235.84001344727565,
+      "population": 5281538,
+      "energy_kWh_person_year": 86081.60490825561
+    },
+    {
+      "iso3": "PAK",
+      "country": "Pakistan",
+      "year": 2024,
+      "x": 5502.0736120186,
+      "y": 9.345640765959907,
+      "population": 251269164,
+      "energy_kWh_person_year": 3411.158879575366
+    },
+    {
+      "iso3": "PAN",
+      "country": "Panama",
+      "year": 2024,
+      "x": 36394.9235366316,
+      "y": 63.31536511389151,
+      "population": 4515577,
+      "energy_kWh_person_year": 23110.1082665704
+    },
+    {
+      "iso3": "PER",
+      "country": "Peru",
+      "year": 2024,
+      "x": 15708.8329440963,
+      "y": 24.517513371513346,
+      "population": 34217848,
+      "energy_kWh_person_year": 8948.89238060237
+    },
+    {
+      "iso3": "PHL",
+      "country": "Philippines",
+      "year": 2024,
+      "x": 10378.1717703535,
+      "y": 14.725903655800211,
+      "population": 115843670,
+      "energy_kWh_person_year": 5374.954834367077
+    },
+    {
+      "iso3": "PNG",
+      "country": "Papua New Guinea",
+      "year": 2024,
+      "x": 4292.71205430013,
+      "y": 8.482842400625332,
+      "population": 10576502,
+      "energy_kWh_person_year": 3096.237476228246
+    },
+    {
+      "iso3": "POL",
+      "country": "Poland",
+      "year": 2024,
+      "x": 45153.0439773281,
+      "y": 82.55687698720314,
+      "population": 36559233,
+      "energy_kWh_person_year": 30133.260100329146
+    },
+    {
+      "iso3": "PRI",
+      "country": "Puerto Rico",
+      "year": 2024,
+      "x": 44216.4333367133,
+      "y": 76.39222784792916,
+      "population": 3202521,
+      "energy_kWh_person_year": 27883.16316449414
+    },
+    {
+      "iso3": "PRT",
+      "country": "Portugal",
+      "year": 2024,
+      "x": 42228.1580446502,
+      "y": 58.474287731273186,
+      "population": 10694681,
+      "energy_kWh_person_year": 21343.115021914717
+    },
+    {
+      "iso3": "PRY",
+      "country": "Paraguay",
+      "year": 2024,
+      "x": 16367.4940166481,
+      "y": 21.665594831465526,
+      "population": 6929153,
+      "energy_kWh_person_year": 7907.942113484917
+    },
+    {
+      "iso3": "PSE",
+      "country": "Palestinian Territories",
+      "year": 2024,
+      "x": 4190.90911333626,
+      "y": 14.006453325534254,
+      "population": 5289152,
+      "energy_kWh_person_year": 5112.355463820002
+    },
+    {
+      "iso3": "QAT",
+      "country": "Qatar",
+      "year": 2024,
+      "x": 111314.250355891,
+      "y": 656.1240170904969,
+      "population": 2857822,
+      "energy_kWh_person_year": 239485.26623803136
+    },
+    {
+      "iso3": "ROU",
+      "country": "Romania",
+      "year": 2024,
+      "x": 40503.8323253789,
+      "y": 46.71022237120815,
+      "population": 19051804,
+      "energy_kWh_person_year": 17049.23116549097
+    },
+    {
+      "iso3": "RUS",
+      "country": "Russia",
+      "year": 2024,
+      "x": 41891.171875,
+      "y": 191.60557591500896,
+      "population": 143669648,
+      "energy_kWh_person_year": 69936.03520897827
+    },
+    {
+      "iso3": "RWA",
+      "country": "Rwanda",
+      "year": 2024,
+      "x": 3325.00769683815,
+      "y": 1.511053892689464,
+      "population": 14256567,
+      "energy_kWh_person_year": 551.5346708316545
+    },
+    {
+      "iso3": "SAU",
+      "country": "Saudi Arabia",
+      "year": 2024,
+      "x": 63194.4332528832,
+      "y": 270.0964892984686,
+      "population": 35300280,
+      "energy_kWh_person_year": 98585.21859394104
+    },
+    {
+      "iso3": "SDN",
+      "country": "Sudan",
+      "year": 2024,
+      "x": 1861.39794921875,
+      "y": 3.5111767020086333,
+      "population": 50448963,
+      "energy_kWh_person_year": 1281.5794962331513
+    },
+    {
+      "iso3": "SEN",
+      "country": "Senegal",
+      "year": 2024,
+      "x": 4477.81736836258,
+      "y": 7.3973338846756524,
+      "population": 18501984,
+      "energy_kWh_person_year": 2700.026867906613
+    },
+    {
+      "iso3": "SGP",
+      "country": "Singapore",
+      "year": 2024,
+      "x": 134548.764138482,
+      "y": 503.5050412799899,
+      "population": 6036860,
+      "energy_kWh_person_year": 183779.3400671963
+    },
+    {
+      "iso3": "SLB",
+      "country": "Solomon Islands",
+      "year": 2024,
+      "x": 2353.54960111186,
+      "y": 4.496998751403798,
+      "population": 819198,
+      "energy_kWh_person_year": 1641.4045442623865
+    },
+    {
+      "iso3": "SLE",
+      "country": "Sierra Leone",
+      "year": 2024,
+      "x": 3098.76290446676,
+      "y": 2.2083132216624413,
+      "population": 8642022,
+      "energy_kWh_person_year": 806.034325906791
+    },
+    {
+      "iso3": "SLV",
+      "country": "El Salvador",
+      "year": 2024,
+      "x": 11647.0234480127,
+      "y": 20.234920836749886,
+      "population": 6338193,
+      "energy_kWh_person_year": 7385.746105413708
+    },
+    {
+      "iso3": "SOM",
+      "country": "Somalia",
+      "year": 2024,
+      "x": 1409.33492233283,
+      "y": 0.9790352621158371,
+      "population": 19009151,
+      "energy_kWh_person_year": 357.3478706722806
+    },
+    {
+      "iso3": "SRB",
+      "country": "Serbia",
+      "year": 2024,
+      "x": 26900.7415340646,
+      "y": 70.66398575985168,
+      "population": 6586476,
+      "energy_kWh_person_year": 25792.354802345864
+    },
+    {
+      "iso3": "STP",
+      "country": "Sao Tome and Principe",
+      "year": 2024,
+      "x": 5511.87785469752,
+      "y": 8.629461860655084,
+      "population": 235536,
+      "energy_kWh_person_year": 3149.753579139105
+    },
+    {
+      "iso3": "SUR",
+      "country": "Suriname",
+      "year": 2024,
+      "x": 19179.101839106,
+      "y": 42.53394389897524,
+      "population": 634431,
+      "energy_kWh_person_year": 15524.889523125963
+    },
+    {
+      "iso3": "SVK",
+      "country": "Slovakia",
+      "year": 2024,
+      "x": 40302.4514288424,
+      "y": 98.35898479048606,
+      "population": 5422069,
+      "energy_kWh_person_year": 35901.029448527406
+    },
+    {
+      "iso3": "SVN",
+      "country": "Slovenia",
+      "year": 2024,
+      "x": 48658.0265180267,
+      "y": 88.37866740367433,
+      "population": 2127400,
+      "energy_kWh_person_year": 32258.213602341133
+    },
+    {
+      "iso3": "SWE",
+      "country": "Sweden",
+      "year": 2024,
+      "x": 62558.4065876041,
+      "y": 113.05394090477795,
+      "population": 10569709,
+      "energy_kWh_person_year": 41264.68843024394
+    },
+    {
+      "iso3": "SWZ",
+      "country": "Eswatini",
+      "year": 2024,
+      "x": 10386.2145717572,
+      "y": 15.361111515730707,
+      "population": 1242822,
+      "energy_kWh_person_year": 5606.805703241708
+    },
+    {
+      "iso3": "SYC",
+      "country": "Seychelles",
+      "year": 2024,
+      "x": 29288.019181519,
+      "y": 93.06913276570428,
+      "population": 121354,
+      "energy_kWh_person_year": 33970.233459482064
+    },
+    {
+      "iso3": "TCA",
+      "country": "Turks and Caicos Islands",
+      "year": 2024,
+      "x": 33390.5267148059,
+      "y": 112.30257753690329,
+      "population": 46535,
+      "energy_kWh_person_year": 40990.4408009697
+    },
+    {
+      "iso3": "TCD",
+      "country": "Chad",
+      "year": 2024,
+      "x": 2430.73298355271,
+      "y": 1.0480561385749516,
+      "population": 20299123,
+      "energy_kWh_person_year": 382.54049057985736
+    },
+    {
+      "iso3": "TGO",
+      "country": "Togo",
+      "year": 2024,
+      "x": 3351.24993111939,
+      "y": 4.162735786088823,
+      "population": 8406558,
+      "energy_kWh_person_year": 1519.3985619224202
+    },
+    {
+      "iso3": "THA",
+      "country": "Thailand",
+      "year": 2024,
+      "x": 21882.2142474833,
+      "y": 61.00083221045,
+      "population": 71668011,
+      "energy_kWh_person_year": 22265.30375681425
+    },
+    {
+      "iso3": "TJK",
+      "country": "Tajikistan",
+      "year": 2024,
+      "x": 4755.93296704719,
+      "y": 13.814313023416645,
+      "population": 10590927,
+      "energy_kWh_person_year": 5042.224253547076
+    },
+    {
+      "iso3": "TKM",
+      "country": "Turkmenistan",
+      "year": 2024,
+      "x": 18470.7438450744,
+      "y": 198.30265154274616,
+      "population": 7494498,
+      "energy_kWh_person_year": 72380.46781310235
+    },
+    {
+      "iso3": "TLS",
+      "country": "Timor-Leste ",
+      "year": 2024,
+      "x": 3890.95754653453,
+      "y": 5.432155130013571,
+      "population": 1400638,
+      "energy_kWh_person_year": 1982.7366224549532
+    },
+    {
+      "iso3": "TON",
+      "country": "Tonga",
+      "year": 2024,
+      "x": 7180.98743332878,
+      "y": 24.246018434365205,
+      "population": 104175,
+      "energy_kWh_person_year": 8849.796728543299
+    },
+    {
+      "iso3": "TTO",
+      "country": "Trinidad and Tobago",
+      "year": 2024,
+      "x": 31960.1568888983,
+      "y": 368.0057495980335,
+      "population": 1368333,
+      "energy_kWh_person_year": 134322.09860328224
+    },
+    {
+      "iso3": "TUN",
+      "country": "Tunisia",
+      "year": 2024,
+      "x": 12774.9158568021,
+      "y": 27.46328906162153,
+      "population": 12277109,
+      "energy_kWh_person_year": 10024.10050749186
+    },
+    {
+      "iso3": "TUR",
+      "country": "Turkiye",
+      "year": 2024,
+      "x": 36154.490436557,
+      "y": 60.16521654373291,
+      "population": 85518661,
+      "energy_kWh_person_year": 21960.304038462513
+    },
+    {
+      "iso3": "TZA",
+      "country": "Tanzania",
+      "year": 2024,
+      "x": 3713.26293945313,
+      "y": 3.1643506177805456,
+      "population": 68560157,
+      "energy_kWh_person_year": 1154.9879754898989
+    },
+    {
+      "iso3": "UGA",
+      "country": "Uganda",
+      "year": 2024,
+      "x": 2879.67009290376,
+      "y": 1.745233241998678,
+      "population": 50015092,
+      "energy_kWh_person_year": 637.0101333295175
+    },
+    {
+      "iso3": "UKR",
+      "country": "Ukraine",
+      "year": 2024,
+      "x": 16371.44140625,
+      "y": 48.555133950182366,
+      "population": 37860221,
+      "energy_kWh_person_year": 17722.623891816565
+    },
+    {
+      "iso3": "URY",
+      "country": "Uruguay",
+      "year": 2024,
+      "x": 32149.480073986,
+      "y": 43.28980151120997,
+      "population": 3386588,
+      "energy_kWh_person_year": 15800.77755159164
+    },
+    {
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "x": 75698.1773354629,
+      "y": 223.29752216497792,
+      "population": 340003797,
+      "energy_kWh_person_year": 81503.59559021694
+    },
+    {
+      "iso3": "UZB",
+      "country": "Uzbekistan",
+      "year": 2024,
+      "x": 10997.1707291644,
+      "y": 50.67757601341505,
+      "population": 36361859,
+      "energy_kWh_person_year": 18497.31524489649
+    },
+    {
+      "iso3": "VCT",
+      "country": "Saint Vincent/Grenadines",
+      "year": 2024,
+      "x": 18714.198849353,
+      "y": 31.020870722424977,
+      "population": 100616,
+      "energy_kWh_person_year": 11322.617813685118
+    },
+    {
+      "iso3": "VNM",
+      "country": "Vietnam",
+      "year": 2024,
+      "x": 14396.4217369473,
+      "y": 32.84395241529258,
+      "population": 100987686,
+      "energy_kWh_person_year": 11988.04263158179
+    },
+    {
+      "iso3": "VUT",
+      "country": "Vanuatu",
+      "year": 2024,
+      "x": 3837.03937446048,
+      "y": 11.29854367655924,
+      "population": 327777,
+      "energy_kWh_person_year": 4123.968441944122
+    },
+    {
+      "iso3": "WSM",
+      "country": "Samoa",
+      "year": 2024,
+      "x": 7687.23425552485,
+      "y": 18.279208213074853,
+      "population": 218019,
+      "energy_kWh_person_year": 6671.910997772322
+    },
+    {
+      "iso3": "ZAF",
+      "country": "South Africa",
+      "year": 2024,
+      "x": 13597.6538495998,
+      "y": 67.66813880708955,
+      "population": 64007187,
+      "energy_kWh_person_year": 24698.87066458768
+    },
+    {
+      "iso3": "ZMB",
+      "country": "Zambia",
+      "year": 2024,
+      "x": 3708.06904295647,
+      "y": 6.551710277116795,
+      "population": 21314956,
+      "energy_kWh_person_year": 2391.3742511476303
+    },
+    {
+      "iso3": "ZWE",
+      "country": "Zimbabwe",
+      "year": 2024,
+      "x": 5211.89755587954,
+      "y": 11.121192676836023,
+      "population": 16634373,
+      "energy_kWh_person_year": 4059.2353270451486
+    }
+  ],
+  "units": {
+    "x": "constant 2021 international dollar/(person year)",
+    "y": "kWh/(person day)",
+    "bubble_area": "person"
+  },
+  "bubble_rule": "Marker area, not radius, proportional to population.",
+  "notes": "All 188 EIA countries/economies with positive matching 2024 WDI GDP PPP and population. 41 EIA country records excluded with reasons in processed/energy-gdp-exclusions.json. EIA primary-energy accounting differs from Austria gross inland consumption; 365-day normalization even for leap years.",
+  "source": "EIA International annual primary energy consumption, 2024 (public domain); World Bank WDI GDP PPP NY.GDP.PCAP.PP.KD and population SP.POP.TOTL, 2024 (CC BY 4.0). Accessed 2026-10-06.",
+  "licence_status": "cleared"
+}

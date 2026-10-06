@@ -1,0 +1,86 @@
+{
+  "page": 11,
+  "Austria_km2": 83884.0,
+  "Austria_km2_person": 0.009113407198876274,
+  "scenarios": [
+    {
+      "boundary": "final",
+      "technology": "biofuel",
+      "density_W_m2": 0.5,
+      "area_km2_person": 0.007263021247891069,
+      "national_area_km2": 66852.19491050702,
+      "fraction_of_Austria": 0.796960027067224
+    },
+    {
+      "boundary": "final",
+      "technology": "wind",
+      "density_W_m2": 2,
+      "area_km2_person": 0.0018157553119727673,
+      "national_area_km2": 16713.048727626756,
+      "fraction_of_Austria": 0.199240006766806
+    },
+    {
+      "boundary": "final",
+      "technology": "solar_low",
+      "density_W_m2": 10,
+      "area_km2_person": 0.0003631510623945534,
+      "national_area_km2": 3342.609745525351,
+      "fraction_of_Austria": 0.0398480013533612
+    },
+    {
+      "boundary": "final",
+      "technology": "solar_high",
+      "density_W_m2": 20,
+      "area_km2_person": 0.0001815755311972767,
+      "national_area_km2": 1671.3048727626756,
+      "fraction_of_Austria": 0.0199240006766806
+    },
+    {
+      "boundary": "gross_inland",
+      "technology": "biofuel",
+      "density_W_m2": 0.5,
+      "area_km2_person": 0.00933383725425867,
+      "national_area_km2": 85912.93982044136,
+      "fraction_of_Austria": 1.0241874471942367
+    },
+    {
+      "boundary": "gross_inland",
+      "technology": "wind",
+      "density_W_m2": 2,
+      "area_km2_person": 0.0023334593135646677,
+      "national_area_km2": 21478.23495511034,
+      "fraction_of_Austria": 0.2560468617985592
+    },
+    {
+      "boundary": "gross_inland",
+      "technology": "solar_low",
+      "density_W_m2": 10,
+      "area_km2_person": 0.00046669186271293346,
+      "national_area_km2": 4295.6469910220685,
+      "fraction_of_Austria": 0.05120937235971185
+    },
+    {
+      "boundary": "gross_inland",
+      "technology": "solar_high",
+      "density_W_m2": 20,
+      "area_km2_person": 0.00023334593135646673,
+      "national_area_km2": 2147.8234955110343,
+      "fraction_of_Austria": 0.025604686179855923
+    }
+  ],
+  "corn_ethanol": {
+    "crop": "US corn → dry-mill ethanol (gross fuel energy)",
+    "density_W_m2": 0.3167996046101724,
+    "final_energy_area_m2_person": 11463.116023816296,
+    "final_energy_area_km2_person": 0.011463116023816295,
+    "Austria_area_km2": 105511.80294680267,
+    "fraction_of_Austria": 1.2578298954127445,
+    "vs_2_W_m2_wind": 6.313139192395886,
+    "vs_10_W_m2_solar": 31.565695961979433,
+    "vs_20_W_m2_solar": 63.131391923958866,
+    "notes": "Gross ethanol LHV per harvested acre, before farm/distillery energy, land-use change and allocation of distillers grains; US crop yield is not an Austrian biofuel yield."
+  },
+  "notes": "Prescribed delivered densities, not predictions. The corn-to-ethanol chain is a separate gross fuel-energy estimate and should not be mistaken for the 0.5 W/m² area-budget scenario. Food competition depends on the crop, land quality, coproduct allocation and counterfactual; dedicated energy crops can displace food production or ecosystems.",
+  "source": "Statistics Austria 2025 energy/population; Austrian ministry area 83,884 km²; FAO/WDI 2023 arable land; USDA 2024 corn yield; DOE ethanol yield/LHV; own SymPy calculation.",
+  "licence_status": "Statistics Austria data reused with attribution per lecturer policy; USDA/DOE numerical facts are US public domain; original calculation."
+}
