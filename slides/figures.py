@@ -294,8 +294,123 @@ def true_scale():
     save(fig, "true_scale")
 
 
+def csv_rows(name):
+    import csv
+    lines = [l for l in (ROOT / "data/ch00/processed" / name).read_text().splitlines() if not l.startswith("#")]
+    return list(csv.DictReader(lines))
+
+
+def austria_mix():
+    """Gross inland energy by carrier and final energy by sector, Austria 2025."""
+    d = load("05-austria-flow")
+    label = {n["id"]: n["label"] for n in d["nodes"]}
+    prim = [(label[l["source"]], l["value"]) for l in d["links"] if l["target"] == "gross"]
+    sect = {}
+    for l in d["links"]:
+        if l["target"].startswith("sector_"):
+            sect[label[l["target"]]] = sect.get(label[l["target"]], 0) + l["value"]
+    prim.sort(key=lambda r: -r[1])
+    sect = sorted(sect.items(), key=lambda r: -r[1])
+    fig, ax = plt.subplots(figsize=(257 * MM, 122 * MM))
+    pal = [BLUE, "#3D8CC4", "#6FAAD4", "#9CC5E4", "#C2DBEE", "#DCE9F5"]
+    for row, items, cols in ((1, prim, pal), (0, sect, [ORANGE, "#C9733A", "#D98A55", "#E7A97F", "#F2CDB4"])):
+        left = 0
+        for k, ((name, v), c) in enumerate(zip(items, cols)):
+            ax.barh(row, v, left=left, color=c, edgecolor="white", height=0.5)
+            if v > 9:
+                ax.text(left + v / 2, row, f"{name}\n{v:.0f}", ha="center", va="center",
+                        fontsize=13, color="white" if k < 2 else INK, linespacing=1.1)
+            left += v
+        ax.text(left + 1.5, row, f"{left:.0f}", va="center", fontsize=18,
+                color=BLUE if row else ORANGE)
+    ax.set_yticks([0, 1], ["final energy\nby sector", "gross inland\nby carrier"])
+    ax.set_xlim(0, 125)
+    ax.set_ylim(-0.5, 1.5)
+    ax.set_xlabel("energy [kWh/(person d)], Austria 2025 (preliminary)")
+    ax.spines["left"].set_visible(False)
+    ax.tick_params(axis="y", length=0)
+    fig.subplots_adjust(left=0.15, right=0.98, bottom=0.17, top=0.98)
+    save(fig, "austria_mix")
+
+
+def land_density():
+    """Average power per land area: why biofuel loses."""
+    rows = [("corn ethanol", 0.317, GREEN), ("wind", 2, BLUE), ("solar PV, park", 10, ORANGE),
+            ("solar PV, module", 20, ORANGE)]
+    land = {r["place"]: float(r["faostat_arable_ha_person"]) for r in csv_rows("land-use.csv")}
+    fig, ax = plt.subplots(figsize=(257 * MM, 112 * MM))
+    ys = np.arange(len(rows))[::-1]
+    ax.barh(ys, [r[1] for r in rows], color=[r[2] for r in rows], height=0.6)
+    for yy, r in zip(ys, rows):
+        ax.text(r[1] * 1.15, yy, f"{r[1]:g} W/m²", va="center", fontsize=17)
+    ax.set_xscale("log")
+    ax.set_xlim(0.1, 100)
+    ax.set_yticks(ys, [r[0] for r in rows])
+    ax.set_xlabel("average power per land area [W/m²]")
+    ax.text(0.99, 0.97, f"arable land: world {land['World'] * 1e4:.0f} m², Austria {land['Austria'] * 1e4:.0f} m² per person (2023)",
+            transform=ax.transAxes, ha="right", va="top", fontsize=14, color=MUTED)
+    ax.spines["left"].set_visible(False)
+    ax.tick_params(axis="y", length=0)
+    fig.subplots_adjust(left=0.2, right=0.98, bottom=0.17, top=0.97)
+    save(fig, "land_density")
+
+
+def risk():
+    """Birds killed per year by cause (USA) and deaths per TWh of electricity."""
+    birds = [r for r in csv_rows("wildlife-risk.csv") if r["unit"] == "birds/year"]
+    deaths = sorted(csv_rows("energy-deaths-per-TWh.csv"), key=lambda r: float(r["deaths_per_TWh"]))
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(257 * MM, 122 * MM))
+    names = {"Free-ranging domestic cats": "cats", "Building collisions": "buildings",
+             "Vehicle collisions": "vehicles", "Power lines, collision + electrocution": "power lines",
+             "Wind turbine collisions, monopole estimate": "wind turbines"}
+    for k, r in enumerate(birds):
+        lo, hi = float(r["low"]), float(r["high"])
+        c = ORANGE if "Wind" in r["cause"] else BLUE
+        a1.plot([lo, hi], [k, k], color=c, lw=9, solid_capstyle="butt")
+    a1.set_yticks(range(len(birds)), [names.get(r["cause"], r["cause"]) for r in birds])
+    a1.invert_yaxis()
+    a1.set_xscale("log")
+    a1.set_xlim(5e4, 1e10)
+    a1.set_xlabel("birds killed per year, USA")
+    a2.barh(range(len(deaths)), [float(r["deaths_per_TWh"]) for r in deaths],
+            color=[ORANGE if r["source_type"] in ("Solar", "Wind", "Nuclear", "Hydropower") else GREY for r in deaths],
+            height=0.6)
+    for k, r in enumerate(deaths):
+        v = float(r["deaths_per_TWh"])
+        a2.text(v * 1.2, k, f"{v:g}", va="center", fontsize=14)
+    a2.set_yticks(range(len(deaths)), [r["source_type"].lower() for r in deaths])
+    a2.set_xscale("log")
+    a2.set_xlim(0.01, 200)
+    a2.set_xlabel("deaths per TWh of electricity")
+    for a in (a1, a2):
+        a.spines["left"].set_visible(False)
+        a.tick_params(axis="y", length=0, labelsize=15)
+    fig.subplots_adjust(left=0.13, right=0.98, bottom=0.16, top=0.97, wspace=0.45)
+    save(fig, "risk")
+
+
+def lifecycle():
+    """Life-cycle greenhouse emissions per kWh: median and range of studies."""
+    rows = sorted(csv_rows("lifecycle-emissions.csv"), key=lambda r: float(r["median_gCO2eq_kWh"]))
+    fig, ax = plt.subplots(figsize=(257 * MM, 122 * MM))
+    for k, r in enumerate(rows):
+        lo, med, hi = (float(r[c]) for c in ("min_gCO2eq_kWh", "median_gCO2eq_kWh", "max_gCO2eq_kWh"))
+        c = GREY if med > 200 else BLUE
+        ax.plot([lo, hi], [k, k], color=c, lw=2.2)
+        ax.scatter([med], [k], color=c, s=70, zorder=3)
+        ax.text(hi * 1.15, k, f"{med:.0f}", va="center", fontsize=15, color=c)
+    ax.set_yticks(range(len(rows)), [r["technology"].replace("Concentrating solar power", "solar thermal (CSP)") for r in rows])
+    ax.set_xscale("log")
+    ax.set_xlim(0.4, 4000)
+    ax.set_xlabel("life-cycle emissions [g CO₂-eq per kWh electricity]; dot: median of studies")
+    ax.spines["left"].set_visible(False)
+    ax.tick_params(axis="y", length=0, labelsize=15)
+    fig.subplots_adjust(left=0.22, right=0.98, bottom=0.15, top=0.98)
+    save(fig, "lifecycle")
+
+
 if __name__ == "__main__":
     style()
-    for fn in (energy_gdp, micro_macro, resources, solar_chain, pv_prices, area_budget, fuel_mass, true_scale):
+    for fn in (energy_gdp, micro_macro, resources, solar_chain, pv_prices, area_budget, fuel_mass, true_scale, austria_mix, land_density, risk, lifecycle):
         fn()
         print("wrote", fn.__name__)

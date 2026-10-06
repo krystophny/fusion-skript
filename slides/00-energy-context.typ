@@ -30,11 +30,11 @@
 
 #photo-page("earth-at-night-2016.jpg", [NASA Earth Observatory / Suomi NPP VIIRS, public domain], "photo-night")
 
-#slide(title: [Energy and income])[
+#slide(section: "standards-living", title: [Energy and income])[
   #at(1, 12, y: -2mm, deck-fig("energy_gdp"))
 ]
 #stove-page()
-#slide(title: [Two numbers to remember])[
+#slide(section: "standards-living", title: [Two numbers to remember])[
   #at(1, 6, y: 16mm, named(text(size: result-size, $91.9 %$), [of humanity has electricity (2024)]))
   #at(7, 6, y: 16mm, named(text(size: result-size, $approx 50 times$), [energy per person: Austria vs Ethiopia]))
   #at(1, 12, y: 100mm, align(center, text(fill: muted)[monthly income in PPP dollars per adult (Dollar Street); World Bank WDI, EIA]))
@@ -49,6 +49,10 @@
 #slide(section: "energy-demand", title: [Micro and macro])[
   #at(1, 12, y: 0mm, deck-fig("micro_macro"))
   #at(1, 12, y: 128mm, align(center, text(fill: muted)[gross inland = primary; final = delivered to users; Austria 2025, Statistics Austria (preliminary)]))
+]
+#slide(section: "energy-demand", title: [Austria's energy mix])[
+  #at(1, 12, y: 0mm, deck-fig("austria_mix"))
+  #at(1, 12, y: 128mm, align(center, text(fill: muted)[gross inland − conversion and grid losses − non-energy use = final energy; Statistics Austria 2025]))
 ]
 
 #slide(section: "energy-resources", title: [How long do reserves last?])[
@@ -71,10 +75,6 @@
   #at(1, 12, y: -4mm, deck-fig("true_scale"))
   #at(1, 12, y: 132mm, text(size: small-size, fill: muted)[Contains modified Copernicus Sentinel data 2025 (Sentinel-2A, 11 Sep 2025); Graz boundary: Stadt Graz, data.graz.gv.at, CC BY 4.0; park data: EnBW (2021), expected yield 180 GWh/a.])
 ]
-#slide(section: "energy-area", title: [Solar became cheap])[
-  #at(1, 12, y: 0mm, deck-fig("pv_prices"))
-  #at(1, 12, y: 134mm, align(center, text(fill: muted)[module prices: Nemet (2009), Farmer & Lafond (2016), IRENA, via Our World in Data]))
-]
 #photo-page("wind-freilaenderalm.jpg", [Naturpuur, Wikimedia Commons, CC BY-SA 4.0], "photo-wind")
 #slide(section: "energy-area", title: [Wind power per area])[
   #at(1, 12, y: 20mm, align(center, text(size: result-size,
@@ -83,6 +83,14 @@
 ]
 #slide(section: "energy-area", title: [Land for Austria's energy])[
   #at(1, 12, y: 0mm, deck-fig("area_budget"))
+]
+#slide(section: "energy-area", title: [Food or fuel?])[
+  #at(1, 12, y: 0mm, deck-fig("land_density"))
+  #at(1, 12, y: 122mm, align(center, text(fill: muted)[FAO arable land via World Bank; USDA corn yield, DOE ethanol energy; wind and solar: stated scenarios]))
+]
+#slide(section: "solar-learning", title: [Solar became cheap])[
+  #at(1, 12, y: 0mm, deck-fig("pv_prices"))
+  #at(1, 12, y: 134mm, align(center, text(fill: muted)[module prices: Nemet (2009), Farmer & Lafond (2016), IRENA, via Our World in Data]))
 ]
 
 #slide(section: "energy-deployment", title: [Fuel for one gigawatt-year])[
@@ -95,11 +103,19 @@
   #at(7, 6, y: 18mm, named(text(size: result-size, $33 "/a"$), [world record of new grid connections]))
   #at(1, 12, y: 100mm, align(center, text(fill: muted)[fuel is not the limit: plants, materials and construction rate are]))
 ]
-#photo-page("jet-vessel-interior.jpg", [EUROfusion, Wikimedia Commons, CC BY 4.0], "photo-jet")
+#slide(section: "environmental-risk", title: [Perceived and measured risk])[
+  #at(1, 12, y: 0mm, deck-fig("risk"))
+  #at(1, 12, y: 130mm, align(center, text(fill: muted)[birds: Loss et al. (2013, 2014), USA; deaths: Markandya & Wilkinson (2007), Sovacool et al. (2016), via Our World in Data]))
+]
+#slide(section: "lifecycle-emissions", title: [Is anything CO#sub[2]-free?])[
+  #at(1, 12, y: 0mm, deck-fig("lifecycle"))
+  #at(1, 12, y: 130mm, align(center, text(fill: muted)[DOE/NREL/ALLIANCE Life Cycle Emissions Factors; no source is zero over its life cycle, some are low-carbon]))
+]
+#photo-page("jet-vessel-interior.jpg", [EUROfusion, Wikimedia Commons, CC BY 4.0], "photo-jet", section: "fusion-bridge")
 
 #credits-page((
   ("photo-night", [NASA Earth Observatory, Black Marble 2016, public domain], "science.nasa.gov/earth/earth-observatory/earth-at-night"),
   ("photo-stoves", [Dollar Street, Gapminder, CC BY 4.0], "gapminder.org/dollar-street"),
   ("photo-wind", [Naturpuur, Windpark Freiländeralm, CC BY-SA 4.0], "commons.wikimedia.org"),
   ("photo-jet", [EUROfusion, JET vessel internal view, CC BY 4.0], "commons.wikimedia.org/wiki/File:JET_vessel_internal_view.jpg"),
-), [Data: EIA (public domain); World Bank WDI (CC BY 4.0); Statistics Austria; BGR; IAEA/NEA (CC BY 4.0); PVGIS (EU JRC); Our World in Data (CC BY 4.0); Copernicus Sentinel-2; Stadt Graz OGD (CC BY 4.0). \ Plots and calculations: Christopher Albert, CC BY 4.0. Method after D. MacKay, Sustainable Energy — without the hot air (2009).])
+), [Data: EIA (public domain); World Bank WDI (CC BY 4.0); Statistics Austria; BGR; IAEA/NEA (CC BY 4.0); PVGIS (EU JRC); Our World in Data (CC BY 4.0); FAO; USDA; DOE/NREL/ALLIANCE; Loss et al.; Copernicus Sentinel-2; Stadt Graz OGD (CC BY 4.0). \ Plots and calculations: Christopher Albert, CC BY 4.0. Method after D. MacKay, Sustainable Energy — without the hot air (2009).])
