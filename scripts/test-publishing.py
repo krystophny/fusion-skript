@@ -85,6 +85,17 @@ def test_physical_pages_and_course_identity(course):
     assert '"fusion-physics-present-v1"' in (output / "sw.js").read_text()
 
 
+def test_link_query_ampersand_keeps_pages_well_formed(course):
+    source = course / "slides/00-fixture.typ"
+    source.write_text(source.read_text().replace(
+        "First]", 'First #link("https://example.org/faq.php?id=107&t=3")[source]]'))
+    present.build(args(course))
+    page = course / "public/present/00-fixture/page-1.svg"
+    root = present.ET.parse(page).getroot()
+    hrefs = [a.get("href") for a in root.iter("{http://www.w3.org/2000/svg}a")]
+    assert "https://example.org/faq.php?id=107&t=3" in hrefs
+
+
 def test_strict_missing_page_preserves_previous_build(course):
     present.build(args(course))
     marker = course / "public/present/marker.txt"

@@ -30,6 +30,19 @@ def revision(path, relative):
     return quote(relative, safe="/.-_") + "?v=" + digest(path)
 
 
+BARE_AMP = re.compile(r"&(?!(?:[A-Za-z][A-Za-z0-9]*|#[0-9]+|#x[0-9A-Fa-f]+);)")
+
+
+def repair_svg(path):
+    # Typst writes link URLs such as ?id=107&t=3 with a bare "&"; browsers
+    # then reject the page as malformed XML and show a broken image.
+    text = path.read_text()
+    fixed = BARE_AMP.sub("&amp;", text)
+    if fixed != text:
+        path.write_text(fixed)
+    ET.parse(path)
+
+
 def write_json(path, data):
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 
@@ -114,6 +127,8 @@ def build(args):
             files = sorted(deck.glob("page-*.svg"), key=lambda p: int(p.stem.split("-")[-1]))
             if not files:
                 raise ValueError("No SVG pages produced: " + stem)
+            for svg in files:
+                repair_svg(svg)
             per_page = {}
             for record in records:
                 number = record["page"]
