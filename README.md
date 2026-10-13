@@ -88,8 +88,7 @@ after the Actions checks pass.
 | Energy presenter | <https://krystophny.github.io/fusion-skript/present/00-energy-context/> |
 | TU Graz mirror | <https://gitlab.tugraz.at/plasma/proj/teaching/fusion-skript> |
 
-The workflow builds Typst from a pinned main commit (`TYPST_REV`; 0.15.1
-breaks SVG pages whose links contain `&`), checks derivations and publishing behavior,
+The workflow pins Typst 0.15.1, checks derivations and publishing behavior,
 builds the site, decks and presenter, and uploads `public/`. Pull requests
 build without deploying. Plasma's separate Nix workflow checks its flake and
 VM; Fusion has no such project contract.

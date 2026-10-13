@@ -30,13 +30,18 @@ def revision(path, relative):
     return quote(relative, safe="/.-_") + "?v=" + digest(path)
 
 
-def check_svg(path):
-    # Browsers show a malformed SVG page as a broken image; Typst 0.15.1 wrote
-    # bare "&" in link URLs (typst#8672), so reject such pages at build time.
-    try:
-        ET.parse(path)
-    except ET.ParseError as error:
-        raise ValueError(f"Malformed SVG page {path}: {error}") from error
+BARE_AMP = re.compile(r"&(?!(?:[A-Za-z][A-Za-z0-9]*|#[0-9]+|#x[0-9A-Fa-f]+);)")
+
+
+def repair_svg(path):
+    # Typst 0.15.1 writes link URLs such as ?id=107&t=3 with a bare "&"
+    # (typst#8672, fixed on main by typst#8510); browsers then reject the page
+    # as malformed XML and show a broken image.
+    text = path.read_text()
+    fixed = BARE_AMP.sub("&amp;", text)
+    if fixed != text:
+        path.write_text(fixed)
+    ET.parse(path)
 
 
 def write_json(path, data):
@@ -124,7 +129,7 @@ def build(args):
             if not files:
                 raise ValueError("No SVG pages produced: " + stem)
             for svg in files:
-                check_svg(svg)
+                repair_svg(svg)
             per_page = {}
             for record in records:
                 number = record["page"]
