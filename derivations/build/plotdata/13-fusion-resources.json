@@ -1,0 +1,99 @@
+{
+  "page": 13,
+  "world_primary_EJ_year": 639.4028977801784,
+  "world_primary_year": 2024,
+  "electric_demand_GW": 20275.332882425748,
+  "fuel": [
+    {
+      "resource": "lithium_reserves",
+      "stock_kg": 37000000000.0,
+      "stock_kind": "reserves",
+      "electric_yield_kWh_kg": 2300000.0,
+      "consumption_t_year": 77222.57219567373,
+      "static_years": 479.1345191953198
+    },
+    {
+      "resource": "lithium_seawater",
+      "stock_kg": 226950000000000.0,
+      "stock_kind": "ocean inventory",
+      "electric_yield_kWh_kg": 2300000.0,
+      "consumption_t_year": 77222.57219567373,
+      "static_years": 2938907.5440912927
+    },
+    {
+      "resource": "deuterium_seawater",
+      "stock_kg": 4.598234701093583e+16,
+      "stock_kind": "ocean inventory; D-T only",
+      "electric_yield_kWh_kg": 93680681.44057296,
+      "consumption_t_year": 1895.9289505458926,
+      "static_years": 24253201575.774338
+    }
+  ],
+  "blanket_materials": [
+    {
+      "material": "lead",
+      "blanket_charge_t": 4092.0,
+      "burnup_t_full_power_year": 3.1,
+      "fleet_initial_t": 92185180.17209575,
+      "fleet_burnup_t_year": 62853.53193551982,
+      "mine_production_t_year": 4500000.0
+    },
+    {
+      "material": "beryllium",
+      "blanket_charge_t": 120.0,
+      "burnup_t_full_power_year": 0.19,
+      "fleet_initial_t": 2703377.7176567665,
+      "fleet_burnup_t_year": 3852.313247660892,
+      "mine_production_t_year": 430.0
+    }
+  ],
+  "blanket_lifetimes": [
+    {
+      "resource": "lead_reserves",
+      "material": "lead",
+      "stock_t": 95000000.0,
+      "stock_kind": "reserves",
+      "stock_qualifier": "=",
+      "fleet_initial_t": 92185180.17209575,
+      "fleet_burnup_t_year": 62853.53193551982,
+      "reference_covers_startup": true,
+      "static_years": 44.78379720636755,
+      "status": "ideal recovery; nuclear burn-up remains"
+    },
+    {
+      "resource": "lead_resource_reference",
+      "material": "lead",
+      "stock_t": 2000000000.0,
+      "stock_kind": "identified resources",
+      "stock_qualifier": ">",
+      "fleet_initial_t": 92185180.17209575,
+      "fleet_burnup_t_year": 62853.53193551982,
+      "reference_covers_startup": true,
+      "static_years": 30353.343099081423,
+      "status": "ideal recovery; nuclear burn-up remains"
+    },
+    {
+      "resource": "beryllium_resource_reference",
+      "material": "beryllium",
+      "stock_t": 100000.0,
+      "stock_kind": "resource reference",
+      "stock_qualifier": "=",
+      "fleet_initial_t": 2703377.7176567665,
+      "fleet_burnup_t_year": 3852.313247660892,
+      "reference_covers_startup": false,
+      "static_years": null,
+      "status": "100 kt reference below startup need; actual world Be reserves unavailable"
+    }
+  ],
+  "blanket_capacity_factor": 0.9,
+  "blanket_installed_units": 22528.14764713972,
+  "blanket_unit_net_GW": 1.0,
+  "lithium_electric_yield_kWh_g": 2300.0,
+  "extraction_kWh_g": 2.5,
+  "extraction_fraction": 0.0010869565217391304,
+  "seawater_minimum_km3_year": 454.25042468043364,
+  "deuterium_electric_efficiency": 0.4,
+  "notes": "Constant 2024 demand matched as electricity; no growth, competing uses or fuel losses; initial blanket stocks are not deducted from the fuel budget. EIA traditional biomass coverage is incomplete. Ocean inventories are not economic reserves. The D-T deuterium bound needs lithium and bred tritium; the fuels are not additive alternatives. Blanket budget uses paired historical 1 GW(e) HCLL/HCPB models at assumed 90% capacity factor. Subtract initial fleet inventories, then divide remaining stock by annual nuclear burn-up. Assume ideal recovery of untransmuted material: no processing/replacement losses, other users or demand growth. Beryllium 100 kt is a reference below the USGS reported >100 kt resources, not available reserves or a ceiling. Insufficient reference stocks have no operating lifetime; this is not evidence that total world Be is only 100 kt.",
+  "source": "EIA 2024 world primary energy; USGS MCS 2026 Li/Pb/Be; NOAA/NIST; MacKay chapter 24 pp.172/176 (yield scenario); Bradshaw et al. 2011 (paired blanket models). Numerical facts independently calculated; no source artwork reused.",
+  "licence_status": "cleared"
+}

@@ -61,6 +61,18 @@ def stage_media(value, metadata, site, deck):
     return revision(dest, "media/" + name)
 
 
+def deck_info(chapter, outline, per_page):
+    """Resolve a script chapter or an explicitly identified deck-first chapter."""
+    info = next((c for c in outline["chapters"] if c["number"] == chapter), None)
+    if info is not None:
+        return info
+    cover = per_page.get(1, {})
+    title = cover.get("title")
+    if cover.get("chapter") != chapter or not isinstance(title, str) or not title.strip():
+        raise ValueError(f"Chapter {chapter}: missing matching title-page metadata")
+    return {"number": chapter, "title": title}
+
+
 def build(args):
     root = args.root.resolve()
     site = (args.site_dir or root / "public").resolve()
@@ -93,9 +105,6 @@ def build(args):
         for source in sources:
             stem = source.stem
             chapter = int(stem.split("-", 1)[0])
-            info = next((c for c in outline["chapters"] if c["number"] == chapter), None)
-            if info is None:
-                raise ValueError("Deck has no corresponding script chapter: " + stem)
             deck = output / stem
             deck.mkdir()
             shutil.copyfile(output / "deck.html", deck / "index.html")
@@ -111,6 +120,7 @@ def build(args):
                 if number in per_page or not 1 <= number <= len(files):
                     raise ValueError("Duplicate or out-of-range page metadata: " + stem)
                 per_page[number] = record["value"]
+            info = deck_info(chapter, outline, per_page)
             missing = sorted(set(range(1, len(files) + 1)) - set(per_page))
             if missing:
                 message = f"{stem}: metadata missing on {len(missing)}/{len(files)} pages"

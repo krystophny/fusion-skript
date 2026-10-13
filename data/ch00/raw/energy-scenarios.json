@@ -1,0 +1,455 @@
+{
+  "unit": "EJ/yr",
+  "accounting": "IPCC direct-equivalent primary energy; IEA observations retain physical heat content",
+  "years": [
+    2020,
+    2030,
+    2040,
+    2050,
+    2060,
+    2070,
+    2080,
+    2090,
+    2100
+  ],
+  "observed": {
+    "year": 2024,
+    "unit": "EJ/yr",
+    "accounting": "IEA physical energy content",
+    "source_url": "https://iea.blob.core.windows.net/assets/df903e1c-49c6-4757-8cbf-6fbcfe7611a0/GlobalEnergyReview2026.pdf",
+    "page": 44,
+    "total": 646,
+    "values": {
+      "Coal": 178,
+      "Oil": 193,
+      "Gas": 148,
+      "Nuclear": 31,
+      "Renewables": 96
+    },
+    "rounding_residual": 0
+  },
+  "fusion": {
+    "source_url": "https://doi.org/10.1016/j.esr.2026.102326",
+    "year": 2100,
+    "generation_PWh_year": 140,
+    "electricity_share": 0.21,
+    "case": "Favourable EUROfusion TIMES case",
+    "interpretation": "Approximate 2100 cross-model scaling against the AR6 ensemble median primary demand, not a combined model or published primary-energy share",
+    "commercialisation_year": 2040,
+    "first_fleet_cost_USD_kW_max": 7200,
+    "learning_rate": 0.1,
+    "wind_solar_timeslice_share_max": 0.75,
+    "requirements": [
+      "rapid capacity growth comparable to 1970s fission",
+      "adequate tritium supply"
+    ]
+  },
+  "solar": {
+    "source_url": "https://www.iea.org/reports/global-energy-review-2026/global-trends",
+    "observation_years": [
+      2024,
+      2025
+    ],
+    "generation_TWh_year_approx": [
+      2100,
+      2700
+    ],
+    "world_primary_EJ_year": [
+      646,
+      655
+    ],
+    "approximation": "2025 is nearly 2700 TWh, about 600 TWh above 2024; both generation values rounded.",
+    "capacity_source": "irena_capacity",
+    "capacity_data": "data/ch00/processed/pv-capacity.json",
+    "guide_end_year": 2035,
+    "capacity_factor": 0.15,
+    "guide_assumptions": "Constant 2025 IRENA net PV addition rate; full-year output from each additional GW; no retirements through 2035. Demand anchored at IEA 2025 then follows relative AR6 C1/C3 ensemble median total-energy change. Illustrative guide, not an integrated model update."
+  },
+  "ensemble": {
+    "source_url": "https://doi.org/10.5281/zenodo.7197970",
+    "download_url": "https://db1.ene.iiasa.ac.at/ar6-public-api/rest/v2.1/files/1668008312256-AR6_Scenarios_Database_World_v1.1.csv.zip",
+    "version": "IPCC AR6 Scenarios Database v1.1",
+    "snapshot_file": "data/ch00/raw/ar6-primary-energy.jsonl",
+    "csv_sha256": "4cf39b6b0d968e25ed389318acb1674f92146f977e9db4bfb7970f048ff73977",
+    "metadata_sha256": "1c1d70208bcf48c531c178899a7ce8ffd0fa905700bb3739770a796f0f2db12d",
+    "categories": [
+      "C1",
+      "C3"
+    ],
+    "unit": "EJ/yr",
+    "selection": "World, meta_Ch3vetted_withclimate categories C1 and C3. Require total, coal, oil, gas, biomass, nuclear, solar, wind for every decade 2020–2100; positive totals and nonnegative values. Reject component sums above total by more than 0.01%. Four non-closing IMAGE scenarios are excluded. No restriction based on the resulting technology shares.",
+    "excluded_nonclosing": [
+      [
+        "IMAGE 3.2",
+        "SSP1_SPA1_26I_D"
+      ],
+      [
+        "IMAGE 3.2",
+        "SSP1_SPA1_26I_LI"
+      ],
+      [
+        "IMAGE 3.2",
+        "SSP1_SPA1_26I_RE"
+      ],
+      [
+        "IMAGE 3.2",
+        "SSP2_SPA2_19I_LI"
+      ]
+    ],
+    "scenario_count": 356,
+    "quantiles": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "interpretation": "Unweighted scenario percentiles in the selected literature sample, not probabilities, model-balanced consensus or a single feasible mix. Model/scenario representation is uneven; source-wise medians need not sum to 100%.",
+    "licence": "IIASA/IAMC AR6 database terms permit educational/scientific communication with attribution; database rights retained. Small numerical subset only, not the full database.",
+    "licence_url": "https://data.ene.iiasa.ac.at/ar6/static/license.html"
+  },
+  "current_policies": {
+    "source": "IPCC AR6 / NGFS phase 2 (2021 policy assumptions)",
+    "cases": [
+      {
+        "model": "GCAM 5.3",
+        "scenario": "NGFS2_Current Policies",
+        "values": {
+          "Primary Energy": [
+            589.3801,
+            669.482,
+            746.4934,
+            805.4781,
+            862.781,
+            916.9934,
+            966.4974,
+            995.573,
+            1007.162
+          ],
+          "Primary Energy|Coal": [
+            172.0448,
+            190.5692,
+            203.0059,
+            211.0975,
+            220.4597,
+            220.7945,
+            223.2812,
+            222.0222,
+            210.6553
+          ],
+          "Primary Energy|Gas": [
+            140.5076,
+            168.198,
+            221.1384,
+            251.2679,
+            272.6953,
+            294.8872,
+            315.3936,
+            322.9229,
+            317.0977
+          ],
+          "Primary Energy|Oil": [
+            186.2957,
+            198.2964,
+            197.9398,
+            197.2953,
+            200.3389,
+            206.6943,
+            211.1679,
+            214.3626,
+            223.9178
+          ]
+        }
+      },
+      {
+        "model": "MESSAGEix-GLOBIOM_1.1",
+        "scenario": "NGFS2_Current Policies",
+        "values": {
+          "Primary Energy": [
+            562.52354,
+            609.8085384,
+            679.3137348,
+            747.89627,
+            794.6856354,
+            884.9513256,
+            989.865526,
+            1080.590639,
+            1141.352719
+          ],
+          "Primary Energy|Coal": [
+            142.5751264,
+            134.1732585,
+            124.3180154,
+            129.8047763,
+            161.8750463,
+            195.6312745,
+            245.5433444,
+            272.100358,
+            268.6734709
+          ],
+          "Primary Energy|Gas": [
+            133.8676746,
+            141.5810488,
+            173.0803251,
+            207.8497929,
+            234.0908239,
+            287.6834799,
+            316.3066206,
+            336.4489132,
+            334.9485611
+          ],
+          "Primary Energy|Oil": [
+            184.6217563,
+            220.4325556,
+            250.645164,
+            266.8153671,
+            240.6596048,
+            202.3329104,
+            208.3505159,
+            224.246858,
+            255.352359
+          ]
+        }
+      },
+      {
+        "model": "REMIND-MAgPIE 2.1-4.2",
+        "scenario": "NGFS2_Current Policies",
+        "values": {
+          "Primary Energy": [
+            559.8358,
+            616.9081,
+            654.4449,
+            667.4905,
+            668.4913,
+            690.5167,
+            730.0993,
+            739.5448,
+            739.5134
+          ],
+          "Primary Energy|Coal": [
+            160.7689,
+            162.9385,
+            162.5614,
+            176.0613,
+            188.3197,
+            213.0182,
+            240.1676,
+            236.6209,
+            212.6659
+          ],
+          "Primary Energy|Gas": [
+            124.65,
+            135.687,
+            144.3664,
+            145.7729,
+            137.0575,
+            124.7952,
+            116.0791,
+            100.3961,
+            87.9775
+          ],
+          "Primary Energy|Oil": [
+            178.0371,
+            197.7914,
+            205.5472,
+            178.6721,
+            139.3483,
+            97.2848,
+            61.124,
+            46.1395,
+            41.6526
+          ]
+        }
+      }
+    ]
+  },
+  "fusion_mit": {
+    "source_url": "https://energy.mit.edu/system/files/resources/migrated/MITEI_FusionReport_091124_final_COMPLETE-REPORT_fordistribution.pdf",
+    "report_year": 2024,
+    "model": "MIT EPPA",
+    "figure": "4.4b",
+    "printed_page": 43,
+    "pdf_page": 48,
+    "pdf_sha256": "0233888b01e12fe09715ea24c00ca9635737b90ac944c50bccae8e73726c14c3",
+    "availability_year": 2035,
+    "years": [
+      2020,
+      2025,
+      2030,
+      2035,
+      2040,
+      2045,
+      2050,
+      2055,
+      2060,
+      2065,
+      2070,
+      2075,
+      2080,
+      2085,
+      2090,
+      2095,
+      2100
+    ],
+    "cases": [
+      {
+        "cost_2050_USD_kW": 2800,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          100,
+          600,
+          1700,
+          4400,
+          9700,
+          15000,
+          22000,
+          27000,
+          31900,
+          36300,
+          40700,
+          44600
+        ]
+      },
+      {
+        "cost_2050_USD_kW": 5600,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          100,
+          400,
+          1600,
+          3500,
+          7500,
+          11400,
+          15900,
+          19600,
+          22800,
+          26100,
+          30100,
+          33800
+        ]
+      },
+      {
+        "cost_2050_USD_kW": 8000,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          100,
+          375,
+          1200,
+          3300,
+          5300,
+          8400,
+          11000,
+          14500,
+          17200,
+          19800,
+          21600,
+          24000
+        ]
+      },
+      {
+        "cost_2050_USD_kW": 11300,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          100,
+          200,
+          500,
+          1100,
+          1900,
+          2800,
+          3600,
+          4900,
+          5900,
+          7000,
+          8100
+        ]
+      }
+    ],
+    "extraction": "Vector line vertices from Fig.4.4b; axes x=195.71–466.93 pt maps 2020–2100, y=545.36–392.02 pt maps 0–50000 TWh. Rounded to nearest 100 TWh; the base-case 2035=2 TWh and 2050=375 TWh are replaced by exact text values on p.42. Values below ~100 TWh are unresolved in the other cost curves, not proof of zero production.",
+    "approximate_resolution_TWh": 100,
+    "costs": "Four US overnight-capital costs in 2050: 2800, 5600, 8000, 11300 USD2021/kW; further cost reduction thereafter. Base case 8000 in 2050, ~4300 in 2100.",
+    "assumptions": "Accelerated climate action; commercial availability in 2035 is assumed, not predicted. Variable-renewable integration costs/resource constraints and regional fission constraints influence the result.",
+    "scaling": "Electricity output converted to EJ, divided by the same year’s AR6 ensemble median total primary energy. Cross-model scaling, not an integrated AR6 run."
+  },
+  "fusion_etm_timeline": {
+    "source_url": "https://agenda.ciemat.es/event/4431/contributions/6116/attachments/4194/6673/Carlos_Mantilla_ESSRI_2024_SPS1.pdf",
+    "report_year": 2024,
+    "model": "EUROfusion TIMES",
+    "case": "S02: early availability, fast diffusion, restricted VRE, reference cost",
+    "pdf_sha256": "fea616a9f9da183b610594f1a815d279f280beff96d8faac53bfb5fb839ed5fa",
+    "years": [
+      2030,
+      2050,
+      2070,
+      2100
+    ],
+    "generation_TWh_year_approx": [
+      0,
+      500,
+      7500,
+      29000
+    ],
+    "approximate_resolution_TWh": 500,
+    "extraction": "Approximate yellow fusion segments of Global electricity mix (S2) bars. Embedded image 622×356 px, baseline y=333, 140000 TWh grid at y=13. Centres x=125,243,360,480; segment heights read including antialiasing and rounded to 500 TWh. Linear connections show dated samples only, not additional model outputs.",
+    "assumptions": "SSP2/RCP2.6 root; early fusion availability 2035, fast diffusion tied to tritium availability, restriction on variable renewables. Poster states fusion costs are desired targets, not estimates. S02 reaches 22% of electricity in 2100; S23 late/slow/unrestricted VRE yields much less.",
+    "scaling": "Electricity output converted to EJ, divided by the same year’s AR6 ensemble median total primary energy. Cross-model scaling, not an integrated AR6 run."
+  },
+  "illustrative_pathways": [
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_400f_lowBECCS",
+      "values_2100_EJ_year": {
+        "Primary Energy": 994.5628115231452,
+        "Primary Energy|Biomass": 405.9686883142617,
+        "Primary Energy|Solar": 65.99248062322248,
+        "Primary Energy|Wind": 290.652222244752
+      }
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM 1.0",
+      "scenario": "LowEnergyDemand_1.3_IPCC",
+      "values_2100_EJ_year": {
+        "Primary Energy": 325.654764080373,
+        "Primary Energy|Biomass": 69.0549292503671,
+        "Primary Energy|Solar": 109.1174305061569,
+        "Primary Energy|Wind": 97.87139865868208
+      }
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.3",
+      "scenario": "DeepElec_SSP2_ HighRE_Budg900",
+      "values_2100_EJ_year": {
+        "Primary Energy": 736.6209,
+        "Primary Energy|Biomass": 99.5404,
+        "Primary Energy|Solar": 419.9157,
+        "Primary Energy|Wind": 154.6659
+      }
+    }
+  ],
+  "superseded_gcam_bioenergy_example": {
+    "source_url": "https://raw.githubusercontent.com/JGCRI/ssp-data/b3dfbdf34b63a48db97373c27fe2c994855ea5f4/data/ssp2.csv",
+    "scenario": "SSP2-26-SPA2-V17",
+    "year": 2100,
+    "primary_total_EJ_year": 927.2936146,
+    "biomass_primary_EJ_year": 391.7434144,
+    "biomass_with_CCS_EJ_year": 230.2552639,
+    "energy_cropland_million_ha": 1084.765159,
+    "biomass_CO2_stored_Mt_year": 23528.20677,
+    "carbon_price_USD2005_tCO2": 1853.225836,
+    "interpretation": "Detailed model outputs explaining the superseded biomass-heavy pathway. Not retained as the main outlook; not claims of sustainable feasibility."
+  }
+}

@@ -1,0 +1,225 @@
+year,series,value,unit,source_ids,evidence_flag,notes
+1980,solar_module_only,36.4292,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1980,lead_BESS_turnkey_usable_scenario,1200.0,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1980,US_CPI_U,82.4,index,S11,B,2025 base index 321.9
+1981,solar_module_only,29.1434,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1981,lead_BESS_turnkey_usable_scenario,1178.3197,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1981,US_CPI_U,90.9,index,S11,B,2025 base index 321.9
+1982,solar_module_only,26.1675,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1982,lead_BESS_turnkey_usable_scenario,1157.031,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1982,US_CPI_U,96.5,index,S11,B,2025 base index 321.9
+1983,solar_module_only,21.1392,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1983,lead_BESS_turnkey_usable_scenario,1136.127,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1983,US_CPI_U,99.6,index,S11,B,2025 base index 321.9
+1984,solar_module_only,19.6,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1984,lead_BESS_turnkey_usable_scenario,1115.6006,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1984,US_CPI_U,103.9,index,S11,B,2025 base index 321.9
+1985,solar_module_only,17.1371,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1985,lead_BESS_turnkey_usable_scenario,1095.4451,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1985,US_CPI_U,107.6,index,S11,B,2025 base index 321.9
+1986,solar_module_only,14.1612,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1986,lead_BESS_turnkey_usable_scenario,1075.6538,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1986,US_CPI_U,109.6,index,S11,B,2025 base index 321.9
+1987,solar_module_only,12.0063,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1987,lead_BESS_turnkey_usable_scenario,1056.22,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1987,US_CPI_U,113.6,index,S11,B,2025 base index 321.9
+1988,solar_module_only,11.2879,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1988,lead_BESS_turnkey_usable_scenario,1037.1373,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1988,US_CPI_U,118.3,index,S11,B,2025 base index 321.9
+1989,solar_module_only,11.5958,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1989,lead_BESS_turnkey_usable_scenario,1018.3994,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1989,lead_acid_battery_hardware_approx,239.7146,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+1989,US_CPI_U,124.0,index,S11,B,2025 base index 321.9
+1990,solar_module_only,12.0063,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1990,lead_BESS_turnkey_usable_scenario,1000.0,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1990,US_CPI_U,130.7,index,S11,B,2025 base index 321.9
+1991,solar_module_only,11.0827,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1991,Li_ion_cell,9451.2826,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1991,lead_BESS_turnkey_usable_scenario,991.6965,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1991,US_CPI_U,136.2,index,S11,B,2025 base index 321.9
+1992,solar_module_only,10.3644,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1992,Li_ion_cell,7581.488,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1992,lead_BESS_turnkey_usable_scenario,983.462,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1992,lead_acid_battery_hardware_approx,234.0707,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+1992,US_CPI_U,140.3,index,S11,B,2025 base index 321.9
+1993,solar_module_only,9.7487,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1993,Li_ion_cell,6035.7597,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1993,lead_BESS_turnkey_usable_scenario,975.2958,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1993,US_CPI_U,144.5,index,S11,B,2025 base index 321.9
+1994,solar_module_only,9.133,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1994,Li_ion_cell,6890.1535,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1994,lead_BESS_turnkey_usable_scenario,967.1974,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1994,US_CPI_U,148.2,index,S11,B,2025 base index 321.9
+1995,solar_module_only,8.5173,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1995,Li_ion_cell,6466.8561,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1995,lead_BESS_turnkey_usable_scenario,959.1663,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1995,lead_acid_battery_hardware_approx,210.2634,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+1995,US_CPI_U,152.4,index,S11,B,2025 base index 321.9
+1996,solar_module_only,7.9016,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1996,Li_ion_cell,5446.7349,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1996,lead_BESS_turnkey_usable_scenario,951.2019,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1996,US_CPI_U,156.9,index,S11,B,2025 base index 321.9
+1997,solar_module_only,7.9016,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1997,Li_ion_cell,4664.276,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1997,lead_BESS_turnkey_usable_scenario,943.3036,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1997,US_CPI_U,160.5,index,S11,B,2025 base index 321.9
+1998,solar_module_only,7.0806,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1998,Li_ion_cell,3752.6216,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1998,lead_BESS_turnkey_usable_scenario,935.4709,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1998,US_CPI_U,163.0,index,S11,B,2025 base index 321.9
+1999,solar_module_only,6.5675,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+1999,Li_ion_cell,2842.4038,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+1999,lead_BESS_turnkey_usable_scenario,927.7032,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+1999,lead_acid_battery_hardware_approx,194.8707,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+1999,US_CPI_U,166.6,index,S11,B,2025 base index 321.9
+2000,solar_module_only,6.4649,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2000,Li_ion_cell,2761.0281,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2000,lead_BESS_turnkey_usable_scenario,920.0,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2000,US_CPI_U,172.2,index,S11,B,2025 base index 321.9
+2001,solar_module_only,6.2597,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2001,Li_ion_cell,1927.1578,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2001,lead_BESS_turnkey_usable_scenario,922.9569,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2001,US_CPI_U,177.1,index,S11,B,2025 base index 321.9
+2002,solar_module_only,5.7466,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2002,Li_ion_cell,1380.7193,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2002,lead_BESS_turnkey_usable_scenario,925.9232,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2002,lead_acid_battery_hardware_approx,190.6634,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+2002,US_CPI_U,179.9,index,S11,B,2025 base index 321.9
+2003,solar_module_only,5.4387,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2003,Li_ion_cell,1067.6331,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2003,lead_BESS_turnkey_usable_scenario,928.8991,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2003,US_CPI_U,184.0,index,S11,B,2025 base index 321.9
+2004,solar_module_only,4.7204,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2004,Li_ion_cell,955.2669,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2004,lead_BESS_turnkey_usable_scenario,931.8846,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2004,US_CPI_U,188.9,index,S11,B,2025 base index 321.9
+2005,solar_module_only,4.7204,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2005,Li_ion_cell,823.547,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2005,lead_BESS_turnkey_usable_scenario,934.8797,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2005,lead_acid_battery_hardware_approx,182.2488,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+2005,US_CPI_U,195.3,index,S11,B,2025 base index 321.9
+2006,solar_module_only,5.1309,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2006,Li_ion_cell,705.2905,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2006,lead_BESS_turnkey_usable_scenario,937.8844,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2006,US_CPI_U,201.6,index,S11,B,2025 base index 321.9
+2007,solar_module_only,5.2335,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2007,Li_ion_cell,673.007,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2007,lead_BESS_turnkey_usable_scenario,940.8987,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2007,US_CPI_U,207.342,index,S11,B,2025 base index 321.9
+2008,solar_module_only,4.7204,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2008,Li_ion_cell,705.6599,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2008,lead_BESS_turnkey_usable_scenario,943.9227,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2008,lead_acid_battery_hardware_approx,246.6926,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+2008,US_CPI_U,215.303,index,S11,B,2025 base index 321.9
+2009,solar_module_only,3.1811,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2009,Li_ion_cell,628.6147,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2009,lead_BESS_turnkey_usable_scenario,946.9565,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2009,US_CPI_U,214.537,index,S11,B,2025 base index 321.9
+2010,solar_module_only,2.5039,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2010,PV_utility_installed_G20,5.4223,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2010,Li_ion_cell,565.1354,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2010,Li_BESS_turnkey_4h_global,2638.2975,USD2025/kWh,S01;S02,B,"only 2010,2024,2025 are benchmark anchors"
+2010,lead_BESS_turnkey_usable_scenario,950.0,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2010,lead_acid_battery_hardware_approx,215.9073,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+2010,US_CPI_U,218.056,index,S11,B,2025 base index 321.9
+2011,solar_module_only,2.0524,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2011,PV_utility_installed_G20,4.7635,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2011,Li_ion_cell,538.3317,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2011,Li_BESS_turnkey_4h_global,2214.8155,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2011,lead_BESS_turnkey_usable_scenario,948.3125,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2011,US_CPI_U,224.939,index,S11,B,2025 base index 321.9
+2012,solar_module_only,1.1083,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2012,PV_utility_installed_G20,3.5701,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2012,Li_ion_cell,553.8167,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2012,Li_BESS_turnkey_4h_global,1859.308,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2012,lead_BESS_turnkey_usable_scenario,946.628,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2012,lead_acid_battery_hardware_approx,217.2414,USD2025/kWh,S10,A,historically digitised from a separate study; approximate; not turnkey
+2012,US_CPI_U,229.594,index,S11,B,2025 base index 321.9
+2013,solar_module_only,0.8517,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2013,PV_utility_installed_G20,3.9651,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2013,Li_ion_cell,503.7393,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2013,Li_ion_pack_all_uses,1011.4777,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2013,Li_BESS_turnkey_4h_global,1560.8642,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2013,lead_BESS_turnkey_usable_scenario,944.9465,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2013,US_CPI_U,232.957,index,S11,B,2025 base index 321.9
+2014,solar_module_only,0.7902,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2014,PV_utility_installed_G20,2.8528,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2014,Li_ion_cell,445.6373,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2014,Li_ion_pack_all_uses,825.3637,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2014,Li_BESS_turnkey_4h_global,1310.3246,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2014,lead_BESS_turnkey_usable_scenario,943.268,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2014,US_CPI_U,236.736,index,S11,B,2025 base index 321.9
+2015,solar_module_only,0.7388,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2015,PV_utility_installed_G20,2.117,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2015,Li_ion_cell,340.6287,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2015,Li_ion_pack_all_uses,521.5221,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2015,Li_BESS_turnkey_4h_global,1100.0,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2015,lead_BESS_turnkey_usable_scenario,941.5925,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2015,US_CPI_U,237.017,index,S11,B,2025 base index 321.9
+2016,solar_module_only,0.6773,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2016,PV_utility_installed_G20,1.921,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2016,Li_ion_cell,265.7795,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2016,Li_ion_pack_all_uses,395.6572,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2016,Li_BESS_turnkey_4h_global,915.8085,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2016,lead_BESS_turnkey_usable_scenario,939.9199,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2016,US_CPI_U,240.007,index,S11,B,2025 base index 321.9
+2017,solar_module_only,0.5747,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2017,PV_utility_installed_G20,1.6706,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2017,Li_ion_cell,191.8948,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2017,Li_ion_pack_all_uses,281.0321,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2017,Li_BESS_turnkey_4h_global,762.4593,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2017,lead_BESS_turnkey_usable_scenario,938.2503,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2017,US_CPI_U,245.12,index,S11,B,2025 base index 321.9
+2018,solar_module_only,0.5131,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2018,PV_utility_installed_G20,1.452,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2018,Li_ion_cell,161.1096,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2018,Li_ion_pack_all_uses,232.0282,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2018,Li_BESS_turnkey_4h_global,634.788,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2018,lead_BESS_turnkey_usable_scenario,936.5837,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2018,US_CPI_U,251.107,index,S11,B,2025 base index 321.9
+2019,solar_module_only,0.4618,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2019,PV_utility_installed_G20,1.1883,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2019,Li_ion_cell,135.4552,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2019,Li_ion_pack_all_uses,196.421,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2019,Li_BESS_turnkey_4h_global,528.4948,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2019,lead_BESS_turnkey_usable_scenario,934.9201,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2019,US_CPI_U,255.657,index,S11,B,2025 base index 321.9
+2020,solar_module_only,0.3694,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2020,PV_utility_installed_G20,1.0559,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2020,Li_ion_cell,126.2196,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2020,Li_ion_pack_all_uses,170.3958,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2020,Li_BESS_turnkey_4h_global,440.0,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2020,lead_BESS_turnkey_usable_scenario,933.2594,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2020,US_CPI_U,258.811,index,S11,B,2025 base index 321.9
+2021,solar_module_only,0.3284,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2021,PV_utility_installed_G20,0.9513,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2021,Li_ion_cell,122.1149,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2021,Li_ion_pack_all_uses,156.81,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2021,Li_BESS_turnkey_4h_global,385.0,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2021,lead_BESS_turnkey_usable_scenario,931.6016,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2021,US_CPI_U,270.97,index,S11,B,2025 base index 321.9
+2022,solar_module_only,0.3694,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2022,PV_utility_installed_G20,0.9769,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2022,Li_ion_cell,135.4552,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2022,Li_ion_pack_all_uses,177.0887,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2022,Li_BESS_turnkey_4h_global,350.0,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2022,lead_BESS_turnkey_usable_scenario,929.9468,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2022,US_CPI_U,292.655,index,S11,B,2025 base index 321.9
+2023,solar_module_only,0.3181,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2023,PV_utility_installed_G20,0.7943,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2023,Li_ion_cell,113.9055,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2023,Li_ion_pack_all_uses,146.5343,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2023,Li_BESS_turnkey_4h_global,275.0,USD2025/kWh,S01;S02,M,"only 2010,2024,2025 are benchmark anchors"
+2023,lead_BESS_turnkey_usable_scenario,928.2949,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2023,US_CPI_U,305.349,index,S11,B,2025 base index 321.9
+2024,solar_module_only,0.2668,USD2025/W,S07,B,older OWID extraction; 2024 USD rebased by CPI-U
+2024,PV_utility_installed_G20,0.6978,USD2025/W,S02,B,"G20 installed system, 2024 USD rebased by CPI-U"
+2024,Li_ion_cell,80.0417,USD2025/kWh,S08,B,cell only; older source 2024 USD rebased by CPI-U
+2024,Li_ion_pack_all_uses,118.0102,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2024,Li_BESS_turnkey_4h_global,197.0257,USD2025/kWh,S01;S02,B,"only 2010,2024,2025 are benchmark anchors"
+2024,lead_BESS_turnkey_usable_scenario,926.646,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2024,US_CPI_U,313.689,index,S11,B,2025 base index 321.9
+2025,Li_ion_pack_all_uses,108.0,USD2025/kWh,S09;S11,B,"BNEF historic nominal $/kWh, source series update caveat"
+2025,Li_BESS_turnkey_4h_global,140.0,USD2025/kWh,S01;S02,B,"only 2010,2024,2025 are benchmark anchors"
+2025,lead_BESS_turnkey_usable_scenario,925.0,USD2025/kWh,S10,M,"author modelling assumption, not measured"
+2025,US_CPI_U,321.9,index,S11,B,2025 base index 321.9

@@ -13,17 +13,29 @@
   "eia": {
     "title": "EIA International primary energy consumption",
     "source_url": "https://api.eia.gov/v2/international/data/",
-    "access_date": "2026-10-06",
-    "year": 2024,
+    "access_date": "2026-10-12",
+    "year": "2000 and 2024",
     "licence": "Public domain; acknowledge EIA",
     "licence_url": "https://www.eia.gov/about/copyrights_reuse.php",
     "release_status": "cleared",
-    "transformation": "Annual productId=44, activityId=2, unit=QBTU. Join ISO3 with WDI GDP/population; filter type c, positive/matching data. Convert IT Btu to J then kWh/person/day with 365-day year. No EI series used.",
+    "transformation": "Annual productId=44, activityId=2, unit=QBTU. Join ISO3 with WDI GDP/population; filter type c, positive/matching data. Convert IT Btu to J then kWh/person/day with 365-day year. No EI series used. For the 2000/2024 living-standards comparison, use AUT and ETH from each year's matching EIA data, divided by WDI population. EIA primary-energy coverage does not fully include traditional biomass.",
     "snapshot_files": [
       "eia_2024.json",
       "eia_2023.json",
-      "eia_2025.json"
+      "eia_2025.json",
+      "eia_2000.json"
     ]
+  },
+  "eia_thermal_efficiency": {
+    "title": "What is the efficiency of different types of power plants?",
+    "source_url": "https://www.eia.gov/tools/faqs/faq.php?id=107&t=3",
+    "access_date": "2026-10-09",
+    "year": "method reference; no empirical year",
+    "licence": "Public domain; acknowledge EIA",
+    "licence_url": "https://www.eia.gov/about/copyrights_reuse.php",
+    "release_status": "cleared",
+    "transformation": "Method reference for thermal-plant efficiency as net electric output divided by fuel energy input. The 40% efficiency and 100 kWh fuel input are explicitly assumed teaching values, not EIA observations or an Austrian average. Derive 40 kWh electricity and 60 kWh rejected heat from the energy balance with no heat recovery. No source figure or empirical series reused.",
+    "snapshot_files": []
   },
   "wb_gdp_ppp": {
     "title": "GDP per capita PPP, constant 2021 international dollars",
@@ -50,7 +62,8 @@
     "transformation": "Use matching 2024 for country plot; latest 2025 population for fusion inventories and deployment. World aggregate is WLD. GDP PPP is not market-exchange-rate GDP. Country/economy metadata excludes World Bank aggregates.",
     "snapshot_files": [
       "wb_population.json",
-      "wb_SP.POP.TOTL_licence.html"
+      "wb_SP.POP.TOTL_licence.html",
+      "wb-population-comparison.json"
     ]
   },
   "wb_gdp_austria": {
@@ -665,6 +678,196 @@
       "energy-use-per-person-vs-gdp-per-capita.csv",
       "energy-use-per-person-vs-gdp-per-capita.metadata.json",
       "indicator-1295475.json"
+    ]
+  },
+  "electricity_cost_sourcebook": {
+    "title": "Electricity cost history, 1980–2035: supplied numerical sourcebook",
+    "source_url": "local:data/ch00/raw/cost-sourcebook/sourcebook.txt",
+    "access_date": "2026-10-09",
+    "year": "1980–2025 history; 2030/2035 scenarios",
+    "licence": "Original plots and derivations; provider numeric facts separately attributed, no blanket CC claim for source material",
+    "licence_url": "",
+    "release_status": "attributed-numeric-facts-and-explicit-models",
+    "transformation": "Preserve all four supplied CSV tables verbatim; typed JSON and audited evidence flags in 09-electricity-cost-history.json. Source checks and corrections in processed/electricity-cost-audit.json. Recompute daily-storage model, draw independent charts; separate electricity LCOE, PV module and battery-capacity axes. Retain per-row source IDs and original source registry.",
+    "snapshot_files": [
+      "cost-sourcebook/sourcebook.txt",
+      "cost-sourcebook/annual-electricity-costs.csv",
+      "cost-sourcebook/component-costs.csv",
+      "cost-sourcebook/regional-95pct.csv",
+      "cost-sourcebook/sources.csv",
+      "cost-sourcebook/manifest.json"
+    ]
+  },
+  "wb_pip_income": {
+    "title": "Global income/consumption distribution, 1981, 2000 and 2024",
+    "source_url": "https://api.worldbank.org/pip/v1/pip-grp",
+    "documentation_url": "https://pip.worldbank.org/",
+    "access_date": "2026-10-12",
+    "year": [
+      1981,
+      2000,
+      2024
+    ],
+    "version": "20260922_2021_01_02_PROD",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://datacatalog.worldbank.org/public-licenses#cc-by",
+    "release_status": "cleared-attributed-data",
+    "query": {
+      "year": "1981,2000,2024",
+      "group_by": "wb",
+      "povline": [
+        3,
+        12,
+        48
+      ],
+      "format": "json",
+      "version": "20260922_2021_01_02_PROD"
+    },
+    "transformation": "Select WLD. Difference cumulative pop_in_poverty counts at $3, $12 and $48 to get four bands; last band is reporting_pop minus count below $48. Use each year's PIP population for shares. Global line-up estimates include survey interpolation/extrapolation. Same 2021 PPP basis and fixed bands in both years. $3 is the official extreme-poverty line; $12/$48 are teaching cutoffs, not official poverty lines or conversions of Gapminder's 2011 PPP levels.",
+    "snapshot_files": [
+      "pip-income-3.json",
+      "pip-income-12.json",
+      "pip-income-48.json"
+    ]
+  },
+  "mackay_fusion": {
+    "title": "MacKay, Sustainable Energy — without the hot air, chapter 24, pp.172 and 176",
+    "source_url": "https://www.withouthotair.com/c24/page_172.shtml",
+    "access_date": "2026-10-12",
+    "year": 2009,
+    "licence": "Numerical facts independently used with attribution; source text and artwork not reproduced",
+    "release_status": "cleared",
+    "transformation": "Natural-lithium electricity yield 2300 kWh/g and seawater extraction estimate 2.5 kWh/g; seawater concentration 0.17 mg/L. Updated reserve stock and world demand, not the book's 2009 stock/population. Assumption sensitivity discussed separately; no book page or figure reused."
+  },
+  "usgs_lead": {
+    "title": "USGS Mineral Commodity Summaries 2026, Lead",
+    "source_url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lead.pdf",
+    "access_date": "2026-10-12",
+    "year": 2025,
+    "licence": "Numerical facts independently used with attribution; source text and artwork not reproduced",
+    "release_status": "cleared",
+    "transformation": "World reserves 95 Mt and 2025 mine output 4.5 Mt/year; table magnitudes are thousand tonnes. Numerical facts are US government public domain. Identified world resources >2 Gt, not added to the reserve figure."
+  },
+  "usgs_beryllium": {
+    "title": "USGS Mineral Commodity Summaries 2026, Beryllium",
+    "source_url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-beryllium.pdf",
+    "access_date": "2026-10-12",
+    "year": 2025,
+    "licence": "Numerical facts independently used with attribution; source text and artwork not reproduced",
+    "release_status": "cleared",
+    "transformation": "World identified resources >100,000 tonnes, not reserves (world reserves unavailable); estimated 2025 mine output 430 tonnes/year. Numerical facts are US government public domain."
+  },
+  "seawater_lithium_lab": {
+    "title": "Li et al., Continuous electrical pumping membrane process for seawater lithium mining, Energy & Environmental Science",
+    "source_url": "https://doi.org/10.1039/D1EE00354B",
+    "access_date": "2026-10-12",
+    "year": 2021,
+    "licence": "Numerical facts independently used with attribution; source text and artwork not reproduced",
+    "release_status": "cleared",
+    "transformation": "Laboratory enrichment of actual Red Sea seawater. Reported 76.34 kWh/kg electrical enrichment estimate does not establish full-scale pumping, reagents, membranes, enrichment or environmental performance."
+  },
+  "fusion_blanket_enrichment": {
+    "title": "Paine et al., A theoretical study on the suitable enrichment methods for lithium inside the fusion blanket, TU Eindhoven",
+    "source_url": "https://research.tue.nl/en/publications/a-theoretical-study-on-the-suitable-enrichment-methods-for-lithiu/",
+    "access_date": "2026-10-12",
+    "year": 2024,
+    "licence": "Numerical facts independently used with attribution; source text and artwork not reproduced",
+    "release_status": "cleared",
+    "transformation": "Illustrative blanket loads: HCPB 46.4 t Li at 60% Li-6; WCLL 152.8 t at 90%. Isotope separation and startup inventory matter independently of lithium burn rate."
+  },
+  "bradshaw_blanket": {
+    "title": "Bradshaw, Hamacher & Fischer (2011), Is nuclear fusion a sustainable energy form?, Fusion Engineering and Design 86, 2770–2773",
+    "source_url": "https://doi.org/10.1016/j.fusengdes.2010.11.040",
+    "author_manuscript_url": "https://pure.mpg.de/rest/items/item_2139700_1/component/file_2139699/content",
+    "access_date": "2026-10-12",
+    "year": 2011,
+    "licence": "Numerical model parameters independently calculated and attributed; no source prose or artwork reproduced",
+    "release_status": "numeric-facts-only",
+    "transformation": "Use paired 1 GW net-electric conceptual HCLL/HCPB models: initial Pb 4092 t and Be 120 t; nuclear burn-up 3.1 t Pb and 0.19 t Be per full-power year. Scale annual burn by electricity delivered and initial stocks by installed capacity at assumed 90% CF. Subtract initial fleet loading before computing operating lifetime. Ideal recovery of untransmuted material only; no recycling losses, competing uses or growth. Model is historical, not a generic requirement for every fusion concept."
+  },
+  "iea_world_mix_2024": {
+    "title": "Global Energy Review 2026, revised 2024 world energy table p.44",
+    "source_url": "https://iea.blob.core.windows.net/assets/df903e1c-49c6-4757-8cbf-6fbcfe7611a0/GlobalEnergyReview2026.pdf",
+    "access_date": "2026-10-12",
+    "year": 2024,
+    "licence": "CC BY 4.0",
+    "release_status": "cleared",
+    "transformation": "Revised 2024 numerical facts; shares normalized by matching 646 EJ total. Physical heat-content convention. Hollow markers are not joined to the IPCC direct-equivalent source trajectories.",
+    "snapshot_files": [
+      "energy-scenarios.json"
+    ]
+  },
+  "gcam_ssp2": {
+    "title": "Detailed outputs of the superseded GCAM4 SSP2-2.6 biomass-heavy example",
+    "source_url": "https://raw.githubusercontent.com/JGCRI/ssp-data/b3dfbdf34b63a48db97373c27fe2c994855ea5f4/data/ssp2.csv",
+    "access_date": "2026-10-12",
+    "year": "2020–2100 scenarios, 2017/2018 vintage",
+    "licence": "Numerical source facts; original visualization CC BY 4.0. No source graphic reused.",
+    "release_status": "cleared",
+    "transformation": "Retain only the 2100 total and biomass energy, biomass with CCS, energy-cropland area, biomass CO2 stored and carbon price, to explain the previously selected 42% case. The GCAM-only trajectory has been replaced by the AR6 multi-model ensemble.",
+    "snapshot_files": [
+      "energy-scenarios.json"
+    ]
+  },
+  "eurofusion_etm_2026": {
+    "title": "Mantilla et al.: Fusion at scale: Critical enablers in global energy transitions",
+    "source_url": "https://doi.org/10.1016/j.esr.2026.102326",
+    "access_date": "2026-10-12",
+    "year": 2026,
+    "licence": "CC BY 4.0; numerical facts from published abstract",
+    "release_status": "cleared",
+    "transformation": "Favourable 2100 case: 21% of approximately 140 PWh/year; 105.84 EJ/year. Scale against AR6 C1/C3 median primary demand. Distinct endpoint, no invented 2026 timeline; not an integrated model run.",
+    "snapshot_files": [
+      "energy-scenarios.json"
+    ]
+  },
+  "iea_solar_2025": {
+    "title": "Global Energy Review 2026, recent solar generation and primary-energy totals",
+    "source_url": "https://www.iea.org/reports/global-energy-review-2026/global-trends",
+    "access_date": "2026-10-12",
+    "year": "2024–2025",
+    "licence": "CC BY 4.0",
+    "release_status": "cleared",
+    "transformation": "Rounded solar PV output: nearly 2700 TWh in 2025, about 600 TWh above 2024, hence approximate 2100/2700 TWh. Divide by revised matching world primary totals 646/655 EJ. Separate illustrative 2025–2035 guide uses IRENA 2025 net additions 510.349 GW/year, 15% CF and no retirements; denominator follows relative AR6 C1/C3 median demand, anchored at IEA 2025 total.",
+    "snapshot_files": [
+      "energy-scenarios.json"
+    ]
+  },
+  "ipcc_ar6_energy": {
+    "title": "Byers et al. (2022): AR6 Scenarios Database, version 1.1, IIASA/IAMC",
+    "source_url": "https://doi.org/10.5281/zenodo.7197970",
+    "access_date": "2026-10-13",
+    "year": "2020–2100 scenarios; AR6 literature cutoff 2021",
+    "licence": "IIASA/IAMC database rights retained; educational/scientific communication with attribution under AR6 terms. Small numerical subset, not the full database.",
+    "release_status": "cleared",
+    "transformation": "Select vetted World C1/C3 rows with positive total and seven complete, nonnegative source variables at 2020–2100 decades. Four of 360 complete cases fail component closure; retain 356. Compute source/own-total ratios first, then unweighted 10/50/90 percentiles. Group fossils and wind+solar, retain other as total residual. Statistics describe an uneven literature ensemble, not probabilities or a single energy mix. Three NGFS2 2021 current-policy fossil cases and three IPCC illustrative examples are retained separately.",
+    "snapshot_files": [
+      "energy-scenarios.json",
+      "ar6-primary-energy.jsonl"
+    ]
+  },
+  "mit_fusion_2024": {
+    "title": "MIT Energy Initiative / Plasma Science and Fusion Center: The role of fusion energy in a decarbonized electricity system",
+    "source_url": "https://energy.mit.edu/research/publications-reports/role-fusion-energy-decarbonized-electricity-system",
+    "access_date": "2026-10-13",
+    "year": 2024,
+    "licence": "Numerical facts and independently drawn figure; no provider chart reused or CC licence asserted for the source report.",
+    "release_status": "cleared",
+    "transformation": "Fig.4.4b printed p.43, PDF p.48: extract actual vector vertices of all four global EPPA generation curves, round to 100 TWh. Exact text base case 2035=2 TWh and 2050=375 TWh override unresolved early vertices. Convert TWh to EJ and divide by the common year-specific AR6 median primary total; cross-model scaling. Costs 2800/5600/8000/11300 USD2021/kW in 2050; commercial availability 2035 is an assumption.",
+    "snapshot_files": [
+      "energy-scenarios.json"
+    ]
+  },
+  "eurofusion_etm_2024": {
+    "title": "Mantilla et al., ESSRI 2024: The role of fusion energy in future energy scenarios",
+    "source_url": "https://agenda.ciemat.es/event/4431/contributions/6116/attachments/4194/6673/Carlos_Mantilla_ESSRI_2024_SPS1.pdf",
+    "access_date": "2026-10-13",
+    "year": 2024,
+    "licence": "Numerical facts, approximately digitized; original illustration. No provider chart reused or CC licence asserted.",
+    "release_status": "cleared",
+    "transformation": "Yellow S02 global electricity-mix bars at 2030/2050/2070/2100: approximate 0/0.5/7.5/29 PWh/year, 0.5 PWh precision. Linear segments only connect reported dates. Early availability 2035, fast tritium-linked diffusion, restricted VRE, reference target costs. Convert output to EJ and scale to AR6 median demand; not a published all-energy share.",
+    "snapshot_files": [
+      "energy-scenarios.json"
     ]
   }
 }

@@ -45,6 +45,10 @@ identity and cache names. Every page needs one `<present-page>` metadata
 record from `slides/present-meta.typ`; the build fails otherwise. Media are copied from local staged site
 files to same-origin, checksum-versioned URLs; no legacy assets are fetched.
 
+Live decks may precede their full script chapters. In that case an explicit
+chapter number and title on the title page supply the existing presenter
+metadata; a matching script chapter remains authoritative when present.
+
 The current Nextcloud `lv/fusion/2026/` folder is publicly shared. Exports
 include `skript/fusion-physics.pdf`, built deck PDFs, derived figures, and
 derivation sources. An ownership
@@ -59,5 +63,8 @@ not write, including examination material and modified personal copies.
 - [Plasma Skript](../plasma-skript/SPEC.md): infrastructure reference.
 
 Original content and plots: CC BY 4.0. Code: MIT. Fonts: SIL OFL. Numeric facts
-are cited individually; no provider chart, photograph or table image is reused.
-Provider terms remain linked in `data/README.md` and are not relabelled as our licence.
+are cited individually. Chapter 0 plots are independently generated; Chapter 1
+retains the lecturer’s original discovery artwork and attributed photographs
+at Chris’s request. Third-party assets retain their own terms, documented in
+`slides/photos/discovering-fusion/original/credits.md`; they are not covered by
+the original-content licence. Provider terms remain linked in `data/README.md`.

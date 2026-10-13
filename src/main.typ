@@ -6,13 +6,14 @@
 #document("index.html", title: [Fusion Physics])[
   #page-shell(root: true)[
     #html.h1[Fusion Physics]
-    #html.p[Christopher Albert, TU Graz. Incremental draft, 5 October 2026.]
+    #html.p[Christopher Albert, TU Graz. Incremental draft, 13 October 2026.]
     #html.section(id: "contents")[
       #html.h2[Contents]
-      #link("chapters/00-energy-context.html")[0. Energy context]
+      #link("chapters/00-energy-context.html")[0. The big picture]
       #html.p[Further chapters follow the established lecture sequence and are added after checking.]
       #link("fusion-physics.pdf")[PDF] #h(1em)
-      #link("slides/00-energy-context.pdf")[Live deck]
+      #link("slides/00-energy-context.pdf")[0. The big picture — slides]
+      #html.p[#link("slides/01-discovering-fusion.pdf")[1. Discovering fusion — slides] #h(1em) #link("present/01-discovering-fusion/")[Present]]
     ]
     #html.section(id: "glossary")[
       #html.h2[Notation]
@@ -28,10 +29,10 @@
       #html.p[Wildlife and health: Loss et al., #link("https://doi.org/10.1038/ncomms2380")[free-ranging cats] and #link("https://www.nature.com/articles/ncomms3961")[correction]; Loss et al., #link("https://doi.org/10.1650/CONDOR-13-090.1")[building collisions], #link("https://doi.org/10.1002/jwmg.721")[vehicle collisions] and #link("https://doi.org/10.1371/journal.pone.0101565")[power lines]; Loss et al., #link("https://doi.org/10.1016/j.biocon.2013.10.007")[wind facilities]; #link("https://www.naturvardsverket.se/4ac35d/globalassets/media/publikationer-pdf/ovriga-pub/vindval/978-91-620-6511-9.pdf")[Naturvårdsverket Vindval 6511]; #link("https://ourworldindata.org/grapher/death-rates-from-energy-production-per-twh")[Our World in Data deaths per TWh].]
       #html.p[Fission and fusion: #link("https://world-nuclear.org/information-library/nuclear-fuel-cycle/introduction/nuclear-fuel-cycle-overview")[World Nuclear Association fuel-cycle overview]; #link("https://www-pub.iaea.org/MTCD/Publications/PDF/RDS-2-45_web.pdf")[IAEA reactor history]; #link("https://www.kkg.ch/de/technik/technische-hauptdaten.html")[Gösgen technical data]; #link("https://www.iaea.org/topics/energy/fusion/faqs")[IAEA fusion FAQ]; #link("https://physics.nist.gov/cuu/Constants/")[NIST constants]; #link("https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lithium.pdf")[USGS lithium].]
     ]
-    #html.p[Original content CC BY 4.0; code MIT; fonts SIL OFL. AI tools assisted drafting and layout; scientific review: Christopher Albert.]
+    #html.p[Original content CC BY 4.0; code MIT; fonts SIL OFL. Third-party images retain their own terms, listed in the slide credits. AI tools assisted drafting and layout; scientific review: Christopher Albert.]
   ]
 ]
-#document("chapters/00-energy-context.html", title: [Energy context])[
+#document("chapters/00-energy-context.html", title: [The big picture])[
   #page-shell(stylesheet: "../styles.css")[#chapter]
 ]
 #asset("styles.css", read("styles.css"))

@@ -214,7 +214,7 @@
     "unit": "1",
     "year": "model",
     "source": "assumptions",
-    "notes": ""
+    "notes": "Assumed 90% fleet capacity factor; also used in the fusion blanket resource scenario, not a measured fusion operating value."
   },
   "deployment_horizon": {
     "value": 30,
@@ -287,7 +287,7 @@
     "notes": "Illustrative coal lower heating value, not universal."
   },
   "ocean_volume": {
-    "value": 1335000000.0,
+    "value": 1335000000,
     "unit": "km^3",
     "year": "2026-10-06",
     "source": "noaa_ocean",
@@ -364,7 +364,7 @@
     "notes": "Finite inventory divided over horizon; not sustainability certification."
   },
   "legacy_world_population": {
-    "value": 10000000000.0,
+    "value": 10000000000,
     "unit": "person",
     "year": 2025,
     "source": "legacy_handwriting",
@@ -378,7 +378,7 @@
     "notes": "World stock-lifetime teaching demand on pp.14/29."
   },
   "legacy_coal_stock": {
-    "value": 1000000000000000.0,
+    "value": 1000000000000000,
     "unit": "kg",
     "year": 2025,
     "source": "legacy_handwriting",
@@ -392,14 +392,14 @@
     "notes": ""
   },
   "legacy_uranium_stock": {
-    "value": 10000000000.0,
+    "value": 10000000000,
     "unit": "kg",
     "year": 2025,
     "source": "legacy_handwriting",
     "notes": ""
   },
   "legacy_uranium_heat": {
-    "value": 10000000.0,
+    "value": 10000000,
     "unit": "kWh/kg",
     "year": 2025,
     "source": "legacy_handwriting",
@@ -530,5 +530,103 @@
     "year": 2024,
     "source": "bgr",
     "notes": "Published summary rounded energy-equivalent reserve; uranium uses BGR conventional-cycle basis."
+  },
+  "lithium_seawater_concentration": {
+    "value": 0.00017,
+    "unit": "kg/m^3",
+    "year": 2009,
+    "source": "mackay_fusion",
+    "notes": "0.17 mg/L; used as a concentration estimate, not an economic reserve."
+  },
+  "mackay_lithium_electric_yield": {
+    "value": 2300000,
+    "unit": "kWh/kg",
+    "year": 2009,
+    "source": "mackay_fusion",
+    "notes": "Assumed 2300 kWh(e)/g of natural lithium; includes an assumed plant fuel utilization and electric yield, not a universal nuclear constant."
+  },
+  "mackay_lithium_extraction_energy": {
+    "value": 2500,
+    "unit": "kWh/kg",
+    "year": 2009,
+    "source": "mackay_fusion",
+    "notes": "MacKay's estimated seawater extraction electricity; a historical estimate, not a demonstrated whole-process industrial energy cost."
+  },
+  "fusion_electric_efficiency": {
+    "value": 0.4,
+    "unit": "1",
+    "year": "model",
+    "source": "assumptions",
+    "notes": "For the independent D-T deuterium inventory bound; ignores breeding heat, auxiliaries and fuel-cycle losses."
+  },
+  "lead_reserves": {
+    "value": 95000000,
+    "unit": "t",
+    "year": 2025,
+    "source": "usgs_lead",
+    "notes": "USGS MCS 2026 world reserves; table is in thousand tonnes."
+  },
+  "lead_production": {
+    "value": 4500000,
+    "unit": "t/year",
+    "year": 2025,
+    "source": "usgs_lead",
+    "notes": "Estimated world mine output; includes all users, excludes secondary/recycled production."
+  },
+  "lead_blanket_inventory": {
+    "value": 4092,
+    "unit": "t",
+    "year": 2011,
+    "source": "bradshaw_blanket",
+    "notes": "HCLL DEMO initial Pb charge for paired 1 GW net-electric model; with 3.1 t Pb annual nuclear burn-up per full-power year."
+  },
+  "beryllium_resource_reference": {
+    "value": 100000,
+    "unit": "t",
+    "year": 2025,
+    "source": "usgs_beryllium",
+    "notes": "USGS says identified world resources exceed this reference; world reserves are unavailable. Not a resource ceiling."
+  },
+  "beryllium_production": {
+    "value": 430,
+    "unit": "t/year",
+    "year": 2025,
+    "source": "usgs_beryllium",
+    "notes": "Estimated world mine output for all users."
+  },
+  "beryllium_blanket_inventory": {
+    "value": 120,
+    "unit": "t",
+    "year": 2011,
+    "source": "bradshaw_blanket",
+    "notes": "HCPB DEMO initial Be charge for paired 1 GW net-electric model; with 0.19 t Be annual nuclear burn-up per full-power year."
+  },
+  "lead_resource_reference": {
+    "value": 2000000000,
+    "unit": "t",
+    "year": 2025,
+    "source": "usgs_lead",
+    "notes": "World identified Pb resources exceed 2 billion tonnes; a lower reference, not added to reserves."
+  },
+  "blanket_unit_net_power": {
+    "value": 1000,
+    "unit": "MW(e)",
+    "year": 2011,
+    "source": "bradshaw_blanket",
+    "notes": "1 GW net electricity per unit; paired 2011 HCLL/HCPB conceptual plant models, not universal per-GW material requirements."
+  },
+  "lead_burnup": {
+    "value": 3.1,
+    "unit": "t/year",
+    "year": 2011,
+    "source": "bradshaw_blanket",
+    "notes": "Nuclear transmutation per full-power year of the 1 GW(e) model; unrecoverable even with ideal material recycling."
+  },
+  "beryllium_burnup": {
+    "value": 0.19,
+    "unit": "t/year",
+    "year": 2011,
+    "source": "bradshaw_blanket",
+    "notes": "Nuclear transmutation per full-power year of the 1 GW(e) model; unrecoverable even with ideal material recycling."
   }
 }

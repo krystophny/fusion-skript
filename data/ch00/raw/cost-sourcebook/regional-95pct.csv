@@ -1,0 +1,9 @@
+country,site,pv_only_2025_c_per_kwh,matched95_2025_c_per_kwh,pv_only_2030_c_per_kwh,matched95_2030_c_per_kwh,source_id,evidence_flag
+United States,Nevada,4.3,11.3,2.9,7.7,S03,R for 2025; F for 2030
+Spain,Tabernas,3.3,9.1,2.0,6.1,S03,R for 2025; F for 2030
+Oman,Ad-Dakhiliyah,3.5,6.9,2.2,4.7,S03,R for 2025; F for 2030
+India,Rajasthan,3.9,7.9,2.4,5.4,S03,R for 2025; F for 2030
+China,Hebei,2.6,5.4,1.6,3.7,S03,R for 2025; F for 2030
+Brazil,Bahia,3.3,6.5,2.0,4.4,S03,R for 2025; F for 2030
+South Africa,Northwest,3.1,8.0,1.9,4.4,S03,R for 2025; F for 2030
+Australia,Queensland,2.9,8.2,1.8,5.8,S03,R for 2025; F for 2030

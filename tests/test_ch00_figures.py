@@ -93,3 +93,25 @@ def test_sankey_labels_are_legible_and_do_not_overlap_at_web_width(rendered):
         assert fig.bbox.contains(box.x0, box.y0) and fig.bbox.contains(box.x1, box.y1)
         for other in boxes[i+1:]:
             assert not box.overlaps(other), text.get_text()
+
+
+@pytest.mark.parametrize("earlier_flag", ["B", "F"])
+def test_independent_projection_has_no_false_historical_bridge(earlier_flag):
+    spec = importlib.util.spec_from_file_location(
+        'cost_plots', ROOT / 'scripts/plot-electricity-costs.py')
+    costs = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(costs)
+    rows = [
+        {'year':2024,'cost':19,'evidence_flag':earlier_flag},
+        {'year':2025,'cost':18,'evidence_flag':earlier_flag},
+        {'year':2030,'cost':8.2,'evidence_flag':'F','series_basis':'ATB2025'},
+        {'year':2035,'cost':8.0,'evidence_flag':'F','series_basis':'ATB2025'},
+    ]
+    fig, ax = costs.plt.subplots()
+    try:
+        costs.draw_series(ax, rows, 'cost', 'black')
+        segments = [list(line.get_xdata()) for line in ax.lines
+                    if line.get_linestyle() != 'None']
+        assert segments == [[2024,2025],[2030,2035]]
+    finally:
+        costs.plt.close(fig)

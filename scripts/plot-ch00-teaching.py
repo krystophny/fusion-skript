@@ -58,15 +58,29 @@ def income_energy():
 
 
 def income_levels():
-    d=load('03-income-levels'); rows=d['observations']
-    fig,ax=plt.subplots(figsize=(6.8,3.4))
-    x=np.arange(len(rows)); values=[float(r['population_billions']) for r in rows]
-    bars=ax.bar(x,values,color=[ORANGE,BLUE,GREEN,PURPLE],width=.68)
-    ax.bar_label(bars,labels=[f"{v:g}" for v in values],padding=3)
-    ax.set_xticks(x,[f"Level {r['level']}\n{r['income_threshold']}" for r in rows])
-    ax.set(ylabel='Population [billion people]',xlabel='Household income or consumption [2011 PPP USD / person / day]')
-    ax.grid(True,axis='y',alpha=.18)
-    finish(fig,'income-levels',d['source'])
+    d=load('03-income-levels')
+    # One geometry and population scale for all three years, shared by script and slides.
+    colours=['#E69F00','#0072B2','#009E73','#CC79A7']  # Okabe–Ito; bands also labelled.
+    for year in d['years']:
+        rows=[r for r in d['observations'] if r['year']==year]
+        fig,ax=plt.subplots(figsize=(6.8,3.8))
+        x=np.arange(len(rows)); values=[r['population_billions'] for r in rows]
+        bars=ax.bar(x,values,color=colours,width=.68)
+        labels=[f"{r['population_billions']:.2f}\n{r['population_share_percent']:.1f}%"
+                for r in rows]
+        # Labels must not change the axis geometry between years.
+        for label in ax.bar_label(bars,labels=labels,padding=4,fontsize=16):
+            label.set_in_layout(False)
+        ax.set_xticks(x,[r['income_threshold'] for r in rows])
+        ax.tick_params(labelsize=16)
+        ax.set(ylim=(0,5.5),yticks=[0,1,2,3,4,5])
+        ax.set_ylabel('Population [billion]',fontsize=16)
+        ax.set_xlabel('Income or consumption\n[2021 PPP USD / person / day]',fontsize=16)
+        ax.grid(True,axis='y',alpha=.18)
+        ax.set_axisbelow(True)
+        finish(fig,f'income-levels-{year}',
+            'World Bank PIP · Sep 2026 · global estimates',
+            metadata={'Description':f'{year}; '+d['notes']},source_size=10,footer=.09)
 
 
 def energy_boundaries():
@@ -79,6 +93,54 @@ def energy_boundaries():
     ax.set(xlabel='Energy [kWh / person / day]',xlim=(0,max(values)*1.18))
     ax.grid(True,axis='x',alpha=.18)
     finish(fig,'micro-macro',d['source'])
+
+
+def electricity_consumption():
+    """National accounting boundaries and nested electricity subsets, one scale."""
+    d=load('05-austria-flow')
+    fig=plt.figure(figsize=(257/25.4,133/25.4))
+    ax=fig.add_axes((.245,.43,.735,.51))
+    values=[d['gross_kWh_person_day'],d['final_kWh_person_day'],
+        d['carriers_kWh_person_day']['Electricity'],d['household_electricity_kWh_person_day']]
+    ys=[3,2,1,0]
+    colours=[GREY,BLUE,GREEN,PURPLE]
+    ax.barh(ys,values,height=.52,color=colours)
+    for y,value in zip(ys,values):
+        ax.text(value+1.5,y,f'{value:.1f}',va='center',fontsize=18)
+    ax.set_yticks(ys,['Primary energy\n(gross inland)','Final energy',
+        'of which: electricity','of which: households'],fontsize=16)
+    ax.text(36,1,f"{d['electricity_share_of_final_percent']:.1f}% of final energy",
+        va='center',fontsize=17,color=GREEN)
+    ax.text(23,0,f"{d['household_share_of_electricity_percent']:.1f}% of electricity = "
+        f"{d['household_electricity_share_of_final_percent']:.1f}% of final energy",
+        va='center',fontsize=16,color=PURPLE)
+    ax.set(xlim=(0,125),ylim=(-.55,3.65),xticks=range(0,121,20))
+    ax.tick_params(axis='y',length=0,pad=9)
+    ax.tick_params(axis='x',labelsize=13)
+    ax.spines['left'].set_visible(False)
+    ax.grid(True,axis='x',alpha=.14)
+    ax.set_axisbelow(True)
+    fig.text(.01,.985,'Austria · 2025 preliminary · kWh/(person day)',
+        fontsize=16,color=GREY,va='top')
+    gap=values[0]-values[1]
+    fig.text(.01,.33,f'Primary − final = {gap:.1f}',fontsize=17)
+    for x,key,label in [(.01,'conversion_loss_kWh_person_day','net transformation loss'),
+        (.34,'own_use_and_transport_losses_kWh_person_day','energy-sector use + transport losses'),
+        (.80,'nonenergy_kWh_person_day','non-energy use')]:
+        fig.text(x,.255,f"{d[key]:.1f}",fontsize=18,color=ORANGE)
+        fig.text(x,.205,label,fontsize=12.5,color=GREY)
+    model=d['thermal_example']
+    fig.text(.01,.115,f"Thermal plant · assumed efficiency {model['efficiency']:.0%} · no heat recovery",
+        fontsize=15,color=GREY)
+    fig.text(.01,.035,f"{model['input_kWh']:g} kWh heat → "
+        f"{model['electricity_kWh']:g} kWh electricity + "
+        f"{model['rejected_heat_kWh']:g} kWh rejected heat",fontsize=19)
+    # Fixed geometry shared unchanged by the slide and reference chapter.
+    fig.savefig(OUT/'electricity-consumption.svg',facecolor='white',metadata={
+        'Description':'Statistics Austria preliminary energy balance 2025, rows 8–13 and 18; '
+        'annual-average population. Thermal example: assumed 40% efficiency, EIA definition.'})
+    fig.savefig(OUT/'electricity-consumption.png',facecolor='white',dpi=96)
+    plt.close(fig)
 
 
 def austria_sankey_panels(d, threshold=2):
@@ -301,6 +363,154 @@ def emissions():
     finish(fig,'lifecycle-emissions',d['source'],metadata={'Description':d['required_data_notice']})
 
 
+
+def resource_lifetime_plot(rows, labels, name, xlabel):
+    """Shared years scale and geometry for fuel and blanket resource budgets."""
+    fig, ax = plt.subplots(figsize=(257/25.4, 83/25.4))
+    for y,row in enumerate(rows):
+        value = row['static_years']
+        if value is None:
+            ax.text(.025,y,f"Total unknown; fleet needs {row['fleet_initial_t']/1e6:.1f} Mt",
+                    transform=ax.get_yaxis_transform(),va='center',fontsize=17,color='#B55000')
+            continue
+        colour = '#B55000' if row.get('resource')=='deuterium_seawater' else '#0072B2'
+        ax.barh(y,value-1,left=1,height=.48,color=colour)
+        label = (f'{value:.0f} years' if value < 1000 else
+                 f'{value:,.0f} years'.replace(',',' ') if value < 1e6 else
+                 f'{value/1e6:.1f} million years' if value < 1e9 else
+                 f'{value/1e9:.0f} billion years')
+        if row.get('stock_qualifier') == '>':
+            label = '> ' + label
+        inside = value > 1e9
+        ax.text(value*(.7 if inside else 1.22),y,label,va='center',
+                ha='right' if inside else 'left',color='white' if inside else '#17202A',fontsize=17)
+    ax.set_yticks(range(len(rows)),labels,fontsize=17)
+    ax.set_ylim(len(rows)-.5,-.5)
+    ax.set_xscale('log')
+    ax.set_xlim(1,1e12)
+    ax.set_xticks([1,1e3,1e6,1e9,1e12],['1','1 000','1 million','1 billion','1 trillion'],fontsize=14)
+    ax.set_xlabel(xlabel+' · logarithmic scale',fontsize=16)
+    ax.grid(axis='x',alpha=.18)
+    ax.set_axisbelow(True)
+    ax.spines['left'].set_visible(False)
+    ax.tick_params(axis='y',length=0)
+    fig.subplots_adjust(left=.365,right=.94,bottom=.25,top=.96)
+    fig.savefig(OUT/(name+'.svg'),facecolor='white')
+    fig.savefig(OUT/(name+'.png'),facecolor='white',dpi=110)
+    plt.close(fig)
+
+
+def fusion_resource_lifetimes():
+    data = load('13-fusion-resources')
+    rows = data['fuel']
+    labels = [f"Lithium · {rows[0]['stock_kg']/1e9:g} Mt reserves",
+              'Lithium · seawater inventory','Deuterium · seawater (D–T)']
+    resource_lifetime_plot(rows,labels,'fusion-resource-lifetimes',
+                           'Stock / annual fuel requirement [years]')
+
+
+def fusion_blanket_lifetimes():
+    data = load('13-fusion-resources')
+    rows = data['blanket_lifetimes']
+    labels = [f"Lead · {rows[0]['stock_t']/1e6:g} Mt reserves",
+              f"Lead · >{rows[1]['stock_t']/1e9:g} Gt resources",
+              f"Beryllium · >{rows[2]['stock_t']/1000:g} kt resources"]
+    resource_lifetime_plot(rows,labels,'fusion-blanket-lifetimes',
+                           'Years after supplying all plants')
+
+
+
+def energy_outlook():
+    """One comparison plot: literature ranges, observations and fusion timelines."""
+    data = load('16-energy-scenarios')
+    years = data['years']
+    colors = {'Fossils':'#555555', 'Wind + solar':'#A87500',
+              'Bioenergy':'#009E73', 'Fission':'#8060A0', 'Other':'#0072B2'}
+    styles = {'Fossils':'--', 'Wind + solar':'-', 'Bioenergy':'-.',
+              'Fission':':', 'Other':'--'}
+    label_y = {'Fossils':27, 'Wind + solar':49, 'Bioenergy':22,
+               'Fission':2.7, 'Other':6.7}
+    labels = {'Fossils':'Fossils', 'Wind + solar':'Wind + solar',
+              'Bioenergy':'Bioenergy', 'Fission':'Fission', 'Other':'Hydro + other'}
+    fig, ax = plt.subplots(figsize=(257/25.4,134/25.4))
+    fig.subplots_adjust(left=.09,right=.99,bottom=.14,top=.91)
+
+    def endpoint(values, label, color, height):
+        ax.plot([2100,2103,2105],[values[-1],height,height],color=color,lw=.8)
+        ax.text(2105.5,height,label,color=color,fontsize=13.5,va='center')
+
+    for name, color in colors.items():
+        series = data['shares_percent'][name]
+        # Ranges for the two contested land-based/variable-renewable groups.
+        if name in ('Wind + solar','Bioenergy'):
+            ax.fill_between(years,series['p10'],series['p90'],color=color,alpha=.10,lw=0)
+        ax.plot(years,series['median'],color=color,ls=styles[name],lw=1.9)
+        endpoint(series['median'],labels[name],color,label_y[name])
+
+    policies = data['current_policy_fossils_percent']['median']
+    ax.plot(years,policies,color='#777777',ls=(0,(5,3)),lw=1.2)
+    endpoint(policies,'Fossils: current policies','#777777',72)
+
+    obs = data['observed']
+    obs_groups = {'Fossils':sum(obs['values'][k] for k in ('Coal','Oil','Gas')),
+                  'Fission':obs['values']['Nuclear'],
+                  'Renewables total':obs['values']['Renewables']}
+    for name, value in obs_groups.items():
+        ax.plot(obs['year'],100*value/obs['total'],'o',mfc='white',
+                mec=colors.get(name,'#222222'),ms=6.5,mew=1.4,zorder=7)
+    ax.annotate('Renewables total',xy=(2024,100*96/646),
+                xytext=(2028,19),fontsize=11.5,color='#333333',
+                arrowprops={'arrowstyle':'-','color':'#333333','lw':.7})
+
+    fusion_color = '#C62828'
+    mit = data['fusion_mit']
+    cases = mit['cases']
+    curve_values = np.array([case['scaled_primary_shares_percent'] for case in cases])
+    ax.fill_between(mit['years'],curve_values.min(axis=0),curve_values.max(axis=0),
+                    color=fusion_color,alpha=.08,lw=0)
+    for case, style in zip(cases, [':','--','-','-.']):
+        base = case['cost_2050_USD_kW']==8000
+        ax.plot(case['years'],case['scaled_primary_shares_percent'],
+                color=fusion_color,ls=style,lw=2.3 if base else .9,zorder=5)
+    base = next(case for case in cases if case['cost_2050_USD_kW']==8000)
+    endpoint(base['scaled_primary_shares_percent'],'Fusion: MIT',fusion_color,11)
+
+    etm = data['fusion_etm_timeline']
+    ax.plot(etm['years'],etm['scaled_primary_shares_percent'],'--o',
+            color=fusion_color,lw=1.7,ms=5,mfc='white',mew=1.2,zorder=7)
+    endpoint(etm['scaled_primary_shares_percent'],'Fusion: EUROfusion',fusion_color,16.5)
+    ax.plot(2100,data['fusion']['scaled_primary_share_percent'],marker='*',ms=16,
+            color=fusion_color,mec='white',mew=.6,zorder=8)
+
+    solar = data['solar']
+    ax.plot(solar['observation_years'],solar['observed_shares_percent'],
+            '-D',color='#D55E00',ms=4,lw=2,zorder=8)
+    ax.plot(solar['guide_years'],solar['guide_shares_percent'],
+            '--',color='#D55E00',lw=2,zorder=7)
+    ax.annotate('PV: 510 GW/year held',xy=(2035,solar['guide_shares_percent'][-1]),
+                xytext=(2037,8.2),fontsize=11.5,color='#D55E00',
+                arrowprops={'arrowstyle':'-','color':'#D55E00','lw':.8})
+
+    ax.text(.01,1.04,'IPCC 1.5–2°C: medians + 10–90% ranges    Fusion: published cost cases',
+            transform=ax.transAxes,fontsize=12.3,color=GREY)
+    ax.text(.01,.965,'○ Observed 2024',transform=ax.transAxes,fontsize=12,color=GREY)
+    ax.text(.55,.965,'Fusion: 4 MIT cost cases; ○ ETM 2024; ★ ETM 2026',
+            transform=ax.transAxes,fontsize=11.5,color=fusion_color,ha='center')
+    ax.set_xlim(2020,2135)
+    ax.set_ylim(0,86)
+    ax.set_xticks([2024,2040,2060,2080,2100])
+    ax.set_yticks([0,20,40,60,80],['0%','20%','40%','60%','80%'])
+    ax.tick_params(labelsize=14)
+    ax.set_ylabel('Share of world primary energy',fontsize=15)
+    ax.grid(alpha=.13)
+    ax.set_axisbelow(True)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    fig.savefig(OUT/'energy-outlook.svg',facecolor='white')
+    fig.savefig(OUT/'energy-outlook.png',facecolor='white',dpi=120)
+    plt.close(fig)
+
+
 def build():
     OUT.mkdir(parents=True,exist_ok=True)
     configure_fonts()
@@ -308,8 +518,8 @@ def build():
         # Outline the bundled STIX glyphs: SVG images cannot inherit page webfonts.
         'svg.fonttype':'path','axes.labelcolor':'#17202A','text.color':'#17202A',
         'xtick.color':'#17202A','ytick.color':'#17202A'})
-    for make in (income_energy,income_levels,energy_boundaries,austria_sankey,solar_chain,pv_trend,land_density,true_scale,wildlife,risk_energy,emissions):make()
-    print('Wrote 11 original light-theme Chapter 0 SVGs.')
+    for make in (income_energy,income_levels,energy_boundaries,electricity_consumption,austria_sankey,solar_chain,pv_trend,land_density,true_scale,wildlife,risk_energy,emissions,fusion_resource_lifetimes,fusion_blanket_lifetimes,energy_outlook):make()
+    print('Wrote original light-theme Chapter 0 SVGs.')
 
 
 if __name__=='__main__':build()

@@ -65,10 +65,15 @@
 
 // Script outline: chapter and section numbers and titles.
 #let script-outline = json("/slides/build/script-outline.json")
-#let chapter-info(number) = {
+#let chapter-info(number, fallback-title: none) = {
   let found = script-outline.chapters.filter(c => c.number == number)
-  assert(found.len() == 1, message: "no script chapter " + str(number))
-  found.first()
+  // A live deck may precede its script chapter; an explicit title is required.
+  if found.len() == 0 and fallback-title != none {
+    (number: number, title: fallback-title)
+  } else {
+    assert(found.len() == 1, message: "no script chapter " + str(number))
+    found.first()
+  }
 }
 #let section-info(label) = {
   let found = script-outline.sections.filter(s => s.label == label)
@@ -108,24 +113,33 @@
 
 // One numbered page. With `section` (a script section label) the section
 // title sits at the top and the content starts at the title band.
-#let slide(section: none, title: [Credits], body) = page(foreground: page-number)[
-  #present-page(title: title, section: section)
+#let slide(section: none, title: [Credits], background: "light", body) = page(
+  fill: if background == "dark" { black } else { white },
+  foreground: if background == "dark" { context {
+    place(bottom + right, dx: -margin, dy: -furniture-y,
+      text(size: small-size, fill: white, counter(page).display()))
+  } } else { page-number },
+)[
+  #set text(fill: if background == "dark" { white } else { ink })
+  #present-page(title: title, section: section, background: background)
   #place(top + left, if section != none { section-heading(section, title: title) } else { text(size: title-size, title) })
   #let y0 = title-band
   #place(top + left, dy: y0,
     block(width: text-width, height: text-height - y0, body))
 ]
 
-#let title-page(chapter) = page(foreground: none)[
+#let title-page(chapter, title: none, background: "light") = page(foreground: none)[
+  #set text(fill: if background == "dark" { white } else { ink })
   #deck-chapter.update(chapter)
-  #let info = chapter-info(chapter)
-  #present-page(title: info.title)
+  #let info = chapter-info(chapter, fallback-title: title)
+  #let heading = if title == none { info.title } else { title }
+  #present-page(title: heading, background: background)
   // Course and chapter as a quiet eyebrow, the chapter title as the one
   // large element, the author at the foot of the text area.
   #at(1, 12, y: 52mm)[
-    #text(size: body-size, fill: muted)[#course-name#h(0.9em)·#h(0.9em)Chapter #chapter]
+    #text(size: body-size, fill: if background == "dark" { rgb("#B8C2CC") } else { muted })[#course-name#h(0.9em)·#h(0.9em)Chapter #chapter]
     #v(9mm)
-    #block(width: cols(10), text(size: display-size, info.title))
+    #block(width: cols(10), text(size: display-size, heading))
     #v(7mm)
     #line(length: cols(2), stroke: 1.2pt + plot-blue)
   ]
@@ -133,23 +147,25 @@
 ]
 
 // Deck setup: page geometry, type, document metadata, and the title page.
-#let deck(chapter: none, body) = {
-  let info = chapter-info(chapter)
+#let deck(chapter: none, title: none, background: "light", body) = {
+  let info = chapter-info(chapter, fallback-title: title)
+  let heading = if title == none { info.title } else { title }
   set document(
-    title: course-name + ", Chapter " + str(chapter) + ": " + info.title,
+    title: course-name + ", Chapter " + str(chapter) + ": " + plain-text(heading),
     author: "Christopher Albert",
   )
-  set page(width: 297mm, height: 210mm, margin: margin, fill: white)
+  set page(width: 297mm, height: 210mm, margin: margin,
+    fill: if background == "dark" { black } else { white })
   // STIX Two Math supplies the symbols STIX Two Text lacks (arrows such as ⇒
   // in prose).
   set text(font: ("STIX Two Text", "STIX Two Math"), size: body-size,
-    fill: ink, lang: "en", top-edge: "cap-height", bottom-edge: "baseline")
+    fill: if background == "dark" { white } else { ink }, lang: "en", top-edge: "cap-height", bottom-edge: "baseline")
   show math.equation: set text(font: "STIX Two Math")
   // Slides read from a distance: fractions are always set in display style.
   show math.frac: it => math.display(it)
   show math.equation: set text(size: 1.12em)
   set par(leading: 0.62em, spacing: 0.62em)
-  title-page(chapter)
+  title-page(chapter, title: heading, background: background)
   body
 }
 
@@ -169,12 +185,13 @@
 
 // Full-slide hero photograph with a small legible attribution over the image.
 // Detailed source links remain on the final credits page and in credits.md.
-#let photo-page(file, credit, key, section: none) = page(margin: 0mm, foreground: {
+#let photo-page(file, credit, key, section: none, fit: "cover", title: none) = page(margin: 0mm, fill: black, foreground: {
   place(bottom + right, dx: -4mm, dy: -3mm,
     block(inset: 1.5mm, fill: black, text(size: 8pt, fill: white, credit)))
 })[
-  #present-page(background: "dark", title: file.replace("_", " ").replace(".jpg", ""), section: section)
-  #image("/slides/photos/" + file, width: 297mm, height: 210mm, fit: "cover", alt: file.replace("_", " ").replace(".jpg", ""))
+  #let heading = if title == none { file.replace("_", " ").replace(".jpg", "") } else { title }
+  #present-page(background: "dark", title: heading, section: section)
+  #image("/slides/photos/" + file, width: 297mm, height: 210mm, fit: fit, alt: plain-text(heading))
   #metadata(file) #label(key)
 ]
 

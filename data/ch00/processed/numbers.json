@@ -190,75 +190,255 @@
   },
   {
     "page": 3,
-    "label": "Level 1 income threshold <2",
-    "value": "<2",
-    "unit": "2011 PPP USD/(person day)",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
+    "label": "Income band <3",
+    "value": "<3",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 1981,
+    "source_key": "wb_pip_income",
     "note": ""
   },
   {
     "page": 3,
-    "label": "Level 1 population",
-    "value": 0.75,
+    "label": "Band 1 population",
+    "value": 2.128547233,
     "unit": "billion people",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
-    "note": "Rounded published estimate."
+    "year": 1981,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
   },
   {
     "page": 3,
-    "label": "Level 2 income threshold 2–8",
-    "value": "2–8",
-    "unit": "2011 PPP USD/(person day)",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
+    "label": "Income band 3–12",
+    "value": "3–12",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 1981,
+    "source_key": "wb_pip_income",
     "note": ""
   },
   {
     "page": 3,
-    "label": "Level 2 population",
-    "value": 3.3,
+    "label": "Band 2 population",
+    "value": 1.259441605,
     "unit": "billion people",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
-    "note": "Rounded published estimate."
+    "year": 1981,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
   },
   {
     "page": 3,
-    "label": "Level 3 income threshold 8–32",
-    "value": "8–32",
-    "unit": "2011 PPP USD/(person day)",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
+    "label": "Income band 12–48",
+    "value": "12–48",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 1981,
+    "source_key": "wb_pip_income",
     "note": ""
   },
   {
     "page": 3,
-    "label": "Level 3 population",
-    "value": 2.5,
+    "label": "Band 3 population",
+    "value": 0.873012709,
     "unit": "billion people",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
-    "note": "Rounded published estimate."
+    "year": 1981,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
   },
   {
     "page": 3,
-    "label": "Level 4 income threshold >32",
-    "value": ">32",
-    "unit": "2011 PPP USD/(person day)",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
+    "label": "Income band ≥48",
+    "value": "≥48",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 1981,
+    "source_key": "wb_pip_income",
     "note": ""
   },
   {
     "page": 3,
-    "label": "Level 4 population",
-    "value": 0.9,
+    "label": "Band 4 population",
+    "value": 0.257387719,
     "unit": "billion people",
-    "year": 2017,
-    "source_key": "gapminder_income_levels",
-    "note": "Rounded published estimate."
+    "year": 1981,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band <3",
+    "value": "<3",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 1 population",
+    "value": 2.230903823,
+    "unit": "billion people",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band 3–12",
+    "value": "3–12",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 2 population",
+    "value": 2.503588689,
+    "unit": "billion people",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band 12–48",
+    "value": "12–48",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 3 population",
+    "value": 0.944718239,
+    "unit": "billion people",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band ≥48",
+    "value": "≥48",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 4 population",
+    "value": 0.48267406,
+    "unit": "billion people",
+    "year": 2000,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band <3",
+    "value": "<3",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 1 population",
+    "value": 0.824298368,
+    "unit": "billion people",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band 3–12",
+    "value": "3–12",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 2 population",
+    "value": 3.959900637,
+    "unit": "billion people",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band 12–48",
+    "value": "12–48",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 3 population",
+    "value": 2.404753801,
+    "unit": "billion people",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "Income band ≥48",
+    "value": "≥48",
+    "unit": "2021 PPP USD/(person day)",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Band 4 population",
+    "value": 0.952856139,
+    "unit": "billion people",
+    "year": 2024,
+    "source_key": "wb_pip_income",
+    "note": "Difference of PIP cumulative population counts."
+  },
+  {
+    "page": 3,
+    "label": "World electricity access",
+    "value": 78.224965031972,
+    "unit": "% of world population",
+    "year": 2000,
+    "source_key": "wb_electricity",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Austria / Ethiopia primary energy per person",
+    "value": 165.396361060594,
+    "unit": "1",
+    "year": 2000,
+    "source_key": "eia + wb_population",
+    "note": "EIA coverage does not fully include traditional biomass."
+  },
+  {
+    "page": 3,
+    "label": "World electricity access",
+    "value": 91.9264843853681,
+    "unit": "% of world population",
+    "year": 2024,
+    "source_key": "wb_electricity",
+    "note": ""
+  },
+  {
+    "page": 3,
+    "label": "Austria / Ethiopia primary energy per person",
+    "value": 49.707097991137516,
+    "unit": "1",
+    "year": 2024,
+    "source_key": "eia + wb_population",
+    "note": "EIA coverage does not fully include traditional biomass."
   },
   {
     "page": 3,
@@ -3336,6 +3516,753 @@
     "note": ""
   },
   {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 565.3685867975678,
+    "unit": "EJ/year",
+    "year": 2020,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 562.5782827723615,
+    "unit": "EJ/year",
+    "year": 2030,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 538.23645,
+    "unit": "EJ/year",
+    "year": 2040,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 564.2884201276606,
+    "unit": "EJ/year",
+    "year": 2050,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 625.6196500000001,
+    "unit": "EJ/year",
+    "year": 2060,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 689.0162952793687,
+    "unit": "EJ/year",
+    "year": 2070,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 764.3973335833838,
+    "unit": "EJ/year",
+    "year": 2080,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 830.2216728594495,
+    "unit": "EJ/year",
+    "year": 2090,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "AR6 C1/C3 median total primary energy",
+    "value": 881.971317921106,
+    "unit": "EJ/year",
+    "year": 2100,
+    "source_key": "ipcc_ar6_energy",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "Favourable EUROfusion 2026 case: fusion output",
+    "value": 105.84,
+    "unit": "EJ/year",
+    "year": 2100,
+    "source_key": "eurofusion_etm_2026",
+    "note": ""
+  },
+  {
+    "page": 16,
+    "label": "EUROfusion 2026 output / AR6 median primary demand",
+    "value": 12.000390245056426,
+    "unit": "percent",
+    "year": 2100,
+    "source_key": "eurofusion_etm_2026 + ipcc_ar6_energy",
+    "note": "Cross-model scaling, not a combined run."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2020,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2025,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2030,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2035,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2040,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 0.36,
+    "unit": "EJ/year",
+    "year": 2045,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 2.16,
+    "unit": "EJ/year",
+    "year": 2050,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 6.12,
+    "unit": "EJ/year",
+    "year": 2055,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 15.84,
+    "unit": "EJ/year",
+    "year": 2060,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 34.92,
+    "unit": "EJ/year",
+    "year": 2065,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 54.0,
+    "unit": "EJ/year",
+    "year": 2070,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 79.2,
+    "unit": "EJ/year",
+    "year": 2075,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 97.2,
+    "unit": "EJ/year",
+    "year": 2080,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 114.84,
+    "unit": "EJ/year",
+    "year": 2085,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 130.68,
+    "unit": "EJ/year",
+    "year": 2090,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 146.51999999999998,
+    "unit": "EJ/year",
+    "year": 2095,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 2800 USD/kW cost case",
+    "value": 160.56,
+    "unit": "EJ/year",
+    "year": 2100,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2020,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2025,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2030,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2035,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2040,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 0.36,
+    "unit": "EJ/year",
+    "year": 2045,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 1.44,
+    "unit": "EJ/year",
+    "year": 2050,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 5.76,
+    "unit": "EJ/year",
+    "year": 2055,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 12.6,
+    "unit": "EJ/year",
+    "year": 2060,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 27.0,
+    "unit": "EJ/year",
+    "year": 2065,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 41.04,
+    "unit": "EJ/year",
+    "year": 2070,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 57.239999999999995,
+    "unit": "EJ/year",
+    "year": 2075,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 70.56,
+    "unit": "EJ/year",
+    "year": 2080,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 82.08,
+    "unit": "EJ/year",
+    "year": 2085,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 93.96,
+    "unit": "EJ/year",
+    "year": 2090,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 108.36,
+    "unit": "EJ/year",
+    "year": 2095,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 5600 USD/kW cost case",
+    "value": 121.67999999999999,
+    "unit": "EJ/year",
+    "year": 2100,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2020,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2025,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2030,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 0.0072,
+    "unit": "EJ/year",
+    "year": 2035,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2040,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 0.36,
+    "unit": "EJ/year",
+    "year": 2045,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 1.3499999999999999,
+    "unit": "EJ/year",
+    "year": 2050,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 4.32,
+    "unit": "EJ/year",
+    "year": 2055,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 11.879999999999999,
+    "unit": "EJ/year",
+    "year": 2060,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 19.08,
+    "unit": "EJ/year",
+    "year": 2065,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 30.24,
+    "unit": "EJ/year",
+    "year": 2070,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 39.6,
+    "unit": "EJ/year",
+    "year": 2075,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 52.199999999999996,
+    "unit": "EJ/year",
+    "year": 2080,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 61.92,
+    "unit": "EJ/year",
+    "year": 2085,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 71.28,
+    "unit": "EJ/year",
+    "year": 2090,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 77.75999999999999,
+    "unit": "EJ/year",
+    "year": 2095,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 8000 USD/kW cost case",
+    "value": 86.39999999999999,
+    "unit": "EJ/year",
+    "year": 2100,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2020,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2025,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2030,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2035,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2040,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2045,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.36,
+    "unit": "EJ/year",
+    "year": 2050,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 0.72,
+    "unit": "EJ/year",
+    "year": 2055,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 1.8,
+    "unit": "EJ/year",
+    "year": 2060,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 3.96,
+    "unit": "EJ/year",
+    "year": 2065,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 6.84,
+    "unit": "EJ/year",
+    "year": 2070,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 10.08,
+    "unit": "EJ/year",
+    "year": 2075,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 12.959999999999999,
+    "unit": "EJ/year",
+    "year": 2080,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 17.64,
+    "unit": "EJ/year",
+    "year": 2085,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 21.24,
+    "unit": "EJ/year",
+    "year": 2090,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 25.2,
+    "unit": "EJ/year",
+    "year": 2095,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "MIT fusion 11300 USD/kW cost case",
+    "value": 29.16,
+    "unit": "EJ/year",
+    "year": 2100,
+    "source_key": "mit_fusion_2024",
+    "note": "Approximate published curve."
+  },
+  {
+    "page": 16,
+    "label": "EUROfusion 2024 S02 fusion",
+    "value": 0.0,
+    "unit": "EJ/year",
+    "year": 2030,
+    "source_key": "eurofusion_etm_2024",
+    "note": "Approximate published dated bar."
+  },
+  {
+    "page": 16,
+    "label": "EUROfusion 2024 S02 fusion",
+    "value": 1.8,
+    "unit": "EJ/year",
+    "year": 2050,
+    "source_key": "eurofusion_etm_2024",
+    "note": "Approximate published dated bar."
+  },
+  {
+    "page": 16,
+    "label": "EUROfusion 2024 S02 fusion",
+    "value": 27.0,
+    "unit": "EJ/year",
+    "year": 2070,
+    "source_key": "eurofusion_etm_2024",
+    "note": "Approximate published dated bar."
+  },
+  {
+    "page": 16,
+    "label": "EUROfusion 2024 S02 fusion",
+    "value": 104.39999999999999,
+    "unit": "EJ/year",
+    "year": 2100,
+    "source_key": "eurofusion_etm_2024",
+    "note": "Approximate published dated bar."
+  },
+  {
     "page": 7,
     "label": "Input: solar_noon",
     "value": 1000,
@@ -3383,7 +4310,7 @@
   {
     "page": 6,
     "label": "Input: legacy_world_population",
-    "value": 10000000000.0,
+    "value": 10000000000,
     "unit": "person",
     "year": 2025,
     "source_key": "legacy_handwriting",
@@ -3522,7 +4449,7 @@
     "unit": "1",
     "year": "model",
     "source_key": "assumptions",
-    "note": ""
+    "note": "Assumed 90% fleet capacity factor; also used in the fusion blanket resource scenario, not a measured fusion operating value."
   },
   {
     "page": 12,
@@ -3590,7 +4517,7 @@
   {
     "page": 13,
     "label": "Input: ocean_volume",
-    "value": 1335000000.0,
+    "value": 1335000000,
     "unit": "km^3",
     "year": "2026-10-06",
     "source_key": "noaa_ocean",

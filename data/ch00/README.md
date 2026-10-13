@@ -92,3 +92,147 @@ budget. They do not test that source text matches a patch.
 The dependency repair in `derivations/tool-repairs/` records a reproducible
 SymPy/python-flint overflow and a focused upstream patch. It is separate from
 the chapter's formulas and source rights.
+
+## Capacity additions and cost scenarios (12 October 2026)
+
+- `raw/eia-world-capacity-1979-2024.json`: complete EIA International API
+  response, world (WORL), activity 7 (capacity), MK (million kW = GW), requested
+  1979–2024; annual observations begin in 1980, wind in 1981, solar and biomass
+  in 2000. [EIA capacity data](https://www.eia.gov/international/data/world/electricity/electricity-capacity).
+  US government numerical data, public domain. Annual first differences are
+  **net installed-capacity changes**, including closures, reclassifications and
+  revisions; they are not gross construction. EIA aggregates fossil fuels;
+  hydro excludes pumped storage. Missing earlier observations stay missing.
+  The canonical derivation emits `12-capacity-additions.json`; the existing
+  deck figure builder renders it. Austria's line retains the former one-year
+  accounting comparison: 2025 final energy / 0.9 capacity factor / one-year
+  build = 37.1401 GW/year. This nuclear-equivalent reference is not a solar or
+  wind target; electrification, storage and sector coupling are not modeled.
+
+- `raw/atb-2025-projections.csv`: five unrounded records selected from the
+  [2025 ATB v1.0.0 dataset](https://oedi-data-lake.s3.amazonaws.com/ATB/electricity/parquet/2025/v1.0.0/ATBe.parquet),
+  accessed 12 October 2026. Filter: LCOE, Moderate, R&D without tax credits,
+  years 2030 and 2035 plus the 2025 wind baseline. Wind: Class 4, Wind Turbine Technology 1, 30-year cost
+  recovery. Nuclear: large reactor, 60-year cost recovery. Values are in
+  2023 USD/MWh. Plotting uses dimensionless ratios, so the dollar base cancels;
+  each relative change multiplies the existing 2025 cost benchmark. Source
+  records and the historical sourcebook are retained separately. [ATB methods and terms](https://atb.nlr.gov/electricity/2025/disclaimer);
+  numerical facts are attributed, not provider artwork.
+  Wind projections apply the ATB relative cost change (future / 2025) to
+  the existing 3.3 cents/kWh global 2025 benchmark, joining continuously at
+  2025. Nuclear uses the same anchoring method, but ATB nuclear estimates start
+  in 2030. The nuclear scenario explicitly holds the 2025 benchmark constant
+  through 2030, then applies the ATB 2035/2030 LCOE ratio. Both dotted curves
+  join their historical 2025 anchors. These are anchored scenarios, not ATB
+  absolute LCOE forecasts or a prediction of a cost drop between samples.
+
+The [2025 ATB definitions](https://atb.nlr.gov/electricity/2025/definitions)
+explicitly exclude fossil-fuel LCOE calculations. Gas and coal therefore use
+a labelled **constant-2025-real-cost scenario** through 2035, not a published
+fuel-price forecast. Solar and daily-storage scenarios retain the supplied
+IRENA-based model. All future rows use evidence flag F; historical data,
+sourcebook and daily-storage assumptions remain unchanged.
+
+### Fusion fuel and blanket resource scenarios (12 October 2026)
+
+`13-fusion-resources.json` reuses the saved EIA 2024 world primary-energy
+record (`eia_2024.json`, WORL, product 44, activity 2, QBTU), existing Li
+reserves and NOAA/NIST ocean-D inputs. Electricity is assumed to match that
+primary-energy total numerically, not today's electricity demand; this is an
+accounting scenario, not a useful-energy transition forecast. Constant demand,
+no other uses, fuel losses or initial blanket loading deducted from the fuel budget. MacKay chapter 24, pp.172/176 supplies
+the assumed natural-Li yield 2300 kWh(e)/g and seawater extraction estimate
+2.5 kWh(e)/g. The 0.17 mg/L seawater concentration gives an inventory, not
+economic reserves. D–T deuterium uses 17.6 MeV per D at assumed 40% conversion;
+it still needs Li and bred T. No DD energy claim is made. The canonical
+`fusion-resource-lifetimes.svg` is reused unchanged in the deck and reference.
+
+Blanket lifetimes use paired historical 1 GW net-electric concepts from
+[Bradshaw et al. (2011)](https://doi.org/10.1016/j.fusengdes.2010.11.040):
+HCLL Pb loading 4092 t and nuclear burn-up 3.1 t/full-power-year;
+HCPB Be loading 120 t and nuclear burn-up 0.19 t/full-power-year.
+The same world-energy stress scenario and assumed 90% capacity factor require
+22,528 installed units: startup loading is 92.2 Mt Pb or 2.70 Mt Be.
+Compute (stock - startup loading) / annual nuclear burn-up, assuming ideal
+recovery of untransmuted material, no growth, competing uses or recovery losses.
+Burn-up scales with average output; startup scales with installed capacity.
+
+USGS MCS 2026: Pb reserves 95 Mt, identified resources >2 Gt, mine output
+4.5 Mt/year. After startup, these give about 45 years or >30,353 years
+respectively; resources and reserves are alternatives, not additive.
+Be identified resources are >100 kt, mine output 430 t/year; world Be reserves
+are unavailable. The 100 kt reference cannot cover startup, so its lifetime is
+null, not zero or negative. A lower bound is not a total-resource ceiling;
+the actual Be stock cannot be inferred from that reference.
+These are design-specific stress estimates, not transition forecasts.
+Recycling cannot restore transmuted atoms, and replacement losses shorten
+lifetimes. Both canonical figures use one shared years-scale plot renderer;
+`fusion-blanket-lifetimes.svg` is reused unchanged in deck and reference.
+
+New input records and primary-source links are in `processed/inputs.json` and
+`sources.json`. MacKay is a conceptual/numerical reference only; no source
+text or artwork is reused. Li et al. 2021 (doi:10.1039/D1EE00354B) demonstrates
+lab enrichment from actual seawater, not a full-scale supply chain. Paine et al.
+2024 provides design-specific enriched blanket-Li examples. Lab energy
+estimates and historical extraction estimates are not industrial cost promises.
+
+### Global outlook to 2100 (revised 13 October 2026)
+
+The single GCAM4 pathway is replaced by a multi-model literature comparison.
+`raw/ar6-primary-energy.jsonl` is a small World numerical subset of the
+IIASA/IAMC AR6 Scenarios Database v1.1; provider database rights and attribution
+terms remain applicable. It retains model/scenario identity, climate category,
+literature citation, and original values in EJ/year. The full 353 MB database
+and metadata workbook are not redistributed. Their URLs and SHA-256 checksums
+are recorded in `raw/energy-scenarios.json`.
+
+Selection uses `meta_Ch3vetted_withclimate` categories C1 and C3. Require total
+and coal/oil/gas/biomass/nuclear/solar/wind at every decade 2020–2100, positive
+totals, nonnegative components and component sums not exceeding total beyond
+0.01%. Four IMAGE cases fail closure; 356 complete cases from ten model
+families remain. The excluded identities are recorded. Selection never filters
+by the resulting source shares. Source/own-total ratios precede unweighted
+10/50/90 percentiles. These descriptive ranges are not probabilities or a
+model-balanced consensus; unequal scenario representation remains a limitation.
+Component medians do not form one feasible mix and are never stacked.
+Fossils and wind+solar are grouped; other energy is the residual. Three
+NGFS phase-2 current-policy cases have **2021** policy assumptions.
+The 2024 IEA observations retain physical heat-content accounting and are
+not spliced to direct-equivalent IPCC curves.
+
+The same input file holds four MIT EPPA **actual five-year fusion output
+curves** from the 2024 report Fig.4.4b (printed p.43, PDF p.48).
+Vector coordinates are calibrated to its axes and rounded to 100 TWh;
+early tiny values are unresolved. Exact text base-case values 2 TWh in 2035
+and 375 TWh in 2050 replace those two vertices. Costs are 2800, 5600, 8000
+and 11300 USD2021/kW in 2050; availability in 2035 is assumed.
+EUROfusion/CIEMAT ESSRI 2024 S02 supplies independently digitized dated bars
+at 2030/2050/2070/2100, about 0/0.5/7.5/29 PWh/year at 0.5 PWh resolution.
+The source explicitly calls its fusion costs desired targets rather than
+estimates. Connections join the reported dates without inventing intervening
+model output. The newer Mantilla et al.2026 favourable 21% of 140 PWh
+endpoint remains a separate star, not an invented 2026 trajectory.
+
+All fusion outputs are converted to EJ and divided by the **same
+year-specific AR6 median primary total**. This explicitly accepted
+cross-model scaling is not an integrated model run, a published primary
+share or an assumption about displaced technologies. Approximately 882 EJ
+in 2100 gives about 3–18% for MIT cost cases, 10% for its base case and
+12% for the favourable EUROfusion cases.
+
+The discarded GCAM example is retained only as explanatory numerical
+evidence: 391.7 EJ biomass, 230.3 EJ with CCS, 1084.8 million hectares energy
+crops, 23.5 Gt CO2/year biomass CCS and 1853 USD2005/t CO2 carbon price in
+2100. This explains the 42% result without presenting it as consensus.
+Three IPCC illustrative pathways contrast renewable-led, low-demand and
+high-overshoot/removal strategies; the last is C2 and outside the plotted
+ensemble. The reference discusses land efficiency, conversion losses,
+negative-emissions credits and sustainability constraints.
+
+Recent PV observations and the short 2025–2035 construction-rate guide are
+retained: IRENA net additions 510.349 GW/year, assumed 15% capacity factor,
+full-year production and no retirement. The denominator now follows AR6
+median demand, anchored to IEA's 655 EJ in 2025. It is illustrative, not an
+integrated model update or a century-long exponential extrapolation.
+The existing chapter builder and teaching plotter produce the one canonical
+`16-energy-scenarios.json` and `energy-outlook.svg` for reference and deck.

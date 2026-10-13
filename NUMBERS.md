@@ -41,14 +41,34 @@ All 188 EIA countries/economies with positive matching 2024 WDI GDP PPP and popu
 | Quantity | Value | Unit | Year | Source key |
 |---|---:|---|---|---|
 | electricity access | 91.9265 | % of world population | 2024 | wb_electricity |
-| Level 1 income threshold <2 | <2 | 2011 PPP USD/(person day) | 2017 | gapminder_income_levels |
-| Level 1 population | 0.75 | billion people | 2017 | gapminder_income_levels |
-| Level 2 income threshold 2–8 | 2–8 | 2011 PPP USD/(person day) | 2017 | gapminder_income_levels |
-| Level 2 population | 3.3 | billion people | 2017 | gapminder_income_levels |
-| Level 3 income threshold 8–32 | 8–32 | 2011 PPP USD/(person day) | 2017 | gapminder_income_levels |
-| Level 3 population | 2.5 | billion people | 2017 | gapminder_income_levels |
-| Level 4 income threshold >32 | >32 | 2011 PPP USD/(person day) | 2017 | gapminder_income_levels |
-| Level 4 population | 0.9 | billion people | 2017 | gapminder_income_levels |
+| Income band <3 | <3 | 2021 PPP USD/(person day) | 1981 | wb_pip_income |
+| Band 1 population | 2.12855 | billion people | 1981 | wb_pip_income |
+| Income band 3–12 | 3–12 | 2021 PPP USD/(person day) | 1981 | wb_pip_income |
+| Band 2 population | 1.25944 | billion people | 1981 | wb_pip_income |
+| Income band 12–48 | 12–48 | 2021 PPP USD/(person day) | 1981 | wb_pip_income |
+| Band 3 population | 0.873013 | billion people | 1981 | wb_pip_income |
+| Income band ≥48 | ≥48 | 2021 PPP USD/(person day) | 1981 | wb_pip_income |
+| Band 4 population | 0.257388 | billion people | 1981 | wb_pip_income |
+| Income band <3 | <3 | 2021 PPP USD/(person day) | 2000 | wb_pip_income |
+| Band 1 population | 2.2309 | billion people | 2000 | wb_pip_income |
+| Income band 3–12 | 3–12 | 2021 PPP USD/(person day) | 2000 | wb_pip_income |
+| Band 2 population | 2.50359 | billion people | 2000 | wb_pip_income |
+| Income band 12–48 | 12–48 | 2021 PPP USD/(person day) | 2000 | wb_pip_income |
+| Band 3 population | 0.944718 | billion people | 2000 | wb_pip_income |
+| Income band ≥48 | ≥48 | 2021 PPP USD/(person day) | 2000 | wb_pip_income |
+| Band 4 population | 0.482674 | billion people | 2000 | wb_pip_income |
+| Income band <3 | <3 | 2021 PPP USD/(person day) | 2024 | wb_pip_income |
+| Band 1 population | 0.824298 | billion people | 2024 | wb_pip_income |
+| Income band 3–12 | 3–12 | 2021 PPP USD/(person day) | 2024 | wb_pip_income |
+| Band 2 population | 3.9599 | billion people | 2024 | wb_pip_income |
+| Income band 12–48 | 12–48 | 2021 PPP USD/(person day) | 2024 | wb_pip_income |
+| Band 3 population | 2.40475 | billion people | 2024 | wb_pip_income |
+| Income band ≥48 | ≥48 | 2021 PPP USD/(person day) | 2024 | wb_pip_income |
+| Band 4 population | 0.952856 | billion people | 2024 | wb_pip_income |
+| World electricity access | 78.225 | % of world population | 2000 | wb_electricity |
+| Austria / Ethiopia primary energy per person | 165.396 | 1 | 2000 | eia + wb_population |
+| World electricity access | 91.9265 | % of world population | 2024 | wb_electricity |
+| Austria / Ethiopia primary energy per person | 49.7071 | 1 | 2024 | eia + wb_population |
 | Austria arable land | 0.14474553 | ha/person | 2023 | faostat_arable |
 | Austria cropland | 0.15801372 | ha/person | 2023 | hyde_cropland |
 | World arable land | 0.17167939 | ha/person | 2023 | faostat_arable |
@@ -58,19 +78,21 @@ All 188 EIA countries/economies with positive matching 2024 WDI GDP PPP and popu
 | Stove/hob, Bolivia | 180 | PPP-adjusted USD per equivalent adult per month | 2015-01-19 | dollarstreet |
 | Stove/hob, Haiti | 39.9 | PPP-adjusted USD per equivalent adult per month | 2014-11-28 | dollarstreet |
 
-Rounded Gapminder estimates use a PovcalNet 2013 survey base extended to 2017; not a current survey or precise census.
+PIP global line-up estimates, including survey interpolation/extrapolation, not simultaneous censuses. Fixed teaching bands: $3, $12, $48 in 2021 PPP; only $3 is an official poverty line. Not converted Gapminder levels. Primary energy: EIA annual product 44, activity 2, QBTU, WDI population; 365-day normalization. EIA does not fully cover traditional biomass.
 
 Dollar Street PPP monthly amounts are per equivalent adult, not whole-household totals. Global washing-machine, car and refrigerator ownership shares are not included because a comparable sourced series was not verified. Clean-cooking figures are excluded: the WDI indicator source note specifies CC BY-NC 3.0 IGO.
 
 Arable land is FAO/WDI cropland under temporary crops, temporary meadows, kitchen gardens and temporary fallow; cropland includes arable plus permanent crops under HYDE. The series differ in definition and source method; do not add them.
 
-Level 1 population: Rounded published estimate.
+Band 1 population: Difference of PIP cumulative population counts.
 
-Level 2 population: Rounded published estimate.
+Band 2 population: Difference of PIP cumulative population counts.
 
-Level 3 population: Rounded published estimate.
+Band 3 population: Difference of PIP cumulative population counts.
 
-Level 4 population: Rounded published estimate.
+Band 4 population: Difference of PIP cumulative population counts.
+
+Austria / Ethiopia primary energy per person: EIA coverage does not fully include traditional biomass.
 
 Stove/hob, Spain: Omar Havana; Family 391
 
@@ -502,6 +524,10 @@ Input: btu_IT: Energy corresponding to one International Table Btu.
 
 Fuel is uranium heavy metal, not UO2 or initial core loading; full-power 1 GW(e) × 365 days. Deployment uses 2025 world population and compares a stated world-at-Austrian-final-energy scenario with first grid connections, not construction starts. Historical reactors vary in size; the scenario units are 1 GW(e). This accounting substitution is not a transition plan. IAEA 2025 historical peak verified over 1954–2024; capacities revised since the 2014 edition.
 
+World annual change in installed nameplate capacity, not gross commissioning. Fossil fuels are aggregated by EIA; hydro excludes pumped storage. Austria benchmark: build in one year enough 90%-capacity-factor generation to match 2025 final energy numerically. It is a nuclear-equivalent accounting comparison, not a wind/solar capacity target or a sector-coupling plan.
+
+Input: nuclear_capacity_factor: Assumed 90% fleet capacity factor; also used in the fusion blanket resource scenario, not a measured fusion operating value.
+
 ## 13. Fusion
 
 | Quantity | Value | Unit | Year | Source key |
@@ -535,6 +561,8 @@ Fuel is uranium heavy metal, not UO2 or initial core loading; full-power 1 GW(e)
 | Input: seconds_per_year | 3.1536e+07 | s/year | model | assumptions |
 
 GW(fusion) is thermal reaction power, not net electric output. Burned D+T only, excluding inventory, recycling losses and breeding overhead. Coal lower heating value assumed 24 MJ/kg. Seawater D is an inventory, not a recoverable reserve. Lithium reserves are elemental Li, not all Li-6; tritium must be bred, not extracted as a natural fuel reserve. Per-person normalization uses latest WDI 2025 population with 2025 lithium reserves.
+
+Constant 2024 demand matched as electricity; no growth, competing uses or fuel losses; initial blanket stocks are not deducted from the fuel budget. EIA traditional biomass coverage is incomplete. Ocean inventories are not economic reserves. The D-T deuterium bound needs lithium and bred tritium; the fuels are not additive alternatives. Blanket budget uses paired historical 1 GW(e) HCLL/HCPB models at assumed 90% capacity factor. Subtract initial fleet inventories, then divide remaining stock by annual nuclear burn-up. Assume ideal recovery of untransmuted material: no processing/replacement losses, other users or demand growth. Beryllium 100 kt is a reference below the USGS reported >100 kt resources, not available reserves or a ceiling. Insufficient reference stocks have no operating lifetime; this is not evidence that total world Be is only 100 kt.
 
 Input: elementary_charge: Exact SI eV conversion.
 
@@ -664,3 +692,105 @@ NREL data-use notice (required by source terms):
 The National Renewable Energy Laboratory (NREL) is operated for the U.S. Department of Energy (DOE) by Alliance for Sustainable Energy, LLC ("Alliance").
 Unless data or software is explicitly made available on this server under separate license terms (in which case such license terms shall apply only to such data or software), access to or use of any data or software made available on this server ("Data") shall impose the following obligations on the user, and use of the Data constitutes user's agreement to these terms. The user is granted the right, without any fee or cost, to use or copy the Data, provided that this entire notice appears in all copies of the Data. Further, the user agrees to credit DOE/NREL/ALLIANCE in any publication that results from the use of the Data. The names DOE/NREL/ALLIANCE, however, may not be used in any advertising or publicity to endorse or promote any products or commercial entities unless specific written permission is obtained from DOE/NREL/ ALLIANCE. The user also understands that DOE/NREL/ALLIANCE are not obligated to provide the user with any support, consulting, training or assistance of any kind with regard to the use of the Data or to provide the user with any updates, revisions or new versions thereof. DOE, NREL, and ALLIANCE do not guarantee or endorse any results generated by use of the Data, and user is entirely responsible for the results and any reliance on the results or the Data in general.
 USER AGREES TO INDEMNIFY DOE/NREL/ALLIANCE AND ITS SUBSIDIARIES, AFFILIATES, OFFICERS, AGENTS, AND EMPLOYEES AGAINST ANY CLAIM OR DEMAND, INCLUDING REASONABLE ATTORNEYS' FEES, RELATED TO USER'S USE OF THE DATA. THE DATA ARE PROVIDED BY DOE/NREL/ALLIANCE "AS IS," AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. DOE/NREL/ALLIANCE ASSUME NO LEGAL LIABILITY OR RESPONSIBILITY FOR THE ACCURACY, COMPLETENESS, OR USEFULNESS OF THE DATA, OR REPRESENT THAT ITS USE WOULD NOT INFRINGE PRIVATELY OWNED RIGHTS. IN NO EVENT SHALL DOE/NREL/ALLIANCE BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING BUT NOT LIMITED TO CLAIMS ASSOCIATED WITH THE LOSS OF DATA OR PROFITS, THAT MAY RESULT FROM AN ACTION IN CONTRACT, NEGLIGENCE OR OTHER TORTIOUS CLAIM THAT ARISES OUT OF OR IN CONNECTION WITH THE ACCESS, USE OR PERFORMANCE OF THE DATA.
+
+## 16. Energy to 2100
+
+| Quantity | Value | Unit | Year | Source key |
+|---|---:|---|---|---|
+| AR6 C1/C3 median total primary energy | 565.369 | EJ/year | 2020 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 562.578 | EJ/year | 2030 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 538.236 | EJ/year | 2040 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 564.288 | EJ/year | 2050 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 625.62 | EJ/year | 2060 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 689.016 | EJ/year | 2070 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 764.397 | EJ/year | 2080 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 830.222 | EJ/year | 2090 | ipcc_ar6_energy |
+| AR6 C1/C3 median total primary energy | 881.971 | EJ/year | 2100 | ipcc_ar6_energy |
+| Favourable EUROfusion 2026 case: fusion output | 105.84 | EJ/year | 2100 | eurofusion_etm_2026 |
+| EUROfusion 2026 output / AR6 median primary demand | 12.0004 | percent | 2100 | eurofusion_etm_2026 + ipcc_ar6_energy |
+| MIT fusion 2800 USD/kW cost case | 0 | EJ/year | 2020 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 0 | EJ/year | 2025 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 0 | EJ/year | 2030 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 0 | EJ/year | 2035 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 0 | EJ/year | 2040 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 0.36 | EJ/year | 2045 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 2.16 | EJ/year | 2050 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 6.12 | EJ/year | 2055 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 15.84 | EJ/year | 2060 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 34.92 | EJ/year | 2065 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 54 | EJ/year | 2070 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 79.2 | EJ/year | 2075 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 97.2 | EJ/year | 2080 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 114.84 | EJ/year | 2085 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 130.68 | EJ/year | 2090 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 146.52 | EJ/year | 2095 | mit_fusion_2024 |
+| MIT fusion 2800 USD/kW cost case | 160.56 | EJ/year | 2100 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 0 | EJ/year | 2020 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 0 | EJ/year | 2025 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 0 | EJ/year | 2030 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 0 | EJ/year | 2035 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 0 | EJ/year | 2040 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 0.36 | EJ/year | 2045 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 1.44 | EJ/year | 2050 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 5.76 | EJ/year | 2055 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 12.6 | EJ/year | 2060 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 27 | EJ/year | 2065 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 41.04 | EJ/year | 2070 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 57.24 | EJ/year | 2075 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 70.56 | EJ/year | 2080 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 82.08 | EJ/year | 2085 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 93.96 | EJ/year | 2090 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 108.36 | EJ/year | 2095 | mit_fusion_2024 |
+| MIT fusion 5600 USD/kW cost case | 121.68 | EJ/year | 2100 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 0 | EJ/year | 2020 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 0 | EJ/year | 2025 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 0 | EJ/year | 2030 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 0.0072 | EJ/year | 2035 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 0 | EJ/year | 2040 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 0.36 | EJ/year | 2045 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 1.35 | EJ/year | 2050 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 4.32 | EJ/year | 2055 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 11.88 | EJ/year | 2060 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 19.08 | EJ/year | 2065 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 30.24 | EJ/year | 2070 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 39.6 | EJ/year | 2075 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 52.2 | EJ/year | 2080 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 61.92 | EJ/year | 2085 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 71.28 | EJ/year | 2090 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 77.76 | EJ/year | 2095 | mit_fusion_2024 |
+| MIT fusion 8000 USD/kW cost case | 86.4 | EJ/year | 2100 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0 | EJ/year | 2020 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0 | EJ/year | 2025 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0 | EJ/year | 2030 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0 | EJ/year | 2035 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0 | EJ/year | 2040 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0 | EJ/year | 2045 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0.36 | EJ/year | 2050 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 0.72 | EJ/year | 2055 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 1.8 | EJ/year | 2060 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 3.96 | EJ/year | 2065 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 6.84 | EJ/year | 2070 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 10.08 | EJ/year | 2075 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 12.96 | EJ/year | 2080 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 17.64 | EJ/year | 2085 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 21.24 | EJ/year | 2090 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 25.2 | EJ/year | 2095 | mit_fusion_2024 |
+| MIT fusion 11300 USD/kW cost case | 29.16 | EJ/year | 2100 | mit_fusion_2024 |
+| EUROfusion 2024 S02 fusion | 0 | EJ/year | 2030 | eurofusion_etm_2024 |
+| EUROfusion 2024 S02 fusion | 1.8 | EJ/year | 2050 | eurofusion_etm_2024 |
+| EUROfusion 2024 S02 fusion | 27 | EJ/year | 2070 | eurofusion_etm_2024 |
+| EUROfusion 2024 S02 fusion | 104.4 | EJ/year | 2100 | eurofusion_etm_2024 |
+
+IPCC AR6 C1/C3 literature ranges, not probabilities or a forecast. Source-wise medians are not a coherent energy mix. Fusion cases are published electricity outputs scaled to the AR6 median total with direct-equivalent accounting, not integrated model results.
+
+EUROfusion 2026 output / AR6 median primary demand: Cross-model scaling, not a combined run.
+
+MIT fusion 2800 USD/kW cost case: Approximate published curve.
+
+MIT fusion 5600 USD/kW cost case: Approximate published curve.
+
+MIT fusion 8000 USD/kW cost case: Approximate published curve.
+
+MIT fusion 11300 USD/kW cost case: Approximate published curve.
+
+EUROfusion 2024 S02 fusion: Approximate published dated bar.

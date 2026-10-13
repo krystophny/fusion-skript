@@ -10,7 +10,7 @@
 #let exam(q, wording) = exam-prompts((wording,), [Fusion Physics Exam (2026), Chapter 0, Q#q, PDF p. 1])
 
 #let chapter = [
-#page-title(number: 0)[Energy context] <energy-context>
+#page-title(number: 0)[The big picture] <energy-context>
 #lead[Estimate the scale of an energy system before judging what fusion could contribute.]
 
 #section-title[Standards of living and energy] <standards-living>
@@ -25,14 +25,40 @@ illustrative households, not a statistical sample of national living standards.
   caption: [Black Marble 2016, NASA Earth Observatory / Suomi NPP VIIRS; public domain. Composite night lights, not a map of electricity access.],
 )
 
-Rosling's four income levels describe household income or consumption per
-person per day in 2011 purchasing-power-parity dollars: below 2, 2–8, 8–32 and
-above 32. Gapminder's rounded 2017 estimate places about 0.75, 3.3, 2.5 and
-0.9 billion people in Levels 1–4. Its estimate uses a 2013 household-survey
-base extended by Gapminder; it is a dated scale comparison, not a current
-survey or precise census.
-#graphic("income-levels", [Approximate 2017 world population by Gapminder's four household-income levels, expressed in 2011 PPP dollars per person per day.], caption: [Gapminder Factfulness notes, p. 32; 2017 rounded estimates based on PovcalNet 2013 and Gapminder extensions; CC BY 4.0; original plot.])
-#unit-ledger[Income bands: below 2, 2–8, 8–32 and above 32 2011 PPP USD/(person day); approximate 2017 population: 0.75, 3.3, 2.5 and 0.9 billion.]
+To compare living standards in 1981, 2000 and 2024, we use four fixed household
+income or consumption bands in 2021 purchasing-power-parity (PPP) dollars
+per person per day: below 3, 3–12, 12–48 and at least 48. PPP adjusts for
+differences in price levels between countries; the common price basis makes
+the three years comparable. The \$3 boundary is the World Bank's current
+extreme-poverty line. The \$12 and \$48 boundaries are teaching choices with
+fourfold steps, not official poverty lines. These definitions replace the
+earlier Gapminder bands in 2011 PPP dollars; they are not a conversion of
+those old thresholds.
+
+The World Bank's September 2026 Poverty and Inequality Platform release
+estimates global populations of 4.52 billion in 1981, 6.16 billion in 2000
+and 8.14 billion in 2024. Taking differences of its cumulative population counts below each
+threshold gives about 2.23, 2.50, 0.94 and 0.48 billion people in the four
+bands in 2000, and 0.82, 3.96, 2.40 and 0.95 billion in 2024. The share
+below \$3/day falls from 47.1% in 1981 to 36.2% in 2000 and 10.1% in 2024.
+1981 is the first year in the World Bank global series. These global estimates combine
+household surveys with interpolation and extrapolation to a common year;
+they are not simultaneous censuses. The plots retain one population scale
+and show both counts and shares.
+
+#graphic("income-levels-1981", [World population in 1981, the first PIP global year, by four fixed income or consumption bands in 2021 PPP dollars per person per day.], caption: [1981 global estimates; World Bank PIP, September 2026 release, 2021 PPP; CC BY 4.0; original plot. Same cutoffs and axes as 2000 and 2024.])
+#graphic("income-levels-2000", [World population in 2000 by four fixed income or consumption bands in 2021 PPP dollars per person per day.], caption: [2000 global estimates; World Bank PIP, September 2026 release, 2021 PPP; CC BY 4.0; original plot. Cutoffs: \$3, \$12 and \$48.])
+#graphic("income-levels-2024", [World population in 2024 by the same four bands, with identical axes.], caption: [2024 global estimates; World Bank PIP, September 2026 release, 2021 PPP; CC BY 4.0; original plot. Same definitions and population scale as 2000.])
+#unit-ledger[Fixed bands: below 3, 3–12, 12–48 and at least 48 in 2021 PPP USD/(person day). Population [billion], 2000: 2.23, 2.50, 0.94, 0.48; 2024: 0.82, 3.96, 2.40, 0.95.]
+
+The accompanying slide comparison uses each available year's electricity access:
+78.2% in 2000 and 91.9% in 2024. There is no global WDI electricity-access
+observation for 1981; that page shows a dash and omits the energy ratio.
+Primary energy per person in the EIA
+series is approximately 165 times higher in Austria than Ethiopia in 2000,
+and 50 times higher in 2024. These ratios describe EIA's accounting boundary,
+which does not fully include traditional biomass; they are not ratios of
+all useful household energy services.
 
 #grid(columns: 4, gutter: 5pt,
   figure(image("/slides/photos/dollarstreet-stove-5d4bf44ccf0b3a0f3f35b67a.jpg", width: 100%, alt: "Cooking stove in a photographed household in Haiti."), caption: [Haiti · USD 39.9 per equivalent adult per month · Zoriah Miller · CC BY 4.0.]),
@@ -131,6 +157,19 @@ heat, 1.04 coal and 0.85 waste. The conversion pool is a net input-minus-output
 balance; gross energy minus final energy also contains other uses and losses.
 The carrier-by-sector CSV and Sankey node/link CSV retain the source cells and
 the conservation check.
+
+#graphic("electricity-consumption", [Four national per-person daily energy budgets on one scale: 112.0 kWh primary, 87.2 final, 19.0 final electricity and 6.5 household electricity. The smaller electricity bars are nested subsets. The primary-to-final difference is split into transformation loss, energy-sector use including transport losses, and non-energy use. A separate assumed 40%-efficient thermal plant illustrates rejected heat.], caption: [Own calculations from Statistics Austria's #link("https://www.statistik.at/fileadmin/pages/99/preliminaryEnergyBalancesforAustriaInTerajoule.ods")[preliminary 2025 balance], rows 8–13 and 18, and #link("https://www.statistik.at/en/statistics/population-and-society/population/population-stock/annual-average-population")[annual-average population]. Thermal-efficiency definition: #link("https://www.eia.gov/tools/faqs/faq.php?id=107&t=3")[EIA]. The 40% efficiency is an illustrative assumption.])
+
+Final electricity is 21.8% of final energy consumption. Household electricity
+is 34.2% of that electricity, or 7.5% of total final energy. All per-person
+values use the national population; household electricity is not the total
+household budget, which also includes other heating fuels and district heat.
+The 6.4 kWh/(person day) net transformation loss covers all transformation
+processes in the balance, including refining; it does not isolate thermal
+power plants. For the separate thermal example, electrical efficiency is
+$eta_"el" = E_"electric" / E_"heat,in"$. With the assumed
+$eta_"el" = 0.40$ and no heat recovery, a 100 kWh heat input gives 40 kWh
+electricity and 60 kWh rejected heat. This is not an Austrian fleet average.
 
 For a household estimate, sum appliance electricity, transport and heating
 separately. A device drawing power $P_a$ for time $t_a$ uses $E_a=P_a t_a$. A
@@ -257,13 +296,61 @@ and inputs; coproducts partly change that accounting.
 #exam(8, [Discuss whether renewables compete with arable land for food production. What about biofuels?])
 
 #section-title[Solar learning and energy choices] <solar-learning>
-The OWID module-price splice falls from USD 132.38/Wp in 1975 to USD 0.265/Wp
-in 2024, in constant 2025 dollars. The later series uses IRENA's European
-pvXchange module benchmark; it is module price, not installed system cost. The
-same period saw year-end solar PV capacity rise from 293 GW worldwide in 2016
+The supplied 9 October 2026 sourcebook's OWID module-price extract falls from
+USD 36.43/Wp in 1980 to USD 0.267/Wp in 2024, in constant 2025 dollars. The
+later series uses IRENA's European pvXchange module benchmark; it is module
+price, not installed system cost. The extract uses approximate CPI rebasing
+and may differ from later source revisions. For context, year-end solar PV
+capacity rose from 293 GW worldwide in 2016
 to 2,383 GW in 2025, and from 1.10 to 10.30 GW in Austria.
 
-#graphic("pv-price-capacity", [Solar photovoltaic module prices and installed PV capacity for the world and Austria.], caption: [OWID compilation CC BY 4.0; Nemet, Farmer and Lafond; IRENA Renewable Power Generation Costs 2024 (© IRENA 2025; attributed reuse), pvXchange benchmark; IRENA Renewable Capacity Statistics 2026 (© IRENA 2026). Original plots.])
+#graphic("solar-storage-capex", [Separate logarithmic axes for solar module price in constant 2025 USD/W and lithium-ion cell, pack and installed four-hour battery-system prices in USD/kWh of capacity. Modelled intervals are dashed.], caption: [Original plot from the supplied sourcebook's component table: #link("https://ourworldindata.org/grapher/solar-pv-prices")[OWID modules], #link("https://ourworldindata.org/grapher/price-of-lithium-ion-battery-cells")[OWID cells], #link("https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/")[BNEF packs], #link("https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025")[IRENA installed storage]. Capacity totals in the text: IRENA Renewable Capacity Statistics 2026. Provider data retain their terms; no provider chart is reproduced.])
+
+Cells, packs and installed storage systems have different cost boundaries.
+The sourcebook's 2025 benchmarks are USD 108/kWh for packs across uses and
+USD 140/kWh for installed four-hour storage. The 2010 installed-storage
+figure is a published regression estimate, as identified in IRENA's 2024
+report, Figure 9.2; it is marked as a model in the figure. Intermediate
+installed-storage values are sourcebook reconstructions.
+
+#graphic("electricity-cost-history", [Logarithmic generation-cost histories for PV, PV plus daily storage, wind, gas, coal and new nuclear, 1980–2035. Benchmarks, historical reconstructions and future scenarios have different line styles. Electricity costs use 2025 US cents per kWh; battery-capacity prices are not on this axis.], caption: [Original plot of the supplied sourcebook's annual table. Global renewables: #link("https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025")[IRENA 2025] and earlier extract. US conventional generation: #link("https://www.lazard.com/media/y5ldnkil/lazards-lcoeplus-april-2023.pdf")[Lazard 2023] and #link("https://www.lazard.com/media/uounhon4/lazards-lcoeplus-june-2025.pdf")[2025]. Solar and daily-storage 2030–2035 curves are author scenarios; #link("https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf")[IRENA] supplies future capital-cost ratios. Wind and nuclear relative cost-change scenarios use #link("https://atb.nlr.gov/electricity/2025/data")[2025 ATB Moderate R&D] inputs (large nuclear: 60-year cost recovery; Class 4 onshore wind: 30 years). The dimensionless cost ratios multiply the existing 2025 benchmarks, joining both historical curves continuously. ATB nuclear estimates begin in 2030: the anchored nuclear scenario assumes constant real cost from 2025 to 2030, then applies the ATB 2035/2030 ratio. These are anchored scenarios rather than ATB absolute LCOE forecasts. Gas and coal show an explicitly assumed constant-2025-real-cost scenario, not a published fuel-price forecast.])
+
+The levelised cost of electricity (LCOE) is discounted lifetime cost divided by discounted electricity
+output. It differs from a retail tariff and from the cost of a complete
+reliable electricity system. The IRENA curves are global new-project
+benchmarks, while Lazard represents US new-build estimates. Lazard's 2025
+coal and nuclear ranges reuse inflation-adjusted earlier estimates; nuclear
+uses then-estimated Vogtle costs. Pre-2010 PV LCOE is backcast from module
+prices; the early conventional curves are hypothetical reconstructions.
+These differences prevent treating the figure as one site's bidding comparison.
+
+For daily shifting, let $f$ be the fraction of delivered energy discharged
+from storage, $eta$ the round-trip efficiency, $B$ the assumed usable
+installed battery cost in USD/kWh-capacity, and $u$ the full discharge cycles
+per day. With real discount rate $r$, lifetime $T$ in years and annual
+maintenance fraction $m$, the sourcebook model is
+$
+  "CRF"(r,T) = r / (1-(1+r)^(-T)), quad
+  c_"daily" = c_"PV" (1-f+f/eta)
+    + (100 f B ("CRF"(r,T)+m))/(365 u).
+$
+Costs $c$ are in US cents per kWh delivered. The factor 100 converts dollars
+to cents. The Li-ion scenario uses $f=0.60$, $eta=0.85$, $u=0.95$,
+$r=0.07$, $T=15$ years and $m=0.01$. Treating the installed-system benchmark
+as usable capacity is a simplifying assumption. At $c_"PV"=4.4$ and
+$B=140$, the result is 7.77 US cents/kWh. Before 2010 the curve uses assumed
+lead-acid systems ($eta=0.75$, $T=5$); later it selects the cheaper of the
+two models. It omits seasonal storage, augmentation and wider balancing costs.
+The 2030/2035 PV values 3.33/3.10 and daily-storage values 5.92/5.36 are
+sourcebook scenarios, not official forecasts of global LCOE.
+
+IRENA's separate Nevada hourly-dispatch example costs 11.32 US cents/kWh in
+2025 for 95% of #emph[annual demand energy], with solar overbuild and batteries.
+It is a retrospective model at a selected site, not the global daily-shifting
+case and not guaranteed firm supply or 95% of hours fully served. Its 2035
+5.9-cent value is a projection. The oil-fuel proxy and existing French nuclear
+fleet costs are retained in the source material but excluded from this
+new-build LCOE comparison.
 
 Rapid cost decline changes the comparison set: a future technology must compete
 with a system whose manufacturing scale and installed capacity are changing.
@@ -357,9 +444,355 @@ thermal conversion, recirculating power, plant availability and all auxiliary
 loads. Later chapters derive those boundaries from first principles.
 
 #figure(image("/slides/photos/jet-vessel-interior.jpg", width: 100%, alt: "Interior of the JET fusion-device vacuum vessel before operation."), caption: [JET vessel interior · EUROfusion · Wikimedia Commons · CC BY 4.0.])
+
+#let fusion-budget = json("/derivations/build/plotdata/13-fusion-resources.json")
+#let budget-round(value, digits: 0) = calc.round(value, digits: digits)
+
+== Fusion fuel and blanket resources
+
+The earlier reserve-lifetime bars divide each fuel stock by its own current
+world production, held constant. Oil, gas, coal and low-cost uranium use 2024
+production; broad identified uranium resources use 2023 production. They do
+not assume that each fuel supplies the entire world energy demand. They also
+omit demand growth, discoveries and changes in economic recoverability.
+
+For the fusion estimate, choose a different, explicit denominator. EIA's
+2024 world primary-energy total is
+#budget-round(fusion-budget.world_primary_EJ_year, digits: 1) EJ/year. Here fusion
+electricity is assumed to match that numerical energy total, rather than
+today's much smaller electricity consumption. This is an accounting stress
+test, not a forecast of useful-energy demand or a primary-energy conversion:
+electrification would change the energy required to supply the same services.
+The EIA series incompletely covers traditional biomass.
+
+Let $R$ denote a fuel stock in kg, $q_e$ its assumed electricity yield in
+kWh/kg, and $dot(E)_e$ the chosen annual electricity demand. Then
+$ dot(m) = dot(E)_e/q_e, quad T = R/dot(m) = (R q_e)/dot(E)_e. $
+Using #link("https://www.withouthotair.com/c24/page_172.shtml")[MacKay, chapter 24]
+and his #link("https://www.withouthotair.com/c24/page_176.shtml")[notes on p. 176],
+take $q_e = 2.3 times 10^6$ kWh/kg of natural lithium.
+This is a fuel-utilization and electricity-yield *assumption*, not a universal
+constant. It must not be combined with a second thermal efficiency factor.
+The yield depends on lithium-isotope utilization, blanket neutron balance,
+plant conversion and recirculating loads; it does not assume complete use of
+every lithium-7 nucleus. A design-specific calculation would replace it.
+
+The chosen demand is
+#budget-round(fusion-budget.world_primary_EJ_year*1e18/3.6e6/1e12, digits: 1)
+× 10¹² kWh/year. Thus the natural-lithium rate is
+#budget-round(fusion-budget.fuel.at(0).consumption_t_year/1000, digits: 1)
+kt/year, giving
+$ T_"Li" =
+  (37 times 10^9 "kg" times 2.3 times 10^6 "kWh/kg") /
+  (#budget-round(fusion-budget.world_primary_EJ_year*1e18/3.6e6/1e12, digits: 1) times 10^12 "kWh/year")
+  approx #budget-round(fusion-budget.fuel.at(0).static_years) "years". $
+All lithium reserves are hypothetically allocated to fusion; batteries and
+other users, fuel-cycle losses, startup blanket inventory and demand growth
+are omitted. Lifetime scales directly with yield and inversely with demand.
+This scenario needs about
+#budget-round(100*fusion-budget.fuel.at(0).consumption_t_year/290000) percent of
+2025 reported lithium mine production, before other uses and blanket loading.
+
+At 0.17 mg/L and the stated ocean volume, seawater contains about
+#budget-round(fusion-budget.fuel.at(1).stock_kg/1e12) billion tonnes of lithium.
+Its inventory bound is
+#budget-round(fusion-budget.fuel.at(1).static_years/1e6, digits: 1) million years.
+This is a dispersed inventory, not an economically recoverable reserve.
+The independent D–T deuterium bound uses one D nucleus per 17.6 MeV and an
+assumed 40 percent thermal-to-electric conversion, omitting breeding heat and
+auxiliaries. It gives about
+#budget-round(fusion-budget.fuel.at(2).static_years/1e9) billion years of
+constant demand. Such an inventory ratio is not a physical forecast over that
+time. D–T still needs lithium and bred tritium; these three bars are separate
+fuel constraints, not energy supplies that can be added.
+
+#graphic("fusion-resource-lifetimes", [Fuel inventory divided by constant annual requirement; logarithmic years axis. Lithium uses MacKay's natural-Li electric-yield scenario; deuterium uses D–T at 40 percent conversion and still needs lithium.], caption: [Original calculation from EIA 2024 world energy, USGS MCS 2026 Li reserves, NOAA ocean volume and NIST isotope data; MacKay ch. 24, pp. 172 and 176. Ocean quantities are inventories, not reserves.])
+
+=== Is seawater lithium extraction realistic?
+
+MacKay estimates 2.5 kWh(e)/g for extraction versus 2300 kWh(e)/g from fusion:
+$ E_"extraction"/E_"fusion" = 2.5/2300 approx 0.0011 = 0.11 %. $
+This supports energetic plausibility under his assumptions. It does not
+establish commercial cost, materials durability, environmental acceptability
+or an industrial extraction rate.
+#link("https://doi.org/10.1039/D1EE00354B")[Li et al. (2021)] demonstrated
+electrical membrane enrichment of actual Red Sea seawater. Their reported
+76.34 kWh/kg electrical enrichment estimate is a laboratory process result,
+not a full industrial life-cycle energy budget. No by-product credit is
+needed for MacKay's illustrative energy-ratio calculation above.
+Even with perfect recovery, the world-energy scenario must process at least
+#budget-round(fusion-budget.seawater_minimum_km3_year) km³/year of seawater.
+Incomplete capture increases this volume. Pumping and contacting water,
+membrane or sorbent replacement, purification and isotope separation must
+all be included in a practical supply-chain assessment.
+
+=== Breeding blanket resources
+
+Lead and beryllium are alternative neutron-multiplier choices, not materials
+required by every blanket. Much of their inventory remains in the blanket.
+Nuclear reactions transmute some atoms; recycling can recover only the
+untransmuted material. Irradiation damage can require component replacement
+well before that inventory is consumed.
+
+Use the paired historical 1 GW net-electric HCLL and HCPB concepts in
+#link("https://doi.org/10.1016/j.fusengdes.2010.11.040")[Bradshaw et al. (2011)]:
+#let pb-budget = fusion-budget.blanket_materials.at(0)
+#let be-budget = fusion-budget.blanket_materials.at(1)
+#table(columns: (1fr, 1fr, 1fr),
+  [Concept / multiplier], [Initial loading per plant], [Nuclear burn-up per full-power year],
+  [HCLL / lead], [#budget-round(pb-budget.blanket_charge_t) t],
+  [#budget-round(pb-budget.burnup_t_full_power_year, digits: 1) t],
+  [HCPB / beryllium], [#budget-round(be-budget.blanket_charge_t) t],
+  [#budget-round(be-budget.burnup_t_full_power_year, digits: 2) t],
+)
+These are internally matched historical concepts, not specifications for all
+future fusion plants. Burn-up is about 0.076% of initial Pb loading and
+0.158% of initial Be loading per full-power year. Neither blanket is consumed
+in a few years. The fleet's large initial inventory is the main stock constraint.
+
+Retain page 25's stress scenario: fusion electricity numerically equals
+#budget-round(fusion-budget.world_primary_EJ_year) EJ/year of 2024 world
+primary energy. This is not a useful-energy replacement forecast.
+At an assumed #budget-round(100*fusion-budget.blanket_capacity_factor)% capacity factor,
+the #budget-round(fusion-budget.electric_demand_GW) GW average output requires
+#budget-round(fusion-budget.blanket_installed_units) of these 1 GW plants.
+Initial loading scales with installed capacity; annual nuclear burn-up scales
+with delivered energy, without a second capacity-factor penalty.
+
+$ T = ("stock" - "startup loading") / ("annual nuclear burn-up") $
+
+Assume ideal recovery of untransmuted material, constant demand, no competing
+uses, no replacement or processing losses and no growth. Subtract the initial
+fleet loading before assigning an operating lifetime. A stock below that
+loading has no operating lifetime in this scenario.
+
+#image("/derivations/build/fig/fusion-blanket-lifetimes.svg", width: 100%)
+
+The fleet initially holds #budget-round(pb-budget.fleet_initial_t/1e6) Mt Pb
+or #budget-round(be-budget.fleet_initial_t/1e6, digits: 1) Mt Be.
+Annual transmutation consumes approximately
+#budget-round(pb-budget.fleet_burnup_t_year/1000, digits: 1) kt Pb or
+#budget-round(be-budget.fleet_burnup_t_year/1000, digits: 2) kt Be.
+USGS MCS 2026 reports
+#link("https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lead.pdf")[95 Mt Pb reserves and more than 2 Gt identified resources].
+After startup loading, those stocks give approximately
+#budget-round(fusion-budget.blanket_lifetimes.at(0).static_years) years
+or more than #budget-round(fusion-budget.blanket_lifetimes.at(1).static_years)
+years respectively, under ideal recovery.
+Resources are broader than economically recoverable reserves; the two figures
+are alternatives, not quantities to add. The reserves result is especially
+sensitive to the assumed plant inventory and capacity factor because startup
+already takes most of the 95 Mt.
+
+For beryllium,
+#link("https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-beryllium.pdf")[USGS reports more than 100 kt identified resources; world reserves are unavailable].
+The 100 kt reference cannot load this hypothetical fleet, so no Be lifetime
+is assigned. This is a lower-bound reference, not evidence that the world
+contains only 100 kt or that the actual total is below the startup requirement.
+Current mine production is 4.5 Mt/year Pb and 430 t/year Be, including other
+users' demand; building this fleet would require major supply expansion.
+Replacing damaged blankets adds demand if material recovery is incomplete.
+Recycling cannot restore atoms changed by nuclear reactions.
+
+Other constraints are startup tritium and breeding margin, lithium-6 isotope
+separation, tungsten and low-activation structural-material replacement,
+magnet conductors and helium recovery. These are component- and design-specific
+supply questions; a single geological lifetime is not justified without a bill
+of materials, lifetime and recovery assumptions.
+For example,
+#link("https://research.tue.nl/en/publications/a-theoretical-study-on-the-suitable-enrichment-methods-for-lithiu/")[Paine et al. (2024)]
+estimate 46.4 t lithium at 60 percent Li-6 for one HCPB design and 152.8 t at
+90 percent for one WCLL design. Large initial enriched inventories can matter
+even when the annual lithium burn rate is small.
+
+
 #unit-ledger[$Q=17.6$ MeV/reaction; burned D + T = 93.4 kg/(GW(fusion) year); coal = 1.314 million kg at 24 MJ/kg; theoretical seawater D = 5.60 × 10⁶ kg/person; Li reserves = 4.50 kg/person (2025).]
 #knowledge-check((
   (question: [What distinguishes plasma gain from net electric gain?], answer: [Their input/output boundaries and included conversion and recirculating losses differ.]),
   (question: [What physics connects this energy opening to fusion?], answer: [Reaction energy, reaction rates, plasma heating and confinement power balance.]),
 ))
+
+#section-title[Energy to 2100] <fusion-outlook>
+
+#figure(image("/derivations/build/fig/energy-outlook.svg", width: 100%),
+  caption: [World primary-energy shares: IPCC AR6 scenario medians, with
+  10–90% ranges for wind plus solar and bioenergy; observed 2024 markers;
+  published MIT and EUROfusion fusion timelines scaled to primary demand.
+  The short PV construction-rate guide is illustrative.])
+
+=== A range of energy futures
+
+The #link("https://doi.org/10.5281/zenodo.7197970")[IPCC AR6 Scenarios
+Database, version 1.1] provides a multi-model comparison. The figure selects
+vetted World pathways in categories C1 (1.5°C with no or limited overshoot)
+and C3 (below 2°C with probability greater than 67%). The numerical extract
+requires total primary energy and coal, oil, gas, biomass, nuclear, solar
+and wind at every decade from 2020 to 2100. Of 360 complete pathways, four
+IMAGE pathways are excluded because their components exceed the total beyond
+a 0.01 percent reporting tolerance. The retained 356 pathways span ten
+model families. No pathway is excluded because of its resulting technology shares.
+
+For every pathway, compute source energy divided by that same pathway's
+total, then calculate the median and percentiles across pathways. The median
+total demand is calculated separately. The 2100 median shares are about
+44 percent wind plus solar, 23 percent fossils, 21 percent bioenergy,
+3 percent fission and 6 percent other energy. The latter is the residual,
+mainly hydropower and geothermal, together with other reported sources.
+The displayed 10–90 percent ranges are approximately 22–66 percent for wind
+plus solar and 11–33 percent for bioenergy. These ranges describe the
+selected scenario literature; they are not probabilities. Models contribute
+unequal numbers of pathways, and component-wise medians need not add to
+100 percent. The figure therefore uses lines rather than a stacked mix.
+
+The gray upper fossil line compares the median fossil share in three
+NGFS phase-2 current-policy pathways (GCAM, MESSAGE and REMIND), also retained
+in AR6. Its policy assumptions date to 2021; it is a contrasting policy case,
+not a forecast updated to 2026.
+
+The #link("https://data.ene.iiasa.ac.at/ar6/static/About.html")[IPCC illustrative
+pathways] show how strongly the technology mix depends on the chosen strategy.
+The following are original reported 2100 values, rounded here:
+
+#table(columns: (2.2fr, 1fr, 1fr, 1fr),
+  [Pathway], [Total (EJ/year)], [Bioenergy (EJ/year)], [Wind + solar share],
+  [Renewables-led, REMIND], [737], [100], [78%],
+  [Low demand, MESSAGE], [326], [69], [64%],
+  [High overshoot/removal, COFFEE], [995], [406], [36%],
+)
+
+The renewables-led pathway is `DeepElec_SSP2_ HighRE_Budg900`; low demand is
+`LowEnergyDemand_1.3_IPCC`; the removal pathway is `EN_NPi2020_400f_lowBECCS`.
+The last belongs to C2 (1.5°C after high overshoot) and is shown here for
+comparison, outside the plotted C1/C3 ensemble. Its name does not imply low
+total bioenergy. These are conditional strategies, not interchangeable forecasts.
+
+=== What the biomass-heavy scenario required
+
+The superseded #link("https://github.com/JGCRI/ssp-data/tree/b3dfbdf34b63a48db97373c27fe2c994855ea5f4")[GCAM4 SSP2-2.6 pathway]
+reaches 391.7 EJ/year biomass out of 927.3 EJ/year primary energy in 2100,
+or 42.2 percent. Its detailed outputs include:
+
+#table(columns: (2.5fr, 1fr),
+  [2100 model output], [Value],
+  [Land for energy crops], [1.085 billion hectares],
+  [Biomass used with carbon capture and storage], [230 EJ/year],
+  [CO₂ captured and stored from biomass], [23.5 Gt/year],
+  [Carbon price, in 2005 dollars], [1853 USD/t CO₂],
+)
+
+Thus this pathway requires a vast land allocation and a very large carbon
+capture and storage industry. The model values biomass both as an energy
+source and as a means of removing atmospheric CO₂: plants take up carbon,
+and some of that carbon is stored underground after conversion. Whether the
+whole chain actually removes CO₂ depends on land-use change, cultivation,
+processing, transport, capture and durable storage. The
+#link("https://jgcri.github.io/gcam-doc/ssp.html")[GCAM SSP documentation]
+also explains that the original scenarios predate a later net-negative-emissions
+constraint, with consequences especially for the 2.6 W/m² pathways.
+
+Solar photovoltaics generate much more electricity per unit of suitable land
+than dedicated energy crops followed by electricity generation. The carbon
+removal credit does not improve photosynthetic conversion efficiency.
+Cost optimization under an emissions constraint can nevertheless favor
+biomass because it can also supply storable fuels and negative emissions.
+That is a different objective from maximizing electricity per square meter.
+The literature explicitly identifies large-scale bioenergy with carbon
+capture as a potential source of pressure on land, water, biodiversity and
+nutrient cycles; see
+#link("https://doi.org/10.1038/s41558-017-0064-y")[Heck et al. (2018)].
+A large modeled share is not evidence that those sustainability constraints
+have been resolved.
+
+Primary-energy accounting matters as well. Combustible biomass is counted
+before conversion losses, whereas the direct-equivalent convention counts
+wind, solar and nuclear electricity at output. A 42 percent primary share
+therefore does not mean 42 percent of delivered electricity or useful energy.
+
+=== Published fusion timelines
+
+The #link("https://energy.mit.edu/research/publications-reports/role-fusion-energy-decarbonized-electricity-system")[MIT fusion study (2024)]
+uses the global EPPA model with accelerated climate action and assumed
+commercial availability in 2035. Four US overnight capital-cost cases in
+2050 span 2800–11,300 USD2021/kW. The base case uses 8000 USD/kW in 2050
+and approximately 4300 USD/kW in 2100. The report gives 2 TWh fusion
+generation in 2035 and 375 TWh in 2050 for that case. Its fusion share of
+electricity reaches 15 percent in 2075 and 27 percent in 2100; the cost
+sensitivities reach 10–50 percent in 2100. These are electricity shares,
+not all-energy shares.
+
+The figure uses actual five-year vertices of the four generation curves
+in Fig. 4.4b, printed p. 43 (PDF p. 48), extracted from vector coordinates
+and rounded to 100 TWh. The two exact base-case values from the report text
+replace the poorly resolved early vertices. Tiny values below approximately
+100 TWh in the other curves are unresolved. Curves are conditional on the
+report's renewable-integration costs, resource availability and regional
+restrictions on fission.
+
+#link("https://agenda.ciemat.es/event/4431/contributions/6116/attachments/4194/6673/Carlos_Mantilla_ESSRI_2024_SPS1.pdf")[Mantilla et al., ESSRI 2024],
+provides a second model's dated fusion results. Its EUROfusion TIMES S02
+case assumes availability in 2035, fast deployment linked to tritium supply,
+reference costs and restricted variable renewables. The poster explicitly
+describes its fusion costs as desired targets rather than estimates.
+Its dated global mix bars give approximately 0, 0.5, 7.5 and 29 PWh/year
+fusion output in 2030, 2050, 2070 and 2100. They are independently digitized
+to approximately 0.5 PWh resolution; dashed connections join those reported
+dates without inventing intermediate model outputs. The case reaches
+22 percent of electricity in 2100; late availability, slow deployment and
+unrestricted wind and solar produce much smaller contributions.
+
+The distinct star retains the newer
+#link("https://doi.org/10.1016/j.esr.2026.102326")[Mantilla et al. (2026)]
+favorable result: 21 percent of approximately 140 PWh/year electricity,
+or 105.84 EJ/year fusion output. This requires commercialisation by 2040,
+rapid fleet growth and sufficient tritium, first-fleet cost at most
+7200 USD/kW with 10 percent learning, and wind/solar limited to 75 percent
+in each model timeslice. Conservative cases yield only a few percent.
+The verified 2026 endpoint is not used to invent a 2026 trajectory.
+
+To compare on the requested all-energy axis, convert each fusion output:
+$E_"fusion" = G_"fusion" times 0.0036 "EJ/TWh", quad
+s_"fusion" = E_"fusion" / E_"primary, AR6 median".$
+The same year-specific AR6 median denominator is used for both fusion models.
+In 2100 this denominator is approximately 882 EJ/year: the MIT cost cases
+scale to approximately 3–18 percent, its base case to 10 percent, and the
+favorable EUROfusion cases to approximately 12 percent.
+*These are explicit cross-model scalings, not all-energy shares published
+by the fusion studies or a combined energy-system run.*
+They do not establish which sources fusion would displace.
+
+A complementary #link("https://doi.org/10.1016/j.esr.2023.101144")[EUROfusion TIMES study by Lerede et al. (2023)]
+compares ARC and DEMO concepts under three socioeconomic storylines. It
+finds fusion concentrated in regions with growing electricity demand,
+with no contribution to the transition in Europe and the United States
+in its studied cases. This differs from the MIT regional result and
+illustrates the sensitivity to competing technologies, reactor concepts
+and deployment constraints. All these studies assume that a commercial
+fusion technology becomes available; they do not estimate the probability
+of achieving that technical milestone.
+
+=== Observations and recent solar growth
+
+The observed 2024 mix uses the revised
+#link("https://iea.blob.core.windows.net/assets/df903e1c-49c6-4757-8cbf-6fbcfe7611a0/GlobalEnergyReview2026.pdf")[IEA Global Energy Review 2026, p. 44]:
+646 EJ total, including 519 EJ fossil fuels, 31 EJ nuclear and 96 EJ
+renewables. Hollow circles show these three aggregates; the renewables
+point is not a separate component to add to the curves. IEA counts nuclear
+reactor heat, while the IPCC direct-equivalent convention counts nuclear
+electricity. The observations and scenario curves are not spliced.
+
+#link("https://www.iea.org/reports/global-energy-review-2026/global-trends")[IEA]
+reports nearly 2700 TWh solar PV output in 2025, approximately 600 TWh
+above 2024 and more than twice the 2022 output. Rounded 2100/2700 TWh
+values divided by matching IEA totals of 646/655 EJ give 1.17/1.48 percent.
+The short orange guide holds the 2025
+#link("https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf")[IRENA]
+net addition rate, 510.349 GW/year, through 2035. At an assumed 15 percent
+capacity factor, each added annual cohort contributes approximately
+671 TWh/year, or 2.41 EJ/year, for a full operating year. The guide assumes
+no retirements; demand is anchored to IEA's 655 EJ in 2025 and follows
+the relative AR6 ensemble median demand thereafter, interpolated between
+decades. It is an illustration of constant construction, not a model update
+or an exponential solar projection to 2100.
+
+
 ]

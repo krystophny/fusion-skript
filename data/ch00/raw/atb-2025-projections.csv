@@ -1,0 +1,6 @@
+atb_year,core_metric_key,core_metric_parameter,core_metric_case,tax_credit_case,crpyears,technology,technology_alias,techdetail,techdetail2,resourcedetail,display_name,default,scale,maturity,scenario,core_metric_variable,units,value,ref_summary,ref_evidence_type
+2025,118318,LCOE,R&D,,30,LandbasedWind,Land-Based Wind,Class4,Wind Turbine Technology 1,Class4,Land-Based Wind - Class 4 - Technology 1,1,Utility,Y,Moderate,2030,$/MWh,30.887314198316133,,
+2025,119668,LCOE,R&D,,30,LandbasedWind,Land-Based Wind,Class4,Wind Turbine Technology 1,Class4,Land-Based Wind - Class 4 - Technology 1,1,Utility,Y,Moderate,2035,$/MWh,25.207053154674952,,
+2025,1127305,LCOE,R&D,,60,Nuclear,Nuclear,Nuclear - Large,Nuclear,Large,Nuclear - Large,1,Utility,Y,Moderate,2030,$/MWh,78.24154508909304,,
+2025,1127905,LCOE,R&D,,60,Nuclear,Nuclear,Nuclear - Large,Nuclear,Large,Nuclear - Large,1,Utility,Y,Moderate,2035,$/MWh,76.20901655481597,,
+2025,116968,LCOE,R&D,,30,LandbasedWind,Land-Based Wind,Class4,Wind Turbine Technology 1,Class4,Land-Based Wind - Class 4 - Technology 1,1,Utility,Y,Moderate,2025,$/MWh,37.008271306759816,,

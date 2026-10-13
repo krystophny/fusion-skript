@@ -1,0 +1,2587 @@
+{
+  "page": 16,
+  "years": [
+    2020,
+    2030,
+    2040,
+    2050,
+    2060,
+    2070,
+    2080,
+    2090,
+    2100
+  ],
+  "ensemble": {
+    "source_url": "https://doi.org/10.5281/zenodo.7197970",
+    "download_url": "https://db1.ene.iiasa.ac.at/ar6-public-api/rest/v2.1/files/1668008312256-AR6_Scenarios_Database_World_v1.1.csv.zip",
+    "version": "IPCC AR6 Scenarios Database v1.1",
+    "snapshot_file": "data/ch00/raw/ar6-primary-energy.jsonl",
+    "csv_sha256": "4cf39b6b0d968e25ed389318acb1674f92146f977e9db4bfb7970f048ff73977",
+    "metadata_sha256": "1c1d70208bcf48c531c178899a7ce8ffd0fa905700bb3739770a796f0f2db12d",
+    "categories": [
+      "C1",
+      "C3"
+    ],
+    "unit": "EJ/yr",
+    "selection": "World, meta_Ch3vetted_withclimate categories C1 and C3. Require total, coal, oil, gas, biomass, nuclear, solar, wind for every decade 2020–2100; positive totals and nonnegative values. Reject component sums above total by more than 0.01%. Four non-closing IMAGE scenarios are excluded. No restriction based on the resulting technology shares.",
+    "excluded_nonclosing": [
+      [
+        "IMAGE 3.2",
+        "SSP1_SPA1_26I_D"
+      ],
+      [
+        "IMAGE 3.2",
+        "SSP1_SPA1_26I_LI"
+      ],
+      [
+        "IMAGE 3.2",
+        "SSP1_SPA1_26I_RE"
+      ],
+      [
+        "IMAGE 3.2",
+        "SSP2_SPA2_19I_LI"
+      ]
+    ],
+    "scenario_count": 356,
+    "quantiles": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "interpretation": "Unweighted scenario percentiles in the selected literature sample, not probabilities, model-balanced consensus or a single feasible mix. Model/scenario representation is uneven; source-wise medians need not sum to 100%.",
+    "licence": "IIASA/IAMC AR6 database terms permit educational/scientific communication with attribution; database rights retained. Small numerical subset only, not the full database.",
+    "licence_url": "https://data.ene.iiasa.ac.at/ar6/static/license.html"
+  },
+  "identities": [
+    {
+      "model": "AIM/CGE 2.0",
+      "scenario": "SSP1-26",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.0",
+      "scenario": "SSP4-26",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.1",
+      "scenario": "CD-LINKS_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.1",
+      "scenario": "CD-LINKS_NPi2020_400",
+      "category": "C1"
+    },
+    {
+      "model": "AIM/CGE 2.1",
+      "scenario": "CO_Bridge",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_INDCi2030_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_INDCi2030_800f",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_INDCi2030_900f",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_1200",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_300f",
+      "category": "C1"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_600",
+      "category": "C1"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_700",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_700f",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_800f",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_900",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/CGE 2.2",
+      "scenario": "EN_NPi2020_900f",
+      "category": "C3"
+    },
+    {
+      "model": "AIM/Hub-Global 2.0",
+      "scenario": "1.5C",
+      "category": "C1"
+    },
+    {
+      "model": "AIM/Hub-Global 2.0",
+      "scenario": "WB2C",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "CO_Bridge",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_INDCi2030_500",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_INDCi2030_600",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_INDCi2030_600_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_INDCi2030_700",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_INDCi2030_800",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_INDCi2030_900",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_400",
+      "category": "C1"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_400_lowBECCS",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_400f_lowBECCS",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_500",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_600",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_700",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "COFFEE 1.1",
+      "scenario": "EN_NPi2020_900",
+      "category": "C3"
+    },
+    {
+      "model": "GCAM 4.2",
+      "scenario": "SSP1-19",
+      "category": "C1"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_INDCi2030_1000",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_INDCi2030_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_INDCi2030_1000_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_INDCi2030_1000_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_INDCi2030_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_INDCi2030_1000f_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_INDCi2030_800",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_NPi2020_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_NPi2020_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_NPi2020_500",
+      "category": "C1"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_NPi2020_600_COV",
+      "category": "C1"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "GEM-E3_V2021",
+      "scenario": "EN_NPi2020_800f",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "CO_2Deg2020",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "CO_2Deg2030",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "CO_Bridge",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "EN_INDCi2030_800f",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "EN_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "EN_NPi2020_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "EN_NPi2020_600f",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0",
+      "scenario": "EN_NPi2020_800f",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "CD-LINKS_NDC2030i_1000",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "CD-LINKS_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "EMF30_ClimPolicy",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "EMF30_ClimPolicy+SLCF",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "EMF30_Slower-to-faster+SLCF",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "EMF30_Slower-to-faster+SLCF+HFC",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "SSP1-26",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "SSP2-26",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.1",
+      "scenario": "SSP4-26",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.2",
+      "scenario": "EMF33_WB2C_cost100",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.2",
+      "scenario": "EMF33_WB2C_full",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.2",
+      "scenario": "EMF33_WB2C_limbio",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.2",
+      "scenario": "EMF33_WB2C_nobeccs",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.0.2",
+      "scenario": "EMF33_WB2C_nofuel",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP1_SPA1_19I_D_LB",
+      "category": "C1"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP1_SPA1_19I_LIRE_LB",
+      "category": "C1"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP1_SPA1_19I_RE_LB",
+      "category": "C1"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP1_SPA1_26I_LIRE",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA0_26I_D",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA1_19I_D_LB",
+      "category": "C1"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA1_19I_LIRE_LB",
+      "category": "C1"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA1_19I_RE_LB",
+      "category": "C1"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA2_26I_D",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA2_26I_LI",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA2_26I_LIRE",
+      "category": "C3"
+    },
+    {
+      "model": "IMAGE 3.2",
+      "scenario": "SSP2_SPA2_26I_RE",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGE-GLOBIOM 1.0",
+      "scenario": "EMF33_1.5C_cost100",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGE-GLOBIOM 1.0",
+      "scenario": "EMF33_1.5C_full",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGE-GLOBIOM 1.0",
+      "scenario": "EMF33_Med2C_nobeccs",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGE-GLOBIOM 1.0",
+      "scenario": "EMF33_Med2C_none",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGE-GLOBIOM 1.0",
+      "scenario": "EMF33_tax_hi_full",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGE-GLOBIOM 1.0",
+      "scenario": "SSP2-19",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGE-GLOBIOM 1.0",
+      "scenario": "SSP2-26",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM 1.0",
+      "scenario": "CD-LINKS_NPi2020_400",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM 1.0",
+      "scenario": "LowEnergyDemand_1.3_IPCC",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1000",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1000_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1000_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1000f_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1200_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_1200_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_800f",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_800f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_800f_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_800f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_900f",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_900f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_900f_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_900f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_950_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_950_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_950f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_INDCi2030_950f_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000_DR10p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000_DR1p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000_DR2p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000_DR3p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000_DR4p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000f_DR1p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000f_DR2p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000f_DR3p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1000f_DR4p",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1200",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_1200_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_450",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_500",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_600_COV",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_600_DR1p",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_600_DR2p",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_600_DR3p",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_600_DR4p",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_800_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_800f",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_800f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_900",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_900_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_900f",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.1",
+      "scenario": "EN_NPi2020_900f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_GreenPush_1000",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_GreenPush_550",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_NoPolicyNoCOVID_1000",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_NoPolicyNoCOVID_550",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_Restore_1000",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_Restore_550",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_SelfReliance_1000",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_SelfReliance_550",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_SmartUse_1000",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_1.2",
+      "scenario": "COV_SmartUse_550",
+      "category": "C1"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_GEI 1.0",
+      "scenario": "SSP2_int_lc_50",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_GEI 1.0",
+      "scenario": "SSP2_noint_lc_50",
+      "category": "C3"
+    },
+    {
+      "model": "MESSAGEix-GLOBIOM_GEI 1.0",
+      "scenario": "SSP2_openres_lc_50",
+      "category": "C3"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_Med2C_cost100",
+      "category": "C3"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_Med2C_full",
+      "category": "C3"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_Med2C_limbio",
+      "category": "C3"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_Med2C_nobeccs",
+      "category": "C3"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_Med2C_nofuel",
+      "category": "C3"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_Med2C_none",
+      "category": "C3"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_WB2C_cost100",
+      "category": "C1"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_WB2C_full",
+      "category": "C1"
+    },
+    {
+      "model": "POLES EMF33",
+      "scenario": "EMF33_WB2C_nofuel",
+      "category": "C1"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_INDCi2030_500f",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_INDCi2030_600f",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_INDCi2030_600f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_INDCi2030_600f_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_INDCi2030_600f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_INDCi2030_700f",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_INDCi2030_900",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_500",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_500f",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_600",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_600f",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_600f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_700",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_700f",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "POLES ENGAGE",
+      "scenario": "EN_NPi2020_900",
+      "category": "C3"
+    },
+    {
+      "model": "POLES GECO2019",
+      "scenario": "CO_2Deg2020",
+      "category": "C3"
+    },
+    {
+      "model": "POLES GECO2019",
+      "scenario": "CO_2Deg2030",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 1.6",
+      "scenario": "EMF30_Slower-to-faster",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 1.6",
+      "scenario": "EMF30_Slower-to-faster+SLCF",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 1.6",
+      "scenario": "EMF30_Slower-to-faster+SLCF+HFC",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 1.7",
+      "scenario": "CEMICS-1.5-CDR12",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 1.7",
+      "scenario": "CEMICS-1.5-CDR20",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 1.7",
+      "scenario": "CEMICS-1.5-CDR8",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 1.7",
+      "scenario": "CEMICS-2.0-CDR8",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_GDPgrowth_1p5",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_GDPgrowth_2C",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_HotellingConst_1p5",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_HotellingConst_2C",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_Linear_1p5",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_Linear_2C",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_opt_1p5",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "CEMICS_opt_2C",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_CBA_brkLR15_SSP2_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_CBA_brkSR15_SSP2_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_CEA_brkLR15_SSP2_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_CEA_brkSR15_SSP2_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_LTC_brkLR15_SSP1_P50",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_LTC_brkLR15_SSP2_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_LTC_brkLR15_SSP5_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_LTC_brkSR15_SSP2_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "LeastTotalCost_LTC_brkSR15_SSP5_P50",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "R2p1_SSP1-PkBudg900",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "R2p1_SSP2-PkBudg1100",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "R2p1_SSP2-PkBudg1300",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "R2p1_SSP2-PkBudg900",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "R2p1_SSP5-PkBudg1300",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "R2p1_SSP5-PkBudg900",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-bioH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-ccsH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-coalH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-elh2H",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-gasH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-nucH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-oilH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-spvH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND 2.1",
+      "scenario": "TechCost-SSP2-B1100-windH",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.5",
+      "scenario": "SSP2-19",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.5",
+      "scenario": "SSP2-26",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "CD-LINKS_NDC2030i_1000",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_1.5C_nofuel",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_Med2C_limbio",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_WB2C_cost100",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_WB2C_full",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_WB2C_limbio",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_WB2C_nobeccs",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_WB2C_nofuel",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_WB2C_none",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "EMF33_tax_hi_full",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 1.7-3.0",
+      "scenario": "SMP_2C_lifesty",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.0-4.1",
+      "scenario": "Diff_1300Gt_hybrid_def",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.0-4.1",
+      "scenario": "Diff_1300Gt_no-transfer_def",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.0-4.1",
+      "scenario": "Diff_1300Gt_uniform-pricing_def",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "CEMICS_SSP1-1p5C-fullCDR",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "CEMICS_SSP1-1p5C-minCDR",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "CEMICS_SSP2-1p5C-fullCDR",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "CEMICS_SSP2-1p5C-minCDR",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "CEMICS_SSP2-2C-fullCDR",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "CEMICS_SSP2-2C-minCDR",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000f_COV_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1000f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1200",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_1200f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_700",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_700f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_800",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_800f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_900",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_INDCi2030_900f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_1200",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_1200f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_200f",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_300f",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_400",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_400f",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_500",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_600",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_600_COV",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_600f_COV",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_700",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_700f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_800f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_900",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "EN_NPi2020_900f",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "SusDev_SDP-PkBudg1000",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "SusDev_SSP1-PkBudg900",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.2",
+      "scenario": "SusDev_SSP2-PkBudg900",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.3",
+      "scenario": "DeepElec_SSP2_ HighRE_Budg1100",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.3",
+      "scenario": "DeepElec_SSP2_ HighRE_Budg1300",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.3",
+      "scenario": "DeepElec_SSP2_ HighRE_Budg900",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.3",
+      "scenario": "DeepElec_SSP2_def_Budg1300",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-MAgPIE 2.1-4.3",
+      "scenario": "DeepElec_SSP2_def_Budg900",
+      "category": "C1"
+    },
+    {
+      "model": "REMIND-Transport 2.1",
+      "scenario": "Transport_Budg1100_Conv",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-Transport 2.1",
+      "scenario": "Transport_Budg1100_Conv-LowD",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-Transport 2.1",
+      "scenario": "Transport_Budg1100_ConvSyn",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-Transport 2.1",
+      "scenario": "Transport_Budg1100_ElecPush",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-Transport 2.1",
+      "scenario": "Transport_Budg1100_ElecPush-LowD",
+      "category": "C3"
+    },
+    {
+      "model": "REMIND-Transport 2.1",
+      "scenario": "Transport_Budg1100_H2Push",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1000",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1000_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1000f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1200",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_1200f",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_900",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_INDCi2030_900f",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_1000_COV",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_1000f_COV",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_1200",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_1200f",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_800f",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_900",
+      "category": "C3"
+    },
+    {
+      "model": "TIAM-ECN 1.1",
+      "scenario": "EN_NPi2020_900f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "CO_2Deg2020",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "CO_2Deg2030",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "CO_Bridge",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_1000",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_1000_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_1000f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_600f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_600f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_700f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_700f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_800",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_800_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_800f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_800f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_900",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_900_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_900f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_INDCi2030_900f_NDCp",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_1000",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_1000f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_400f",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_450",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_450f",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_500",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_500f",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_600",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_600f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_700",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_700f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_800",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_800f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_900",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH 5.0",
+      "scenario": "EN_NPi2020_900f",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH-GLOBIOM 3.1",
+      "scenario": "SSP1-19",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH-GLOBIOM 3.1",
+      "scenario": "SSP4-19",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH-GLOBIOM 4.4",
+      "scenario": "CD-LINKS_INDC2030i_1600",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH-GLOBIOM 4.4",
+      "scenario": "CD-LINKS_NPi2020_1000",
+      "category": "C1"
+    },
+    {
+      "model": "WITCH-GLOBIOM 4.4",
+      "scenario": "CD-LINKS_NPi2020_1600",
+      "category": "C3"
+    },
+    {
+      "model": "WITCH-GLOBIOM 4.4",
+      "scenario": "CD-LINKS_NPi2020_400",
+      "category": "C1"
+    }
+  ],
+  "total_EJ_year": {
+    "p10": [
+      548.738476333118,
+      477.8492868252047,
+      463.2187172682759,
+      488.064546875,
+      533.7452375,
+      581.69420625,
+      615.9636292896903,
+      626.351322753906,
+      637.1111665039062
+    ],
+    "median": [
+      565.3685867975678,
+      562.5782827723615,
+      538.23645,
+      564.2884201276606,
+      625.6196500000001,
+      689.0162952793687,
+      764.3973335833838,
+      830.2216728594495,
+      881.971317921106
+    ],
+    "p90": [
+      603.4595947265619,
+      632.4493317197937,
+      636.0646990512132,
+      685.575982065644,
+      735.3409494161241,
+      821.5693197224307,
+      865.8215138574182,
+      933.796582778336,
+      996.70425
+    ]
+  },
+  "shares_percent": {
+    "Fossils": {
+      "p10": [
+        81.84378518687575,
+        63.519358613207544,
+        41.05194240671604,
+        25.13172332281143,
+        18.993180442110564,
+        14.435391712669464,
+        9.813593864433951,
+        7.350687881862717,
+        5.728292263704663
+      ],
+      "median": [
+        82.79122320005328,
+        74.02889478503849,
+        58.901841905536045,
+        44.562338555993136,
+        34.68918800544888,
+        31.62552651436781,
+        28.3475891740434,
+        24.924788124342765,
+        23.475118890270686
+      ],
+      "p90": [
+        85.4201804505654,
+        79.50231391406587,
+        68.15608444268125,
+        59.39603634622167,
+        50.80652397769086,
+        45.3908500548575,
+        39.73601240107797,
+        39.89685372964396,
+        38.55349355500015
+      ]
+    },
+    "Wind + solar": {
+      "p10": [
+        1.1836854159245078,
+        3.917556023462377,
+        8.235171032716519,
+        13.403834269449245,
+        16.790046858579398,
+        18.98096911653969,
+        19.944620462413752,
+        20.110823058904366,
+        22.09103280814817
+      ],
+      "median": [
+        1.6385968278120329,
+        7.651131027361578,
+        18.456133494615568,
+        29.959750336508463,
+        34.31649240496972,
+        37.55234359375446,
+        39.160123992448,
+        41.707973997431,
+        43.74302697388174
+      ],
+      "p90": [
+        2.7101714274261792,
+        13.777649978115566,
+        30.818212696554955,
+        42.96309351758759,
+        51.06302757263897,
+        56.497326682684935,
+        61.08942719129936,
+        64.34979522758076,
+        66.37253939686178
+      ]
+    },
+    "Bioenergy": {
+      "p10": [
+        7.845456439796569,
+        9.306959928654573,
+        10.154801293177218,
+        10.702768562274239,
+        12.97280846732722,
+        13.57154641942666,
+        12.715206894925593,
+        12.037286221079363,
+        11.295386789437526
+      ],
+      "median": [
+        10.344462042444633,
+        11.678929820277514,
+        13.988737674231297,
+        17.031809832349012,
+        19.24214402763547,
+        20.199658364654848,
+        19.98333331145423,
+        20.688229908707513,
+        20.574280253192775
+      ],
+      "p90": [
+        11.06788432014291,
+        16.19981256594029,
+        24.61789790138318,
+        29.111615435918388,
+        29.946639643129956,
+        31.08919153633395,
+        32.33802662918015,
+        32.91898846617778,
+        32.92813630454114
+      ]
+    },
+    "Fission": {
+      "p10": [
+        1.44690500131902,
+        1.3658887505153017,
+        1.4629170984211357,
+        1.2851920312152596,
+        1.1517382784504453,
+        0.8993337546776154,
+        0.8493784524818844,
+        1.11618540708118,
+        1.446389615075565
+      ],
+      "median": [
+        1.71766091972476,
+        2.218538078967885,
+        2.7402270656737864,
+        2.817003015349111,
+        2.9208179461759203,
+        2.826818645617254,
+        2.960168763895566,
+        2.96460612002458,
+        3.080191388592869
+      ],
+      "p90": [
+        2.189913505535098,
+        3.5724160214943836,
+        5.203760486733739,
+        6.848261957339401,
+        8.43981521458057,
+        11.663921496066996,
+        13.925367194989239,
+        14.157543574165668,
+        12.488892291609481
+      ]
+    },
+    "Other": {
+      "p10": [
+        2.7043674443200243,
+        3.091847838315041,
+        4.1059358884452966,
+        4.3092000494256215,
+        4.351664845946781,
+        4.33235900786474,
+        4.24288082771772,
+        4.1053937628482,
+        3.859973810406513
+      ],
+      "median": [
+        3.0933098737507256,
+        4.219839836749896,
+        5.363814923003307,
+        5.8619703681001205,
+        6.2029184601220635,
+        6.4545410210600735,
+        6.334319487167434,
+        6.1933865291200885,
+        6.052834831693739
+      ],
+      "p90": [
+        3.709701514084462,
+        5.706944140785443,
+        7.121605712669702,
+        7.716327398510643,
+        7.901276868114995,
+        8.091895269950175,
+        8.828823264744766,
+        8.426551099121344,
+        8.147156633011292
+      ]
+    }
+  },
+  "current_policy_fossils_percent": {
+    "p10": [
+      82.12773656488825,
+      80.64835618685477,
+      78.7806677173552,
+      76.15116692834115,
+      71.63691573234351,
+      65.90413498046406,
+      61.24973777387211,
+      56.70150238532437,
+      51.95583457310937
+    ],
+    "median": [
+      82.78427353163195,
+      81.36764765575147,
+      80.67605237826557,
+      80.8226970165261,
+      80.11035391114861,
+      77.47857367580399,
+      77.58351962457427,
+      76.26841025218644,
+      74.63256159386474
+    ],
+    "p90": [
+      84.26841809301014,
+      82.8400511105206,
+      82.80254872673477,
+      81.6819706034831,
+      80.32519289548905,
+      78.516975302576,
+      77.7635817619353,
+      76.90856589956529,
+      75.13397503915571
+    ]
+  },
+  "observed": {
+    "year": 2024,
+    "unit": "EJ/yr",
+    "accounting": "IEA physical energy content",
+    "source_url": "https://iea.blob.core.windows.net/assets/df903e1c-49c6-4757-8cbf-6fbcfe7611a0/GlobalEnergyReview2026.pdf",
+    "page": 44,
+    "total": 646,
+    "values": {
+      "Coal": 178,
+      "Oil": 193,
+      "Gas": 148,
+      "Nuclear": 31,
+      "Renewables": 96
+    },
+    "rounding_residual": 0
+  },
+  "solar": {
+    "source_url": "https://www.iea.org/reports/global-energy-review-2026/global-trends",
+    "observation_years": [
+      2024,
+      2025
+    ],
+    "generation_TWh_year_approx": [
+      2100,
+      2700
+    ],
+    "world_primary_EJ_year": [
+      646,
+      655
+    ],
+    "approximation": "2025 is nearly 2700 TWh, about 600 TWh above 2024; both generation values rounded.",
+    "capacity_source": "irena_capacity",
+    "capacity_data": "data/ch00/processed/pv-capacity.json",
+    "guide_end_year": 2035,
+    "capacity_factor": 0.15,
+    "guide_assumptions": "Constant 2025 IRENA net PV addition rate; full-year output from each additional GW; no retirements through 2035. Demand anchored at IEA 2025 then follows relative AR6 C1/C3 ensemble median total-energy change. Illustrative guide, not an integrated model update.",
+    "added_GW_year": 510.349,
+    "annual_output_increment_EJ_year": 2.4141549096,
+    "observed_shares_percent": [
+      1.1702786377708978,
+      1.4839694656488551
+    ],
+    "guide_years": [
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035
+    ],
+    "guide_output_EJ_year": [
+      9.72,
+      12.134154909600001,
+      14.5483098192,
+      16.9624647288,
+      19.3766196384,
+      21.790774548,
+      24.204929457600002,
+      26.619084367200003,
+      29.033239276800003,
+      31.447394186400004,
+      33.861549096000005
+    ],
+    "guide_demand_EJ_year": [
+      655.0,
+      654.6759334706594,
+      654.351866941319,
+      654.0278004119784,
+      653.703733882638,
+      653.3796673532975,
+      650.5526014876905,
+      647.7255356220835,
+      644.8984697564766,
+      642.0714038908696,
+      639.2443380252627
+    ],
+    "guide_shares_percent": [
+      1.4839694656488551,
+      1.8534597484396176,
+      2.223316009963285,
+      2.5935387942401196,
+      2.9641286463691463,
+      3.3350861125308366,
+      3.720672148915847,
+      4.109624046492888,
+      4.501986070421813,
+      4.897803265467496,
+      5.297121473238893
+    ]
+  },
+  "fusion_mit": {
+    "source_url": "https://energy.mit.edu/system/files/resources/migrated/MITEI_FusionReport_091124_final_COMPLETE-REPORT_fordistribution.pdf",
+    "report_year": 2024,
+    "model": "MIT EPPA",
+    "figure": "4.4b",
+    "printed_page": 43,
+    "pdf_page": 48,
+    "pdf_sha256": "0233888b01e12fe09715ea24c00ca9635737b90ac944c50bccae8e73726c14c3",
+    "availability_year": 2035,
+    "years": [
+      2020,
+      2025,
+      2030,
+      2035,
+      2040,
+      2045,
+      2050,
+      2055,
+      2060,
+      2065,
+      2070,
+      2075,
+      2080,
+      2085,
+      2090,
+      2095,
+      2100
+    ],
+    "cases": [
+      {
+        "cost_2050_USD_kW": 2800,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          100,
+          600,
+          1700,
+          4400,
+          9700,
+          15000,
+          22000,
+          27000,
+          31900,
+          36300,
+          40700,
+          44600
+        ],
+        "years": [
+          2020,
+          2025,
+          2030,
+          2035,
+          2040,
+          2045,
+          2050,
+          2055,
+          2060,
+          2065,
+          2070,
+          2075,
+          2080,
+          2085,
+          2090,
+          2095,
+          2100
+        ],
+        "output_EJ_year": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.36,
+          2.16,
+          6.12,
+          15.84,
+          34.92,
+          54.0,
+          79.2,
+          97.2,
+          114.84,
+          130.68,
+          146.51999999999998,
+          160.56
+        ],
+        "scaled_primary_shares_percent": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.06530464931068918,
+          0.3827829746198472,
+          1.0286508939036625,
+          2.5318897831933502,
+          5.312497368627673,
+          7.837260217206495,
+          10.898480436291402,
+          12.715899929208348,
+          14.40344051287551,
+          15.740374441191342,
+          17.114893097793182,
+          18.204673637058388
+        ]
+      },
+      {
+        "cost_2050_USD_kW": 5600,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          100,
+          400,
+          1600,
+          3500,
+          7500,
+          11400,
+          15900,
+          19600,
+          22800,
+          26100,
+          30100,
+          33800
+        ],
+        "years": [
+          2020,
+          2025,
+          2030,
+          2035,
+          2040,
+          2045,
+          2050,
+          2055,
+          2060,
+          2065,
+          2070,
+          2075,
+          2080,
+          2085,
+          2090,
+          2095,
+          2100
+        ],
+        "output_EJ_year": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.36,
+          1.44,
+          5.76,
+          12.6,
+          27.0,
+          41.04,
+          57.239999999999995,
+          70.56,
+          82.08,
+          93.96,
+          108.36,
+          121.67999999999999
+        ],
+        "scaled_primary_shares_percent": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.06530464931068918,
+          0.2551886497465648,
+          0.9681420177916823,
+          2.014003236631074,
+          4.107601058217273,
+          5.956317765076936,
+          7.8766290425924215,
+          9.230801430091987,
+          10.294622059359298,
+          11.317459308955758,
+          12.657451652176286,
+          13.796367016425414
+        ]
+      },
+      {
+        "cost_2050_USD_kW": 8000,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          100,
+          375,
+          1200,
+          3300,
+          5300,
+          8400,
+          11000,
+          14500,
+          17200,
+          19800,
+          21600,
+          24000
+        ],
+        "years": [
+          2020,
+          2025,
+          2030,
+          2035,
+          2040,
+          2045,
+          2050,
+          2055,
+          2060,
+          2065,
+          2070,
+          2075,
+          2080,
+          2085,
+          2090,
+          2095,
+          2100
+        ],
+        "output_EJ_year": [
+          0.0,
+          0.0,
+          0.0,
+          0.0072,
+          0.0,
+          0.36,
+          1.3499999999999999,
+          4.32,
+          11.879999999999999,
+          19.08,
+          30.24,
+          39.6,
+          52.199999999999996,
+          61.92,
+          71.28,
+          77.75999999999999,
+          86.39999999999999
+        ],
+        "scaled_primary_shares_percent": [
+          0.0,
+          0.0,
+          0.0,
+          0.0013081220273764079,
+          0.0,
+          0.06530464931068918,
+          0.23923935913740452,
+          0.7261065133437616,
+          1.8989173373950128,
+          2.9027047478068724,
+          4.3888657216356375,
+          5.449240218145701,
+          6.8289092212415206,
+          7.766118395657015,
+          8.58565878610437,
+          9.083088228804243,
+          9.79623693473994
+        ]
+      },
+      {
+        "cost_2050_USD_kW": 11300,
+        "generation_TWh_year_approx": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          100,
+          200,
+          500,
+          1100,
+          1900,
+          2800,
+          3600,
+          4900,
+          5900,
+          7000,
+          8100
+        ],
+        "years": [
+          2020,
+          2025,
+          2030,
+          2035,
+          2040,
+          2045,
+          2050,
+          2055,
+          2060,
+          2065,
+          2070,
+          2075,
+          2080,
+          2085,
+          2090,
+          2095,
+          2100
+        ],
+        "output_EJ_year": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.36,
+          0.72,
+          1.8,
+          3.96,
+          6.84,
+          10.08,
+          12.959999999999999,
+          17.64,
+          21.24,
+          25.2,
+          29.16
+        ],
+        "scaled_primary_shares_percent": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0637971624366412,
+          0.12101775222396029,
+          0.28771474809015346,
+          0.6024481552052,
+          0.9927196275128227,
+          1.3870793282552694,
+          1.6954533238944465,
+          2.2124407057394984,
+          2.5583528706068575,
+          2.943593407482857,
+          3.3062299654747296
+        ]
+      }
+    ],
+    "extraction": "Vector line vertices from Fig.4.4b; axes x=195.71–466.93 pt maps 2020–2100, y=545.36–392.02 pt maps 0–50000 TWh. Rounded to nearest 100 TWh; the base-case 2035=2 TWh and 2050=375 TWh are replaced by exact text values on p.42. Values below ~100 TWh are unresolved in the other cost curves, not proof of zero production.",
+    "approximate_resolution_TWh": 100,
+    "costs": "Four US overnight-capital costs in 2050: 2800, 5600, 8000, 11300 USD2021/kW; further cost reduction thereafter. Base case 8000 in 2050, ~4300 in 2100.",
+    "assumptions": "Accelerated climate action; commercial availability in 2035 is assumed, not predicted. Variable-renewable integration costs/resource constraints and regional fission constraints influence the result.",
+    "scaling": "Electricity output converted to EJ, divided by the same year’s AR6 ensemble median total primary energy. Cross-model scaling, not an integrated AR6 run."
+  },
+  "fusion_etm_timeline": {
+    "source_url": "https://agenda.ciemat.es/event/4431/contributions/6116/attachments/4194/6673/Carlos_Mantilla_ESSRI_2024_SPS1.pdf",
+    "report_year": 2024,
+    "model": "EUROfusion TIMES",
+    "case": "S02: early availability, fast diffusion, restricted VRE, reference cost",
+    "pdf_sha256": "fea616a9f9da183b610594f1a815d279f280beff96d8faac53bfb5fb839ed5fa",
+    "years": [
+      2030,
+      2050,
+      2070,
+      2100
+    ],
+    "generation_TWh_year_approx": [
+      0,
+      500,
+      7500,
+      29000
+    ],
+    "approximate_resolution_TWh": 500,
+    "extraction": "Approximate yellow fusion segments of Global electricity mix (S2) bars. Embedded image 622×356 px, baseline y=333, 140000 TWh grid at y=13. Centres x=125,243,360,480; segment heights read including antialiasing and rounded to 500 TWh. Linear connections show dated samples only, not additional model outputs.",
+    "assumptions": "SSP2/RCP2.6 root; early fusion availability 2035, fast diffusion tied to tritium availability, restriction on variable renewables. Poster states fusion costs are desired targets, not estimates. S02 reaches 22% of electricity in 2100; S23 late/slow/unrestricted VRE yields much less.",
+    "scaling": "Electricity output converted to EJ, divided by the same year’s AR6 ensemble median total primary energy. Cross-model scaling, not an integrated AR6 run.",
+    "output_EJ_year": [
+      0.0,
+      1.8,
+      27.0,
+      104.39999999999999
+    ],
+    "scaled_primary_shares_percent": [
+      0.0,
+      0.318985812183206,
+      3.9186301086032476,
+      11.837119629477426
+    ]
+  },
+  "fusion": {
+    "source_url": "https://doi.org/10.1016/j.esr.2026.102326",
+    "year": 2100,
+    "generation_PWh_year": 140,
+    "electricity_share": 0.21,
+    "case": "Favourable EUROfusion TIMES case",
+    "interpretation": "Approximate 2100 cross-model scaling against the AR6 ensemble median primary demand, not a combined model or published primary-energy share",
+    "commercialisation_year": 2040,
+    "first_fleet_cost_USD_kW_max": 7200,
+    "learning_rate": 0.1,
+    "wind_solar_timeslice_share_max": 0.75,
+    "requirements": [
+      "rapid capacity growth comparable to 1970s fission",
+      "adequate tritium supply"
+    ],
+    "output_EJ_year": 105.84,
+    "scaled_primary_share_percent": 12.000390245056426
+  },
+  "notes": "IPCC AR6 C1/C3 literature ranges, not probabilities or a forecast. Source-wise medians are not a coherent energy mix. Fusion cases are published electricity outputs scaled to the AR6 median total with direct-equivalent accounting, not integrated model results.",
+  "source": "IEA Global Energy Review 2026 p.44; IPCC AR6 Scenarios Database v1.1, vetted C1/C3; MIT fusion report 2024 Fig.4.4b; Mantilla et al. ESSRI 2024 S02 and 2026 doi:10.1016/j.esr.2026.102326.",
+  "licence_status": "cleared"
+}

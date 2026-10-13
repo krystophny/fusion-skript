@@ -40,3 +40,6 @@ derivations/build/*
 !derivations/build/plotdata/*.json
 !derivations/build/check/
 !derivations/build/check/*.png
+
+# Local editor state and revision history are not course sources.
+.slopshell/

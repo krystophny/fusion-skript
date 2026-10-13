@@ -416,6 +416,18 @@
     "District heat": 6.091889338354063,
     "Electricity": 19.011665091576084
   },
+  "household_electricity_kWh_person_day": 6.494435512010871,
+  "electricity_share_of_final_percent": 21.813311158328702,
+  "household_share_of_electricity_percent": 34.1602667663681,
+  "household_electricity_share_of_final_percent": 7.4514852822630235,
+  "thermal_example": {
+    "efficiency": 0.4,
+    "input_kWh": 100.0,
+    "electricity_kWh": 40.0,
+    "rejected_heat_kWh": 60.0,
+    "status": "assumed example; no heat recovery; not Austrian average",
+    "source_key": "eia_thermal_efficiency"
+  },
   "notes": "Aggregated balance pools: primary inputs cannot be traced causally to final sectors. Actual published final-carrier × sector cells are retained. Row 16 is an aggregate and is not added again. Conversion losses are net input minus output, not all gross minus final.",
   "source": "Statistics Austria preliminary energy balance 2025, Balance rows 8–19; author aggregation and unit conversion.",
   "licence_status": "Statistics Austria custom attributed-reuse terms accepted for original data figures; not represented as CC."

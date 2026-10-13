@@ -236,3 +236,185 @@ def test_nrel_lifecycle_ranges_include_nonzero_low_carbon_sources():
     assert float(rows['Wind']['median_gCO2eq_kWh']) == 13
     assert float(rows['Nuclear (LWR)']['median_gCO2eq_kWh']) == 13
     assert all(float(r['min_gCO2eq_kWh']) > 0 for r in rows.values())
+
+
+def test_living_standards_global_counts_and_energy_boundaries():
+    data=c.living_standards()
+    # Global PIP counts at $3/day, September 2026 release; independently specified.
+    expected={1981:(4518389266,2128547233,None),
+              2000:(6161884811,2230903823,78.224965031972),
+              2024:(8141808945,824298368,91.9264843853681)}
+    for year,(population,below_three,electricity) in expected.items():
+        rows=[r for r in data['observations'] if r['year']==year]
+        assert sum(r['population'] for r in rows)==population
+        assert rows[0]['population']==below_three
+        assert sum(r['population_share_percent'] for r in rows)==pytest.approx(100)
+        assert all(r['population']>=0 for r in rows)
+        # Cross-check the two intermediate cutoffs against the retained cumulative series.
+        for cutoff,count in [(12,sum(r['population'] for r in rows[:2])),
+                             (48,sum(r['population'] for r in rows[:3]))]:
+            records=json.loads((ROOT/f'data/ch00/raw/pip-income-{cutoff}.json').read_text())
+            raw=next(r for r in records if r['region_code']=='WLD' and r['reporting_year']==year)
+            assert count==raw['pop_in_poverty']
+        comparison=next(r for r in data['comparisons'] if r['year']==year)
+        if year==1981:
+            assert comparison['electricity_access_percent'] is None
+            assert comparison['austria_ethiopia_primary_energy_ratio'] is None
+            continue
+        assert comparison['electricity_access_percent']==pytest.approx(electricity)
+        energy=json.loads((ROOT/f'data/ch00/raw/eia_{year}.json').read_text())['response']['data']
+        pops=json.loads((ROOT/'data/ch00/raw/wb-population-comparison.json').read_text())[1]
+        power={}
+        for code in ('AUT','ETH'):
+            q=float(next(r['value'] for r in energy if r['countryRegionId']==code))
+            pop=next(r['value'] for r in pops if r['countryiso3code']==code and int(r['date'])==year)
+            power[code]=q*1e15*1055.05585262/(pop*365*3.6e6)
+            assert comparison['primary_energy_kWh_person_day'][code]==pytest.approx(power[code])
+        assert comparison['austria_ethiopia_primary_energy_ratio']==pytest.approx(power['AUT']/power['ETH'])
+
+
+def test_capacity_additions_preserve_retirements_and_units():
+    # Independent published year-end stocks, EIA International, GW.
+    power = 1_054_125.4093488748*10**12/(365*86400)*u.watt
+    data = c.capacity_additions(power)
+    series = {r['technology']:r for r in data['series']}
+    for name, expected in [('Solar',1863.366126946-1414.371787284),
+                           ('Nuclear',378.6512-382.362)]:
+        assert series[name]['net_additions_GW_per_year'][-1]['value'] == pytest.approx(expected)
+    assert series['Nuclear']['net_additions_GW_per_year'][-1]['value'] < 0
+    # Net changes must telescope to the observed stock difference.
+    for r in data['series']:
+        assert sum(x['value'] for x in r['net_additions_GW_per_year']) == pytest.approx(
+            r['stock_GW'][-1]['value']-r['stock_GW'][0]['value'])
+    assert data['austria']['benchmark_GW_per_year'] == pytest.approx(
+        1_054_125.4093488748*1000/(365*86400)/.9)
+
+
+def test_cost_scenarios_anchor_relative_changes_and_constant_real_reference():
+    from chapters import ch00_electricity_costs as costs
+    data = costs.payload()
+    future = {(r['technology'],r['year']):r for r in data['annual'] if r['year']>2025}
+    # Nuclear: explicit flat-to-2030 assumption, then ATB 2035 / 2030 change.
+    for year, value in [(2030,18.05),(2035,18.05*76.20901655481597/78.24154508909304)]:
+        nuclear = future['nuclear_fission_new',year]
+        assert nuclear['us_cents_per_kWh_2025'] == pytest.approx(value)
+        assert nuclear.get('series_basis') is None
+        assert nuclear['atb_reference_year'] == 2030
+        assert 'constant real cost to 2030' in nuclear['scenario']
+    for year, atb_value in [(2030,30.887314198316133),(2035,25.207053154674952)]:
+        wind = future['onshore_wind',year]
+        assert wind['us_cents_per_kWh_2025'] == pytest.approx(3.3*atb_value/37.008271306759816)
+        assert wind.get('series_basis') is None  # Same anchored sample: connect at 2025.
+    for tech, value in [('coal',12.2),('natural_gas_CCGT',7.85)]:
+        for year in (2030,2035):
+            row = future[tech,year]
+            assert row['us_cents_per_kWh_2025'] == value
+            assert 'Constant' in row['scenario']
+            assert row['evidence_flag'] == 'F'
+
+
+def test_fusion_resource_budget_uses_world_demand_and_distinguishes_blanket_stocks():
+    result = c.fusion_resources()
+    # Independent EIA QBTU conversion and MacKay natural-Li yield.
+    annual_J = 606.037013293999 * 1e15 * 1055.05585262
+    li_kg_year = annual_J / (2300 * 1000 * 3.6e6)
+    fuels = {row['resource']: row for row in result['fuel']}
+    assert result['world_primary_EJ_year'] == pytest.approx(annual_J/1e18)
+    assert fuels['lithium_reserves']['static_years'] == pytest.approx(37e9/li_kg_year)
+    assert fuels['lithium_seawater']['static_years'] == pytest.approx(.00017*1.335e18/li_kg_year)
+    assert result['extraction_fraction'] == pytest.approx(2.5/2300)
+    assert result['seawater_minimum_km3_year'] == pytest.approx(li_kg_year/.00017/1e9)
+    # D-T consumes one D nucleus per 17.6 MeV; it still needs lithium.
+    d_rate = annual_J/(.4*17.6e6*1.602176634e-19)*.00201410177812/6.02214076e23
+    assert fuels['deuterium_seawater']['static_years'] == pytest.approx(
+        c.fusion()['ocean_deuterium_kg']/d_rate,rel=1e-8)
+    # Same net-electric output; initial inventories use installed power at 90% CF.
+    average_GW = annual_J/(365*86400)/1e9
+    installed = average_GW/.9
+    materials = {r['material']:r for r in result['blanket_materials']}
+    assert materials['lead']['fleet_initial_t'] == pytest.approx(installed*4092)
+    assert materials['lead']['fleet_burnup_t_year'] == pytest.approx(average_GW*3.1)
+    assert materials['beryllium']['fleet_initial_t'] == pytest.approx(installed*120)
+    assert materials['beryllium']['fleet_burnup_t_year'] == pytest.approx(average_GW*.19)
+    budgets = {r['resource']:r for r in result['blanket_lifetimes']}
+    for key,stock in [('lead_reserves',95e6),('lead_resource_reference',2e9)]:
+        row = budgets[key]
+        expected = (stock-installed*4092)/(average_GW*3.1)
+        assert row['static_years'] == pytest.approx(expected)
+        assert row['fleet_initial_t']+row['static_years']*row['fleet_burnup_t_year'] == pytest.approx(stock)
+        assert row['reference_covers_startup']
+    assert budgets['lead_resource_reference']['stock_qualifier'] == '>'
+    be = budgets['beryllium_resource_reference']
+    assert not be['reference_covers_startup']
+    assert be['static_years'] is None  # Never plot negative years or fake a feasible fleet.
+    assert be['stock_kind'] == 'resource reference'
+
+
+def test_energy_scenario_published_fusion_timelines_and_si_scaling():
+    outlook = c.energy_scenarios()
+    base = next(case for case in outlook['fusion_mit']['cases']
+                if case['cost_2050_USD_kW'] == 8000)
+    # Text values on MIT report p.42, independent of curve digitization.
+    assert base['output_EJ_year'][base['years'].index(2035)] == pytest.approx(2*.0036)
+    assert base['output_EJ_year'][base['years'].index(2050)] == pytest.approx(375*.0036)
+    assert base['output_EJ_year'][-1] == pytest.approx(24_000*.0036)
+    assert outlook['fusion']['output_EJ_year'] == pytest.approx(.21*140*3.6)
+    assert outlook['fusion']['scaled_primary_share_percent'] == pytest.approx(
+        100*.21*140*3.6/outlook['total_EJ_year']['median'][-1])
+    # The independently published 22% × approximately 132 PWh S02 endpoint.
+    assert outlook['fusion_etm_timeline']['output_EJ_year'][-1] == pytest.approx(
+        .22*132*3.6, abs=.6*3.6)
+    for series in outlook['shares_percent'].values():
+        assert np.all(np.array(series['p10']) <= np.array(series['median']))
+        assert np.all(np.array(series['median']) <= np.array(series['p90']))
+    assert sum(outlook['observed']['values'].values()) == 646
+
+
+def test_energy_ensemble_takes_percentiles_of_shares_before_aggregation(monkeypatch):
+    def case(total, coal, bio, nuclear, wind, solar):
+        return {'model':'example', 'scenario':str(total), 'category':'C1', 'values':{
+            'Primary Energy':[total]*9, 'Primary Energy|Coal':[coal]*9,
+            'Primary Energy|Oil':[0]*9, 'Primary Energy|Gas':[0]*9,
+            'Primary Energy|Biomass':[bio]*9, 'Primary Energy|Nuclear':[nuclear]*9,
+            'Primary Energy|Wind':[wind]*9, 'Primary Energy|Solar':[solar]*9}}
+    cases = [case(100,30,20,10,10,20), case(1000,300,100,100,100,100)]
+    original = Path.read_text
+    def read(path, *args, **kwargs):
+        if path.name == 'ar6-primary-energy.jsonl':
+            return '\n'.join(json.dumps(case) for case in cases)
+        return original(path, *args, **kwargs)
+    monkeypatch.setattr(Path, 'read_text', read)
+    result = c.energy_scenarios()
+    assert result['total_EJ_year']['median'] == pytest.approx([550]*9)
+    # Source shares are 30% and 20%, whose median is 25%, not 115/550.
+    assert result['shares_percent']['Wind + solar']['median'] == pytest.approx([25]*9)
+    assert result['shares_percent']['Wind + solar']['p10'] == pytest.approx([21]*9)
+    assert result['shares_percent']['Wind + solar']['p90'] == pytest.approx([29]*9)
+
+
+def test_energy_scenario_rejects_nonclosing_components(monkeypatch):
+    original = json.loads
+    def corrupt(source):
+        value = original(source)
+        if 'values' in value and 'Primary Energy' in value['values']:
+            value['values']['Primary Energy|Coal'][0] = 2*value['values']['Primary Energy'][0]
+        return value
+    monkeypatch.setattr(c.json, 'loads', corrupt)
+    with pytest.raises(ValueError, match='do not close'):
+        c.energy_scenarios()
+
+
+def test_solar_current_build_rate_guide():
+    solar = c.energy_scenarios()['solar']
+    assert solar['added_GW_year'] == pytest.approx(510.349)
+    # Independent SI oracle: 1 GW running at 15% for 365 days.
+    assert solar['annual_output_increment_EJ_year'] == pytest.approx(
+        510.349*1e9*.15*365*24*3600/1e18)
+    assert solar['observed_shares_percent'] == pytest.approx(
+        [100*2100*.0036/646,100*2700*.0036/655])
+    assert solar['guide_years'][0] == 2025
+    assert solar['guide_years'][-1] == 2035
+    assert solar['guide_shares_percent'][0] == pytest.approx(
+        solar['observed_shares_percent'][-1])
+    assert solar['guide_output_EJ_year'][-1] == pytest.approx(
+        2700*.0036+10*510.349*1e9*.15*31536000/1e18)

@@ -1,0 +1,6033 @@
+{
+  "sourcebook_date": "2026-10-09",
+  "annual": [
+    {
+      "year": 1980,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.5,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1980,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.4,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1980,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 14.5,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1980,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.0,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1980,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 31.0437,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1980,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 21.4719,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1980,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 379.4865,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1980,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 508.1023,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1981,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.4696,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1981,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.3373,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1981,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 14.3861,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1981,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.1882,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1981,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 27.5668,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1981,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 20.6187,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1981,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 305.6154,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1981,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 418.5045,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1982,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.4394,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1982,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.2752,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1982,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 14.273,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1982,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.3789,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1982,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 23.9085,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1982,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 19.7994,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1982,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 276.2275,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1982,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 382.3037,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1983,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.4092,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1983,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.2138,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1983,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 14.1608,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1983,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.5722,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1983,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 21.7645,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1983,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 19.0127,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1983,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 224.6181,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1983,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 319.4542,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1984,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.379,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1984,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.1529,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1984,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 14.0496,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1984,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.7681,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1984,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 20.8774,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1984,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 18.2572,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1984,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 209.6251,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1984,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 300.5608,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1985,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.349,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1985,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.0926,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1985,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 13.9392,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1985,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.9666,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1985,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 19.3183,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1985,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 17.5318,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1985,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 184.4763,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1985,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 269.4967,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1986,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.319,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1986,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.0329,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1986,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 13.8296,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1986,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 15.1678,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1986,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 12.874,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1986,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 16.8351,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1986,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 153.426,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1986,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 231.3669,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1987,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.2892,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1987,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.9738,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1987,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 13.7209,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1987,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 15.3717,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1987,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 14.6828,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1987,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 16.1662,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1987,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 130.9133,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1987,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 203.4979,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1988,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.2594,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1988,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.9153,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1988,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 13.6131,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1988,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 15.5784,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1988,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 12.7509,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1988,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 15.5238,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1988,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 123.8657,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1988,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 194.2024,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1989,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.2296,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1989,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.8574,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1989,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 13.5061,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1989,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 15.7878,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1989,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 14.0882,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1989,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 14.907,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1989,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 128.05,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1989,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 198.4004,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1990,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.2,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1990,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.8,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1990,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 13.4,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1990,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.0,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1990,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 15.7428,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1990,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 14.3146,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1990,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 133.4175,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1990,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 204.033,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1991,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.3941,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1991,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.737,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1991,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 13.1967,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1991,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.0973,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1991,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 14.0577,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1991,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 13.9087,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1991,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 123.9251,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1991,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 192.2774,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1992,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.5916,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1992,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.6747,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1992,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.9964,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1992,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.1952,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1992,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 13.4086,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1992,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 13.5143,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1992,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 116.6135,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1992,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 183.1417,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1993,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.7926,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1993,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.6131,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1993,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.7992,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1993,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.2937,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1993,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 12.3263,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1993,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 13.131,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1993,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 110.3637,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1993,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 175.2833,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1994,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 11.997,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1994,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.5521,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1994,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.605,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1994,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.3927,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1994,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 11.6556,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1994,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 12.7586,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1994,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 104.0284,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1994,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 167.325,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1995,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.2049,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1995,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.4918,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1995,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.4137,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1995,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.4924,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1995,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 11.9428,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1995,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 12.3968,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1995,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 97.6074,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1995,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 159.267,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1996,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.4165,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1996,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.4322,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1996,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.2253,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1996,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.5927,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1996,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 13.0858,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1996,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 12.0453,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1996,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 91.1008,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1996,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 151.1092,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1997,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.6317,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1997,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.3732,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1997,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.0398,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1997,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.6936,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1997,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 12.3682,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1997,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.7037,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1997,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 91.6501,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1997,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 151.4214,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1998,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.8506,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1998,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.3148,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1998,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.8571,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1998,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.7951,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1998,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 10.0867,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1998,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.3718,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1998,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 82.6203,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1998,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 140.2415,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 1999,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.0734,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1999,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.2571,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1999,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.6772,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1999,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 16.8972,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 1999,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 11.6334,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 1999,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.0493,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1999,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 77.0899,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 1999,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 133.2638,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2000,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.3,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2000,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.2,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2000,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.5,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2000,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.0,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2000,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 15.0964,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2000,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 10.736,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2000,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 76.3349,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2000,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 132.0193,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2001,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.6366,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2001,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.1271,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2001,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.6022,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2001,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.1559,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2001,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 13.4077,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2001,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 10.819,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2001,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 74.3467,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2001,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 129.7635,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2002,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.9817,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2002,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.0552,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2002,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.7054,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2002,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.3132,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2002,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 13.3311,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2002,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 10.9027,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2002,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 68.6523,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2002,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 123.0605,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2003,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 14.3356,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2003,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.9843,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2003,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.8095,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2003,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.4719,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2003,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 14.7047,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2003,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 10.987,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2003,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 65.3526,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2003,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 119.2316,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2004,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 14.6984,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2004,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.9144,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2004,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.9145,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2004,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.6321,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2004,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 17.5877,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2004,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.072,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2004,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 57.0493,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2004,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 109.3988,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2005,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 15.0704,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2005,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.8455,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2005,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.0204,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2005,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.7938,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2005,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 21.5969,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2005,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.1576,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2005,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 57.3775,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2005,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 109.9242,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2006,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 15.4518,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2006,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.7776,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2006,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.1273,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2006,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.9569,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2006,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 23.7907,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2006,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.2439,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2006,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 62.7236,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2006,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 116.4715,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2007,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 15.8428,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2007,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.7106,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2007,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.2351,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2007,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 18.1216,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2007,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 25.0138,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2007,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.3308,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2007,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 64.3419,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2007,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 118.5459,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2008,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 16.2438,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2008,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.6445,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2008,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.3439,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2008,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 18.2877,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "M",
+      "geography": "US"
+    },
+    {
+      "year": 2008,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 31.5361,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2008,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.4185,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2008,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 58.362,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2008,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 111.5029,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2009,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 16.6549,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2009,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.5794,
+      "source_ids": "S02;S01",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2009,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.4537,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2009,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 18.4554,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2009,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 21.4888,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2009,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.5068,
+      "source_ids": "S02;S13",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2009,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 39.5521,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "M",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2009,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 89.0643,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2010,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8251,
+      "source_ids": "S02;S01",
+      "evidence_flag": "A",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2010,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 16.3861,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2010,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.644,
+      "source_ids": "S02;S01",
+      "evidence_flag": "A",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2010,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.5152,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2010,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 12.1051,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2010,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.1718,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2010,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 21.3445,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2010,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 25.8935,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2010,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 11.5958,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2010,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 42.7915,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2010,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 93.0853,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2011,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8324,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2011,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 14.883,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2011,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.6792,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2011,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.5994,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2011,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 11.8778,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2011,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 13.595,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2011,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 22.0628,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2011,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 29.2004,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2011,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 10.9801,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2011,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 35.9161,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2011,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 84.7607,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2012,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8397,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2012,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 15.5626,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2012,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.7146,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2012,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.6853,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2012,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 10.5153,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2012,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 13.4596,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2012,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 18.9842,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2012,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 28.5198,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2012,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 10.0565,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2012,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 26.6806,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2012,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 68.0466,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2013,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.847,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2013,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 16.0289,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2013,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.7502,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2013,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.7727,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2013,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 10.2253,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2013,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 14.3707,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2013,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 16.0083,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2013,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 29.1162,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2013,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 10.0565,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2013,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 20.5235,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2013,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 55.0513,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2014,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8543,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2014,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 15.773,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2014,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.786,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2014,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.8618,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2014,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 10.0621,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2014,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 15.2291,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2014,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 19.4973,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2014,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 27.6042,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2014,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 9.0303,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2014,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 18.779,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2014,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 47.9287,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2015,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8616,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2015,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 15.8901,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2015,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.8221,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2015,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 4.9525,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2015,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 8.8278,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2015,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 15.8901,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2015,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 15.9057,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2015,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 16.7874,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2015,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 7.7989,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2015,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 13.8534,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2015,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 38.1218,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2016,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8689,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2016,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 15.6922,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2016,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.8584,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2016,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.0449,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2016,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 8.4496,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2016,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 15.6922,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2016,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 13.135,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2016,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 15.3137,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2016,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 7.1832,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2016,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 12.1089,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2016,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 32.3745,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2017,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8763,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2017,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.395,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2017,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.8949,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2017,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.1391,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2017,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.8794,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2017,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 19.4359,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2017,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 12.0063,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2017,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 16.9104,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2017,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 6.7728,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2017,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 9.5434,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2017,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 26.3587,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2018,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8836,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2018,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.0756,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2018,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.9317,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2018,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.235,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2018,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.4352,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2018,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 19.357,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2018,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 11.6984,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2018,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 19.8392,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2018,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 5.7466,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2018,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 8.1068,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2018,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 22.1235,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2019,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8909,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2019,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.7243,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2019,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 5.9687,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2019,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.3327,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2019,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.051,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2019,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 19.5162,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2019,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 9.7487,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2019,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 17.7886,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2019,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 5.0283,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2019,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 7.0806,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2019,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 18.7853,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2020,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.8983,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2020,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 13.9302,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2020,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 6.0059,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2020,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.4322,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2020,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.3382,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2020,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 20.2734,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2020,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 9.3382,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2020,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 13.6975,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2020,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 4.2073,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2020,
+      "technology": "solar_95pct_annual_demand_coverage_Nevada",
+      "us_cents_per_kWh_2025": 16.3,
+      "source_ids": "S03",
+      "evidence_flag": "R",
+      "geography": "Nevada USA"
+    },
+    {
+      "year": 2020,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 6.2597,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2020,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 16.0431,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2021,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.9056,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2021,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.8299,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2021,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 6.0433,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2021,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.5336,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2021,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.1277,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2021,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 19.8388,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2021,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 8.4146,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2021,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 19.3973,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2021,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 3.6942,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2021,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 5.644,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2021,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 14.2221,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2022,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.913,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2022,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.5796,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "I",
+      "geography": "US"
+    },
+    {
+      "year": 2022,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 6.081,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2022,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.6368,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2022,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.2525,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "I",
+      "geography": "US"
+    },
+    {
+      "year": 2022,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 19.4025,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "I",
+      "geography": "US"
+    },
+    {
+      "year": 2022,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 8.312,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2022,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 23.5851,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2022,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 3.489,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2022,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 5.2335,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2022,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 13.0427,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2023,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.9204,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2023,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.3342,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2023,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 6.1189,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2023,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.742,
+      "source_ids": "S02;S01",
+      "evidence_flag": "I",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2023,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.3794,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2023,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 18.9757,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "B",
+      "geography": "US"
+    },
+    {
+      "year": 2023,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 7.7989,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2023,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 19.5897,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2023,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 3.3864,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2023,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 4.3099,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2023,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 10.4667,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2024,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.9277,
+      "source_ids": "S02;S01",
+      "evidence_flag": "A",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2024,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.2669,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "I",
+      "geography": "US"
+    },
+    {
+      "year": 2024,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 6.1571,
+      "source_ids": "S02;S01",
+      "evidence_flag": "A",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2024,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 5.8492,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2024,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.6111,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "I",
+      "geography": "US"
+    },
+    {
+      "year": 2024,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 18.507,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "I",
+      "geography": "US"
+    },
+    {
+      "year": 2024,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 8.1068,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2024,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 19.0024,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2024,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 3.489,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2024,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 4.4126,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2024,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 8.9639,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2025,
+      "technology": "bioenergy",
+      "us_cents_per_kWh_2025": 8.6,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2025,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.2,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "L",
+      "geography": "US"
+    },
+    {
+      "year": 2025,
+      "technology": "geothermal",
+      "us_cents_per_kWh_2025": 8.9,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2025,
+      "technology": "hydropower",
+      "us_cents_per_kWh_2025": 6.2,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2025,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.85,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "L",
+      "geography": "US"
+    },
+    {
+      "year": 2025,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 18.05,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "L",
+      "geography": "US"
+    },
+    {
+      "year": 2025,
+      "technology": "offshore_wind",
+      "us_cents_per_kWh_2025": 7.8,
+      "source_ids": "S02;S01",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2025,
+      "technology": "oil_fuel_proxy",
+      "us_cents_per_kWh_2025": 16.6684,
+      "source_ids": "S11;S12",
+      "evidence_flag": "P",
+      "geography": "WTI world proxy"
+    },
+    {
+      "year": 2025,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 3.3,
+      "source_ids": "S02;S13",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2025,
+      "technology": "solar_95pct_annual_demand_coverage_Nevada",
+      "us_cents_per_kWh_2025": 11.32,
+      "source_ids": "S03",
+      "evidence_flag": "R",
+      "geography": "Nevada USA"
+    },
+    {
+      "year": 2025,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 4.4,
+      "source_ids": "S01;S02;S07",
+      "evidence_flag": "B",
+      "geography": "global weighted mean"
+    },
+    {
+      "year": 2025,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 7.7679,
+      "source_ids": "S01;S02;S03;S10",
+      "evidence_flag": "M",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2030,
+      "technology": "solar_95pct_annual_demand_coverage_Nevada",
+      "us_cents_per_kWh_2025": 7.7,
+      "source_ids": "S03",
+      "evidence_flag": "F",
+      "geography": "Nevada USA"
+    },
+    {
+      "year": 2030,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 3.3308,
+      "source_ids": "S01;S03",
+      "evidence_flag": "F",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2030,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 5.9236,
+      "source_ids": "S01;S03",
+      "evidence_flag": "F",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2035,
+      "technology": "solar_95pct_annual_demand_coverage_Nevada",
+      "us_cents_per_kWh_2025": 5.9,
+      "source_ids": "S03",
+      "evidence_flag": "F",
+      "geography": "Nevada USA"
+    },
+    {
+      "year": 2035,
+      "technology": "solar_PV",
+      "us_cents_per_kWh_2025": 3.1004,
+      "source_ids": "S01;S03",
+      "evidence_flag": "F",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2035,
+      "technology": "solar_daily_shift",
+      "us_cents_per_kWh_2025": 5.3634,
+      "source_ids": "S01;S03",
+      "evidence_flag": "F",
+      "geography": "synthetic global-like"
+    },
+    {
+      "year": 2030,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 2.754198811653906,
+      "source_ids": "ATB2025;S02;S13",
+      "evidence_flag": "F",
+      "geography": "global weighted mean",
+      "atb_recovery_years": 30,
+      "atb_reference_year": 2025,
+      "scenario": "2025 benchmark multiplied by ATB relative cost change"
+    },
+    {
+      "year": 2035,
+      "technology": "onshore_wind",
+      "us_cents_per_kWh_2025": 2.24769416331082,
+      "source_ids": "ATB2025;S02;S13",
+      "evidence_flag": "F",
+      "geography": "global weighted mean",
+      "atb_recovery_years": 30,
+      "atb_reference_year": 2025,
+      "scenario": "2025 benchmark multiplied by ATB relative cost change"
+    },
+    {
+      "year": 2030,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 18.05,
+      "source_ids": "ATB2025;S04;S05;S11",
+      "evidence_flag": "F",
+      "geography": "US",
+      "atb_recovery_years": 60,
+      "atb_reference_year": 2030,
+      "scenario": "2025 benchmark multiplied by ATB relative cost change; assumed constant real cost to 2030"
+    },
+    {
+      "year": 2035,
+      "technology": "nuclear_fission_new",
+      "us_cents_per_kWh_2025": 17.58110409563199,
+      "source_ids": "ATB2025;S04;S05;S11",
+      "evidence_flag": "F",
+      "geography": "US",
+      "atb_recovery_years": 60,
+      "atb_reference_year": 2030,
+      "scenario": "2025 benchmark multiplied by ATB relative cost change; assumed constant real cost to 2030"
+    },
+    {
+      "year": 2030,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.85,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "F",
+      "geography": "US",
+      "scenario": "Constant 2025 real cost; no fuel/carbon-price forecast"
+    },
+    {
+      "year": 2035,
+      "technology": "natural_gas_CCGT",
+      "us_cents_per_kWh_2025": 7.85,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "F",
+      "geography": "US",
+      "scenario": "Constant 2025 real cost; no fuel/carbon-price forecast"
+    },
+    {
+      "year": 2030,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.2,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "F",
+      "geography": "US",
+      "scenario": "Constant 2025 real cost; no fuel/carbon-price forecast"
+    },
+    {
+      "year": 2035,
+      "technology": "coal",
+      "us_cents_per_kWh_2025": 12.2,
+      "source_ids": "S04;S05;S11",
+      "evidence_flag": "F",
+      "geography": "US",
+      "scenario": "Constant 2025 real cost; no fuel/carbon-price forecast"
+    }
+  ],
+  "components": [
+    {
+      "year": 1980,
+      "series": "solar_module_only",
+      "value": 36.4292,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1980,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1200.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1980,
+      "series": "US_CPI_U",
+      "value": 82.4,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1981,
+      "series": "solar_module_only",
+      "value": 29.1434,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1981,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1178.3197,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1981,
+      "series": "US_CPI_U",
+      "value": 90.9,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1982,
+      "series": "solar_module_only",
+      "value": 26.1675,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1982,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1157.031,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1982,
+      "series": "US_CPI_U",
+      "value": 96.5,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1983,
+      "series": "solar_module_only",
+      "value": 21.1392,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1983,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1136.127,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1983,
+      "series": "US_CPI_U",
+      "value": 99.6,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1984,
+      "series": "solar_module_only",
+      "value": 19.6,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1984,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1115.6006,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1984,
+      "series": "US_CPI_U",
+      "value": 103.9,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1985,
+      "series": "solar_module_only",
+      "value": 17.1371,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1985,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1095.4451,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1985,
+      "series": "US_CPI_U",
+      "value": 107.6,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1986,
+      "series": "solar_module_only",
+      "value": 14.1612,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1986,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1075.6538,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1986,
+      "series": "US_CPI_U",
+      "value": 109.6,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1987,
+      "series": "solar_module_only",
+      "value": 12.0063,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1987,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1056.22,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1987,
+      "series": "US_CPI_U",
+      "value": 113.6,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1988,
+      "series": "solar_module_only",
+      "value": 11.2879,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1988,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1037.1373,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1988,
+      "series": "US_CPI_U",
+      "value": 118.3,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1989,
+      "series": "solar_module_only",
+      "value": 11.5958,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1989,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1018.3994,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1989,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 239.7146,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 1989,
+      "series": "US_CPI_U",
+      "value": 124.0,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1990,
+      "series": "solar_module_only",
+      "value": 12.0063,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1990,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 1000.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1990,
+      "series": "US_CPI_U",
+      "value": 130.7,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1991,
+      "series": "solar_module_only",
+      "value": 11.0827,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1991,
+      "series": "Li_ion_cell",
+      "value": 9451.2826,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1991,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 991.6965,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1991,
+      "series": "US_CPI_U",
+      "value": 136.2,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1992,
+      "series": "solar_module_only",
+      "value": 10.3644,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1992,
+      "series": "Li_ion_cell",
+      "value": 7581.488,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1992,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 983.462,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1992,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 234.0707,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 1992,
+      "series": "US_CPI_U",
+      "value": 140.3,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1993,
+      "series": "solar_module_only",
+      "value": 9.7487,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1993,
+      "series": "Li_ion_cell",
+      "value": 6035.7597,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1993,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 975.2958,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1993,
+      "series": "US_CPI_U",
+      "value": 144.5,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1994,
+      "series": "solar_module_only",
+      "value": 9.133,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1994,
+      "series": "Li_ion_cell",
+      "value": 6890.1535,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1994,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 967.1974,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1994,
+      "series": "US_CPI_U",
+      "value": 148.2,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1995,
+      "series": "solar_module_only",
+      "value": 8.5173,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1995,
+      "series": "Li_ion_cell",
+      "value": 6466.8561,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1995,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 959.1663,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1995,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 210.2634,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 1995,
+      "series": "US_CPI_U",
+      "value": 152.4,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1996,
+      "series": "solar_module_only",
+      "value": 7.9016,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1996,
+      "series": "Li_ion_cell",
+      "value": 5446.7349,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1996,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 951.2019,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1996,
+      "series": "US_CPI_U",
+      "value": 156.9,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1997,
+      "series": "solar_module_only",
+      "value": 7.9016,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1997,
+      "series": "Li_ion_cell",
+      "value": 4664.276,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1997,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 943.3036,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1997,
+      "series": "US_CPI_U",
+      "value": 160.5,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1998,
+      "series": "solar_module_only",
+      "value": 7.0806,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1998,
+      "series": "Li_ion_cell",
+      "value": 3752.6216,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1998,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 935.4709,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1998,
+      "series": "US_CPI_U",
+      "value": 163.0,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 1999,
+      "series": "solar_module_only",
+      "value": 6.5675,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1999,
+      "series": "Li_ion_cell",
+      "value": 2842.4038,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 1999,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 927.7032,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 1999,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 194.8707,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 1999,
+      "series": "US_CPI_U",
+      "value": 166.6,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2000,
+      "series": "solar_module_only",
+      "value": 6.4649,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2000,
+      "series": "Li_ion_cell",
+      "value": 2761.0281,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2000,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 920.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2000,
+      "series": "US_CPI_U",
+      "value": 172.2,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2001,
+      "series": "solar_module_only",
+      "value": 6.2597,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2001,
+      "series": "Li_ion_cell",
+      "value": 1927.1578,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2001,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 922.9569,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2001,
+      "series": "US_CPI_U",
+      "value": 177.1,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2002,
+      "series": "solar_module_only",
+      "value": 5.7466,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2002,
+      "series": "Li_ion_cell",
+      "value": 1380.7193,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2002,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 925.9232,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2002,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 190.6634,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 2002,
+      "series": "US_CPI_U",
+      "value": 179.9,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2003,
+      "series": "solar_module_only",
+      "value": 5.4387,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2003,
+      "series": "Li_ion_cell",
+      "value": 1067.6331,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2003,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 928.8991,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2003,
+      "series": "US_CPI_U",
+      "value": 184.0,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2004,
+      "series": "solar_module_only",
+      "value": 4.7204,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2004,
+      "series": "Li_ion_cell",
+      "value": 955.2669,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2004,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 931.8846,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2004,
+      "series": "US_CPI_U",
+      "value": 188.9,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2005,
+      "series": "solar_module_only",
+      "value": 4.7204,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2005,
+      "series": "Li_ion_cell",
+      "value": 823.547,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2005,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 934.8797,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2005,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 182.2488,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 2005,
+      "series": "US_CPI_U",
+      "value": 195.3,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2006,
+      "series": "solar_module_only",
+      "value": 5.1309,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2006,
+      "series": "Li_ion_cell",
+      "value": 705.2905,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2006,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 937.8844,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2006,
+      "series": "US_CPI_U",
+      "value": 201.6,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2007,
+      "series": "solar_module_only",
+      "value": 5.2335,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2007,
+      "series": "Li_ion_cell",
+      "value": 673.007,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2007,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 940.8987,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2007,
+      "series": "US_CPI_U",
+      "value": 207.342,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2008,
+      "series": "solar_module_only",
+      "value": 4.7204,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2008,
+      "series": "Li_ion_cell",
+      "value": 705.6599,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2008,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 943.9227,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2008,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 246.6926,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 2008,
+      "series": "US_CPI_U",
+      "value": 215.303,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2009,
+      "series": "solar_module_only",
+      "value": 3.1811,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2009,
+      "series": "Li_ion_cell",
+      "value": 628.6147,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2009,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 946.9565,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2009,
+      "series": "US_CPI_U",
+      "value": 214.537,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2010,
+      "series": "solar_module_only",
+      "value": 2.5039,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2010,
+      "series": "PV_utility_installed_G20",
+      "value": 5.4223,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2010,
+      "series": "Li_ion_cell",
+      "value": 565.1354,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2010,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 2638.2975,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "R",
+      "notes": "only 2010,2024,2025 are benchmark anchors",
+      "reported_evidence_flag": "B",
+      "audit_note": "IRENA 2024 Figure 9.2: published regression reconstruction. Original CSV is unchanged."
+    },
+    {
+      "year": 2010,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 950.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2010,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 215.9073,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 2010,
+      "series": "US_CPI_U",
+      "value": 218.056,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2011,
+      "series": "solar_module_only",
+      "value": 2.0524,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2011,
+      "series": "PV_utility_installed_G20",
+      "value": 4.7635,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2011,
+      "series": "Li_ion_cell",
+      "value": 538.3317,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2011,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 2214.8155,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2011,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 948.3125,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2011,
+      "series": "US_CPI_U",
+      "value": 224.939,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2012,
+      "series": "solar_module_only",
+      "value": 1.1083,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2012,
+      "series": "PV_utility_installed_G20",
+      "value": 3.5701,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2012,
+      "series": "Li_ion_cell",
+      "value": 553.8167,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2012,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 1859.308,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2012,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 946.628,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2012,
+      "series": "lead_acid_battery_hardware_approx",
+      "value": 217.2414,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "A",
+      "notes": "historically digitised from a separate study; approximate; not turnkey"
+    },
+    {
+      "year": 2012,
+      "series": "US_CPI_U",
+      "value": 229.594,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2013,
+      "series": "solar_module_only",
+      "value": 0.8517,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2013,
+      "series": "PV_utility_installed_G20",
+      "value": 3.9651,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2013,
+      "series": "Li_ion_cell",
+      "value": 503.7393,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2013,
+      "series": "Li_ion_pack_all_uses",
+      "value": 1011.4777,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2013,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 1560.8642,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2013,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 944.9465,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2013,
+      "series": "US_CPI_U",
+      "value": 232.957,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2014,
+      "series": "solar_module_only",
+      "value": 0.7902,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2014,
+      "series": "PV_utility_installed_G20",
+      "value": 2.8528,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2014,
+      "series": "Li_ion_cell",
+      "value": 445.6373,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2014,
+      "series": "Li_ion_pack_all_uses",
+      "value": 825.3637,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2014,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 1310.3246,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2014,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 943.268,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2014,
+      "series": "US_CPI_U",
+      "value": 236.736,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2015,
+      "series": "solar_module_only",
+      "value": 0.7388,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2015,
+      "series": "PV_utility_installed_G20",
+      "value": 2.117,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2015,
+      "series": "Li_ion_cell",
+      "value": 340.6287,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2015,
+      "series": "Li_ion_pack_all_uses",
+      "value": 521.5221,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2015,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 1100.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2015,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 941.5925,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2015,
+      "series": "US_CPI_U",
+      "value": 237.017,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2016,
+      "series": "solar_module_only",
+      "value": 0.6773,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2016,
+      "series": "PV_utility_installed_G20",
+      "value": 1.921,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2016,
+      "series": "Li_ion_cell",
+      "value": 265.7795,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2016,
+      "series": "Li_ion_pack_all_uses",
+      "value": 395.6572,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2016,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 915.8085,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2016,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 939.9199,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2016,
+      "series": "US_CPI_U",
+      "value": 240.007,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2017,
+      "series": "solar_module_only",
+      "value": 0.5747,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2017,
+      "series": "PV_utility_installed_G20",
+      "value": 1.6706,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2017,
+      "series": "Li_ion_cell",
+      "value": 191.8948,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2017,
+      "series": "Li_ion_pack_all_uses",
+      "value": 281.0321,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2017,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 762.4593,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2017,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 938.2503,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2017,
+      "series": "US_CPI_U",
+      "value": 245.12,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2018,
+      "series": "solar_module_only",
+      "value": 0.5131,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2018,
+      "series": "PV_utility_installed_G20",
+      "value": 1.452,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2018,
+      "series": "Li_ion_cell",
+      "value": 161.1096,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2018,
+      "series": "Li_ion_pack_all_uses",
+      "value": 232.0282,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2018,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 634.788,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2018,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 936.5837,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2018,
+      "series": "US_CPI_U",
+      "value": 251.107,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2019,
+      "series": "solar_module_only",
+      "value": 0.4618,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2019,
+      "series": "PV_utility_installed_G20",
+      "value": 1.1883,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2019,
+      "series": "Li_ion_cell",
+      "value": 135.4552,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2019,
+      "series": "Li_ion_pack_all_uses",
+      "value": 196.421,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2019,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 528.4948,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2019,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 934.9201,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2019,
+      "series": "US_CPI_U",
+      "value": 255.657,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2020,
+      "series": "solar_module_only",
+      "value": 0.3694,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2020,
+      "series": "PV_utility_installed_G20",
+      "value": 1.0559,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2020,
+      "series": "Li_ion_cell",
+      "value": 126.2196,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2020,
+      "series": "Li_ion_pack_all_uses",
+      "value": 170.3958,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2020,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 440.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2020,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 933.2594,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2020,
+      "series": "US_CPI_U",
+      "value": 258.811,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2021,
+      "series": "solar_module_only",
+      "value": 0.3284,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2021,
+      "series": "PV_utility_installed_G20",
+      "value": 0.9513,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2021,
+      "series": "Li_ion_cell",
+      "value": 122.1149,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2021,
+      "series": "Li_ion_pack_all_uses",
+      "value": 156.81,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2021,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 385.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2021,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 931.6016,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2021,
+      "series": "US_CPI_U",
+      "value": 270.97,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2022,
+      "series": "solar_module_only",
+      "value": 0.3694,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2022,
+      "series": "PV_utility_installed_G20",
+      "value": 0.9769,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2022,
+      "series": "Li_ion_cell",
+      "value": 135.4552,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2022,
+      "series": "Li_ion_pack_all_uses",
+      "value": 177.0887,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2022,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 350.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2022,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 929.9468,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2022,
+      "series": "US_CPI_U",
+      "value": 292.655,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2023,
+      "series": "solar_module_only",
+      "value": 0.3181,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2023,
+      "series": "PV_utility_installed_G20",
+      "value": 0.7943,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2023,
+      "series": "Li_ion_cell",
+      "value": 113.9055,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2023,
+      "series": "Li_ion_pack_all_uses",
+      "value": 146.5343,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2023,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 275.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "M",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2023,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 928.2949,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2023,
+      "series": "US_CPI_U",
+      "value": 305.349,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2024,
+      "series": "solar_module_only",
+      "value": 0.2668,
+      "unit": "USD2025/W",
+      "source_ids": "S07",
+      "evidence_flag": "B",
+      "notes": "older OWID extraction; 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2024,
+      "series": "PV_utility_installed_G20",
+      "value": 0.6978,
+      "unit": "USD2025/W",
+      "source_ids": "S02",
+      "evidence_flag": "B",
+      "notes": "G20 installed system, 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2024,
+      "series": "Li_ion_cell",
+      "value": 80.0417,
+      "unit": "USD2025/kWh",
+      "source_ids": "S08",
+      "evidence_flag": "B",
+      "notes": "cell only; older source 2024 USD rebased by CPI-U"
+    },
+    {
+      "year": 2024,
+      "series": "Li_ion_pack_all_uses",
+      "value": 118.0102,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2024,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 197.0257,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "B",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2024,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 926.646,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2024,
+      "series": "US_CPI_U",
+      "value": 313.689,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    },
+    {
+      "year": 2025,
+      "series": "Li_ion_pack_all_uses",
+      "value": 108.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S09;S11",
+      "evidence_flag": "B",
+      "notes": "BNEF historic nominal $/kWh, source series update caveat"
+    },
+    {
+      "year": 2025,
+      "series": "Li_BESS_turnkey_4h_global",
+      "value": 140.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S01;S02",
+      "evidence_flag": "B",
+      "notes": "only 2010,2024,2025 are benchmark anchors"
+    },
+    {
+      "year": 2025,
+      "series": "lead_BESS_turnkey_usable_scenario",
+      "value": 925.0,
+      "unit": "USD2025/kWh",
+      "source_ids": "S10",
+      "evidence_flag": "M",
+      "notes": "author modelling assumption, not measured"
+    },
+    {
+      "year": 2025,
+      "series": "US_CPI_U",
+      "value": 321.9,
+      "unit": "index",
+      "source_ids": "S11",
+      "evidence_flag": "B",
+      "notes": "2025 base index 321.9"
+    }
+  ],
+  "regional_cases": [
+    {
+      "country": "United States",
+      "site": "Nevada",
+      "pv_only_2025_c_per_kwh": "4.3",
+      "matched95_2025_c_per_kwh": "11.3",
+      "pv_only_2030_c_per_kwh": "2.9",
+      "matched95_2030_c_per_kwh": "7.7",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    },
+    {
+      "country": "Spain",
+      "site": "Tabernas",
+      "pv_only_2025_c_per_kwh": "3.3",
+      "matched95_2025_c_per_kwh": "9.1",
+      "pv_only_2030_c_per_kwh": "2.0",
+      "matched95_2030_c_per_kwh": "6.1",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    },
+    {
+      "country": "Oman",
+      "site": "Ad-Dakhiliyah",
+      "pv_only_2025_c_per_kwh": "3.5",
+      "matched95_2025_c_per_kwh": "6.9",
+      "pv_only_2030_c_per_kwh": "2.2",
+      "matched95_2030_c_per_kwh": "4.7",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    },
+    {
+      "country": "India",
+      "site": "Rajasthan",
+      "pv_only_2025_c_per_kwh": "3.9",
+      "matched95_2025_c_per_kwh": "7.9",
+      "pv_only_2030_c_per_kwh": "2.4",
+      "matched95_2030_c_per_kwh": "5.4",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    },
+    {
+      "country": "China",
+      "site": "Hebei",
+      "pv_only_2025_c_per_kwh": "2.6",
+      "matched95_2025_c_per_kwh": "5.4",
+      "pv_only_2030_c_per_kwh": "1.6",
+      "matched95_2030_c_per_kwh": "3.7",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    },
+    {
+      "country": "Brazil",
+      "site": "Bahia",
+      "pv_only_2025_c_per_kwh": "3.3",
+      "matched95_2025_c_per_kwh": "6.5",
+      "pv_only_2030_c_per_kwh": "2.0",
+      "matched95_2030_c_per_kwh": "4.4",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    },
+    {
+      "country": "South Africa",
+      "site": "Northwest",
+      "pv_only_2025_c_per_kwh": "3.1",
+      "matched95_2025_c_per_kwh": "8.0",
+      "pv_only_2030_c_per_kwh": "1.9",
+      "matched95_2030_c_per_kwh": "4.4",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    },
+    {
+      "country": "Australia",
+      "site": "Queensland",
+      "pv_only_2025_c_per_kwh": "2.9",
+      "matched95_2025_c_per_kwh": "8.2",
+      "pv_only_2030_c_per_kwh": "1.8",
+      "matched95_2030_c_per_kwh": "5.8",
+      "source_id": "S03",
+      "evidence_flag": "R for 2025; F for 2030"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "S01",
+      "title": "IRENA, Renewable Power Generation Costs in 2025 (2026)",
+      "coverage": "2025 global new-project LCOE; USD 2025/MWh and installed PV/BESS benchmarks",
+      "url": "https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025"
+    },
+    {
+      "source_id": "S02",
+      "title": "IRENA, Renewable Power Generation Costs in 2024 (2025)",
+      "coverage": "2010-2024 global renewable electricity-cost trajectories; prices 2024 USD",
+      "url": "https://www.irena.org/Digital-Report/Renewable-Power-Generation-Costs-in-2024"
+    },
+    {
+      "source_id": "S03",
+      "title": "IRENA, 24/7 Renewables: Economics of Firm Solar and Wind (May 2026)",
+      "coverage": "2020/25 model and 2030/35 projections; 95% matching; Figures 10 and 15, Tables 1, 6, 10",
+      "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf"
+    },
+    {
+      "source_id": "S04",
+      "title": "Lazard, Levelized Cost of Energy+ v16 (2023)",
+      "coverage": "Historical US new-build mean LCOE, 2009-2023, especially printed page 9 / PDF page 12",
+      "url": "https://www.lazard.com/media/y5ldnkil/lazards-lcoeplus-april-2023.pdf"
+    },
+    {
+      "source_id": "S05",
+      "title": "Lazard, LCOE+ v18 (June 2025)",
+      "coverage": "2025 US new-build cost ranges for gas combined-cycle, coal, nuclear; printed page 8",
+      "url": "https://www.lazard.com/media/uounhon4/lazards-lcoeplus-june-2025.pdf"
+    },
+    {
+      "source_id": "S06",
+      "title": "Lazard, LCOE+ v19 (July 2026)",
+      "coverage": "2026 US new-build comparative cost ranges; printed page 7; not used as 2025 historical points",
+      "url": "https://lazard.com/media/kcfconhf/lazards-lcoeplus_vf.pdf"
+    },
+    {
+      "source_id": "S07",
+      "title": "Our World in Data, Solar Photovoltaic Panel Prices",
+      "coverage": "1975-2024 PV module-only price series; earlier data from Nemet/Farmer-Lafond and later IRENA",
+      "url": "https://ourworldindata.org/grapher/solar-pv-prices"
+    },
+    {
+      "source_id": "S08",
+      "title": "Our World in Data, Lithium-ion Battery Cell Prices",
+      "coverage": "1991-2024 cell price estimates, not installed packs/systems",
+      "url": "https://ourworldindata.org/grapher/price-of-lithium-ion-battery-cells"
+    },
+    {
+      "source_id": "S09",
+      "title": "BNEF, Lithium-Ion Battery Pack Price Survey 2025",
+      "coverage": "2025 prices: pack average, stationary packs, LFP and NMC chemistry",
+      "url": "https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/"
+    },
+    {
+      "source_id": "S10",
+      "title": "US DOE, 2022 Grid Energy Storage Cost and Performance Assessment",
+      "coverage": "2021 US installation-cost reference for 4h LFP and lead-acid systems; not global average",
+      "url": "https://www.energy.gov/cmei/2022-grid-energy-storage-technology-cost-and-performance-assessment"
+    },
+    {
+      "source_id": "S11",
+      "title": "US BLS, Consumer Price Index",
+      "coverage": "Inflation normalisation using 2025 annual CPI-U = 321.9; historical CPI yearly values",
+      "url": "https://www.bls.gov/cpi/"
+    },
+    {
+      "source_id": "S12",
+      "title": "US EIA, Cushing, OK WTI crude-oil spot prices",
+      "coverage": "Annual nominal crude prices used for a fuel-only oil-generation proxy",
+      "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_a.htm"
+    },
+    {
+      "source_id": "S13",
+      "title": "NREL, historical wind cost reference (2004)",
+      "coverage": "1980-2000 old wind cost illustration; not comparable measured annual US LCOE",
+      "url": "https://www.nrel.gov/docs/fy04osti/36347.pdf"
+    },
+    {
+      "source_id": "S14",
+      "title": "Pew Research Center / Ember 2026 worldwide electricity generation",
+      "coverage": "World solar/wind share 2000-2025: an energy share, not electricity cost",
+      "url": "https://www.pewresearch.org/chart/sr_26-07-14_globalenergytrends_2/"
+    },
+    {
+      "source_id": "S15",
+      "title": "CRE, French Historical Nuclear Production Cost 2026-2028",
+      "coverage": "About EUR 60.3/MWh for existing French nuclear generation; not US new-build LCOE",
+      "url": "https://www.cre.fr/actualites/toute-lactualite/la-commission-de-regulation-de-lenergie-publie-son-evaluation-des-couts-complets-de-production-de-lelectricite-au-moyen-des-centrales-electronucleaires-historiques-pour-la-periode-2026-2028.html"
+    },
+    {
+      "source_id": "ATB2025",
+      "title": "2025 Annual Technology Baseline",
+      "coverage": "Moderate R&D relative cost changes, no tax credits, anchored at 2025 benchmarks; wind Class 4 / turbine 1, 30-year recovery; large nuclear, 60-year recovery, held flat to 2030 then ATB changes relative to 2030",
+      "url": "https://atb.nlr.gov/electricity/2025/data"
+    }
+  ],
+  "audit_notes": {
+    "checked_on": "2026-10-09",
+    "scope": "Key plotted anchors and definitions checked against primary sources; the full supplied historical extract is retained, not represented as a newly audited or homogeneous global survey.",
+    "checks": [
+      {
+        "source_id": "S01",
+        "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Jul/IRENA_TEC_RPGC_2025_Executive_summary_2026.pdf",
+        "finding": "2025 global PV LCOE 44 USD/MWh, onshore wind 33 USD/MWh, installed PV 667 USD/kW and installed four-hour BESS 140 USD/kWh confirmed. Report uses 2025 USD. Its historical series revises the older extract supplied in the sourcebook."
+      },
+      {
+        "source_id": "S02",
+        "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+        "finding": "Figure 9.2 identifies 2010–2015 installed BESS values as calculated from Schmidt/Staffell regression data. The 2010 sourcebook anchor is a published reconstruction, not an observed procurement price."
+      },
+      {
+        "source_id": "S03",
+        "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf",
+        "finding": "Table 1 confirms Nevada 113.2 USD/MWh at 95% annual-energy coverage versus 43.5 USD/MWh PV baseline. Figure 10 gives 163/113/77/59 USD/MWh for 2020/2025/2030/2035. Hourly optimisation of a flat annual load; not a count of fully served hours or guaranteed firm supply."
+      },
+      {
+        "source_id": "S05",
+        "url": "https://www.lazard.com/media/uounhon4/lazards-lcoeplus-june-2025.pdf",
+        "finding": "Page 8 confirms gas 48–109, coal 71–173 and nuclear 141–220 USD/MWh. Coal and nuclear reuse inflation-adjusted v14 estimates; nuclear uses then-estimated Vogtle costs. These are published US new-build estimates, not an observed global plant survey."
+      },
+      {
+        "source_id": "S09",
+        "url": "https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/",
+        "finding": "9 December 2025 release confirms all-use Li-ion packs 108 USD/kWh and stationary packs 70 USD/kWh. These are pack prices, not installed storage-system costs. Earlier pack values are retained from the supplied extract."
+      }
+    ],
+    "corrections": [
+      {
+        "table": "components",
+        "year": 2010,
+        "series": "Li_BESS_turnkey_4h_global",
+        "reported_evidence_flag": "B",
+        "evidence_flag": "R",
+        "reason": "IRENA 2024 Figure 9.2: published regression reconstruction. Original CSV is unchanged."
+      }
+    ],
+    "boundaries": [
+      "Generation LCOE, module USD/W and battery USD/kWh capacity have different denominators.",
+      "Daily shifting is an author engineering scenario: 60% of delivered energy through storage, no seasonal or firm-supply guarantee. Installed capacity prices are treated as usable capacity as a simplifying assumption.",
+      "The global BESS benchmark is used in a generic Li-ion model; it is not a chemistry-specific observed LFP project LCOE.",
+      "IRENA global renewables and Lazard US conventional generation are different samples; backcasts and future scenarios are not observations.",
+      "The sourcebook uses approximate CPI-U rebasing to 2025 USD. Its historical extraction may differ from revised current provider series."
+    ]
+  },
+  "daily_shift_model": {
+    "formula": "20*B*f*(m + r/(1 - 1/(r + 1)**T))/(73*u) + c_PV*(-f + 1 + f/eta)",
+    "crf": "r/(1 - 1/(r + 1)**T)",
+    "zero_discount_crf": "1/T",
+    "assumptions": {
+      "shifted_delivered_fraction": 0.6,
+      "li_ion_roundtrip_efficiency": 0.85,
+      "lead_roundtrip_efficiency": 0.75,
+      "equivalent_full_discharge_cycles_per_day": 0.95,
+      "real_discount_rate": 0.07,
+      "annual_om_fraction_capex": 0.01,
+      "li_ion_lifetime_years": 15,
+      "lead_lifetime_years": 5,
+      "formula": "c_PV*((1-f)+f/eta) + 100*f*B*(CRF(r,T)+m)/(365*u)",
+      "capital_recovery_factor": "r/(1-(1+r)**(-T))"
+    },
+    "checks": [
+      {
+        "year": 1980,
+        "reported": 508.1023,
+        "recomputed": 508.1022715206313,
+        "difference": -2.8479368722855725e-05
+      },
+      {
+        "year": 1981,
+        "reported": 418.5045,
+        "recomputed": 418.5044912888741,
+        "difference": -8.711125929039554e-06
+      },
+      {
+        "year": 1982,
+        "reported": 382.3037,
+        "recomputed": 382.3037548516564,
+        "difference": 5.485165638674516e-05
+      },
+      {
+        "year": 1983,
+        "reported": 319.4542,
+        "recomputed": 319.45411907776696,
+        "difference": -8.092223305311563e-05
+      },
+      {
+        "year": 1984,
+        "reported": 300.5608,
+        "recomputed": 300.56075204958273,
+        "difference": -4.795041724037219e-05
+      },
+      {
+        "year": 1985,
+        "reported": 269.4967,
+        "recomputed": 269.4967194223043,
+        "difference": 1.94223043195052e-05
+      },
+      {
+        "year": 1986,
+        "reported": 231.3669,
+        "recomputed": 231.3668868511324,
+        "difference": -1.3148867594736657e-05
+      },
+      {
+        "year": 1987,
+        "reported": 203.4979,
+        "recomputed": 203.4978799912677,
+        "difference": -2.000873229235367e-05
+      },
+      {
+        "year": 1988,
+        "reported": 194.2024,
+        "recomputed": 194.20241767752876,
+        "difference": 1.7677528745707605e-05
+      },
+      {
+        "year": 1989,
+        "reported": 198.4004,
+        "recomputed": 198.40038313794008,
+        "difference": -1.6862059908362426e-05
+      },
+      {
+        "year": 1990,
+        "reported": 204.033,
+        "recomputed": 204.03305960052614,
+        "difference": 5.9600526157055356e-05
+      },
+      {
+        "year": 1991,
+        "reported": 192.2774,
+        "recomputed": 192.27738974363314,
+        "difference": -1.025636686335929e-05
+      },
+      {
+        "year": 1992,
+        "reported": 183.1417,
+        "recomputed": 183.14171119885265,
+        "difference": 1.1198852661209457e-05
+      },
+      {
+        "year": 1993,
+        "reported": 175.2833,
+        "recomputed": 175.28319321374278,
+        "difference": -0.0001067862572199374
+      },
+      {
+        "year": 1994,
+        "reported": 167.325,
+        "recomputed": 167.3250538222739,
+        "difference": 5.382227391237393e-05
+      },
+      {
+        "year": 1995,
+        "reported": 159.267,
+        "recomputed": 159.2670310584161,
+        "difference": 3.105841611272808e-05
+      },
+      {
+        "year": 1996,
+        "reported": 151.1092,
+        "recomputed": 151.1092185629337,
+        "difference": 1.8562933718158092e-05
+      },
+      {
+        "year": 1997,
+        "reported": 151.4214,
+        "recomputed": 151.42138997659086,
+        "difference": -1.0023409146242557e-05
+      },
+      {
+        "year": 1998,
+        "reported": 140.2415,
+        "recomputed": 140.2415233333578,
+        "difference": 2.3333357802357568e-05
+      },
+      {
+        "year": 1999,
+        "reported": 133.2638,
+        "recomputed": 133.26379227399883,
+        "difference": -7.726001172159158e-06
+      },
+      {
+        "year": 2000,
+        "reported": 132.0193,
+        "recomputed": 132.01937483248403,
+        "difference": 7.48324840458281e-05
+      },
+      {
+        "year": 2001,
+        "reported": 129.7635,
+        "recomputed": 129.76343753951681,
+        "difference": -6.246048317848363e-05
+      },
+      {
+        "year": 2002,
+        "reported": 123.0605,
+        "recomputed": 123.06047320790987,
+        "difference": -2.6792090139338143e-05
+      },
+      {
+        "year": 2003,
+        "reported": 119.2316,
+        "recomputed": 119.23157062407509,
+        "difference": -2.9375924910368667e-05
+      },
+      {
+        "year": 2004,
+        "reported": 109.3988,
+        "recomputed": 109.39876978801246,
+        "difference": -3.0211987535722074e-05
+      },
+      {
+        "year": 2005,
+        "reported": 109.9242,
+        "recomputed": 109.92419069972198,
+        "difference": -9.300278023260944e-06
+      },
+      {
+        "year": 2006,
+        "reported": 116.4715,
+        "recomputed": 116.47151335920368,
+        "difference": 1.3359203677509868e-05
+      },
+      {
+        "year": 2007,
+        "reported": 118.5459,
+        "recomputed": 118.54589776645754,
+        "difference": -2.2335424603170395e-06
+      },
+      {
+        "year": 2008,
+        "reported": 111.5029,
+        "recomputed": 111.50286831468955,
+        "difference": -3.1685310446505355e-05
+      },
+      {
+        "year": 2009,
+        "reported": 89.0643,
+        "recomputed": 89.06426939710562,
+        "difference": -3.060289438394648e-05
+      },
+      {
+        "year": 2010,
+        "reported": 93.0853,
+        "recomputed": 93.08525662049982,
+        "difference": -4.337950018395986e-05
+      },
+      {
+        "year": 2011,
+        "reported": 84.7607,
+        "recomputed": 84.76064126992394,
+        "difference": -5.873007606282954e-05
+      },
+      {
+        "year": 2012,
+        "reported": 68.0466,
+        "recomputed": 68.04664650491547,
+        "difference": 4.650491547408819e-05
+      },
+      {
+        "year": 2013,
+        "reported": 55.0513,
+        "recomputed": 55.051265620968046,
+        "difference": -3.4379031951914385e-05
+      },
+      {
+        "year": 2014,
+        "reported": 47.9287,
+        "recomputed": 47.92869310273825,
+        "difference": -6.897261748406436e-06
+      },
+      {
+        "year": 2015,
+        "reported": 38.1218,
+        "recomputed": 38.121802989868826,
+        "difference": 2.989868825409303e-06
+      },
+      {
+        "year": 2016,
+        "reported": 32.3745,
+        "recomputed": 32.37454047696705,
+        "difference": 4.047696705100634e-05
+      },
+      {
+        "year": 2017,
+        "reported": 26.3587,
+        "recomputed": 26.358669403648662,
+        "difference": -3.0596351336953376e-05
+      },
+      {
+        "year": 2018,
+        "reported": 22.1235,
+        "recomputed": 22.123498460358206,
+        "difference": -1.5396417936131002e-06
+      },
+      {
+        "year": 2019,
+        "reported": 18.7853,
+        "recomputed": 18.785321902859685,
+        "difference": 2.1902859685951626e-05
+      },
+      {
+        "year": 2020,
+        "reported": 16.0431,
+        "recomputed": 16.043120725359294,
+        "difference": 2.072535929542596e-05
+      },
+      {
+        "year": 2021,
+        "reported": 14.2221,
+        "recomputed": 14.222150340571737,
+        "difference": 5.034057173780582e-05
+      },
+      {
+        "year": 2022,
+        "reported": 13.0427,
+        "recomputed": 13.04268105827377,
+        "difference": -1.8941726230181644e-05
+      },
+      {
+        "year": 2023,
+        "reported": 10.4667,
+        "recomputed": 10.466635453349559,
+        "difference": -6.454665044053343e-05
+      },
+      {
+        "year": 2024,
+        "reported": 8.9639,
+        "recomputed": 8.963903528345078,
+        "difference": 3.528345077441486e-06
+      },
+      {
+        "year": 2025,
+        "reported": 7.7679,
+        "recomputed": 7.767900658603626,
+        "difference": 6.58603625858234e-07
+      },
+      {
+        "year": 2030,
+        "reported": 5.9236,
+        "recomputed": 5.9235830529925675,
+        "difference": -1.6947007432932537e-05
+      },
+      {
+        "year": 2035,
+        "reported": 5.3634,
+        "recomputed": 5.363351139349196,
+        "difference": -4.886065080444979e-05
+      }
+    ],
+    "maximum_absolute_difference": 0.0001067862572199374
+  }
+}

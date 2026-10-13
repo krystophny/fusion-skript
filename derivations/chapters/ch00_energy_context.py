@@ -9,6 +9,7 @@ Python loads records and constructs arrays; it does not supply hidden formulas.
 import csv
 import json
 import sys
+import numpy as np
 from pathlib import Path
 import sympy as sp
 from sympy.physics import units as u
@@ -27,7 +28,7 @@ UNITS = {'person':1, '1':1, 'J':u.joule, 'degree':sp.pi/180, 's/year':u.second/Y
          'km^2':10**6*u.meter**2, 'MWp':10**6*u.watt, 'MW':10**6*u.watt,
          'GWh/year':10**6*KWH/YEAR, 'W/m^2':u.watt/u.meter**2,
          'kg/m^3':u.kilogram/u.meter**3, 'km^3':10**9*u.meter**3,
-         'kg':u.kilogram, 't Li':1000*u.kilogram, 't U':1000*u.kilogram,
+         'kg':u.kilogram, 't':1000*u.kilogram, 't/year':1000*u.kilogram/YEAR, 't Li':1000*u.kilogram, 't U':1000*u.kilogram,
          't Li/year':1000*u.kilogram/YEAR,'t U/year':1000*u.kilogram/YEAR,
          'kt U':10**6*u.kilogram,'kt U/year':10**6*u.kilogram/YEAR,
          'Mt':10**9*u.kilogram,'Mt/year':10**9*u.kilogram/YEAR,
@@ -69,6 +70,66 @@ def csv_output(name, rows):
         writer = csv.DictWriter(f, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
+
+
+
+def living_standards():
+    """Four fixed 2021-PPP welfare bands, from one PIP release for all three years.
+
+    The $3 boundary is the current extreme-poverty line; $12 and $48 are
+    teaching bands with fourfold steps, not official World Bank poverty lines
+    or a conversion of Gapminder's old 2011-PPP thresholds.
+    """
+    raw = ROOT/'data/ch00/raw'
+    years = (1981, 2000, 2024)
+    thresholds = (3, 12, 48)
+    cumulative = {}
+    for threshold in thresholds:
+        records = json.loads((raw/f'pip-income-{threshold}.json').read_text())
+        cumulative[threshold] = {r['reporting_year']: r for r in records
+                                 if r['region_code'] == 'WLD'}
+    populations = {(r['countryiso3code'], int(r['date'])): r['value']
+                   for r in json.loads((raw/'wb-population-comparison.json').read_text())[1]}
+    access = {r['year']: r['value'] for r in load('access.json')
+              if r['series'] == 'electricity'}
+    observations, comparisons = [], []
+    for year in years:
+        records = [cumulative[t][year] for t in thresholds]
+        population = records[0]['reporting_pop']
+        assert all(r['reporting_pop'] == population and r['estimate_type'] == 'actual'
+                   for r in records), 'PIP release/population/estimate mismatch'
+        counts = [0] + [r['pop_in_poverty'] for r in records] + [population]
+        assert all(a <= b for a, b in zip(counts, counts[1:]))
+        for level, (lower, upper), label in zip(range(1, 5),
+                zip(counts, counts[1:]), ('<3', '3–12', '12–48', '≥48')):
+            observations.append(dict(year=year, level=level, income_threshold=label,
+                population=upper-lower, population_billions=(upper-lower)/1e9,
+                population_share_percent=100*(upper-lower)/population,
+                source='wb_pip_income', licence_status='CC BY 4.0'))
+        if year == 1981:
+            comparisons.append(dict(year=year, world_population=population,
+                electricity_access_percent=None, primary_energy_kWh_person_day=None,
+                austria_ethiopia_primary_energy_ratio=None))
+            continue
+        energy = json.loads((raw/f'eia_{year}.json').read_text())['response']['data']
+        power = {}
+        for code in ('AUT', 'ETH'):
+            row = next(r for r in energy if r['countryRegionId'] == code)
+            power[code] = number(power_per_person.subs({
+                E: sp.Rational(str(row['value']))*10**15*quantity('btu_IT'),
+                N: sp.Integer(populations[code, year]), T: YEAR}), KWH/u.day)
+        comparisons.append(dict(year=year, world_population=population,
+            electricity_access_percent=access.get(year),
+            primary_energy_kWh_person_day=power,
+            austria_ethiopia_primary_energy_ratio=power['AUT']/power['ETH']))
+    return dict(observations=observations, comparisons=comparisons, years=list(years),
+        income_unit='2021 PPP USD/(person day)', population_unit='billion people',
+        pip_version='20260922_2021_01_02_PROD', thresholds=list(thresholds),
+        notes='PIP global line-up estimates, including survey interpolation/extrapolation, '
+              'not simultaneous censuses. Fixed teaching bands: $3, $12, $48 in 2021 PPP; '
+              'only $3 is an official poverty line. Not converted Gapminder levels. '
+              'Primary energy: EIA annual product 44, activity 2, QBTU, WDI population; '
+              '365-day normalization. EIA does not fully cover traditional biomass.')
 
 
 # %% Average power, area, finite stocks, continuously growing demand
@@ -269,6 +330,88 @@ def fusion():
         'inventory_population':float(v('world_population_2025')),'inventory_population_year':2025}
 
 
+
+def fusion_resources():
+    """Fuel and blanket lifetimes at an explicit constant energy demand.
+
+    Match the numerical 2024 world primary-energy total with fusion electricity.
+    This is an explicit accounting stress test, not a useful-energy forecast.
+    MacKay's natural-lithium yield is a scenario, not complete Li-7 utilization.
+    """
+    rows = json.loads((ROOT/'data/ch00/raw/eia_2024.json').read_text())['response']['data']
+    world = next(r for r in rows if r['countryRegionId']=='WORL')
+    if (world['period'], world['productId'], world['activityId'], world['unit']) != ('2024','44','2','QBTU'):
+        raise ValueError('Expected EIA world primary energy, 2024')
+    demand = sp.Rational(world['value'])*10**15*quantity('btu_IT')/YEAR
+    lithium_yield = quantity('mackay_lithium_electric_yield')
+    lithium_rate = demand/lithium_yield
+    sea_lithium = quantity('lithium_seawater_concentration')*quantity('ocean_volume')
+    fuel = fusion()
+    deuterium_stock = sp.Rational(str(fuel['ocean_deuterium_kg']))*u.kilogram
+    deuterium_yield = quantity('fusion_electric_efficiency')*quantity('dt_energy')/(
+        v('deuterium_atomic_mass')*quantity('atomic_mass'))
+    fuel_rows = []
+    for key,stock,yield_e,kind in (
+        ('lithium_reserves',quantity('lithium_reserves'),lithium_yield,'reserves'),
+        ('lithium_seawater',sea_lithium,lithium_yield,'ocean inventory'),
+        ('deuterium_seawater',deuterium_stock,deuterium_yield,'ocean inventory; D-T only')):
+        rate = demand/yield_e
+        fuel_rows.append({'resource':key, 'stock_kg':number(stock,u.kilogram),
+            'stock_kind':kind, 'electric_yield_kWh_kg':number(yield_e,KWH/u.kilogram),
+            'consumption_t_year':number(rate,1000*u.kilogram/YEAR),
+            'static_years':horizon(stock,rate)})
+    # Annual burn scales with delivered energy; startup stock with installed power.
+    full_power_units = demand/quantity('blanket_unit_net_power')
+    installed_units = full_power_units/quantity('nuclear_capacity_factor')
+    materials, lifetime_rows = [], []
+    for key,stocks in (
+        ('lead', [('lead_reserves','reserves','='),
+                  ('lead_resource_reference','identified resources','>')]),
+        ('beryllium', [('beryllium_resource_reference','resource reference','=')])):
+        charge = quantity(key+'_blanket_inventory')
+        production = quantity(key+'_production')
+        initial = installed_units*charge
+        burn = full_power_units*quantity(key+'_burnup')
+        materials.append({'material':key,
+            'blanket_charge_t':number(charge,1000*u.kilogram),
+            'burnup_t_full_power_year':number(quantity(key+'_burnup'),1000*u.kilogram/YEAR),
+            'fleet_initial_t':number(initial,1000*u.kilogram),
+            'fleet_burnup_t_year':number(burn,1000*u.kilogram/YEAR),
+            'mine_production_t_year':number(production,1000*u.kilogram/YEAR)})
+        for stock_key,kind,qualifier in stocks:
+            stock = quantity(stock_key)
+            feasible = number(stock-initial,u.kilogram) >= 0
+            lifetime_rows.append({'resource':stock_key, 'material':key,
+                'stock_t':number(stock,1000*u.kilogram), 'stock_kind':kind,
+                'stock_qualifier':qualifier,
+                'fleet_initial_t':number(initial,1000*u.kilogram),
+                'fleet_burnup_t_year':number(burn,1000*u.kilogram/YEAR),
+                'reference_covers_startup':feasible,
+                'static_years':horizon(stock-initial,burn) if feasible else None,
+                'status':'ideal recovery; nuclear burn-up remains' if feasible else
+                    '100 kt reference below startup need; actual world Be reserves unavailable'})
+    return {'world_primary_EJ_year':number(demand,10**18*u.joule/YEAR),
+        'world_primary_year':2024,
+        'electric_demand_GW':number(demand,10**9*u.watt),
+        'fuel':fuel_rows, 'blanket_materials':materials, 'blanket_lifetimes':lifetime_rows,
+        'blanket_capacity_factor':float(v('nuclear_capacity_factor')),
+        'blanket_installed_units':number(installed_units),
+        'blanket_unit_net_GW':number(quantity('blanket_unit_net_power'),10**9*u.watt),
+        'lithium_electric_yield_kWh_g':number(lithium_yield,KWH/(u.kilogram/1000)),
+        'extraction_kWh_g':number(quantity('mackay_lithium_extraction_energy'),KWH/(u.kilogram/1000)),
+        'extraction_fraction':number(quantity('mackay_lithium_extraction_energy')/lithium_yield),
+        'seawater_minimum_km3_year':number(lithium_rate/quantity('lithium_seawater_concentration'),10**9*u.meter**3/YEAR),
+        'deuterium_electric_efficiency':float(v('fusion_electric_efficiency')),
+        'notes':'Constant 2024 demand matched as electricity; no growth, competing uses or fuel losses; initial blanket stocks are not deducted from the fuel budget. '
+            'EIA traditional biomass coverage is incomplete. Ocean inventories are not economic reserves. '
+            'The D-T deuterium bound needs lithium and bred tritium; the fuels are not additive alternatives. '
+            'Blanket budget uses paired historical 1 GW(e) HCLL/HCPB models at assumed 90% capacity factor. '
+            'Subtract initial fleet inventories, then divide remaining stock by annual nuclear burn-up. '
+            'Assume ideal recovery of untransmuted material: no processing/replacement losses, other users or demand growth. '
+            'Beryllium 100 kt is a reference below the USGS reported >100 kt resources, not available reserves or a ceiling. '
+            'Insufficient reference stocks have no operating lifetime; this is not evidence that total world Be is only 100 kt.'}
+
+
 # %% Balance pools preserve published totals; no invented primary-to-sector paths
 def austria_flow():
     balance = load('austria-balance.json')
@@ -299,6 +442,11 @@ def austria_flow():
         for sector,row in sectors.items():
             link(carrier,node('sector_'+str(row),sector,4),tj(row,col))
     gross, end = daily(tj(8),n), daily(tj(13),n)
+    # Assumed thermal balance: input = electricity + rejected heat; no heat recovery.
+    thermal_efficiency = sp.Rational(2,5)
+    thermal_input = sp.Integer(100)*KWH
+    thermal_electricity = thermal_efficiency*thermal_input
+    thermal_rejected_heat = sp.simplify(thermal_input-thermal_electricity)
     return {'year':2025,'status':'preliminary','population':n,'nodes':nodes,'links':links,
         'unit':'kWh/(person day)','gross_TJ':float(tj(8)),'final_TJ':float(tj(13)),
         'gross_kWh_person_day':gross,'final_kWh_person_day':end,
@@ -307,6 +455,16 @@ def austria_flow():
         'nonenergy_kWh_person_day':daily(tj(12),n),
         'sectors_kWh_person_day':{s:daily(tj(row),n) for s,row in sectors.items()},
         'carriers_kWh_person_day':{s:daily(tj(13,col),n) for s,col in final_columns.items()},
+        'household_electricity_kWh_person_day':daily(tj(18,31),n),
+        'electricity_share_of_final_percent':number(100*tj(13,31)/tj(13)),
+        'household_share_of_electricity_percent':number(100*tj(18,31)/tj(13,31)),
+        'household_electricity_share_of_final_percent':number(100*tj(18,31)/tj(13)),
+        'thermal_example':{'efficiency':number(thermal_efficiency),
+            'input_kWh':number(thermal_input,KWH),
+            'electricity_kWh':number(thermal_electricity,KWH),
+            'rejected_heat_kWh':number(thermal_rejected_heat,KWH),
+            'status':'assumed example; no heat recovery; not Austrian average',
+            'source_key':'eia_thermal_efficiency'},
         'notes':'Aggregated balance pools: primary inputs cannot be traced causally to final sectors. Actual published final-carrier × sector cells are retained. Row 16 is an aggregate and is not added again. Conversion losses are net input minus output, not all gross minus final.'}
 
 
@@ -360,6 +518,168 @@ def historical_deployment():
         'grid_capacity_2024_GWe':number(sp.Integer(history[-1]['grid_MWe'])*10**6*u.watt,10**9*u.watt)}
 
 
+
+def capacity_additions(final_average_power):
+    """Annual net nameplate additions from one consistent EIA world series.
+
+    EIA million kW equals GW. Differences include retirements and statistical
+    revisions, unlike gross first-grid connections in the IAEA series.
+    """
+    raw = json.loads((ROOT/'data/ch00/raw/eia-world-capacity-1979-2024.json').read_text())
+    rows = raw['response']['data']
+    if len(rows) != int(raw['response']['total']):
+        raise ValueError('Truncated EIA capacity response')
+    products = {'116':'Solar', '37':'Wind', '28':'Fossil fuels',
+                '33':'Hydro', '27':'Nuclear', '38':'Biomass and waste'}
+    series = []
+    for product, label in products.items():
+        stocks = {}
+        for row in rows:
+            if row['productId'] != product:
+                continue
+            if row['unit'] != 'MK' or row['countryRegionId'] != 'WORL':
+                raise ValueError('Expected world capacity in million kW')
+            year = int(row['period'])
+            if year in stocks:
+                raise ValueError(f'Duplicate capacity: {label}, {year}')
+            stocks[year] = float(row['value'])
+        years = sorted(stocks)
+        if not years or years[-1] != 2024 or any(b-a != 1 for a,b in zip(years, years[1:])):
+            raise ValueError(f'Incomplete annual capacity series: {label}')
+        series.append({'technology':label, 'stock_GW':[
+            {'year':year, 'value':stocks[year]} for year in years],
+            'net_additions_GW_per_year':[
+                {'year':year, 'value':stocks[year]-stocks[year-1]} for year in years[1:]]})
+    # Same final-energy accounting substitution as the existing deployment model.
+    power = final_average_power
+    rated = power/quantity('nuclear_capacity_factor')
+    return {'series':series, 'unit':'GW/year', 'austria':{
+        'final_average_GW':number(power,10**9*u.watt),
+        'capacity_factor':float(v('nuclear_capacity_factor')),
+        'build_years':1, 'benchmark_GW_per_year':number(rated/YEAR,10**9*u.watt/YEAR)},
+        'notes':'World annual change in installed nameplate capacity, not gross commissioning. '
+        'Fossil fuels are aggregated by EIA; hydro excludes pumped storage. '
+        'Austria benchmark: build in one year enough 90%-capacity-factor generation '
+        'to match 2025 final energy numerically. It is a nuclear-equivalent accounting '
+        'comparison, not a wind/solar capacity target or a sector-coupling plan.'}
+
+
+
+def energy_scenarios():
+    """Literature source-share ranges and separately scaled fusion timelines.
+
+    Scenario-wise ratios are computed before taking percentiles. Medians of
+    different sources are never stacked or interpreted as one feasible mix.
+    """
+    raw = json.loads((ROOT/'data/ch00/raw/energy-scenarios.json').read_text())
+    years = raw['years']
+    ensemble = raw['ensemble']
+    cases = [json.loads(line) for line in
+             (ROOT/ensemble['snapshot_file']).read_text().splitlines() if line]
+    groups = {'Fossils': ('Coal', 'Oil', 'Gas'),
+              'Wind + solar': ('Wind', 'Solar'),
+              'Bioenergy': ('Biomass',), 'Fission': ('Nuclear',)}
+    totals, shares, identities = [], {name: [] for name in (*groups, 'Other')}, []
+    for case in cases:
+        values = case['values']
+        total = np.asarray(values['Primary Energy'], dtype=float)
+        if (case['category'] not in ensemble['categories'] or
+                total.shape != (len(years),) or not np.all(np.isfinite(total)) or
+                np.any(total <= 0)):
+            raise ValueError('Invalid primary-energy scenario total or category')
+        parts = {}
+        for group, names in groups.items():
+            arrays = [np.asarray(values['Primary Energy|'+name], dtype=float)
+                      for name in names]
+            if any(a.shape != total.shape or not np.all(np.isfinite(a)) or
+                   np.any(a < 0) for a in arrays):
+                raise ValueError('Invalid or missing primary-energy component')
+            parts[group] = np.sum(arrays, axis=0)
+        residual = total-np.sum(list(parts.values()), axis=0)
+        if np.any(residual < -1e-4*total):
+            raise ValueError('Primary-energy components do not close to the total')
+        parts['Other'] = np.maximum(residual, 0)
+        totals.append(total)
+        for group, values in parts.items():
+            shares[group].append(100*values/total)
+        identities.append({'model': case['model'], 'scenario': case['scenario'],
+                           'category': case['category']})
+
+    def summary(values):
+        lo, median, hi = np.percentile(values, [10, 50, 90], axis=0)
+        return {'p10': lo.tolist(), 'median': median.tolist(), 'p90': hi.tolist()}
+
+    total_summary = summary(totals)
+    share_summary = {name: summary(values) for name, values in shares.items()}
+    median_demand = total_summary['median']
+
+    def demand(target_years):
+        if min(target_years) < years[0] or max(target_years) > years[-1]:
+            raise ValueError('Cannot extrapolate primary demand outside source years')
+        return np.interp(target_years, years, median_demand)
+
+    def fusion_curve(years, generation):
+        if len(years) != len(generation) or any(v < 0 for v in generation):
+            raise ValueError('Invalid fusion output timeline')
+        twh_in_EJ = number(10**9*KWH, 10**18*u.joule)
+        output = np.asarray(generation, dtype=float)*twh_in_EJ
+        return {'years': years, 'output_EJ_year': output.tolist(),
+                'scaled_primary_shares_percent': (100*output/demand(years)).tolist()}
+
+    mit = raw['fusion_mit']
+    mit_cases = [{**case, **fusion_curve(mit['years'],
+                  case['generation_TWh_year_approx'])} for case in mit['cases']]
+    etm = raw['fusion_etm_timeline']
+    etm_result = {**etm, **fusion_curve(etm['years'],
+                  etm['generation_TWh_year_approx'])}
+    endpoint = raw['fusion']
+    fusion_output = number(sp.Rational(str(endpoint['generation_PWh_year'])) *
+                           sp.Rational(str(endpoint['electricity_share'])) *
+                           10**12*KWH, 10**18*u.joule)
+    endpoint_result = {**endpoint, 'output_EJ_year': fusion_output,
+                       'scaled_primary_share_percent':
+                           100*fusion_output/median_demand[-1]}
+
+    observed = raw['observed']
+    if sum(observed['values'].values())+observed['rounding_residual'] != observed['total']:
+        raise ValueError('Observed mix does not close including its rounding residual')
+    solar = raw['solar']
+    capacity = load('pv-capacity.json')
+    added_GW = (capacity['world_PV'][-1]-capacity['world_PV'][-2])/1000
+    annual_increment = number(sp.Rational(str(added_GW))*10**9*u.watt *
+                              sp.Rational(str(solar['capacity_factor']))*YEAR,
+                              10**18*u.joule)
+    observed_EJ = [number(sp.Rational(str(v))*10**9*KWH, 10**18*u.joule)
+                   for v in solar['generation_TWh_year_approx']]
+    guide_years = list(range(2025, solar['guide_end_year']+1))
+    guide_demand = (solar['world_primary_EJ_year'][-1]*
+                    demand(guide_years)/demand([2025])[0])
+    guide_output = [observed_EJ[-1]+annual_increment*(y-2025) for y in guide_years]
+    solar_result = {**solar, 'added_GW_year': added_GW,
+                    'annual_output_increment_EJ_year': annual_increment,
+                    'observed_shares_percent': [
+                        100*energy/total for energy, total in zip(
+                            observed_EJ, solar['world_primary_EJ_year'])],
+                    'guide_years': guide_years, 'guide_output_EJ_year': guide_output,
+                    'guide_demand_EJ_year': guide_demand.tolist(),
+                    'guide_shares_percent':
+                        (100*np.array(guide_output)/guide_demand).tolist()}
+    policy_shares = []
+    for case in raw['current_policies']['cases']:
+        v = case['values']
+        fossil = np.sum([v['Primary Energy|'+name] for name in ('Coal','Oil','Gas')], axis=0)
+        policy_shares.append(100*fossil/np.array(v['Primary Energy']))
+    return {'years': years, 'ensemble': ensemble, 'identities': identities,
+            'total_EJ_year': total_summary, 'shares_percent': share_summary,
+            'current_policy_fossils_percent': summary(policy_shares),
+            'observed': observed, 'solar': solar_result,
+            'fusion_mit': {**mit, 'cases': mit_cases},
+            'fusion_etm_timeline': etm_result, 'fusion': endpoint_result,
+            'notes': 'IPCC AR6 C1/C3 literature ranges, not probabilities or a forecast. '
+                     'Source-wise medians are not a coherent energy mix. Fusion cases '
+                     'are published electricity outputs scaled to the AR6 median total '
+                     'with direct-equivalent accounting, not integrated model results.'}
+
 def build():
     OUT.mkdir(parents=True, exist_ok=True)
     results = {}
@@ -381,11 +701,8 @@ def build():
         'y':'kWh/(person day)','bubble_area':'person'},'bubble_rule':'Marker area, not radius, proportional to population.',
         'notes':'All 188 EIA countries/economies with positive matching 2024 WDI GDP PPP and population. 41 EIA country records excluded with reasons in processed/energy-gdp-exclusions.json. EIA primary-energy accounting differs from Austria gross inland consumption; 365-day normalization even for leap years.'},
         'EIA International annual primary energy consumption, 2024 (public domain); World Bank WDI GDP PPP NY.GDP.PCAP.PP.KD and population SP.POP.TOTL, 2024 (CC BY 4.0). Accessed 2026-10-06.')
-    income_levels = [dict(r) for r in csv.DictReader((DATA/'income-levels-2017.csv').open())]
-    emit('03-income-levels',3,{'observations':income_levels,
-        'income_unit':'2011 PPP USD/(person day)','population_unit':'billion people','year':2017,
-        'notes':'Rounded Gapminder estimates use a PovcalNet 2013 survey base extended to 2017; not a current survey or precise census.'},
-        'Gapminder Factfulness notes p.32 and Income Levels; CC BY 4.0. Original plot.')
+    emit('03-income-levels',3,living_standards(),
+        'World Bank PIP, September 2026 (2021 PPP); WDI electricity and population; EIA primary energy. CC BY 4.0 / public domain; original plots.')
     access = load('access.json')
     emit('03-access-and-dollarstreet',3,{'access':[next(r for r in access if r['series']=='electricity')],
         'photos':[p for p in photos if p['file'].startswith('dollarstreet')],
@@ -523,12 +840,20 @@ def build():
         'plant_photo_candidates':[p for p in photos if 'nuclear' in p['file'] or 'besse' in p['file']],
         'goesgen_net_MWe':1010,'notes':'Fuel is uranium heavy metal, not UO2 or initial core loading; full-power 1 GW(e) × 365 days. Deployment uses 2025 world population and compares a stated world-at-Austrian-final-energy scenario with first grid connections, not construction starts. Historical reactors vary in size; the scenario units are 1 GW(e). This accounting substitution is not a transition plan. IAEA 2025 historical peak verified over 1954–2024; capacities revised since the 2014 edition.'},
         'WNA Nuclear Fuel Cycle Overview fuel-cycle assumptions and rounded 24.3 t product / 211 t natural U benchmark; IAEA Nuclear Power Reactors in the World 2025 table 7; KKG technical data.', 'Numerical facts and original calculations; candidate photo licence verified, download status explicit.')
+    emit('12-capacity-additions',12,capacity_additions(average*quantity('austria_population')),
+        'US EIA International, annual world electricity capacity, 1980–2024; '
+        'Statistics Austria preliminary 2025 final energy; accessed 2026-10-12. '
+        'EIA numerical data: US public domain; original calculation.')
     emit('13-fusion',13,{**fusion(),'thermal_energy_GWh':number(10**9*u.watt*YEAR,10**6*KWH),
         'fuel_thermal_energy_TJ_kg':number(quantity('dt_energy')/
             ((v('deuterium_atomic_mass')+v('tritium_atomic_mass'))*quantity('atomic_mass')),10**12*u.joule/u.kilogram),
         'photos':[p for p in photos if p['file']=='jet-vessel-interior.jpg'],
         'notes':'GW(fusion) is thermal reaction power, not net electric output. Burned D+T only, excluding inventory, recycling losses and breeding overhead. Coal lower heating value assumed 24 MJ/kg. Seawater D is an inventory, not a recoverable reserve. Lithium reserves are elemental Li, not all Li-6; tritium must be bred, not extracted as a natural fuel reserve. Per-person normalization uses latest WDI 2025 population with 2025 lithium reserves.'},
         'IAEA D–T 17.6 MeV; NIST atomic masses and VSMOW D/H; NOAA ocean volume; USGS MCS Lithium 2026 (2025 data, public domain); EUROfusion JET vessel photo, CC BY 4.0.')
+    emit('13-fusion-resources',13,fusion_resources(),
+        'EIA 2024 world primary energy; USGS MCS 2026 Li/Pb/Be; NOAA/NIST; '
+        'MacKay chapter 24 pp.172/176 (yield scenario); Bradshaw et al. 2011 (paired blanket models). '
+        'Numerical facts independently calculated; no source artwork reused.')
     bird_rows = [dict(r) for r in csv.DictReader((DATA/'wildlife-risk.csv').open())]
     emit('14-wildlife-risk',14,{'annual_estimates':bird_rows,
         'notes':'United States estimates cover different years, models, and taxa; ranges must not be summed as a common-year census. European wind-farm result is a median per-turbine rate from the reviewed sites, not a Europe-wide total.'},
@@ -547,6 +872,10 @@ def build():
         'required_data_notice':nrel_notice,
         'notes':'NREL harmonized literature dataset, updated 2026-05-22; min/median/max for total lifecycle estimates. Technology/system boundaries vary; these distributions are not universal constants.'},
         'DOE/NREL/ALLIANCE Life Cycle Emissions Factors dataset; total lifecycle columns W/Y/AA, original plot with required attribution and full notice included in payload.')
+    emit('16-energy-scenarios',16,energy_scenarios(),
+         'IEA Global Energy Review 2026 p.44; IPCC AR6 Scenarios Database v1.1, '
+         'vetted C1/C3; MIT fusion report 2024 Fig.4.4b; Mantilla et al. '
+         'ESSRI 2024 S02 and 2026 doi:10.1016/j.esr.2026.102326.')
     (OUT/'formulas.json').write_text(json.dumps({k:{'expression':str(x),'latex':sp.latex(x)} for k,x in FORMULAS.items()},indent=2)+'\n')
     write_numbers(results)
     print(f'Built {len(results)} plot-data files and {len(FORMULAS)} symbolic formulas; no slide design changed.')
@@ -567,10 +896,18 @@ def write_numbers(results):
     for row in results['03-access-and-dollarstreet']['access']:
         add(3,row['series']+' access',row['value'],row['unit'],row['year'],row['source'])
     for row in results['03-income-levels']['observations']:
-        add(3,f"Level {row['level']} income threshold {row['income_threshold']}",row['income_threshold'],
-            '2011 PPP USD/(person day)',2017,'gapminder_income_levels')
-        add(3,f"Level {row['level']} population",float(row['population_billions']),'billion people',2017,
-            'gapminder_income_levels','Rounded published estimate.')
+        add(3,f"Income band {row['income_threshold']}",row['income_threshold'],
+            '2021 PPP USD/(person day)',row['year'],'wb_pip_income')
+        add(3,f"Band {row['level']} population",row['population_billions'],
+            'billion people',row['year'],'wb_pip_income','Difference of PIP cumulative population counts.')
+    for row in results['03-income-levels']['comparisons']:
+        if row['electricity_access_percent'] is not None:
+            add(3,'World electricity access',row['electricity_access_percent'],
+                '% of world population',row['year'],'wb_electricity')
+        if row['austria_ethiopia_primary_energy_ratio'] is not None:
+            add(3,'Austria / Ethiopia primary energy per person',
+                row['austria_ethiopia_primary_energy_ratio'],'1',row['year'],'eia + wb_population',
+                'EIA coverage does not fully include traditional biomass.')
     for row in results['03-land-use']['observations']:
         add(3,row['place']+' arable land',row['faostat_arable_ha_person'],'ha/person',2023,'faostat_arable')
         add(3,row['place']+' cropland',row['hyde_cropland_ha_person'],'ha/person',2023,'hyde_cropland')
@@ -687,6 +1024,22 @@ def write_numbers(results):
         ('deuterium_g_m3','g/m³','nist_vsmow + nist_isotopes + assumptions'),('ocean_deuterium_kg','kg D','noaa_ocean + nist_vsmow + assumptions'),
         ('ocean_deuterium_kg_per_person','kg D/person','noaa_ocean + nist_vsmow + assumptions + wb_population'),
         ('lithium_kg_per_person','kg Li/person','usgs_lithium + wb_population')]:add(13,name,fus[name],unit,'physical constants / model; inventories 2024–2025',key)
+    outlook = results['16-energy-scenarios']
+    for year, total in zip(outlook['years'],outlook['total_EJ_year']['median']):
+        add(16,'AR6 C1/C3 median total primary energy',total,'EJ/year',year,'ipcc_ar6_energy')
+    add(16,'Favourable EUROfusion 2026 case: fusion output',
+        outlook['fusion']['output_EJ_year'],'EJ/year',2100,'eurofusion_etm_2026')
+    add(16,'EUROfusion 2026 output / AR6 median primary demand',
+        outlook['fusion']['scaled_primary_share_percent'],'percent',2100,
+        'eurofusion_etm_2026 + ipcc_ar6_energy','Cross-model scaling, not a combined run.')
+    for case in outlook['fusion_mit']['cases']:
+        for year, output in zip(case['years'],case['output_EJ_year']):
+            add(16,'MIT fusion '+str(case['cost_2050_USD_kW'])+' USD/kW cost case',
+                output,'EJ/year',year,'mit_fusion_2024','Approximate published curve.')
+    for year, output in zip(outlook['fusion_etm_timeline']['years'],
+                            outlook['fusion_etm_timeline']['output_EJ_year']):
+        add(16,'EUROfusion 2024 S02 fusion',output,'EJ/year',year,
+            'eurofusion_etm_2024','Approximate published dated bar.')
     # Keep all substitution constants visible, including unit/year assumptions.
     input_pages = {7:['solar_noon','pv_efficiency','graz_latitude','obliquity'],
         6:['sustainable_horizon','legacy_world_population','legacy_daily_demand','world_population'],
@@ -700,7 +1053,7 @@ def write_numbers(results):
             r = INPUTS[key];add(page,'Input: '+key,r['value'],r['unit'],r['year'],r['source'],r['notes'])
     (DATA/'numbers.json').write_text(json.dumps(ledger,indent=2,ensure_ascii=False)+'\n')
     titles = ['Earth at night','Energy and GDP','Access and Dollar Street','Micro → macro','Austria balance flow',
-              'Resource lifetimes','Solar chain','Park and Graz at equal scale','PV prices and capacity','Wind','Area budget','Fission','Fusion','Risk','Lifecycle emissions']
+              'Resource lifetimes','Solar chain','Park and Graz at equal scale','PV prices and capacity','Wind','Area budget','Fission','Fusion','Risk','Lifecycle emissions','Energy to 2100']
     with (ROOT/'NUMBERS.md').open('w') as f:
         f.write('# Chapter 0 numerical ledger\n\nAccessed 2026-10-06. Full precision is retained in JSON; displayed figures below are rounded to six significant digits. '
                 'All years are 365-day engineering years. Source keys resolve in [data/ch00/sources.json](data/ch00/sources.json) and [data/README.md](data/README.md). '

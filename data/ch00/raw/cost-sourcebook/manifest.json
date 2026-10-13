@@ -1,0 +1,98 @@
+{
+  "title": "Electricity cost history, 1980–2035",
+  "sourcebook_date": "2026-10-09",
+  "ingested_date": "2026-10-09",
+  "provenance": "User-supplied sourcebook in this editing session; CSV blocks extracted verbatim, without rounding, recalculation or evidence-flag changes.",
+  "verification_status": "Raw supplied data; not independently verified as a whole. Downstream plots must record their checked sources and distinguish benchmark, model and scenario data.",
+  "licensing": "Numerical facts retain their cited source provenance. This snapshot does not assert that provider tables or prose share the repository content licence.",
+  "raw_snapshot": "sourcebook.txt",
+  "units": {
+    "annual_electricity": "constant 2025 US cents per kWh of electricity",
+    "PV_capex": "2025 USD per W or kW of installed PV power, as specified",
+    "storage_capex": "2025 USD per kWh of storage energy capacity, as specified",
+    "US_CPI_U": "index, sourcebook 2025 base 321.9"
+  },
+  "evidence_flags": {
+    "B": "published benchmark, occasionally rounded or digitised",
+    "A": "approximate published anchor",
+    "R": "published retrospective model",
+    "M": "sourcebook-author reconstruction or counterfactual",
+    "I": "interpolation",
+    "F": "future projection or scenario",
+    "L": "midpoint of published 2025 Lazard range",
+    "P": "fuel-cost proxy, not a generating-plant LCOE"
+  },
+  "interpretation": {
+    "comparability": "IRENA global new-project renewables, US Lazard new-build conventional plants, synthetic daily storage and selected-site Nevada dispatch are different geographical and methodological populations.",
+    "daily_storage": "60% of delivered electricity shifted through battery; not firm supply or seasonal storage.",
+    "annual_95pct": "95% of annual demand energy, not 95% of hours fully served or guaranteed reliability.",
+    "historical_backcasts": "Pre-2010 solar generation costs and many early conventional/renewable points are reconstructions.",
+    "oil_proxy": "Exclude from full LCOE comparison unless explicitly labelled as a fuel proxy.",
+    "capital_vs_energy": "Do not place USD/W PV or USD/kWh battery-capacity costs on the electricity-LCOE axis.",
+    "projections": "2030 and 2035 values are scenarios, not observations."
+  },
+  "daily_shift_model": {
+    "shifted_delivered_fraction": 0.6,
+    "li_ion_roundtrip_efficiency": 0.85,
+    "lead_roundtrip_efficiency": 0.75,
+    "equivalent_full_discharge_cycles_per_day": 0.95,
+    "real_discount_rate": 0.07,
+    "annual_om_fraction_capex": 0.01,
+    "li_ion_lifetime_years": 15,
+    "lead_lifetime_years": 5,
+    "formula": "c_PV*((1-f)+f/eta) + 100*f*B*(CRF(r,T)+m)/(365*u)",
+    "capital_recovery_factor": "r/(1-(1+r)**(-T))"
+  },
+  "files": {
+    "annual-electricity-costs.csv": {
+      "records": 424,
+      "columns": [
+        "year",
+        "technology",
+        "us_cents_per_kWh_2025",
+        "source_ids",
+        "evidence_flag",
+        "geography"
+      ],
+      "sha256": "5c70010eca7db266771628579d33871ed938d907b0fc9e5b10ec569e15ba1c9e"
+    },
+    "component-costs.csv": {
+      "records": 224,
+      "columns": [
+        "year",
+        "series",
+        "value",
+        "unit",
+        "source_ids",
+        "evidence_flag",
+        "notes"
+      ],
+      "sha256": "4d7f078e9c543eaa988946424437564bfebccee570e2d3e7165dfa3efc9b5119"
+    },
+    "regional-95pct.csv": {
+      "records": 8,
+      "columns": [
+        "country",
+        "site",
+        "pv_only_2025_c_per_kwh",
+        "matched95_2025_c_per_kwh",
+        "pv_only_2030_c_per_kwh",
+        "matched95_2030_c_per_kwh",
+        "source_id",
+        "evidence_flag"
+      ],
+      "sha256": "1a065553c98b15ba180607f5b950c0186de485aafe90bbc9c846b1032fcda837"
+    },
+    "sources.csv": {
+      "records": 15,
+      "columns": [
+        "source_id",
+        "title",
+        "coverage",
+        "url"
+      ],
+      "sha256": "2dac41df1e371cc06500e7dddff86940458822693adfcf485a761611d43eccb5"
+    }
+  },
+  "raw_snapshot_sha256": "457dae624540f782fe14d2a5fe57249aef11aecbf5af71c8e14957682e2a878d"
+}

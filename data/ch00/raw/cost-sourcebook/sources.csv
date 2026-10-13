@@ -1,0 +1,16 @@
+source_id,title,coverage,url
+S01,"IRENA, Renewable Power Generation Costs in 2025 (2026)",2025 global new-project LCOE; USD 2025/MWh and installed PV/BESS benchmarks,https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+S02,"IRENA, Renewable Power Generation Costs in 2024 (2025)",2010-2024 global renewable electricity-cost trajectories; prices 2024 USD,https://www.irena.org/Digital-Report/Renewable-Power-Generation-Costs-in-2024
+S03,"IRENA, 24/7 Renewables: Economics of Firm Solar and Wind (May 2026)","2020/25 model and 2030/35 projections; 95% matching; Figures 10 and 15, Tables 1, 6, 10",https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf
+S04,"Lazard, Levelized Cost of Energy+ v16 (2023)","Historical US new-build mean LCOE, 2009-2023, especially printed page 9 / PDF page 12",https://www.lazard.com/media/y5ldnkil/lazards-lcoeplus-april-2023.pdf
+S05,"Lazard, LCOE+ v18 (June 2025)","2025 US new-build cost ranges for gas combined-cycle, coal, nuclear; printed page 8",https://www.lazard.com/media/uounhon4/lazards-lcoeplus-june-2025.pdf
+S06,"Lazard, LCOE+ v19 (July 2026)",2026 US new-build comparative cost ranges; printed page 7; not used as 2025 historical points,https://lazard.com/media/kcfconhf/lazards-lcoeplus_vf.pdf
+S07,"Our World in Data, Solar Photovoltaic Panel Prices",1975-2024 PV module-only price series; earlier data from Nemet/Farmer-Lafond and later IRENA,https://ourworldindata.org/grapher/solar-pv-prices
+S08,"Our World in Data, Lithium-ion Battery Cell Prices","1991-2024 cell price estimates, not installed packs/systems",https://ourworldindata.org/grapher/price-of-lithium-ion-battery-cells
+S09,"BNEF, Lithium-Ion Battery Pack Price Survey 2025","2025 prices: pack average, stationary packs, LFP and NMC chemistry",https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/
+S10,"US DOE, 2022 Grid Energy Storage Cost and Performance Assessment",2021 US installation-cost reference for 4h LFP and lead-acid systems; not global average,https://www.energy.gov/cmei/2022-grid-energy-storage-technology-cost-and-performance-assessment
+S11,"US BLS, Consumer Price Index",Inflation normalisation using 2025 annual CPI-U = 321.9; historical CPI yearly values,https://www.bls.gov/cpi/
+S12,"US EIA, Cushing, OK WTI crude-oil spot prices",Annual nominal crude prices used for a fuel-only oil-generation proxy,https://www.eia.gov/dnav/pet/pet_pri_spt_s1_a.htm
+S13,"NREL, historical wind cost reference (2004)",1980-2000 old wind cost illustration; not comparable measured annual US LCOE,https://www.nrel.gov/docs/fy04osti/36347.pdf
+S14,Pew Research Center / Ember 2026 worldwide electricity generation,"World solar/wind share 2000-2025: an energy share, not electricity cost",https://www.pewresearch.org/chart/sr_26-07-14_globalenergytrends_2/
+S15,"CRE, French Historical Nuclear Production Cost 2026-2028",About EUR 60.3/MWh for existing French nuclear generation; not US new-build LCOE,https://www.cre.fr/actualites/toute-lactualite/la-commission-de-regulation-de-lenergie-publie-son-evaluation-des-couts-complets-de-production-de-lelectricite-au-moyen-des-centrales-electronucleaires-historiques-pour-la-periode-2026-2028.html

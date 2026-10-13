@@ -1,0 +1,425 @@
+year,technology,us_cents_per_kWh_2025,source_ids,evidence_flag,geography
+1980,coal,11.5,S04;S05;S11,M,US
+1980,hydropower,6.4,S02;S01,M,global weighted mean
+1980,natural_gas_CCGT,14.5,S04;S05;S11,M,US
+1980,nuclear_fission_new,14.0,S04;S05;S11,M,US
+1980,oil_fuel_proxy,31.0437,S11;S12,P,WTI world proxy
+1980,onshore_wind,21.4719,S02;S13,M,global weighted mean
+1980,solar_PV,379.4865,S01;S02;S07,M,global weighted mean
+1980,solar_daily_shift,508.1023,S01;S02;S03;S10,M,synthetic global-like
+1981,coal,11.4696,S04;S05;S11,M,US
+1981,hydropower,6.3373,S02;S01,M,global weighted mean
+1981,natural_gas_CCGT,14.3861,S04;S05;S11,M,US
+1981,nuclear_fission_new,14.1882,S04;S05;S11,M,US
+1981,oil_fuel_proxy,27.5668,S11;S12,P,WTI world proxy
+1981,onshore_wind,20.6187,S02;S13,M,global weighted mean
+1981,solar_PV,305.6154,S01;S02;S07,M,global weighted mean
+1981,solar_daily_shift,418.5045,S01;S02;S03;S10,M,synthetic global-like
+1982,coal,11.4394,S04;S05;S11,M,US
+1982,hydropower,6.2752,S02;S01,M,global weighted mean
+1982,natural_gas_CCGT,14.273,S04;S05;S11,M,US
+1982,nuclear_fission_new,14.3789,S04;S05;S11,M,US
+1982,oil_fuel_proxy,23.9085,S11;S12,P,WTI world proxy
+1982,onshore_wind,19.7994,S02;S13,M,global weighted mean
+1982,solar_PV,276.2275,S01;S02;S07,M,global weighted mean
+1982,solar_daily_shift,382.3037,S01;S02;S03;S10,M,synthetic global-like
+1983,coal,11.4092,S04;S05;S11,M,US
+1983,hydropower,6.2138,S02;S01,M,global weighted mean
+1983,natural_gas_CCGT,14.1608,S04;S05;S11,M,US
+1983,nuclear_fission_new,14.5722,S04;S05;S11,M,US
+1983,oil_fuel_proxy,21.7645,S11;S12,P,WTI world proxy
+1983,onshore_wind,19.0127,S02;S13,M,global weighted mean
+1983,solar_PV,224.6181,S01;S02;S07,M,global weighted mean
+1983,solar_daily_shift,319.4542,S01;S02;S03;S10,M,synthetic global-like
+1984,coal,11.379,S04;S05;S11,M,US
+1984,hydropower,6.1529,S02;S01,M,global weighted mean
+1984,natural_gas_CCGT,14.0496,S04;S05;S11,M,US
+1984,nuclear_fission_new,14.7681,S04;S05;S11,M,US
+1984,oil_fuel_proxy,20.8774,S11;S12,P,WTI world proxy
+1984,onshore_wind,18.2572,S02;S13,M,global weighted mean
+1984,solar_PV,209.6251,S01;S02;S07,M,global weighted mean
+1984,solar_daily_shift,300.5608,S01;S02;S03;S10,M,synthetic global-like
+1985,coal,11.349,S04;S05;S11,M,US
+1985,hydropower,6.0926,S02;S01,M,global weighted mean
+1985,natural_gas_CCGT,13.9392,S04;S05;S11,M,US
+1985,nuclear_fission_new,14.9666,S04;S05;S11,M,US
+1985,oil_fuel_proxy,19.3183,S11;S12,P,WTI world proxy
+1985,onshore_wind,17.5318,S02;S13,M,global weighted mean
+1985,solar_PV,184.4763,S01;S02;S07,M,global weighted mean
+1985,solar_daily_shift,269.4967,S01;S02;S03;S10,M,synthetic global-like
+1986,coal,11.319,S04;S05;S11,M,US
+1986,hydropower,6.0329,S02;S01,M,global weighted mean
+1986,natural_gas_CCGT,13.8296,S04;S05;S11,M,US
+1986,nuclear_fission_new,15.1678,S04;S05;S11,M,US
+1986,oil_fuel_proxy,12.874,S11;S12,P,WTI world proxy
+1986,onshore_wind,16.8351,S02;S13,M,global weighted mean
+1986,solar_PV,153.426,S01;S02;S07,M,global weighted mean
+1986,solar_daily_shift,231.3669,S01;S02;S03;S10,M,synthetic global-like
+1987,coal,11.2892,S04;S05;S11,M,US
+1987,hydropower,5.9738,S02;S01,M,global weighted mean
+1987,natural_gas_CCGT,13.7209,S04;S05;S11,M,US
+1987,nuclear_fission_new,15.3717,S04;S05;S11,M,US
+1987,oil_fuel_proxy,14.6828,S11;S12,P,WTI world proxy
+1987,onshore_wind,16.1662,S02;S13,M,global weighted mean
+1987,solar_PV,130.9133,S01;S02;S07,M,global weighted mean
+1987,solar_daily_shift,203.4979,S01;S02;S03;S10,M,synthetic global-like
+1988,coal,11.2594,S04;S05;S11,M,US
+1988,hydropower,5.9153,S02;S01,M,global weighted mean
+1988,natural_gas_CCGT,13.6131,S04;S05;S11,M,US
+1988,nuclear_fission_new,15.5784,S04;S05;S11,M,US
+1988,oil_fuel_proxy,12.7509,S11;S12,P,WTI world proxy
+1988,onshore_wind,15.5238,S02;S13,M,global weighted mean
+1988,solar_PV,123.8657,S01;S02;S07,M,global weighted mean
+1988,solar_daily_shift,194.2024,S01;S02;S03;S10,M,synthetic global-like
+1989,coal,11.2296,S04;S05;S11,M,US
+1989,hydropower,5.8574,S02;S01,M,global weighted mean
+1989,natural_gas_CCGT,13.5061,S04;S05;S11,M,US
+1989,nuclear_fission_new,15.7878,S04;S05;S11,M,US
+1989,oil_fuel_proxy,14.0882,S11;S12,P,WTI world proxy
+1989,onshore_wind,14.907,S02;S13,M,global weighted mean
+1989,solar_PV,128.05,S01;S02;S07,M,global weighted mean
+1989,solar_daily_shift,198.4004,S01;S02;S03;S10,M,synthetic global-like
+1990,coal,11.2,S04;S05;S11,M,US
+1990,hydropower,5.8,S02;S01,M,global weighted mean
+1990,natural_gas_CCGT,13.4,S04;S05;S11,M,US
+1990,nuclear_fission_new,16.0,S04;S05;S11,M,US
+1990,oil_fuel_proxy,15.7428,S11;S12,P,WTI world proxy
+1990,onshore_wind,14.3146,S02;S13,M,global weighted mean
+1990,solar_PV,133.4175,S01;S02;S07,M,global weighted mean
+1990,solar_daily_shift,204.033,S01;S02;S03;S10,M,synthetic global-like
+1991,coal,11.3941,S04;S05;S11,M,US
+1991,hydropower,5.737,S02;S01,M,global weighted mean
+1991,natural_gas_CCGT,13.1967,S04;S05;S11,M,US
+1991,nuclear_fission_new,16.0973,S04;S05;S11,M,US
+1991,oil_fuel_proxy,14.0577,S11;S12,P,WTI world proxy
+1991,onshore_wind,13.9087,S02;S13,M,global weighted mean
+1991,solar_PV,123.9251,S01;S02;S07,M,global weighted mean
+1991,solar_daily_shift,192.2774,S01;S02;S03;S10,M,synthetic global-like
+1992,coal,11.5916,S04;S05;S11,M,US
+1992,hydropower,5.6747,S02;S01,M,global weighted mean
+1992,natural_gas_CCGT,12.9964,S04;S05;S11,M,US
+1992,nuclear_fission_new,16.1952,S04;S05;S11,M,US
+1992,oil_fuel_proxy,13.4086,S11;S12,P,WTI world proxy
+1992,onshore_wind,13.5143,S02;S13,M,global weighted mean
+1992,solar_PV,116.6135,S01;S02;S07,M,global weighted mean
+1992,solar_daily_shift,183.1417,S01;S02;S03;S10,M,synthetic global-like
+1993,coal,11.7926,S04;S05;S11,M,US
+1993,hydropower,5.6131,S02;S01,M,global weighted mean
+1993,natural_gas_CCGT,12.7992,S04;S05;S11,M,US
+1993,nuclear_fission_new,16.2937,S04;S05;S11,M,US
+1993,oil_fuel_proxy,12.3263,S11;S12,P,WTI world proxy
+1993,onshore_wind,13.131,S02;S13,M,global weighted mean
+1993,solar_PV,110.3637,S01;S02;S07,M,global weighted mean
+1993,solar_daily_shift,175.2833,S01;S02;S03;S10,M,synthetic global-like
+1994,coal,11.997,S04;S05;S11,M,US
+1994,hydropower,5.5521,S02;S01,M,global weighted mean
+1994,natural_gas_CCGT,12.605,S04;S05;S11,M,US
+1994,nuclear_fission_new,16.3927,S04;S05;S11,M,US
+1994,oil_fuel_proxy,11.6556,S11;S12,P,WTI world proxy
+1994,onshore_wind,12.7586,S02;S13,M,global weighted mean
+1994,solar_PV,104.0284,S01;S02;S07,M,global weighted mean
+1994,solar_daily_shift,167.325,S01;S02;S03;S10,M,synthetic global-like
+1995,coal,12.2049,S04;S05;S11,M,US
+1995,hydropower,5.4918,S02;S01,M,global weighted mean
+1995,natural_gas_CCGT,12.4137,S04;S05;S11,M,US
+1995,nuclear_fission_new,16.4924,S04;S05;S11,M,US
+1995,oil_fuel_proxy,11.9428,S11;S12,P,WTI world proxy
+1995,onshore_wind,12.3968,S02;S13,M,global weighted mean
+1995,solar_PV,97.6074,S01;S02;S07,M,global weighted mean
+1995,solar_daily_shift,159.267,S01;S02;S03;S10,M,synthetic global-like
+1996,coal,12.4165,S04;S05;S11,M,US
+1996,hydropower,5.4322,S02;S01,M,global weighted mean
+1996,natural_gas_CCGT,12.2253,S04;S05;S11,M,US
+1996,nuclear_fission_new,16.5927,S04;S05;S11,M,US
+1996,oil_fuel_proxy,13.0858,S11;S12,P,WTI world proxy
+1996,onshore_wind,12.0453,S02;S13,M,global weighted mean
+1996,solar_PV,91.1008,S01;S02;S07,M,global weighted mean
+1996,solar_daily_shift,151.1092,S01;S02;S03;S10,M,synthetic global-like
+1997,coal,12.6317,S04;S05;S11,M,US
+1997,hydropower,5.3732,S02;S01,M,global weighted mean
+1997,natural_gas_CCGT,12.0398,S04;S05;S11,M,US
+1997,nuclear_fission_new,16.6936,S04;S05;S11,M,US
+1997,oil_fuel_proxy,12.3682,S11;S12,P,WTI world proxy
+1997,onshore_wind,11.7037,S02;S13,M,global weighted mean
+1997,solar_PV,91.6501,S01;S02;S07,M,global weighted mean
+1997,solar_daily_shift,151.4214,S01;S02;S03;S10,M,synthetic global-like
+1998,coal,12.8506,S04;S05;S11,M,US
+1998,hydropower,5.3148,S02;S01,M,global weighted mean
+1998,natural_gas_CCGT,11.8571,S04;S05;S11,M,US
+1998,nuclear_fission_new,16.7951,S04;S05;S11,M,US
+1998,oil_fuel_proxy,10.0867,S11;S12,P,WTI world proxy
+1998,onshore_wind,11.3718,S02;S13,M,global weighted mean
+1998,solar_PV,82.6203,S01;S02;S07,M,global weighted mean
+1998,solar_daily_shift,140.2415,S01;S02;S03;S10,M,synthetic global-like
+1999,coal,13.0734,S04;S05;S11,M,US
+1999,hydropower,5.2571,S02;S01,M,global weighted mean
+1999,natural_gas_CCGT,11.6772,S04;S05;S11,M,US
+1999,nuclear_fission_new,16.8972,S04;S05;S11,M,US
+1999,oil_fuel_proxy,11.6334,S11;S12,P,WTI world proxy
+1999,onshore_wind,11.0493,S02;S13,M,global weighted mean
+1999,solar_PV,77.0899,S01;S02;S07,M,global weighted mean
+1999,solar_daily_shift,133.2638,S01;S02;S03;S10,M,synthetic global-like
+2000,coal,13.3,S04;S05;S11,M,US
+2000,hydropower,5.2,S02;S01,M,global weighted mean
+2000,natural_gas_CCGT,11.5,S04;S05;S11,M,US
+2000,nuclear_fission_new,17.0,S04;S05;S11,M,US
+2000,oil_fuel_proxy,15.0964,S11;S12,P,WTI world proxy
+2000,onshore_wind,10.736,S02;S13,M,global weighted mean
+2000,solar_PV,76.3349,S01;S02;S07,M,global weighted mean
+2000,solar_daily_shift,132.0193,S01;S02;S03;S10,M,synthetic global-like
+2001,coal,13.6366,S04;S05;S11,M,US
+2001,hydropower,5.1271,S02;S01,M,global weighted mean
+2001,natural_gas_CCGT,11.6022,S04;S05;S11,M,US
+2001,nuclear_fission_new,17.1559,S04;S05;S11,M,US
+2001,oil_fuel_proxy,13.4077,S11;S12,P,WTI world proxy
+2001,onshore_wind,10.819,S02;S13,M,global weighted mean
+2001,solar_PV,74.3467,S01;S02;S07,M,global weighted mean
+2001,solar_daily_shift,129.7635,S01;S02;S03;S10,M,synthetic global-like
+2002,coal,13.9817,S04;S05;S11,M,US
+2002,hydropower,5.0552,S02;S01,M,global weighted mean
+2002,natural_gas_CCGT,11.7054,S04;S05;S11,M,US
+2002,nuclear_fission_new,17.3132,S04;S05;S11,M,US
+2002,oil_fuel_proxy,13.3311,S11;S12,P,WTI world proxy
+2002,onshore_wind,10.9027,S02;S13,M,global weighted mean
+2002,solar_PV,68.6523,S01;S02;S07,M,global weighted mean
+2002,solar_daily_shift,123.0605,S01;S02;S03;S10,M,synthetic global-like
+2003,coal,14.3356,S04;S05;S11,M,US
+2003,hydropower,4.9843,S02;S01,M,global weighted mean
+2003,natural_gas_CCGT,11.8095,S04;S05;S11,M,US
+2003,nuclear_fission_new,17.4719,S04;S05;S11,M,US
+2003,oil_fuel_proxy,14.7047,S11;S12,P,WTI world proxy
+2003,onshore_wind,10.987,S02;S13,M,global weighted mean
+2003,solar_PV,65.3526,S01;S02;S07,M,global weighted mean
+2003,solar_daily_shift,119.2316,S01;S02;S03;S10,M,synthetic global-like
+2004,coal,14.6984,S04;S05;S11,M,US
+2004,hydropower,4.9144,S02;S01,M,global weighted mean
+2004,natural_gas_CCGT,11.9145,S04;S05;S11,M,US
+2004,nuclear_fission_new,17.6321,S04;S05;S11,M,US
+2004,oil_fuel_proxy,17.5877,S11;S12,P,WTI world proxy
+2004,onshore_wind,11.072,S02;S13,M,global weighted mean
+2004,solar_PV,57.0493,S01;S02;S07,M,global weighted mean
+2004,solar_daily_shift,109.3988,S01;S02;S03;S10,M,synthetic global-like
+2005,coal,15.0704,S04;S05;S11,M,US
+2005,hydropower,4.8455,S02;S01,M,global weighted mean
+2005,natural_gas_CCGT,12.0204,S04;S05;S11,M,US
+2005,nuclear_fission_new,17.7938,S04;S05;S11,M,US
+2005,oil_fuel_proxy,21.5969,S11;S12,P,WTI world proxy
+2005,onshore_wind,11.1576,S02;S13,M,global weighted mean
+2005,solar_PV,57.3775,S01;S02;S07,M,global weighted mean
+2005,solar_daily_shift,109.9242,S01;S02;S03;S10,M,synthetic global-like
+2006,coal,15.4518,S04;S05;S11,M,US
+2006,hydropower,4.7776,S02;S01,M,global weighted mean
+2006,natural_gas_CCGT,12.1273,S04;S05;S11,M,US
+2006,nuclear_fission_new,17.9569,S04;S05;S11,M,US
+2006,oil_fuel_proxy,23.7907,S11;S12,P,WTI world proxy
+2006,onshore_wind,11.2439,S02;S13,M,global weighted mean
+2006,solar_PV,62.7236,S01;S02;S07,M,global weighted mean
+2006,solar_daily_shift,116.4715,S01;S02;S03;S10,M,synthetic global-like
+2007,coal,15.8428,S04;S05;S11,M,US
+2007,hydropower,4.7106,S02;S01,M,global weighted mean
+2007,natural_gas_CCGT,12.2351,S04;S05;S11,M,US
+2007,nuclear_fission_new,18.1216,S04;S05;S11,M,US
+2007,oil_fuel_proxy,25.0138,S11;S12,P,WTI world proxy
+2007,onshore_wind,11.3308,S02;S13,M,global weighted mean
+2007,solar_PV,64.3419,S01;S02;S07,M,global weighted mean
+2007,solar_daily_shift,118.5459,S01;S02;S03;S10,M,synthetic global-like
+2008,coal,16.2438,S04;S05;S11,M,US
+2008,hydropower,4.6445,S02;S01,M,global weighted mean
+2008,natural_gas_CCGT,12.3439,S04;S05;S11,M,US
+2008,nuclear_fission_new,18.2877,S04;S05;S11,M,US
+2008,oil_fuel_proxy,31.5361,S11;S12,P,WTI world proxy
+2008,onshore_wind,11.4185,S02;S13,M,global weighted mean
+2008,solar_PV,58.362,S01;S02;S07,M,global weighted mean
+2008,solar_daily_shift,111.5029,S01;S02;S03;S10,M,synthetic global-like
+2009,coal,16.6549,S04;S05;S11,B,US
+2009,hydropower,4.5794,S02;S01,M,global weighted mean
+2009,natural_gas_CCGT,12.4537,S04;S05;S11,B,US
+2009,nuclear_fission_new,18.4554,S04;S05;S11,B,US
+2009,oil_fuel_proxy,21.4888,S11;S12,P,WTI world proxy
+2009,onshore_wind,11.5068,S02;S13,M,global weighted mean
+2009,solar_PV,39.5521,S01;S02;S07,M,global weighted mean
+2009,solar_daily_shift,89.0643,S01;S02;S03;S10,M,synthetic global-like
+2010,bioenergy,8.8251,S02;S01,A,global weighted mean
+2010,coal,16.3861,S04;S05;S11,B,US
+2010,geothermal,5.644,S02;S01,A,global weighted mean
+2010,hydropower,4.5152,S02;S01,B,global weighted mean
+2010,natural_gas_CCGT,12.1051,S04;S05;S11,B,US
+2010,nuclear_fission_new,14.1718,S04;S05;S11,B,US
+2010,offshore_wind,21.3445,S02;S01,B,global weighted mean
+2010,oil_fuel_proxy,25.8935,S11;S12,P,WTI world proxy
+2010,onshore_wind,11.5958,S02;S13,B,global weighted mean
+2010,solar_PV,42.7915,S01;S02;S07,B,global weighted mean
+2010,solar_daily_shift,93.0853,S01;S02;S03;S10,M,synthetic global-like
+2011,bioenergy,8.8324,S02;S01,I,global weighted mean
+2011,coal,14.883,S04;S05;S11,B,US
+2011,geothermal,5.6792,S02;S01,I,global weighted mean
+2011,hydropower,4.5994,S02;S01,I,global weighted mean
+2011,natural_gas_CCGT,11.8778,S04;S05;S11,B,US
+2011,nuclear_fission_new,13.595,S04;S05;S11,B,US
+2011,offshore_wind,22.0628,S02;S01,B,global weighted mean
+2011,oil_fuel_proxy,29.2004,S11;S12,P,WTI world proxy
+2011,onshore_wind,10.9801,S02;S13,B,global weighted mean
+2011,solar_PV,35.9161,S01;S02;S07,B,global weighted mean
+2011,solar_daily_shift,84.7607,S01;S02;S03;S10,M,synthetic global-like
+2012,bioenergy,8.8397,S02;S01,I,global weighted mean
+2012,coal,15.5626,S04;S05;S11,B,US
+2012,geothermal,5.7146,S02;S01,I,global weighted mean
+2012,hydropower,4.6853,S02;S01,I,global weighted mean
+2012,natural_gas_CCGT,10.5153,S04;S05;S11,B,US
+2012,nuclear_fission_new,13.4596,S04;S05;S11,B,US
+2012,offshore_wind,18.9842,S02;S01,B,global weighted mean
+2012,oil_fuel_proxy,28.5198,S11;S12,P,WTI world proxy
+2012,onshore_wind,10.0565,S02;S13,B,global weighted mean
+2012,solar_PV,26.6806,S01;S02;S07,B,global weighted mean
+2012,solar_daily_shift,68.0466,S01;S02;S03;S10,M,synthetic global-like
+2013,bioenergy,8.847,S02;S01,I,global weighted mean
+2013,coal,16.0289,S04;S05;S11,B,US
+2013,geothermal,5.7502,S02;S01,I,global weighted mean
+2013,hydropower,4.7727,S02;S01,I,global weighted mean
+2013,natural_gas_CCGT,10.2253,S04;S05;S11,B,US
+2013,nuclear_fission_new,14.3707,S04;S05;S11,B,US
+2013,offshore_wind,16.0083,S02;S01,B,global weighted mean
+2013,oil_fuel_proxy,29.1162,S11;S12,P,WTI world proxy
+2013,onshore_wind,10.0565,S02;S13,B,global weighted mean
+2013,solar_PV,20.5235,S01;S02;S07,B,global weighted mean
+2013,solar_daily_shift,55.0513,S01;S02;S03;S10,M,synthetic global-like
+2014,bioenergy,8.8543,S02;S01,I,global weighted mean
+2014,coal,15.773,S04;S05;S11,B,US
+2014,geothermal,5.786,S02;S01,I,global weighted mean
+2014,hydropower,4.8618,S02;S01,I,global weighted mean
+2014,natural_gas_CCGT,10.0621,S04;S05;S11,B,US
+2014,nuclear_fission_new,15.2291,S04;S05;S11,B,US
+2014,offshore_wind,19.4973,S02;S01,B,global weighted mean
+2014,oil_fuel_proxy,27.6042,S11;S12,P,WTI world proxy
+2014,onshore_wind,9.0303,S02;S13,B,global weighted mean
+2014,solar_PV,18.779,S01;S02;S07,B,global weighted mean
+2014,solar_daily_shift,47.9287,S01;S02;S03;S10,M,synthetic global-like
+2015,bioenergy,8.8616,S02;S01,I,global weighted mean
+2015,coal,15.8901,S04;S05;S11,B,US
+2015,geothermal,5.8221,S02;S01,I,global weighted mean
+2015,hydropower,4.9525,S02;S01,I,global weighted mean
+2015,natural_gas_CCGT,8.8278,S04;S05;S11,B,US
+2015,nuclear_fission_new,15.8901,S04;S05;S11,B,US
+2015,offshore_wind,15.9057,S02;S01,B,global weighted mean
+2015,oil_fuel_proxy,16.7874,S11;S12,P,WTI world proxy
+2015,onshore_wind,7.7989,S02;S13,B,global weighted mean
+2015,solar_PV,13.8534,S01;S02;S07,B,global weighted mean
+2015,solar_daily_shift,38.1218,S01;S02;S03;S10,M,synthetic global-like
+2016,bioenergy,8.8689,S02;S01,I,global weighted mean
+2016,coal,15.6922,S04;S05;S11,B,US
+2016,geothermal,5.8584,S02;S01,I,global weighted mean
+2016,hydropower,5.0449,S02;S01,I,global weighted mean
+2016,natural_gas_CCGT,8.4496,S04;S05;S11,B,US
+2016,nuclear_fission_new,15.6922,S04;S05;S11,B,US
+2016,offshore_wind,13.135,S02;S01,B,global weighted mean
+2016,oil_fuel_proxy,15.3137,S11;S12,P,WTI world proxy
+2016,onshore_wind,7.1832,S02;S13,B,global weighted mean
+2016,solar_PV,12.1089,S01;S02;S07,B,global weighted mean
+2016,solar_daily_shift,32.3745,S01;S02;S03;S10,M,synthetic global-like
+2017,bioenergy,8.8763,S02;S01,I,global weighted mean
+2017,coal,13.395,S04;S05;S11,B,US
+2017,geothermal,5.8949,S02;S01,I,global weighted mean
+2017,hydropower,5.1391,S02;S01,I,global weighted mean
+2017,natural_gas_CCGT,7.8794,S04;S05;S11,B,US
+2017,nuclear_fission_new,19.4359,S04;S05;S11,B,US
+2017,offshore_wind,12.0063,S02;S01,B,global weighted mean
+2017,oil_fuel_proxy,16.9104,S11;S12,P,WTI world proxy
+2017,onshore_wind,6.7728,S02;S13,B,global weighted mean
+2017,solar_PV,9.5434,S01;S02;S07,B,global weighted mean
+2017,solar_daily_shift,26.3587,S01;S02;S03;S10,M,synthetic global-like
+2018,bioenergy,8.8836,S02;S01,I,global weighted mean
+2018,coal,13.0756,S04;S05;S11,B,US
+2018,geothermal,5.9317,S02;S01,I,global weighted mean
+2018,hydropower,5.235,S02;S01,I,global weighted mean
+2018,natural_gas_CCGT,7.4352,S04;S05;S11,B,US
+2018,nuclear_fission_new,19.357,S04;S05;S11,B,US
+2018,offshore_wind,11.6984,S02;S01,B,global weighted mean
+2018,oil_fuel_proxy,19.8392,S11;S12,P,WTI world proxy
+2018,onshore_wind,5.7466,S02;S13,B,global weighted mean
+2018,solar_PV,8.1068,S01;S02;S07,B,global weighted mean
+2018,solar_daily_shift,22.1235,S01;S02;S03;S10,M,synthetic global-like
+2019,bioenergy,8.8909,S02;S01,I,global weighted mean
+2019,coal,13.7243,S04;S05;S11,B,US
+2019,geothermal,5.9687,S02;S01,I,global weighted mean
+2019,hydropower,5.3327,S02;S01,I,global weighted mean
+2019,natural_gas_CCGT,7.051,S04;S05;S11,B,US
+2019,nuclear_fission_new,19.5162,S04;S05;S11,B,US
+2019,offshore_wind,9.7487,S02;S01,B,global weighted mean
+2019,oil_fuel_proxy,17.7886,S11;S12,P,WTI world proxy
+2019,onshore_wind,5.0283,S02;S13,B,global weighted mean
+2019,solar_PV,7.0806,S01;S02;S07,B,global weighted mean
+2019,solar_daily_shift,18.7853,S01;S02;S03;S10,M,synthetic global-like
+2020,bioenergy,8.8983,S02;S01,I,global weighted mean
+2020,coal,13.9302,S04;S05;S11,B,US
+2020,geothermal,6.0059,S02;S01,I,global weighted mean
+2020,hydropower,5.4322,S02;S01,I,global weighted mean
+2020,natural_gas_CCGT,7.3382,S04;S05;S11,B,US
+2020,nuclear_fission_new,20.2734,S04;S05;S11,B,US
+2020,offshore_wind,9.3382,S02;S01,B,global weighted mean
+2020,oil_fuel_proxy,13.6975,S11;S12,P,WTI world proxy
+2020,onshore_wind,4.2073,S02;S13,B,global weighted mean
+2020,solar_95pct_annual_demand_coverage_Nevada,16.3,S03,R,Nevada USA
+2020,solar_PV,6.2597,S01;S02;S07,B,global weighted mean
+2020,solar_daily_shift,16.0431,S01;S02;S03;S10,M,synthetic global-like
+2021,bioenergy,8.9056,S02;S01,I,global weighted mean
+2021,coal,12.8299,S04;S05;S11,B,US
+2021,geothermal,6.0433,S02;S01,I,global weighted mean
+2021,hydropower,5.5336,S02;S01,I,global weighted mean
+2021,natural_gas_CCGT,7.1277,S04;S05;S11,B,US
+2021,nuclear_fission_new,19.8388,S04;S05;S11,B,US
+2021,offshore_wind,8.4146,S02;S01,B,global weighted mean
+2021,oil_fuel_proxy,19.3973,S11;S12,P,WTI world proxy
+2021,onshore_wind,3.6942,S02;S13,B,global weighted mean
+2021,solar_PV,5.644,S01;S02;S07,B,global weighted mean
+2021,solar_daily_shift,14.2221,S01;S02;S03;S10,M,synthetic global-like
+2022,bioenergy,8.913,S02;S01,I,global weighted mean
+2022,coal,12.5796,S04;S05;S11,I,US
+2022,geothermal,6.081,S02;S01,I,global weighted mean
+2022,hydropower,5.6368,S02;S01,I,global weighted mean
+2022,natural_gas_CCGT,7.2525,S04;S05;S11,I,US
+2022,nuclear_fission_new,19.4025,S04;S05;S11,I,US
+2022,offshore_wind,8.312,S02;S01,B,global weighted mean
+2022,oil_fuel_proxy,23.5851,S11;S12,P,WTI world proxy
+2022,onshore_wind,3.489,S02;S13,B,global weighted mean
+2022,solar_PV,5.2335,S01;S02;S07,B,global weighted mean
+2022,solar_daily_shift,13.0427,S01;S02;S03;S10,M,synthetic global-like
+2023,bioenergy,8.9204,S02;S01,I,global weighted mean
+2023,coal,12.3342,S04;S05;S11,B,US
+2023,geothermal,6.1189,S02;S01,I,global weighted mean
+2023,hydropower,5.742,S02;S01,I,global weighted mean
+2023,natural_gas_CCGT,7.3794,S04;S05;S11,B,US
+2023,nuclear_fission_new,18.9757,S04;S05;S11,B,US
+2023,offshore_wind,7.7989,S02;S01,B,global weighted mean
+2023,oil_fuel_proxy,19.5897,S11;S12,P,WTI world proxy
+2023,onshore_wind,3.3864,S02;S13,B,global weighted mean
+2023,solar_PV,4.3099,S01;S02;S07,B,global weighted mean
+2023,solar_daily_shift,10.4667,S01;S02;S03;S10,M,synthetic global-like
+2024,bioenergy,8.9277,S02;S01,A,global weighted mean
+2024,coal,12.2669,S04;S05;S11,I,US
+2024,geothermal,6.1571,S02;S01,A,global weighted mean
+2024,hydropower,5.8492,S02;S01,B,global weighted mean
+2024,natural_gas_CCGT,7.6111,S04;S05;S11,I,US
+2024,nuclear_fission_new,18.507,S04;S05;S11,I,US
+2024,offshore_wind,8.1068,S02;S01,B,global weighted mean
+2024,oil_fuel_proxy,19.0024,S11;S12,P,WTI world proxy
+2024,onshore_wind,3.489,S02;S13,B,global weighted mean
+2024,solar_PV,4.4126,S01;S02;S07,B,global weighted mean
+2024,solar_daily_shift,8.9639,S01;S02;S03;S10,M,synthetic global-like
+2025,bioenergy,8.6,S02;S01,B,global weighted mean
+2025,coal,12.2,S04;S05;S11,L,US
+2025,geothermal,8.9,S02;S01,B,global weighted mean
+2025,hydropower,6.2,S02;S01,B,global weighted mean
+2025,natural_gas_CCGT,7.85,S04;S05;S11,L,US
+2025,nuclear_fission_new,18.05,S04;S05;S11,L,US
+2025,offshore_wind,7.8,S02;S01,B,global weighted mean
+2025,oil_fuel_proxy,16.6684,S11;S12,P,WTI world proxy
+2025,onshore_wind,3.3,S02;S13,B,global weighted mean
+2025,solar_95pct_annual_demand_coverage_Nevada,11.32,S03,R,Nevada USA
+2025,solar_PV,4.4,S01;S02;S07,B,global weighted mean
+2025,solar_daily_shift,7.7679,S01;S02;S03;S10,M,synthetic global-like
+2030,solar_95pct_annual_demand_coverage_Nevada,7.7,S03,F,Nevada USA
+2030,solar_PV,3.3308,S01;S03,F,synthetic global-like
+2030,solar_daily_shift,5.9236,S01;S03,F,synthetic global-like
+2035,solar_95pct_annual_demand_coverage_Nevada,5.9,S03,F,Nevada USA
+2035,solar_PV,3.1004,S01;S03,F,synthetic global-like
+2035,solar_daily_shift,5.3634,S01;S03,F,synthetic global-like

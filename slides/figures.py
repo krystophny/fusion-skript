@@ -187,8 +187,47 @@ def solar_chain():
             va="top", fontsize=14, color=MUTED)
     ax.text(6.5, 300, "electric", ha="center", fontsize=16, color=ORANGE)
     ax.text(2.5, 600, "sunlight", ha="center", fontsize=16, color=BLUE)
+    seasonal_gain = 100 * (d["factors"]["season"] - 1)
+    ax.annotate(r"$\langle I(\delta)\rangle \ne I(\langle\delta\rangle)$" "\n"
+                r"$I$: sunlight; $\delta$: seasonal Sun angle" "\n"
+                f"Annual vs equinox: +{seasonal_gain:.1f}% (model)",
+                xy=(3.35, vals[3] * 1.4), xytext=(4.75, 780),
+                ha="center", va="center", fontsize=13, color=MUTED,
+                bbox=dict(boxstyle="round,pad=0.4", facecolor="white", edgecolor=MUTED, linewidth=0.8),
+                arrowprops=dict(arrowstyle="-", color=MUTED, linewidth=0.8,
+                                connectionstyle="angle,angleA=180,angleB=90,rad=10"))
     fig.subplots_adjust(left=0.09, right=0.99, bottom=0.16, top=0.98)
     save(fig, "solar_chain")
+
+
+def capacity_factor():
+    """Illustrative 1 MW turbine: equal-duration outputs average to 0.23 MW.
+
+    These deliberately constructed values are not measured wind data.
+    Capacity-factor definition: https://www.eia.gov/tools/faqs/faq.php?id=101&t=6
+    """
+    output = np.array([0, 0.10, 0.40, 0.05, 0, 1, 0.20, 0, 0.15, 0.60, 0.26, 0])
+    average = float(output.mean())
+    rated = 1.0
+    edges = np.arange(output.size + 1)
+    fig, ax = plt.subplots(figsize=(257 * MM, 86 * MM))
+    ax.stairs(output, edges, color=BLUE, linewidth=2)
+    ax.stairs(output, edges, baseline=0, fill=True, color=BLUE, alpha=0.18)
+    ax.axhline(rated, color=MUTED, linestyle=":", linewidth=1.5)
+    ax.axhline(average, color=ORANGE, linestyle="--", linewidth=1.8)
+    ax.text(output.size + 0.3, rated, f"{rated:g} MW rated",
+            color=MUTED, fontsize=18, va="center", clip_on=False)
+    ax.text(output.size + 0.3, average, f"{average:.2f} MW\nannual average",
+            color=ORANGE, fontsize=18, va="center", clip_on=False)
+    ax.set_xlim(0, output.size)
+    ax.set_ylim(0, 1.10)
+    ax.set_yticks([0, 0.5, 1])
+    ax.set_xticks([0, output.size], ["start of year", "end of year"])
+    ax.set_ylabel("Power [MW]")
+    ax.text(0.02, 0.82, "Illustrative output", transform=ax.transAxes,
+            fontsize=16, color=BLUE, va="top")
+    fig.subplots_adjust(left=0.10, right=0.72, bottom=0.17, top=0.96)
+    save(fig, "capacity_factor")
 
 
 def pv_prices():
@@ -409,8 +448,56 @@ def lifecycle():
     save(fig, "lifecycle")
 
 
+
+def capacity_additions():
+    """Measured net capacity changes; two clearly labelled linear scales."""
+    d = load("12-capacity-additions")
+    series = {r["technology"]: r["net_additions_GW_per_year"] for r in d["series"]}
+    fig, axes = plt.subplots(2, 1, sharex=True, figsize=(257 * MM, 134 * MM))
+    groups = [
+        (("Solar", ORANGE, "o"), ("Wind", GREEN, "^"), ("Fossil fuels", MUTED, "s")),
+        (("Hydro", BLUE, "v"), ("Nuclear", "#CC79A7", "P"),
+         ("Biomass and waste", "#6E6400", "D")),
+    ]
+    for ax, group, limits in zip(axes, groups, [(-10, 500), (-60, 60)]):
+        for label, color, marker in group:
+            rows = series[label]
+            ax.plot([r["year"] for r in rows], [r["value"] for r in rows],
+                    color=color, lw=1.8, marker=marker, markersize=2.5,
+                    label=label)
+        ax.axhline(0, color=INK, lw=.7)
+        benchmark = d["austria"]["benchmark_GW_per_year"]
+        ax.axhline(benchmark, color=INK, linestyle=(0, (5, 3)), lw=1.3)
+        ax.text(1981, benchmark + 3, f"Austria: {benchmark:.0f}",
+                va="bottom", fontsize=14, color=INK,
+                bbox=dict(facecolor="white", edgecolor="none", pad=1))
+        ax.set_ylim(*limits)
+        ax.grid(axis="y", color=GRID, lw=.6)
+        ax.set_axisbelow(True)
+        ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1.03),
+                  fontsize=14, frameon=False, handlelength=1.8,
+                  borderaxespad=0, labelspacing=.5)
+        ax.tick_params(labelsize=13)
+    peak = max(series["Nuclear"], key=lambda row: row["value"])
+    axes[1].scatter(peak["year"], peak["value"], marker="*", s=180,
+                    color="#D62728", edgecolor="white", linewidth=.6, zorder=5)
+    axes[1].annotate(f'{peak["year"]} · {peak["value"]:.1f} GW/year',
+                     xy=(peak["year"], peak["value"]), xytext=(1992, 50),
+                     fontsize=14, color="#D62728", va="center",
+                     arrowprops=dict(arrowstyle="-", color="#D62728", lw=.8))
+    axes[0].set_yticks([0, 100, 250, 500])
+    axes[1].set_yticks([-60, -30, 0, 30, 60])
+    axes[1].set_xlim(1980, 2025)
+    axes[1].set_xticks([1980, 1990, 2000, 2010, 2020, 2024])
+    axes[1].set_xlabel("Year", fontsize=16)
+    fig.text(.015, .57, "World net capacity additions [GW/year]",
+             rotation=90, va="center", fontsize=17)
+    fig.subplots_adjust(left=.10, right=.72, bottom=.13, top=.98, hspace=.25)
+    save(fig, "capacity_additions")
+
+
 if __name__ == "__main__":
     style()
-    for fn in (energy_gdp, micro_macro, resources, solar_chain, pv_prices, area_budget, fuel_mass, true_scale, austria_mix, land_density, risk, lifecycle):
+    for fn in (energy_gdp, micro_macro, resources, solar_chain, capacity_factor, pv_prices, area_budget, fuel_mass, capacity_additions, true_scale, austria_mix, land_density, risk, lifecycle):
         fn()
         print("wrote", fn.__name__)

@@ -1,0 +1,48 @@
+{
+  "checked_on": "2026-10-09",
+  "scope": "Key plotted anchors and definitions checked against primary sources; the full supplied historical extract is retained, not represented as a newly audited or homogeneous global survey.",
+  "checks": [
+    {
+      "source_id": "S01",
+      "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Jul/IRENA_TEC_RPGC_2025_Executive_summary_2026.pdf",
+      "finding": "2025 global PV LCOE 44 USD/MWh, onshore wind 33 USD/MWh, installed PV 667 USD/kW and installed four-hour BESS 140 USD/kWh confirmed. Report uses 2025 USD. Its historical series revises the older extract supplied in the sourcebook."
+    },
+    {
+      "source_id": "S02",
+      "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+      "finding": "Figure 9.2 identifies 2010–2015 installed BESS values as calculated from Schmidt/Staffell regression data. The 2010 sourcebook anchor is a published reconstruction, not an observed procurement price."
+    },
+    {
+      "source_id": "S03",
+      "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf",
+      "finding": "Table 1 confirms Nevada 113.2 USD/MWh at 95% annual-energy coverage versus 43.5 USD/MWh PV baseline. Figure 10 gives 163/113/77/59 USD/MWh for 2020/2025/2030/2035. Hourly optimisation of a flat annual load; not a count of fully served hours or guaranteed firm supply."
+    },
+    {
+      "source_id": "S05",
+      "url": "https://www.lazard.com/media/uounhon4/lazards-lcoeplus-june-2025.pdf",
+      "finding": "Page 8 confirms gas 48–109, coal 71–173 and nuclear 141–220 USD/MWh. Coal and nuclear reuse inflation-adjusted v14 estimates; nuclear uses then-estimated Vogtle costs. These are published US new-build estimates, not an observed global plant survey."
+    },
+    {
+      "source_id": "S09",
+      "url": "https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/",
+      "finding": "9 December 2025 release confirms all-use Li-ion packs 108 USD/kWh and stationary packs 70 USD/kWh. These are pack prices, not installed storage-system costs. Earlier pack values are retained from the supplied extract."
+    }
+  ],
+  "corrections": [
+    {
+      "table": "components",
+      "year": 2010,
+      "series": "Li_BESS_turnkey_4h_global",
+      "reported_evidence_flag": "B",
+      "evidence_flag": "R",
+      "reason": "IRENA 2024 Figure 9.2: published regression reconstruction. Original CSV is unchanged."
+    }
+  ],
+  "boundaries": [
+    "Generation LCOE, module USD/W and battery USD/kWh capacity have different denominators.",
+    "Daily shifting is an author engineering scenario: 60% of delivered energy through storage, no seasonal or firm-supply guarantee. Installed capacity prices are treated as usable capacity as a simplifying assumption.",
+    "The global BESS benchmark is used in a generic Li-ion model; it is not a chemistry-specific observed LFP project LCOE.",
+    "IRENA global renewables and Lazard US conventional generation are different samples; backcasts and future scenarios are not observations.",
+    "The sourcebook uses approximate CPI-U rebasing to 2025 USD. Its historical extraction may differ from revised current provider series."
+  ]
+}
