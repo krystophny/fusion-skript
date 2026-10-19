@@ -1,0 +1,20 @@
+{
+  "description": "Cross sections sigma(E) = S(E)/E exp(-B_G/sqrt(E)), E centre-of-mass energy in keV, S in keV b. Single source for slides/figures.py and derivations/chapters/ch02_fusion_reactions.py.",
+  "bosch_hale": {
+    "source": "H.-S. Bosch and G. M. Hale, Nucl. Fusion 32, 611 (1992), https://doi.org/10.1088/0029-5515/32/4/I07, Table IV; S in keV mb, Pade form S = (A1 + E(A2 + E(A3 + E(A4 + E A5)))) / (1 + E(B1 + E(B2 + E(B3 + E B4)))).",
+    "reactions": {
+      "DT": {"B_G_sqrt_keV": 34.3827, "A": [6.927e4, 7.454e8, 2.050e6, 5.2002e4, 0.0],
+             "B": [6.38e1, -9.95e-1, 6.981e-5, 1.728e-4], "E_max_keV": 550},
+      "DDn": {"B_G_sqrt_keV": 31.3970, "A": [5.3701e4, 3.3027e2, -1.2706e-1, 2.9327e-5, -2.5151e-9],
+              "B": [0.0, 0.0, 0.0, 0.0], "E_max_keV": 4900},
+      "DDp": {"B_G_sqrt_keV": 31.3970, "A": [5.5576e4, 2.1054e2, -3.2638e-2, 1.4987e-6, 1.8181e-10],
+              "B": [0.0, 0.0, 0.0, 0.0], "E_max_keV": 4900}
+    }
+  },
+  "pp": {
+    "source": "E. G. Adelberger et al., Rev. Mod. Phys. 83, 195 (2011), https://doi.org/10.1103/RevModPhys.83.195: S(0) = 4.01e-25 MeV b, S'(0)/S(0) = 11.2 /MeV. B_G from E_G = 2 m c^2 (pi alpha)^2 with m = m_p/2.",
+    "S0_keV_b": 4.01e-22,
+    "S1_over_S0_per_keV": 11.2e-3,
+    "B_G_sqrt_keV": 22.20
+  }
+}

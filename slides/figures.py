@@ -496,8 +496,84 @@ def capacity_additions():
     save(fig, "capacity_additions")
 
 
+# Cross sections sigma(E) = S(E)/E exp(-B_G/sqrt(E)), E centre-of-mass in keV.
+# Bosch & Hale (1992) and Adelberger et al. (2011) constants: data/ch02/cross-sections.json.
+XS = json.loads((ROOT / "data/ch02/cross-sections.json").read_text())
+BOSCH_HALE = XS["bosch_hale"]["reactions"]
+PP = XS["pp"]
+
+
+def s_factor(name, e):
+    """Astrophysical S-factor in keV b."""
+    if name == "pp":
+        return PP["S0_keV_b"] * (1 + PP["S1_over_S0_per_keV"] * e)
+    if name == "DD":
+        return s_factor("DDn", e) + s_factor("DDp", e)
+    a, b = BOSCH_HALE[name]["A"], BOSCH_HALE[name]["B"]
+    num = a[0] + e * (a[1] + e * (a[2] + e * (a[3] + e * a[4])))
+    den = 1 + e * (b[0] + e * (b[1] + e * (b[2] + e * b[3])))
+    return num / den * 1e-3
+
+
+def gamow_bg(name):
+    if name == "pp":
+        return PP["B_G_sqrt_keV"]
+    return BOSCH_HALE["DDn" if name == "DD" else name]["B_G_sqrt_keV"]
+
+
+CURVES = (("DT", "D–T", ORANGE), ("DD", "D–D", BLUE), ("pp", "p–p", GREEN))
+
+
+def cross_section_shape():
+    """sigma with S = 1 keV b: tunnelling and 1/E only."""
+    e = np.geomspace(1, 1000, 600)
+    fig, ax = plt.subplots(figsize=(150 * MM, 105 * MM))
+    nudge = {"DT": .15, "DD": 1.0, "pp": 4.0}
+    for name, label, color in CURVES:
+        y = np.exp(-gamow_bg(name) / np.sqrt(e)) / e
+        ax.loglog(e, y, color=color, lw=2)
+        ax.text(1100, y[-1] * nudge[name], label, color=color, va="center", fontsize=18)
+    ax.set_xlim(1, 1000)
+    ax.set_ylim(1e-12, 1e-2)
+    ax.set_xlabel(r"$E$ [keV]")
+    ax.set_ylabel(r"$\sigma$ [b] with $S = 1$ keV b")
+    fig.subplots_adjust(left=.17, right=.86, bottom=.16, top=.97)
+    save(fig, "cross_section_shape")
+
+
+def cross_section_actual():
+    """Actual sigma(E); broken axis because p-p lies some 24 decades lower."""
+    e = np.geomspace(1, 1000, 600)
+    fig, (top, bottom) = plt.subplots(2, 1, sharex=True, figsize=(150 * MM, 115 * MM),
+                                      gridspec_kw={"height_ratios": (2, 1), "hspace": .12})
+    for name, label, color in CURVES:
+        # Bosch-Hale validity: D-T up to 550 keV, D-D up to 4.9 MeV.
+        x = e[e <= BOSCH_HALE["DT"]["E_max_keV"]] if name == "DT" else e
+        y = s_factor(name, x) / x * np.exp(-gamow_bg(name) / np.sqrt(x))
+        ax = bottom if name == "pp" else top
+        ax.loglog(x, y, color=color, lw=2)
+        if name == "DT":
+            ax.text(64, 12, label, color=color, ha="center", va="bottom", fontsize=18)
+        else:
+            ax.text(x[-1] * 1.1, y[-1], label, color=color, va="center", fontsize=18)
+    top.set_ylim(1e-8, 1e2)
+    bottom.set_ylim(1e-32, 1e-23)
+    top.spines["bottom"].set_visible(False)
+    top.tick_params(which="both", bottom=False)
+    for ax, ys in ((top, (0,)), (bottom, (1,))):
+        for y0 in ys:
+            ax.plot((-.015, .015), (y0 - .03, y0 + .03), transform=ax.transAxes,
+                    color=INK, lw=.8, clip_on=False)
+    bottom.set_xlim(1, 1000)
+    bottom.set_xlabel(r"$E$ [keV]")
+    fig.text(.03, .55, r"$\sigma$ [b]", rotation=90, va="center", fontsize=18)
+    fig.subplots_adjust(left=.17, right=.86, bottom=.15, top=.97)
+    save(fig, "cross_section_actual")
+
+
 if __name__ == "__main__":
     style()
-    for fn in (energy_gdp, micro_macro, resources, solar_chain, capacity_factor, pv_prices, area_budget, fuel_mass, capacity_additions, true_scale, austria_mix, land_density, risk, lifecycle):
+    for fn in (energy_gdp, micro_macro, resources, solar_chain, capacity_factor, pv_prices, area_budget, fuel_mass, capacity_additions, true_scale, austria_mix, land_density, risk, lifecycle,
+               cross_section_shape, cross_section_actual):
         fn()
         print("wrote", fn.__name__)
