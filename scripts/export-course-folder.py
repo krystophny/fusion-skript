@@ -65,6 +65,24 @@ def export(repo, site, dest):
     for name in ("LICENSE", "LICENSE-CONTENT.md"):
         wanted["derivations/" + name] = repo / name
     wanted["derivations/script-outline.json"] = repo / "slides/build/script-outline.json"
+    # Animations: the registered MP4 revisions staged by prepare-media.py, under
+    # the file names their stream URLs expect, and the scene sources with data.
+    registry = repo / "media/animations.json"
+    register = json.loads(registry.read_text())["animations"] if registry.is_file() else {}
+    if register:
+        wanted["animations/animations.json"] = registry
+    for slug, record in register.items():
+        video = site / "media" / (slug + ".mp4")
+        if video.is_file() and checksum(video) != record["mp4_sha256"]:
+            raise ValueError("Staged animation is not the registered revision: " + slug)
+        stem = Path(record["stream_url"].split("?")[0]).stem
+        wanted["animations/" + stem + ".mp4"] = video
+        wanted["animations/" + stem + ".png"] = repo / record["poster"]
+    animations = repo / "animations"
+    if register:
+        wanted.update({"animation-sources/" + p.relative_to(animations).as_posix(): p
+                       for p in animations.rglob("*") if p.is_file()
+                       and "__pycache__" not in p.parts})
     for source in wanted.values():
         if not source.is_file():
             raise ValueError("Missing export input: " + str(source))

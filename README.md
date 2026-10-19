@@ -93,6 +93,24 @@ builds the site, decks and presenter, and uploads `public/`. Pull requests
 build without deploying. Plasma's separate Nix workflow checks its flake and
 VM; Fusion has no such project contract.
 
+## Animations
+
+Manim scenes live in `animations/` (shared `style.py`, dark canvas); model
+modules such as `radial_coulomb.py` compute what the scenes draw and are
+checked by `tests/test_animation_physics.py`. Data-driven scenes may draw code
+exports in `animations/data/<code>/<export>/` with their `provenance.json`.
+`bash scripts/render-animations.sh` renders changed scenes into
+`.cache/animations/` (`<slug>.mp4` at 1080p60, poster `.png`, `.stamp`); it needs `manim`
+0.21 with the stix2 TeX package and ffmpeg, for example from
+`nix develop ~/proj/plasma-skript`. `python3 scripts/refresh-animation-media.py`
+adopts a render into `media/animations.json` (checksum, `?v=` stream URL) and
+`media/posters/`. The MP4s are hosted in the course share's `animations/`
+folder; `scripts/export-course-folder.sh` copies exactly the registered
+revisions there together with `animation-sources/`. The site build
+(`scripts/prepare-media.py`) stages the registered MP4s and builds
+`animations/<slug>.html` from the captioned Skript figure (theme `animation`);
+decks use `#animation-page(slug, name)`.
+
 ## Presenter metadata
 
 `scripts/build-present.py --course "Fusion Physics" --short-name Fusion`

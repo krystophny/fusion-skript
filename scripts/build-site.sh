@@ -9,6 +9,8 @@ python3 scripts/plot-electricity-costs.py
 mkdir -p public/slides slides/build
 bash scripts/script-outline.sh slides/build/script-outline.json
 TYPST_FEATURES=bundle,html typst compile --root . --font-path fonts --ignore-system-fonts --format bundle src/main.typ public
+# Registered animations: posters, checksum-verified MP4s, player pages.
+python3 scripts/prepare-media.py public
 typst compile --root . --font-path fonts --ignore-system-fonts src/print.typ public/fusion-physics.pdf
 bash scripts/build-slides.sh
 python3 scripts/build-present.py --course "Fusion Physics" --short-name Fusion --strict-metadata

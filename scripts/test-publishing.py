@@ -168,3 +168,26 @@ def test_export_copies_every_build_product(course, tmp_path):
     assert (dest / "derivations/energy.py").read_text() == "source calculation"
     manifest = json.loads((dest / ".fusion-skript-export.json").read_text())
     assert "figures/energy.svg" in manifest["files"]
+
+
+def test_export_ships_only_the_registered_animation_revision(course, tmp_path):
+    for name in ("LICENSE", "LICENSE-CONTENT.md"):
+        (course / name).write_text("license")
+    (course / "animations").mkdir()
+    (course / "animations/scene.py").write_text("scene source")
+    (course / "media/posters").mkdir(parents=True)
+    (course / "media/posters/scene.png").write_bytes(b"poster")
+    movie = course / "public/media/scene.mp4"
+    movie.write_bytes(b"registered movie")
+    record = {"poster": "media/posters/scene.png",
+              "stream_url": "https://host.invalid/animations/scene_file.mp4?v=0",
+              "mp4_sha256": hashlib.sha256(b"registered movie").hexdigest()}
+    (course / "media/animations.json").write_text(json.dumps({"animations": {"scene": record}}))
+    dest = tmp_path / "folder"
+    exporter.export(course, course / "public", dest)
+    assert (dest / "animations/scene_file.mp4").read_bytes() == b"registered movie"
+    assert (dest / "animations/scene_file.png").read_bytes() == b"poster"
+    assert (dest / "animation-sources/scene.py").read_text() == "scene source"
+    movie.write_bytes(b"stale render")
+    with pytest.raises(ValueError, match="registered revision"):
+        exporter.export(course, course / "public", dest)

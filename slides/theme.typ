@@ -55,9 +55,10 @@
 #let deck-fig(name, columns: 12) = image("/slides/build/fig/" + name + ".svg", width: cols(columns))
 #let plot(name, columns: 6) = image(plot-path(name), width: cols(columns),
   alt: "Computed " + name.replace("_", " ") + " plot; axes show quantities and units.")
-#let poster-path(slug) = "/slides/build/media/" + slug + ".png"
-// Fusion has no registered animations yet; animation pages fail loudly.
-#let animation-hosts = (animations: (:))
+// One media register (media/animations.json) supplies stream URLs, player
+// pages and the committed posters; an unregistered slug fails loudly.
+#let animation-hosts = json("/media/animations.json")
+#let poster-path(slug) = "/" + animation-hosts.animations.at(slug).poster
 #let animation-url(name) = {
   let media = animation-hosts.animations.at(name.replace("_", "-"))
   media.player_url
