@@ -34,14 +34,17 @@ $r_c = 1.440 thin "MeV fm" \/ 7.5 thin "keV" = 0.19 thin "pm"$, still far
 outside the nuclei (a few fm).
 
 #animation("animations/coulomb_collision.mp4",
-  "Head-on D-T collision at eta = 2 seen from above in the centre-of-mass frame, classical on the left and quantum on the right, on the same clock. Left: the deuteron (small dot) and the triton (large dot) approach along a line, slow down, turn at separation r_c and fly apart. Right: each nucleus is a probability cloud; the clouds approach, show interference fringes while they are reflected, and a small part reaches separations below r_c, drawn in yellow.",
+  "Head-on D-T collision at eta = 2 seen from above in the centre-of-mass frame, shown in three parts on the same clock, axes and scale: the classical collision alone, the quantum collision alone, and both side by side. Classical: the deuteron (small dot) and the triton (larger dot) approach along a line, slow down, turn at separation r_c and fly apart. Quantum: each nucleus is a probability cloud; the clouds approach, show interference fringes while they are reflected, and a small part reaches separations below r_c, drawn in yellow.",
   poster: "../media/coulomb-collision.png",
   caption: [Head-on D–T collision ($ell = 0$) at $eta = 2$
-  ($E = 7.5 thin "keV"$), seen from above in the centre-of-mass frame, same
-  energy and same clock in both panels. With separation $r$ the nuclei sit at
+  ($E = 7.5 thin "keV"$), seen from above in the centre-of-mass frame (the
+  cross marks the centre of mass), shown three times on the same clock, axes
+  and scale: classical alone, quantum alone, and both side by side. With
+  separation $r$ the nuclei sit at
   $x_"D" = -(m_"T" \/ M) r$ and $x_"T" = (m_"D" \/ M) r$, $M = m_"D" + m_"T"$;
-  the bar marks $r_c$ between the turning positions. Left: point particles on
-  the classical orbit $r(t)$ at energy $E$, reflected at $r_c$. Right: the
+  the bar marks $r_c$ between the turning positions, and the shaded band is
+  $r < r_c$. Classical: point particles on
+  the orbit $r(t)$ at energy $E$, reflected at $r_c$. Quantum: the
   densities of $x_"D"$ and $x_"T"$ obtained from the $ell = 0$ wave
   packet $|u(r, t)|^2$ (12 % energy spread) by the same relations. Incoming
   and reflected waves interfere into fringes, and a few per cent of the
