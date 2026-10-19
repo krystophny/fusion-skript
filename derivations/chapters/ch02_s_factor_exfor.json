@@ -1,0 +1,1322 @@
+{
+ "description": "Measured fusion cross sections from EXFOR converted to the S-factor S = sigma E exp(sqrt(E_G/E)); E, E_G in keV, sigma in barn, S in keV b.",
+ "source": "IAEA-NDS/exfor_master commit d2af85eca4ce9b76529f096e7f9603da60654732 (EXFOR master files of the IAEA Nuclear Data Section)",
+ "access_note": "nds.iaea.org/exfor returns a Cloudflare challenge (HTTP 403) to scripts.",
+ "bosch_hale": {
+  "DT": {
+   "A": [
+    69270.0,
+    745400000.0,
+    2050000.0,
+    52002.0,
+    0.0
+   ],
+   "B": [
+    63.8,
+    -0.995,
+    6.981e-05,
+    0.0001728
+   ]
+  },
+  "DDn": {
+   "A": [
+    53701.0,
+    330.27,
+    -0.12706,
+    2.9327e-05,
+    -2.5151e-09
+   ],
+   "B": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "DDp": {
+   "A": [
+    55576.0,
+    210.54,
+    -0.032638,
+    1.4987e-06,
+    1.8181e-10
+   ],
+   "B": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "bosch_hale_note": "Copied from data/ch02/cross-sections.json; Bosch & Hale, Nucl. Fusion 32, 611 (1992), Table IV, S in keV mb, E in keV.",
+ "masses_u": {
+  "D": 2.01410178,
+  "T": 3.01604928
+ },
+ "B_G_sqrt_keV": {
+  "DT": 34.3827,
+  "DD": 31.397
+ },
+ "entry_sha256": {
+  "C0018": "e4ff374d8b8db0ae326e89620f6e13cd5c0457965bfc690744ecde776389d78f",
+  "C0319": "82c72b53c17b24cf5a18a6dd88e15a46033fce2068c61099500c8ccaef2d4cdc",
+  "C0295": "07144dba0404e9279316a56bfe345225fbb4f969c77e7d2ad10a7440f928c06a",
+  "C0004": "5f69f0ca11cd08d407ce0b5983b88c35672869438f8cebc269343db8a1b831fd",
+  "A1142": "6c1dd36030cc21bb66e07d76cb532498a804052911dda54094a5ff30846434bd",
+  "C1499": "e126554e26df6cde65997b88053c129f0b6c06bb39bce654460b787f225826f8",
+  "O1171": "98b62bb920fd51926136a7a2b5e9b04ae69576363ab1c46bd364b8bfdb577c9d"
+ },
+ "series": [
+  {
+   "reaction": "DT",
+   "branch": "DT",
+   "label": "Arnold 1954",
+   "exfor_entry": "C0018",
+   "exfor_subentry": "C0018002",
+   "authors": "W.R. Arnold, J.A. Phillips, G.A. Sawyer, E.J. Stovall, J.L. Tuck",
+   "reference": "Phys. Rev. 93, 483 (1954)",
+   "doi": "10.1103/PhysRev.93.483",
+   "columns": "EN, DATA, DATA-ERR2 of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.599594",
+   "projectile": "D",
+   "target": "T",
+   "note": "Table VI of LA-1479 as compiled; assigned error (twice the standard error).",
+   "points": [
+    {
+     "e_lab_keV": 7.53,
+     "e_cm_keV": 4.514944,
+     "sigma_b": 0.000216,
+     "dsigma_b": 2.2895999999999996e-05,
+     "S_keVb": 10388.707920111665,
+     "dS_keVb": 1101.2030395318363
+    },
+    {
+     "e_lab_keV": 9.54,
+     "e_cm_keV": 5.720128,
+     "sigma_b": 0.001166,
+     "dsigma_b": 0.000123596,
+     "S_keVb": 11681.746173368398,
+     "dS_keVb": 1238.26509437705
+    },
+    {
+     "e_lab_keV": 9.6,
+     "e_cm_keV": 5.756104,
+     "sigma_b": 0.001193,
+     "dsigma_b": 0.000126458,
+     "S_keVb": 11498.23817206026,
+     "dS_keVb": 1218.8132462383876
+    },
+    {
+     "e_lab_keV": 10.76,
+     "e_cm_keV": 6.451633,
+     "sigma_b": 0.002082,
+     "dsigma_b": 0.000220692,
+     "S_keVb": 10161.568745361888,
+     "dS_keVb": 1077.1262870083604
+    },
+    {
+     "e_lab_keV": 10.8,
+     "e_cm_keV": 6.475617,
+     "sigma_b": 0.002251,
+     "dsigma_b": 0.00023860599999999999,
+     "S_keVb": 10754.004868879201,
+     "dS_keVb": 1139.9245161011952
+    },
+    {
+     "e_lab_keV": 10.94,
+     "e_cm_keV": 6.55956,
+     "sigma_b": 0.002402,
+     "dsigma_b": 0.000254612,
+     "S_keVb": 10658.45715343363,
+     "dS_keVb": 1129.7964582639645
+    },
+    {
+     "e_lab_keV": 14.97,
+     "e_cm_keV": 8.975925,
+     "sigma_b": 0.01542,
+     "dsigma_b": 0.00055512,
+     "S_keVb": 13342.583364486603,
+     "dS_keVb": 480.3330011215178
+    },
+    {
+     "e_lab_keV": 15.54,
+     "e_cm_keV": 9.317693,
+     "sigma_b": 0.01887,
+     "dsigma_b": 0.0006793200000000001,
+     "S_keVb": 13705.533207661763,
+     "dS_keVb": 493.3991954758235
+    },
+    {
+     "e_lab_keV": 15.8,
+     "e_cm_keV": 9.473588,
+     "sigma_b": 0.02008,
+     "dsigma_b": 0.0007228800000000001,
+     "S_keVb": 13510.696643345964,
+     "dS_keVb": 486.3850791604548
+    },
+    {
+     "e_lab_keV": 15.87,
+     "e_cm_keV": 9.51556,
+     "sigma_b": 0.02063,
+     "dsigma_b": 0.00074268,
+     "S_keVb": 13602.59942269118,
+     "dS_keVb": 489.69357921688254
+    },
+    {
+     "e_lab_keV": 19.93,
+     "e_cm_keV": 11.949912,
+     "sigma_b": 0.05641,
+     "dsigma_b": 0.00203076,
+     "S_keVb": 14070.351100555377,
+     "dS_keVb": 506.5326396199935
+    },
+    {
+     "e_lab_keV": 20.0,
+     "e_cm_keV": 11.991884,
+     "sigma_b": 0.05631,
+     "dsigma_b": 0.00202716,
+     "S_keVb": 13851.319946780937,
+     "dS_keVb": 498.6475180841137
+    },
+    {
+     "e_lab_keV": 20.07,
+     "e_cm_keV": 12.033855,
+     "sigma_b": 0.0564,
+     "dsigma_b": 0.0020304,
+     "S_keVb": 13682.826916263588,
+     "dS_keVb": 492.5817689854892
+    },
+    {
+     "e_lab_keV": 21.36,
+     "e_cm_keV": 12.807332,
+     "sigma_b": 0.07508,
+     "dsigma_b": 0.0027028799999999995,
+     "S_keVb": 14304.399434141764,
+     "dS_keVb": 514.9583796291034
+    },
+    {
+     "e_lab_keV": 21.39,
+     "e_cm_keV": 12.825319,
+     "sigma_b": 0.07894,
+     "dsigma_b": 0.00284184,
+     "S_keVb": 14959.772495876337,
+     "dS_keVb": 538.5518098515482
+    },
+    {
+     "e_lab_keV": 24.15,
+     "e_cm_keV": 14.480199,
+     "sigma_b": 0.1229,
+     "dsigma_b": 0.0044244,
+     "S_keVb": 14941.661331231846,
+     "dS_keVb": 537.8998079243465
+    },
+    {
+     "e_lab_keV": 24.48,
+     "e_cm_keV": 14.678065,
+     "sigma_b": 0.1359,
+     "dsigma_b": 0.0048924,
+     "S_keVb": 15755.129642036205,
+     "dS_keVb": 567.1846671133034
+    },
+    {
+     "e_lab_keV": 24.84,
+     "e_cm_keV": 14.893919,
+     "sigma_b": 0.1402,
+     "dsigma_b": 0.005047199999999999,
+     "S_keVb": 15450.574775088693,
+     "dS_keVb": 556.220691903193
+    },
+    {
+     "e_lab_keV": 24.89,
+     "e_cm_keV": 14.923899,
+     "sigma_b": 0.1398,
+     "dsigma_b": 0.0050328000000000005,
+     "S_keVb": 15299.909505392312,
+     "dS_keVb": 550.7967421941232
+    },
+    {
+     "e_lab_keV": 24.91,
+     "e_cm_keV": 14.935891,
+     "sigma_b": 0.1373,
+     "dsigma_b": 0.004942800000000001,
+     "S_keVb": 14984.734115680489,
+     "dS_keVb": 539.4504281644977
+    },
+    {
+     "e_lab_keV": 24.96,
+     "e_cm_keV": 14.965871,
+     "sigma_b": 0.1393,
+     "dsigma_b": 0.005014800000000001,
+     "S_keVb": 15098.318922017628,
+     "dS_keVb": 543.5394811926348
+    },
+    {
+     "e_lab_keV": 30.57,
+     "e_cm_keV": 18.329594,
+     "sigma_b": 0.3003,
+     "dsigma_b": 0.009009,
+     "S_keVb": 16923.04116954408,
+     "dS_keVb": 507.69123508632237
+    },
+    {
+     "e_lab_keV": 30.6,
+     "e_cm_keV": 18.347582,
+     "sigma_b": 0.3024,
+     "dsigma_b": 0.009072,
+     "S_keVb": 16991.070536818763,
+     "dS_keVb": 509.7321161045629
+    },
+    {
+     "e_lab_keV": 33.23,
+     "e_cm_keV": 19.924514,
+     "sigma_b": 0.391,
+     "dsigma_b": 0.01173,
+     "S_keVb": 17251.570965394058,
+     "dS_keVb": 517.5471289618217
+    },
+    {
+     "e_lab_keV": 33.81,
+     "e_cm_keV": 20.272279,
+     "sigma_b": 0.4219,
+     "dsigma_b": 0.012657,
+     "S_keVb": 17723.87348459806,
+     "dS_keVb": 531.7162045379418
+    },
+    {
+     "e_lab_keV": 39.95,
+     "e_cm_keV": 23.953787,
+     "sigma_b": 0.7043,
+     "dsigma_b": 0.021129000000000002,
+     "S_keVb": 18971.281126048492,
+     "dS_keVb": 569.1384337814548
+    },
+    {
+     "e_lab_keV": 39.98,
+     "e_cm_keV": 23.971775,
+     "sigma_b": 0.6832,
+     "dsigma_b": 0.020496,
+     "S_keVb": 18368.256532467527,
+     "dS_keVb": 551.0476959740258
+    },
+    {
+     "e_lab_keV": 41.97,
+     "e_cm_keV": 25.164968,
+     "sigma_b": 0.8689,
+     "dsigma_b": 0.026067,
+     "S_keVb": 20720.71420327927,
+     "dS_keVb": 621.6214260983782
+    },
+    {
+     "e_lab_keV": 42.13,
+     "e_cm_keV": 25.260903,
+     "sigma_b": 0.8785,
+     "dsigma_b": 0.026355,
+     "S_keVb": 20757.33096078445,
+     "dS_keVb": 622.7199288235336
+    },
+    {
+     "e_lab_keV": 42.23,
+     "e_cm_keV": 25.320862,
+     "sigma_b": 0.8501,
+     "dsigma_b": 0.025503,
+     "S_keVb": 19971.45374447626,
+     "dS_keVb": 599.1436123342879
+    },
+    {
+     "e_lab_keV": 42.8,
+     "e_cm_keV": 25.662631,
+     "sigma_b": 0.8758,
+     "dsigma_b": 0.026274000000000002,
+     "S_keVb": 19922.374343215477,
+     "dS_keVb": 597.6712302964644
+    },
+    {
+     "e_lab_keV": 42.9,
+     "e_cm_keV": 25.72259,
+     "sigma_b": 0.9106,
+     "dsigma_b": 0.027318,
+     "S_keVb": 20598.701689605157,
+     "dS_keVb": 617.9610506881546
+    },
+    {
+     "e_lab_keV": 43.52,
+     "e_cm_keV": 26.094339,
+     "sigma_b": 0.9276,
+     "dsigma_b": 0.027828,
+     "S_keVb": 20279.50318629994,
+     "dS_keVb": 608.3850955889982
+    },
+    {
+     "e_lab_keV": 44.0,
+     "e_cm_keV": 26.382144,
+     "sigma_b": 0.9635,
+     "dsigma_b": 0.028905000000000004,
+     "S_keVb": 20526.92522889394,
+     "dS_keVb": 615.8077568668182
+    },
+    {
+     "e_lab_keV": 49.6,
+     "e_cm_keV": 29.739871,
+     "sigma_b": 1.355,
+     "dsigma_b": 0.04064999999999999,
+     "S_keVb": 22050.208129436076,
+     "dS_keVb": 661.5062438830821
+    },
+    {
+     "e_lab_keV": 49.62,
+     "e_cm_keV": 29.751863,
+     "sigma_b": 1.359,
+     "dsigma_b": 0.04077,
+     "S_keVb": 22096.12213264231,
+     "dS_keVb": 662.8836639792694
+    },
+    {
+     "e_lab_keV": 49.95,
+     "e_cm_keV": 29.949729,
+     "sigma_b": 1.358,
+     "dsigma_b": 0.04074,
+     "S_keVb": 21767.926226915955,
+     "dS_keVb": 653.0377868074785
+    },
+    {
+     "e_lab_keV": 51.97,
+     "e_cm_keV": 31.160909,
+     "sigma_b": 1.5432,
+     "dsigma_b": 0.043209599999999994,
+     "S_keVb": 22751.197471818745,
+     "dS_keVb": 637.0335292109247
+    },
+    {
+     "e_lab_keV": 52.57,
+     "e_cm_keV": 31.520666,
+     "sigma_b": 1.5766,
+     "dsigma_b": 0.04414479999999999,
+     "S_keVb": 22697.593843928935,
+     "dS_keVb": 635.5326276300101
+    },
+    {
+     "e_lab_keV": 58.97,
+     "e_cm_keV": 35.358069,
+     "sigma_b": 2.1461,
+     "dsigma_b": 0.0600908,
+     "S_keVb": 24622.43985614033,
+     "dS_keVb": 689.4283159719292
+    },
+    {
+     "e_lab_keV": 59.01,
+     "e_cm_keV": 35.382052,
+     "sigma_b": 2.1194,
+     "dsigma_b": 0.059343200000000006,
+     "S_keVb": 24284.954596745967,
+     "dS_keVb": 679.978728708887
+    },
+    {
+     "e_lab_keV": 61.71,
+     "e_cm_keV": 37.000957,
+     "sigma_b": 2.368,
+     "dsigma_b": 0.06630399999999999,
+     "S_keVb": 24969.178313632652,
+     "dS_keVb": 699.1369927817142
+    },
+    {
+     "e_lab_keV": 61.98,
+     "e_cm_keV": 37.162847,
+     "sigma_b": 2.4077,
+     "dsigma_b": 0.06741559999999999,
+     "S_keVb": 25186.524346056296,
+     "dS_keVb": 705.2226816895763
+    },
+    {
+     "e_lab_keV": 68.76,
+     "e_cm_keV": 41.228096,
+     "sigma_b": 3.049,
+     "dsigma_b": 0.08537199999999999,
+     "S_keVb": 26601.813961712098,
+     "dS_keVb": 744.8507909279388
+    },
+    {
+     "e_lab_keV": 68.8,
+     "e_cm_keV": 41.252079,
+     "sigma_b": 3.0421,
+     "dsigma_b": 0.0851788,
+     "S_keVb": 26515.739917013278,
+     "dS_keVb": 742.4407176763718
+    },
+    {
+     "e_lab_keV": 70.87,
+     "e_cm_keV": 42.493239,
+     "sigma_b": 3.2354,
+     "dsigma_b": 0.09059119999999998,
+     "S_keVb": 26848.964119304415,
+     "dS_keVb": 751.7709953405234
+    },
+    {
+     "e_lab_keV": 72.2,
+     "e_cm_keV": 43.2907,
+     "sigma_b": 3.362,
+     "dsigma_b": 0.09413599999999998,
+     "S_keVb": 27069.210702127653,
+     "dS_keVb": 757.9378996595743
+    },
+    {
+     "e_lab_keV": 77.74,
+     "e_cm_keV": 46.612451,
+     "sigma_b": 3.83,
+     "dsigma_b": 0.10724,
+     "S_keVb": 27467.825037737304,
+     "dS_keVb": 769.0991010566444
+    },
+    {
+     "e_lab_keV": 77.78,
+     "e_cm_keV": 46.636435,
+     "sigma_b": 3.8377,
+     "dsigma_b": 0.1074556,
+     "S_keVb": 27501.568495185933,
+     "dS_keVb": 770.043917865206
+    },
+    {
+     "e_lab_keV": 77.8,
+     "e_cm_keV": 46.648427,
+     "sigma_b": 3.819,
+     "dsigma_b": 0.10693199999999999,
+     "S_keVb": 27356.88791037588,
+     "dS_keVb": 765.9928614905247
+    },
+    {
+     "e_lab_keV": 78.75,
+     "e_cm_keV": 47.218041,
+     "sigma_b": 3.911,
+     "dsigma_b": 0.109508,
+     "S_keVb": 27507.347623002068,
+     "dS_keVb": 770.2057334440578
+    },
+    {
+     "e_lab_keV": 78.8,
+     "e_cm_keV": 47.248021,
+     "sigma_b": 3.92,
+     "dsigma_b": 0.10976,
+     "S_keVb": 27544.38577069246,
+     "dS_keVb": 771.2428015793888
+    },
+    {
+     "e_lab_keV": 88.05,
+     "e_cm_keV": 52.794267,
+     "sigma_b": 4.501,
+     "dsigma_b": 0.126028,
+     "S_keVb": 26976.528650015352,
+     "dS_keVb": 755.3428022004298
+    },
+    {
+     "e_lab_keV": 88.1,
+     "e_cm_keV": 52.824247,
+     "sigma_b": 4.523,
+     "dsigma_b": 0.12664399999999998,
+     "S_keVb": 27087.37586896055,
+     "dS_keVb": 758.4465243308953
+    },
+    {
+     "e_lab_keV": 97.83,
+     "e_cm_keV": 58.658298,
+     "sigma_b": 4.905,
+     "dsigma_b": 0.13734,
+     "S_keVb": 25623.090731953922,
+     "dS_keVb": 717.4465404947098
+    },
+    {
+     "e_lab_keV": 97.86,
+     "e_cm_keV": 58.676286,
+     "sigma_b": 4.916,
+     "dsigma_b": 0.13764800000000002,
+     "S_keVb": 25670.756497882147,
+     "dS_keVb": 718.7811819407001
+    },
+    {
+     "e_lab_keV": 102.39,
+     "e_cm_keV": 61.392448,
+     "sigma_b": 4.977,
+     "dsigma_b": 0.139356,
+     "S_keVb": 24594.41398796554,
+     "dS_keVb": 688.6435916630352
+    },
+    {
+     "e_lab_keV": 102.45,
+     "e_cm_keV": 61.428423,
+     "sigma_b": 4.96,
+     "dsigma_b": 0.13888,
+     "S_keVb": 24493.27163744093,
+     "dS_keVb": 685.811605848346
+    },
+    {
+     "e_lab_keV": 107.59,
+     "e_cm_keV": 64.510337,
+     "sigma_b": 4.947,
+     "dsigma_b": 0.138516,
+     "S_keVb": 23072.82024408118,
+     "dS_keVb": 646.0389668342731
+    },
+    {
+     "e_lab_keV": 107.64,
+     "e_cm_keV": 64.540317,
+     "sigma_b": 4.968,
+     "dsigma_b": 0.139104,
+     "S_keVb": 23158.493131487405,
+     "dS_keVb": 648.4378076816472
+    },
+    {
+     "e_lab_keV": 112.36,
+     "e_cm_keV": 67.370402,
+     "sigma_b": 4.952,
+     "dsigma_b": 0.138656,
+     "S_keVb": 22003.340476450052,
+     "dS_keVb": 616.0935333406015
+    },
+    {
+     "e_lab_keV": 112.39,
+     "e_cm_keV": 67.388389,
+     "sigma_b": 4.942,
+     "dsigma_b": 0.138376,
+     "S_keVb": 21952.492930579952,
+     "dS_keVb": 614.6698020562387
+    },
+    {
+     "e_lab_keV": 117.4,
+     "e_cm_keV": 70.392356,
+     "sigma_b": 4.823,
+     "dsigma_b": 0.135044,
+     "S_keVb": 20445.755277381082,
+     "dS_keVb": 572.4811477666702
+    },
+    {
+     "e_lab_keV": 117.48,
+     "e_cm_keV": 70.440324,
+     "sigma_b": 4.775,
+     "dsigma_b": 0.1337,
+     "S_keVb": 20227.817700433094,
+     "dS_keVb": 566.3788956121267
+    }
+   ]
+  },
+  {
+   "reaction": "DT",
+   "branch": "DT",
+   "label": "Jarmie 1984",
+   "exfor_entry": "C0319",
+   "exfor_subentry": "C0319003",
+   "authors": "N. Jarmie, R.E. Brown, R.A. Hardekopf",
+   "reference": "Phys. Rev. C 29, 2031 (1984)",
+   "doi": "10.1103/PhysRevC.29.2031",
+   "columns": "EN, 1DATA, ERR-T of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.400406",
+   "projectile": "T",
+   "target": "D",
+   "note": "Triton beam on D2 gas target (inverse kinematics); EXFOR S column ignored.",
+   "points": [
+    {
+     "e_lab_keV": 12.469,
+     "e_cm_keV": 4.99266,
+     "sigma_b": 0.0005250000000000001,
+     "dsigma_b": 2.4990000000000003e-05,
+     "S_keVb": 12626.661650328608,
+     "dS_keVb": 601.0290945556417
+    },
+    {
+     "e_lab_keV": 14.962,
+     "e_cm_keV": 5.990872,
+     "sigma_b": 0.001784,
+     "dsigma_b": 5.56608e-05,
+     "S_keVb": 13476.567594445758,
+     "dS_keVb": 420.4689089467077
+    },
+    {
+     "e_lab_keV": 17.459,
+     "e_cm_keV": 6.990685,
+     "sigma_b": 0.00413,
+     "dsigma_b": 0.00014000700000000002,
+     "S_keVb": 12825.553010880732,
+     "dS_keVb": 434.7862470688569
+    },
+    {
+     "e_lab_keV": 19.956,
+     "e_cm_keV": 7.990499,
+     "sigma_b": 0.00877,
+     "dsigma_b": 0.00020784900000000002,
+     "S_keVb": 13429.110197485952,
+     "dS_keVb": 318.2699116804171
+    },
+    {
+     "e_lab_keV": 24.95,
+     "e_cm_keV": 9.990125,
+     "sigma_b": 0.02628,
+     "dsigma_b": 0.000425736,
+     "S_keVb": 13915.890949318486,
+     "dS_keVb": 225.43743337895947
+    },
+    {
+     "e_lab_keV": 29.945,
+     "e_cm_keV": 11.990152,
+     "sigma_b": 0.05813,
+     "dsigma_b": 0.000831259,
+     "S_keVb": 14307.1960581765,
+     "dS_keVb": 204.59290363192392
+    },
+    {
+     "e_lab_keV": 39.938,
+     "e_cm_keV": 15.991408,
+     "sigma_b": 0.1824,
+     "dsigma_b": 0.002736,
+     "S_keVb": 15811.333735003445,
+     "dS_keVb": 237.1700060250517
+    },
+    {
+     "e_lab_keV": 49.932,
+     "e_cm_keV": 19.993064,
+     "sigma_b": 0.3969,
+     "dsigma_b": 0.00539784,
+     "S_keVb": 17341.425873629527,
+     "dS_keVb": 235.8433918813616
+    },
+    {
+     "e_lab_keV": 59.927,
+     "e_cm_keV": 23.99512,
+     "sigma_b": 0.7036,
+     "dsigma_b": 0.00935788,
+     "S_keVb": 18870.556286491985,
+     "dS_keVb": 250.97839861034345
+    },
+    {
+     "e_lab_keV": 69.923,
+     "e_cm_keV": 27.997576,
+     "sigma_b": 1.114,
+     "dsigma_b": 0.014927600000000003,
+     "S_keVb": 20703.86882662301,
+     "dS_keVb": 277.43184227674834
+    },
+    {
+     "e_lab_keV": 79.919,
+     "e_cm_keV": 32.000033,
+     "sigma_b": 1.59,
+     "dsigma_b": 0.021624000000000004,
+     "S_keVb": 22192.90438801695,
+     "dS_keVb": 301.82349967703055
+    },
+    {
+     "e_lab_keV": 89.917,
+     "e_cm_keV": 36.00329,
+     "sigma_b": 2.166,
+     "dsigma_b": 0.0290244,
+     "S_keVb": 24020.925260132237,
+     "dS_keVb": 321.88039848577193
+    },
+    {
+     "e_lab_keV": 99.914,
+     "e_cm_keV": 40.006147,
+     "sigma_b": 2.7520000000000002,
+     "dsigma_b": 0.0379776,
+     "S_keVb": 25268.795938866162,
+     "dS_keVb": 348.709383956353
+    },
+    {
+     "e_lab_keV": 104.914,
+     "e_cm_keV": 42.008177,
+     "sigma_b": 3.074,
+     "dsigma_b": 0.0411916,
+     "S_keVb": 25995.88054755256,
+     "dS_keVb": 348.34479933720434
+    },
+    {
+     "e_lab_keV": 109.913,
+     "e_cm_keV": 44.009805,
+     "sigma_b": 3.352,
+     "dsigma_b": 0.0459224,
+     "S_keVb": 26285.670857109933,
+     "dS_keVb": 360.11369074240605
+    },
+    {
+     "e_lab_keV": 114.913,
+     "e_cm_keV": 46.011834,
+     "sigma_b": 3.6550000000000002,
+     "dsigma_b": 0.049342500000000004,
+     "S_keVb": 26736.776353392575,
+     "dS_keVb": 360.94648077079984
+    },
+    {
+     "e_lab_keV": 116.912,
+     "e_cm_keV": 46.812246,
+     "sigma_b": 3.739,
+     "dsigma_b": 0.050850400000000004,
+     "S_keVb": 26641.96110140819,
+     "dS_keVb": 362.3306709791514
+    }
+   ]
+  },
+  {
+   "reaction": "DT",
+   "branch": "DT",
+   "label": "Brown 1987",
+   "exfor_entry": "C0295",
+   "exfor_subentry": "C0295002",
+   "authors": "R.E. Brown, N. Jarmie, G.M. Hale",
+   "reference": "Phys. Rev. C 35, 1999 (1987)",
+   "doi": "10.1103/PhysRevC.35.1999",
+   "columns": "EN, 1DATA, ERR-T of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.599594",
+   "projectile": "D",
+   "target": "T",
+   "note": "EXFOR S column ignored; total error from COMMON block.",
+   "points": [
+    {
+     "e_lab_keV": 79.913,
+     "e_cm_keV": 47.915369,
+     "sigma_b": 3.849,
+     "dsigma_b": 0.061584,
+     "S_keVb": 26485.315744610925,
+     "dS_keVb": 423.76505191377476
+    },
+    {
+     "e_lab_keV": 84.912,
+     "e_cm_keV": 50.912741,
+     "sigma_b": 4.259,
+     "dsigma_b": 0.06814400000000001,
+     "S_keVb": 26844.403684062698,
+     "dS_keVb": 429.5104589450032
+    },
+    {
+     "e_lab_keV": 89.904,
+     "e_cm_keV": 53.905915,
+     "sigma_b": 4.444,
+     "dsigma_b": 0.071104,
+     "S_keVb": 25894.071123085818,
+     "dS_keVb": 414.30513796937305
+    },
+    {
+     "e_lab_keV": 94.903,
+     "e_cm_keV": 56.903286,
+     "sigma_b": 4.698,
+     "dsigma_b": 0.07516800000000001,
+     "S_keVb": 25500.62701327976,
+     "dS_keVb": 408.0100322124762
+    },
+    {
+     "e_lab_keV": 99.902,
+     "e_cm_keV": 59.900657,
+     "sigma_b": 4.779,
+     "dsigma_b": 0.076464,
+     "S_keVb": 24328.055856198684,
+     "dS_keVb": 389.24889369917895
+    },
+    {
+     "e_lab_keV": 104.901,
+     "e_cm_keV": 62.898029,
+     "sigma_b": 4.882,
+     "dsigma_b": 0.078112,
+     "S_keVb": 23444.537517655524,
+     "dS_keVb": 375.1126002824884
+    },
+    {
+     "e_lab_keV": 109.901,
+     "e_cm_keV": 65.896,
+     "sigma_b": 4.836,
+     "dsigma_b": 0.077376,
+     "S_keVb": 22020.34129992647,
+     "dS_keVb": 352.3254607988235
+    },
+    {
+     "e_lab_keV": 115.901,
+     "e_cm_keV": 69.493565,
+     "sigma_b": 4.734,
+     "dsigma_b": 0.075744,
+     "S_keVb": 20342.55430363039,
+     "dS_keVb": 325.4808688580863
+    }
+   ]
+  },
+  {
+   "reaction": "DT",
+   "branch": "DT",
+   "label": "Bame 1957",
+   "exfor_entry": "C0004",
+   "exfor_subentry": "C0004002",
+   "authors": "S.J. Bame, J.E. Perry",
+   "reference": "Phys. Rev. 107, 1616 (1957)",
+   "doi": "10.1103/PhysRev.107.1616",
+   "columns": "EN, DATA, DATA-ERR of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.599594",
+   "projectile": "D",
+   "target": "T",
+   "note": "Only points with E_cm <= 550 keV (Bosch-Hale validity limit).",
+   "points": [
+    {
+     "e_lab_keV": 500.0,
+     "e_cm_keV": 299.797088,
+     "sigma_b": 0.644,
+     "dsigma_b": 0.0322,
+     "S_keVb": 1406.4261214728904,
+     "dS_keVb": 70.32130607364451
+    },
+    {
+     "e_lab_keV": 750.0,
+     "e_cm_keV": 449.695632,
+     "sigma_b": 0.369,
+     "dsigma_b": 0.01845,
+     "S_keVb": 839.6429852494072,
+     "dS_keVb": 41.98214926247036
+    }
+   ]
+  },
+  {
+   "reaction": "DD",
+   "branch": "n",
+   "label": "Preston 1954",
+   "exfor_entry": "A1142",
+   "exfor_subentry": "A1142002",
+   "authors": "G. Preston, P.F.D. Shaw, J.A. Young",
+   "reference": "Proc. R. Soc. A 226, 206 (1954)",
+   "doi": "10.1098/rspa.1954.0249",
+   "columns": "EN, DATA, DATA-ERR of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.500000",
+   "projectile": "D",
+   "target": "D",
+   "note": "D(d,n)3He.",
+   "points": [
+    {
+     "e_lab_keV": 156.0,
+     "e_cm_keV": 78.0,
+     "sigma_b": 0.029,
+     "dsigma_b": 0.0018000000000000002,
+     "S_keVb": 79.14325634880434,
+     "dS_keVb": 4.912340049236132
+    },
+    {
+     "e_lab_keV": 206.0,
+     "e_cm_keV": 103.0,
+     "sigma_b": 0.0383,
+     "dsigma_b": 0.0021000000000000003,
+     "S_keVb": 87.01338349388705,
+     "dS_keVb": 4.77096880775882
+    },
+    {
+     "e_lab_keV": 270.0,
+     "e_cm_keV": 135.0,
+     "sigma_b": 0.051000000000000004,
+     "dsigma_b": 0.0046,
+     "S_keVb": 102.67499857643183,
+     "dS_keVb": 9.26088222454091
+    },
+    {
+     "e_lab_keV": 362.0,
+     "e_cm_keV": 181.0,
+     "sigma_b": 0.06,
+     "dsigma_b": 0.0037,
+     "S_keVb": 112.03450962397655,
+     "dS_keVb": 6.908794760145222
+    },
+    {
+     "e_lab_keV": 466.0,
+     "e_cm_keV": 233.0,
+     "sigma_b": 0.0733,
+     "dsigma_b": 0.0054,
+     "S_keVb": 133.58388634977533,
+     "dS_keVb": 9.84110486069286
+    }
+   ]
+  },
+  {
+   "reaction": "DD",
+   "branch": "p",
+   "label": "Preston 1954",
+   "exfor_entry": "A1142",
+   "exfor_subentry": "A1142003",
+   "authors": "G. Preston, P.F.D. Shaw, J.A. Young",
+   "reference": "Proc. R. Soc. A 226, 206 (1954)",
+   "doi": "10.1098/rspa.1954.0249",
+   "columns": "EN, DATA, DATA-ERR of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.500000",
+   "projectile": "D",
+   "target": "D",
+   "note": "D(d,p)T.",
+   "points": [
+    {
+     "e_lab_keV": 156.0,
+     "e_cm_keV": 78.0,
+     "sigma_b": 0.0262,
+     "dsigma_b": 0.002,
+     "S_keVb": 71.50183849443702,
+     "dS_keVb": 5.458155610262368
+    },
+    {
+     "e_lab_keV": 206.0,
+     "e_cm_keV": 103.0,
+     "sigma_b": 0.0347,
+     "dsigma_b": 0.0022,
+     "S_keVb": 78.83457982344335,
+     "dS_keVb": 4.998157798604478
+    },
+    {
+     "e_lab_keV": 270.0,
+     "e_cm_keV": 135.0,
+     "sigma_b": 0.0449,
+     "dsigma_b": 0.0039,
+     "S_keVb": 90.39426345258411,
+     "dS_keVb": 7.851617538197727
+    },
+    {
+     "e_lab_keV": 362.0,
+     "e_cm_keV": 181.0,
+     "sigma_b": 0.0508,
+     "dsigma_b": 0.0040999999999999995,
+     "S_keVb": 94.8558848149668,
+     "dS_keVb": 7.65569149097173
+    },
+    {
+     "e_lab_keV": 466.0,
+     "e_cm_keV": 233.0,
+     "sigma_b": 0.061200000000000004,
+     "dsigma_b": 0.0045000000000000005,
+     "S_keVb": 111.5325217545191,
+     "dS_keVb": 8.200920717244053
+    }
+   ]
+  },
+  {
+   "reaction": "DD",
+   "branch": "n",
+   "label": "Leonard 2006",
+   "exfor_entry": "C1499",
+   "exfor_subentry": "C1499003",
+   "authors": "D.S. Leonard, H.J. Karwowski, C.R. Brune, B.M. Fisher, E.J. Ludwig",
+   "reference": "Phys. Rev. C 73, 045801 (2006)",
+   "doi": "10.1103/PhysRevC.73.045801",
+   "columns": "EN, DATA, DATA-ERR of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.500000",
+   "projectile": "D",
+   "target": "D",
+   "note": "D(d,n)3He; EXFOR energy taken as effective deuteron lab energy.",
+   "points": [
+    {
+     "e_lab_keV": 112.2,
+     "e_cm_keV": 56.1,
+     "sigma_b": 0.021070000000000002,
+     "dsigma_b": 0.00092,
+     "S_keVb": 78.18597668264353,
+     "dS_keVb": 3.4139107047001445
+    },
+    {
+     "e_lab_keV": 172.8,
+     "e_cm_keV": 86.4,
+     "sigma_b": 0.033030000000000004,
+     "dsigma_b": 0.00101,
+     "S_keVb": 83.63215108188912,
+     "dS_keVb": 2.557325842952104
+    },
+    {
+     "e_lab_keV": 232.8,
+     "e_cm_keV": 116.4,
+     "sigma_b": 0.04313,
+     "dsigma_b": 0.00096,
+     "S_keVb": 92.16875536117358,
+     "dS_keVb": 2.0515187838332167
+    },
+    {
+     "e_lab_keV": 314.6,
+     "e_cm_keV": 157.3,
+     "sigma_b": 0.05601,
+     "dsigma_b": 0.00133,
+     "S_keVb": 107.69385889334691,
+     "dS_keVb": 2.557272492914683
+    },
+    {
+     "e_lab_keV": 379.2,
+     "e_cm_keV": 189.6,
+     "sigma_b": 0.0626,
+     "dsigma_b": 0.0011200000000000001,
+     "S_keVb": 116.05982891731696,
+     "dS_keVb": 2.0764697825462464
+    },
+    {
+     "e_lab_keV": 470.2,
+     "e_cm_keV": 235.1,
+     "sigma_b": 0.06955,
+     "dsigma_b": 0.0010400000000000001,
+     "S_keVb": 126.72006181744226,
+     "dS_keVb": 1.8948794290458657
+    },
+    {
+     "e_lab_keV": 557.3,
+     "e_cm_keV": 278.65,
+     "sigma_b": 0.08022,
+     "dsigma_b": 0.00118,
+     "S_keVb": 146.6198884436627,
+     "dS_keVb": 2.1567123954565197
+    },
+    {
+     "e_lab_keV": 646.1,
+     "e_cm_keV": 323.05,
+     "sigma_b": 0.08434,
+     "dsigma_b": 0.00159,
+     "S_keVb": 156.29553836958596,
+     "dS_keVb": 2.9465248518809775
+    }
+   ]
+  },
+  {
+   "reaction": "DD",
+   "branch": "p",
+   "label": "Leonard 2006",
+   "exfor_entry": "C1499",
+   "exfor_subentry": "C1499002",
+   "authors": "D.S. Leonard, H.J. Karwowski, C.R. Brune, B.M. Fisher, E.J. Ludwig",
+   "reference": "Phys. Rev. C 73, 045801 (2006)",
+   "doi": "10.1103/PhysRevC.73.045801",
+   "columns": "EN, DATA, DATA-ERR of the EXFOR data table",
+   "lab_to_cm": "E_cm = E_lab * m_target/(m_proj + m_target) = E_lab * 0.500000",
+   "projectile": "D",
+   "target": "D",
+   "note": "D(d,p)T; EXFOR energy taken as effective deuteron lab energy.",
+   "points": [
+    {
+     "e_lab_keV": 112.2,
+     "e_cm_keV": 56.1,
+     "sigma_b": 0.01977,
+     "dsigma_b": 0.00085,
+     "S_keVb": 73.36197242600201,
+     "dS_keVb": 3.1541566293425247
+    },
+    {
+     "e_lab_keV": 172.8,
+     "e_cm_keV": 86.4,
+     "sigma_b": 0.02955,
+     "dsigma_b": 0.00088,
+     "S_keVb": 74.82077094973731,
+     "dS_keVb": 2.228165090888962
+    },
+    {
+     "e_lab_keV": 232.8,
+     "e_cm_keV": 116.4,
+     "sigma_b": 0.037649999999999996,
+     "dsigma_b": 0.00082,
+     "S_keVb": 80.45800230345895,
+     "dS_keVb": 1.7523389611908726
+    },
+    {
+     "e_lab_keV": 314.6,
+     "e_cm_keV": 157.3,
+     "sigma_b": 0.045770000000000005,
+     "dsigma_b": 0.0010600000000000002,
+     "S_keVb": 88.00478345917674,
+     "dS_keVb": 2.0381269492402745
+    },
+    {
+     "e_lab_keV": 379.2,
+     "e_cm_keV": 189.6,
+     "sigma_b": 0.053090000000000005,
+     "dsigma_b": 0.00094,
+     "S_keVb": 98.42837567444663,
+     "dS_keVb": 1.742751424637028
+    },
+    {
+     "e_lab_keV": 470.2,
+     "e_cm_keV": 235.1,
+     "sigma_b": 0.05847,
+     "dsigma_b": 0.0008,
+     "S_keVb": 106.53230790029977,
+     "dS_keVb": 1.457599560804512
+    },
+    {
+     "e_lab_keV": 557.3,
+     "e_cm_keV": 278.65,
+     "sigma_b": 0.06802,
+     "dsigma_b": 0.00096,
+     "S_keVb": 124.32167554148512,
+     "dS_keVb": 1.7546134742697106
+    },
+    {
+     "e_lab_keV": 646.1,
+     "e_cm_keV": 323.05,
+     "sigma_b": 0.07455,
+     "dsigma_b": 0.00107,
+     "S_keVb": 138.1530991872496,
+     "dS_keVb": 1.982881504096004
+    }
+   ]
+  },
+  {
+   "reaction": "DD",
+   "branch": "n",
+   "label": "Greife 1995",
+   "exfor_entry": "O1171",
+   "exfor_subentry": "O1171002",
+   "authors": "U. Greife, F. Gorris, M. Junker, C. Rolfs, D. Zahnow",
+   "reference": "Z. Phys. A 351, 107 (1995)",
+   "doi": "10.1007/BF01292792",
+   "columns": "EN-CM, 2DATA, 2ERR-T of the EXFOR data table",
+   "lab_to_cm": "none; EXFOR energy is centre-of-mass",
+   "projectile": null,
+   "target": null,
+   "note": "D(d,n)3He; EXFOR energy already centre-of-mass (second data/error column pair).",
+   "points": [
+    {
+     "e_lab_keV": 14.85,
+     "e_cm_keV": 14.85,
+     "sigma_b": 0.00121,
+     "dsigma_b": 5e-05,
+     "S_keVb": 62.076990431243935,
+     "dS_keVb": 2.5651648938530554
+    },
+    {
+     "e_lab_keV": 24.66,
+     "e_cm_keV": 24.66,
+     "sigma_b": 0.005,
+     "dsigma_b": 0.0002,
+     "S_keVb": 68.67639782307035,
+     "dS_keVb": 2.747055912922814
+    },
+    {
+     "e_lab_keV": 39.62,
+     "e_cm_keV": 39.62,
+     "sigma_b": 0.0126,
+     "dsigma_b": 0.0005,
+     "S_keVb": 73.20962822208351,
+     "dS_keVb": 2.9051439770668055
+    },
+    {
+     "e_lab_keV": 41.0,
+     "e_cm_keV": 41.0,
+     "sigma_b": 0.0132,
+     "dsigma_b": 0.0005,
+     "S_keVb": 72.92424913723838,
+     "dS_keVb": 2.7622821642893323
+    },
+    {
+     "e_lab_keV": 50.0,
+     "e_cm_keV": 50.0,
+     "sigma_b": 0.0179,
+     "dsigma_b": 0.0007,
+     "S_keVb": 75.88922878391357,
+     "dS_keVb": 2.967735203840195
+    },
+    {
+     "e_lab_keV": 52.0,
+     "e_cm_keV": 52.0,
+     "sigma_b": 0.0181,
+     "dsigma_b": 0.0007,
+     "S_keVb": 73.21357781864137,
+     "dS_keVb": 2.831464335527567
+    },
+    {
+     "e_lab_keV": 76.0,
+     "e_cm_keV": 76.0,
+     "sigma_b": 0.0298,
+     "dsigma_b": 0.001,
+     "S_keVb": 83.0106865383408,
+     "dS_keVb": 2.7855935079980134
+    },
+    {
+     "e_lab_keV": 102.0,
+     "e_cm_keV": 102.0,
+     "sigma_b": 0.0394,
+     "dsigma_b": 0.0014,
+     "S_keVb": 89.9945930487898,
+     "dS_keVb": 3.197777417977303
+    },
+    {
+     "e_lab_keV": 128.0,
+     "e_cm_keV": 128.0,
+     "sigma_b": 0.049,
+     "dsigma_b": 0.0017,
+     "S_keVb": 100.60724109616142,
+     "dS_keVb": 3.4904553033362125
+    }
+   ]
+  },
+  {
+   "reaction": "DD",
+   "branch": "p",
+   "label": "Greife 1995",
+   "exfor_entry": "O1171",
+   "exfor_subentry": "O1171002",
+   "authors": "U. Greife, F. Gorris, M. Junker, C. Rolfs, D. Zahnow",
+   "reference": "Z. Phys. A 351, 107 (1995)",
+   "doi": "10.1007/BF01292792",
+   "columns": "EN-CM, 1DATA, 1ERR-T of the EXFOR data table",
+   "lab_to_cm": "none; EXFOR energy is centre-of-mass",
+   "projectile": null,
+   "target": null,
+   "note": "D(d,p)T; EXFOR energy already centre-of-mass (first data/error column pair).",
+   "points": [
+    {
+     "e_lab_keV": 14.85,
+     "e_cm_keV": 14.85,
+     "sigma_b": 0.00121,
+     "dsigma_b": 7.000000000000001e-05,
+     "S_keVb": 62.076990431243935,
+     "dS_keVb": 3.5912308513942777
+    },
+    {
+     "e_lab_keV": 24.66,
+     "e_cm_keV": 24.66,
+     "sigma_b": 0.0047,
+     "dsigma_b": 0.0002,
+     "S_keVb": 64.55581395368613,
+     "dS_keVb": 2.747055912922814
+    },
+    {
+     "e_lab_keV": 39.62,
+     "e_cm_keV": 39.62,
+     "sigma_b": 0.011800000000000001,
+     "dsigma_b": 0.0005,
+     "S_keVb": 68.56139785877663,
+     "dS_keVb": 2.9051439770668055
+    },
+    {
+     "e_lab_keV": 41.0,
+     "e_cm_keV": 41.0,
+     "sigma_b": 0.0127,
+     "dsigma_b": 0.0006,
+     "S_keVb": 70.16196697294903,
+     "dS_keVb": 3.3147385971471985
+    },
+    {
+     "e_lab_keV": 50.0,
+     "e_cm_keV": 50.0,
+     "sigma_b": 0.016300000000000002,
+     "dsigma_b": 0.0006,
+     "S_keVb": 69.10583403227885,
+     "dS_keVb": 2.5437730318630245
+    },
+    {
+     "e_lab_keV": 52.0,
+     "e_cm_keV": 52.0,
+     "sigma_b": 0.0167,
+     "dsigma_b": 0.0006,
+     "S_keVb": 67.55064914758623,
+     "dS_keVb": 2.4269694304522
+    },
+    {
+     "e_lab_keV": 76.0,
+     "e_cm_keV": 76.0,
+     "sigma_b": 0.026600000000000002,
+     "dsigma_b": 0.0009000000000000001,
+     "S_keVb": 74.09678731274717,
+     "dS_keVb": 2.507034157198212
+    },
+    {
+     "e_lab_keV": 102.0,
+     "e_cm_keV": 102.0,
+     "sigma_b": 0.0344,
+     "dsigma_b": 0.0012,
+     "S_keVb": 78.57395941315657,
+     "dS_keVb": 2.7409520725519734
+    },
+    {
+     "e_lab_keV": 128.0,
+     "e_cm_keV": 128.0,
+     "sigma_b": 0.0422,
+     "dsigma_b": 0.0016,
+     "S_keVb": 86.64541988281657,
+     "dS_keVb": 3.2851344031399647
+    }
+   ]
+  }
+ ]
+}

@@ -60,7 +60,7 @@ def export(repo, site, dest):
                    for p in derivations.rglob("*") if p.is_file()
                    and "build" not in p.relative_to(derivations).parts
                    and "__pycache__" not in p.parts
-                   and (p.suffix in {".py", ".md", ".typ", ".toml"}
+                   and (p.suffix in {".py", ".md", ".typ", ".toml", ".json"}
                         or p.name in {"Makefile", "requirements.txt"})})
     for name in ("LICENSE", "LICENSE-CONTENT.md"):
         wanted["derivations/" + name] = repo / name

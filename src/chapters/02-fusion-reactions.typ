@@ -216,6 +216,20 @@ encounter. The next lecture discusses $S(E)$.
   #link("https://doi.org/10.1088/0029-5515/32/4/I07")[(Bosch and Hale 1992)]
   and the p–p $S$ factor of
   #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. (2011)]. The vertical axis is broken.])
+Measured cross sections give $S$ directly, $S_i = sigma_i E_i exp(sqrt(E_G \/ E_i))$
+with $E_i$ the centre-of-mass energy in keV and $sigma_i$ in barn. We converted the
+EXFOR tables of
+#link("https://doi.org/10.1103/PhysRev.93.483")[Arnold et al. (1954)],
+#link("https://doi.org/10.1103/PhysRev.107.1616")[Bame and Perry (1957)],
+#link("https://doi.org/10.1103/PhysRevC.29.2031")[Jarmie et al. (1984)] and
+#link("https://doi.org/10.1103/PhysRevC.35.1999")[Brown et al. (1987)] for D–T, and of
+#link("https://doi.org/10.1098/rspa.1954.0249")[Preston et al. (1954)],
+#link("https://doi.org/10.1007/BF01292792")[Greife et al. (1995)] and
+#link("https://doi.org/10.1103/PhysRevC.73.045801")[Leonard et al. (2006)] for D–D,
+and fitted the Bosch–Hale rational form by weighted least squares with the
+published error bars (script `derivations/chapters/ch02_s_factor_fit.py`). Our D–T
+curve lies about 3 % below Bosch–Hale at 64 keV.
+
 #knowledge-check((
   (question: [What dominates $sigma(E)$ well below $E_G$?], answer: [The penetration factor $exp(-sqrt(E_G \/ E))$, which rises steeply with $E$.]),
   (question: [Why is the p–p cross section so much smaller than D–D at the same energy?], answer: [Its $S$ factor is about 24 orders of magnitude smaller, because the weak interaction is needed.]),
