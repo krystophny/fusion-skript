@@ -33,17 +33,18 @@ $eta = 2$ corresponds to $E = 7.5 thin "keV"$ and
 $r_c = 1.440 thin "MeV fm" \/ 7.5 thin "keV" = 0.19 thin "pm"$, still far
 outside the nuclei (a few fm).
 
-#animation("animations/coulomb_reflection.mp4",
-  "Head-on Coulomb encounter at eta = 2 on one axis r over r_c: the potential V of r, the dashed energy line E and the turning point r_c. A classical particle (dot) moves in along the energy line, is reflected at r_c and moves out. The quantum probability density, drawn on the energy line, moves in, reflects and keeps a small tail inside r_c; a lower log-scale strip shows that tail.",
-  poster: "../media/coulomb-reflection.png",
-  caption: [Head-on encounter ($ell = 0$) at $eta = 2$ (D–T at
-  $E = 7.5 thin "keV"$). Top: potential $V(r)$, energy $E$ and turning point
-  $r_c$. The classical particle (dot) at energy $E$ is reflected at $r_c$.
-  The quantum probability density $|u|^2$ of the relative motion, an incoming
-  wave packet with 12 % energy spread, is drawn with the energy line as
-  baseline; it is reflected at the same time but leaks into the classically
-  forbidden region $r < r_c$. Bottom: $log_10 (|u|^2 r_c)$ on the same axis;
-  inside $r_c$ the density decays like $exp(-2 integral_r^(r_c) kappa dif r')$
-  with $kappa = sqrt(2 m (V - E)) \/ ħ$. This tail is where tunnelling
-  starts.])
+#animation("animations/coulomb_collision.mp4",
+  "Head-on D-T collision at eta = 2 seen from above in the centre-of-mass frame, classical on the left and quantum on the right, on the same clock. Left: the deuteron (small dot) and the triton (large dot) approach along a line, slow down, turn at separation r_c and fly apart. Right: each nucleus is a probability cloud; the clouds approach, show interference fringes while they are reflected, and a small part reaches separations below r_c, drawn in yellow.",
+  poster: "../media/coulomb-collision.png",
+  caption: [Head-on D–T collision ($ell = 0$) at $eta = 2$
+  ($E = 7.5 thin "keV"$), seen from above in the centre-of-mass frame, same
+  energy and same clock in both panels. With separation $r$ the nuclei sit at
+  $x_"D" = -(m_"T" \/ M) r$ and $x_"T" = (m_"D" \/ M) r$, $M = m_"D" + m_"T"$;
+  the bar marks $r_c$ between the turning positions. Left: point particles on
+  the classical orbit $r(t)$ at energy $E$, reflected at $r_c$. Right: the
+  densities of $x_"D"$ and $x_"T"$ obtained from the $ell = 0$ wave
+  packet $|u(r, t)|^2$ (12 % energy spread) by the same relations. Incoming
+  and reflected waves interfere into fringes, and a few per cent of the
+  probability reaches $r < r_c$ (yellow, brightened), where tunnelling starts.
+  The width across the collision axis is illustrative only.])
 ]

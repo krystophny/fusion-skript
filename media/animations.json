@@ -2,12 +2,12 @@
   "schema": "course-animation-hosting-v1",
   "preferred_host": "native-nextcloud",
   "animations": {
-    "coulomb-reflection": {
-      "fallback_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/coulomb_reflection.mp4",
-      "poster": "media/posters/coulomb-reflection.png",
-      "player_url": "https://krystophny.github.io/fusion-skript/animations/coulomb-reflection.html",
-      "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/coulomb_reflection.mp4?v=ddccfd0c526f9f82",
-      "mp4_sha256": "ddccfd0c526f9f820b34932eda278047eb23d837ee26c08e89259cf327cc9975",
+    "coulomb-collision": {
+      "fallback_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/coulomb_collision.mp4",
+      "poster": "media/posters/coulomb-collision.png",
+      "player_url": "https://krystophny.github.io/fusion-skript/animations/coulomb-collision.html",
+      "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/coulomb_collision.mp4?v=cfe0cb69a8fb287e",
+      "mp4_sha256": "cfe0cb69a8fb287e2db4bd0d487017de378987be30e31df76642537943a13c61",
       "appearance": "dark"
     }
   }

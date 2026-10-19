@@ -17,7 +17,7 @@ self="$repo_root/scripts/render-animations.sh"
 
 # source file | scene class | output slug | poster time in seconds | kin6d export
 scenes=(
-  "coulomb_reflection.py|CoulombReflection|coulomb-reflection|6.6|"
+  "coulomb_collision.py|CoulombCollision|coulomb-collision|7.0|"
 )
 
 if [[ "${1:-}" == "--slugs" ]]; then

@@ -1,4 +1,4 @@
-"""Physics oracles for the head-on Coulomb reflection animation (l = 0)."""
+"""Physics oracles for the head-on D-T collision animation (l = 0)."""
 from pathlib import Path
 import runpy
 
@@ -68,3 +68,40 @@ def test_discrete_hamiltonian_matches_coulomb_function():
     u = np.array([float(mpmath.coulombf(0, eta, 2 * eta * x)) for x in r])
     hu = model["hamiltonian"](r, dr, eta) @ u
     assert np.max(np.abs(hu[1:-1] - u[1:-1])) < 1e-3 * np.max(np.abs(u))
+
+
+def test_cm_relations():
+    r = np.array([0.5, 1.0, 7.3])
+    x_d, x_t = model["cm_positions"](r)
+    assert np.allclose(x_t - x_d, r)
+    assert np.allclose(model["M_D"] * x_d + model["M_T"] * x_t, 0.0)
+
+
+def test_classical_turning_positions_at_rc():
+    t_turn = model["classical_orbit"]([0.0])[1]
+    t = np.linspace(0.0, 2 * t_turn, 4001)
+    x_d, x_t = model["cm_positions"](model["classical_orbit"](t)[0])
+    assert abs((x_t - x_d).min() - 1.0) < 1e-6
+    total = model["M_D"] + model["M_T"]
+    assert abs(x_d.max() + model["M_T"] / total) < 1e-6
+    assert abs(x_t.min() - model["M_D"] / total) < 1e-6
+
+
+def test_marginal_densities_keep_norm_and_mean(packet):
+    # The clouds drawn on the collision axis are the marginals of x_D and x_T.
+    x = np.linspace(-25.0, 25.0, 200001)
+    dx = x[1] - x[0]
+    total = model["M_D"] + model["M_T"]
+    for t in (12.0, 35.0, 58.0):
+        density = np.abs(packet.at(t)) ** 2
+        mean_r = np.sum(packet.r * density) * packet.dr
+        rr = np.linspace(0.0, 1.0, 100001)
+        inside = np.sum(np.interp(rr, packet.r, density, left=0.0)) * (rr[1] - rr[0])
+        rho_d, rho_t, r_d, r_t = model["marginal_densities"](x, packet.r, density)
+        assert abs(np.sum(rho_d) * dx - 1.0) < 1e-4
+        assert abs(np.sum(rho_t) * dx - 1.0) < 1e-4
+        assert abs(np.sum(x * rho_d) * dx + model["M_T"] / total * mean_r) < 1e-3
+        assert abs(np.sum(x * rho_t) * dx - model["M_D"] / total * mean_r) < 1e-3
+        # Probability of separations r < r_c is the same in both clouds.
+        assert abs(np.sum(rho_d[(r_d > 0) & (r_d < 1)]) * dx - inside) < 2e-4
+        assert abs(np.sum(rho_t[(r_t > 0) & (r_t < 1)]) * dx - inside) < 2e-4

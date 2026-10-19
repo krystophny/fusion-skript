@@ -17,6 +17,14 @@ R0 = 16.0          # initial packet centre, in r_c
 R_MAX = 30.0       # outer wall, in r_c
 N = 2000           # interior grid points
 
+# D-T in the centre-of-mass frame (atomic masses in u): the head-on positions
+# along the collision axis are x_D = -(m_T/M) r and x_T = +(m_D/M) r.
+M_D = 2.01410178
+M_T = 3.01604928
+MU_C2_EV = M_D * M_T / (M_D + M_T) * 931.49410e6    # reduced mass, eV
+ALPHA = 1 / 137.035999
+HBAR_EV_S = 6.582119569e-16
+
 
 def grid(n=N, r_max=R_MAX):
     dr = r_max / (n + 1)
@@ -96,3 +104,37 @@ def wkb_exponent(r, eta=ETA):
     r = np.asarray(r, float)
     # int_r^1 sqrt((1 - s)/s) ds = arccos(sqrt r) - sqrt(r (1 - r))
     return 2 * 2 * eta * (np.arccos(np.sqrt(r)) - np.sqrt(r * (1 - r)))
+
+
+def energy_ev(eta=ETA):
+    """E = E_G/(4 pi^2 eta^2) = m c^2 alpha^2/(2 eta^2) for D-T (Z_1 = Z_2 = 1)."""
+    return MU_C2_EV * ALPHA**2 / (2 * eta**2)
+
+
+def time_unit_s(eta=ETA):
+    """The model time unit hbar/E in seconds."""
+    return HBAR_EV_S / energy_ev(eta)
+
+
+def cm_positions(r, m1=M_D, m2=M_T):
+    """Head-on positions (x_1, x_2) with x_2 - x_1 = r and m1 x_1 + m2 x_2 = 0."""
+    r = np.asarray(r, float)
+    total = m1 + m2
+    return -(m2 / total) * r, (m1 / total) * r
+
+
+def marginal_densities(x, r, density, m1=M_D, m2=M_T):
+    """Densities of x_1 and x_2 on the collision axis from the radial |u(r)|^2.
+
+    With x_1 = -(m2/M) r the change of variables gives
+    rho_1(x) = (M/m2) |u(-M x/m2)|^2 for x < 0 and zero for x > 0; likewise
+    rho_2(x) = (M/m1) |u(M x/m1)|^2 for x > 0. Each integrates to the norm of u.
+    Also returns the separations r_1(x), r_2(x) that each point stands for.
+    """
+    x = np.asarray(x, float)
+    total = m1 + m2
+    r1 = -total * x / m2
+    r2 = total * x / m1
+    rho1 = (total / m2) * np.interp(r1, r, density, left=0.0, right=0.0)
+    rho2 = (total / m1) * np.interp(r2, r, density, left=0.0, right=0.0)
+    return rho1, rho2, r1, r2
