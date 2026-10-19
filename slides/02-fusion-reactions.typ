@@ -299,6 +299,44 @@
     #link("https://doi.org/10.1007/BF01341595")[Atkinson & Houtermans · Z. Phys. 54, 656 (1929)]])
 ]
 
+#slide(title: [Measuring a cross section])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #at(1, 6, y: 2mm, canvas(length: 12mm, {
+    import draw: *
+    let arrow(c) = (end: "stealth", fill: c)
+    // side view: beam through a thin target
+    for y in (0.8, 1.6, 2.4, 3.2) {
+      line((0, y), (2.8, y), stroke: 1pt + plot-blue, mark: arrow(plot-blue))
+      if y != 2.4 { line((3.6, y), (6.0, y), stroke: 1pt + plot-blue, mark: arrow(plot-blue)) }
+    }
+    content((1.2, 3.75), text(fill: plot-blue)[$N_"beam"$])
+    rect((3.0, 0.2), (3.4, 3.8), fill: plot-orange.lighten(80%), stroke: 0.8pt + plot-orange)
+    content((3.2, -0.25), [$Delta x$])
+    content((3.2, 4.15), text(fill: plot-orange)[$n$])
+    circle((3.2, 2.4), radius: 0.12, fill: plot-orange, stroke: none)
+    line((3.3, 2.5), (5.2, 3.9), stroke: 0.8pt + ink, mark: arrow(ink))
+    rect((5.2, 3.7), (6.2, 4.4), stroke: 0.8pt + ink)
+    content((5.7, 4.75), [$N_"react"$])
+    // face-on view: discs of area sigma
+    rect((1.2, -5.0), (4.8, -1.4), fill: plot-orange.lighten(80%), stroke: 0.8pt + plot-orange)
+    for (x, y) in ((1.7, -2.1), (2.6, -4.2), (3.5, -2.6), (4.2, -4.4), (2.1, -3.2), (4.1, -1.9), (3.1, -3.5), (1.8, -4.6)) {
+      circle((x, y), radius: 0.2, fill: plot-orange.lighten(30%), stroke: none)
+    }
+    line((3.5, -2.6), (4.15, -2.95), stroke: 0.6pt + ink)
+    content((4.35, -3.1), [$sigma$])
+    content((5.2, -1.6), anchor: "west", [$A$])
+  }))
+  #let r(name, f) = ([#text(fill: muted, name)], f)
+  #at(7, 6, y: 4mm, grid(columns: (auto, 1fr), rows: 22mm, column-gutter: 8mm,
+    align: (right + horizon, left + horizon),
+    ..r([nuclei], $N_T = n A Delta x$),
+    ..r([covered fraction], $P = N_T thin sigma/A = (n Delta x) thin sigma$),
+    ..r([reactions], $N_"react" = N_"beam" thin P$),
+    ..r([measured], $sigma = N_"react"/N_"beam" thin 1/(n Delta x)$),
+    ..r([unit], $1 "b" = 10^(-28) "m"^2$),
+  ))
+]
+
 #slide(title: [Cross section])[
   #import "@preview/cetz:0.5.2": canvas, draw
   #show math.equation.where(block: true): set align(left)
@@ -350,6 +388,12 @@
   #at(1, 12, y: 136mm, text(size: 12pt)[
     #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ·
     #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. · Rev. Mod. Phys. 83, 195 (2011)]])
+]
+
+#slide(title: [S-factor from experiment])[
+  #at(1, 8, y: 0mm, deck-fig("s_factor_data", columns: 8))
+  #at(9, 4, y: 10mm)[ $ S_i = sigma_i E_i exp(sqrt(E_G/E_i)) $ ]
+  #at(1, 12, y: 136mm, text(size: 12pt)[ #link("https://doi.org/10.1103/PhysRev.93.483")[Arnold · Phys. Rev. 93, 483 (1954)] · #link("https://doi.org/10.1103/PhysRev.107.1616")[Bame · Phys. Rev. 107, 1616 (1957)] · #link("https://doi.org/10.1103/PhysRevC.29.2031")[Jarmie · Phys. Rev. C 29, 2031 (1984)] · #link("https://doi.org/10.1103/PhysRevC.35.1999")[Brown · Phys. Rev. C 35, 1999 (1987)] · #link("https://doi.org/10.1098/rspa.1954.0249")[Preston · Proc. R. Soc. A 226, 206 (1954)] · #link("https://doi.org/10.1007/BF01292792")[Greife · Z. Phys. A 351, 107 (1995)] · #link("https://doi.org/10.1103/PhysRevC.73.045801")[Leonard · Phys. Rev. C 73, 045801 (2006)] · #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ])
 ]
 
 #slide(title: [Proton–proton chain])[
