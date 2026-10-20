@@ -619,12 +619,13 @@
     ..step([deuteron], $(H_0 + V_d) thin u_d = -B_d thin u_d$),
     ..step([p–p], $(H_0 + V_(p p) + V_C) u_(p p) = E u_(p p)$),
     ..step([overlap], $Lambda prop display(integral_0^infinity) u_d thin u_(p p) dif r$),
-    ..step([rate], $S_(p p)(0) prop G_V^2 g_A^2 (Lambda^2)/f$),
+    ..step([rate], $S_(p p)(0) prop G_V^2 g_A^2 thin f_(p p) thin Lambda^2$),
   ))
   #at(7, 6, y: 98mm, text(size: 14pt, fill: muted)[
     $V_d$: S–D coupled by tensor force \
     $u_(p p)$: $E -> 0$, matched to Coulomb waves, Gamow factor divided out \
-    $V$: Reid potential, fitted to nucleon–nucleon scattering])
+    $V$: Reid potential, fitted to nucleon–nucleon scattering \
+    $f_(p p)$: phase space of e⁺ and ν])
   #at(1, 12, y: 136mm, text(size: 12pt)[
     #link("https://doi.org/10.1016/0003-4916(68)90126-7")[Reid · Ann. Phys. 50, 411 (1968)] ·
     #link("https://doi.org/10.1103/PhysRevC.58.1263")[Schiavilla et al. · Phys. Rev. C 58, 1263 (1998)]])
