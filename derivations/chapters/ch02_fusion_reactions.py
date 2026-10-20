@@ -45,7 +45,7 @@ def coulomb_barrier():
     for z, energy, expected in ((79, 5, 45), (13, sp.Rational("7.7"), 5)):
         rc = float(2 * z * E2_MEV_FM / energy)
         assert abs(rc - expected) / expected < 0.03, (z, rc)
-    # Turning point at r_0 = 1 fm for Z_1 = Z_2 = 1: E = e^2/(4 pi eps0 r_0) ~ 1.4 MeV.
+    # Turning point at R = 1 fm for Z_1 = Z_2 = 1: E = e^2/(4 pi eps0 r_0) ~ 1.4 MeV.
     assert abs(float(E2_MEV_FM) - 1.44) < 0.005
     # Animation example: D-T at 7.5 keV turns at 0.19 pm.
     assert abs(float(E2_MEV_FM / sp.Rational("0.0075")) / 1000 - 0.19) < 0.005
@@ -98,8 +98,86 @@ def gamow():
         print(f"E_G({name}) = {eg / 1000:.4f} MeV, B_G^2 = {bg**2 / 1000:.4f} MeV")
 
 
+def classical_cross_section():
+    """sigma_cl = pi R^2 (1 - V(R)/E) (eqs. ch02-closest-approach ... ch02-classical-cross-section)."""
+    b, R, V_R, rmin = sp.symbols("b R V_R r_min", positive=True)
+    # Energy at closest approach: E = V(r_min) + E b^2 / r_min^2; contact r_min = R.
+    contact = sp.Eq(E, V_R + E * b**2 / R**2)
+    bmax2 = sp.solve(contact, b**2)
+    assert len(bmax2) == 1
+    assert sp.simplify(bmax2[0] - R**2 * (1 - V_R / E)) == 0
+    sigma_cl = sp.pi * bmax2[0]
+    assert sp.limit(sigma_cl, E, sp.oo) == sp.pi * R**2
+    assert sigma_cl.subs(E, V_R) == 0
+    assert sp.simplify(sigma_cl.subs(E, 2 * V_R) - sp.pi * R**2 / 2) == 0
+    # The effective Coulomb potential decreases outwards, so r_min <= R iff b <= b_max.
+    v_eff = E * r_c / rmin + E * b**2 / rmin**2
+    assert sp.simplify(sp.diff(v_eff, rmin) + E * r_c / rmin**2 + 2 * E * b**2 / rmin**3) == 0
+    # Table: R = r_0 (A_1^(1/3) + A_2^(1/3)), r_0 = 1.2 fm; V(R) in keV; pi R^2 in b.
+    r0 = sp.Rational("1.2")
+    for (a1, a2), (r_fm, v_keV, area_b) in (((2, 3), (3.2, 440, 0.33)),
+                                            ((2, 2), (3.0, 480, 0.29)),
+                                            ((1, 1), (2.4, 600, 0.18))):
+        rr = float(r0 * (sp.Integer(a1) ** sp.Rational(1, 3) + sp.Integer(a2) ** sp.Rational(1, 3)))
+        assert abs(rr - r_fm) < 0.05, (a1, a2, rr)
+        assert abs(float(E2_MEV_FM) / rr * 1000 - v_keV) / v_keV < 0.02, (a1, a2)
+        assert abs(float(sp.pi) * rr**2 / 100 - area_b) < 0.006, (a1, a2)  # 1 b = 100 fm^2
+
+
+def barrier_to_contact():
+    """2 int_0^R kappa dr -> 4 sqrt(R/a) for R << r_c; a ~ 12 fm for D-T (eq. ch02-s-and-r)."""
+    R, a, lam, eps = sp.symbols("R a lambdabar epsilon", positive=True)
+    # kappa = sqrt(r_c/r - 1)/lambdabar and r_c / lambdabar^2 = 1/a.
+    rc = lam**2 / a
+    # a = 4 pi eps0 hbar^2 / (2 m Z1 Z2 e^2) = hbar / (2 m alpha Z1 Z2 c) is a length.
+    a_phys = hbar / (2 * m * alpha * Z1 * Z2 * c)
+    rc_phys = alpha * Z1 * Z2 * hbar * c / E
+    lam_phys = hbar / sp.sqrt(2 * m * E)
+    assert sp.simplify(rc_phys / lam_phys**2 - 1 / a_phys) == 0
+    check(a_phys, rc_phys * a_phys / rc_phys, u.meter, UNITS)
+    # Exact integral with r = r_c x up to eps = R / r_c (0 < eps < 1):
+    # int_0^eps sqrt(1/x - 1) dx = asin(sqrt(eps)) + sqrt(eps (1 - eps)).
+    inner = sp.asin(sp.sqrt(eps)) + sp.sqrt(eps * (1 - eps))
+    assert sp.simplify(sp.diff(inner, eps) ** 2 - (1 / eps - 1)) == 0
+    assert inner.subs(eps, 0) == 0 and inner.subs(eps, 1) == sp.pi / 2
+    series = sp.series(inner, eps, 0, 1).removeO()
+    assert sp.simplify(series - 2 * sp.sqrt(eps)) == 0
+    leading = (rc / lam) * 2 * sp.sqrt(R / rc)  # int_0^R kappa dr
+    assert sp.simplify(leading - 2 * sp.sqrt(R / a)) == 0
+    # Numerically: the exact integral approaches 2 sqrt(R/a) when R << r_c.
+    a_v, R_v = 12.0, 3.2
+    lam_v = (1000 * a_v) ** 0.5  # r_c = 1000 a = 12000 fm >> R
+    exact = float(lam_v / a_v * inner.subs(eps, R_v * a_v / lam_v**2))
+    assert abs(exact - 2 * (R_v / a_v) ** 0.5) / exact < 0.01, exact
+    # Bohr length of the pair a = (hbar c)^2 / (2 m c^2 e^2/(4 pi eps0)) for D-T: ~ 12 fm.
+    a_dt = float(HBAR_C_MEV_FM**2 / (2 * reduced_keV("D", "T") / 1000 * E2_MEV_FM))
+    assert abs(a_dt - 12.0) < 0.1, a_dt
+    enhancement = float(sp.exp(4 * sp.sqrt(sp.Rational("3.24") / a_dt)))
+    assert 7.5 < enhancement < 8.5, enhancement
+    print(f"a(DT) = {a_dt:.2f} fm, exp(4 sqrt(R/a)) = {enhancement:.2f}")
+
+
+def force_ranges():
+    """Yukawa ranges lambda = hbar/(m c) for the pion and the W boson (eq. ch02-force-range)."""
+    check(hbar / (m * c), hbar / (m * c), u.meter, UNITS)
+    # PDG masses: m_pi+ c^2 = 139.570 MeV, M_W c^2 = 80.37 GeV (80.4 GeV in the text).
+    lam_pi = float(HBAR_C_MEV_FM / sp.Rational("139.57039"))
+    lam_w = float(HBAR_C_MEV_FM / sp.Rational("80369.2"))
+    assert abs(lam_pi - 1.41) < 0.005, lam_pi
+    assert abs(lam_w / 2.45e-3 - 1) < 0.005, lam_w
+    assert abs(float(HBAR_C_MEV_FM / 80400) - 2.45e-3) < 0.005e-3
+    # Yukawa potential solves (nabla^2 - 1/lambda^2) phi = 0 for r > 0.
+    lam = sp.symbols("lambda", positive=True)
+    phi = sp.exp(-r / lam) / r
+    assert sp.simplify(sp.diff(r * phi, r, 2) / r - phi / lam**2) == 0
+    print(f"hbar/(m_pi c) = {lam_pi:.3f} fm, hbar/(M_W c) = {lam_w:.3e} fm")
+
+
 if __name__ == "__main__":
     coulomb_barrier()
     quantum_ballpark()
     gamow()
-    print("Chapter 2 Coulomb-barrier and Gamow checks passed")
+    classical_cross_section()
+    barrier_to_contact()
+    force_ranges()
+    print("Chapter 2 Coulomb-barrier, Gamow, classical cross-section and force-range checks passed")

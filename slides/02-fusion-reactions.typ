@@ -157,7 +157,77 @@
     line((4.4, 0.4), (5.6, 0.4), stroke: 0.8pt + ink, mark: (end: "stealth", fill: ink))
     content((rc + 0.1, 1.45), text(fill: muted, size: 14pt)[$dot(r) = 0$])
   }))
-  #at(1, 7, y: 100mm)[$ r_c lt.tilde r_0 approx 10^(-15) "m" quad => quad E gt.tilde (e^2)/(4 pi epsilon_0 r_0) approx 1.4 "MeV" $]
+  #at(1, 7, y: 100mm)[$ r_c lt.tilde R approx 10^(-15) "m" quad => quad E gt.tilde (e^2)/(4 pi epsilon_0 R) approx 1.4 "MeV" $]
+]
+
+#slide(title: [Classical cross section])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #at(1, 12, y: 0mm, align(center, canvas(length: 12mm, {
+    import draw: *
+    let d = 1.0
+    let R = 1.5
+    let rmax = 5.0
+    let bmax = R * calc.sqrt(1 - d / R)
+    let blue = plot-blue
+    // repulsive Coulomb orbit with head-on turning distance d, cut where it touches R
+    let orbit(b, s) = {
+      let u(phi) = calc.sin(phi) / b + d / (2 * b * b) * (calc.cos(phi) - 1)
+      let pts = ()
+      for k in range(1, 600) {
+        let phi = k * calc.pi / 600
+        if u(phi) > 1 / rmax {
+          let r = 1 / u(phi)
+          let x = r * calc.cos(phi)
+          let y = r * calc.sin(phi)
+          if x < -2.0 or y > 3.0 { break }
+          pts.push((x, s * y))
+          if r <= R { break }
+        }
+      }
+      pts
+    }
+    // side view
+    circle((0, 0), radius: R, fill: plot-orange.lighten(85%), stroke: (paint: plot-orange, dash: "dashed"))
+    circle((0, 0), radius: 0.12, fill: plot-orange, stroke: none)
+    for s in (1, -1) {
+      for bb in (0.35, 1.4, 2.0) { line(..orbit(bb, s), stroke: 0.8pt + muted) }
+      line(..orbit(bmax, s), stroke: 1.3pt + ink)
+    }
+    // the cross section seen edge-on: a line of length 2 b_max
+    line((5.3, -bmax), (5.3, bmax), stroke: 3pt + blue)
+    line((5.75, 0), (5.75, bmax), stroke: 0.6pt + ink, mark: (start: "stealth", end: "stealth", fill: ink))
+    content((5.9, bmax / 2), anchor: "west", [$b_"max"$])
+    line((0, 0), (R * calc.cos(-50deg), R * calc.sin(-50deg)), stroke: 0.6pt + plot-orange)
+    content((0.55, -0.95), text(fill: plot-orange)[$R$])
+    // beam direction
+    line((5.6, 3.3), (4.4, 3.3), stroke: 0.8pt + ink, mark: (end: "stealth", fill: ink))
+    // front view: what the beam sees
+    let cx = 10.0
+    line((5.3, bmax), (cx, bmax), stroke: (paint: muted, thickness: 0.4pt, dash: "dotted"))
+    line((5.3, -bmax), (cx, -bmax), stroke: (paint: muted, thickness: 0.4pt, dash: "dotted"))
+    circle((cx, 0), radius: R, stroke: (paint: plot-orange, dash: "dashed"))
+    circle((cx, 0), radius: bmax, fill: blue.lighten(55%), stroke: 1.2pt + blue)
+    circle((cx, 0), radius: 0.12, fill: plot-orange, stroke: none)
+    content((cx, -R - 0.45), text(fill: blue)[$sigma_"cl" = pi b_"max"^2$])
+  })))
+  #at(1, 12, y: 96mm, align(center, grid(columns: 3, column-gutter: 10mm, row-gutter: 8mm,
+    align: left + horizon,
+    $r_"min" (b) <= R$, $=>$, $b^2 <= R^2 (1 - V(R)/E)$,
+    $sigma_"cl" = pi R^2 (1 - V(R)/E)$, [], $sigma_"cl" = 0 quad (E < V(R))$,
+  )))
+]
+
+#slide(title: [Classical cross sections])[
+  #at(1, 12, y: 0mm, deck-fig("cross_section_classical", columns: 12))
+  #at(1, 5, y: 92mm)[
+    $ sigma_"cl" = pi R^2 (1 - V(R)/E) $
+    $ R = r_0 (A_1^(1\/3) + A_2^(1\/3)), quad r_0 approx 1.2 "fm" $]
+  #at(6, 7, y: 92mm, grid(columns: 5, column-gutter: 7mm, row-gutter: 4mm, align: left + horizon,
+    [], [$A_1, A_2$], [$R$], [$V(R)$], [$pi R^2$],
+    [D–T], [$2, 3$], [$3.2 "fm"$], [$440 "keV"$], [$0.33 "b"$],
+    [D–D], [$2, 2$], [$3.0 "fm"$], [$480 "keV"$], [$0.29 "b"$],
+    [p–p], [$1, 1$], [$2.4 "fm"$], [$600 "keV"$], [$0.18 "b"$],
+  ))
 ]
 
 #animation-page("coulomb-collision", "coulomb_collision", loop: false)
@@ -393,12 +463,101 @@
 #slide(title: [S-factor from experiment])[
   #at(1, 8, y: 0mm, deck-fig("s_factor_data", columns: 8))
   #at(9, 4, y: 10mm)[ $ S_i = sigma_i E_i exp(sqrt(E_G/E_i)) $ ]
-  #at(1, 12, y: 136mm, text(size: 12pt)[ #link("https://doi.org/10.1103/PhysRev.93.483")[Arnold · Phys. Rev. 93, 483 (1954)] · #link("https://doi.org/10.1103/PhysRev.107.1616")[Bame · Phys. Rev. 107, 1616 (1957)] · #link("https://doi.org/10.1103/PhysRevC.29.2031")[Jarmie · Phys. Rev. C 29, 2031 (1984)] · #link("https://doi.org/10.1103/PhysRevC.35.1999")[Brown · Phys. Rev. C 35, 1999 (1987)] · #link("https://doi.org/10.1098/rspa.1954.0249")[Preston · Proc. R. Soc. A 226, 206 (1954)] · #link("https://doi.org/10.1007/BF01292792")[Greife · Z. Phys. A 351, 107 (1995)] · #link("https://doi.org/10.1103/PhysRevC.73.045801")[Leonard · Phys. Rev. C 73, 045801 (2006)] · #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ])
+  #at(1, 12, y: 136mm, text(size: 12pt)[ #link("https://doi.org/10.1103/PhysRev.93.483")[Arnold · Phys. Rev. 93, 483 (1954)] · #link("https://doi.org/10.1103/PhysRev.107.1616")[Bame · Phys. Rev. 107, 1616 (1957)] · #link("https://doi.org/10.1103/PhysRevC.29.2031")[Jarmie · Phys. Rev. C 29, 2031 (1984)] · #link("https://doi.org/10.1103/PhysRevC.35.1999")[Brown · Phys. Rev. C 35, 1999 (1987)] · #link("https://doi.org/10.1098/rspa.1954.0249")[Preston · Proc. R. Soc. A 226, 206 (1954)] · #link("https://doi.org/10.1007/BF01292792")[Greife · Z. Phys. A 351, 107 (1995)] · #link("https://doi.org/10.1103/PhysRevC.73.045801")[Leonard · Phys. Rev. C 73, 045801 (2006)] · #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] · #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. · Rev. Mod. Phys. 83, 195 (2011)] ])
 ]
 
-#slide(title: [Computing S])[
+#slide(title: [#super[5]He resonance])[
   #import "@preview/cetz:0.5.2": canvas, draw
-  #at(1, 12, y: 2mm, align(center, canvas(length: 13mm, {
+  #at(1, 7, y: 4mm, canvas(length: 14mm, {
+    import draw: *
+    let er = 4.7
+    let w = 0.25
+    // levels (gap between D+T and 5He* exaggerated)
+    line((0, 0), (4, 0), stroke: 1.5pt + ink)
+    content((4.2, 0), anchor: "west", [$""^4"He" + "n"$])
+    line((0, 4), (4, 4), stroke: (paint: ink, thickness: 1pt, dash: "dashed"))
+    content((4.2, 4), anchor: "west", [$"D" + "T"$])
+    line((0, er), (4, er), stroke: 1.5pt + plot-orange)
+    content((4.2, er), anchor: "west", text(fill: plot-orange)[$""^5"He"^*$])
+    // sideways Lorentzian: the level has a width
+    line(..range(0, 81).map(k => { let y = er - 1.0 + k * 0.025; (-0.3 - 1.6 / (1 + calc.pow((y - er) / w, 2)), y) }),
+      stroke: 1.2pt + plot-orange)
+    line((-1.1, er - w), (-1.1, er + w), stroke: 0.6pt + ink, mark: (start: "stealth", end: "stealth", fill: ink))
+    content((-2.1, er), anchor: "east", [$Gamma$])
+    line((-0.3, er - 1.0), (-0.3, er + 1.0), stroke: 0.6pt + muted)
+    // resonance energy above threshold
+    line((1.0, 4), (1.0, er), stroke: 0.6pt + ink, mark: (start: "stealth", end: "stealth", fill: ink))
+    content((1.15, (4 + er) / 2), anchor: "west", [$E_r$])
+    // decay
+    line((3.0, er), (3.0, 0.1), stroke: 1pt + ink, mark: (end: "stealth", fill: ink))
+    content((3.15, 2.2), anchor: "west", [$17.6 "MeV"$])
+  }))
+  #at(8, 5, y: 24mm)[
+    $ S(E) prop 1/((E - E_r)^2 + Gamma^2\/4) $
+    #v(10mm)
+    $ tau = ħ/Gamma $
+  ]
+]
+
+#slide(title: [Which force?])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #at(1, 12, y: 2mm, align(center, canvas(length: 12mm, {
+    import draw: *
+    let nuc(x, y, f) = {
+      let c = if f == "p" { plot-orange } else { plot-blue }
+      circle((x, y), radius: 0.34, fill: c.lighten(55%), stroke: 1pt + c)
+      content((x, y), [$#f$])
+    }
+    let group(x, y, fs, name) = {
+      let w = fs.len() * 0.8
+      rect((x - 0.5, y - 0.5), (x + w - 0.3, y + 0.5), radius: 0.5, stroke: 0.8pt + muted)
+      for (k, f) in fs.enumerate() { nuc(x + k * 0.8, y, f) }
+      content((x + w / 2 - 0.4, y + 0.85), [$#name$])
+    }
+    let arrow(x, y) = line((x, y), (x + 1.4, y), stroke: 1pt + ink, mark: (end: "stealth", fill: ink))
+    // D + T -> 4He + n: the nucleons only regroup
+    group(0, 6.2, ("p", "n"), "D")
+    content((1.75, 6.2), [$+$])
+    group(2.7, 6.2, ("p", "n", "n"), "T")
+    arrow(5.3, 6.2)
+    group(7.3, 6.2, ("p", "p", "n", "n"), [$""^4"He"$])
+    content((10.7, 6.2), [$+$])
+    group(11.7, 6.2, ("n",), "n")
+    content((14.0, 6.2), anchor: "west", [#text(fill: muted)[strong] \ $P tilde 1$])
+    content((6.0, 4.85), text(size: 14pt, fill: muted)[also D–D, D–#super[3]He, p–#super[11]B])
+    // D + p -> 3He + gamma: regroup, excess energy leaves as a photon
+    group(0, 2.7, ("p", "n"), "D")
+    content((1.75, 2.7), [$+$])
+    group(2.7, 2.7, ("p",), "p")
+    arrow(4.1, 2.7)
+    group(6.1, 2.7, ("p", "p", "n"), [$""^3"He"$])
+    line(..range(0, 41).map(k => { let x = 8.6 + k * 0.04; (x, 2.7 + 0.15 * calc.sin(k * calc.pi / 5)) }),
+      stroke: 1pt + ink)
+    content((10.4, 2.7), anchor: "west", [$gamma$])
+    content((14.0, 2.7), anchor: "west", [#text(fill: muted)[electromagnetic] \ $P tilde 10^(-5)$])
+    // p + p -> D: one proton must turn into a neutron
+    group(0, -0.3, ("p",), "p")
+    content((0.95, -0.3), [$+$])
+    group(1.9, -0.3, ("p",), "p")
+    arrow(3.3, -0.3)
+    group(5.3, -0.3, ("p", "n"), "D")
+    line((6.1, -0.65), (6.9, -1.7), stroke: (paint: ink, thickness: 1pt, dash: "dashed"))
+    content((6.35, -1.35), anchor: "east", [$W^+$])
+    line((6.9, -1.7), (8.0, -1.2), stroke: 1pt + ink, mark: (end: "stealth", fill: ink))
+    line((6.9, -1.7), (8.0, -2.2), stroke: 1pt + ink, mark: (end: "stealth", fill: ink))
+    content((8.15, -1.2), anchor: "west", [$"e"^+$])
+    content((8.15, -2.2), anchor: "west", [$nu_e$])
+    content((14.0, -0.3), anchor: "west", [#text(fill: muted)[weak] \ $P tilde 10^(-22)$])
+  })))
+  #at(1, 12, y: 136mm, text(size: 12pt)[
+    #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ·
+    #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. · Rev. Mod. Phys. 83, 195 (2011)] \
+    #link("https://doi.org/10.1103/RevModPhys.97.025002")[CODATA 2022 · Rev. Mod. Phys. 97, 025002 (2025)]])
+]
+
+#slide(title: [S and R])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #at(1, 12, y: 6mm, align(center, canvas(length: 13mm, {
     import draw: *
     let R = 1.0
     let rc = 6.0
@@ -414,8 +573,32 @@
     content(((R + rc) / 2, 0.6), text(fill: plot-blue)[$e^(-sqrt(E_G\/E))$])
     content(((rc + 11) / 2, 0.6), text(fill: muted)[free])
   })))
+  #at(1, 12, y: 52mm, align(center)[
+    $display(sigma = S/E e^(-sqrt(E_G \/ E)))$
+  ])
+]
+
+#slide(title: [Range of the forces])[
+  #show math.equation.where(block: true): set align(left)
+  #at(1, 6, y: 6mm, deck-fig("force_ranges", columns: 6))
+  #at(7, 6, y: 6mm)[
+    $ lambda = ħ/(m c) $
+    #v(10mm)
+    #text(fill: muted)[Fermi's golden rule]
+    $ P prop abs(integral psi_f^* thin V thin psi_i dif^3 r)^2 $
+    #v(2mm)
+    $ tilde cases(
+      1 & quad "strong",
+      alpha (R \/ lambda_gamma)^2 approx 10^(-5) & quad "electromagnetic",
+      alpha_W^2 (lambda_W \/ lambda_(e nu))^4 approx 10^(-22) & quad "weak",
+    ) $
+  ]
+]
+
+#slide(title: [Computing S])[
+  #at(1, 12, y: 6mm, align(center, $display(S prop e^(4 sqrt(R \/ a)) dot P)$ + h(14mm) + text(size: 16pt)[$a = (4 pi epsilon_0 ħ^2)/(2 m Z_1 Z_2 e^2)$]))
   #let r(name, how, f) = ([#text(fill: muted, name)], how, f)
-  #at(1, 12, y: 48mm, grid(columns: (auto, auto, 1fr), column-gutter: 10mm, row-gutter: 11mm,
+  #at(1, 12, y: 36mm, grid(columns: (auto, auto, 1fr), column-gutter: 10mm, row-gutter: 11mm,
     align: (right + horizon, left + horizon, left + horizon),
     ..r([p–p], [weak interaction], $S prop G_F^2 g_A^2 abs(chevron.l "d" mid(|) "pp" chevron.r)^2$),
     ..r([D–T], [R-matrix], [$E_r, Gamma$ fitted $=>$ Breit–Wigner]),
@@ -497,22 +680,25 @@
     #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. · Rev. Mod. Phys. 83, 195 (2011)]])
 ]
 
-#slide(title: [Proton–proton chain])[
-  #let lab(body) = text(size: 15pt, fill: muted, body)
-  #let branch(x) = (
-    node((x, 0), $"p" + "p"$),
-    edge((x, 0), (x, 1), "-|>", label: lab[$"e"^+ + nu_e$, 0.42 MeV], label-side: if x < 1 { left } else { right }),
-    node((x, 1), $"D" + "p"$),
-    edge((x, 1), (x, 2), "-|>", label: lab[$gamma$, 5.49 MeV], label-side: if x < 1 { left } else { right }),
-    node((x, 2), $""^3"He"$),
-    edge((x, 2), (1, 3), "-|>"),
-  )
-  #at(2, 10, y: 0mm, align(center, diagram(spacing: (34mm, 15mm), node-inset: 4mm,
-    node-stroke: none, edge-stroke: 0.9pt + ink,
-    ..branch(0), ..branch(2),
-    node((1, 3), $""^4"He" + 2 "p"$, stroke: 0.8pt + plot-orange, inset: 5mm),
-    node((1, 2.55), lab[12.86 MeV]),
+#slide(title: [From classical to nuclear])[
+  #import "@preview/fletcher:0.5.8": diagram, node, edge
+  #let n(pos, title, f, c) = node(pos, align(center)[#text(fill: c)[#title] \ #v(2mm) #f],
+    stroke: 1pt + c, inset: 5mm, corner-radius: 3mm, width: 57mm, height: 46mm)
+  #at(1, 12, y: 8mm, align(center, diagram(spacing: (9mm, 32mm), edge-stroke: 1pt + ink,
+    n((0, 0), [classical], $r_c = (Z_1 Z_2 e^2)/(4 pi epsilon_0 E)$, ink),
+    edge((0, 0), (1, 0), "-|>"),
+    n((1, 0), [classical $sigma$], [$sigma_"cl" = 0$ \ $E < V(R)$], ink),
+    edge((1, 0), (2, 0), "-|>"),
+    n((2, 0), [quantum], [$ƛ = ħ/sqrt(2 m E)$ \ #v(1mm) $ƛ approx r_c$], plot-blue),
+    edge((2, 0), (3, 0), "-|>"),
+    n((3, 0), [tunnelling], $e^(-sqrt(E_G \/ E))$, plot-blue),
+    edge((3, 0), (3, 1), "-|>"),
+    n((3, 1), [wave area], $pi ƛ^2 prop 1/E$, plot-blue),
+    edge((3, 1), (2, 1), "-|>"),
+    n((2, 1), [cross section], $sigma = S/E e^(-sqrt(E_G \/ E))$, plot-blue),
+    edge((2, 1), (1, 1), "-|>"),
+    n((1, 1), [nuclear physics], [$S$: $R$, force, #super[5]He#super[\*]], plot-orange),
+    edge((1, 1), (0, 1), "-|>"),
+    n((0, 1), [$S$ [keV b]], [D–T $10^4$ \ D–D $10^2$ \ p–p $10^(-22)$], plot-orange),
   )))
-  #at(1, 12, y: 128mm, align(center)[
-    $4 "p" -> ""^4"He" + 2 "e"^+ + 2 nu_e$ #h(10mm) #text(fill: muted)[26.7 MeV incl. $2 times$ e#super[+]e#super[−] annihilation]])
 ]

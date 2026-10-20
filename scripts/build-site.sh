@@ -7,8 +7,10 @@ python3 derivations/chapters/ch00_electricity_costs.py
 python3 derivations/chapters/ch02_fusion_reactions.py
 python3 scripts/plot-ch00-teaching.py
 python3 scripts/plot-electricity-costs.py
-# Chapter 2 reuses the deck cross-section plots (slides/build/fig).
+# Chapter 2 reuses the deck plots (slides/build/fig).
 python3 slides/figures.py >/dev/null
+python3 slides/figures_sfactor.py >/dev/null
+python3 slides/figures_pp.py >/dev/null
 mkdir -p public/slides slides/build
 bash scripts/script-outline.sh slides/build/script-outline.json
 TYPST_FEATURES=bundle,html typst compile --root . --font-path fonts --ignore-system-fonts --format bundle src/main.typ public

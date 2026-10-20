@@ -27,6 +27,7 @@ BLUE = "#0072B2"
 ORANGE = "#B55000"
 GREEN = "#1B7F5B"
 GREY = "#9AA5B1"
+PURPLE_W = "#7B3294"
 MM = 1 / 25.4
 
 
@@ -524,6 +525,14 @@ def gamow_bg(name):
 CURVES = (("DT", "D–T", ORANGE), ("DD", "D–D", BLUE), ("pp", "p–p", GREEN))
 
 
+def classical_contact(a1, a2, e):
+    """Classical contact cross section pi R^2 (1 - V(R)/E) in b, above the barrier only."""
+    r_touch = 1.2 * (a1 ** (1 / 3) + a2 ** (1 / 3))     # fm
+    v_touch = 1439.96 / r_touch                          # keV, e^2/(4 pi eps0) = 1.44 MeV fm
+    x = e[e > v_touch]
+    return x, np.pi * r_touch ** 2 / 100 * (1 - v_touch / x)
+
+
 def cross_section_shape():
     """sigma with S = 1 keV b: tunnelling and 1/E only."""
     e = np.geomspace(1, 1000, 600)
@@ -533,8 +542,11 @@ def cross_section_shape():
         y = np.exp(-gamow_bg(name) / np.sqrt(e)) / e
         ax.loglog(e, y, color=color, lw=2)
         ax.text(1100, y[-1] * nudge[name], label, color=color, va="center", fontsize=18)
+    for (a1, a2), color in (((2, 3), ORANGE), ((2, 2), BLUE), ((1, 1), GREEN)):
+        ec, sc = classical_contact(a1, a2, e)
+        ax.loglog(ec, sc, color=color, lw=1.5, ls="--")
     ax.set_xlim(1, 1000)
-    ax.set_ylim(1e-12, 1e-2)
+    ax.set_ylim(1e-12, 1e0)
     ax.set_xlabel(r"$E$ [keV]")
     ax.set_ylabel(r"$\sigma$ [b] with $S = 1$ keV b")
     fig.subplots_adjust(left=.17, right=.86, bottom=.16, top=.97)
@@ -581,9 +593,72 @@ def cross_section_actual():
     save(fig, "cross_section_actual")
 
 
+def cross_section_classical():
+    """Classical contact cross sections, log axes from 1 keV up to 100 MeV."""
+    e = np.geomspace(1, 1e5, 800)
+    fig, ax = plt.subplots(figsize=(250 * MM, 85 * MM))
+    for name, label, color, (a1, a2) in (("DT", "D–T", ORANGE, (2, 3)), ("DD", "D–D", BLUE, (2, 2)),
+                                         ("pp", "p–p", GREEN, (1, 1))):
+        r_touch = 1.2 * (a1 ** (1 / 3) + a2 ** (1 / 3))     # fm
+        v_touch = 1439.96 / r_touch                          # keV, e^2/(4 pi eps0) = 1.44 MeV fm
+        area = np.pi * r_touch ** 2 / 100                    # b
+        x = e[e > v_touch]
+        ax.loglog(x, area * (1 - v_touch / x), color=color, lw=2)
+        ax.axhline(area, color=color, lw=.7, ls=":")
+        ax.text(v_touch * 0.88, {"DT": 3e-2, "DD": 3e-3, "pp": 3e-4}[name], label,
+                color=color, fontsize=16, ha="right", va="center")
+    ax.text(30, 1e-3, r"$\sigma_{\rm cl} = 0$", color=INK, fontsize=20, ha="center")
+    ax.set_xlim(1, 1e5)
+    ax.set_ylim(1e-6, 1e1)
+    ax.set_xlabel(r"$E$ [keV]")
+    ax.set_ylabel(r"$\sigma_{\rm cl}$ [b]")
+    fig.subplots_adjust(left=.09, right=.98, bottom=.2, top=.97)
+    save(fig, "cross_section_classical")
+
+def force_ranges():
+    """|V(r)| of the three forces between two nucleons, log-log; signs marked on the curves."""
+    hbarc = 197.327                                   # MeV fm
+    lam = 1.414                                       # fm, hbar/(m_pi c)
+    r = np.geomspace(1e-3, 1e3, 800)                  # fm
+    coulomb = 1.44 / r                                # MeV, Z1 = Z2 = 1, repulsive
+    strong = 0.075 * 139.6 * np.exp(-r / lam) / (r / lam)  # one-pion exchange, f^2/4pi ~ 0.075, attractive
+    weak = hbarc / 30 / r * np.exp(-r / 2.45e-3)      # W Yukawa, alpha_W ~ 1/30
+    near = (r > 0.5) & (r < 50)
+    cross = r[near][np.argmin(np.abs(np.log(strong[near] / coulomb[near])))]   # |V_strong| = V_C
+    fig, ax = plt.subplots(figsize=(150 * MM, 110 * MM))
+    ax.axvspan(1e-3, cross, color=ORANGE, alpha=.07, lw=0)
+    ax.loglog(r, coulomb, color=INK, lw=2)
+    ax.loglog(r, strong, color=ORANGE, lw=2)
+    ax.loglog(r, weak, color=PURPLE_W, lw=2)
+    ax.plot([cross], [1.44 / cross], "o", color=ORANGE, ms=7, zorder=5)
+    ax.text(4.2, 2, "Coulomb\n" r"$V > 0$", color=INK, fontsize=15, va="bottom")
+    ax.text(0.003, 2e4, r"strong, $V < 0$", color=ORANGE, fontsize=15)
+    ax.text(0.003, 3e-3, "weak", color=PURPLE_W, fontsize=15)
+    for x, label in ((lam, r"$\hbar/m_\pi c$"), (2.45e-3, r"$\hbar/M_W c$")):
+        ax.axvline(x, color=MUTED, lw=.7, ls=":")
+        right = x < 0.1
+        ax.text(x * 1.15 if right else x / 1.15, 2e-6, label, color=MUTED, fontsize=13,
+                ha="left" if right else "right")
+    ax.axvline(cross, color=ORANGE, lw=.8)
+    ax.text(cross * 1.15, 2e-6, r"$R$", color=ORANGE, fontsize=16)
+    lw_, lp = 2.45e-3, hbarc / 1.0                    # W range; lepton wavelength at E ~ 1 MeV
+    ax.axvline(lp, color=PURPLE_W, lw=.8, ls="--")
+    ax.text(lp * 1.12, 2e3, r"$\hbar c/E_{e\nu}$", color=PURPLE_W, fontsize=14, ha="left")
+    lg = hbarc / 5.5                                  # photon wavelength, D + p -> 3He + gamma
+    ax.axvline(lg, color=INK, lw=.8, ls="--")
+    ax.text(lg / 1.12, 2e3, r"$\hbar c/E_\gamma$", color=INK, fontsize=14, ha="right")
+
+    ax.set_xlim(1e-3, 1e3)
+    ax.set_ylim(1e-6, 1e5)
+    ax.set_xlabel(r"$r$ [fm]")
+    ax.set_ylabel(r"$|V|$ [MeV]")
+    fig.subplots_adjust(left=.16, right=.97, bottom=.15, top=.97)
+    save(fig, "force_ranges")
+
 if __name__ == "__main__":
     style()
     for fn in (energy_gdp, micro_macro, resources, solar_chain, capacity_factor, pv_prices, area_budget, fuel_mass, capacity_additions, true_scale, austria_mix, land_density, risk, lifecycle,
-               cross_section_shape, cross_section_actual):
+               cross_section_shape, cross_section_actual, cross_section_classical,
+               force_ranges):
         fn()
         print("wrote", fn.__name__)

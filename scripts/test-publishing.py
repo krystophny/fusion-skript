@@ -157,6 +157,8 @@ def test_export_copies_every_build_product(course, tmp_path):
     (course / "derivations/build/fig").mkdir(parents=True)
     (course / "derivations/build/fig/energy.svg").write_text("derived plot")
     (course / "derivations/energy.py").write_text("source calculation")
+    (course / "derivations/chapters/data").mkdir(parents=True)
+    (course / "derivations/chapters/data/pp.json").write_text('{"S": 4.01}')
     (course / "slides/build").mkdir(exist_ok=True)
     (course / "slides/build/script-outline.json").write_text("{}")
     for name in ("LICENSE", "LICENSE-CONTENT.md"):
@@ -166,6 +168,7 @@ def test_export_copies_every_build_product(course, tmp_path):
     assert (dest / "slides/00-fixture.pdf").read_bytes() == b"fixture pdf"
     assert (dest / "figures/energy.svg").read_text() == "derived plot"
     assert (dest / "derivations/energy.py").read_text() == "source calculation"
+    assert (dest / "derivations/chapters/data/pp.json").read_text() == '{"S": 4.01}'
     manifest = json.loads((dest / ".fusion-skript-export.json").read_text())
     assert "figures/energy.svg" in manifest["files"]
 

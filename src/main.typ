@@ -1,6 +1,7 @@
 #import "theme.typ": page-shell, frame-style, styles
 #import "chapters/00-energy-context.typ": chapter
 #import "chapters/02-fusion-reactions.typ": chapter as chapter-02
+#import "chapters/03-fusion-in-stars.typ": chapter as chapter-03
 #show: frame-style(styles.boxy)
 #set text(font: "STIX Two Text")
 #show math.equation: set text(font: "STIX Two Math")
@@ -12,6 +13,7 @@
       #html.h2[Contents]
       #link("chapters/00-energy-context.html")[0. The big picture]
       #html.p[#link("chapters/02-fusion-reactions.html")[2. Fusion reactions] (in progress)]
+      #html.p[#link("chapters/03-fusion-in-stars.html")[3. Fusion in stars] (in progress)]
       #html.p[Further chapters follow the established lecture sequence and are added after checking.]
       #link("fusion-physics.pdf")[PDF] #h(1em)
       #link("slides/00-energy-context.pdf")[0. The big picture — slides]
@@ -39,6 +41,9 @@
 ]
 #document("chapters/02-fusion-reactions.html", title: [Fusion reactions])[
   #page-shell(stylesheet: "../styles.css")[#chapter-02]
+]
+#document("chapters/03-fusion-in-stars.html", title: [Fusion in stars])[
+  #page-shell(stylesheet: "../styles.css")[#chapter-03]
 ]
 #asset("styles.css", read("styles.css"))
 #for name in ("STIXTwoMath-Regular", "STIXTwoText-Regular", "STIXTwoText-Italic", "STIXTwoText-Bold", "STIXTwoText-BoldItalic") {
