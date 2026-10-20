@@ -6,6 +6,7 @@ mkdir -p public/slides
 # Deck figures (slides/build/fig) from the derivation plot data.
 "${PYTHON:-python3}" slides/figures.py >/dev/null
 "${PYTHON:-python3}" slides/figures_sfactor.py >/dev/null
+"${PYTHON:-python3}" slides/figures_pp.py >/dev/null
 for source in slides/[0-9]*-*.typ; do
   [[ -f "$source" ]] || continue
   stem="$(basename "$source" .typ)"

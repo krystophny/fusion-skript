@@ -330,7 +330,7 @@
   #at(7, 6, y: 4mm, grid(columns: (auto, 1fr), rows: 22mm, column-gutter: 8mm,
     align: (right + horizon, left + horizon),
     ..r([nuclei], $N_T = n A Delta x$),
-    ..r([covered fraction], $P = N_T thin sigma/A = (n Delta x) thin sigma$),
+    ..r([covered fraction], $P = (N_T sigma)/A = (n Delta x) thin sigma$),
     ..r([reactions], $N_"react" = N_"beam" thin P$),
     ..r([measured], $sigma = N_"react"/N_"beam" thin 1/(n Delta x)$),
     ..r([unit], $1 "b" = 10^(-28) "m"^2$),
@@ -394,6 +394,107 @@
   #at(1, 8, y: 0mm, deck-fig("s_factor_data", columns: 8))
   #at(9, 4, y: 10mm)[ $ S_i = sigma_i E_i exp(sqrt(E_G/E_i)) $ ]
   #at(1, 12, y: 136mm, text(size: 12pt)[ #link("https://doi.org/10.1103/PhysRev.93.483")[Arnold · Phys. Rev. 93, 483 (1954)] · #link("https://doi.org/10.1103/PhysRev.107.1616")[Bame · Phys. Rev. 107, 1616 (1957)] · #link("https://doi.org/10.1103/PhysRevC.29.2031")[Jarmie · Phys. Rev. C 29, 2031 (1984)] · #link("https://doi.org/10.1103/PhysRevC.35.1999")[Brown · Phys. Rev. C 35, 1999 (1987)] · #link("https://doi.org/10.1098/rspa.1954.0249")[Preston · Proc. R. Soc. A 226, 206 (1954)] · #link("https://doi.org/10.1007/BF01292792")[Greife · Z. Phys. A 351, 107 (1995)] · #link("https://doi.org/10.1103/PhysRevC.73.045801")[Leonard · Phys. Rev. C 73, 045801 (2006)] · #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ])
+]
+
+#slide(title: [Computing S])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #at(1, 12, y: 2mm, align(center, canvas(length: 13mm, {
+    import draw: *
+    let R = 1.0
+    let rc = 6.0
+    rect((0, 0), (R, 1.2), fill: plot-orange.lighten(70%), stroke: none)
+    rect((R, 0), (rc, 1.2), fill: plot-blue.lighten(85%), stroke: none)
+    line((0, 0), (11, 0), stroke: 0.8pt + ink, mark: (end: "stealth", fill: ink))
+    content((11.3, 0), [$r$])
+    for (x, l) in ((0, $0$), (R, $R$), (rc, $r_c$)) {
+      line((x, -0.12), (x, 0.12), stroke: 0.8pt + ink)
+      content((x, -0.45), l)
+    }
+    content((R / 2, 0.6), text(fill: plot-orange)[$S$])
+    content(((R + rc) / 2, 0.6), text(fill: plot-blue)[$e^(-sqrt(E_G\/E))$])
+    content(((rc + 11) / 2, 0.6), text(fill: muted)[free])
+  })))
+  #let r(name, how, f) = ([#text(fill: muted, name)], how, f)
+  #at(1, 12, y: 48mm, grid(columns: (auto, auto, 1fr), column-gutter: 10mm, row-gutter: 11mm,
+    align: (right + horizon, left + horizon, left + horizon),
+    ..r([p–p], [weak interaction], $S prop G_F^2 g_A^2 abs(chevron.l "d" mid(|) "pp" chevron.r)^2$),
+    ..r([D–T], [R-matrix], [$E_r, Gamma$ fitted $=>$ Breit–Wigner]),
+    ..r([D–T], [ab initio], [five nucleons, realistic forces]),
+  ))
+  #at(1, 12, y: 136mm, text(size: 12pt)[
+    #link("https://doi.org/10.1103/RevModPhys.30.257")[Lane & Thomas · Rev. Mod. Phys. 30, 257 (1958)] ·
+    #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. · Rev. Mod. Phys. 83, 195 (2011)] \
+    #link("https://doi.org/10.1103/PhysRevLett.108.042503")[Navrátil & Quaglioni · Phys. Rev. Lett. 108, 042503 (2012)]])
+]
+
+#slide(title: [p–p fusion from wave functions])[
+  #at(1, 6, y: 0mm, deck-fig("pp_fusion_waves", columns: 6))
+  #let step(name, f) = ([#text(fill: muted, name)], f)
+  #at(7, 6, y: 0mm, grid(columns: (auto, 1fr), column-gutter: 6mm, row-gutter: 8mm,
+    align: (right + horizon, left + horizon),
+    [], $H_0 = -ħ^2/(2 m) (dif^2)/(dif r^2)$,
+    ..step([deuteron], $(H_0 + V_d) thin u_d = -B_d thin u_d$),
+    ..step([p–p], $(H_0 + V_(p p) + V_C) u_(p p) = E u_(p p)$),
+    ..step([overlap], $Lambda prop display(integral_0^infinity) u_d thin u_(p p) dif r$),
+    ..step([rate], $S_(p p)(0) prop G_V^2 g_A^2 (Lambda^2)/f$),
+  ))
+  #at(7, 6, y: 98mm, text(size: 14pt, fill: muted)[
+    $V_d$: S–D coupled by tensor force \
+    $u_(p p)$: $E -> 0$, matched to Coulomb waves, Gamow factor divided out \
+    $V$: Reid potential, fitted to nucleon–nucleon scattering])
+  #at(1, 12, y: 136mm, text(size: 12pt)[
+    #link("https://doi.org/10.1016/0003-4916(68)90126-7")[Reid · Ann. Phys. 50, 411 (1968)] ·
+    #link("https://doi.org/10.1103/PhysRevC.58.1263")[Schiavilla et al. · Phys. Rev. C 58, 1263 (1998)]])
+]
+
+#slide(title: [Pionless effective field theory])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #at(1, 12, y: 2mm, align(center, canvas(length: 11mm, {
+    import draw: *
+    let R = 1.4
+    let gi = 4.32
+    let a = 7.8
+    rect((0, 0), (R, 3.2), fill: muted.lighten(80%), stroke: none)
+    content((R / 2, 3.6), text(fill: muted, size: 14pt)[unresolved])
+    // deuteron tail e^{-gamma r}
+    line(..range(0, 141).map(k => { let r = R + k * 0.1; (r, 2.8 * calc.exp(-(r - R) / gi)) }),
+      stroke: 1.5pt + plot-blue)
+    content((6.5, 1.6), text(fill: plot-blue)[$u_d prop e^(-gamma r)$])
+    line((0, 0), (16, 0), stroke: 0.8pt + ink, mark: (end: "stealth", fill: ink))
+    content((16.4, 0), [$r$])
+    for (x, l, y) in ((R, [$R_pi approx 1.4 "fm"$], -0.6), (gi, [$1\/gamma approx 4.3 "fm"$], -1.3), (a, [$|a_(p p)| approx 7.8 "fm"$], -0.6)) {
+      line((x, -0.12), (x, 0.12), stroke: 0.8pt + ink)
+      content((x, y), l)
+    }
+  })))
+  #let step(name, f) = ([#text(fill: muted, name)], f)
+  #at(2, 10, y: 76mm, grid(columns: (auto, 1fr), column-gutter: 8mm, row-gutter: 9mm,
+    align: (right + horizon, left + horizon),
+    ..step([scale separation], $R_pi = ħ/(m_pi c) quad << quad 1/gamma, |a_(p p)|$),
+    ..step([deuteron], $gamma = sqrt(m_N B_d)/ħ$),
+    ..step([p–p], $k cot delta = -1/a_(p p) + r_(p p)/2 k^2 + dots$),
+    ..step([short range], [one constant $L_(1,A)$ #text(fill: muted)[from lattice QCD]]),
+  ))
+]
+
+#slide(title: [p–p: computed vs reference])[
+  #let r(name, a, e, ref) = ([#text(fill: muted, name)], a, e, ref)
+  #let inp = text(fill: muted)[input]
+  #at(1, 12, y: 4mm, grid(columns: 4, column-gutter: 10mm, row-gutter: 8mm,
+    align: (right + horizon, left + horizon, left + horizon, left + horizon),
+    [], text(fill: muted)[potential model], text(fill: muted)[pionless EFT], text(fill: muted)[reference],
+    ..r([deuteron binding], $2.2246 "MeV"$, inp, $2.2246 "MeV"$),
+    ..r([D-state fraction], $6.5 %$, [–], $tilde 5 "–" 7 %$),
+    ..r([$a_(p p)$], $-7.75 "fm"$, inp, $-7.81 "fm"$),
+    ..r([$Lambda^2$], $6.91$, $7.02$, $approx 7.0$),
+    ..r([$S_(p p)(0) thin [10^(-25) "MeV b"]$], $3.95$, $4.01 plus.minus 0.27$, $4.01 plus.minus 0.04$),
+  ))
+  #at(1, 12, y: 84mm, align(center)[
+    #text(fill: muted)[EFT order by order:] $quad 3.60 quad -> quad 3.82 quad -> quad 4.01$])
+  #at(1, 12, y: 130mm, text(size: 12pt)[
+    #link("https://doi.org/10.1016/S0370-2693(01)01152-2")[Butler & Chen · Phys. Lett. B 520, 87 (2001)] ·
+    #link("https://doi.org/10.1103/PhysRevLett.119.062002")[Savage et al. · Phys. Rev. Lett. 119, 062002 (2017)] \
+    #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. · Rev. Mod. Phys. 83, 195 (2011)]])
 ]
 
 #slide(title: [Proton–proton chain])[

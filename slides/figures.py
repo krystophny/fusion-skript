@@ -549,13 +549,23 @@ def cross_section_actual():
     for name, label, color in CURVES:
         # Bosch-Hale validity: D-T up to 550 keV, D-D up to 4.9 MeV.
         x = e[e <= BOSCH_HALE["DT"]["E_max_keV"]] if name == "DT" else e
-        y = s_factor(name, x) / x * np.exp(-gamow_bg(name) / np.sqrt(x))
+        # D-D drawn per branch, like the measured points; the two nearly coincide.
+        y = s_factor("DDn" if name == "DD" else name, x) / x * np.exp(-gamow_bg(name) / np.sqrt(x))
         ax = bottom if name == "pp" else top
         ax.loglog(x, y, color=color, lw=2)
         if name == "DT":
             ax.text(64, 12, label, color=color, ha="center", va="bottom", fontsize=18)
+        elif name == "DD":
+            ax.text(x[-1] * 1.1, y[-1], label, color=color, va="center", fontsize=18)
         else:
             ax.text(x[-1] * 1.1, y[-1], label, color=color, va="center", fontsize=18)
+    # Measured cross sections (EXFOR), the same points as on the S-factor slide.
+    exfor = json.loads((ROOT / "derivations/chapters/ch02_s_factor_exfor.json").read_text())
+    for series in exfor["series"]:
+        color = ORANGE if series["reaction"] == "DT" else BLUE
+        pts = series["points"]
+        top.scatter([p["e_cm_keV"] for p in pts], [p["sigma_b"] for p in pts], s=10,
+                    facecolor="white", edgecolor=color, linewidth=.8, zorder=3)
     top.set_ylim(1e-8, 1e2)
     bottom.set_ylim(1e-32, 1e-23)
     top.spines["bottom"].set_visible(False)
