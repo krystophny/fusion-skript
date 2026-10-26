@@ -1,14 +1,14 @@
-# Fusion Physics Skript
+# Fusion Physics lecture slides
 
-Incremental local draft at `~/proj/fusion-skript`. The first chapter preserves
-the quantitative energy opening and replaces book excerpts with original
-explanations and reproducible plots. Later nuclear and plasma chapters will
-follow the established course with deeper mathematical development.
+There is no Fusion Physics script for now. The lecture decks and the online
+slide viewer <https://krystophny.github.io/fusion-skript/present/> are the
+course reference. A future script will be written by hand, page by page; the
+earlier generated chapters remain only in Git history.
 
 Build with `bash scripts/build-site.sh` (Typst, Python, SymPy and Matplotlib).
-Read `public/index.html`, `public/chapters/00-energy-context.html`,
-`public/fusion-physics.pdf` and `public/slides/00-energy-context.pdf`.
-These are local drafts; no public deployment is configured.
+Read `public/slides/00-energy-context.pdf` and serve `public/present/` over
+HTTP. Chapter and section numbers and titles of the decks are in
+`slides/outline.json`.
 
 - [Specification](SPEC.md) and [data provenance](data/README.md)
 - [Course plan](../../Nextcloud/lv/fusion/PLAN.md)
@@ -29,15 +29,15 @@ Use the shared [course delivery policy](../../Nextcloud/lv/AGENTS.md): curated
 module routes in FuEL and TeachCenter and YouTube unlisted lecture videos.
 Plasma animations use native players with stable Nextcloud streams; their
 YouTube uploads were removed by request. Share the maintained player URLs
-between Skript and slides.
+between decks and player pages.
 Only TeachCenter additionally links the full 2026 Nextcloud material folder.
 Course-description backups are in each course's `platform-backups/` folder.
 Written examinations supersede the earlier instruction to preserve the old
 format; current questions remain the baseline and may evolve until semester end.
 
-The energy-opening HTML bundle is uploaded and browser-verified as hidden FuEL
-File resource 746. TeachCenter start page 594148 links the current PDF and the
-full 2026 folder. FuEL start page 749 is hidden and omits the bulk folder link.
+FuEL File resource 746 (hidden) and TeachCenter start page 594148 still point
+to the withdrawn script HTML bundle and PDF. FuEL start page 749 is hidden and
+omits the bulk folder link.
 
 ## Publishing
 
@@ -48,8 +48,9 @@ bash scripts/publish.sh
 ```
 
 The destination defaults to `~/Nextcloud/lv/fusion/2026/`; use `--dest`
-or `COURSE_FOLDER` to choose another folder. The exporter copies the Skript
-PDF, every built deck PDF, generated figures and derivation sources.
+or `COURSE_FOLDER` to choose another folder. The exporter copies every
+built deck PDF, generated figures, derivation sources and registered
+animations; it writes no `skript/` folder.
 `.fusion-skript-export.json` records ownership and hashes. It removes stale
 owned files, preserves unowned or locally modified files, and skips unchanged
 copies. The folder is public at
@@ -81,8 +82,7 @@ after the Actions checks pass.
 
 | Output | URL |
 | --- | --- |
-| Skript | <https://krystophny.github.io/fusion-skript/> |
-| Skript PDF | <https://krystophny.github.io/fusion-skript/fusion-physics.pdf> |
+| Site root (forwards to the presenter) | <https://krystophny.github.io/fusion-skript/> |
 | Energy deck PDF | <https://krystophny.github.io/fusion-skript/slides/00-energy-context.pdf> |
 | Presenter launcher | <https://krystophny.github.io/fusion-skript/present/> |
 | Energy presenter | <https://krystophny.github.io/fusion-skript/present/00-energy-context/> |
@@ -104,11 +104,12 @@ exports in `animations/data/<code>/<export>/` with their `provenance.json`.
 0.21 with the stix2 TeX package and ffmpeg, for example from
 `nix develop ~/proj/plasma-skript`. `python3 scripts/refresh-animation-media.py`
 adopts a render into `media/animations.json` (checksum, `?v=` stream URL) and
-`media/posters/`. The MP4s are hosted in the course share's `animations/`
+`media/posters/`; each record also names its scene `source`, `title`,
+`description` and `caption`. The MP4s are hosted in the course share's `animations/`
 folder; `scripts/export-course-folder.sh` copies exactly the registered
 revisions there together with `animation-sources/`. The site build
-(`scripts/prepare-media.py`) stages the registered MP4s and builds
-`animations/<slug>.html` from the captioned Skript figure (theme `animation`);
+(`scripts/prepare-media.py`) checks each record's scene and checksum, stages
+the registered MP4s and builds `animations/<slug>.html` from the record;
 decks use `#animation-page(slug, name)`.
 
 ## Presenter metadata

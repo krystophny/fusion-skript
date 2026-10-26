@@ -8,7 +8,47 @@
       "player_url": "https://krystophny.github.io/fusion-skript/animations/coulomb-collision.html",
       "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/coulomb_collision.mp4?v=9d6e83841cab5786",
       "mp4_sha256": "9d6e83841cab5786dabae03ca822f26290ef5a022512114235156d19e8340e4b",
-      "appearance": "dark"
+      "appearance": "dark",
+      "source": "animations/coulomb_collision.py",
+      "title": "Coulomb collision",
+      "description": "Head-on D-T collision at eta = 2 seen from above in the centre-of-mass frame, shown in three parts on the same clock, axes and scale: the classical collision alone, the quantum collision alone, and both side by side. Classical: the deuteron (small dot) and the triton (larger dot) approach along a line, slow down, turn at separation r_c and fly apart. Quantum: each nucleus is a probability cloud; the clouds approach, show interference fringes while they are reflected, and a small part reaches separations below r_c, drawn in yellow.",
+      "caption": "Head-on D–T collision (ℓ = 0) at η = 2 (E = 7.5 keV), seen from above in the centre-of-mass frame (the cross marks the centre of mass), shown three times on the same clock, axes and scale: classical alone, quantum alone, and both side by side. With separation r the nuclei sit at x_D = −(m_T/M) r and x_T = (m_D/M) r, M = m_D + m_T; the bar marks r_c between the turning positions, and the shaded band is r < r_c. Classical: point particles on the orbit r(t) at energy E, reflected at r_c. Quantum: the densities of x_D and x_T obtained from the ℓ = 0 wave packet |u(r, t)|² (12 % energy spread) by the same relations. Incoming and reflected waves interfere into fringes, and a few per cent of the probability reaches r < r_c (yellow, brightened), where tunnelling starts. The width across the collision axis is illustrative only."
+    },
+    "gamow-sweep": {
+      "fallback_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/gamow_sweep.mp4",
+      "poster": "media/posters/gamow-sweep.png",
+      "player_url": "https://krystophny.github.io/fusion-skript/animations/gamow-sweep.html",
+      "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/gamow_sweep.mp4?v=38dfd520c23a2859",
+      "mp4_sha256": "38dfd520c23a28597530fa24c1e838497b57e8228a2f14bffa04a7aa3cface0b",
+      "appearance": "dark",
+      "source": "animations/gamow_sweep.py",
+      "title": "Gamow peak sweep",
+      "description": "D-T at rising temperature on a logarithmic factor axis over the centre-of-mass energy from 0 to 250 keV: the Maxwell factor falls, the fixed tunnelling factor rises, and their product forms the Gamow peak. As the temperature rises from 2 to 60 keV the shaded Gamow window moves to higher energy and the traced peak grows by almost five decades.",
+      "caption": "Gamow peak of D–T (E_G = 1182 keV) while k_BT rises geometrically from 2 to 60 keV. Over the centre-of-mass energy E: the Maxwell factor e^(−E/k_BT), the tunnelling factor e^(−√(E_G/E)) and their product. Shaded: the Gamow window E₀ ± Δ/2 with E₀ = (E_G (k_BT)²/4)^(1/3) and 1/e full width Δ = 4√(E₀k_BT/3). The peak moves from 10.6 to 102 keV and its value exp(−3E₀/k_BT) grows from 1.2·10⁻⁷ to 6·10⁻³."
+    },
+    "maxwell-average": {
+      "fallback_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/maxwell_average.mp4",
+      "poster": "media/posters/maxwell-average.png",
+      "player_url": "https://krystophny.github.io/fusion-skript/animations/maxwell-average.html",
+      "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/maxwell_average.mp4?v=0836ab4745cf7dc7",
+      "mp4_sha256": "0836ab4745cf7dc7e6050652efadb492421226e091a9521ba2895ada4c7d716b",
+      "appearance": "dark",
+      "source": "animations/maxwell_average.py",
+      "title": "Maxwell average",
+      "description": "Left: on a logarithmic energy axis, the D-T sigma v with its resonance, the dashed Maxwellian weight and their shaded product, as the temperature sweeps from 1 to 100 keV; the weight keeps its shape and slides under the resonance. Right: the reactivity computed from the shaded area is traced point by point over the dashed Bosch-Hale curve.",
+      "caption": "Left, over E (log axis, 0.3–1000 keV): D–T σv(E) with the ⁵He resonance (Bosch–Hale S), the Maxwellian weight E f_M(E;T) (dashed) and their product (shaded), each scaled by a T-independent constant, so the shaded area is proportional to ⟨σv⟩(T). k_BT sweeps 1 → 100 keV geometrically. Right: ⟨σv⟩ from that area, traced over the dashed Bosch–Hale curve. Because the weight depends on E/T only, it keeps its shape in ln E and merely shifts by ln T."
+    },
+    "relative-velocity": {
+      "fallback_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/relative_velocity.mp4",
+      "poster": "media/posters/relative-velocity.png",
+      "player_url": "https://krystophny.github.io/fusion-skript/animations/relative-velocity.html",
+      "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/relative_velocity.mp4?v=ca2bd3d30b8d69fa",
+      "mp4_sha256": "ca2bd3d30b8d69fa501f237dc2842ac9beac4f81d4dfcf6e470fa7ecccb82eef",
+      "appearance": "dark",
+      "source": "animations/maxwell_average.py",
+      "title": "Relative velocity",
+      "description": "One-dimensional velocity distributions of deuterium and tritium at 10 keV: the tritium distribution slides across the deuterium one, their overlap product is shaded, and its area, the density of the relative velocity, is traced below over the dashed Maxwellian of the reduced mass.",
+      "caption": "A convolution in one dimension at k_BT = 10 keV: f_rel(g) = ∫ f_D(v) f_T(v − g) dv, the density of g = v_D − v_T. The tritium distribution slides across the deuterium one, the overlap f_D(v) f_T(v − g) is shaded, and its area f_rel(g) is traced over the dashed Maxwellian of the reduced mass m_r = m_D m_T/(m_D + m_T). The variances add, k_BT/m_D + k_BT/m_T = k_BT/m_r, which is why ⟨σv⟩ uses the centre-of-mass energy with m_r."
     }
   }
 }

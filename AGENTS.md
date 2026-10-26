@@ -2,6 +2,9 @@
 
 Read [SPEC.md](SPEC.md) and the [course plan](../../Nextcloud/lv/fusion/PLAN.md)
 before editing. Work locally here; faepmac1 is a secondary checkout only.
+There is no Fusion script for now: the slide decks and the online viewer
+(`public/present/`) are the course reference. A future script will be written
+by hand, page by page; do not generate one. Old chapter text is in Git history.
 Preserve existing exam questions and the established lecture sequence.
 Use English and SI; define symbols and show mathematical steps. Author prose
 and figures independently, with source and asset provenance. Never copy book

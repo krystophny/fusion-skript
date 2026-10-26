@@ -157,7 +157,7 @@
     line((4.4, 0.4), (5.6, 0.4), stroke: 0.8pt + ink, mark: (end: "stealth", fill: ink))
     content((rc + 0.1, 1.45), text(fill: muted, size: 14pt)[$dot(r) = 0$])
   }))
-  #at(1, 7, y: 100mm)[$ r_c lt.tilde R approx 10^(-15) "m" quad => quad E gt.tilde (e^2)/(4 pi epsilon_0 R) approx 1.4 "MeV" $]
+  #at(1, 7, y: 100mm)[$ r_c lt.tilde R approx 3 "fm" quad => quad E gt.tilde (e^2)/(4 pi epsilon_0 R) approx 0.5 "MeV" $]
 ]
 
 #slide(title: [Classical cross section])[

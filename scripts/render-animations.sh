@@ -18,6 +18,9 @@ self="$repo_root/scripts/render-animations.sh"
 # source file | scene class | output slug | poster time in seconds | kin6d export
 scenes=(
   "coulomb_collision.py|CoulombCollision|coulomb-collision|30.3|"
+  "gamow_sweep.py|GamowSweep|gamow-sweep|15.0|"
+  "maxwell_average.py|MaxwellAverage|maxwell-average|17.5|"
+  "maxwell_average.py|RelativeVelocity|relative-velocity|7.0|"
 )
 
 if [[ "${1:-}" == "--slugs" ]]; then

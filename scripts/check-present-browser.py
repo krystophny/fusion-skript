@@ -43,11 +43,10 @@ def run():
                 errors = []
                 page.on("pageerror", lambda error: errors.append(str(error)))
                 page.goto(base)
+                page.wait_for_url(base + "present/")
+                page.goto(base + "animations/coulomb-collision.html")
                 page.wait_for_selector("main")
-                page.screenshot(path=str(shots / "site.png"), full_page=True)
-                page.goto(base + "chapters/00-energy-context.html")
-                page.wait_for_selector("main")
-                page.screenshot(path=str(shots / "chapter.png"), full_page=True)
+                page.screenshot(path=str(shots / "animation.png"), full_page=True)
                 page.goto(base + "present/")
                 page.wait_for_selector(".decks li a")
                 assert page.locator("h1").inner_text() == "Fusion Physics"

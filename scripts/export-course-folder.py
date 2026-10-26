@@ -42,7 +42,7 @@ def safe_target(dest, relative):
 
 def export(repo, site, dest):
     """Stage inputs first, then copy and record only files we wrote."""
-    wanted = {"skript/fusion-physics.pdf": site / "fusion-physics.pdf"}
+    wanted = {}
     decks = sorted((site / "slides").glob("*.pdf"))
     if (site / "present/decks.json").is_file():
         active = {d["stem"] + ".pdf" for d in
@@ -64,7 +64,6 @@ def export(repo, site, dest):
                         or p.name in {"Makefile", "requirements.txt"})})
     for name in ("LICENSE", "LICENSE-CONTENT.md"):
         wanted["derivations/" + name] = repo / name
-    wanted["derivations/script-outline.json"] = repo / "slides/build/script-outline.json"
     # Animations: the registered MP4 revisions staged by prepare-media.py, under
     # the file names their stream URLs expect, and the scene sources with data.
     registry = repo / "media/animations.json"

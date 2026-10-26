@@ -1,0 +1,33 @@
+{
+  "description": "Maxwellian reactivity parametrisations and the extra S-factor fits needed to integrate them. Read by derivations/chapters/ch02_reactivity.py and ch04_power_balance.py. T is the ion temperature in keV, E the centre-of-mass energy in keV.",
+  "bosch_hale_reactivity": {
+    "source": "H.-S. Bosch and G. M. Hale, Nucl. Fusion 32, 611 (1992), https://doi.org/10.1088/0029-5515/32/4/I07, Table VII and eqs. (12)-(14). Values transcribed from two independent open implementations that cite Table VII: PlasmaPy src/plasmapy/utils/data/rxty_pade_polynomial_coefficients.json and ASCOT5 src/boschhale.c (identical digits).",
+    "form": "<sigma v> = C1 theta sqrt(xi/(m_r c^2 T^3)) exp(-3 xi) [cm^3/s], theta = T / (1 - T (C2 + T (C4 + T C6)) / (1 + T (C3 + T (C5 + T C7)))), xi = (B_G^2/(4 theta))^(1/3)",
+    "reactions": {
+      "DT":   {"label": "D + T -> 4He + n",  "B_G_sqrt_keV": 34.3827, "mrc2_keV": 1124656, "T_keV": [0.2, 100],
+               "C": [1.17302e-9, 1.51361e-2, 7.51886e-2, 4.60643e-3, 1.35000e-2, -1.06750e-4, 1.36600e-5]},
+      "DDn":  {"label": "D + D -> 3He + n",  "B_G_sqrt_keV": 31.3970, "mrc2_keV": 937814, "T_keV": [0.2, 100],
+               "C": [5.43360e-12, 5.85778e-3, 7.68222e-3, 0.0, -2.96400e-6, 0.0, 0.0]},
+      "DDp":  {"label": "D + D -> T + p",    "B_G_sqrt_keV": 31.3970, "mrc2_keV": 937814, "T_keV": [0.2, 100],
+               "C": [5.65718e-12, 3.41267e-3, 1.99167e-3, 0.0, 1.05060e-5, 0.0, 0.0]},
+      "DHe3": {"label": "D + 3He -> 4He + p", "B_G_sqrt_keV": 68.7508, "mrc2_keV": 1124572, "T_keV": [0.5, 190],
+               "C": [5.51036e-10, 6.41918e-3, -2.02896e-3, -1.91080e-5, 1.35776e-4, 0.0, 0.0]}
+    }
+  },
+  "bosch_hale_s_factor_extra": {
+    "source": "Bosch and Hale (1992), Table IV (S in keV mb, Pade form as in cross-sections.json); transcribed from ASCOT5 src/boschhale.c. Used only for the numerical cross-check of the D-3He reactivity and for D-T above 550 keV.",
+    "DHe3_low":  {"E_keV": [0.3, 900],   "A": [5.7501e6, 2.5226e3, 4.5566e1, 0.0, 0.0], "B": [-3.1995e-3, -8.5530e-6, 5.9014e-8, 0.0]},
+    "DHe3_high": {"E_keV": [900, 4800],  "A": [-8.3993e5, 0.0, 0.0, 0.0, 0.0],       "B": [-2.6830e-3, 1.1633e-6, -2.1332e-10, 1.4250e-14]},
+    "DT_high":   {"E_keV": [550, 4700],  "A": [-1.4714e6, 0.0, 0.0, 0.0, 0.0],       "B": [-8.4127e-3, 4.7983e-6, -1.0748e-9, 8.5184e-14]}
+  },
+  "p11B": {
+    "source": "W. M. Nevins and R. Swain, Nucl. Fusion 40, 865 (2000), https://doi.org/10.1088/0029-5515/40/4/310: S(E) eqs. (2)-(4) and Table 1; high-T reactivity fit eq. (13)-(15), Table 2 (valid 50-500 keV, P1 gives m^3/s).",
+    "label": "p + 11B -> 3 4He",
+    "E_G_quarter_cuberoot_keV": 17.81,
+    "mrc2_keV": 859526,
+    "S_low":  {"E_keV": [0, 400], "C0_MeVb": 197, "C1_MeVb": 0.240, "C2_MeVb": 2.31e-4, "AL_MeVb": 1.82e4, "EL_keV": 148, "dEL_keV": 2.35},
+    "S_mid":  {"E_keV": [400, 642], "D0_MeVb": 330, "D1_MeVb": 66.1, "D2_MeVb": -20.3, "D5_MeVb": -1.58},
+    "S_high": {"E_keV": [642, 3500], "A_MeVb": [2.57e6, 5.67e5, 1.34e5, 5.68e5], "E_keV_i": [581.3, 1083, 2405, 3344], "dE_keV": [85.7, 234, 138, 309], "B_MeVb": 4.38},
+    "high_T_fit": {"T_keV": [50, 500], "P": [4.4467e-14, -5.9357e-2, 2.0165e-1, 1.0404e-3, 2.7621e-3, -9.1653e-6, 9.8305e-7]}
+  }
+}

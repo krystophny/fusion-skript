@@ -3,19 +3,19 @@
 
 site/media receives animations.json, the posters and each registered MP4 at
 exactly its mp4_sha256 revision (local render cache first, else the hosted
-stream_url), so the presenter can stage it offline. Every registered animation
-needs a captioned Skript figure (theme `animation`); its stable page
-site/animations/<slug>.html shows the full-window video with that caption.
+stream_url), so the presenter can stage it offline. A registered animation
+needs no script chapter: its record names the Manim scene source that
+scripts/render-animations.sh renders, a title and a caption, and its stable
+page site/animations/<slug>.html shows the full-window video with that caption.
 """
 import hashlib
 import html
 import json
 import os
 from pathlib import Path
-import re
 import shutil
+import subprocess
 import sys
-from urllib.parse import urlsplit
 from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,14 +49,32 @@ def stage_video(slug, record, media):
     shutil.copyfile(saved, target)
 
 
-def player_markup(figure):
-    start = figure.index('<div class="animation-player">')
-    depth = 0
-    for tag in re.finditer(r'</?div\b[^>]*>', figure[start:]):
-        depth += -1 if tag.group(0).startswith('</') else 1
-        if depth == 0:
-            return figure[start:start + tag.end()]
-    raise ValueError("Unclosed animation player")
+def rendered_slugs():
+    """Slugs that scripts/render-animations.sh renders from repository scenes."""
+    result = subprocess.run(["bash", str(ROOT / "scripts/render-animations.sh"), "--slugs"],
+                            capture_output=True, text=True, check=True)
+    return set(result.stdout.split())
+
+
+def check_provenance(slug, record, scenes):
+    for key in ("source", "title", "caption", "description", "poster", "mp4_sha256", "stream_url"):
+        if not isinstance(record.get(key), str) or not record[key].strip():
+            raise ValueError(f"Registered animation {slug} lacks {key}")
+    if slug not in scenes or not (ROOT / record["source"]).is_file():
+        raise ValueError("Registered animation has no repository scene: " + slug)
+
+
+def player_page(slug, record):
+    e = html.escape
+    return f'''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{e(record["title"])} — Fusion Physics animation</title>
+<link rel="stylesheet" href="../animation-player.css"></head>
+<body class="animation-presentation"><main><figure style="margin:0">
+<div class="animation-player"><video class="animation-video" aria-label="{e(record["description"])}" controls loop muted playsinline preload="metadata" src="{e(record["stream_url"])}" poster="../media/{slug}.png" width="960">{e(record["description"])}</video><div class="animation-controls" hidden><input type="range" class="animation-seek" min="0" max="100" step="0.1" value="0" aria-label="Animation position"> <button type="button" class="animation-fullscreen" aria-label="Full screen"></button></div><p class="animation-status" role="status"></p></div><div class="animation-information"><h1>{e(record["title"])}</h1><figcaption>{e(record["caption"])}</figcaption>
+<p><a href="../present/">Lecture slides</a> · Original animation: Christopher Albert, CC BY 4.0.</p></div>
+</figure></main><script defer src="../animation-player.js"></script></body></html>
+'''
 
 
 def prepare(site):
@@ -65,47 +83,18 @@ def prepare(site):
     register = ROOT / "media/animations.json"
     shutil.copyfile(register, media / "animations.json")
     records = json.loads(register.read_text())["animations"]
+    scenes = rendered_slugs()
     for slug, record in records.items():
+        check_provenance(slug, record, scenes)
         shutil.copyfile(ROOT / record["poster"], media / (slug + ".png"))
         stage_video(slug, record, media)
     players = site / "animations"
     players.mkdir(exist_ok=True)
     for name in ("animation-player.js", "animation-player.css"):
         shutil.copyfile(ROOT / "src" / name, site / name)
-    by_source = {urlsplit(r["stream_url"]).path: slug for slug, r in records.items()}
-    found = {}
-    for page in sorted(site.rglob("*.html")):
-        if page.parent == players:
-            continue
-        content = page.read_text()
-        figures = re.findall(r'<figure\b[^>]*class="animation-figure"[^>]*>.*?</figure>', content, re.S)
-        for figure in figures:
-            source = re.search(r'<video\b[^>]*src="([^"]+)"', figure)
-            if source:
-                slug = by_source[urlsplit(html.unescape(source.group(1))).path]
-                found[slug] = (figure, page.relative_to(site).as_posix())
-        if figures and "animation-player.js" not in content:
-            prefix = "../" * (len(page.relative_to(site).parts) - 1)
-            content = content.replace("</head>", f'<link rel="stylesheet" href="{prefix}animation-player.css">\n</head>', 1)
-            content = content.replace("</body>", f'<script defer src="{prefix}animation-player.js"></script>\n</body>', 1)
-            page.write_text(content)
-    missing = sorted(set(records) - set(found))
-    if missing:
-        raise ValueError("No captioned Skript animation figure for: " + ", ".join(missing))
-    for slug, (figure, chapter) in found.items():
-        video = player_markup(figure)
-        caption = re.search(r'<figcaption\b[^>]*>.*?</figcaption>', figure, re.S).group(0)
-        title = slug.replace("-", " ").capitalize()
-        (players / (slug + ".html")).write_text(f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html.escape(title)} — Fusion Physics animation</title>
-<link rel="stylesheet" href="../animation-player.css"></head>
-<body class="animation-presentation"><main><figure style="margin:0">
-{video}<div class="animation-information"><h1>{html.escape(title)}</h1>{caption}
-<p><a href="../{chapter}">Return to the Skript chapter</a> · Original animation: Christopher Albert, CC BY 4.0.</p></div>
-</figure></main><script defer src="../animation-player.js"></script></body></html>
-''')
-    print("Animation pages:", len(found))
+    for slug, record in records.items():
+        (players / (slug + ".html")).write_text(player_page(slug, record))
+    print("Animation pages:", len(records))
 
 
 if __name__ == "__main__":

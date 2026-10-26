@@ -1,6 +1,6 @@
 """Chapter 2: SymPy checks for the Coulomb barrier and Gamow tunnelling (MIT).
 
-Script: src/chapters/02-fusion-reactions.typ. Run:
+Deck: slides/02-fusion-reactions.typ. Run:
     python3 derivations/chapters/ch02_fusion_reactions.py
 Cross-section constants come from data/ch02/cross-sections.json, the source
 shared with slides/figures.py.
@@ -45,7 +45,7 @@ def coulomb_barrier():
     for z, energy, expected in ((79, 5, 45), (13, sp.Rational("7.7"), 5)):
         rc = float(2 * z * E2_MEV_FM / energy)
         assert abs(rc - expected) / expected < 0.03, (z, rc)
-    # Turning point at R = 1 fm for Z_1 = Z_2 = 1: E = e^2/(4 pi eps0 r_0) ~ 1.4 MeV.
+    # Turning point at the contact distance R ~ 3 fm for Z_1 = Z_2 = 1: E = e^2/(4 pi eps0 R) ~ 0.5 MeV.
     assert abs(float(E2_MEV_FM) - 1.44) < 0.005
     # Animation example: D-T at 7.5 keV turns at 0.19 pm.
     assert abs(float(E2_MEV_FM / sp.Rational("0.0075")) / 1000 - 0.19) < 0.005

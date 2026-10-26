@@ -76,7 +76,7 @@ def stage_media(value, metadata, site, deck):
 
 
 def deck_info(chapter, outline, per_page):
-    """Resolve a script chapter or an explicitly identified deck-first chapter."""
+    """Resolve an outline chapter or an explicitly identified deck-only chapter."""
     info = next((c for c in outline["chapters"] if c["number"] == chapter), None)
     if info is not None:
         return info
@@ -92,7 +92,7 @@ def build(args):
     site = (args.site_dir or root / "public").resolve()
     site.mkdir(parents=True, exist_ok=True)
     templates = root / "src/present"
-    outline = json.loads((root / "slides/build/script-outline.json").read_text())
+    outline = json.loads((root / "slides/outline.json").read_text())
     sources = sorted(p for p in (root / "slides").glob("*.typ")
                      if re.match(r"^\d+-", p.stem))
     if not sources:

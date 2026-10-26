@@ -1,4 +1,4 @@
-"""A live deck can precede its script without losing explicit chapter identity."""
+"""A deck without an outline chapter keeps its explicit chapter identity."""
 import importlib.util
 from pathlib import Path
 
@@ -12,7 +12,7 @@ presenter = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(presenter)
 
 
-def test_script_chapter_remains_authoritative():
+def test_outline_chapter_remains_authoritative():
     chapter = {"number": 0, "title": "The big picture", "label": "energy-context"}
     assert presenter.deck_info(0, {"chapters": [chapter]}, {}) == chapter
 

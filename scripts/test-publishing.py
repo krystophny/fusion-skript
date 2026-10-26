@@ -25,6 +25,7 @@ def load(name, filename):
 
 present = load("present_builder", "build-present.py")
 exporter = load("course_exporter", "export-course-folder.py")
+media = load("media_preparer", "prepare-media.py")
 
 
 @pytest.fixture
@@ -35,10 +36,9 @@ def course(tmp_path):
     (root / "src").mkdir()
     shutil.copytree(REPO / "src/present", root / "src/present")
     shutil.copyfile(REPO / "slides/present-meta.typ", root / "slides/present-meta.typ")
-    (root / "slides/build/script-outline.json").write_text(json.dumps({
+    (root / "slides/outline.json").write_text(json.dumps({
         "chapters": [{"number": 0, "title": "Independent fixture"}]}))
     (root / "public/slides/00-fixture.pdf").write_bytes(b"fixture pdf")
-    (root / "public/fusion-physics.pdf").write_bytes(b"current script")
     (root / "public/media").mkdir()
     (root / "public/media/movie.mp4").write_bytes(b"independent movie payload")
     source = root / "slides/00-fixture.typ"
@@ -159,12 +159,10 @@ def test_export_copies_every_build_product(course, tmp_path):
     (course / "derivations/energy.py").write_text("source calculation")
     (course / "derivations/chapters/data").mkdir(parents=True)
     (course / "derivations/chapters/data/pp.json").write_text('{"S": 4.01}')
-    (course / "slides/build").mkdir(exist_ok=True)
-    (course / "slides/build/script-outline.json").write_text("{}")
     for name in ("LICENSE", "LICENSE-CONTENT.md"):
         (course / name).write_text("license")
     exporter.export(course, course / "public", dest)
-    assert (dest / "skript/fusion-physics.pdf").read_bytes() == b"current script"
+    assert not (dest / "skript").exists()
     assert (dest / "slides/00-fixture.pdf").read_bytes() == b"fixture pdf"
     assert (dest / "figures/energy.svg").read_text() == "derived plot"
     assert (dest / "derivations/energy.py").read_text() == "source calculation"
@@ -194,3 +192,59 @@ def test_export_ships_only_the_registered_animation_revision(course, tmp_path):
     movie.write_bytes(b"stale render")
     with pytest.raises(ValueError, match="registered revision"):
         exporter.export(course, course / "public", dest)
+
+
+def test_withdrawn_script_pdf_is_not_recreated(course, tmp_path):
+    for name in ("LICENSE", "LICENSE-CONTENT.md"):
+        (course / name).write_text("license")
+    dest = tmp_path / "folder"
+    dest.mkdir()
+    old = hashlib.sha256(b"old script").hexdigest()
+    (dest / ".fusion-skript-export.json").write_text(json.dumps(
+        {"version": 1, "files": {"skript/fusion-physics.pdf": old}}))
+    exporter.export(course, course / "public", dest)
+    assert not (dest / "skript").exists()
+    manifest = json.loads((dest / ".fusion-skript-export.json").read_text())
+    assert "skript/fusion-physics.pdf" not in manifest["files"]
+
+
+@pytest.fixture
+def registered(course, monkeypatch):
+    """One rendered animation with a repository scene and no script chapter."""
+    (course / "animations").mkdir()
+    (course / "animations/scene.py").write_text("scene source")
+    (course / "media/posters").mkdir(parents=True)
+    (course / "media/posters/scene.png").write_bytes(b"poster")
+    (course / "src/animation-player.js").write_text("player")
+    (course / "src/animation-player.css").write_text("style")
+    cache = course / "renders"
+    cache.mkdir()
+    (cache / "scene.mp4").write_bytes(b"rendered movie")
+    record = {"poster": "media/posters/scene.png", "source": "animations/scene.py",
+              "title": "Scene", "description": "Moving dots", "caption": "Dots move <fast>.",
+              "stream_url": "https://host.invalid/animations/scene.mp4?v=0",
+              "mp4_sha256": hashlib.sha256(b"rendered movie").hexdigest()}
+    (course / "media/animations.json").write_text(json.dumps({"animations": {"scene": record}}))
+    monkeypatch.setattr(media, "ROOT", course)
+    monkeypatch.setattr(media, "rendered_slugs", lambda: {"scene"})
+    monkeypatch.setenv("MEDIA_DIR", str(cache))
+    return record
+
+
+def test_registered_animation_needs_no_script_chapter(course, registered):
+    site = course / "site"
+    media.prepare(site)
+    assert (site / "media/scene.mp4").read_bytes() == b"rendered movie"
+    page = (site / "animations/scene.html").read_text()
+    assert "Dots move &lt;fast&gt;." in page and 'href="../present/"' in page
+
+
+def test_registered_animation_keeps_provenance_and_checksum(course, registered, monkeypatch):
+    monkeypatch.setattr(media, "rendered_slugs", lambda: set())
+    with pytest.raises(ValueError, match="no repository scene"):
+        media.prepare(course / "site")
+    monkeypatch.setattr(media, "rendered_slugs", lambda: {"scene"})
+    (course / "renders/scene.mp4").write_bytes(b"other render")
+    monkeypatch.setattr(media, "urlopen", lambda *a, **k: __import__("io").BytesIO(b"other render"))
+    with pytest.raises(ValueError, match="Checksum mismatch"):
+        media.prepare(course / "site")

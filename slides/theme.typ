@@ -5,20 +5,28 @@
 // element starts and ends on a column edge. Content starts at the top margin;
 // on the first page of a section it starts below the section title.
 //
-// Type: STIX Two Text and STIX Two Math, the typefaces of the script
-// (fonts/; block labels use its real small caps, OpenType smcp).
+// Type: STIX Two Text and STIX Two Math
+// (fonts/; block labels use real small caps, OpenType smcp).
 // Two text sizes: 26 pt for the section and chapter title, 18 pt for
 // everything else, formulas included. Page numbers, the photo credit lines
 // and the title page's transparency line are page furniture at 11 pt.
-// Derived plots are the script's figures, scaled by 1.8 so their 10 pt labels
+// Derived plots are scaled by 1.8 so their 10 pt labels
 // match the 18 pt body (derivations/si.py: SLIDE_SCALE, slide_width).
 //
-// Section numbers and titles come from the script: scripts/build-slides.sh
-// queries the <script-section> metadata of src/print.typ into
-// slides/build/script-outline.json before compiling the decks, and copies the
-// animation posters to slides/build/media/.
+// Chapter and section numbers and titles come from slides/outline.json.
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
-#import "../src/theme.typ": plain-text
+
+// Plain text of content, for metadata and alternative descriptions.
+#let plain-text(it) = {
+  if it == none { "" }
+  else if type(it) == str { it }
+  else if it.has("text") { plain-text(it.text) }
+  else if it.has("children") { it.children.map(plain-text).join("") }
+  else if it.func() == math.attach { plain-text(it.base) }
+  else if it.has("body") { plain-text(it.body) }
+  else if it.func() == [ ].func() { " " }
+  else { "" }
+}
 
 #let course-name = "Fusion Physics"
 #let ink = rgb("#17202A")
@@ -64,21 +72,21 @@
   media.player_url
 }
 
-// Script outline: chapter and section numbers and titles.
-#let script-outline = json("/slides/build/script-outline.json")
+// Course outline: chapter and section numbers and titles.
+#let course-outline = json("/slides/outline.json")
 #let chapter-info(number, fallback-title: none) = {
-  let found = script-outline.chapters.filter(c => c.number == number)
-  // A live deck may precede its script chapter; an explicit title is required.
+  let found = course-outline.chapters.filter(c => c.number == number)
+  // A deck without an outline chapter needs an explicit title.
   if found.len() == 0 and fallback-title != none {
     (number: number, title: fallback-title)
   } else {
-    assert(found.len() == 1, message: "no script chapter " + str(number))
+    assert(found.len() == 1, message: "no outline chapter " + str(number))
     found.first()
   }
 }
 #let section-info(label) = {
-  let found = script-outline.sections.filter(s => s.label == label)
-  assert(found.len() == 1, message: "no script section <" + label + ">")
+  let found = course-outline.sections.filter(s => s.label == label)
+  assert(found.len() == 1, message: "no outline section <" + label + ">")
   found.first()
 }
 #let section-heading(label, title: none) = {
@@ -112,7 +120,7 @@
 
 // ---------------------------------------------------------------- pages ---
 
-// One numbered page. With `section` (a script section label) the section
+// One numbered page. With `section` (an outline section label) the section
 // title sits at the top and the content starts at the title band.
 #let slide(section: none, title: [Credits], background: "light", body) = page(
   fill: if background == "dark" { black } else { white },

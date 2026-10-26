@@ -1,0 +1,81 @@
+{
+  "chapters": [
+    {
+      "number": 0,
+      "title": "The big picture",
+      "label": "energy-context"
+    },
+    {
+      "number": 2,
+      "title": "Fusion reactions",
+      "label": "fusion-reactions"
+    },
+    {
+      "number": 3,
+      "title": "Fusion in stars",
+      "label": "fusion-in-stars"
+    }
+  ],
+  "sections": [
+    {
+      "number": "0.1",
+      "title": "Standards of living and energy",
+      "label": "standards-living",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.4",
+      "title": "Austria: national and household budgets",
+      "label": "energy-demand",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.5",
+      "title": "Finite resources and sustainable rates",
+      "label": "energy-resources",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.6",
+      "title": "Power density, solar and area",
+      "label": "energy-area",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.7",
+      "title": "Solar learning and energy choices",
+      "label": "solar-learning",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.8",
+      "title": "Fission and deployment rates",
+      "label": "energy-deployment",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.9",
+      "title": "Perceived and quantitative environmental risk",
+      "label": "environmental-risk",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.10",
+      "title": "Lifecycle greenhouse emissions",
+      "label": "lifecycle-emissions",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.11",
+      "title": "From energy context to fusion physics",
+      "label": "fusion-bridge",
+      "chapter": "energy-context"
+    },
+    {
+      "number": "0.12",
+      "title": "Energy to 2100",
+      "label": "fusion-outlook",
+      "chapter": "energy-context"
+    }
+  ]
+}

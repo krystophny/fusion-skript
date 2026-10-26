@@ -17,7 +17,8 @@
   "adaptations": [
     "Data-driven launcher course and author",
     "Build-time course identity in HTML/web manifest and service-worker cache prefix",
-    "Cache the launcher directory URL as well as index.html for offline navigation"
+    "Cache the launcher directory URL as well as index.html for offline navigation",
+    "Launcher without a lecture-script link; the course has no script"
   ],
   "note": "Snapshot includes uncommitted presenter updates; file hashes identify the exact assets."
 }

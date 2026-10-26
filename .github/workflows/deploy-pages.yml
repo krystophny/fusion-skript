@@ -63,7 +63,7 @@ jobs:
           enable-cache: true
       - name: Verify presenter and export behavior
         run: uv run python -m pytest -q scripts/test-publishing.py
-      - name: Build site, PDF, slides and presenter
+      - name: Build slides, animation pages and presenter
         run: uv run bash scripts/build-site.sh
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

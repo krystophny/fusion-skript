@@ -1,9 +1,10 @@
 # Fusion Skript specification
 
-The first checked draft preserves the energy opening of the existing course.
-Develop subsequent chapters incrementally in the established sequence, with
-greater mathematical depth where needed. The full reference may exceed live
-coverage. The existing questions remain the exam baseline, subject to changes
+There is no script for now (decision of 26 October 2026). The lecture decks
+and the online slide viewer <https://krystophny.github.io/fusion-skript/present/>
+are the course reference. A future script will be hand-written page by page;
+the withdrawn generated chapters remain only in Git history. Develop decks in
+the established sequence, with greater mathematical depth where needed. The existing questions remain the exam baseline, subject to changes
 until semester end and a final chapter cutoff.
 
 ## Authoring and sources
@@ -14,18 +15,18 @@ until semester end and a final chapter cutoff.
   of content and pacing. MacKay is a conceptual reference, not reusable artwork.
 - Record the year, status, source and reuse terms of every empirical input.
   Distinguish preliminary statistics from final data and model scenarios.
-- Generate canonical plots once for both script and slides. Include alternative
+- Generate canonical plots once for slides and derivations. Include alternative
   descriptions; redundant labels and line styles supplement color.
 - Every section ends with original checks and concise answers. Essential results
   remain visible; optional extended reasoning may use collapsible details.
 
 ## Build and release
 
-Typst produces a static HTML bundle and PDF from the same chapter components.
+Typst produces the deck PDFs and the SVG pages of the viewer.
 STIX Two fonts and live layout are shared with plasma. SymPy verifies model
 identities; Matplotlib generates original SVG/PDF plots. The build does not
 publish. Hosting supports incremental publication. `public/` excludes all private evidence
-and recordings. Use section URLs and PDF fallback in FuEL; HTML import requires
+and recordings. Link deck PDFs and the viewer in FuEL; HTML import requires
 an authenticated platform pilot.
 
 ## Hosting
@@ -38,20 +39,22 @@ mirror `git@gitlab.tugraz.at:plasma/proj/teaching/fusion-skript.git`.
 to both remotes. Each push to GitHub `main` deploys after workflow checks pass.
 The script never creates commits.
 
-`scripts/build-site.sh` builds the site, PDF, numbered decks and SVG presenter
-under `public/`. The presenter keeps Plasma's appearance and interaction,
+`scripts/build-site.sh` builds the numbered decks, animation player pages and
+SVG presenter under `public/`; the site root forwards to `present/`. The presenter keeps Plasma's appearance and interaction,
 reads course/author from `decks.json`, and generates course-specific web-app
 identity and cache names. Every page needs one `<present-page>` metadata
 record from `slides/present-meta.typ`; the build fails otherwise. Media are copied from local staged site
 files to same-origin, checksum-versioned URLs; no legacy assets are fetched.
 
-Live decks may precede their full script chapters. In that case an explicit
-chapter number and title on the title page supply the existing presenter
-metadata; a matching script chapter remains authoritative when present.
+Chapter and section numbers and titles come from the checked-in
+`slides/outline.json`; edit it by hand when a deck gains a chapter or section.
+A deck whose chapter is not listed there supplies its number and title on the
+title page. Every registered animation in `media/animations.json` names its
+scene source, title, description and caption, so it needs no script chapter.
 
 The current Nextcloud `lv/fusion/2026/` folder is publicly shared. Exports
-include `skript/fusion-physics.pdf`, built deck PDFs, derived figures, and
-derivation sources. An ownership
+include built deck PDFs, derived figures, derivation sources and registered
+animations; no `skript/` folder is written. An ownership
 manifest controls stale-file removal and preserves files the exporter did
 not write, including examination material and modified personal copies.
 
