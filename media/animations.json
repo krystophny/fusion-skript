@@ -30,13 +30,13 @@
       "fallback_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/maxwell_average.mp4",
       "poster": "media/posters/maxwell-average.png",
       "player_url": "https://krystophny.github.io/fusion-skript/animations/maxwell-average.html",
-      "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/maxwell_average.mp4?v=0836ab4745cf7dc7",
-      "mp4_sha256": "0836ab4745cf7dc7e6050652efadb492421226e091a9521ba2895ada4c7d716b",
+      "stream_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/maxwell_average.mp4?v=d50bdef608c65c35",
+      "mp4_sha256": "d50bdef608c65c35a053f48e9dc118700ddc05e87edc220efd54f2fa075652aa",
       "appearance": "dark",
       "source": "animations/maxwell_average.py",
       "title": "Maxwell average",
-      "description": "Left: on a logarithmic energy axis, the D-T sigma v with its resonance, the dashed Maxwellian weight and their shaded product, as the temperature sweeps from 1 to 100 keV; the weight keeps its shape and slides under the resonance. Right: the reactivity computed from the shaded area is traced point by point over the dashed Bosch-Hale curve.",
-      "caption": "Left, over E (log axis, 0.3–1000 keV): D–T σv(E) with the ⁵He resonance (Bosch–Hale S), the Maxwellian weight E f_M(E;T) (dashed) and their product (shaded), each scaled by a T-independent constant, so the shaded area is proportional to ⟨σv⟩(T). k_BT sweeps 1 → 100 keV geometrically. Right: ⟨σv⟩ from that area, traced over the dashed Bosch–Hale curve. Because the weight depends on E/T only, it keeps its shape in ln E and merely shifts by ln T."
+      "description": "Left: on a logarithmic energy axis, the D-T sigma v with its resonance, the dashed kernel K and their shaded product, as the temperature sweeps from 1 to 100 keV; the kernel keeps its shape and slides under the resonance, as the formula at the top states (an integral over u = ln E with the kernel K(u - s), s = ln k_B T). Right: the reactivity computed from the shaded area is traced point by point over the dashed Bosch-Hale curve.",
+      "caption": "Left, over E (log axis, 0.3–1000 keV): D–T σv(E) with the ⁵He resonance (Bosch–Hale S), the kernel K = E f_M(E;T) (dashed) and their product (shaded), each scaled by a T-independent constant, so the shaded area is proportional to ⟨σv⟩(T). k_BT sweeps 1 → 100 keV geometrically. Right: ⟨σv⟩ from that area, traced over the dashed Bosch–Hale curve. The formula on screen, ⟨σv⟩(T) = ∫ σv(u) K(u − s) du with u = ln E and s = ln k_BT, is a correlation on the log-energy axis: K depends on u − s only, so it keeps its shape and merely shifts by ln T."
     },
     "relative-velocity": {
       "fallback_url": "https://cloud.tugraz.at/public.php/dav/files/cPHCeEDHxptSLek/animations/relative_velocity.mp4",

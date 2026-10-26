@@ -703,3 +703,203 @@
     n((0, 1), [$S$ [keV b]], [D–T $10^4$ \ D–D $10^2$ \ p–p $10^(-22)$], plot-orange),
   )))
 ]
+
+#slide(section: "reaction-rate", title: [From cross section to rate])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #at(1, 5, y: 6mm, canvas(length: 12mm, {
+    import draw: *
+    let arrow(c) = (end: "stealth", fill: c)
+    rect((2.6, 0), (6.4, 4.2), fill: plot-orange.lighten(85%), stroke: 0.8pt + plot-orange)
+    for (x, y) in ((3.1, 0.6), (4.4, 1.1), (5.7, 0.5), (3.6, 2.0), (5.1, 2.4), (6.0, 3.4), (3.0, 3.5), (4.4, 3.7)) {
+      circle((x, y), radius: 0.16, fill: plot-orange, stroke: none)
+    }
+    content((4.5, 4.65), text(fill: plot-orange)[$n_2$])
+    for y in (0.8, 1.7, 2.6, 3.5) {
+      line((0, y), (2.2, y), stroke: 1pt + plot-blue, mark: arrow(plot-blue))
+    }
+    content((1.0, 4.25), text(fill: plot-blue)[$n_1, v$])
+    line((2.6, -0.5), (6.4, -0.5), stroke: 0.6pt + ink, mark: (start: "stealth", end: "stealth", fill: ink))
+    content((4.5, -0.9), [$v thin Delta t$])
+  }))
+  #let r(name, f) = ([#text(fill: muted, name)], f)
+  #at(5, 8, y: 4mm, grid(columns: (auto, 1fr), column-gutter: 7mm, row-gutter: 10mm,
+    align: (right + horizon, left + horizon),
+    ..r([beam on target], $R = n_1 n_2 thin sigma(v) thin v$),
+    ..r([thermal plasma], $R = n_1 n_2 chevron.l sigma v chevron.r$),
+    ..r([], $chevron.l sigma v chevron.r = integral.double f_1(bold(v)_1) f_2(bold(v)_2) thin sigma(g) thin g dif^3 v_1 dif^3 v_2$),
+    ..r([identical], $N(N - 1)\/2 approx N^2\/2 "pairs"$),
+  ))
+  #at(4, 6, y: 90mm, result-box($R = (n_1 n_2)/(1 + delta_(12)) chevron.l sigma v chevron.r$, none))
+  #at(1, 12, y: 124mm, text(size: 14pt, fill: muted)[
+    $R$: reactions per volume and time #h(6mm) $n_1, n_2$: densities #h(6mm)
+    $f_1, f_2$: velocity distributions, $integral f dif^3 v = 1$ #h(6mm)
+    $g = |bold(v)_1 - bold(v)_2|$ #h(6mm) $delta_(12) = 1$ for identical nuclei (D–D), else $0$])
+]
+
+#slide(section: "reaction-rate", title: [Relative velocity])[
+  #let r(name, f) = ([#text(fill: muted, name)], f)
+  #at(1, 12, y: 0mm, grid(columns: (auto, 1fr), column-gutter: 8mm, row-gutter: 8mm,
+    align: (right + horizon, left + horizon),
+    ..r([Maxwellian], $F_mu (bold(w)) = (mu/(2 pi k_B T))^(3\/2) e^(-mu w^2\/(2 k_B T)), quad f_1 = F_(m_1), quad f_2 = F_(m_2)$),
+    ..r([centre of mass], $bold(V) = (m_1 bold(v)_1 + m_2 bold(v)_2)/M, quad bold(g) = bold(v)_1 - bold(v)_2$),
+    ..r([no mixed term], $m_1 v_1^2 + m_2 v_2^2 = M V^2 + m g^2, quad dif^3 v_1 dif^3 v_2 = dif^3 V dif^3 g$),
+    ..r([], $f_1 (bold(v)_1) thin f_2 (bold(v)_2) = F_M (bold(V)) thin F_m (bold(g))$),
+    ..r([convolution], $f_"rel" (bold(g)) = integral f_1 (bold(v)) thin f_2 (bold(v) - bold(g)) dif^3 v = F_m (bold(g))$),
+    ..r([variances add], $(k_B T)/m_1 + (k_B T)/m_2 = (k_B T)/m$),
+  ))
+  #at(1, 12, y: 124mm, text(size: 14pt, fill: muted)[
+    $M = m_1 + m_2$, #h(2mm) $m = m_1 m_2 \/ M$ #h(2mm) ($m_r$ in the animation) #h(8mm)
+    $F_mu$: Maxwellian of mass $mu$ \
+    no $bold(V) dot bold(g)$ term: no angles, Jacobian 1])
+]
+
+#animation-page("relative-velocity", "relative_velocity", section: "reaction-rate")
+
+#slide(section: "reaction-rate", title: [Convolution and kernel smoothing])[
+  #import "@preview/cetz:0.5.2": canvas, draw
+  #let r(name, f) = ([#text(fill: muted, name)], f)
+  #let note(body) = ([], text(size: 15pt, fill: muted, body))
+  #at(1, 7, y: 0mm, grid(columns: (auto, 1fr), column-gutter: 6mm, row-gutter: 5mm,
+    align: (right + horizon, left + horizon),
+    ..r([convolution], $(f * K)(x) = integral f(x') thin K(x - x') dif x'$),
+    ..note[$K$ shifted to $x$, multiplied with $f$, integrated],
+    ..r([correlation], $integral f(x') thin K(x' - x) dif x'$),
+    ..note[$K$ not flipped; the same for even $K$],
+    ..r([smoothing], text(fill: muted)[$K$ of width $h$ removes structure narrower than $h$]),
+  ))
+  // Sketch: f with a narrow spike, the kernel at x_0, their product, and the smoothed f * K.
+  #at(8, 5, y: 0mm, canvas(length: 10mm, {
+    import draw: *
+    let f(x) = 1.4 * calc.exp(-calc.pow((x - 3.5) / 1.3, 2)) + 2.2 * calc.exp(-calc.pow((x - 6.4) / 0.12, 2))
+    let h = 0.7
+    let k(x) = calc.exp(-calc.pow(x / h, 2) / 2) / (h * calc.sqrt(2 * calc.pi))
+    let xs = range(0, 401).map(i => i * 0.025)
+    let conv(x) = xs.map(t => f(t) * k(x - t) * 0.025).sum()
+    let x0 = 5.6
+    line((0, 3.2), (10, 3.2), stroke: 0.6pt + ink)
+    line((0, 0), (10, 0), stroke: 0.6pt + ink)
+    let prod = xs.map(t => (t, 3.2 + 2.2 * f(t) * k(x0 - t)))
+    line(..prod, (10, 3.2), (0, 3.2), fill: plot-orange.lighten(55%), stroke: none)
+    line(..xs.map(t => (t, 3.2 + f(t))), stroke: 1pt + ink)
+    line(..xs.map(t => (t, 3.2 + 3.0 * k(x0 - t))), stroke: (paint: plot-blue, thickness: 1pt, dash: "dashed"))
+    content((1.1, 4.6), [$f$])
+    content((x0 + 1.5, 4.1), text(fill: plot-blue)[$K$])
+    line(..xs.map(t => (t, 2.2 * conv(t))), stroke: 1.2pt + plot-orange)
+    circle((x0, 2.2 * conv(x0)), radius: 0.1, fill: plot-orange, stroke: none)
+    line((x0, 0), (x0, 3.2), stroke: (paint: muted, thickness: 0.5pt, dash: "dotted"))
+    content((x0, -0.4), [$x$])
+    content((1.3, 1.3), text(fill: plot-orange)[$f * K$])
+  }))
+  #at(1, 12, y: 86mm, grid(columns: (auto, 1fr), column-gutter: 6mm, row-gutter: 6mm,
+    align: (right + horizon, left + horizon),
+    ..r([relative velocity], [$f_"rel" (bold(g)) = integral f_1 (bold(v)) thin f_2 (bold(v) - bold(g)) dif^3 v = F_m (bold(g))$ #h(4mm) #text(fill: muted)[convolution in $bold(v)$]]),
+    ..r([reactivity], [$chevron.l sigma v chevron.r (T) = integral sigma v(u) thin K(u - s) dif u$ #h(4mm) #text(fill: muted)[correlation in $ln E$]]),
+    ..note[$u = ln E, quad s = ln k_B T, quad K(x) = 2/sqrt(pi) e^(3x\/2) exp(-e^x)$],
+    ..note[$T$ only shifts $K$, which smooths the #super[5]He resonance],
+  ))
+  #at(1, 12, y: 140mm, text(size: 12pt)[
+    see also #link("https://krystophny.github.io/plasma-skript/animations/kernel-smoothing.html")[kernel smoothing · Plasma Physics animation]])
+]
+
+#slide(section: "reaction-rate", title: [Maxwell average])[
+  #let r(name, f) = ([#text(fill: muted, name)], f)
+  #at(1, 12, y: 0mm, grid(columns: (auto, 1fr), column-gutter: 8mm, row-gutter: 8mm,
+    align: (right + horizon, left + horizon),
+    ..r([relative motion], $chevron.l sigma v chevron.r = integral F_m (bold(g)) thin sigma(g) thin g dif^3 g = 4 pi integral_0^infinity F_m (g) thin sigma(g) thin g^3 dif g$),
+    ..r([$E = m g^2 \/ 2$], $g^3 dif g = (2 E)/m^2 dif E$),
+  ))
+  #at(1, 12, y: 36mm, result-box($chevron.l sigma v chevron.r = (8/(pi m))^(1\/2) (k_B T)^(-3\/2) integral_0^infinity sigma(E) thin E thin e^(-E\/k_B T) dif E$, none))
+  #at(1, 12, y: 86mm, grid(columns: (auto, 1fr), column-gutter: 8mm, row-gutter: 8mm,
+    align: (right + horizon, left + horizon),
+    ..r([in $ln E$], $f_M (E) dif E = 2/sqrt(pi) (E/(k_B T))^(3\/2) e^(-E\/k_B T) dif ln E = K(u - s) dif u$),
+    ..r([], [$chevron.l sigma v chevron.r (T) = integral sigma v(u) thin K(u - s) dif u$ #h(5mm) #text(fill: muted)[$T$ shifts a fixed kernel]]),
+  ))
+  #at(1, 12, y: 130mm, text(size: 14pt, fill: muted)[
+    $f_M (E) = 2/sqrt(pi) (k_B T)^(-3\/2) sqrt(E) e^(-E\/k_B T)$: energy distribution, maximum at $k_B T\/2$ #h(8mm)
+    $u = ln E$, #h(2mm) $s = ln k_B T$])
+]
+
+#animation-page("maxwell-average", "maxwell_average", section: "reaction-rate")
+
+#slide(section: "reaction-rate", title: [Gamow peak])[
+  #let r(name, f) = ([#text(fill: muted, name)], f)
+  #at(1, 12, y: 0mm, grid(columns: (auto, 1fr), column-gutter: 6mm, row-gutter: 7mm,
+    align: (right + horizon, left + horizon),
+    ..r([insert $sigma = S/E e^(-sqrt(E_G\/E))$], $chevron.l sigma v chevron.r = (8/(pi m))^(1\/2) (k_B T)^(-3\/2) integral_0^infinity S(E) thin e^(-F(E)) dif E$),
+    ..r([exponent], $F(E) = E/(k_B T) + sqrt(E_G/E)$),
+  ))
+  #at(1, 6, y: 48mm, grid(columns: (auto, 1fr), column-gutter: 6mm, row-gutter: 7mm,
+    align: (right + horizon, left + horizon),
+    ..r([maximum $F' = 0$], $E_0 = (E_G (k_B T)^2 \/ 4)^(1\/3)$),
+    ..r([depth], $F(E_0) = tau = 3 E_0 \/ k_B T$),
+    ..r([curvature], $F''(E_0) = 3 \/ (2 E_0 k_B T)$),
+    ..r([width], $Delta = 4 sqrt(E_0 k_B T \/ 3)$),
+  ))
+  #at(7, 6, y: 52mm, result-box($chevron.l sigma v chevron.r approx (8 sqrt(6))/27 S(E_0)/sqrt(m E_G) thin tau^2 e^(-tau)$, [Gaussian around $E_0$]))
+  #at(1, 12, y: 108mm, grid(columns: (auto, 1fr), column-gutter: 6mm, row-gutter: 6mm,
+    align: (right + horizon, left + horizon),
+    ..r([$tau prop (k_B T)^(-1\/3)$], $chevron.l sigma v chevron.r prop (k_B T)^(-2\/3) exp(-3 (E_G\/4)^(1\/3) (k_B T)^(-1\/3))$),
+    ..r([D–T, $k_B T = 10 "keV"$], $E_0 approx 31 "keV", quad Delta approx 41 "keV", quad tau approx 9.3$),
+  ))
+  #at(1, 12, y: 140mm, text(size: 14pt, fill: muted)[
+    $Delta$: full width at $1\/e$ #h(8mm) $S(E) approx S(E_0)$ across the peak])
+]
+
+#slide(section: "reaction-rate", title: [Gamow window])[
+  #at(1, 12, y: 0mm, align(center, deck-fig("gamow_peak", columns: 11)))
+]
+
+#animation-page("gamow-sweep", "gamow_sweep", section: "reaction-rate")
+
+#slide(section: "reaction-rate", title: [Only the tail fuses])[
+  #at(1, 12, y: 0mm, align(center, deck-fig("tail_fuses", columns: 9)))
+  #at(1, 12, y: 102mm, align(center, text(fill: muted)[D–T at $chevron.l sigma v chevron.r = 1.1 times 10^(-22) "m"^3\/"s"$ #h(4mm) (the value at $k_B T = 10 "keV"$)]))
+  #at(1, 12, y: 114mm, align(center, grid(columns: 3, column-gutter: 14mm, row-gutter: 4mm,
+    align: (right, left, left),
+    text(fill: muted)[$k_B T$ needed for], text(fill: muted)[all pairs at $E = 3\/2 thin k_B T$], text(fill: muted)[Maxwellian],
+    text(fill: muted)[classical $sigma_"cl"$], $450 "keV" approx 5 times 10^9 "K"$, $440 "keV" approx 5 times 10^9 "K"$,
+    text(fill: muted)[tunnelling $sigma$], $15 "keV" approx 1.7 times 10^8 "K"$, $10 "keV" approx 1.2 times 10^8 "K"$,
+  )))
+]
+
+#slide(section: "reaction-rate", title: [Reactivity])[
+  #at(1, 12, y: 0mm, align(center, deck-fig("reactivity", columns: 11)))
+  #at(1, 12, y: 118mm, align(center)[
+    D–T, $k_B T = 10 "keV"$: $chevron.l sigma v chevron.r = 1.1 times 10^(-22) "m"^3\/"s"$ #h(10mm)
+    #text(fill: muted)[Lawson (Chapter 4):] $n T tau_E prop T^2 \/ chevron.l sigma v chevron.r$])
+  #at(1, 12, y: 136mm, text(size: 12pt)[
+    #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ·
+    #link("https://doi.org/10.1088/0029-5515/40/4/310")[Nevins & Swain · Nucl. Fusion 40, 865 (2000)]])
+]
+
+#slide(section: "reaction-rate", title: [Reaction rate: summary])[
+  #context {
+    let assumptions = (([Maxwellians], [both species at one $T$]), ([$S(E)$], [slowly varying near $E_0$]))
+    let derivation = (
+      ([rate], $R = n_1 n_2 chevron.l sigma v chevron.r \/ (1 + delta_(12))$),
+      ([relative motion], [Maxwellian with $m$]),
+      ([average], $chevron.l sigma v chevron.r prop (k_B T)^(-3\/2) integral sigma E e^(-E\/k_B T) dif E$),
+      ([in $ln E$], [$T$ shifts a fixed kernel]),
+      ([Gamow peak], $E_0 = (E_G (k_B T)^2 \/ 4)^(1\/3)$),
+    )
+    let lw = label-width(assumptions, derivation)
+    at(1, 7)[
+      #labelled[Assumptions][#rows(assumptions, lw, gap: 5mm)]
+      #v(10mm, weak: true)
+      #labelled[Derivation][#rows(derivation, lw, gap: 6mm)]
+    ]
+  }
+  #at(8, 5)[
+    #labelled[Result][#result-box($chevron.l sigma v chevron.r prop tau^2 e^(-tau)$, [$tau = 3 E_0 \/ k_B T$])]
+    #v(8mm)
+    #text(fill: muted)[D–T, $k_B T = 10 "keV"$:] \
+    $chevron.l sigma v chevron.r = 1.1 times 10^(-22) "m"^3\/"s"$ \
+    #text(fill: muted)[$chevron.l sigma v chevron.r \/ T^2$ maximal at] $13.5 "keV"$
+  ]
+]
+
+#slide(section: "reaction-rate", title: [Solar core])[
+  #at(1, 12, y: 0mm, align(center, deck-fig("gamow_peak_pp", columns: 10)))
+  #at(1, 12, y: 134mm, align(center)[
+    p–p: #h(3mm) $E_G = 0.49 "MeV", quad k_B T approx 1.3 "keV" quad => quad E_0 approx 6 "keV" approx 4.6 thin k_B T$])
+]

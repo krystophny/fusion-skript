@@ -10,7 +10,8 @@ point over the Bosch-Hale (1992) parametrisation (faint dashed). On a linear
 energy axis the kernel widens with T: the average is a moment of sigma v with
 a T-dependent weight, not a translation-invariant convolution in E. Since the
 kernel depends on E/T only, in ln E it is a fixed shape shifted by ln T (a
-cross-correlation), which is what the log axis shows.
+cross-correlation), which is what the log axis shows; the scene writes it as
+<sigma v>(T) = int sigma v(u) K(u - s) du with u = ln E, s = ln k_B T.
 
 RelativeVelocity. A genuine convolution, in one dimension at k_B T = 10 keV:
 f_rel(g) = int f_D(v) f_T(v - g) dv. f_T slides across f_D, the overlap
@@ -52,11 +53,11 @@ class MaxwellAverage(StyledScene):
     """sigma v, the Maxwell kernel, their product and the traced <sigma v>(T)."""
 
     def build(self):
-        left = axes([LOG_E[0], LOG_E[1], 1], [0, 1.15, 0.5], x_length=6.9, y_length=4.4,
+        left = axes([LOG_E[0], LOG_E[1], 1], [0, 1.15, 0.5], x_length=6.9, y_length=3.8,
                     axis_config={"include_ticks": False})
-        left.move_to(np.array([-2.75, -0.75, 0]))
-        right = axes([0, 2, 1], [-27, -21, 2], x_length=3.6, y_length=4.4)
-        right.move_to(np.array([4.35, -0.75, 0]))
+        left.move_to(np.array([-2.75, -1.05, 0]))
+        right = axes([0, 2, 1], [-27, -21, 2], x_length=3.6, y_length=3.8)
+        right.move_to(np.array([4.35, -1.05, 0]))
 
         left_ticks = ticks(left, [0, 1, 2, 3], ["1", "10", "100", "1000"], [], [], 0, LOG_E[0])
         for x in (0, 1, 2, 3):
@@ -131,15 +132,21 @@ class MaxwellAverage(StyledScene):
                         fill_opacity=0.55)
         legend = VGroup(
             VGroup(sample(INK, False), math(r"\sigma v", color=INK)).arrange(RIGHT, buff=0.15),
-            VGroup(sample(BLUE, True), math(r"E\,f_M(E;T)", color=BLUE)).arrange(RIGHT, buff=0.15),
+            VGroup(sample(BLUE, True), math(r"K = E\,f_M(E;T)", color=BLUE)).arrange(RIGHT, buff=0.15),
             VGroup(swatch, label("product, area ∝ ⟨σv⟩", color=VERMILION)).arrange(RIGHT, buff=0.15),
         ).arrange(RIGHT, buff=0.55)
-        legend.next_to(left, UP, buff=0.75).align_to(left.y_axis, LEFT)
+        legend.next_to(left, UP, buff=0.7).align_to(left.y_axis, LEFT)
         title = label("Maxwell average of σv, D–T", color=INK, size=LABEL_SIZE + 2)
         title.to_corner(UP + LEFT, buff=0.55)
+        # The average as a correlation on the ln E axis: one kernel shape, shifted by ln k_B T.
+        formula = VGroup(
+            math(r"\langle\sigma v\rangle(T) = \textstyle\int \sigma v(u)\,K(u-s)\,du", color=INK),
+            math(r"u = \ln E,\quad s = \ln k_BT", color=MUTED, size=MATH_SMALL),
+        ).arrange(RIGHT, buff=0.6)
+        formula.next_to(title, DOWN, buff=0.3).align_to(title, LEFT)
 
         statics = VGroup(left, right, left_ticks, right_ticks, lx, rx, ry, bh, bh_label,
-                         sv_curve, res, legend, title)
+                         sv_curve, res, legend, title, formula)
         self.play(FadeIn(statics), run_time=0.6)
         self.add(product, kernel, trace, dot, row)
         self.bring_to_front(sv_curve)

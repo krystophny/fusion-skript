@@ -2,7 +2,7 @@
 
 Generated assets for the end of Chapter 2 (reaction rate in a thermal plasma),
 the optional Chapter 3 (stars) and the opening of Chapter 4 (power balance).
-No deck uses them yet. Plots are light, A4-landscape slide size, English,
+The reactivity assets are used in deck 02, section 2.7; the power-balance ones in no deck yet. Plots are light, A4-landscape slide size, English,
 STIX Two, with direct labels and line styles in addition to colour.
 Animations use the dark canvas of `animations/style.py`.
 
@@ -148,7 +148,8 @@ first grows from nothing, then the resonance is integrated away into a smooth
 translation-invariant convolution in E. Because the weight depends on E/T
 only, it keeps its shape in ln E and merely shifts by ln T. In the variable
 ln E the average is therefore a cross-correlation with one fixed kernel, which
-is why the log axis shows a rigid window sliding along.
+is why the log axis shows a rigid window sliding along. The scene writes this on screen as
+⟨σv⟩(T) = ∫ σv(u) K(u − s) du with u = ln E, s = ln k_BT and K = E f_M.
 Check: the traced values are 1.142·10⁻²² (10 keV) and 8.674·10⁻²² m³/s
 (50 keV), against Bosch–Hale 1.136·10⁻²² and 8.649·10⁻²²: +0.50 % and +0.29 %.
 

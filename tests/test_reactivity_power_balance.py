@@ -114,3 +114,8 @@ def test_relative_velocity_convolution_has_reduced_mass():
     v = np.linspace(-12, 12, 4001)
     assert np.allclose(anim.relative_density(g, v, s_d, s_t), anim.gauss(g, anim.thermal_width(t, m_r)),
                        rtol=1e-9, atol=1e-12)
+
+
+def test_symbolic_derivation_of_deck_section():
+    # Rate, relative velocity, log-energy kernel and Gamow peak as shown on deck 02.
+    rx.symbolic_checks()

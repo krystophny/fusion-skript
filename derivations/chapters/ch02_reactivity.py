@@ -244,6 +244,112 @@ def checks():
     return rows
 
 
+# --- symbolic derivation checks (SymPy) for the deck pages of section 2.7 -------------------
+def symbolic_checks():
+    """Rate, relative velocity, Maxwell average, log-energy kernel and Gamow peak (SymPy)."""
+    import sympy as sp
+    kT, m1, m2, m, E, EG, S, N = sp.symbols("k_BT m_1 m_2 m E E_G S N", positive=True)
+    v, g, V, v1, v2 = sp.symbols("v g V v_1 v_2", real=True)
+    x = sp.symbols("x", real=True)
+    tau = sp.symbols("tau", positive=True)
+
+    # Rate: N identical particles form N(N-1)/2 pairs, so n^2/2 per volume (1/(1 + delta_12)).
+    assert sp.limit(N * (N - 1) / 2 / N**2, N, sp.oo) == sp.Rational(1, 2)
+
+    # Relative velocity: m1 v1^2 + m2 v2^2 = M V^2 + m g^2 per component, unit Jacobian.
+    M, mr = m1 + m2, m1 * m2 / (m1 + m2)
+    vv1, vv2 = V + m2 / M * g, V - m1 / M * g          # inverse of V = (m1 v1 + m2 v2)/M, g = v1 - v2
+    assert sp.simplify(m1 * vv1**2 + m2 * vv2**2 - (M * V**2 + mr * g**2)) == 0
+    assert sp.simplify(sp.Matrix([vv1, vv2]).jacobian([V, g]).det()) == -1    # |det| = 1
+    # The convolution f_rel(g) = int f_1(v) f_2(v - g) dv of two 1D Maxwellians is the
+    # Maxwellian of the reduced mass (each Cartesian component; 3D is the product of three).
+    def f1d(mass, w):
+        return sp.sqrt(mass / (2 * sp.pi * kT)) * sp.exp(-mass * w**2 / (2 * kT))
+    conv = sp.integrate(f1d(m1, v) * f1d(m2, v - g), (v, -sp.oo, sp.oo))
+    assert sp.simplify(conv / f1d(mr, g) - 1) == 0
+
+    # Maxwell average: <sigma v> = int 4 pi g^2 f_rel(g) sigma g dg with E = m g^2/2.
+    f_rel3 = (m / (2 * sp.pi * kT)) ** sp.Rational(3, 2) * sp.exp(-m * g**2 / (2 * kT))
+    g_of_E = sp.sqrt(2 * E / m)
+    jac = sp.diff(g_of_E, E)
+    weight = sp.simplify((4 * sp.pi * g**2 * f_rel3 * g).subs(g, g_of_E) * jac)
+    target = sp.sqrt(8 / (sp.pi * m)) * kT**sp.Rational(-3, 2) * E * sp.exp(-E / kT)
+    assert sp.simplify(weight / target - 1) == 0
+    # Energy distribution f_M(E) = 4 pi g^2 f_rel dg/dE, normalised, mean 3/2 k_B T.
+    f_M = sp.simplify((4 * sp.pi * g**2 * f_rel3).subs(g, g_of_E) * jac)
+    assert sp.simplify(f_M - 2 / sp.sqrt(sp.pi) * kT**sp.Rational(-3, 2) * sp.sqrt(E) * sp.exp(-E / kT)) == 0
+    assert sp.simplify(sp.integrate(f_M, (E, 0, sp.oo))) == 1
+    assert sp.simplify(sp.integrate(E * f_M, (E, 0, sp.oo)) - sp.Rational(3, 2) * kT) == 0
+
+    # Log-energy kernel: (2/sqrt(pi)) (E/k_BT)^(3/2) e^(-E/k_BT) d ln E = f_M(E) dE, and with
+    # u = ln E, s = ln k_BT it is K(u - s), K(x) = (2/sqrt(pi)) e^(3x/2) exp(-e^x), area 1.
+    w_log = 2 / sp.sqrt(sp.pi) * (E / kT) ** sp.Rational(3, 2) * sp.exp(-E / kT)
+    assert sp.simplify(w_log / E - f_M) == 0                       # d ln E = dE / E
+    K = 2 / sp.sqrt(sp.pi) * sp.exp(sp.Rational(3, 2) * x) * sp.exp(-sp.exp(x))
+    assert sp.simplify(K.subs(x, sp.log(E) - sp.log(kT)) - w_log) == 0
+    y = sp.symbols("y", positive=True)                            # y = e^x
+    assert sp.integrate(sp.simplify(K.subs(x, sp.log(y)) / y), (y, 0, sp.oo)) == 1
+    kmax = sp.solve(sp.diff(sp.log(K), x), x)
+    assert len(kmax) == 1 and sp.simplify(sp.exp(kmax[0]) - sp.Rational(3, 2)) == 0  # E = 1.5 k_BT
+
+    # Gamow peak: exponent F(E) = E/k_BT + sqrt(E_G/E).
+    F = E / kT + sp.sqrt(EG / E)
+    E0 = (EG * kT**2 / 4) ** sp.Rational(1, 3)
+    assert sp.simplify(sp.diff(F, E).subs(E, E0)) == 0
+    assert sp.simplify(F.subs(E, E0) - 3 * E0 / kT) == 0            # tau = 3 E_0 / k_BT
+    F2 = sp.simplify(sp.diff(F, E, 2).subs(E, E0))
+    assert sp.simplify(F2 - 3 / (2 * E0 * kT)) == 0
+    delta = sp.symbols("Delta", positive=True)                     # 1/e full width
+    sol = sp.solve(sp.Eq(F2 / 2 * (delta / 2) ** 2, 1), delta)
+    assert len(sol) == 1 and sp.simplify(sol[0] - 4 * sp.sqrt(E0 * kT / 3)) == 0
+    # Gaussian integral with S = S(E_0): <sigma v> = C S tau^2 e^-tau / sqrt(m E_G).
+    sv = (sp.sqrt(8 / (sp.pi * m)) * kT**sp.Rational(-3, 2) * S
+          * sp.sqrt(2 * sp.pi / F2) * sp.exp(-3 * E0 / kT))
+    kT_tau = sp.Rational(27, 4) * EG / tau**3                       # inverts tau = 3 E_0/k_BT
+    assert sp.simplify((3 * E0 / kT).subs(kT, kT_tau) - tau) == 0
+    gauss_form = 8 * sp.sqrt(6) / 27 * S / sp.sqrt(m * EG) * tau**2 * sp.exp(-tau)
+    assert sp.simplify(sv.subs(kT, kT_tau) / gauss_form - 1) == 0
+    # Low-temperature form: tau^2 e^-tau = T^(-2/3) exp(-c T^(-1/3)) times constants,
+    # c = 3 (E_G/4)^(1/3), the form of the NRL Plasma Formulary fits.
+    tau_T = 3 * E0 / kT
+    assert sp.simplify(tau_T - 3 * (EG / 4) ** sp.Rational(1, 3) * kT ** sp.Rational(-1, 3)) == 0
+    assert sp.simplify(tau_T**2 * kT ** sp.Rational(2, 3) / (EG / 4) ** sp.Rational(2, 3) - 9) == 0
+    # Numbers: D-T at 10 keV, and the Gaussian form against the quadrature for constant S.
+    eg = gamow_energy("DT")
+    e0, width = gamow_peak(eg, 10.0)
+    assert abs(e0 - 31) < 0.5 and abs(width - 41) < 0.5, (e0, width)
+    ee = np.geomspace(1e-3, 2000, 200001)
+    exact = np.trapezoid(np.exp(-ee / 10.0 - np.sqrt(eg / ee)), ee)
+    approx = np.sqrt(np.pi) / 2 * width * np.exp(-3 * e0 / 10.0)
+    assert abs(approx / exact - 1) < 0.05, approx / exact
+    # Tail page: above 3 k_BT lie 11 % of the pairs and 73 % of the reactions (D-T, 10 keV).
+    pairs = float(sp.uppergamma(sp.Rational(3, 2), 3) / sp.gamma(sp.Rational(3, 2)))
+    wr = sigma("DT", ee) * ee * np.exp(-ee / 10.0)
+    reactions = np.trapezoid(wr * (ee > 30), ee) / np.trapezoid(wr, ee)
+    assert abs(pairs - 0.11) < 0.005 and abs(reactions - 0.73) < 0.01, (pairs, reactions)
+    # Temperature ladder: k_BT at which D-T reaches the Bosch-Hale <sigma v>(10 keV), with the
+    # classical sigma_cl = pi R^2 (1 - V(R)/E) (R = 3.2 fm, V(R) = 440 keV) or the tunnelling
+    # sigma (Bosch-Hale S), each for all pairs at E = 3/2 k_BT ("no tail") or Maxwellian.
+    from scipy.optimize import brentq
+    target, mr_c2, r_c, v_r = float(bosch_hale("DT", 10.0)), mrc2_for("DT"), 3.2e-15, 440.0
+    speed = lambda en: C * np.sqrt(2 * en / mr_c2)                         # noqa: E731
+    s_cl = lambda en: np.where(en > v_r, np.pi * r_c**2 * (1 - v_r / en), 0.0)  # noqa: E731
+
+    def avg_cl(t):
+        en = np.geomspace(v_r, v_r + 200 * t, 200001)
+        return C * np.sqrt(8 / (np.pi * mr_c2)) * t**-1.5 * np.trapezoid(s_cl(en) * en * np.exp(-en / t), en)
+    ladder = (brentq(lambda en: s_cl(en) * speed(en) - target, 1.001 * v_r, 1e5) / 1.5,
+              brentq(lambda t: avg_cl(t) - target, 1, 500),
+              brentq(lambda en: sigma("DT", en, "bh") * speed(en) - target, 1, 1000) / 1.5)
+    for got, want in zip(ladder, (450, 440, 15)):
+        assert abs(got / want - 1) < 0.03, ladder
+    print("Ladder k_BT [keV] for <sv> = %.2e: classical %.0f, classical + tail %.0f, tunnelling %.1f, "
+          "both 10" % ((target,) + ladder))
+    print(f"Symbolic checks passed; D-T 10 keV: E_0 = {e0:.1f} keV, Delta = {width:.1f} keV, "
+          f"tau = {3 * e0 / 10:.2f}, Gaussian/exact = {approx / exact:.3f}")
+
+
 if __name__ == "__main__":
+    symbolic_checks()
     checks()
     print("Chapter 2 reactivity checks passed")

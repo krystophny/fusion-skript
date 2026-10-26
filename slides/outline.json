@@ -76,6 +76,12 @@
       "title": "Energy to 2100",
       "label": "fusion-outlook",
       "chapter": "energy-context"
+    },
+    {
+      "number": "2.20",
+      "title": "Reaction rate in a thermal plasma",
+      "label": "reaction-rate",
+      "chapter": "fusion-reactions"
     }
   ]
 }
