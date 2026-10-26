@@ -22,4 +22,5 @@ cp fonts/*.otf fonts/OFL.txt public/fonts/
 python3 scripts/prepare-media.py public
 bash scripts/build-slides.sh
 python3 scripts/build-present.py --course "Fusion Physics" --short-name Fusion --strict-metadata
+bash scripts/build-notebooks.sh
 echo "Lecture decks and presenter written to public/"

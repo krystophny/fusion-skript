@@ -247,6 +247,13 @@ Assumes all fusion and heating power become heat at η_th, no blanket energy gai
 and no other recirculating loads. Q_eng = 0 at Q = 5.25 and Q_eng = 1 (half the
 gross electricity recirculated) at Q = 11.5 for 0.4 × 0.4.
 
+### `alpha_fraction`
+
+Self-heating fraction f_α = P_α/(P_α + P_ext) = Q/(Q + E_fus/E_α) against Q
+(log, 0.1–1000), E_fus/E_α = 4.94; points at Q = 1, 5, 10 (0.17, 0.50, 0.67,
+the table on the same page) and the ignition limit f_α = 1. Required n T τ_E
+against Q is already the right panel of `lawson_plane`, so it is not repeated.
+
 ### `impurity_dilution`
 
 Left: ignition n_eTτ_E(T) with bremsstrahlung for 0, 5, 10 and 15 % helium
@@ -272,10 +279,11 @@ Lawson parameters from S. E. Wurzel and S. C. Hsu, Phys. Plasmas 29, 062103
 source (2105.10954v4) by `scripts/prepare-ch04-lawson-data.py` into
 `data/ch04/wurzel_hsu_2022.csv`. Magnetic: peak ion density n_i0 and τ_E*;
 inertial (laser ICF, MagLIF): n = nτ/τ_stag where τ_stag is reported. The
-projected SPARC and ITER rows are excluded. Sun: τ = GM²/(RL) = 3.1·10⁷ yr
+projected SPARC and ITER rows are excluded. Sun, off scale at the right edge
+(arrow; the bar spans its density range): τ = GM²/(RL) = 3.1·10⁷ yr = 1.0·10¹⁵ s
 (IAU 2015 nominal values); electron density from the mean (1.41 g/cm³,
 hydrogen mass fraction 0.7) to the core (150 g/cm³, X = 0.35, standard solar
 model, not re-checked). The peak values of the points and the uniform-plasma
 lines are not strictly comparable (Wurzel and Hsu correct for profile
 factors); the plot compares orders of magnitude.
-Axes: τ [s] (log, 10⁻¹²–10¹⁷); n [m⁻³] (log, 10¹⁷–10³⁴).
+Axes: τ [s] (log, 10⁻¹²–10³); n [m⁻³] (log, 10¹⁷–10³⁴).

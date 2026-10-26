@@ -64,6 +64,14 @@ def export(repo, site, dest):
                         or p.name in {"Makefile", "requirements.txt"})})
     for name in ("LICENSE", "LICENSE-CONTENT.md"):
         wanted["derivations/" + name] = repo / name
+    # Notebook sources with the data files they read, laid out to render in place.
+    notebooks = repo / "notebooks"
+    if notebooks.is_dir():
+        wanted.update({"notebooks/" + p.name: p for p in notebooks.iterdir() if p.is_file()
+                       and (p.suffix in {".qmd", ".js", ".json", ".css"} or p.name == "_quarto.yml")})
+        listed = notebooks / "data-files.txt"
+        for line in (listed.read_text().split() if listed.is_file() else []):
+            wanted["notebooks/data/" + Path(line).name] = repo / line
     # Animations: the registered MP4 revisions staged by prepare-media.py, under
     # the file names their stream URLs expect, and the scene sources with data.
     registry = repo / "media/animations.json"

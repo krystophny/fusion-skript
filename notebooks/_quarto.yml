@@ -1,0 +1,18 @@
+# Rendered by scripts/build-notebooks.sh from a staging copy that adds the data files.
+project:
+  type: default
+  output-dir: _site
+
+format:
+  html:
+    theme: cosmo
+    css: notebook.css
+    toc: false
+    echo: false
+    smooth-scroll: false
+    html-math-method: mathjax
+    lang: en
+    license: "CC BY"
+
+execute:
+  echo: false

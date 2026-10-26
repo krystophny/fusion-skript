@@ -40,7 +40,9 @@ to both remotes. Each push to GitHub `main` deploys after workflow checks pass.
 The script never creates commits.
 
 `scripts/build-site.sh` builds the numbered decks, animation player pages and
-SVG presenter under `public/`; the site root forwards to `present/`. The presenter keeps Plasma's appearance and interaction,
+SVG presenter under `public/`; the site root forwards to `present/`. `scripts/build-notebooks.sh` renders the Quarto notebooks in `notebooks/`
+(client-side Observable JS, no kernel) to `public/notebooks/`; `tests/test_notebooks.py`
+checks their model code `notebooks/fusion.js` against the derivations. The presenter keeps Plasma's appearance and interaction,
 reads course/author from `decks.json`, and generates course-specific web-app
 identity and cache names. Every page needs one `<present-page>` metadata
 record from `slides/present-meta.typ`; the build fails otherwise. Media are copied from local staged site

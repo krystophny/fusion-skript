@@ -1,0 +1,164 @@
+---
+title: "Lawson criterion"
+---
+
+::: {.purpose}
+The triple product $n k_BT\tau_E$ that a D–T plasma needs for a given gain $Q$, with and without bremsstrahlung.
+:::
+
+$$
+p_\text{fus} = \frac{n^2}{4}\langle\sigma v\rangle E_\text{fus}, \qquad
+p_\alpha = \frac{n^2}{4}\langle\sigma v\rangle E_\alpha, \qquad
+p_\text{ext} = \frac{p_\text{fus}}{Q}, \qquad
+p_\text{br} = C_B Z_\text{eff}\, n^2 \sqrt{k_BT}
+$$
+
+$$
+\frac{3 n k_BT}{\tau_E} + p_\text{br} = p_\alpha + p_\text{ext}
+\quad\Longrightarrow\quad
+n k_BT \tau_E = \frac{12\,(k_BT)^2}{\langle\sigma v\rangle\left(E_\alpha + E_\text{fus}/Q\right) - 4 C_B Z_\text{eff}\sqrt{k_BT}}
+$$
+
+$$
+f_\alpha = \frac{P_\alpha}{P_\alpha + P_\text{ext}} = \frac{Q}{Q + E_\text{fus}/E_\alpha} \approx \frac{Q}{Q + 5}, \qquad
+Q_\text{eng} = \eta_\text{th}\,\eta_\text{aux}\,(Q + 1) - 1
+$$
+
+::: {.symbols}
+| Symbol | Meaning |
+|---|---|
+| $n$ | electron density, $n = n_e$, with $n_D = n_T = n/2$ (m⁻³) |
+| $k_BT$ | temperature, $T_e = T_i$ (keV) |
+| $\tau_E$ | energy confinement time, stored energy $W = 3 n k_BT$ per volume over loss power (s) |
+| $\langle\sigma v\rangle$ | D–T reactivity, Bosch–Hale (m³/s) |
+| $E_\text{fus}$, $E_\alpha$ | 17.59 MeV per reaction, 3.56 MeV of it to the α particle |
+| $Q$ | fusion gain $P_\text{fus}/P_\text{ext}$; $Q \to \infty$ is ignition |
+| $C_B$ | bremsstrahlung constant, $5.34\times10^{-37}$ W m³ keV⁻¹ᐟ² (NRL: $1.69\times10^{-32}$ W cm³ eV⁻¹ᐟ²) |
+| $Z_\text{eff}$ | effective charge; here it scales only the bremsstrahlung (dilution: impurities notebook) |
+| $f_\alpha$ | fraction of the heating supplied by α particles |
+| $\eta_\text{th}$, $\eta_\text{aux}$ | heat-to-electricity and wall-plug-to-plasma efficiencies |
+:::
+
+```{ojs}
+import {reactivity, tripleProduct, fAlpha, qEng, E_FUS, E_ALPHA} from "./fusion.js"
+import {logspace, decades, pow10, ticksIn, sci, INK, MUTED, GREY, BLUE, ORANGE, GREEN, PURPLE, SKY} from "./plotting.js"
+rx = FileAttachment("data/reactivity.json").json()
+whText = FileAttachment("data/wurzel_hsu_2022.csv").text()
+groupOf = r => r.table === "8" ? "inertial (ICF, MIF)" : r.table === "7" ? "other magnetic"
+  : r.concept === "Stellarator" ? "stellarator" : "tokamak"
+machines = d3.csvParse(whText.split("\n").filter(l => !l.startsWith("#")).join("\n"))
+  .filter(r => r.shot !== "Projected" && r.T_keV && r.nTtau_keVsm3)
+  .map(r => ({project: r.project, year: +r.year, T: +r.T_keV, nTtau: +r.nTtau_keVsm3, group: groupOf(r)}))
+```
+
+```{ojs}
+viewof T = Inputs.range([2, 100], {value: 13.5, step: 0.1, transform: Math.log, label: html`<i>k</i><sub>B</sub><i>T</i> (keV)`})
+viewof qSlider = Inputs.range([0.1, 1000], {value: 10, step: 0.1, transform: Math.log, label: html`gain <i>Q</i>`})
+viewof ignition = Inputs.toggle({label: html`ignition, <i>Q</i> → ∞`, value: false})
+viewof brems = Inputs.toggle({label: "bremsstrahlung", value: false})
+viewof zeff = Inputs.range([1, 3], {value: 1, step: 0.05, label: html`<i>Z</i><sub>eff</sub>`, disabled: !brems})
+viewof showMachines = Inputs.toggle({label: "measured machines", value: false})
+```
+
+```{ojs}
+Q = ignition ? Infinity : qSlider
+z = brems ? zeff : 0
+grid = logspace(2, 100, 2000)
+minimum = {
+  const v = grid.map(t => tripleProduct(rx, t, Q, z));
+  const i = v.indexOf(Math.min(...v));
+  return {T: grid[i], value: v[i]};
+}
+ignMin = {
+  const v = grid.map(t => tripleProduct(rx, t, Infinity, 0));
+  const vb = grid.map(t => tripleProduct(rx, t, Infinity, 1));
+  const i = v.indexOf(Math.min(...v)), j = vb.indexOf(Math.min(...vb));
+  return {T: grid[i], value: v[i], Tb: grid[j], valueB: vb[j]};
+}
+need = tripleProduct(rx, T, Q, z)
+html`<div class="readout">
+<span class="k">⟨σv⟩ at ${T.toFixed(1)} keV</span><span>${sci(reactivity(rx, "DT", T), 3)} m³/s</span>
+<span class="k">required <i>n k</i><sub>B</sub><i>T</i>τ<sub><i>E</i></sub></span><span>${sci(need, 3)} keV s m⁻³</span>
+<span class="k">required <i>n</i>τ<sub><i>E</i></sub></span><span>${sci(need / T, 3)} s m⁻³</span>
+<span class="k">minimum over <i>T</i> for this <i>Q</i></span><span>${sci(minimum.value, 4)} keV s m⁻³ at ${minimum.T.toFixed(1)} keV</span>
+<span class="k">ignition minimum, no bremsstrahlung</span><span>${sci(ignMin.value, 4)} keV s m⁻³ at ${ignMin.T.toFixed(1)} keV</span>
+<span class="k">ignition minimum, bremsstrahlung (<i>Z</i><sub>eff</sub> = 1)</span><span>${sci(ignMin.valueB, 4)} keV s m⁻³ at ${ignMin.Tb.toFixed(1)} keV</span>
+<span class="k"><i>f</i><sub>α</sub></span><span>${fAlpha(Q).toFixed(3)}</span>
+</div>`
+```
+
+## Required triple product
+
+```{ojs}
+qCurves = [[1, GREY], [5, "#5A8DB8"], [10, BLUE], [Infinity, ORANGE]]
+qLabel = q => Number.isFinite(q) ? `Q = ${q}` : "ignition"
+curveRows = qCurves.flatMap(([q]) => grid.filter((_, i) => i % 5 === 0)
+  .map(t => ({T: t, v: tripleProduct(rx, t, q, z), curve: qLabel(q)})).filter(d => Number.isFinite(d.v)))
+current = grid.filter((_, i) => i % 5 === 0).map(t => ({T: t, v: tripleProduct(rx, t, Q, z)})).filter(d => Number.isFinite(d.v))
+noBrems = grid.filter((_, i) => i % 5 === 0).map(t => ({T: t, v: tripleProduct(rx, t, Infinity, 0)}))
+groups = ["tokamak", "stellarator", "other magnetic", "inertial (ICF, MIF)"]
+xDomain = showMachines ? [0.2, 100] : [2, 100]
+yDomain = showMachines ? [1e16, 1e23] : [1e20, 1e23]
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 420, marginLeft: 60,
+  x: {type: "log", domain: xDomain, ticks: ticksIn(...xDomain), tickFormat: "~g", label: "k_BT (keV)"},
+  y: {type: "log", domain: yDomain, ticks: decades(...yDomain), tickFormat: pow10, label: "n k_BT τ_E (keV s m⁻³)", grid: true},
+  color: {domain: [...qCurves.map(([q]) => qLabel(q)), ...(showMachines ? groups : [])],
+          range: [...qCurves.map(([, c]) => c), ...(showMachines ? [SKY, GREEN, PURPLE, "#CC79A7"] : [])], legend: true},
+  symbol: {domain: groups, range: ["circle", "diamond", "triangle", "square"]},
+  marks: [
+    brems ? Plot.line(noBrems, {x: "T", y: "v", stroke: ORANGE, strokeDasharray: "3 3", strokeOpacity: 0.7}) : null,
+    Plot.line(curveRows, {x: "T", y: "v", stroke: "curve", strokeWidth: 1.6}),
+    Plot.line(current, {x: "T", y: "v", stroke: INK, strokeWidth: 2.6}),
+    showMachines ? Plot.dot(machines, {x: "T", y: "nTtau", stroke: "group", symbol: "group", r: 3.5, strokeWidth: 1.3,
+      channels: {project: "project", year: "year"}, tip: true, clip: true}) : null,
+    Plot.dot([minimum], {x: "T", y: "value", r: 4, fill: "white", stroke: INK}),
+    Number.isFinite(need) ? Plot.dot([{T, v: need}], {x: "T", y: "v", r: 6, fill: INK}) : null
+  ]
+})
+```
+
+::: {.note}
+Black line: the chosen $Q$; open circle: its minimum over $T$; filled dot: the chosen $T$. With bremsstrahlung on, the dashed line repeats ignition without it. Below about 4.3 keV (for $Z_\text{eff} = 1$) bremsstrahlung exceeds α heating and no finite $\tau_E$ suffices. Machine points are peak ion temperature and density with the measured $\tau_E$, from Wurzel and Hsu (2022, Tables 6–8); the curves assume uniform profiles, so the comparison holds to order of magnitude only.
+:::
+
+## Engineering gain
+
+```{ojs}
+viewof etaTh = Inputs.range([0.2, 0.6], {value: 0.4, step: 0.01, label: html`η<sub>th</sub>`})
+viewof etaAux = Inputs.range([0.2, 0.9], {value: 0.4, step: 0.01, label: html`η<sub>aux</sub>`})
+```
+
+```{ojs}
+qGrid = logspace(0.1, 1000, 300)
+html`<div class="readout">
+<span class="k"><i>Q</i><sub>eng</sub> at <i>Q</i> = ${Number.isFinite(Q) ? Q.toFixed(1) : "∞"}</span><span>${Number.isFinite(Q) ? qEng(Q, etaTh, etaAux).toFixed(2) : "∞ (no external heating)"}</span>
+<span class="k">net electricity, <i>Q</i><sub>eng</sub> > 0, needs</span><span><i>Q</i> > ${(1 / (etaTh * etaAux) - 1).toFixed(2)}</span>
+<span class="k"><i>Q</i><sub>eng</sub> = 1 needs</span><span><i>Q</i> = ${(2 / (etaTh * etaAux) - 1).toFixed(2)}</span>
+</div>`
+```
+
+```{ojs}
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 280, marginLeft: 60,
+  x: {type: "log", domain: [0.1, 1000], ticks: ticksIn(0.1, 1000), tickFormat: "~g", label: "Q"},
+  y: {domain: [-1.2, 5], label: "Q_eng", grid: true},
+  marks: [
+    Plot.ruleY([0], {stroke: MUTED}), Plot.ruleY([1], {stroke: MUTED, strokeDasharray: "4 3"}),
+    Plot.line(qGrid.map(q => ({q, y: qEng(q, etaTh, etaAux)})), {x: "q", y: "y", stroke: BLUE, strokeWidth: 2, clip: true}),
+    Number.isFinite(Q) ? Plot.dot([{q: Q, y: qEng(Q, etaTh, etaAux)}], {x: "q", y: "y", r: 5, fill: INK, clip: true}) : null
+  ]
+})
+```
+
+::: {.note}
+All fusion and external heating power is converted to electricity at $\eta_\text{th}$; the external heating is bought from the grid at $\eta_\text{aux}$; no other plant loads.
+:::
+
+## Sources
+
+- J. D. Lawson, Some criteria for a power producing thermonuclear reactor, *Proc. Phys. Soc. B* **70**, 6 (1957), [doi:10.1088/0370-1301/70/1/303](https://doi.org/10.1088/0370-1301/70/1/303).
+- S. E. Wurzel and S. C. Hsu, Progress toward fusion energy breakeven and gain as measured against the Lawson criterion, *Phys. Plasmas* **29**, 062103 (2022), [doi:10.1063/5.0083990](https://doi.org/10.1063/5.0083990), CC BY 4.0; machine values from Tables 6–8 (`data/ch04/wurzel_hsu_2022.csv`).
+- H.-S. Bosch and G. M. Hale, *Nucl. Fusion* **32**, 611 (1992), [doi:10.1088/0029-5515/32/4/I07](https://doi.org/10.1088/0029-5515/32/4/I07).
+- J. D. Huba, *NRL Plasma Formulary* (Naval Research Laboratory, 2018), p. 58 (bremsstrahlung).
+- Model code: `derivations/chapters/ch04_power_balance.py` in the [course repository](https://github.com/krystophny/fusion-skript); this page evaluates the same formulas in `fusion.js`.

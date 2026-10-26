@@ -171,6 +171,24 @@ def test_export_copies_every_build_product(course, tmp_path):
     assert "figures/energy.svg" in manifest["files"]
 
 
+def test_export_ships_notebook_sources_with_their_data(course, tmp_path):
+    for name in ("LICENSE", "LICENSE-CONTENT.md"):
+        (course / name).write_text("license")
+    (course / "notebooks").mkdir()
+    (course / "notebooks/lawson.qmd").write_text("notebook source")
+    (course / "notebooks/fusion.js").write_text("export const x = 1;")
+    (course / "notebooks/_quarto.yml").write_text("project: {}")
+    (course / "notebooks/data-files.txt").write_text("data/ch04/points.csv\n")
+    (course / "data/ch04").mkdir(parents=True)
+    (course / "data/ch04/points.csv").write_text("T,n")
+    dest = tmp_path / "folder"
+    exporter.export(course, course / "public", dest)
+    assert (dest / "notebooks/lawson.qmd").read_text() == "notebook source"
+    assert (dest / "notebooks/fusion.js").exists() and (dest / "notebooks/_quarto.yml").exists()
+    assert (dest / "notebooks/data/points.csv").read_text() == "T,n"
+    assert not (dest / "notebooks/data-files.txt").exists()
+
+
 def test_export_ships_only_the_registered_animation_revision(course, tmp_path):
     for name in ("LICENSE", "LICENSE-CONTENT.md"):
         (course / name).write_text("license")

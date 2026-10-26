@@ -49,6 +49,7 @@
   #at(1, 6, y: 86mm, result-box($n tau_E >= (12 k_B T)/(sv E_alpha)$, [$p_alpha >= p_"loss"$, no radiation]))
   #at(7, 6, y: -4mm, deck-fig("density_scaling", columns: 6))
   #at(1, 12, y: 140mm, text(size: 14pt, fill: muted)[$W$, $p$: per volume #h(5mm) $T_e = T_i = T$ #h(5mm) $tau_E$: all losses not counted separately])
+  #at(1, 12, y: 150mm, cite-line[#link("https://krystophny.github.io/fusion-skript/notebooks/scaling.html")[notebook: confinement scaling IPB98(y,2)]])
 ]
 
 #slide(section: "bremsstrahlung", title: [Bremsstrahlung and ideal ignition])[
@@ -89,6 +90,7 @@
     ),
     align: (right, left, right),
   ))
+  #at(8, 5, y: 64mm, deck-fig("alpha_fraction", columns: 5))
 ]
 
 #slide(section: "power-balance", title: [Triple product])[
@@ -110,7 +112,7 @@
   #at(1, 12, y: 128mm, align(center, text(fill: muted)[
     $n T tau_E = 12 T^2 \/ (sv (E_alpha + E_"fus" \/ Q) - 4 C_B sqrt(T))$ #h(4mm) (dashed; solid: $C_B = 0$)]))
   #at(1, 12, y: 142mm, cite-line[
-    #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)]])
+    #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] · #link("https://krystophny.github.io/fusion-skript/notebooks/lawson.html")[notebook: Lawson criterion]])
 ]
 
 // Two closures of one balance: Lawson's loop through a converter, and alphas kept in the plasma.
@@ -213,6 +215,7 @@
   #at(1, 12, y: 0mm, align(center, deck-fig("impurity_dilution", columns: 12)))
   #at(1, 12, y: 128mm, align(center, text(fill: muted)[
     $n_e T tau_E = 3/2 (1 + n_i \/ n_e) T^2 \/ ((1 - 2c)^2 sv E_alpha \/ 4 - C_B Z_"eff" sqrt(T))$ #h(4mm) $Z_"eff" = 1 + 2c$]))
+  #at(1, 12, y: 146mm, cite-line[#link("https://krystophny.github.io/fusion-skript/notebooks/impurities.html")[notebook: impurities and fuel dilution]])
 ]
 
 #slide(section: "pressure-beta", title: [Fixed pressure])[

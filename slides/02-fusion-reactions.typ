@@ -869,7 +869,8 @@
     #text(fill: muted)[Lawson (Chapter 4):] $n T tau_E prop T^2 \/ chevron.l sigma v chevron.r$])
   #at(1, 12, y: 136mm, text(size: 12pt)[
     #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ·
-    #link("https://doi.org/10.1088/0029-5515/40/4/310")[Nevins & Swain · Nucl. Fusion 40, 865 (2000)]])
+    #link("https://doi.org/10.1088/0029-5515/40/4/310")[Nevins & Swain · Nucl. Fusion 40, 865 (2000)] ·
+    #link("https://krystophny.github.io/fusion-skript/notebooks/reactivity.html")[notebook: reactivity and Gamow peak]])
 ]
 
 #slide(section: "reaction-rate", title: [Reaction rate: summary])[

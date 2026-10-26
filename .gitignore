@@ -1,5 +1,7 @@
 public/
 build/
+notebooks/_site/
+.quarto/
 slides/build/
 derivations/build/
 .cache/

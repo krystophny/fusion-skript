@@ -87,6 +87,12 @@ def q_eng(q, eta_th=0.4, eta_aux=0.4):
     return eta_th * eta_aux * (np.asarray(q, float) + 1) - 1
 
 
+def alpha_fraction(q):
+    """Self-heating fraction f_alpha = P_alpha/(P_alpha + P_ext) = Q/(Q + E_fus/E_alpha)."""
+    # Written as 1/(1 + 5/Q) so that Q = inf gives exactly 1.
+    return 1 / (1 + (E_FUS / E_ALPHA) / np.asarray(q, float))
+
+
 def n_tau(t, q=np.inf):
     """Required n tau_E (s m^-3) at temperature t (keV), no radiation."""
     return triple_product(np.atleast_1d(t), q) / np.atleast_1d(t)
@@ -263,7 +269,7 @@ def checks():
     print(f"Lawson (eta = 1/3) needs {E_ALPHA / (E_FUS / 2):.2f} of the ignition n tau_E")
     # Self-heating fraction and engineering gain.
     for qq, fa in ((1, 0.168), (5, 0.503), (10, 0.669)):
-        assert abs(qq / (qq + E_FUS / E_ALPHA) - fa) < 2e-3
+        assert abs(alpha_fraction(qq) - fa) < 2e-3
     assert abs(q_eng(1 / 0.16 - 1)) < 1e-12 and abs(q_eng(2 / 0.16 - 1) - 1) < 1e-12
     print(f"Q_eng (0.4, 0.4): zero at Q = {1 / 0.16 - 1:.2f}, one at Q = {2 / 0.16 - 1:.2f}, "
           f"{q_eng(10.0):.2f} at Q = 10")

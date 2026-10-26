@@ -1,0 +1,205 @@
+---
+title: "Reactivity and Gamow peak"
+---
+
+::: {.purpose}
+How the Maxwell average turns a steep cross section $\sigma(E)$ into the reactivity $\langle\sigma v\rangle(T)$, and which energies carry the reactions.
+:::
+
+$$
+\langle\sigma v\rangle = \left(\frac{8}{\pi m}\right)^{1/2} (k_BT)^{-3/2} \int_0^\infty \sigma(E)\, E\, e^{-E/k_BT}\, \mathrm{d}E
+= \int \sigma v(u)\, K(u - s)\, \mathrm{d}u
+$$
+
+$$
+K(x) = \frac{2}{\sqrt{\pi}}\, e^{3x/2} \exp(-e^{x}), \qquad
+\sigma(E) = \frac{S(E)}{E}\, e^{-\sqrt{E_G/E}}
+$$
+
+$$
+E_0 = \left(\frac{E_G (k_BT)^2}{4}\right)^{1/3}, \qquad
+\Delta = 4\sqrt{\frac{E_0\, k_BT}{3}}, \qquad
+\langle\sigma v\rangle \approx \frac{8\sqrt{6}}{27}\,\frac{S(E_0)}{\sqrt{m E_G}}\,\tau^2 e^{-\tau}, \qquad \tau = \frac{3E_0}{k_BT}
+$$
+
+::: {.symbols}
+| Symbol | Meaning |
+|---|---|
+| $E$ | centre-of-mass energy (keV) |
+| $k_BT$ | temperature of both Maxwellian species (keV) |
+| $m$ | reduced mass, $m c^2$ in keV |
+| $\sigma(E)$, $S(E)$ | cross section (m², plotted in barn, 1 b = 10⁻²⁸ m²) and astrophysical S factor (keV b) |
+| $E_G$ | Gamow energy, $E_G = 2 m c^2 (\pi \alpha Z_1 Z_2)^2$ (keV) |
+| $u = \ln E$, $s = \ln k_BT$ | logarithmic energy and temperature; $K$ is the Maxwellian per unit $\ln E$ |
+| $E_0$, $\Delta$ | maximum and full $1/e$ width of $e^{-E/k_BT - \sqrt{E_G/E}}$ (keV) |
+:::
+
+```{ojs}
+import {REACTIONS, reactivity, sigma, gamowEnergy, gamowPeak, kernel, maxwellAverage, gamowEstimate, BARN} from "./fusion.js"
+import {logspace, decades, pow10, ticksIn, sci} from "./plotting.js"
+rx = FileAttachment("data/reactivity.json").json()
+cs = FileAttachment("data/cross-sections.json").json()
+colors = ({DT: "#B55000", DD: "#0072B2", DHe3: "#7B3294"})
+names = ({DT: "D–T", DD: "D–D", DHe3: "D–³He"})
+```
+
+```{ojs}
+viewof T = Inputs.range([1, 100], {value: 10, step: 0.1, transform: Math.log, label: html`<i>k</i><sub>B</sub><i>T</i> (keV)`})
+viewof reaction = Inputs.radio(new Map(REACTIONS.map(r => [names[r], r])), {value: "DT", label: "Reaction"})
+```
+
+```{ojs}
+eG = gamowEnergy(rx, reaction)
+peak = gamowPeak(eG, T)
+svFit = reactivity(rx, reaction, T)
+svQuad = maxwellAverage(cs, rx, reaction, T)
+svGauss = gamowEstimate(cs, rx, reaction, T)
+tOpt = {
+  const t = logspace(5, 40, 3501);
+  return t.reduce((best, x) => reactivity(rx, "DT", x) / x ** 2 > reactivity(rx, "DT", best) / best ** 2 ? x : best, 5);
+}
+html`<div class="readout">
+<span class="k">${names[reaction]}, <i>k</i><sub>B</sub><i>T</i></span><span>${T.toFixed(1)} keV</span>
+<span class="k">Gamow energy <i>E</i><sub>G</sub></span><span>${eG.toFixed(0)} keV</span>
+<span class="k">Gamow peak <i>E</i><sub>0</sub></span><span>${peak.e0.toFixed(1)} keV</span>
+<span class="k">width Δ</span><span>${peak.width.toFixed(1)} keV</span>
+<span class="k">τ = 3<i>E</i><sub>0</sub>/<i>k</i><sub>B</sub><i>T</i></span><span>${peak.tau.toFixed(2)}</span>
+<span class="k">⟨σv⟩, Bosch–Hale fit</span><span>${sci(svFit, 4)} m³/s</span>
+<span class="k">⟨σv⟩, quadrature of σ(E)</span><span>${sci(svQuad, 4)} m³/s</span>
+<span class="k">⟨σv⟩, Gaussian at <i>E</i><sub>0</sub></span><span>${sci(svGauss, 3)} m³/s</span>
+<span class="k">D–T: ⟨σv⟩/<i>T</i><sup>2</sup> maximal at</span><span>${tOpt.toFixed(1)} keV</span>
+</div>`
+```
+
+## Cross sections
+
+```{ojs}
+sigmaRows = REACTIONS.flatMap(r => logspace(1, 2000, 300).map(e => ({reaction: names[r], key: r, E: e, s: sigma(cs, rx, r, e) / BARN})))
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 340, marginLeft: 60,
+  x: {type: "log", domain: [1, 2000], ticks: ticksIn(1, 2000), tickFormat: "~g", label: "centre-of-mass energy E (keV)"},
+  y: {type: "log", domain: [1e-8, 10], ticks: decades(1e-8, 10), tickFormat: pow10, label: "cross section σ (b)", grid: true},
+  color: {domain: REACTIONS.map(r => names[r]), range: REACTIONS.map(r => colors[r]), legend: true},
+  marks: [
+    Plot.line(sigmaRows, {x: "E", y: "s", stroke: "reaction", strokeWidth: d => d.key === reaction ? 2.5 : 1.2, clip: true}),
+    Plot.ruleX([peak.e0], {stroke: colors[reaction], strokeDasharray: "4 3"}),
+    Plot.text([peak.e0], {x: d => d, y: 1.5, text: () => "E₀", dx: 10, fill: colors[reaction]})
+  ]
+})
+```
+
+::: {.note}
+Bosch–Hale S(E), Table IV; D–T above 550 keV and D–³He from the same paper's extended fits. D–D is the sum of both branches.
+:::
+
+## Maxwell kernel in ln E
+
+```{ojs}
+kernelRows = {
+  const e = logspace(0.1, 2000, 600);
+  const sv = e.map(x => sigma(cs, rx, reaction, x) * Math.sqrt(x));
+  const k = e.map(x => kernel(Math.log(x / T)));
+  const prod = sv.map((v, i) => v * k[i]);
+  const scale = a => { const m = Math.max(...a); return a.map(v => v / m); };
+  const [s1, s2, s3] = [scale(k), scale(sv), scale(prod)];
+  return e.flatMap((x, i) => [
+    {E: x, y: s1[i], curve: "Maxwellian K(u − s)"},
+    {E: x, y: s2[i], curve: "σv(E)"},
+    {E: x, y: s3[i], curve: "product σv K"}]);
+}
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 300, marginLeft: 60,
+  x: {type: "log", domain: [0.1, 2000], ticks: ticksIn(0.1, 2000), tickFormat: "~g", label: "E (keV)"},
+  y: {domain: [0, 1.05], label: "scaled to maximum 1"},
+  color: {domain: ["Maxwellian K(u − s)", "σv(E)", "product σv K"], range: ["#0072B2", "#1B7F5B", "#B55000"], legend: true},
+  marks: [
+    Plot.areaY(kernelRows.filter(d => d.curve === "product σv K"), {x: "E", y: "y", fill: "#B55000", fillOpacity: 0.2}),
+    Plot.line(kernelRows, {x: "E", y: "y", stroke: "curve", strokeWidth: 1.8}),
+    Plot.ruleX([T], {stroke: "#526175", strokeDasharray: "2 3"}),
+    Plot.text([T], {x: d => d, y: 1.03, text: () => "k_BT", dx: 14, fill: "#526175"}),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+::: {.note}
+On the ln E axis the Maxwellian has a fixed shape; changing $k_BT$ only shifts it. The reactions come from its high-energy flank, where σv is many orders of magnitude larger.
+:::
+
+## Gamow peak
+
+```{ojs}
+gamowRows = {
+  const eMax = Math.max(peak.e0 + 3 * peak.width, 4 * T);
+  const e = Array.from({length: 600}, (_, i) => eMax * (i + 1) / 600);
+  const f = e.map(x => sigma(cs, rx, reaction, x) * x * Math.exp(-x / T));
+  const fMax = Math.max(...f);
+  const f0 = sigma(cs, rx, reaction, peak.e0) * peak.e0 * Math.exp(-peak.e0 / T);
+  const tun = e.map(x => Math.exp(-Math.sqrt(eG / x)));
+  const tMax = Math.max(...tun);
+  return e.flatMap((x, i) => [
+    {E: x, y: Math.exp(-x / T), curve: "Maxwell factor e^(−E/k_BT)"},
+    {E: x, y: tun[i] / tMax, curve: "tunnelling factor e^(−√(E_G/E))"},
+    {E: x, y: f[i] / fMax, curve: "integrand σ E e^(−E/k_BT)"},
+    {E: x, y: f0 / fMax * Math.exp(-4 * (x - peak.e0) ** 2 / peak.width ** 2), curve: "Gaussian at E₀"}]);
+}
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 300, marginLeft: 60,
+  x: {label: "E (keV)"},
+  y: {domain: [0, 1.05], label: "scaled"},
+  color: {domain: ["Maxwell factor e^(−E/k_BT)", "tunnelling factor e^(−√(E_G/E))", "integrand σ E e^(−E/k_BT)", "Gaussian at E₀"],
+          range: ["#0072B2", "#1B7F5B", "#B55000", "#17202A"], legend: true},
+  marks: [
+    Plot.rectY([peak], {x1: d => d.e0 - d.width / 2, x2: d => d.e0 + d.width / 2, y1: 0, y2: 1.05, fill: "#9AA5B1", fillOpacity: 0.15}),
+    Plot.line(gamowRows, {x: "E", y: "y", stroke: "curve", strokeWidth: 1.8,
+      strokeDasharray: d => d.curve === "Gaussian at E₀" ? "4 3" : null}),
+    Plot.ruleX([peak.e0], {stroke: "#B55000", strokeDasharray: "2 3"}),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+::: {.note}
+Grey band: $E_0 \pm \Delta/2$. The Gaussian assumes $S(E) \approx S(E_0)$ across the peak; the readout compares it with the full quadrature.
+:::
+
+## Reactivity
+
+```{ojs}
+valid = ({DT: [0.2, 100], DD: [0.2, 100], DHe3: [0.5, 190]})
+svRows = REACTIONS.flatMap(r => logspace(Math.max(1, valid[r][0]), valid[r][1], 300)
+  .map(t => ({reaction: names[r], key: r, T: t, sv: reactivity(rx, r, t)})))
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 320, marginLeft: 60,
+  x: {type: "log", domain: [1, 200], ticks: ticksIn(1, 200), tickFormat: "~g", label: "k_BT (keV)"},
+  y: {type: "log", domain: [1e-27, 1e-21], ticks: decades(1e-27, 1e-21), tickFormat: pow10, label: "⟨σv⟩ (m³/s)", grid: true},
+  color: {domain: REACTIONS.map(r => names[r]), range: REACTIONS.map(r => colors[r]), legend: true},
+  marks: [
+    Plot.line(svRows, {x: "T", y: "sv", stroke: "reaction", strokeWidth: d => d.key === reaction ? 2.5 : 1.2, clip: true}),
+    Plot.dot([{T, sv: svFit}], {x: "T", y: "sv", r: 5, fill: colors[reaction], stroke: "white"})
+  ]
+})
+```
+
+```{ojs}
+optRows = logspace(2, 100, 300).map(t => ({T: t, y: 1e24 * reactivity(rx, "DT", t) / t ** 2}))
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 240, marginLeft: 60,
+  x: {type: "log", domain: [2, 100], ticks: ticksIn(2, 100), tickFormat: "~g", label: "k_BT (keV)"},
+  y: {label: "D–T ⟨σv⟩/(k_BT)² (10⁻²⁴ m³ s⁻¹ keV⁻²)", grid: true},
+  marks: [
+    Plot.line(optRows, {x: "T", y: "y", stroke: "#B55000", strokeWidth: 2}),
+    Plot.ruleX([tOpt], {stroke: "#526175", strokeDasharray: "4 3"}),
+    Plot.text([tOpt], {x: d => d, y: 1e24 * reactivity(rx, "DT", tOpt) / tOpt ** 2, text: d => `${d.toFixed(1)} keV`, dx: 36, dy: 8, fill: "#526175"})
+  ]
+})
+```
+
+::: {.note}
+At fixed pressure $p = 2 n k_BT$ the fusion power density scales as $\langle\sigma v\rangle/T^2$ (Chapter 4). The Bosch–Hale fits are valid for 0.2–100 keV (D–T, D–D) and 0.5–190 keV (D–³He).
+:::
+
+## Sources
+
+- H.-S. Bosch and G. M. Hale, Improved formulas for fusion cross-sections and thermal reactivities, *Nucl. Fusion* **32**, 611 (1992), [doi:10.1088/0029-5515/32/4/I07](https://doi.org/10.1088/0029-5515/32/4/I07). Coefficients: `data/ch02/*.json` in the [course repository](https://github.com/krystophny/fusion-skript).
+- Model code shared with the lecture figures: `derivations/chapters/ch02_reactivity.py`; this page evaluates the same formulas in `fusion.js`.

@@ -4,7 +4,7 @@ Model: derivations/chapters/ch04_power_balance.py (0-D D-T balance, Bosch-Hale
 <sigma v>, NRL bremsstrahlung). Descriptions: slides/04-power-balance-visuals.md.
 Run:  python3 slides/figures_power_balance.py
       -> slides/build/fig/{alpha_neutron_split,lawson_plane,power_flow,density_scaling,
-         alpha_brems,q_eng,impurity_dilution,fixed_pressure,n_tau_plane}.{svg,png}
+         alpha_brems,q_eng,alpha_fraction,impurity_dilution,fixed_pressure,n_tau_plane}.{svg,png}
 Measured points: Wurzel and Hsu, Phys. Plasmas 29, 062103 (2022), CC BY 4.0.
 """
 import sys
@@ -278,6 +278,28 @@ def q_eng_plot():
     save(fig, "q_eng")
 
 
+def alpha_fraction_plot():
+    """Self-heating fraction against Q, with the gains of the table on the same page."""
+    q = np.geomspace(.1, 1000, 400)
+    fig, ax = plt.subplots(figsize=(103 * MM, 84 * MM))
+    ax.semilogx(q, pb.alpha_fraction(q), color=INK, lw=2.4)
+    ax.axhline(1, color=ORANGE, lw=1.5, ls=(0, (5, 3)))
+    ax.text(.13, .97, r"ignition, $Q \to \infty$", color=ORANGE, fontsize=15, va="top")
+    for qq, color in QS[:-1]:
+        f = float(pb.alpha_fraction(qq))
+        ax.plot([qq], [f], "o", color=color, ms=8, zorder=5)
+        ax.text(qq * 1.5, f - .03, f"$Q={qq}$", fontsize=15, va="top")
+    ax.set_xlim(.1, 1000)
+    ax.set_xticks([.1, 1, 10, 100, 1000])
+    ax.xaxis.set_major_formatter(PLAIN)
+    ax.set_ylim(0, 1.05)
+    ax.set_xlabel(r"$Q$")
+    ax.set_ylabel(r"$f_\alpha$", rotation=0, labelpad=14, va="center")
+    _axes(ax)
+    fig.subplots_adjust(left=.21, right=.92, bottom=.2, top=.97)
+    save(fig, "alpha_fraction")
+
+
 HE = ((0.0, ORANGE, "-"), (0.05, "#5A8DB8", (0, (6, 3))), (0.10, BLUE, (0, (2, 2))), (0.15, INK, (0, (6, 2, 1, 2))))
 
 
@@ -341,20 +363,21 @@ def fixed_pressure():
 
 
 # Labelled experiments and label offsets in points.
-LABELS = {("ZETA", 1957): (-10, -14), ("JET", 1997): (14, 20), ("W7-X", 2017): (-30, 26),
+LABELS = {("ZETA", 1957): (-10, -14), ("JET", 1997): (14, 20), ("W7-X", 2017): (-14, -36),
           ("NIF", 2021): (12, 6), ("MagLIF", 2015): (12, -2), ("FuZE", 2018): (-12, 14),
-          ("Alcator C", 1984): (-14, 14)}
+          ("Alcator C", 1984): (20, 42)}
 
 
 def n_tau_plane():
     """Density against confinement time: confinement routes and measured experiments."""
     rows = pb.machines()
     fig, ax = plt.subplots(figsize=(250 * MM, 128 * MM))
-    tau = np.geomspace(1e-12, 1e17, 50)
+    tau = np.geomspace(1e-12, 1e3, 50)
     for q, ls, lab in ((np.inf, "-", "ignition"), (1.0, (0, (6, 3)), "$Q = 1$")):
         nt = pb.n_tau(14.0, q)[0]
         ax.loglog(tau, nt / tau, color=ORANGE, lw=2 if np.isinf(q) else 1.4, ls=ls)
-    ax.set_xlim(1e-12, 1e17)
+    # The Sun (tau ~ 1e15 s) is off scale: drawn as an arrow at the right edge.
+    ax.set_xlim(1e-12, 1e3)
     ax.set_ylim(1e17, 1e34)
     fig.subplots_adjust(left=.09, right=.98, bottom=.14, top=.98)
     # Screen angle of a line n tau = const on these log axes.
@@ -383,10 +406,18 @@ def n_tau_plane():
     tk = pb.kelvin_helmholtz_time()
     n_mean = pb.sun_mean_density() * 1.7 / (2 * 1.66054e-27)
     n_core = 150e3 * 1.35 / (2 * 1.66054e-27)
-    ax.plot([tk, tk], [n_mean, n_core], color=GREEN, lw=5, solid_capstyle="round")
-    ax.text(tk / 3, 3e30, "Sun", color=GREEN, fontsize=17, ha="right", va="center")
+    edge = ("axes fraction", "data")
+    ax.annotate("", (.995, n_core), (.995, n_mean), xycoords=edge, textcoords=edge,
+                arrowprops=dict(arrowstyle="-", color=GREEN, lw=5, capstyle="round"))
+    n_sun = np.sqrt(n_mean * n_core)
+    ax.annotate("", (1.0, n_sun), (.93, n_sun), xycoords=edge, textcoords=edge,
+                arrowprops=dict(arrowstyle="-|>,head_width=.35,head_length=.7", color=GREEN, lw=2))
+    yr = tk / 3.156e7
+    ax.text(.92, n_sun, "Sun, off scale:\n" rf"$\tau \approx {yr / 1e7:.0f}\times10^7$ yr"
+            "\n" rf"$= {tk / 1e15:.0f}\times10^{{15}}$ s", transform=ax.get_yaxis_transform(),
+            color=GREEN, fontsize=15, ha="right", va="center")
     ax.text(.5e-11, 4e31, "inertial", color=INK, fontsize=17, ha="left")
-    ax.text(1e-1, 2e17 * 2, "magnetic", color=BLUE, fontsize=17, ha="center")
+    ax.text(1.5e-3, 2.2e17, "magnetic", color=BLUE, fontsize=17, ha="right")
     ax.set_xlabel(r"$\tau$ [s]")
     ax.set_ylabel(r"$n$ [m$^{-3}$]")
     ax.text(.995, .97, r"lines: D–T, $k_BT = 14$ keV, uniform plasma", transform=ax.transAxes,
@@ -405,7 +436,8 @@ if __name__ == "__main__":
     density_scaling()
     print(f"wrote alpha_brems: ideal ignition at {alpha_brems():.2f} keV")
     q_eng_plot()
+    alpha_fraction_plot()
     impurity_dilution()
     fixed_pressure()
     n_tau_plane()
-    print("wrote density_scaling, q_eng, impurity_dilution, fixed_pressure, n_tau_plane")
+    print("wrote density_scaling, q_eng, alpha_fraction, impurity_dilution, fixed_pressure, n_tau_plane")

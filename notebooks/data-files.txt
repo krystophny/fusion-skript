@@ -1,0 +1,3 @@
+data/ch02/reactivity.json
+data/ch02/cross-sections.json
+data/ch04/wurzel_hsu_2022.csv

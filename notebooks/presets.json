@@ -1,0 +1,26 @@
+{
+  "JET": {
+    "label": "JET pulse 42976 (1997, D-T)",
+    "I": 4.02, "B": 3.6, "n19": 4.1, "P": 13.2, "R": 2.92, "a": 0.95, "kappa": 1.81, "M": 2.5, "H": 1.0,
+    "tau_measured_s": 0.90,
+    "note": "ELM-free hot-ion H-mode at 13.13 s, measured, not stationary. P = P_heat - dW/dt (thermal loss power). kappa is the vertical elongation; the source gives no kappa_a. M = 2.5 for n_T/(n_D + n_T) = 0.49-0.59. tau_measured is the thermal confinement time.",
+    "source": "Keilhacker et al., Nucl. Fusion 39, 209 (1999), Table II",
+    "doi": "10.1088/0029-5515/39/2/306"
+  },
+  "ITER": {
+    "label": "ITER Q = 10 reference",
+    "I": 15.0, "B": 5.3, "n19": 10.0, "P": 87.0, "R": 6.2, "a": 1.98, "kappa": 1.7, "M": 2.5, "H": 1.0,
+    "tau_published_s": 3.6,
+    "note": "Design values of the ITER standard inductive operation; a = 0.32 R from the published inverse aspect ratio.",
+    "source": "Doyle et al., Nucl. Fusion 47, S18 (2007), section 5.3.4",
+    "doi": "10.1088/0029-5515/47/6/S02"
+  },
+  "SPARC": {
+    "label": "SPARC full-field H-mode (design)",
+    "I": 8.7, "B": 12.2, "n19": 31.0, "P": 28.7, "R": 1.85, "a": 0.57, "kappa": 1.75, "M": 2.5, "H": 1.0,
+    "tau_paper_s": 0.77,
+    "note": "Design values. n is the volume-averaged density of Table 2 (no line average is given). The loss power is not published; P = 28.7 MW is the value at which IPB98(y,2) with H = 1 returns the published tau_E = 0.77 s.",
+    "source": "Creely et al., J. Plasma Phys. 86, 865860502 (2020), Tables 1-2 and section 3",
+    "doi": "10.1017/S0022377820001257"
+  }
+}

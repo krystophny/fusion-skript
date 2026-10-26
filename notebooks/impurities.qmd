@@ -1,0 +1,134 @@
+---
+title: "Impurities and fuel dilution"
+---
+
+::: {.purpose}
+How an impurity of charge $Z$ displaces fuel at fixed electron density, and what that costs in fusion power and in the ignition triple product.
+:::
+
+$$
+n_e = n_D + n_T + Z n_Z
+\quad\Longrightarrow\quad
+n_D + n_T = n_e\,(1 - Z c), \qquad c = \frac{n_Z}{n_e}
+$$
+
+$$
+\frac{p_\text{fus}}{p_\text{fus}(c = 0)} = (1 - Z c)^2, \qquad
+Z_\text{eff} = \frac{\sum_j Z_j^2 n_j}{n_e} = 1 - Z c + Z^2 c, \qquad
+\frac{n_i}{n_e} = 1 - Z c + c
+$$
+
+$$
+\frac{3}{2}\left(1 + \frac{n_i}{n_e}\right)\frac{n_e k_BT}{\tau_E} + C_B Z_\text{eff}\, n_e^2 \sqrt{k_BT}
+= \frac{(1 - Zc)^2}{4}\, n_e^2 \langle\sigma v\rangle E_\alpha
+$$
+
+$$
+\Longrightarrow\quad
+n_e k_BT\tau_E = \frac{\tfrac{3}{2}\left(1 + n_i/n_e\right)(k_BT)^2}{\tfrac{1}{4}(1 - Zc)^2\langle\sigma v\rangle E_\alpha - C_B Z_\text{eff}\sqrt{k_BT}}
+$$
+
+::: {.symbols}
+| Symbol | Meaning |
+|---|---|
+| $n_e$, $n_D$, $n_T$, $n_Z$ | electron, deuterium, tritium and impurity densities, $n_D = n_T$ (m⁻³) |
+| $Z$, $c$ | impurity charge (fully stripped here) and concentration relative to electrons |
+| $n_i$ | total ion density |
+| $Z_\text{eff}$ | effective charge, weights bremsstrahlung |
+| $C_B$ | bremsstrahlung constant, $5.34\times10^{-37}$ W m³ keV⁻¹ᐟ² |
+| $\langle\sigma v\rangle$, $E_\alpha$ | D–T reactivity (Bosch–Hale) and α energy 3.56 MeV |
+| $k_BT$, $\tau_E$ | temperature ($T_e = T_i$, keV) and energy confinement time (s) |
+:::
+
+::: {.note}
+Only dilution and bremsstrahlung are included. Partially ionised heavy impurities, tungsten above all, radiate mainly through line emission, which this page does not model; for them the required triple product is higher than shown. Tungsten cooling factors: Pütterich et al. (2010). For tungsten the charge $Z = 74$ is bookkeeping for complete ionisation; the mean charge at fusion temperatures is lower.
+:::
+
+```{ojs}
+import {dilution, ignitionDiluted} from "./fusion.js"
+import {logspace, decades, pow10, ticksIn, sci, INK, MUTED, GREY, BLUE, ORANGE, GREEN, PURPLE} from "./plotting.js"
+rx = FileAttachment("data/reactivity.json").json()
+species = [["He (ash)", 2], ["Be", 4], ["C", 6], ["N", 7], ["Ne", 10], ["Ar", 18], ["W", 74]]
+```
+
+```{ojs}
+viewof Z = Inputs.select(new Map(species), {value: 74, label: "impurity"})
+viewof c = Inputs.range([1e-5, 0.2], {value: 1e-3, step: 1e-5, transform: Math.log, label: html`<i>c</i> = <i>n</i><sub><i>Z</i></sub>/<i>n</i><sub><i>e</i></sub>`})
+viewof T = Inputs.range([4, 60], {value: 14, step: 0.1, transform: Math.log, label: html`<i>k</i><sub>B</sub><i>T</i> (keV)`})
+```
+
+```{ojs}
+name = species.find(([, z]) => z === Z)[0]
+d = dilution([[Z, c]])
+grid = logspace(4, 100, 1500)
+ignMin = imp => {
+  const v = grid.map(t => ignitionDiluted(rx, t, imp));
+  const i = v.indexOf(Math.min(...v));
+  return {T: grid[i], value: v[i]};
+}
+clean = ignMin([])
+dirty = ignMin([[Z, c]])
+html`<div class="readout">
+<span class="k">${name}, <i>c</i></span><span>${(100 * c).toPrecision(3)} %</span>
+<span class="k">fuel fraction (<i>n</i><sub><i>D</i></sub> + <i>n</i><sub><i>T</i></sub>)/<i>n</i><sub><i>e</i></sub> = 1 − <i>Zc</i></span><span>${d.fuel > 0 ? `${d.fuel.toFixed(3)} (${(100 * (1 - d.fuel)).toFixed(1)} % fuel lost)` : "≤ 0: no fuel left"}</span>
+<span class="k">fusion power at fixed <i>n</i><sub><i>e</i></sub>, (1 − <i>Zc</i>)²</span><span>${d.fuel > 0 ? `${(d.fuel ** 2).toFixed(3)} (${(100 * (1 - d.fuel ** 2)).toFixed(1)} % less fusion power)` : "0"}</span>
+<span class="k"><i>Z</i><sub>eff</sub></span><span>${d.zeff.toFixed(2)}</span>
+<span class="k"><i>n</i><sub><i>i</i></sub>/<i>n</i><sub><i>e</i></sub></span><span>${d.ions.toFixed(3)}</span>
+<span class="k">ignition <i>n</i><sub><i>e</i></sub><i>k</i><sub>B</sub><i>T</i>τ<sub><i>E</i></sub> at ${T.toFixed(1)} keV</span><span>${sci(ignitionDiluted(rx, T, [[Z, c]]), 3)} keV s m⁻³ (clean: ${sci(ignitionDiluted(rx, T, []), 3)})</span>
+<span class="k">minimum over <i>T</i></span><span>${Number.isFinite(dirty.value) ? `${sci(dirty.value, 3)} keV s m⁻³ at ${dirty.T.toFixed(1)} keV, ${(dirty.value / clean.value).toFixed(2)} × clean` : "no ignition"}</span>
+</div>`
+```
+
+## Fusion power at fixed electron density
+
+```{ojs}
+cGrid = logspace(1e-5, 0.2, 400)
+powerRows = species.flatMap(([n, z]) => cGrid.map(x => ({c: x, y: Math.max(0, 1 - z * x) ** 2, species: n, sel: z === Z})))
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 320, marginLeft: 60,
+  x: {type: "log", domain: [1e-5, 0.2], ticks: decades(1e-5, 0.1), tickFormat: pow10, label: "c = n_Z/n_e"},
+  y: {domain: [0, 1.02], label: "p_fus / p_fus(c = 0)", grid: true},
+  marks: [
+    Plot.line(powerRows.filter(d => !d.sel), {x: "c", y: "y", z: "species", stroke: GREY, strokeWidth: 1}),
+    Plot.text(species.filter(([, z]) => z !== Z), {x: ([, z]) => 0.5 / z, y: 0.25, text: ([n]) => n.split(" ")[0], fill: MUTED, fontSize: 11, clip: true}),
+    Plot.line(powerRows.filter(d => d.sel), {x: "c", y: "y", stroke: BLUE, strokeWidth: 2.4}),
+    Plot.line(cGrid.map(x => ({c: x, y: Math.max(0, 1 - Z * x)})), {x: "c", y: "y", stroke: BLUE, strokeDasharray: "4 3"}),
+    Plot.dot([{c, y: Math.max(0, d.fuel) ** 2}], {x: "c", y: "y", r: 5, fill: INK})
+  ]
+})
+```
+
+::: {.note}
+Blue: chosen species, solid $(1 - Zc)^2$, dashed fuel fraction $1 - Zc$. Grey: the other species, labelled where their power has fallen to a quarter ($Zc = 1/2$).
+:::
+
+## Ignition with dilution and bremsstrahlung
+
+```{ojs}
+ashRows = [[0, "clean", ORANGE], [0.05, "He 5 %", "#5A8DB8"], [0.10, "He 10 %", BLUE]].flatMap(([x, label]) =>
+  grid.filter((_, i) => i % 3 === 0).map(t => ({T: t, v: ignitionDiluted(rx, t, x ? [[2, x]] : []), curve: label})))
+chosen = grid.filter((_, i) => i % 3 === 0).map(t => ({T: t, v: ignitionDiluted(rx, t, [[Z, c]])}))
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 380, marginLeft: 60,
+  x: {type: "log", domain: [4, 100], ticks: ticksIn(4, 100), tickFormat: "~g", label: "k_BT (keV)"},
+  y: {type: "log", domain: [1e21, 1e23], ticks: decades(1e21, 1e23), tickFormat: pow10, label: "ignition n_e k_BT τ_E (keV s m⁻³)", grid: true},
+  color: {domain: ["clean", "He 5 %", "He 10 %", `${name}, c = ${(100 * c).toPrecision(2)} %`], range: [ORANGE, "#5A8DB8", BLUE, INK], legend: true},
+  marks: [
+    Plot.line(ashRows.filter(d => Number.isFinite(d.v)), {x: "T", y: "v", stroke: "curve", strokeWidth: 1.6, clip: true}),
+    Plot.line(chosen.filter(d => Number.isFinite(d.v)), {x: "T", y: "v", stroke: INK, strokeWidth: 2.6, clip: true}),
+    Number.isFinite(dirty.value) ? Plot.dot([dirty], {x: "T", y: "value", r: 4, fill: "white", stroke: INK}) : null,
+    Plot.ruleX([T], {stroke: MUTED, strokeDasharray: "2 3"})
+  ]
+})
+```
+
+::: {.note}
+Bremsstrahlung included in all curves; line radiation in none. Helium ash at 5–10 % is the burning-plasma case; its line radiation is small because helium is fully ionised at these temperatures.
+:::
+
+## Sources
+
+- H.-S. Bosch and G. M. Hale, *Nucl. Fusion* **32**, 611 (1992), [doi:10.1088/0029-5515/32/4/I07](https://doi.org/10.1088/0029-5515/32/4/I07).
+- J. D. Huba, *NRL Plasma Formulary* (Naval Research Laboratory, 2018), p. 58 (bremsstrahlung).
+- T. Pütterich et al., Calculation and experimental test of the cooling factor of tungsten, *Nucl. Fusion* **50**, 025012 (2010), [doi:10.1088/0029-5515/50/2/025012](https://doi.org/10.1088/0029-5515/50/2/025012).
+- Model code: `derivations/chapters/ch04_power_balance.py` (`dilution`, `ignition_diluted`) in the [course repository](https://github.com/krystophny/fusion-skript).

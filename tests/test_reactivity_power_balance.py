@@ -159,6 +159,19 @@ def test_engineering_gain_from_power_bookkeeping():
     assert pb.q_eng(5.25) == pytest.approx(0.0, abs=1e-12)
 
 
+@pytest.mark.parametrize("q", [0.5, 1.0, 5.0, 10.0, 100.0])
+def test_alpha_fraction_from_power_bookkeeping(q):
+    p_fus = 300e6
+    p_alpha = p_fus * pb.E_ALPHA / pb.E_FUS
+    p_ext = p_fus / q
+    assert pb.alpha_fraction(q) == pytest.approx(p_alpha / (p_alpha + p_ext), rel=1e-12)
+
+
+def test_alpha_fraction_reaches_one_at_ignition():
+    assert pb.alpha_fraction(np.inf) == 1.0
+    assert pb.alpha_fraction(1e9) == pytest.approx(1.0, abs=1e-8)
+
+
 def test_fixed_pressure_optimum_from_density_at_constant_pressure():
     t = np.linspace(5, 40, 35001)
     p = 1.0

@@ -1,0 +1,153 @@
+---
+title: "Confinement scaling IPB98(y,2)"
+---
+
+::: {.purpose}
+The empirical H-mode energy confinement time used to size tokamaks, evaluated for JET, ITER and SPARC and for any parameters set with the sliders.
+:::
+
+$$
+\tau_{E} = 0.0562\, H\, I_p^{0.93}\, B^{0.15}\, \bar n_{19}^{0.41}\, P^{-0.69}\, R^{1.97}\, \varepsilon^{0.58}\, \kappa_a^{0.78}\, M^{0.19}
+\qquad (\text{s})
+$$
+
+::: {.symbols}
+| Symbol | Meaning |
+|---|---|
+| $H$ | confinement multiplier, $H = 1$ on the fit; measured $H$ is $\tau_E/\tau_{E,98}$ |
+| $I_p$ | plasma current (MA) |
+| $B$ | toroidal field on axis (T) |
+| $\bar n_{19}$ | line-averaged electron density ($10^{19}$ m⁻³) |
+| $P$ | loss power, heating power minus $\mathrm{d}W/\mathrm{d}t$ (MW) |
+| $R$, $a$, $\varepsilon = a/R$ | major radius, minor radius (m), inverse aspect ratio |
+| $\kappa_a$ | elongation, cross-section area $/\pi a^2$ |
+| $M$ | mean ion mass (u); 2.5 for 50:50 D–T |
+:::
+
+Fit to the ITERH.DB3 ELMy H-mode database with 15.6 % root-mean-square error (ITER Physics Basis 1999, eq. 20). In dimensionless variables the same fit reads (eq. 21)
+
+$$
+\tau_E \propto \tau_B\, \rho_*^{-0.70}\, \beta^{-0.90}\, \nu_*^{-0.01}\, M^{0.96}\, q^{-3.0}\, \varepsilon^{0.73}\, \kappa_a^{2.3},
+$$
+
+with the Bohm time $\tau_B \propto a^2 B / k_BT$, the normalised ion gyroradius $\rho_* = \rho_i/a$, $\beta = 2\mu_0 n_e (k_BT_e + k_BT_i)/B^2$, the collisionality $\nu_*$ (connection length over trapped-particle mean free path) and the safety factor $q$.
+
+```{ojs}
+import {tauIPB98, IPB98, tripleProduct} from "./fusion.js"
+import {logspace, decades, pow10, ticksIn, sci, INK, MUTED, GREY, BLUE, ORANGE, GREEN} from "./plotting.js"
+rx = FileAttachment("data/reactivity.json").json()
+presets = FileAttachment("presets.json").json()
+```
+
+```{ojs}
+viewof preset = Inputs.radio(["JET", "ITER", "SPARC"], {value: "ITER", label: "start from"})
+```
+
+```{ojs}
+viewof p = {
+  const s = presets[preset];
+  const r = (lo, hi, v, step, label, log = false) => Inputs.range([lo, hi], {value: v, step, label: html`${label}`, ...(log ? {transform: Math.log} : {})});
+  return Inputs.form({
+    I: r(0.5, 20, s.I, 0.01, "<i>I</i><sub>p</sub> (MA)", true),
+    B: r(1, 13, s.B, 0.05, "<i>B</i> (T)"),
+    n19: r(1, 50, s.n19, 0.1, "<i>n̄</i> (10<sup>19</sup> m<sup>−3</sup>)", true),
+    P: r(1, 200, s.P, 0.1, "<i>P</i> (MW)", true),
+    R: r(0.5, 9, s.R, 0.01, "<i>R</i> (m)", true),
+    a: r(0.15, 3, s.a, 0.01, "<i>a</i> (m)", true),
+    kappa: r(1, 2.2, s.kappa, 0.01, "κ<sub>a</sub>"),
+    M: r(1, 3, s.M, 0.05, "<i>M</i> (u)"),
+    H: r(0.5, 1.6, s.H, 0.01, "<i>H</i>"),
+  });
+}
+```
+
+```{ojs}
+tau = tauIPB98(p)
+W = tau * p.P                                     // MJ
+V = 2 * Math.PI ** 2 * p.R * p.a ** 2 * p.kappa   // m^3
+Tavg = W * 1e6 / (3 * p.n19 * 1e19 * V * 1.602176634e-16)   // keV
+nTtau = p.n19 * 1e19 * Tavg * tau
+ign = Math.min(...logspace(5, 40, 800).map(t => tripleProduct(rx, t)))
+nG = p.I / (Math.PI * p.a ** 2)                   // 10^20 m^-3
+ref = presets[preset]
+html`<div class="readout">
+<span class="k">τ<sub><i>E</i></sub>, IPB98(y,2) × <i>H</i></span><span><b>${tau.toFixed(2)} s</b></span>
+<span class="k">${ref.tau_measured_s ? "measured" : ref.tau_published_s ? "published" : "paper"} τ<sub><i>E</i></sub>, ${preset}</span><span>${(ref.tau_measured_s ?? ref.tau_published_s ?? ref.tau_paper_s).toFixed(2)} s, i.e. <i>H</i> = ${((ref.tau_measured_s ?? ref.tau_published_s ?? ref.tau_paper_s) / tauIPB98({...ref, H: 1})).toFixed(2)} for the preset values</span>
+<span class="k">ε = <i>a</i>/<i>R</i></span><span>${(p.a / p.R).toFixed(3)}</span>
+<span class="k">stored energy <i>W</i> = τ<sub><i>E</i></sub><i>P</i></span><span>${W.toFixed(1)} MJ</span>
+<span class="k">plasma volume 2π²<i>R a</i>²κ<sub>a</sub></span><span>${V.toFixed(1)} m³</span>
+<span class="k">mean temperature <i>W</i>/(3<i>n̄V</i>)</span><span>${Tavg.toFixed(1)} keV</span>
+<span class="k"><i>n̄ k</i><sub>B</sub><i>T</i>τ<sub><i>E</i></sub></span><span>${sci(nTtau, 3)} keV s m⁻³ = ${(nTtau / ign).toFixed(2)} × the ignition minimum ${sci(ign, 3)}</span>
+<span class="k">Greenwald fraction <i>n̄</i>/<i>n</i><sub>G</sub>, <i>n</i><sub>G</sub> = <i>I</i><sub>p</sub>/π<i>a</i>²</span><span>${(p.n19 / 10 / nG).toFixed(2)}</span>
+</div>`
+```
+
+```{ojs}
+html`<p class="note">${ref.label}: ${ref.note} Source: ${ref.source}, <a href="https://doi.org/${ref.doi}">doi:${ref.doi}</a>.</p>`
+```
+
+::: {.note}
+The mean temperature and triple product assume $n_e = n_i = \bar n$ and $W = 3\bar n k_BT V$; they are 0-D estimates for comparison with the Lawson notebook, not profile values. Dilution, radiation and profile peaking are ignored, so a value near the ignition minimum does not mean ignition (ITER is designed for $Q = 10$).
+:::
+
+## Exponents
+
+```{ojs}
+expRows = [["I_p", IPB98.I], ["B", IPB98.B], ["n̄", IPB98.n], ["P", IPB98.P], ["R", IPB98.R], ["ε", IPB98.eps], ["κ_a", IPB98.kappa], ["M", IPB98.M]]
+  .map(([k, v]) => ({k, v}))
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 260, marginLeft: 60,
+  x: {domain: [-1, 2.2], label: "exponent", grid: true},
+  y: {domain: expRows.map(d => d.k), label: null},
+  marks: [
+    Plot.barX(expRows, {x: "v", y: "k", fill: d => d.v < 0 ? ORANGE : BLUE}),
+    Plot.text(expRows.filter(d => d.v >= 0), {x: "v", y: "k", text: d => d.v.toFixed(2), dx: 18, fill: INK}),
+    Plot.text(expRows.filter(d => d.v < 0), {x: "v", y: "k", text: d => d.v.toFixed(2), dx: -18, fill: INK}),
+    Plot.ruleX([0], {stroke: INK})
+  ]
+})
+```
+
+::: {.note}
+Doubling a quantity multiplies $\tau_E$ by $2^{\text{exponent}}$: $R$ by 3.9, $I_p$ by 1.9, $P$ by 0.62.
+:::
+
+## Power degradation
+
+```{ojs}
+pRows = logspace(1, 200, 200).map(P => ({P, tau: tauIPB98({...p, P}), W: tauIPB98({...p, P}) * P}))
+Plot.plot({
+  width: Math.max(300, Math.min(width, 760)), height: 320, marginLeft: 60,
+  x: {type: "log", domain: [1, 200], ticks: ticksIn(1, 200), tickFormat: "~g", label: "loss power P (MW)"},
+  y: {type: "log", label: "τ_E (s)", grid: true, tickFormat: "~g"},
+  marks: [
+    Plot.line(pRows, {x: "P", y: "tau", stroke: BLUE, strokeWidth: 2}),
+    Plot.dot([{P: p.P, tau}], {x: "P", y: "tau", r: 5, fill: INK}),
+    Plot.dot([{P: ref.P, tau: ref.tau_measured_s ?? ref.tau_published_s ?? ref.tau_paper_s}], {x: "P", y: "tau", r: 5, stroke: ORANGE, strokeWidth: 2}),
+  ]
+})
+```
+
+::: {.note}
+Blue: $\tau_E(P)$ for the current sliders; black dot: current $P$; orange ring: the ${preset} reference value. Since $W = \tau_E P \propto P^{0.31}$, ten times more heating raises the stored energy only by a factor of two.
+:::
+
+## Presets
+
+```{ojs}
+html`<div class="wide"><table class="table table-sm">
+<thead><tr><th></th><th><i>I</i><sub>p</sub> (MA)</th><th><i>B</i> (T)</th><th><i>n̄</i><sub>19</sub></th><th><i>P</i> (MW)</th><th><i>R</i> (m)</th><th><i>a</i> (m)</th><th>κ</th><th><i>M</i></th><th>τ<sub>98</sub> (s)</th><th>τ ref. (s)</th></tr></thead>
+<tbody>${Object.entries(presets).map(([k, s]) => html`<tr><td>${k}</td><td>${s.I}</td><td>${s.B}</td><td>${s.n19}</td><td>${s.P}</td><td>${s.R}</td><td>${s.a}</td><td>${s.kappa}</td><td>${s.M}</td><td>${tauIPB98({...s, H: 1}).toFixed(2)}</td><td>${(s.tau_measured_s ?? s.tau_published_s ?? s.tau_paper_s).toFixed(2)}</td></tr>`)}</tbody>
+</table></div>`
+```
+
+::: {.note}
+JET: measured thermal τ<sub>E</sub> of a transient ELM-free hot-ion pulse, above the ELMy scaling. ITER: published IPB98(y,2) prediction. SPARC: published design τ<sub>E</sub>; its loss power is chosen to reproduce it (see note above).
+:::
+
+## Sources
+
+- ITER Physics Expert Groups on Confinement and Transport and Confinement Modelling and Database, ITER Physics Basis Editors, Chapter 2: Plasma confinement and transport, *Nucl. Fusion* **39**, 2175 (1999), eqs. (20)–(21), [doi:10.1088/0029-5515/39/12/302](https://doi.org/10.1088/0029-5515/39/12/302).
+- E. J. Doyle et al., Chapter 2: Plasma confinement and transport, *Nucl. Fusion* **47**, S18 (2007), section 5.3.4 (ITER parameters), [doi:10.1088/0029-5515/47/6/S02](https://doi.org/10.1088/0029-5515/47/6/S02).
+- A. J. Creely et al., Overview of the SPARC tokamak, *J. Plasma Phys.* **86**, 865860502 (2020), Tables 1–2, [doi:10.1017/S0022377820001257](https://doi.org/10.1017/S0022377820001257) (cited only; CC BY-NC-ND 4.0).
+- M. Keilhacker et al., High fusion performance from deuterium–tritium plasmas in JET, *Nucl. Fusion* **39**, 209 (1999), Table II, [doi:10.1088/0029-5515/39/2/306](https://doi.org/10.1088/0029-5515/39/2/306).
