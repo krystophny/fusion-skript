@@ -272,8 +272,10 @@ Axes: k_BT [keV] (log, 2–100); p_fus / maximum.
 
 ### `n_tau_plane`
 
-Density against confinement time. Lines: n τ_E for D–T ignition and Q = 1 at
-14 keV, uniform 0-D plasma (2.0·10²⁰ and 3.3·10¹⁹ s m⁻³). Points: measured
+Density against confinement time. Dashed grey lines: constant n τ = 10¹⁶,
+10¹⁸, 10²⁰, 10²² s m⁻³. No Q thresholds are drawn: they depend on T, which
+this plane does not show (Alcator C 1984 reached n τ ≈ 10²⁰ s m⁻³ at only
+1.5 keV, far from Q = 1); thresholds are on the Lawson plane. Points: measured
 Lawson parameters from S. E. Wurzel and S. C. Hsu, Phys. Plasmas 29, 062103
 (2022), doi:10.1063/5.0083990, CC BY 4.0, Tables 6–8, read from the arXiv
 source (2105.10954v4) by `scripts/prepare-ch04-lawson-data.py` into
@@ -283,7 +285,6 @@ projected SPARC and ITER rows are excluded. Sun, off scale at the right edge
 (arrow; the bar spans its density range): τ = GM²/(RL) = 3.1·10⁷ yr = 1.0·10¹⁵ s
 (IAU 2015 nominal values); electron density from the mean (1.41 g/cm³,
 hydrogen mass fraction 0.7) to the core (150 g/cm³, X = 0.35, standard solar
-model, not re-checked). The peak values of the points and the uniform-plasma
-lines are not strictly comparable (Wurzel and Hsu correct for profile
-factors); the plot compares orders of magnitude.
+model, not re-checked). The points are peak values (Wurzel and Hsu correct
+for profile factors); the plot compares orders of magnitude.
 Axes: τ [s] (log, 10⁻¹²–10³); n [m⁻³] (log, 10¹⁷–10³⁴).

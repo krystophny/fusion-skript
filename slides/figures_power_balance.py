@@ -373,21 +373,20 @@ def n_tau_plane():
     rows = pb.machines()
     fig, ax = plt.subplots(figsize=(250 * MM, 128 * MM))
     tau = np.geomspace(1e-12, 1e3, 50)
-    for q, ls, lab in ((np.inf, "-", "ignition"), (1.0, (0, (6, 3)), "$Q = 1$")):
-        nt = pb.n_tau(14.0, q)[0]
-        ax.loglog(tau, nt / tau, color=ORANGE, lw=2 if np.isinf(q) else 1.4, ls=ls)
-    # The Sun (tau ~ 1e15 s) is off scale: drawn as an arrow at the right edge.
+    # Q thresholds need T, which this plane does not show; only constant n tau is drawn.
+    ax.set_xscale("log")
+    ax.set_yscale("log")
     ax.set_xlim(1e-12, 1e3)
     ax.set_ylim(1e17, 1e34)
     fig.subplots_adjust(left=.09, right=.98, bottom=.14, top=.98)
     # Screen angle of a line n tau = const on these log axes.
     (x0, y0), (x1, y1) = ax.transData.transform([(1e-6, 1e26), (1e0, 1e20)])
     angle = np.degrees(np.arctan2(y1 - y0, x1 - x0))
-    for q, tx, lab, off in ((np.inf, 1e-7, r"ignition: $n\tau_E = 2\times10^{20}$ s m$^{-3}$", 1.8),
-                            (1.0, 1e-5, r"$Q = 1$", 1 / 2.2)):
-        nt = pb.n_tau(14.0, q)[0]
-        ax.text(tx, nt / tx * off, lab, color=ORANGE, fontsize=15, rotation=angle, rotation_mode="anchor",
-                ha="left", va="bottom" if off > 1 else "top")
+    for e, tx in ((16, 1e-10), (18, 1e-8), (20, 1e-6), (22, 1e-4)):
+        ax.loglog(tau, 10.0**e / tau, color=GREY, lw=1, ls=(0, (6, 3)), zorder=1)
+        lab = rf"$n\tau = 10^{{{e}}}$ s m$^{{-3}}$" if e == 22 else rf"$10^{{{e}}}$"
+        ax.text(tx, 10.0**e / tx * 1.8, lab, color=MUTED, fontsize=13,
+                rotation=angle, rotation_mode="anchor", ha="left", va="bottom")
     mag = [r for r in rows if r["table"] in ("6", "7")]
     icf = [r for r in rows if r["table"] == "8"]
     ax.scatter([r["tau"] for r in mag], [r["n"] for r in mag], s=22, marker="o", color=BLUE, zorder=4, lw=0)
@@ -420,8 +419,6 @@ def n_tau_plane():
     ax.text(1.5e-3, 2.2e17, "magnetic", color=BLUE, fontsize=17, ha="right")
     ax.set_xlabel(r"$\tau$ [s]")
     ax.set_ylabel(r"$n$ [m$^{-3}$]")
-    ax.text(.995, .97, r"lines: D–T, $k_BT = 14$ keV, uniform plasma", transform=ax.transAxes,
-            fontsize=13, color=MUTED, ha="right", va="top")
     _axes(ax)
     save(fig, "n_tau_plane")
 
