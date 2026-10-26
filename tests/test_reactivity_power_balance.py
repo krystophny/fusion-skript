@@ -119,3 +119,58 @@ def test_relative_velocity_convolution_has_reduced_mass():
 def test_symbolic_derivation_of_deck_section():
     # Rate, relative velocity, log-energy kernel and Gamow peak as shown on deck 02.
     rx.symbolic_checks()
+
+
+# --- chapter 4 deck: bremsstrahlung, dilution, plant gain, fixed pressure, measured points ---
+def test_chapter4_symbolic_derivations():
+    pb.symbolic_checks()
+
+
+def test_ideal_ignition_temperature_is_root_of_alpha_minus_bremsstrahlung():
+    from scipy.optimize import brentq
+    # p_alpha / n_e^2 = <sigma v> E_alpha / 4 against C_B sqrt(T), both in W m^3.
+    f = lambda t: rx.bosch_hale("DT", t) * pb.E_ALPHA * rx.KEV / 4 - 5.344e-37 * np.sqrt(t)
+    root = brentq(f, 2.0, 10.0)
+    assert root == pytest.approx(4.3, abs=0.05)
+    assert pb.ideal_ignition_temperature() == pytest.approx(root, abs=1e-3)
+
+
+def test_tungsten_dilution_from_charge_balance():
+    n_e, n_w = 1.0, 1e-3
+    n_fuel = n_e - 74 * n_w                      # quasineutrality with fully ionised W
+    fuel, _, _ = pb.dilution([(74, n_w / n_e)])
+    assert fuel == pytest.approx(n_fuel)
+    assert 1 - fuel**2 == pytest.approx(0.143, abs=0.001)
+
+
+def test_helium_ash_raises_ignition_requirement():
+    t = np.geomspace(4, 100, 4001)
+    pure = pb.ignition_diluted(t)
+    assert np.allclose(pure, pb.triple_product(t, brems=True), rtol=1e-12)
+    assert pb.ignition_diluted(t, [(2, 0.05)]).min() > 1.2 * pure.min()
+
+
+def test_engineering_gain_from_power_bookkeeping():
+    eta_th, eta_aux, p_ext = 0.4, 0.4, 50.0
+    for q in (5.25, 10.0, 11.5):
+        gross = eta_th * (q * p_ext + p_ext)
+        recirc = p_ext / eta_aux
+        assert pb.q_eng(q, eta_th, eta_aux) == pytest.approx((gross - recirc) / recirc)
+    assert pb.q_eng(5.25) == pytest.approx(0.0, abs=1e-12)
+
+
+def test_fixed_pressure_optimum_from_density_at_constant_pressure():
+    t = np.linspace(5, 40, 35001)
+    p = 1.0
+    n = p / (2 * t)                              # p = 2 n T
+    p_fus = n**2 / 4 * rx.bosch_hale("DT", t)
+    assert 13.0 < t[np.argmax(p_fus)] < 14.0
+
+
+def test_measured_points_exclude_projections_and_match_table():
+    rows = pb.machines()
+    assert not any(r["shot"] == "Projected" for r in rows)
+    jet = [r for r in rows if r["project"] == "JET" and r["shot"] == "42976"][0]
+    assert (jet["n"], jet["tau"], jet["year"]) == (3.3e19, 0.51, 1997)
+    nif = [r for r in rows if r["shot"] == "N210808"][0]
+    assert nif["n"] * nif["tau"] == pytest.approx(5.7e20, rel=0.01)

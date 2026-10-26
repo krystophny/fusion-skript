@@ -3,7 +3,9 @@
 Model: derivations/chapters/ch04_power_balance.py (0-D D-T balance, Bosch-Hale
 <sigma v>, NRL bremsstrahlung). Descriptions: slides/04-power-balance-visuals.md.
 Run:  python3 slides/figures_power_balance.py
-      -> slides/build/fig/{alpha_neutron_split,lawson_plane,power_flow}.{svg,png}
+      -> slides/build/fig/{alpha_neutron_split,lawson_plane,power_flow,density_scaling,
+         alpha_brems,q_eng,impurity_dilution,fixed_pressure,n_tau_plane}.{svg,png}
+Measured points: Wurzel and Hsu, Phys. Plasmas 29, 062103 (2022), CC BY 4.0.
 """
 import sys
 from pathlib import Path
@@ -11,12 +13,13 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Circle, FancyArrow, FancyBboxPatch
+from matplotlib.ticker import FuncFormatter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "derivations/chapters"))
 from figures import BLUE, GREEN, GREY, GRID, INK, MM, MUTED, ORANGE, PURPLE_W, save, style  # noqa: E402
 import ch04_power_balance as pb  # noqa: E402
-from ch02_reactivity import MC2  # noqa: E402
+from ch02_reactivity import KEV, MC2, bosch_hale  # noqa: E402
 
 
 def alpha_neutron_split():
@@ -71,6 +74,7 @@ def alpha_neutron_split():
     save(fig, "alpha_neutron_split")
 
 
+PLAIN = FuncFormatter(lambda v, _: f"{v:g}")
 QS = ((1, "#9AA5B1"), (5, "#5A8DB8"), (10, BLUE), (np.inf, ORANGE))
 
 
@@ -87,7 +91,7 @@ def lawson_plane():
         ax.text(108, y[-1] * nudge, lab, color=color, fontsize=15, ha="left", va="center", clip_on=False)
     yb = pb.triple_product(t, brems=True)
     ax.loglog(t, yb, color=ORANGE, lw=1.8, ls=(0, (5, 3)))
-    ax.text(4.6, 6e22, "ignition with\nbremsstrahlung", color=ORANGE, fontsize=15, ha="left", va="center")
+    ax.text(5.6, 6e22, "ignition with\nbremsstrahlung", color=ORANGE, fontsize=15, ha="left", va="center")
     ign = pb.triple_product(t)
     i = ign.argmin()
     ax.plot([t[i]], [ign[i]], "o", color=ORANGE, ms=8, zorder=5)
@@ -96,6 +100,7 @@ def lawson_plane():
                 (t[i], ign[i]), (t[i] * .62, ign[i] * .28), fontsize=15, ha="center", va="top",
                 arrowprops=dict(arrowstyle="-", color=INK, lw=.8))
     ax.set_xlim(2, 100)
+    ax.xaxis.set_major_formatter(PLAIN)
     ax.set_ylim(1e20, 1e23)
     ax.set_xlabel(r"$k_BT$ [keV]")
     ax.set_ylabel(r"$n\,T\,\tau_E$ [keV s m$^{-3}$]")
@@ -114,13 +119,14 @@ def lawson_plane():
         qx.plot([qq], [v], "o", color=color, ms=7, zorder=5)
         qx.text(qq * 1.4, v - .07, f"$Q={qq}$", color=INK, fontsize=14, va="top")
     qx.set_xlim(.1, 1000)
+    qx.xaxis.set_major_formatter(PLAIN)
     qx.set_ylim(0, 3.2)
     qx.set_xlabel(r"$Q = P_{\rm fus}/P_{\rm ext}$")
     qx.set_ylabel(r"$n\,T\,\tau_E$ [$10^{21}$ keV s m$^{-3}$]")
     qx.text(.97, .04, rf"$k_BT = {t[i]:.1f}$ keV", transform=qx.transAxes, ha="right", fontsize=15)
     qx.grid(color=GRID, lw=.6)
     qx.set_axisbelow(True)
-    fig.subplots_adjust(left=.09, right=.98, bottom=.15, top=.97)
+    fig.subplots_adjust(left=.09, right=.965, bottom=.15, top=.97)
     save(fig, "lawson_plane")
     return t[i], ign[i]
 
@@ -168,7 +174,7 @@ def power_flow(q=10.0, p_fus=500.0):
     ax.text(15.9, 8.3 - p_loss * k / 2 - .2, f"{p_loss:.0f} MW", fontsize=16, color=MUTED, ha="center", va="top")
     # neutrons out
     _flow(ax, 13.9, 2.9, 4.4, 0, p_n * k, BLUE)
-    ax.text(16.0, 2.9 - p_n * k / 2 - .3, rf"$P_n = {p_n:.0f}$ MW", fontsize=17, color=BLUE,
+    ax.text(15.6, 2.9 - p_n * k / 2 - .3, rf"$P_n = {p_n:.0f}$ MW", fontsize=17, color=BLUE,
             ha="center", va="top")
     ax.text(.6, 11.9, rf"$Q = P_{{\rm fus}}/P_{{\rm ext}} = {q:g}$,  $P_{{\rm fus}} = {p_fus:.0f}$ MW",
             fontsize=18, va="top")
@@ -183,6 +189,212 @@ def power_flow(q=10.0, p_fus=500.0):
     return dict(p_ext=p_ext, p_alpha=p_a, p_n=p_n, p_loss=p_loss)
 
 
+# Half-page plots sit on six grid columns (125 mm) next to their derivation.
+HALF = (125 * MM, 118 * MM)
+
+
+def _axes(ax):
+    ax.grid(which="major", color=GRID, lw=.6)
+    ax.set_axisbelow(True)
+
+
+def density_scaling(t=14.0):
+    """At fixed T: alpha heating grows as n^2, conduction loss 3 n T / tau_E as n."""
+    n = np.geomspace(1e18, 1e22, 200)
+    sv = bosch_hale("DT", t)
+    fig, ax = plt.subplots(figsize=HALF)
+    p_a = n**2 / 4 * sv * pb.E_ALPHA * KEV
+    ax.loglog(n, p_a, color=ORANGE, lw=2.5)
+    ax.text(1.2e21, 2e9, r"$p_\alpha \propto n^2$", color=ORANGE, fontsize=18, ha="right")
+    ax.set_xlim(1e18, 1e22)
+    ax.set_ylim(1e2, 1e10)
+    fig.subplots_adjust(left=.2, right=.94, bottom=.15, top=.97)
+    (x0, y0), (x1, y1) = ax.transData.transform([(1e18, 1e3), (1e19, 1e4)])
+    angle = np.degrees(np.arctan2(y1 - y0, x1 - x0))
+    for tau, ls in ((0.1, (0, (2, 2))), (1.0, "-"), (10.0, (0, (6, 3)))):
+        loss = 3 * n * t * KEV / tau
+        ax.loglog(n, loss, color=INK, lw=1.6, ls=ls)
+        cross = 12 * t / (sv * pb.E_ALPHA * tau)
+        ax.plot([cross], [3 * cross * t * KEV / tau], "o", color=INK, ms=6, zorder=5)
+        ax.text(1.3e18, 3 * 1.3e18 * t * KEV / tau * 1.6, rf"$\tau_E = {tau:g}$ s", fontsize=15,
+                color=INK, rotation=angle, rotation_mode="anchor", va="bottom")
+    ax.text(.97, .13, r"loss $3nk_BT/\tau_E$", transform=ax.transAxes, ha="right", fontsize=15)
+    ax.set_xlabel(r"$n$ [m$^{-3}$]")
+    ax.set_ylabel(r"power density [W m$^{-3}$]")
+    ax.text(.97, .05, rf"$k_BT = {t:g}$ keV", transform=ax.transAxes, ha="right", fontsize=15, color=MUTED)
+    _axes(ax)
+    save(fig, "density_scaling")
+
+
+def alpha_brems():
+    """p_alpha / n_e^2 and p_br / n_e^2 against T: they cross at the ideal ignition temperature."""
+    t = np.geomspace(1, 100, 600)
+    fig, ax = plt.subplots(figsize=HALF)
+    a = bosch_hale("DT", t) / 4 * pb.E_ALPHA * KEV
+    b = pb.C_B * np.sqrt(t)
+    ax.loglog(t, a, color=ORANGE, lw=2.5)
+    ax.loglog(t, b, color=BLUE, lw=2.2, ls=(0, (6, 3)))
+    ti = pb.ideal_ignition_temperature()
+    ax.axvline(ti, color=MUTED, lw=.8, ls=":")
+    ax.plot([ti], [pb.C_B * np.sqrt(ti)], "o", color=INK, ms=7, zorder=5)
+    ax.text(ti * 1.12, 2.2e-38, f"{ti:.1f} keV", fontsize=16, color=INK)
+    ax.text(30, 4.5e-36, r"$p_\alpha / n_e^2$", color=ORANGE, fontsize=18, ha="center")
+    ax.text(25, 1.3e-36, r"$p_{\rm br} / n_e^2$", color=BLUE, fontsize=18, ha="center", va="top")
+    ax.set_xlim(1, 100)
+    ax.xaxis.set_major_formatter(PLAIN)
+    ax.set_ylim(1e-39, 1e-35)
+    ax.set_xlabel(r"$k_BT$ [keV]")
+    ax.set_ylabel(r"$p / n_e^2$ [W m$^3$]")
+    ax.text(.04, .95, r"$Z_{\rm eff} = 1$", transform=ax.transAxes, fontsize=15, color=MUTED, va="top")
+    _axes(ax)
+    fig.subplots_adjust(left=.2, right=.93, bottom=.15, top=.97)
+    save(fig, "alpha_brems")
+    return ti
+
+
+def q_eng_plot():
+    """Engineering gain against plasma gain for two efficiency products."""
+    q = np.geomspace(1, 100, 400)
+    fig, ax = plt.subplots(figsize=HALF)
+    for (eth, eaux), color, ls in (((0.4, 0.4), BLUE, "-"), ((0.5, 0.6), GREY, (0, (6, 3)))):
+        ax.semilogx(q, pb.q_eng(q, eth, eaux), color=color, lw=2.4, ls=ls)
+    ax.text(26, 2.2, r"$0.4 \times 0.4$", color=BLUE, fontsize=15, ha="left")
+    ax.text(9, 3.6, r"$0.5 \times 0.6$", color=MUTED, fontsize=15, ha="right")
+    ax.axhline(0, color=INK, lw=.9)
+    ax.axhline(1, color=INK, lw=.6, ls=":")
+    for qq, y, lab in ((1 / .16 - 1, 0, "5.25"), (2 / .16 - 1, 1, "11.5")):
+        ax.plot([qq], [y], "o", color=BLUE, ms=7, zorder=5)
+        ax.text(qq * 1.08, y - .15, f"$Q = {lab}$", fontsize=15, va="top")
+    ax.text(1.1, .1, "net electricity", fontsize=14, color=MUTED, va="bottom")
+    ax.text(1.1, 1.1, "half recirculated", fontsize=14, color=MUTED, va="bottom")
+    ax.set_xlim(1, 100)
+    ax.xaxis.set_major_formatter(PLAIN)
+    ax.set_ylim(-1, 6)
+    ax.set_xlabel(r"$Q = P_{\rm fus}/P_{\rm ext}$")
+    ax.set_ylabel(r"$Q_{\rm eng}$")
+    ax.text(.04, .95, r"$\eta_{\rm th}\,\eta_{\rm aux}$", transform=ax.transAxes, fontsize=16, va="top")
+    _axes(ax)
+    fig.subplots_adjust(left=.16, right=.93, bottom=.15, top=.97)
+    save(fig, "q_eng")
+
+
+HE = ((0.0, ORANGE, "-"), (0.05, "#5A8DB8", (0, (6, 3))), (0.10, BLUE, (0, (2, 2))), (0.15, INK, (0, (6, 2, 1, 2))))
+
+
+def impurity_dilution():
+    """Left: ignition n_e T tau_E with helium ash; right: fusion power against Z c at fixed n_e."""
+    t = np.geomspace(3, 100, 2000)
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(250 * MM, 120 * MM),
+                                 gridspec_kw={"width_ratios": (1.5, 1), "wspace": .42})
+    for c, color, ls in HE:
+        y = pb.ignition_diluted(t, [(2, c)] if c else [])
+        ax.loglog(t, y, color=color, lw=2.2, ls=ls)
+        i = np.argmin(y)
+        ax.plot([t[i]], [y[i]], "o", color=color, ms=6, zorder=5)
+        ax.text(108, y[-1], f"{100 * c:.0f} % He", color=color, fontsize=15, va="center", clip_on=False)
+    ax.set_xlim(3, 100)
+    ax.xaxis.set_major_formatter(PLAIN)
+    ax.set_ylim(1e21, 1e23)
+    ax.set_xlabel(r"$k_BT$ [keV]")
+    ax.set_ylabel(r"ignition $n_e T \tau_E$ [keV s m$^{-3}$]")
+    ax.text(.04, .05, "with bremsstrahlung", transform=ax.transAxes, fontsize=15, color=MUTED)
+    _axes(ax)
+
+    zc = np.linspace(0, 0.3, 200)
+    bx.plot(zc, (1 - zc) ** 2, color=INK, lw=2.2)
+    for z, c, lab, dx, dy in ((74, 1e-3, "0.1 % W", .012, .02), (2, .05, "5 % He", .012, .02)):
+        f = 1 - z * c
+        bx.plot([z * c], [f**2], "o", color=ORANGE if z == 74 else BLUE, ms=8, zorder=5)
+        bx.text(z * c + dx, f**2 + dy, lab, fontsize=15, color=ORANGE if z == 74 else BLUE)
+    bx.set_xlim(0, .3)
+    bx.set_ylim(.4, 1.02)
+    bx.set_xlabel(r"$Z c$")
+    bx.set_ylabel(r"$p_{\rm fus} / p_{\rm fus}(c = 0)$")
+    bx.text(.95, .93, r"$(1 - Zc)^2$", transform=bx.transAxes, fontsize=17, ha="right", va="top")
+    _axes(bx)
+    fig.subplots_adjust(left=.1, right=.98, bottom=.15, top=.97)
+    save(fig, "impurity_dilution")
+
+
+def fixed_pressure():
+    """D-T fusion power density against T at fixed density and at fixed pressure, each scaled to its maximum."""
+    t = np.geomspace(2, 100, 20001)
+    sv = bosch_hale("DT", t)
+    fig, ax = plt.subplots(figsize=HALF)
+    for y, color, ls in ((sv / sv.max(), GREY, (0, (6, 3))), (sv / t**2 / (sv / t**2).max(), ORANGE, "-")):
+        ax.semilogx(t, y, color=color, lw=2.4, ls=ls)
+        i = y.argmax()
+        ax.plot([t[i]], [y[i]], "o", color=color, ms=7, zorder=5)
+        ax.text(t[i], 1.04, f"{t[i]:.0f} keV" if t[i] > 30 else f"{t[i]:.1f} keV", color=INK,
+                fontsize=15, ha="center", va="bottom")
+    ax.text(58, .5, r"fixed $n$:" "\n" r"$\propto \langle\sigma v\rangle$", color=MUTED, fontsize=16, ha="center")
+    ax.text(2.2, .86, r"fixed $p$:" "\n" r"$\propto \langle\sigma v\rangle / T^2$", color=ORANGE, fontsize=16,
+            ha="left")
+    ax.set_xlim(2, 100)
+    ax.xaxis.set_major_formatter(PLAIN)
+    ax.set_ylim(0, 1.15)
+    ax.set_xlabel(r"$k_BT$ [keV]")
+    ax.set_ylabel(r"$p_{\rm fus}$ / maximum")
+    _axes(ax)
+    fig.subplots_adjust(left=.17, right=.93, bottom=.15, top=.97)
+    save(fig, "fixed_pressure")
+
+
+# Labelled experiments and label offsets in points.
+LABELS = {("ZETA", 1957): (-10, -14), ("JET", 1997): (14, 20), ("W7-X", 2017): (-30, 26),
+          ("NIF", 2021): (12, 6), ("MagLIF", 2015): (12, -2), ("FuZE", 2018): (-12, 14),
+          ("Alcator C", 1984): (-14, 14)}
+
+
+def n_tau_plane():
+    """Density against confinement time: confinement routes and measured experiments."""
+    rows = pb.machines()
+    fig, ax = plt.subplots(figsize=(250 * MM, 128 * MM))
+    tau = np.geomspace(1e-12, 1e17, 50)
+    for q, ls, lab in ((np.inf, "-", "ignition"), (1.0, (0, (6, 3)), "$Q = 1$")):
+        nt = pb.n_tau(14.0, q)[0]
+        ax.loglog(tau, nt / tau, color=ORANGE, lw=2 if np.isinf(q) else 1.4, ls=ls)
+    ax.set_xlim(1e-12, 1e17)
+    ax.set_ylim(1e17, 1e34)
+    fig.subplots_adjust(left=.09, right=.98, bottom=.14, top=.98)
+    # Screen angle of a line n tau = const on these log axes.
+    (x0, y0), (x1, y1) = ax.transData.transform([(1e-6, 1e26), (1e0, 1e20)])
+    angle = np.degrees(np.arctan2(y1 - y0, x1 - x0))
+    for q, tx, lab, off in ((np.inf, 1e-7, r"ignition: $n\tau_E = 2\times10^{20}$ s m$^{-3}$", 1.8),
+                            (1.0, 1e-5, r"$Q = 1$", 1 / 2.2)):
+        nt = pb.n_tau(14.0, q)[0]
+        ax.text(tx, nt / tx * off, lab, color=ORANGE, fontsize=15, rotation=angle, rotation_mode="anchor",
+                ha="left", va="bottom" if off > 1 else "top")
+    mag = [r for r in rows if r["table"] in ("6", "7")]
+    icf = [r for r in rows if r["table"] == "8"]
+    ax.scatter([r["tau"] for r in mag], [r["n"] for r in mag], s=22, marker="o", color=BLUE, zorder=4, lw=0)
+    ax.scatter([r["tau"] for r in icf], [r["n"] for r in icf], s=34, marker="s", color=INK, zorder=4, lw=0)
+    done = set()
+    for r in rows:
+        key = (r["project"], r["year"])
+        if key in LABELS and key not in done:
+            done.add(key)
+            dx, dy = LABELS[key]
+            ax.annotate(f"{r['project']} {r['year']}", (r["tau"], r["n"]), (dx, dy),
+                        textcoords="offset points", fontsize=13, ha="left" if dx > 0 else "right",
+                        va="center", color=INK, arrowprops=dict(arrowstyle="-", color=MUTED, lw=.6))
+    # Sun: thermal content over luminosity; electron density from the mean (computed, hydrogen
+    # mass fraction 0.7) to the core (rho_c = 150 g/cm^3, X_c = 0.35: standard solar model).
+    tk = pb.kelvin_helmholtz_time()
+    n_mean = pb.sun_mean_density() * 1.7 / (2 * 1.66054e-27)
+    n_core = 150e3 * 1.35 / (2 * 1.66054e-27)
+    ax.plot([tk, tk], [n_mean, n_core], color=GREEN, lw=5, solid_capstyle="round")
+    ax.text(tk / 3, 3e30, "Sun", color=GREEN, fontsize=17, ha="right", va="center")
+    ax.text(.5e-11, 4e31, "inertial", color=INK, fontsize=17, ha="left")
+    ax.text(1e-1, 2e17 * 2, "magnetic", color=BLUE, fontsize=17, ha="center")
+    ax.set_xlabel(r"$\tau$ [s]")
+    ax.set_ylabel(r"$n$ [m$^{-3}$]")
+    ax.text(.995, .97, r"lines: D–T, $k_BT = 14$ keV, uniform plasma", transform=ax.transAxes,
+            fontsize=13, color=MUTED, ha="right", va="top")
+    _axes(ax)
+    save(fig, "n_tau_plane")
+
+
 if __name__ == "__main__":
     style()
     alpha_neutron_split()
@@ -190,3 +402,10 @@ if __name__ == "__main__":
     t_min, ign = lawson_plane()
     print(f"wrote lawson_plane: ignition minimum {ign:.3e} keV s m^-3 at {t_min:.2f} keV")
     print("wrote power_flow:", {k: f"{v:.1f} MW" for k, v in power_flow().items()})
+    density_scaling()
+    print(f"wrote alpha_brems: ideal ignition at {alpha_brems():.2f} keV")
+    q_eng_plot()
+    impurity_dilution()
+    fixed_pressure()
+    n_tau_plane()
+    print("wrote density_scaling, q_eng, impurity_dilution, fixed_pressure, n_tau_plane")

@@ -14,6 +14,11 @@
       "number": 3,
       "title": "Fusion in stars",
       "label": "fusion-in-stars"
+    },
+    {
+      "number": 4,
+      "title": "Power balance and Lawson",
+      "label": "power-balance-lawson"
     }
   ],
   "sections": [
@@ -82,6 +87,60 @@
       "title": "Reaction rate in a thermal plasma",
       "label": "reaction-rate",
       "chapter": "fusion-reactions"
+    },
+    {
+      "number": "4.1",
+      "title": "Alpha and neutron energies",
+      "label": "alpha-neutron",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.2",
+      "title": "Fusion power density",
+      "label": "fusion-power",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.3",
+      "title": "Stored energy and confinement time",
+      "label": "confinement-time",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.4",
+      "title": "Bremsstrahlung",
+      "label": "bremsstrahlung",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.5",
+      "title": "Power balance and the triple product",
+      "label": "power-balance",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.6",
+      "title": "Lawson's criterion and plant gain",
+      "label": "plant-gain",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.7",
+      "title": "Impurities and fuel dilution",
+      "label": "dilution",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.8",
+      "title": "Pressure and beta",
+      "label": "pressure-beta",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.9",
+      "title": "Confinement routes",
+      "label": "confinement-routes",
+      "chapter": "power-balance-lawson"
     }
   ]
 }

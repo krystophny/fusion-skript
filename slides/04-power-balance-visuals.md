@@ -2,7 +2,7 @@
 
 Generated assets for the end of Chapter 2 (reaction rate in a thermal plasma),
 the optional Chapter 3 (stars) and the opening of Chapter 4 (power balance).
-The reactivity assets are used in deck 02, section 2.7; the power-balance ones in no deck yet. Plots are light, A4-landscape slide size, English,
+The reactivity assets are used in deck 02, section 2.20; the power-balance ones in deck 04. Plots are light, A4-landscape slide size, English,
 STIX Two, with direct labels and line styles in addition to colour.
 Animations use the dark canvas of `animations/style.py`.
 
@@ -226,3 +226,56 @@ illustrative. Here P_loss lumps all losses, radiation included, into W/τ_E,
 unlike the bremsstrahlung curve of `lawson_plane`, where radiation is
 separate.
 Diagram; powers in MW.
+
+### `density_scaling`
+
+At k_BT = 14 keV: alpha heating p_α = (n²/4)⟨σv⟩E_α against the conduction loss
+3nk_BT/τ_E for τ_E = 0.1, 1 and 10 s. Slopes 2 and 1 on log axes; the crossings
+are at n = 12k_BT/(⟨σv⟩E_α τ_E) = 2·10²¹, 2·10²⁰ and 2·10¹⁹ m⁻³.
+Axes: n [m⁻³] (log); power density [W m⁻³] (log).
+
+### `alpha_brems`
+
+p_α/n_e² = ⟨σv⟩E_α/4 and p_br/n_e² = C_B √(k_BT) (Z_eff = 1) against T; n_e²
+cancels, so they cross at the ideal ignition temperature 4.28 keV for any density.
+Axes: k_BT [keV] (log, 1–100); p/n_e² [W m³] (log).
+
+### `q_eng`
+
+Q_eng = η_th η_aux (Q + 1) − 1 against Q for η_th η_aux = 0.4 × 0.4 and 0.5 × 0.6.
+Assumes all fusion and heating power become heat at η_th, no blanket energy gain
+and no other recirculating loads. Q_eng = 0 at Q = 5.25 and Q_eng = 1 (half the
+gross electricity recirculated) at Q = 11.5 for 0.4 × 0.4.
+
+### `impurity_dilution`
+
+Left: ignition n_eTτ_E(T) with bremsstrahlung for 0, 5, 10 and 15 % helium
+(c = n_He/n_e), from n_eTτ_E = (3/2)(1 + n_i/n_e)T² / ((1 − 2c)²⟨σv⟩E_α/4 −
+C_B Z_eff √T), Z_eff = 1 + 2c. Minima 2.9, 3.6, 4.6 and 6.1·10²¹ keV s m⁻³ near
+14–15 keV. Right: p_fus/p_fus(c = 0) = (1 − Zc)² at fixed n_e, with 0.1 % W
+(Zc = 0.074, 0.86) and 5 % He (Zc = 0.1, 0.81). Tungsten is drawn only on the
+right: in a reactor core it is not fully ionised and line radiation, not
+bremsstrahlung, dominates its loss, which this model omits.
+
+### `fixed_pressure`
+
+D–T p_fus at fixed density (∝ ⟨σv⟩) and at fixed pressure (∝ ⟨σv⟩/T²), each
+divided by its maximum: maxima at 67 keV and 13.5 keV.
+Axes: k_BT [keV] (log, 2–100); p_fus / maximum.
+
+### `n_tau_plane`
+
+Density against confinement time. Lines: n τ_E for D–T ignition and Q = 1 at
+14 keV, uniform 0-D plasma (2.0·10²⁰ and 3.3·10¹⁹ s m⁻³). Points: measured
+Lawson parameters from S. E. Wurzel and S. C. Hsu, Phys. Plasmas 29, 062103
+(2022), doi:10.1063/5.0083990, CC BY 4.0, Tables 6–8, read from the arXiv
+source (2105.10954v4) by `scripts/prepare-ch04-lawson-data.py` into
+`data/ch04/wurzel_hsu_2022.csv`. Magnetic: peak ion density n_i0 and τ_E*;
+inertial (laser ICF, MagLIF): n = nτ/τ_stag where τ_stag is reported. The
+projected SPARC and ITER rows are excluded. Sun: τ = GM²/(RL) = 3.1·10⁷ yr
+(IAU 2015 nominal values); electron density from the mean (1.41 g/cm³,
+hydrogen mass fraction 0.7) to the core (150 g/cm³, X = 0.35, standard solar
+model, not re-checked). The peak values of the points and the uniform-plasma
+lines are not strictly comparable (Wurzel and Hsu correct for profile
+factors); the plot compares orders of magnitude.
+Axes: τ [s] (log, 10⁻¹²–10¹⁷); n [m⁻³] (log, 10¹⁷–10³⁴).
