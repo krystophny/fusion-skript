@@ -38,6 +38,24 @@ of measured cross sections behind our S-factor fit.
 ⟨σv⟩ = √(8/(π m_r)) (k_BT)^(−3/2) ∫ σ(E) E e^(−E/k_BT) dE, with
 σ(E) = (S/E) exp(−√(E_G/E)) and E_G = 2 m_r c² (π α Z₁Z₂)².
 
+### `reaction_product` (cross section × thermal weighting)
+
+D–T at k_BT = 10 keV, all panels on one linear centre-of-mass energy axis
+(0–150 keV): (1) Bosch–Hale measured-fit cross section σ(E) in barn,
+(2) Maxwellian relative-energy density f_M(E) in keV⁻¹, and
+(3) reaction contribution I_T(E) = σ(E) v(E) f_M(E) in m³/(s keV).
+The third panel is **the reactivity integrand**, not ⟨σv⟩(T): its
+area gives ⟨σv⟩ ≈ 1.14·10⁻²² m³/s. Include v(E) = c√(2E/m_rc²)
+explicitly: σ(E) × f_M(E) alone is not the reactivity integrand.
+Boltzmann weighting and the 3D velocity-space shell give
+f_M(E) = (2/√π)(k_BT)^(-3/2)√E exp(−E/k_BT), and the shell's √E
+is multiplied by another √E from relative speed. The energy density peaks
+at E = k_BT/2 = 5 keV; the reaction contribution peaks near 35 keV.
+The constant-S Gamow estimate E₀ ≈ 31 keV differs because the D–T
+S(E) resonance shifts the actual reaction-weighted maximum.
+No third-party chart is reproduced; curves use our common model.
+Axes show physical units rather than arbitrary normalizations.
+
 ### `gamow_peak` (hero plot)
 
 D–T at k_BT = 10 keV, E_G = 1182 keV. Top: the Maxwell factor e^(−E/k_BT)
