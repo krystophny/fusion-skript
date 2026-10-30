@@ -824,7 +824,7 @@
 #slide(section: "reaction-rate", title: [From cross section to reactivity])[
   #at(1, 12, y: 0mm, align(center, deck-fig("reaction_product", columns: 12)))
   #at(1, 12, y: 120mm, align(center)[
-    $display(I_T(E) = sigma(E) thin v(E) thin f_M(E), quad chevron.l sigma v chevron.r = integral_0^infinity I_T(E) dif E)$
+    $I_T(E) = sigma(E) thin v(E) thin f_M(E), quad chevron.l sigma v chevron.r = integral_0^infinity I_T(E) dif E$
   ])
   #at(1, 12, y: 139mm, align(center, text(size: 14pt, fill: muted)[
     $f_M(E) prop sqrt(E) e^(-E\/(k_B T))$: shell factor $sqrt(E)$; relative speed $v(E) prop sqrt(E)$.
