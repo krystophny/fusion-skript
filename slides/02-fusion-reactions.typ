@@ -821,6 +821,19 @@
 
 #animation-page("maxwell-average", "maxwell_average", section: "reaction-rate")
 
+#slide(section: "reaction-rate", title: [From cross section to reactivity])[
+  #at(1, 12, y: 0mm, align(center, deck-fig("reaction_product", columns: 12)))
+  #at(1, 12, y: 120mm, align(center)[
+    $display(I_T(E) = sigma(E) thin v(E) thin f_M(E), quad chevron.l sigma v chevron.r = integral_0^infinity I_T(E) dif E)$
+  ])
+  #at(1, 12, y: 140mm, align(center, text(size: 14pt, fill: muted)[
+    $f_M(E) prop sqrt(E) e^(-E\/(k_B T))$: spherical shells in velocity space give $sqrt(E)$; $v(E) prop sqrt(E)$.
+  ]))
+  #at(1, 12, y: 150mm, align(center, text(size: 12pt, fill: muted)[
+    The measured D–T resonance moves the reaction-weighted maximum to ~35 keV (constant $S$: 31 keV).
+  ]))
+]
+
 #slide(section: "reaction-rate", title: [Gamow peak])[
   #let r(name, f) = ([#text(fill: muted, name)], f)
   #at(1, 12, y: 0mm, grid(columns: (auto, 1fr), column-gutter: 6mm, row-gutter: 7mm,
