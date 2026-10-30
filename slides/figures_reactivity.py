@@ -75,6 +75,58 @@ def gamow(name, t, e_max, fname, label):
     return e0, width
 
 
+
+def reaction_product(t=10.0):
+    """Cross section, Maxwellian energy density and their sigma*v-weighted product.
+
+    D-T at k_B T = 10 keV: the *area* under the third panel is <sigma v>,
+    not the height of that curve. E is centre-of-mass energy in keV.
+    """
+    e = np.linspace(0.3, 150.0, 2500)
+    sig = rx.sigma("DT", e, "bh")  # m^2, Bosch-Hale (1992) S(E)
+    v = rx.C * np.sqrt(2 * e / rx.mrc2_for("DT"))  # relative speed in m/s
+    f_e = 2 / np.sqrt(np.pi) * t**-1.5 * np.sqrt(e) * np.exp(-e / t)  # keV^-1
+    weight = sig * v * f_e  # m^3 / (s keV)
+    peak = e[np.argmax(weight)]
+    area = np.trapezoid(weight, e)
+
+    fig, axes = plt.subplots(1, 3, figsize=(246 * MM, 112 * MM),
+                             gridspec_kw={"wspace": .43})
+    left, centre, right = axes
+    left.plot(e, sig / rx.BARN, color=BLUE, lw=2.6)
+    left.set_title("Cross section", loc="left", fontsize=16, pad=8)
+    left.set_ylabel(r"$\sigma(E)$ [b]", fontsize=14)
+
+    centre.plot(e, f_e, color=GREEN, lw=2.6)
+    centre.axvline(t / 2, color=MUTED, lw=1, ls=":")
+    centre.text(.98, .91, rf"peak: {t / 2:g} keV", transform=centre.transAxes,
+                ha="right", va="top", fontsize=12, color=MUTED)
+    centre.set_title("Thermal distribution", loc="left", fontsize=16, pad=8)
+    centre.set_ylabel(r"$f_M(E)$ [keV$^{-1}$]", fontsize=14)
+
+    right.plot(e, weight / 1e-24, color=ORANGE, lw=2.6)
+    right.fill_between(e, 0, weight / 1e-24, color=ORANGE, alpha=.15)
+    right.axvline(peak, color=MUTED, lw=1, ls=":")
+    right.text(.98, .91, rf"peak: {peak:.0f} keV", transform=right.transAxes,
+               ha="right", va="top", fontsize=12, color=MUTED)
+    right.set_title("Reaction contribution", loc="left", fontsize=16, pad=8)
+    right.set_ylabel(r"$\sigma v f_M$ [$10^{-24}$ m$^3$/(s keV)]", fontsize=12)
+
+    for ax in axes:
+        ax.set_xlim(0, 150)
+        ax.set_ylim(bottom=0)
+        ax.set_xticks([0, 50, 100, 150])
+        ax.set_xlabel(r"$E$ [keV]", fontsize=14)
+        ax.tick_params(labelsize=12)
+        ax.grid(axis="y", color=GRID, lw=.6)
+        ax.set_axisbelow(True)
+    fig.suptitle(rf"D–T, $k_BT = {t:g}$ keV · Bosch–Hale cross section",
+                 fontsize=16, y=.98)
+    fig.subplots_adjust(left=.095, right=.985, bottom=.16, top=.79)
+    save(fig, "reaction_product")
+    return peak, area
+
+
 REACTIONS = (  # name, label, colour, line style
     ("DT", "D–T", ORANGE, "-"),
     ("DHe3", "D–³He", PURPLE_W, (0, (8, 2, 2, 2))),
@@ -186,6 +238,8 @@ def tail_fuses(t=10.0, n=2_000_000, seed=1):
 
 if __name__ == "__main__":
     style()
+    peak, area = reaction_product()
+    print(f"wrote reaction_product: peak {peak:.1f} keV, area {area:.3e} m^3/s")
     e0, dw = gamow("DT", 10.0, 120, "gamow_peak", "D–T")
     print(f"wrote gamow_peak: E_0 = {e0:.2f} keV, width {dw:.1f} keV")
     e0, dw = gamow("pp", 1.3, 16, "gamow_peak_pp", "p–p, solar core")
