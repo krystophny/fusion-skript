@@ -34,6 +34,20 @@ def test_exfor_fit_reactivity_close_to_bosch_hale_for_dt():
     assert np.all(np.abs(ratio - 1) < 0.03)
 
 
+def test_energy_density_and_reaction_integrand():
+    """The displayed product sigma*v*f_E integrates to the thermal reactivity."""
+    t = 10.0
+    e = np.linspace(1e-4, 250.0, 100001)
+    f_e = 2 / np.sqrt(np.pi) * t**-1.5 * np.sqrt(e) * np.exp(-e / t)
+    v = rx.C * np.sqrt(2 * e / rx.mrc2_for("DT"))
+    integrand = rx.sigma("DT", e, "bh") * v * f_e
+    assert np.trapezoid(f_e, e) == pytest.approx(1.0, rel=1e-4)
+    assert np.trapezoid(integrand, e) == pytest.approx(
+        rx.maxwell_average("DT", [t], "bh")[0], rel=0.01)
+    assert e[np.argmax(f_e)] == pytest.approx(t / 2, abs=0.005)
+    assert 33 < e[np.argmax(integrand)] < 37
+
+
 def test_gamow_peak_is_numerical_maximum():
     e_g, t = rx.gamow_energy("DT"), 10.0
     e = np.linspace(1, 150, 300001)
