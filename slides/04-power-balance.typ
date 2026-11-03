@@ -243,3 +243,59 @@
   #at(1, 12, y: 146mm, cite-line[
     Data: #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)], Tables 6–8, CC BY 4.0])
 ]
+
+// ------------------------------------------------ 4.10 Where is the optimum? ---
+
+#slide(section: "optimum", title: [Which temperature is optimal?])[
+  #at(1, 12, y: 0mm, steps(gap: 6mm,
+    r([balance], $p_alpha \/ p_"loss" = (E_alpha \/ 12) dot n tau_E dot sv \/ T$),
+    r([fixed $n, tau_E$], [maximise $sv \/ T$ #h(4mm) $arrow.r.double$ #h(2mm) $25.7 "keV"$]),
+    r([fixed $p = 2 n T$, $tau_E$], [maximise $sv \/ T^2$ #h(4mm) $arrow.r.double$ #h(2mm) $13.5 "keV"$ #h(4mm) #text(fill: muted)[triple product $n T tau_E = p tau_E \/ 2$]]),
+    r([fixed $n$, max $P_"fus"$], [maximise $sv$ #h(4mm) $arrow.r.double$ #h(2mm) $66.7 "keV"$]),
+  ))
+  #at(1, 12, y: 70mm, result-box([The optimum depends on what is held fixed; a change of variables moves the minimum of a plot, not the physics.], none))
+  #at(1, 12, y: 110mm, steps(gap: 6mm,
+    r([local power law], [$sv prop T^m, quad m = (dif ln sv)\/(dif ln T) quad arrow.r.double quad n T tau_E prop T^(2 - m)$ #h(4mm) minimum: $m = 2$]),
+    r([broad], [ignition $n T tau_E$ within $10 %$ of its minimum for $9.7$–$19 "keV"$, within $20 %$ for $8.5$–$21.7 "keV"$]),
+  ))
+]
+
+#widget-page("limits", section: "optimum", title: [Density and pressure limits])
+
+#slide(section: "optimum", title: [Limits and confinement scaling])[
+  #at(1, 12, y: 0mm, steps(gap: 6mm,
+    r([limits], [$n <= n_max, quad p = 2 n T <= p_max = beta_max B^2 \/ 2 mu_0$]),
+    r([they cross at], [$T_times = p_max \/ 2 n_max$ #h(4mm) optimum: $T_times$ clamped to $[13.5, 25.7] "keV"$]),
+    r([tokamak], [$n_max = f_"GW" I_p \/ pi a^2, quad beta_max = beta_N I_p \/ a B quad arrow.r.double quad T_times approx 0.39 beta_N a B \/ f_"GW" "keV"$]),
+    r([examples], [ITER: $8.8 "keV"$ #h(5mm) EU-DEMO (2018): $13.8 "keV"$ #h(5mm) stellarator: no Greenwald limit]),
+  ))
+  #at(1, 12, y: 78mm, steps(gap: 6mm,
+    r([IPB98(y,2)], $tau_E = 0.0562 thin H thin I^0.93 B^0.15 overline(n)_19^0.41 P^(-0.69) R^1.97 epsilon^0.58 kappa^0.78 M^0.19$),
+    r([ISS04], $tau_E = 0.134 thin H thin a^2.28 R^0.64 overline(n)_19^0.54 B^0.84 P^(-0.61) iota_(2\/3)^0.41$),
+    r([consequence], [$tau_E$ falls with heating power, so at the $beta$ limit $tau_E prop T^(-1.3)$: the optimum moves down to $approx 6$–$9 "keV"$]),
+  ))
+  #at(1, 12, y: 140mm, cite-line[
+    #link("https://doi.org/10.1088/0029-5515/39/12/302")[ITER Physics Basis · Nucl. Fusion 39, 2175 (1999)] ·
+    #link("https://doi.org/10.1088/0029-5515/45/12/024")[Yamada et al. · Nucl. Fusion 45, 1684 (2005)] ·
+    #link("https://doi.org/10.1088/0741-3335/44/8/201")[Greenwald · PPCF 44, R27 (2002)]])
+]
+
+#widget-page("popcon", section: "optimum", title: [Operating space of a device])
+
+#widget-page("machines", section: "optimum", title: [Where present machines stand])
+
+#slide(section: "optimum", title: [What is really optimised?])[
+  #let box(c, title, body) = block(width: 100%, stroke: 0.8pt + c, radius: 1.5mm, inset: 4mm)[
+    #text(fill: c, title) #v(2mm) #text(size: 15pt, body)]
+  #at(1, 3, y: 0mm, box(plot-blue, [plasma], [$n, T, tau_E, beta$ \ $Q, P_"fus"$]))
+  #at(4, 3, y: 0mm, box(ink, [limits], [Greenwald, $beta$, Sudo \ $tau_E (T, P, n, B, "size")$]))
+  #at(7, 3, y: 0mm, box(ink, [technology], [magnet $B$ and stress \ wall load, divertor heat flux, \ tritium breeding, materials]))
+  #at(10, 3, y: 0mm, box(plot-orange, [plant], [$P_"net"$, availability \ EUR / kWh]))
+  #at(1, 12, y: 52mm, steps(gap: 6mm,
+    r([cost of electricity], $"COE" = ("capital" times "annuity" + "operation") \/ (P_"net" times "availability" times 8760 "h")$),
+    r([trade-offs], [higher $B$: $P_"fus" prop beta^2 B^4 V$ but costlier magnets #h(4mm) higher $n$: radiation, divertor, limits]),
+    r([], [higher $T$: $beta$ limit and worse $tau_E$ #h(4mm) larger device: better $tau_E$, higher capital cost]),
+    r([the optimum is broad], [many nearly equivalent design points; the choice is made by technology and cost]),
+  ))
+  #at(1, 12, y: 128mm, text(fill: muted)[Next: where the $beta$ and density limits come from (Chapter 6, equilibrium and stability) and why $tau_E$ scales as it does (Chapter 7, transport) · plants: Chapter 10])
+]

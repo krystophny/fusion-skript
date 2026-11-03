@@ -136,6 +136,12 @@
       "title": "Confinement routes",
       "label": "confinement-routes",
       "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.10",
+      "title": "Where is the optimum?",
+      "label": "optimum",
+      "chapter": "power-balance-lawson"
     }
   ]
 }
