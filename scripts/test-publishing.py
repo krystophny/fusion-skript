@@ -266,3 +266,40 @@ def test_registered_animation_keeps_provenance_and_checksum(course, registered, 
     monkeypatch.setattr(media, "urlopen", lambda *a, **k: __import__("io").BytesIO(b"other render"))
     with pytest.raises(ValueError, match="Checksum mismatch"):
         media.prepare(course / "site")
+
+
+@pytest.fixture
+def widget(course):
+    """A theme deck whose second page is the slide widget "demo"."""
+    shutil.copyfile(REPO / "slides/theme.typ", course / "slides/theme.typ")
+    shutil.copytree(REPO / "fonts", course / "fonts")
+    (course / "media/posters").mkdir(parents=True)
+    (course / "media/animations.json").write_text(json.dumps({"animations": {}}))
+    shutil.copyfile(REPO / "src/present/icon-180.png", course / "media/posters/slide-demo.png")
+    (course / "slides/outline.json").write_text(json.dumps({
+        "chapters": [{"number": 0, "title": "Independent fixture"}],
+        "sections": [{"label": "fixture", "number": "0.1", "title": "Fixture"}]}))
+    (course / "slides/00-fixture.typ").write_text('''#import "theme.typ": *
+#show: deck.with(chapter: 0)
+#widget-page("demo", section: "fixture", title: [Demo widget])
+''')
+    (course / "public/notebooks").mkdir()
+    (course / "public/notebooks/slide-demo.html").write_text("rendered widget")
+    return course
+
+
+def test_widget_page_lays_rendered_notebook_over_its_region(widget):
+    present.build(args(widget))
+    deck = widget / "public/present/00-fixture"
+    page = json.loads((deck / "manifest.json").read_text())["pages"][1]
+    assert page["kind"] == "widget"
+    assert resolve_revision(deck, page["widget"]).read_text() == "rendered widget"
+    # The area under the title band: 20 mm margins, 20 mm band, A4 landscape.
+    assert page["region"] == pytest.approx({"x": 20 / 297, "y": 40 / 210,
+                                            "w": 257 / 297, "h": 150 / 210})
+
+
+def test_widget_page_needs_its_rendered_notebook(widget):
+    (widget / "public/notebooks/slide-demo.html").unlink()
+    with pytest.raises(FileNotFoundError, match="slide-demo.html"):
+        present.build(args(widget))

@@ -146,7 +146,7 @@ def build(args):
             pages = []
             for number, svg in enumerate(files, 1):
                 meta = per_page.get(number, {"kind": "static", "background": "light"})
-                if meta.get("kind") not in ("static", "animation"):
+                if meta.get("kind") not in ("static", "animation", "widget"):
                     raise ValueError("Unknown page kind")
                 if meta.get("background") not in ("light", "dark"):
                     raise ValueError("Unknown page background")
@@ -159,6 +159,17 @@ def build(args):
                     page["poster"] = (stage_media(meta["poster"], meta, site, deck)
                                       if meta.get("poster") else page["src"])
                     page["loop"] = meta.get("loop", True)
+                if page["kind"] == "widget":
+                    # The Quarto page rendered by build-notebooks.sh, laid over
+                    # the poster area of the page.
+                    rendered = site / "notebooks" / (Path(meta["widget"]).stem + ".html")
+                    if not rendered.is_file():
+                        raise FileNotFoundError(f"Missing rendered widget: {rendered}")
+                    region = meta.get("region") or {}
+                    if set(region) != {"x", "y", "w", "h"} or not all(0 <= v <= 1 for v in region.values()):
+                        raise ValueError(f"Invalid widget region: {stem} page {number}")
+                    page["widget"] = revision(rendered, "../../notebooks/" + rendered.name)
+                    page["region"] = region
                 pages.append(page)
             pdf = site / "slides" / (stem + ".pdf")
             shutil.copyfile(pdf, deck / "deck.pdf")

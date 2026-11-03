@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 stage=build/notebooks
 rm -rf "$stage"
 mkdir -p "$stage/data"
-cp notebooks/_quarto.yml notebooks/*.qmd notebooks/*.js notebooks/*.json notebooks/*.css "$stage/"
+cp notebooks/_quarto.yml notebooks/*.qmd notebooks/*.js notebooks/*.json notebooks/*.css notebooks/*.html "$stage/"
 xargs -a notebooks/data-files.txt cp -t "$stage/data/"
 if command -v quarto >/dev/null; then
   quarto=(quarto)
