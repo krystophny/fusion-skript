@@ -103,44 +103,44 @@
     },
     {
       "number": "4.4",
-      "title": "Bremsstrahlung",
-      "label": "bremsstrahlung",
-      "chapter": "power-balance-lawson"
-    },
-    {
-      "number": "4.5",
       "title": "Power balance and the triple product",
       "label": "power-balance",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.6",
+      "number": "4.5",
       "title": "Lawson's criterion and plant gain",
       "label": "plant-gain",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.7",
-      "title": "Impurities and fuel dilution",
-      "label": "dilution",
-      "chapter": "power-balance-lawson"
-    },
-    {
-      "number": "4.8",
+      "number": "4.6",
       "title": "Pressure and beta",
       "label": "pressure-beta",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.9",
+      "number": "4.7",
       "title": "Confinement routes",
       "label": "confinement-routes",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.10",
+      "number": "4.8",
       "title": "Where is the optimum?",
       "label": "optimum",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.9",
+      "title": "Bremsstrahlung",
+      "label": "bremsstrahlung",
+      "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "4.10",
+      "title": "Impurities and fuel dilution",
+      "label": "dilution",
       "chapter": "power-balance-lawson"
     }
   ]

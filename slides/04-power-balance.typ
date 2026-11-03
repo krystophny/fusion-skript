@@ -52,24 +52,6 @@
   #at(1, 12, y: 150mm, cite-line[#link("https://krystophny.github.io/fusion-skript/notebooks/scaling.html")[notebook: confinement scaling IPB98(y,2)]])
 ]
 
-#slide(section: "bremsstrahlung", title: [Bremsstrahlung and ideal ignition])[
-  #at(1, 6, y: 0mm, steps(gap: 7mm,
-    r([electron–ion], $p_"br" = C_B n_e^2 Z_"eff" sqrt(k_B T)$),
-    r([charge], $Z_"eff" = sum_j n_j Z_j^2 \/ n_e$),
-    r([alpha heating], $p_alpha = n_e^2/4 sv E_alpha$),
-    r([$p_alpha = p_"br"$], $sv E_alpha = 4 C_B Z_"eff" sqrt(k_B T)$),
-  ))
-  #at(1, 6, y: 74mm, result-box($k_B T_"ideal" = 4.3 "keV"$, [D–T, $Z_"eff" = 1$, any $n$]))
-  #at(7, 6, y: -4mm, deck-fig("alpha_brems", columns: 6))
-  #at(1, 12, y: 114mm, steps(gap: 5mm,
-    r([$k_B T$ in keV], [$C_B = 5.34 times 10^(-37) "W m"^3 "keV"^(-1\/2)$]),
-    r([$k_B T$ in eV], [$C_B = 1.69 times 10^(-38) "W m"^3 "eV"^(-1\/2)$ #h(4mm) #text(fill: muted)[factor $sqrt(1000)$]]),
-  ))
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1088/0370-1301/70/1/303")[Lawson · Proc. Phys. Soc. B 70, 6 (1957)] ·
-    NRL Plasma Formulary · #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)]])
-]
-
 #slide(section: "power-balance", title: [Power balance with gain])[
   #at(1, 7, y: 0mm, steps(gap: 7mm,
     r([steady state], $p_"ext" + p_alpha = p_"loss" = 3 n k_B T \/ tau_E$),
@@ -187,37 +169,6 @@
   #at(1, 12, y: 0mm, align(center, deck-fig("power_flow", columns: 11)))
 ]
 
-#slide(section: "dilution", title: [Quasineutrality and dilution])[
-  #at(1, 7, y: 0mm, steps(gap: 7mm,
-    r([quasineutral], $n_e = n_"D" + n_"T" + sum_Z Z n_Z$),
-    r([concentration], $c_Z = n_Z \/ n_e$),
-    r([fuel], $(n_"D" + n_"T") \/ n_e = 1 - sum_Z Z c_Z$),
-    r([fixed $n_e$], $p_"fus" prop (1 - sum_Z Z c_Z)^2$),
-    r([radiation], $Z_"eff" = 1 - sum_Z Z c_Z + sum_Z Z^2 c_Z$),
-  ))
-  #at(8, 5, y: 2mm, data-table(
-    ([], [$Z c$], [fuel], [$p_"fus"$]),
-    (
-      ([0.1 % W], [$0.074$], [$0.926$], [$0.86$]),
-      ([5 % He], [$0.10$], [$0.90$], [$0.81$]),
-    ),
-    align: (left, right, right, right),
-  ))
-  #at(8, 5, y: 48mm, text(fill: muted)[tungsten: line radiation dominates])
-  #at(1, 12, y: 76mm, result-box($p_"fus" \/ p_"fus" (c = 0) = (1 - sum_Z Z c_Z)^2$,
-    [one W ion displaces 74 fuel ions: $7.4 thin %$ less fuel, $14 thin %$ less fusion power]))
-  #at(1, 12, y: 124mm, steps(
-    r([helium ash], [$Z = 2$, produced by the burn itself]),
-  ))
-]
-
-#slide(section: "dilution", title: [Helium ash])[
-  #at(1, 12, y: 0mm, align(center, deck-fig("impurity_dilution", columns: 12)))
-  #at(1, 12, y: 128mm, align(center, text(fill: muted)[
-    $n_e T tau_E = 3/2 (1 + n_i \/ n_e) T^2 \/ ((1 - 2c)^2 sv E_alpha \/ 4 - C_B Z_"eff" sqrt(T))$ #h(4mm) $Z_"eff" = 1 + 2c$]))
-  #at(1, 12, y: 146mm, cite-line[#link("https://krystophny.github.io/fusion-skript/notebooks/impurities.html")[notebook: impurities and fuel dilution]])
-]
-
 #slide(section: "pressure-beta", title: [Fixed pressure])[
   #at(1, 6, y: 0mm, steps(gap: 7mm,
     r([pressure], $p = (n_e + n_i) k_B T = 2 n k_B T$),
@@ -244,7 +195,7 @@
     Data: #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)], Tables 6–8, CC BY 4.0])
 ]
 
-// ------------------------------------------------ 4.10 Where is the optimum? ---
+// ------------------------------------------------- 4.8 Where is the optimum? ---
 
 #slide(section: "optimum", title: [Which temperature is optimal?])[
   #at(1, 12, y: 0mm, steps(gap: 6mm,
@@ -298,4 +249,55 @@
     r([the optimum is broad], [many nearly equivalent design points; the choice is made by technology and cost]),
   ))
   #at(1, 12, y: 128mm, text(fill: muted)[Next: where the $beta$ and density limits come from (Chapter 6, equilibrium and stability) and why $tau_E$ scales as it does (Chapter 7, transport) · plants: Chapter 10])
+]
+
+// ---------------------------- 4.9 Bremsstrahlung, 4.10 Impurities (after the optimum) ---
+
+#slide(section: "bremsstrahlung", title: [Bremsstrahlung and ideal ignition])[
+  #at(1, 6, y: 0mm, steps(gap: 7mm,
+    r([electron–ion], $p_"br" = C_B n_e^2 Z_"eff" sqrt(k_B T)$),
+    r([charge], $Z_"eff" = sum_j n_j Z_j^2 \/ n_e$),
+    r([alpha heating], $p_alpha = n_e^2/4 sv E_alpha$),
+    r([$p_alpha = p_"br"$], $sv E_alpha = 4 C_B Z_"eff" sqrt(k_B T)$),
+  ))
+  #at(1, 6, y: 74mm, result-box($k_B T_"ideal" = 4.3 "keV"$, [D–T, $Z_"eff" = 1$, any $n$]))
+  #at(7, 6, y: -4mm, deck-fig("alpha_brems", columns: 6))
+  #at(1, 12, y: 114mm, steps(gap: 5mm,
+    r([$k_B T$ in keV], [$C_B = 5.34 times 10^(-37) "W m"^3 "keV"^(-1\/2)$]),
+    r([$k_B T$ in eV], [$C_B = 1.69 times 10^(-38) "W m"^3 "eV"^(-1\/2)$ #h(4mm) #text(fill: muted)[factor $sqrt(1000)$]]),
+  ))
+  #at(1, 12, y: 146mm, cite-line[
+    #link("https://doi.org/10.1088/0370-1301/70/1/303")[Lawson · Proc. Phys. Soc. B 70, 6 (1957)] ·
+    NRL Plasma Formulary · #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)]])
+]
+
+#slide(section: "dilution", title: [Quasineutrality and dilution])[
+  #at(1, 7, y: 0mm, steps(gap: 7mm,
+    r([quasineutral], $n_e = n_"D" + n_"T" + sum_Z Z n_Z$),
+    r([concentration], $c_Z = n_Z \/ n_e$),
+    r([fuel], $(n_"D" + n_"T") \/ n_e = 1 - sum_Z Z c_Z$),
+    r([fixed $n_e$], $p_"fus" prop (1 - sum_Z Z c_Z)^2$),
+    r([radiation], $Z_"eff" = 1 - sum_Z Z c_Z + sum_Z Z^2 c_Z$),
+  ))
+  #at(8, 5, y: 2mm, data-table(
+    ([], [$Z c$], [fuel], [$p_"fus"$]),
+    (
+      ([0.1 % W], [$0.074$], [$0.926$], [$0.86$]),
+      ([5 % He], [$0.10$], [$0.90$], [$0.81$]),
+    ),
+    align: (left, right, right, right),
+  ))
+  #at(8, 5, y: 48mm, text(fill: muted)[tungsten: line radiation dominates])
+  #at(1, 12, y: 76mm, result-box($p_"fus" \/ p_"fus" (c = 0) = (1 - sum_Z Z c_Z)^2$,
+    [one W ion displaces 74 fuel ions: $7.4 thin %$ less fuel, $14 thin %$ less fusion power]))
+  #at(1, 12, y: 124mm, steps(
+    r([helium ash], [$Z = 2$, produced by the burn itself]),
+  ))
+]
+
+#slide(section: "dilution", title: [Helium ash])[
+  #at(1, 12, y: 0mm, align(center, deck-fig("impurity_dilution", columns: 12)))
+  #at(1, 12, y: 128mm, align(center, text(fill: muted)[
+    $n_e T tau_E = 3/2 (1 + n_i \/ n_e) T^2 \/ ((1 - 2c)^2 sv E_alpha \/ 4 - C_B Z_"eff" sqrt(T))$ #h(4mm) $Z_"eff" = 1 + 2c$]))
+  #at(1, 12, y: 146mm, cite-line[#link("https://krystophny.github.io/fusion-skript/notebooks/impurities.html")[notebook: impurities and fuel dilution]])
 ]
