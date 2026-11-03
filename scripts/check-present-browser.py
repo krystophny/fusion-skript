@@ -24,6 +24,28 @@ class Quiet(SimpleHTTPRequestHandler):
         pass
 
 
+def widget_keys(page, number, count):
+    # A focused slider keeps ArrowUp/ArrowDown; no control swallows page turns.
+    control = page.locator(".frame section").nth(number - 1).locator("iframe.widget") \
+        .content_frame.locator("input[type=range], input[type=radio]").first
+    control.wait_for(timeout=60000)
+    control.click()
+    state = "c => c.type === 'range' ? c.value : [...c.form.elements].map(r => r.checked).join()"
+    before = control.evaluate(state)
+    if control.evaluate("c => c.type") == "range":
+        page.keyboard.press("ArrowDown" if control.evaluate("s => +s.value >= +s.max") else "ArrowUp")
+        page.wait_for_timeout(200)
+        assert control.evaluate(state) != before, "ArrowUp/ArrowDown must adjust a focused slider"
+        assert page.locator(".where b").inner_text() == str(number), "ArrowUp/ArrowDown on a slider turned the page"
+        before = control.evaluate(state)
+    if number < count:
+        page.keyboard.press("ArrowRight")
+        page.wait_for_function("n => document.querySelector('.where b')?.textContent === String(n)", arg=number + 1)
+        assert control.evaluate(state) == before, "ArrowRight must turn the page, not change the control"
+        # Focus must not stay behind in the now hidden widget.
+        page.keyboard.press("ArrowLeft")
+        page.wait_for_function("n => document.querySelector('.where b')?.textContent === String(n)", arg=number)
+
 def run():
     shots = REPO / ".cache/present-review"
     shots.mkdir(parents=True, exist_ok=True)
@@ -54,11 +76,13 @@ def run():
                 page.wait_for_function("navigator.serviceWorker.controller !== null")
                 page.screenshot(path=str(shots / "launcher.png"))
                 images = []
+                widgets = 0
                 for deck in decks:
                     page.goto(base + "present/" + deck["stem"] + "/")
                     page.wait_for_selector(".frame section")
                     assert page.locator(".frame section").count() == deck["pages"]
                     page.wait_for_function("navigator.serviceWorker.controller !== null")
+                    specs = json.loads((REPO / "public/present" / deck["stem"] / "manifest.json").read_text())["pages"]
                     for number in range(1, deck["pages"] + 1):
                         page.goto(base + "present/" + deck["stem"] + "/#" + str(number))
                         page.wait_for_function("n => document.querySelector('.where').textContent.startsWith(n + ' /')", arg=number)
@@ -68,6 +92,9 @@ def run():
                         filename = shots / f"{deck['stem']}-{number:02}.png"
                         page.screenshot(path=str(filename))
                         images.append(filename)
+                        if specs[number - 1]["kind"] == "widget":
+                            widgets += 1
+                            widget_keys(page, number, deck["pages"])
                     page.keyboard.press("Home")
                     page.keyboard.press("ArrowRight")
                     assert page.locator(".where").inner_text().startswith("2 /")
@@ -106,7 +133,7 @@ def run():
                 contact.paste(thumb, (x, y))
                 draw.text((x + 5, y + 212), str(index + 1), fill="black")
             contact.save(shots / "pages.png")
-            print(f"Browser passed: {len(images)} pages, launcher, keys, Pencil, overview, offline reload; screenshots: {shots}")
+            print(f"Browser passed: {len(images)} pages, {widgets} widgets, launcher, keys, Pencil, overview, offline reload; screenshots: {shots}")
         finally:
             server.shutdown()
             server.server_close()
