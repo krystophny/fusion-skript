@@ -1,0 +1,164 @@
+{
+  "stem": "02-fusion-reactions",
+  "chapter": 2,
+  "title": "Fusion reactions",
+  "course": "Fusion Physics",
+  "author": "Christopher Albert",
+  "aspect": 1.414285714286938,
+  "pdf": "deck.pdf?v=919fd197911c1615",
+  "pages": [
+    {
+      "src": "page-01.svg?v=4f9dbc398aaca034",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-02.svg?v=17cf689a9994fd06",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-03.svg?v=de37181115381070",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-04.svg?v=6390a0f4f49c4f39",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-05.svg?v=d0de77786c6966ae",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-06.svg?v=d8b0e4964b86d13d",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-07.svg?v=7cda6f4caefb36ba",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-08.svg?v=49d118c96873d9fb",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-09.svg?v=246d2529d52d2f77",
+      "kind": "animation",
+      "background": "dark",
+      "video": "media/9d6e83841cab5786.mp4?v=9d6e83841cab5786",
+      "poster": "page-09.svg?v=246d2529d52d2f77",
+      "loop": false
+    },
+    {
+      "src": "page-10.svg?v=c585bc5b0af99ffe",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-11.svg?v=bcd8c8d32c69692b",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-12.svg?v=b80b27582a069c2a",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-13.svg?v=a5712ddf34de5109",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-14.svg?v=d902450cde03f1a0",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-15.svg?v=d64bdd14a91867ff",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-16.svg?v=f0e3cfdf4c7b2734",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-17.svg?v=9aedceb48ccc8d8a",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-18.svg?v=0da077292e19f314",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-19.svg?v=78c0da668694a1aa",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-20.svg?v=2d1820b8f52cb492",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-21.svg?v=8bed0d51dad70462",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-22.svg?v=42af589509e798d4",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-23.svg?v=5474f855d671640d",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-24.svg?v=e1fc3905f8945816",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-25.svg?v=bec73402b9cf8bbb",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-26.svg?v=093c2f7fbdd096b7",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-27.svg?v=3c3053456f2dd090",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-28.svg?v=20ac98213c0562f1",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-29.svg?v=2c323a970b464765",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-30.svg?v=6f69d9f2d579d271",
+      "kind": "static",
+      "background": "light"
+    }
+  ]
+}

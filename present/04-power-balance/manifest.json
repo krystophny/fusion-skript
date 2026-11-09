@@ -1,0 +1,144 @@
+{
+  "stem": "04-power-balance",
+  "chapter": 4,
+  "title": "Power balance and Lawson",
+  "course": "Fusion Physics",
+  "author": "Christopher Albert",
+  "aspect": 1.414285714286938,
+  "pdf": "deck.pdf?v=7af451bd5cfc8c8f",
+  "pages": [
+    {
+      "src": "page-01.svg?v=d88fe0a72c384221",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-02.svg?v=ca7f6e5d68f2ca90",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-03.svg?v=b794c512067ca1e8",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-04.svg?v=71ff9e91ee973b4e",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-05.svg?v=7af7093126f75d2a",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-06.svg?v=3933f0ca9bb449a6",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-07.svg?v=2a2e71876cfa6689",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-08.svg?v=6e0471c3499ca6cc",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-09.svg?v=bdd8b15d3cb0461a",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-lawson.html?v=f55b85611815c1b8",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    },
+    {
+      "src": "page-10.svg?v=d423e7755082b438",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-11.svg?v=3c88844de7de320c",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-12.svg?v=7ee4f396bbec31ea",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-13.svg?v=84cf0907988353dc",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-14.svg?v=30b9cc859feef8ca",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-limits.html?v=55740d69535d4673",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    },
+    {
+      "src": "page-15.svg?v=4c18ddc3445afc10",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-16.svg?v=db54ce698cf661f0",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-popcon.html?v=8cb8c4df0df0545a",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    },
+    {
+      "src": "page-17.svg?v=a25e5e6dff062b13",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-machines.html?v=0146a4fbf24e0a58",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    },
+    {
+      "src": "page-18.svg?v=f7922513bfe33e50",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-19.svg?v=15b31c9c529918c8",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-20.svg?v=21286d851a53b5c2",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-21.svg?v=d07718c899e1671e",
+      "kind": "static",
+      "background": "light"
+    }
+  ]
+}

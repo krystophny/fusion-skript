@@ -1,0 +1,34 @@
+{
+  "course": "Fusion Physics",
+  "author": "Christopher Albert",
+  "decks": [
+    {
+      "stem": "00-energy-context",
+      "chapter": 0,
+      "title": "The big picture",
+      "pages": 25,
+      "cover": "00-energy-context/page-01.svg?v=f80e2c8c58247388"
+    },
+    {
+      "stem": "01-discovering-fusion",
+      "chapter": 1,
+      "title": "Discovering fusion",
+      "pages": 22,
+      "cover": "01-discovering-fusion/page-01.svg?v=dda91c3a32d54ac1"
+    },
+    {
+      "stem": "02-fusion-reactions",
+      "chapter": 2,
+      "title": "Fusion reactions",
+      "pages": 30,
+      "cover": "02-fusion-reactions/page-01.svg?v=4f9dbc398aaca034"
+    },
+    {
+      "stem": "04-power-balance",
+      "chapter": 4,
+      "title": "Power balance and Lawson",
+      "pages": 21,
+      "cover": "04-power-balance/page-01.svg?v=d88fe0a72c384221"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "stem": "01-discovering-fusion",
+  "chapter": 1,
+  "title": "Discovering fusion",
+  "course": "Fusion Physics",
+  "author": "Christopher Albert",
+  "aspect": 1.414285714286938,
+  "pdf": "deck.pdf?v=05536e883986d55f",
+  "pages": [
+    {
+      "src": "page-01.svg?v=dda91c3a32d54ac1",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-02.svg?v=bf64af1718b53aae",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-03.svg?v=31246e670b3b6b93",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-04.svg?v=cc84914602bdb6ec",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-05.svg?v=a927b6a8128cd451",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-06.svg?v=3594343cf2bcedb7",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-07.svg?v=f1e8897074f0e2ef",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-08.svg?v=79112bed13386e28",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-09.svg?v=acfb7bdea2c119e9",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-10.svg?v=151e36ee39a6e367",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-11.svg?v=da58c36557d32f3e",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-12.svg?v=b4aaef6c4eee3aff",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-13.svg?v=be61598aa3c6f004",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-14.svg?v=beb27cc01adf7228",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-15.svg?v=114e81e1df2a6ae8",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-16.svg?v=c86d5fcc4c2ff58f",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-17.svg?v=cf95bf778de347bf",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-18.svg?v=1dfc1fcc7973d616",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-19.svg?v=234448b433f98209",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-20.svg?v=114815b24b7315a1",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-21.svg?v=27df8936fb2b053e",
+      "kind": "static",
+      "background": "dark"
+    },
+    {
+      "src": "page-22.svg?v=bbe050d718abddc2",
+      "kind": "static",
+      "background": "dark"
+    }
+  ]
+}
