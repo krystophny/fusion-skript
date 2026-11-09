@@ -201,3 +201,11 @@ def test_measured_points_exclude_projections_and_match_table():
     assert (jet["n"], jet["tau"], jet["year"]) == (3.3e19, 0.51, 1997)
     nif = [r for r in rows if r["shot"] == "N210808"][0]
     assert nif["n"] * nif["tau"] == pytest.approx(5.7e20, rel=0.01)
+
+
+def test_cyclotron_emission_matches_nrl():
+    """NRL Plasma Formulary: P_c = 6.21e-28 B^2 N_e T_e W cm^-3 (B in G, N_e in cm^-3, T_e in eV)."""
+    nrl = 6.21e-28 * (5e4) ** 2 * 1e14 * 1e4 * 1e6       # W m^-3 at 5 T, 1e20 m^-3, 10 keV
+    assert pb.cyclotron_thin(1e20, 10.0, 5.0) == pytest.approx(nrl, rel=2e-3)
+    # Thin cyclotron emission exceeds bremsstrahlung by far at reactor conditions.
+    assert pb.cyclotron_thin(1e20, 10.0, 5.0) > 50 * pb.C_B * 1e40 * np.sqrt(10.0)

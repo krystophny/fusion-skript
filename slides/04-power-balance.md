@@ -36,7 +36,7 @@ P_heat or P_aux (older decks) are not used.
 | 4 | 4.2 Fusion power density | Rate from section 2.20 with δ_DT = 0. Quasineutrality for Z = 1 fuel: n_e = n_D + n_T, so n_D n_T = n_e²/4 at 50:50, and x(1 − x) shows 50:50 is optimal. Do not drop the 1/4 (2021/22 slides did). Two-body process: ∝ n². Example: 1.7 MW/m³ at 10²⁰ m⁻³ and 14 keV. |
 | 5 | 4.3 Stored energy and confinement time (`density_scaling`) | **Coffee cup:** hot coffee loses its heat in about 20 minutes; that is its τ_E, defined as stored energy over loss power, even while you keep reheating it. Plasma: about a second. Losses ∝ n at fixed τ_E, alpha heating ∝ n², so the curves cross: n τ_E is the combination that matters. |
 | 6 | 4.4 Power balance with gain (`alpha_fraction`) | One balance, P_ext + P_α = P_loss, with P_ext = P_fus/Q gives every Q curve. Table: breakeven Q = 1 (f_α = 1/6), burning plasma Q = 5 (alphas supply half the heating), ignition Q → ∞. Plot: f_α saturates; at Q = 10 the alphas already supply two thirds of the heating. |
-| 7 | Triple product | Multiply by T; ⟨σv⟩ ≈ 1.1·10⁻²⁴ T² m³/s near 10–20 keV makes n T τ_E independent of T: 3.1·10²¹, exact minimum 2.7·10²¹ keV s m⁻³ at 13.5 keV. Factor 2: n k_BT τ_E = 4.4·10⁵ Pa s, while pτ_E = 2nk_BTτ_E ≈ 9 bar s; quote bar·s only with pτ_E. |
+| 7 | Triple product | Board first (ignition balance → n τ_E = 12 k_BT/(⟨σv⟩E_α), times T). ⟨σv⟩ ∝ T² near 10–20 keV makes n T τ_E constant: ≈ 3·10²¹ keV s m⁻³ (exact minimum 2.7·10²¹ at 13.5 keV) = 4.8 bar s with the ion pressure n k_BT, ≈ 10 bar s with the full pressure p = 2n k_BT. The Q-dependence is on the Lawson plane, not on this page. |
 | 8 | Lawson plane (`lawson_plane`) | Minimum near 14 keV for every Q; bremsstrahlung wall at 4.3 keV; right panel: Q = 10 already needs two thirds of the ignition value. |
 | 9 | 4.5 Lawson 1957 and self-heating | Same balance, two closures. Lawson: all output (fusion, bremsstrahlung, heat) through a converter with η = 1/3 and back as heating; useful when P_fus ≥ 2P_loss. Self-heating: the alphas stay inside, neutrons leave; ignition is P_α ≥ P_loss. The triple product is not "Lawson's criterion" in its 1957 form (2025 notebook). **Bank account** for Lawson's break-even, if time. Neutrons take the long path wall → turbine → heater: inefficient twice. Spoken, no page: with η_th = η_aux = 0.4, Q_eng = η_th η_aux (Q + 1) − 1, so net electricity needs Q > 5.25 and Q ≈ 10 gives Q_eng ≈ 1. |
 | 10 | 4.6 Fixed pressure (`fixed_pressure`) | Pressure, not density, is what the magnet holds: p = 2nk_BT, so p_fus ∝ p²⟨σv⟩/T² — the 13.5 keV optimum of section 2.20 is a fixed-pressure optimum. With β: P_fus ∝ β²B⁴V, doubling B gives 16 times the power density. Density limit as one line (Greenwald, empirical); scaling laws come with transport. |
@@ -46,12 +46,19 @@ P_heat or P_aux (older decks) are not used.
 | 14 | Limits and confinement scaling | Tokamak T× ≈ 0.39 β_N a B/f_GW keV (I_p cancels): ITER 8.8 keV, EU-DEMO 13.8 keV. IPB98(y,2) and ISS04 with coefficients; τ_E falls with heating power, so at the β limit τ_E ∝ T^−1.3 and the optimum moves to 6–9 keV. |
 | 15 | Widget `popcon` | 0-D operating space with parabolic profiles, 85 % fuel, bremsstrahlung, τ_E = H·IPB98 or H·ISS04 solved with P = W/τ_E. Presets ITER, SPARC, ARC, W7-X, HELIAS 5-B; B and H sliders. Best point sits on a limit near 6–9 keV; the region of high Q is broad. Without core radiation ITER comes out ignited at H = 1; H = 0.85 gives Q ≈ 15, H = 0.8 gives Q ≈ 9 (best point near 5–6 keV on the Greenwald line) — say this. |
 | 16 | Widget `machines` | Wurzel & Hsu records in n–T, n–τ_E, T–τ_E and the Lawson plane; no present machine reaches the reactor window in all three at once; ITER and SPARC design points. Q bands are in peak values like the data (Wurzel & Hsu Eq. 45: peaked T, broad n, Z_eff 1.5–3.4, fixed 2026-11-09 after Lecture 4): the JET 1991 and JT-60U records fall below Q = 1, not above; the ITER and SPARC design points lie in the Q ≈ 10 to ignition band. |
-| 17 | 4.9 Bremsstrahlung and ideal ignition (`alpha_brems`) | Electrons deflected by ions radiate; unavoidable. ∝ n_e² like fusion, so n² cancels: below 4.3 keV no density helps. Lawson's first insight. Units trap: the NRL constant 1.69·10⁻³² W cm³ eV^(−1/2) needs T in eV; with T in keV use 5.34·10⁻³⁷ W m³ keV^(−1/2) (2025 notes mixed them). |
-| 18 | 4.10 Helium ash (`impurity_dilution`) | 5 % He raises the ignition triple product by about a quarter, 10 % by about 60 %. Right: one universal curve (1 − Zc)² for any impurity at fixed n_e. |
+| 17 | 4.9 Bremsstrahlung and ideal ignition (`alpha_brems`) | Electrons deflected by ions radiate; the plasma is transparent, so the power goes to the wall. ∝ n_e² like fusion, so n² cancels: below 4.3 keV no density helps (Lawson's first insight). Z_eff carries Z² per ion: impurities radiate more. Units trap: NRL 1.69·10⁻³² W cm³ eV^(−1/2) needs T in eV; with T in keV use 5.34·10⁻³⁷ W m³ keV^(−1/2). |
+| 18 | Cyclotron radiation | Electrons gyrating at ω_ce radiate (Larmor); averaged over a Maxwellian, ⟨v⊥²⟩ = 2k_BT_e/m_e gives 6.2·10⁻¹⁷ n_e T_e B² W m⁻³ (NRL; `cyclotron_thin`). At 10²⁰ m⁻³, 10 keV, 5 T the emitted power (1.6 MW m⁻³) exceeds fusion (0.8) and is about 90 times bremsstrahlung (0.017) — but the plasma is optically thick at the low harmonics and the walls reflect, so little escapes. It grows with T_e and B and is a main loss for D–³He and p–¹¹B at 50–300 keV. Pairs: 2m_ec² = 1.02 MeV, suppressed like e^(−2m_ec²/k_BT), irrelevant below about 511 keV. |
+| 19 | 4.10 Quasineutrality and dilution | Electrons neutralise every ion; the machine limits n_e (Greenwald) or p, not the fuel. At fixed n_e, p_fus ∝ (1 − Σ Z c_Z)²: one W ion takes 74 electrons' worth of fuel, 0.1 % W costs 14 %, 5 % He 19 %. Z_eff = 1 + Σ Z(Z − 1)c_Z enters bremsstrahlung. W is not fully ionised in the core and radiates lines: c_W = 3·10⁻⁵ already raises the minimum n T τ_E by 20 % (Pütterich et al. 2010). |
+| 20 | Helium ash (`impurity_dilution`) | 5 % He raises the ignition triple product by about a quarter, 10 % by about 60 %. Right: one universal curve (1 − Zc)² for any impurity at fixed n_e. Helium has to leave within a few τ_E. |
 
-Engineering gain, the Q = 10 power flow, "What is really optimised?" and
-"Quasineutrality and dilution" were removed on 2026-11-09: Lecture 4
-(2026-11-03) never showed them; they remain in Git history.
+Engineering gain, the Q = 10 power flow and "What is really optimised?"
+were removed on 2026-11-09 because Lecture 4 (2026-11-03) never showed them.
+The same day the pages were thinned to what the board does not already
+carry: the derivations follow the Lecture 4 board route (power balance →
+W = 3nk_BT → p_α → gain → x(1 − x) → Lawson → triple product → limits), the
+pages keep results, plots and one line per step. Section 4.9 became "Radiation
+losses" with a cyclotron page, and quasineutral dilution returned to 4.10 in
+a slimmer form with line radiation. Removed content is in Git history.
 
 ## Sources and checks
 
@@ -69,7 +76,10 @@ described in `slides/04-power-balance-visuals.md`.
   doi:10.1063/5.0083990, CC BY 4.0: Lawson's two insights, Q_eng, measured
   points (Tables 6–8 via `data/ch04/wurzel_hsu_2022.csv`).
 - H.-S. Bosch and G. M. Hale, Nucl. Fusion 32, 611 (1992), doi:10.1088/0029-5515/32/4/I07.
-- NRL Plasma Formulary, bremsstrahlung (1.69·10⁻³² W cm³ eV^(−1/2)).
+- NRL Plasma Formulary, bremsstrahlung (1.69·10⁻³² W cm³ eV^(−1/2)) and
+  cyclotron emission (6.21·10⁻²⁸ B² N_e T_e W cm⁻³, B in G, T_e in eV).
+- T. Pütterich et al., Nucl. Fusion 50, 025012 (2010),
+  doi:10.1088/0029-5515/50/2/025012: c_W = 3·10⁻⁵ raises the minimum nTτ_E by 20 %.
 - M. Greenwald, Plasma Phys. Control. Fusion 44, R27 (2002), doi:10.1088/0741-3335/44/8/201.
 - NIF target gain 1.5: H. Abu-Shawareb et al., Phys. Rev. Lett. 132, 065102 (2024),
   doi:10.1103/PhysRevLett.132.065102 (cue only).

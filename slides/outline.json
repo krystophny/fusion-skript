@@ -133,7 +133,7 @@
     },
     {
       "number": "4.9",
-      "title": "Bremsstrahlung",
+      "title": "Radiation losses",
       "label": "bremsstrahlung",
       "chapter": "power-balance-lawson"
     },

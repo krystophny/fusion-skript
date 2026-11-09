@@ -85,6 +85,16 @@ def peak_triple_product(t0, q=np.inf, z_eff=1.5, z_bar=1.2, eta_abs=0.9, nu_n=0.
     return 1.5 * lam_k * (1 + z_bar) * t0**2 * KEV / net if net > 0 else np.inf
 
 
+def cyclotron_thin(n_e, t_e, b):
+    """Optically thin electron cyclotron emission in W m^-3 (n_e in m^-3, t_e in keV, b in T).
+
+    Larmor power e^4 B^2 v_perp^2 / (6 pi eps0 m_e^2 c^3) per electron, averaged over a
+    Maxwellian, <v_perp^2> = 2 k_B T_e / m_e; non-relativistic, no reabsorption.
+    """
+    per = k.e**4 * 2 * KEV / (6 * np.pi * k.epsilon_0 * k.m_e**3 * k.c**3)
+    return per * n_e * t_e * b**2
+
+
 def ideal_ignition_temperature(z_eff=1.0):
     """T (keV) where alpha heating equals bremsstrahlung, 50:50 D-T; independent of n."""
     tt = np.linspace(2, 20, 180001)
@@ -272,6 +282,12 @@ def checks():
     # Bremsstrahlung constant in keV units (NRL: 1.69e-32 W cm^3 eV^-1/2): the eV value
     # used with T in keV would be 31.6 times too small.
     assert abs(C_B / 5.344e-37 - 1) < 1e-3
+    # Cyclotron page: 1e20 m^-3, 10 keV, 5 T in MW m^-3 (fusion 0.8, bremsstrahlung 0.017, cyclotron 1.6).
+    p_fus = 1e40 / 4 * bosch_hale("DT", 10.0) * E_FUS * KEV / 1e6
+    p_br = C_B * 1e40 * np.sqrt(10.0) / 1e6
+    p_cyc = cyclotron_thin(1e20, 10.0, 5.0) / 1e6
+    assert round(p_fus, 1) == 0.8 and round(p_br, 3) == 0.017 and round(p_cyc, 1) == 1.6, (p_fus, p_br, p_cyc)
+    print(f"1e20 m^-3, 10 keV, 5 T: p_fus = {p_fus:.2f}, p_br = {p_br:.3f}, p_cyc thin = {p_cyc:.2f} MW m^-3")
     ideal = ideal_ignition_temperature()
     assert abs(ideal - 4.3) < 0.1, ideal
     # The ignition minimum in n T tau_E converted to pressure units: n T tau_E and p tau_E = 2 n T tau_E.
