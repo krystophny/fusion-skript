@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impurities: dilution and radiation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, d3, html, font, sub, pow, readout, run} from "./widget.js";
+import {reactivity, ignitionImpure, coolingRate, C_B, E_ALPHA, KEV} from "./fusion.js";
+import {INK, MUTED, GREY, BLUE, ORANGE, GREEN, PURPLE} from "./plotting.js";
+import rx from "./data/reactivity.json" with {type: "json"};
+
+// Concentration n_Z/n_e: log10 range and default per species (ITER-relevant order of magnitude).
+const SPECIES = {
+  "Be (Z = 4)": {z: 4, range: [-3, -1.3], value: Math.log10(0.02)},
+  "C (Z = 6)": {z: 6, range: [-3, -1.5], value: -2},
+  "N (Z = 7)": {z: 7, range: [-3, -1.5], value: -2},
+  "O (Z = 8)": {z: 8, range: [-3.5, -2], value: Math.log10(0.003)},
+  "W (Z = 74)": {z: 74, range: [-6, -3.5], value: -5},
+};
+const start = (s) => (s.value - s.range[0]) / (s.range[1] - s.range[0]);
+const grid = d3.range(0, 801).map((i) => 2 * 50 ** (i / 800));
+const pct = (c) => c >= 1e-3 ? `${(100 * c).toPrecision(2)} %` : `${(c * 1e6).toPrecision(2)} ppm`;
+
+function draw({species, pos, brems, lines}, inputs) {
+  const {z, range} = SPECIES[species], c = 10 ** (range[0] + pos * (range[1] - range[0]));
+  readout(inputs.pos, pct(c));
+  const curve = (f) => grid.map((t) => ({t, v: f(t)})).filter((d) => Number.isFinite(d.v) && d.v < 1e24);
+  const pure = curve((t) => ignitionImpure(rx, t, z, 0, {brems: false}));
+  const pureB = curve((t) => ignitionImpure(rx, t, z, 0, {brems}));
+  const dil = curve((t) => ignitionImpure(rx, t, z, c, {brems: false}));
+  const full = curve((t) => ignitionImpure(rx, t, z, c, {brems, lines}));
+  const min = (d) => d.length ? d.reduce((a, b) => (b.v < a.v ? b : a)) : null;
+  const m0 = min(pure), mB = min(pureB), mF = min(full);
+  const series = [
+    {d: pure, stroke: GREY, dash: "5,4", w: 1.8, label: "pure D–T, no radiation"},
+    {d: pureB, stroke: INK, w: 2, label: brems ? "pure D–T + bremsstrahlung" : null},
+    {d: dil, stroke: BLUE, dash: "7,4", w: 2.2, label: "with impurity: dilution only"},
+    {d: full, stroke: ORANGE, w: 3, label: brems ? (lines ? "dilution + bremsstrahlung + lines" : "dilution + bremsstrahlung") : null},
+  ];
+  const left = sub(Plot.plot({
+    width: 560, height: 390, marginLeft: 66, marginRight: 14, marginTop: 30, marginBottom: 52, style: font, clip: true,
+    x: {type: "log", domain: [2, 100], label: "k_B T [keV]", ticks: [2, 5, 10, 20, 50, 100], tickFormat: String, labelArrow: "none", labelAnchor: "center", labelOffset: 40},
+    y: {type: "log", domain: [1e21, 1e23], label: "ignition n_e k_B T τ_E [keV s m^−3]", ticks: [1e21, 1e22, 1e23], tickFormat: pow, labelArrow: "none"},
+    marks: [
+      ...series.filter((s) => s.label).map((s) => Plot.line(s.d, {x: "t", y: "v", stroke: s.stroke, strokeWidth: s.w, strokeDasharray: s.dash})),
+      Plot.dot([m0, mB, mF].filter(Boolean), {x: "t", y: "v", r: 5, fill: (d) => d === mF ? ORANGE : d === mB ? INK : GREY}),
+      Plot.gridY({stroke: GREY, strokeOpacity: 0.25}),
+    ],
+  }));
+  // Right: power per n_e^2 at the same temperatures: alpha heating against the radiation losses.
+  const fuel = 1 - z * c;
+  const pw = (f) => grid.map((t) => ({t, v: f(t)}));
+  const alpha = pw((t) => fuel * fuel / 4 * reactivity(rx, "DT", t) * E_ALPHA * KEV);
+  const brF = pw((t) => C_B * fuel * Math.sqrt(t));
+  const imp = pw((t) => lines ? c * coolingRate(z, t) : C_B * z * z * c * Math.sqrt(t));
+  const right = sub(Plot.plot({
+    width: 380, height: 390, marginLeft: 62, marginRight: 12, marginTop: 30, marginBottom: 52, style: font, clip: true,
+    x: {type: "log", domain: [2, 100], label: "k_B T [keV]", ticks: [2, 5, 10, 20, 50, 100], tickFormat: String, labelArrow: "none", labelAnchor: "center", labelOffset: 40},
+    y: {type: "log", domain: [1e-38, 1e-34], label: "power / n_e^2 [W m^3]", ticks: [1e-38, 1e-37, 1e-36, 1e-35, 1e-34], tickFormat: pow, labelArrow: "none"},
+    marks: [
+      Plot.line(alpha, {x: "t", y: "v", stroke: GREEN, strokeWidth: 3}),
+      brems ? Plot.line(brF, {x: "t", y: "v", stroke: INK, strokeWidth: 2}) : null,
+      brems ? Plot.line(imp, {x: "t", y: "v", stroke: lines ? PURPLE : ORANGE, strokeWidth: 2.4}) : null,
+      Plot.gridY({stroke: GREY, strokeOpacity: 0.25}),
+    ],
+  }));
+  const key = (color, text, dash) => html`<span style="white-space:nowrap"><span style="display:inline-block;width:1.4rem;vertical-align:middle;border-top:3px ${dash ? "dashed" : "solid"} ${color}"></span> ${text}</span>`;
+  const ratio = mF && m0 ? mF.v / m0.v : Infinity;
+  return html`<div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="width:58%">${left}</div><div style="width:40%">${right}</div></div>
+  <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:${MUTED};margin:0 0.4rem;gap:1rem">
+    <div style="display:flex;flex-wrap:wrap;gap:0.2rem 0.9rem;max-width:56%">
+      ${series.filter((s) => s.label).map((s) => key(s.stroke, s.label, s.dash))}
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:0.2rem 0.9rem;justify-content:flex-end;max-width:42%">
+      ${key(GREEN, "α heating")}${brems ? key(INK, "fuel bremsstrahlung") : ""}${brems ? key(lines ? PURPLE : ORANGE, lines ? "impurity: lines + bremsstrahlung" : "impurity bremsstrahlung") : ""}
+    </div>
+  </div>
+  <div style="font-size:0.8rem;color:${INK};margin:0.3rem 0.4rem 0">
+    fuel <i>n</i><sub>D</sub> + <i>n</i><sub>T</sub> = ${(100 * fuel).toFixed(1)} % of <i>n</i><sub>e</sub> ·
+    <i>p</i><sub>fus</sub> × ${(fuel * fuel).toFixed(3)} ·
+    <i>Z</i><sub>eff</sub> = ${(fuel + z * z * c).toFixed(2)} ·
+    ${mF ? html`minimum ${(mF.v / 1e21).toFixed(2)} × 10<sup>21</sup> at ${mF.t.toFixed(1)} keV, <b style="color:${ORANGE}">×${ratio.toFixed(2)}</b> of pure D–T` : html`<b style="color:${ORANGE}">no ignition at any temperature</b>`}
+  </div>
+</div>`;
+}
+
+const inputs = {
+  species: Inputs.select(Object.keys(SPECIES), {value: "Be (Z = 4)", label: "impurity"}),
+  // Position on the species' logarithmic concentration range.
+  pos: Inputs.range([0, 1], {value: start(SPECIES["Be (Z = 4)"]), step: 0.005, label: html`<i>n</i><sub>Z</sub>/<i>n</i><sub>e</sub>`}),
+  brems: Inputs.toggle({label: "bremsstrahlung", value: true}),
+  lines: Inputs.toggle({label: "line radiation", value: true}),
+};
+// A new species gets its own concentration range and default.
+inputs.species.addEventListener("input", () => { inputs.pos.value = start(SPECIES[inputs.species.value]); });
+run(inputs, draw);
+</script>
+</body>
+</html>

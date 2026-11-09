@@ -153,6 +153,48 @@ export function ignitionDiluted(rx, t, impurities = []) {
   return net > 0 && fuel > 0 ? 1.5 * (1 + ions) * t * t * KEV / net : Infinity;
 }
 
+// Coronal radiative cooling rate L_Z (W m^3) of one impurity species, all radiation of
+// its ions (lines, recombination, bremsstrahlung): p_Z = n_e n_Z L_Z(T_e). Fits of
+// Mavrin, Radiat. Eff. Defects Solids 173, 388 (2018), valid 0.1-100 keV, as tabulated in
+// cfspopcon (MIT): log10 L_Z = sum_k c_k (log10 T)^k on temperature bins (borders in keV).
+export const MAVRIN = {
+  4: {name: "Be", borders: [0, 100], c: [[-3.4765e1, 3.7270e-2, 3.8363e-1, -2.1384e-1, 4.1690e-2]]},
+  6: {name: "C", borders: [0, 0.5, 100], c: [[-3.4738e1, -5.0085, -1.2788e1, -1.6637e1, -7.2904],
+    [-3.4174e1, -3.6687e-1, 6.8856e-1, -2.9191e-1, 4.4470e-2]]},
+  7: {name: "N", borders: [0, 0.5, 2, 100], c: [[-3.4065e1, -2.3614, -6.0605, -1.1570e1, -6.9621],
+    [-3.3899e1, -5.9668e-1, 7.6272e-1, -1.7160e-1, 5.8770e-2],
+    [-3.3913e1, -5.2628e-1, 7.0047e-1, -2.2790e-1, 2.8350e-2]]},
+  8: {name: "O", borders: [0, 0.3, 100], c: [[-3.7257e1, -1.5635e1, -1.7141e1, -5.3765, 0],
+    [-3.3640e1, -7.6211e-1, 7.9655e-1, -2.0850e-1, 1.4360e-2]]},
+  74: {name: "W", borders: [0, 1.5, 4, 100], c: [[-3.0374e1, 3.8304e-1, -9.5126e-1, -1.0311, -1.0103e-1],
+    [-3.0238e1, -2.9208, 2.2824e1, -6.3303e1, 5.1849e1],
+    [-3.2153e1, 5.2499, -6.2740, 2.6627, -3.6759e-1]]},
+};
+
+export function coolingRate(z, t) {
+  const {borders, c} = MAVRIN[z];
+  const tt = Math.min(Math.max(t, 0.1), 100), x = Math.log10(tt);
+  let i = 0;
+  while (i < c.length - 1 && tt >= borders[i + 1]) i++;
+  return 10 ** c[i].reduce((sum, ck, k) => sum + ck * x ** k, 0);
+}
+
+// Ignition n_e T tau_E (keV s m^-3) of 50:50 D-T with one impurity (charge z, n_Z/n_e = c):
+// quasineutral fuel n_e (1 - z c), W = 3/2 (n_e + n_i) T, alpha heating against
+// transport, fuel bremsstrahlung (Z = 1) and, if lines, the impurity's coronal radiation,
+// else its bremsstrahlung as a fully stripped ion. brems = false drops all radiation.
+export function ignitionImpure(rx, t, z, c, {brems = true, lines = true} = {}) {
+  const fuel = 1 - z * c, ions = fuel + c;
+  if (fuel <= 0) return Infinity;
+  let loss = 0;
+  if (brems) {
+    loss = C_B * fuel * Math.sqrt(t);
+    loss += lines ? c * coolingRate(z, t) : C_B * z * z * c * Math.sqrt(t);
+  }
+  const net = fuel * fuel / 4 * reactivity(rx, "DT", t) * E_ALPHA * KEV - loss;
+  return net > 0 ? 1.5 * (1 + ions) * t * t * KEV / net : Infinity;
+}
+
 // --- IPB98(y,2) ELMy H-mode thermal energy confinement time, eq. (20) of the ITER Physics Basis (1999)
 export const IPB98 = {C: 0.0562, I: 0.93, B: 0.15, n: 0.41, P: -0.69, R: 1.97, eps: 0.58, kappa: 0.78, M: 0.19};
 

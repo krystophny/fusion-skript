@@ -56,6 +56,9 @@ out.peakQ1 = T.map(t => m.peakTripleProduct(rx, t, 1, {zeff: 3.4}));
 out.peakFlat = T.map(t => m.peakTripleProduct(rx, t, 5, {zeff: 1, zbar: 1, etaAbs: 1, nuN: 0, nuT: 0}));
 out.lam = m.profileFactors(rx, 20, 1, 1);
 out.w = m.dilution([[74, 1e-3]]);
+out.cool = Object.fromEntries([4, 6, 7, 8, 74].map(z => [z, T.map(t => m.coolingRate(z, t))]));
+out.impure = [[4, 0.02, true, true], [6, 0.01, true, false], [74, 3e-5, true, true], [8, 0.005, false, true]]
+  .map(([z, c, b, l]) => T.map(t => m.ignitionImpure(rx, t, z, c, {brems: b, lines: l})));
 out.fa = [1, 5, 10].map(m.fAlpha);
 out.qeng = [m.qEng(5.25, 0.4, 0.4), m.qEng(11.5, 0.4, 0.4)];
 out.tau = Object.fromEntries(Object.entries(presets).map(([k, p]) => [k, m.tauIPB98(p)]));
@@ -167,3 +170,27 @@ def test_ipb98_presets_reproduce_published_times(js):
     for name, p in presets.items():
         if "tau_published_s" in p:
             assert js["tau"][name] == pytest.approx(p["tau_published_s"], rel=0.02), name
+
+
+def test_impurity_radiation_matches_python(js):
+    for z in (4, 6, 7, 8, 74):
+        assert js["cool"][str(z)] == pytest.approx(list(pb.cooling_rate(z, TEMPS)), rel=1e-9)
+    cases = [(4, 0.02, True, True), (6, 0.01, True, False), (74, 3e-5, True, True), (8, 0.005, False, True)]
+    for got, (z, c, b, l) in zip(js["impure"], cases):
+        want = pb.ignition_impure(np.array(TEMPS), z, c, brems=b, lines=l)
+        assert [g if g is not None else np.inf for g in got] == pytest.approx(list(want), rel=1e-9)
+
+
+def test_cooling_rates_approach_bremsstrahlung_of_stripped_light_ions():
+    """At 20-50 keV Be, C, N and O are fully stripped: their coronal rate is nearly pure bremsstrahlung."""
+    for z in (4, 6, 7, 8):
+        for t in (20.0, 50.0):
+            assert pb.cooling_rate(z, t) == pytest.approx(pb.C_B * z * z * np.sqrt(t), rel=0.3)
+    # Tungsten keeps bound electrons: lines exceed its bremsstrahlung tenfold.
+    assert pb.cooling_rate(74, 10.0) > 10 * pb.C_B * 74**2 * np.sqrt(10.0)
+
+
+def test_no_impurity_reduces_to_pure_fuel():
+    t = np.array(TEMPS)
+    assert pb.ignition_impure(t, 74, 0.0, brems=False) == pytest.approx(pb.triple_product(t))
+    assert pb.ignition_impure(t, 4, 0.0) == pytest.approx(pb.triple_product(t, brems=True))

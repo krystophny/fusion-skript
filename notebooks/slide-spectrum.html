@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where a fusion plasma radiates</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, d3, html, font, sub, pow, readout, run} from "./widget.js";
+import {C_B} from "./fusion.js";
+import {INK, MUTED, GREY, BLUE, ORANGE, GREEN, PURPLE, SKY} from "./plotting.js";
+
+// Photon energy E in eV on a log axis; wavelength lambda = 1239.84 eV nm / E.
+const HC = 1239.84;                 // eV nm
+const CYC = 1.15768e-4;             // hbar e B / m_e in eV per tesla
+const DOM = [1e-4, 1e5];
+// Hydrogen-like Lyman-alpha, Bohr model: 13.6 eV Z^2 (1 - 1/4).
+const LY = [{s: "Be", z: 4, c: GREEN}, {s: "C", z: 6, c: INK}, {s: "N", z: 7, c: BLUE}, {s: "O", z: 8, c: SKY}]
+  .map((d) => ({...d, E: 10.2 * d.z * d.z}));
+// Tungsten quasi-continuum near 4-7 nm, measured in ASDEX Upgrade (Pütterich et al. 2008).
+const WBAND = [HC / 7, HC / 4];
+// Visible light 380-750 nm as a colour strip.
+const VIS = d3.range(0, 60).map((k) => {
+  const lam = 380 + (750 - 380) * k / 59;
+  return {E1: HC / (lam + 3.2), E2: HC / lam, color: d3.interpolateSpectral(1 - k / 59)};
+});
+
+function draw({logT, B, zeff}, inputs) {
+  const T = 10 ** logT;                       // keV
+  readout(inputs.logT, `${T < 1 ? T.toFixed(2) : T.toFixed(1)} keV`);
+  readout(inputs.B, `${B.toFixed(1)} T`);
+  readout(inputs.zeff, zeff.toFixed(1));
+  const Tev = 1000 * T;
+  // Kramers bremsstrahlung, Gaunt factor 1: E dP/dE = C_B Z_eff n_e^2 sqrt(T) (E/T) exp(-E/T), per n_e^2.
+  const grid = d3.range(0, 601).map((k) => 10 ** (Math.log10(DOM[0]) + (Math.log10(DOM[1]) - Math.log10(DOM[0])) * k / 600));
+  const brems = grid.map((E) => ({E, p: C_B * zeff * Math.sqrt(T) * (E / Tev) * Math.exp(-E / Tev)})).filter((d) => d.p > 1e-42);
+  const top = C_B * zeff * Math.sqrt(T) * Math.exp(-1);
+  const yDom = [top * 1e-6, top * 30];
+  const harm = d3.range(1, 11).map((n) => ({n, E: n * CYC * B}));
+  const plot = sub(Plot.plot({
+    width: 960, height: 400, marginLeft: 70, marginRight: 16, marginTop: 44, marginBottom: 52, style: font, clip: true,
+    x: {type: "log", domain: DOM, label: "photon energy [eV]", ticks: [1e-4, 1e-3, 1e-2, 0.1, 1, 10, 100, 1e3, 1e4, 1e5], tickFormat: pow, labelArrow: "none", labelAnchor: "center", labelOffset: 40},
+    y: {type: "log", domain: yDom, label: "E dP/dE per n_e^2 [W m^3]", tickFormat: pow, ticks: 4, labelArrow: "none"},
+    marks: [
+      Plot.rectX(VIS, {x1: "E1", x2: "E2", y1: yDom[0], y2: yDom[1], fill: "color", fillOpacity: 0.35}),
+      Plot.rectX([0], {x1: WBAND[0], x2: WBAND[1], y1: yDom[0], y2: yDom[1], fill: PURPLE, fillOpacity: 0.18}),
+      Plot.ruleX(harm, {x: "E", y1: yDom[0], y2: yDom[1], stroke: "#D62728", strokeOpacity: (d) => 1 / d.n ** 0.6, strokeWidth: 2}),
+      Plot.ruleX(LY, {x: "E", y1: yDom[0], y2: yDom[1], stroke: "c", strokeWidth: 2.2}),
+      Plot.areaY(brems, {x: "E", y1: yDom[0], y2: "p", fill: ORANGE, fillOpacity: 0.3}),
+      Plot.line(brems, {x: "E", y: "p", stroke: ORANGE, strokeWidth: 3}),
+      Plot.ruleX([Tev], {stroke: ORANGE, strokeDasharray: "4,3"}),
+      Plot.text([0], {x: Tev, y: yDom[1], dy: 12, dx: 4, textAnchor: "start", text: () => "k_BT", fill: ORANGE, fontSize: 14}),
+      ...LY.map((d, i) => Plot.text([d], {x: "E", y: yDom[1], dy: 12 + 16 * i, dx: 4, textAnchor: "start", text: (d) => `${d.s} Lyα`, fill: d.c, fontSize: 12})),
+      Plot.text([0], {x: Math.sqrt(WBAND[0] * WBAND[1]), y: yDom[0], dy: -40, text: () => "W", fill: PURPLE, fontSize: 15, fontWeight: 700}),
+      Plot.text([0], {x: harm[0].E * 3, y: yDom[1], dy: 12, text: () => "cyclotron nħω_ce", fill: "#D62728", fontSize: 13}),
+      Plot.text([0], {x: 2.3, y: yDom[0], dy: -14, text: () => "visible", fill: MUTED, fontSize: 12}),
+      // Wavelength along the top.
+      Plot.text([[1e-3, "1 mm"], [1.24e-3 * 10, "100 µm"], [1.24, "1 µm"], [124, "10 nm"], [1.24e4, "0.1 nm"]],
+        {x: (d) => d[0], y: yDom[1], dy: -22, text: (d) => d[1], fill: MUTED, fontSize: 12, clip: false}),
+    ],
+  }));
+  // dP/dE is flat up to k_BT and falls as exp(-E/k_BT): fraction of the power above Emin.
+  const share = (Emin) => Math.exp(-Emin / Tev);
+  return html`<div>${plot}
+  <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:${MUTED};margin:0 0.4rem;gap:1rem">
+    <span><b style="color:${ORANGE}">bremsstrahlung</b>: continuum up to a few <i>k</i><sub>B</sub><i>T</i>, ${(100 * share(1000)).toFixed(0)} % of its power above 1 keV (X-rays) — leaves the plasma</span>
+    <span><b style="color:#D62728">cyclotron</b> at ${(1e3 * CYC * B).toFixed(2)} meV × n (mm waves) — reabsorbed</span>
+    <span><b style="color:${PURPLE}">lines</b>: bound electrons of impurities</span>
+  </div>
+  <div style="font-size:0.62rem;color:${MUTED};margin:0.1rem 0.4rem">Kramers spectrum, Gaunt factor 1; lines and harmonics mark positions only (H-like Lyα from the Bohr model; W quasi-continuum 4–7 nm: Pütterich et al., Plasma Phys. Control. Fusion 50, 085016, 2008).</div>
+</div>`;
+}
+
+run({
+  logT: Inputs.range([-1, 1.5], {value: 1, step: 0.01, label: html`<i>k</i><sub>B</sub><i>T</i><sub>e</sub>`}),
+  B: Inputs.range([1, 12], {value: 5.3, step: 0.1, label: html`<i>B</i>`}),
+  zeff: Inputs.range([1, 4], {value: 1.7, step: 0.1, label: html`<i>Z</i><sub>eff</sub>`}),
+}, draw);
+</script>
+</body>
+</html>

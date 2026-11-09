@@ -232,6 +232,26 @@ def alpha_brems():
     return ti
 
 
+def cooling_rates():
+    """Coronal cooling rate L_Z(T) (Mavrin 2018) against bremsstrahlung of the stripped ion, Z^2 C_B sqrt(T)."""
+    t = np.geomspace(0.5, 100, 600)
+    fig, ax = plt.subplots(figsize=HALF)
+    for z, name, color in ((4, "Be", GREEN), (6, "C", INK), (8, "O", BLUE), (74, "W", PURPLE_W)):
+        lz = pb.cooling_rate(z, t)
+        ax.loglog(t, lz, color=color, lw=2.4)
+        ax.loglog(t, pb.C_B * z * z * np.sqrt(t), color=color, lw=1.2, ls=(0, (4, 3)))
+        ax.text(110, lz[-1], name, color=color, fontsize=16, va="center", clip_on=False)
+    ax.set_xlim(0.5, 100)
+    ax.xaxis.set_major_formatter(PLAIN)
+    ax.set_ylim(1e-36, 1e-30)
+    ax.set_xlabel(r"$k_BT_e$ [keV]")
+    ax.set_ylabel(r"$L_Z$ [W m$^3$]")
+    ax.text(.04, .04, "dashed: bremsstrahlung only", transform=ax.transAxes, fontsize=14, color=MUTED)
+    _axes(ax)
+    fig.subplots_adjust(left=.2, right=.88, bottom=.15, top=.97)
+    save(fig, "cooling_rates")
+
+
 def q_eng_plot():
     """Engineering gain against plasma gain for two efficiency products."""
     q = np.geomspace(1, 100, 400)
@@ -391,5 +411,6 @@ if __name__ == "__main__":
     q_eng_plot()
     alpha_fraction_plot()
     impurity_dilution()
+    cooling_rates()
     n_tau_plane()
     print("wrote density_scaling, q_eng, alpha_fraction, impurity_dilution, fixed_pressure, n_tau_plane")

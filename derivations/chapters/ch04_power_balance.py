@@ -120,6 +120,52 @@ def ignition_diluted(t, impurities=()):
     return out
 
 
+# Coronal cooling rates L_Z (W m^3), all radiation of the impurity ions: Mavrin,
+# Radiat. Eff. Defects Solids 173, 388 (2018), as tabulated in cfspopcon (MIT);
+# log10 L_Z = sum_k c_k (log10 T[keV])^k on temperature bins, valid 0.1-100 keV.
+MAVRIN = {
+    4: ((0, 100), ((-3.4765e1, 3.7270e-2, 3.8363e-1, -2.1384e-1, 4.1690e-2),)),
+    6: ((0, 0.5, 100), ((-3.4738e1, -5.0085, -1.2788e1, -1.6637e1, -7.2904),
+                        (-3.4174e1, -3.6687e-1, 6.8856e-1, -2.9191e-1, 4.4470e-2))),
+    7: ((0, 0.5, 2, 100), ((-3.4065e1, -2.3614, -6.0605, -1.1570e1, -6.9621),
+                           (-3.3899e1, -5.9668e-1, 7.6272e-1, -1.7160e-1, 5.8770e-2),
+                           (-3.3913e1, -5.2628e-1, 7.0047e-1, -2.2790e-1, 2.8350e-2))),
+    8: ((0, 0.3, 100), ((-3.7257e1, -1.5635e1, -1.7141e1, -5.3765, 0.0),
+                        (-3.3640e1, -7.6211e-1, 7.9655e-1, -2.0850e-1, 1.4360e-2))),
+    74: ((0, 1.5, 4, 100), ((-3.0374e1, 3.8304e-1, -9.5126e-1, -1.0311, -1.0103e-1),
+                            (-3.0238e1, -2.9208, 2.2824e1, -6.3303e1, 5.1849e1),
+                            (-3.2153e1, 5.2499, -6.2740, 2.6627, -3.6759e-1))),
+}
+
+
+def cooling_rate(z, t):
+    """Coronal cooling rate L_Z(T) in W m^3 (Mavrin 2018), clamped to 0.1-100 keV."""
+    borders, coeffs = MAVRIN[z]
+    t = np.clip(np.asarray(t, float), 0.1, 100)
+    i = np.clip(np.searchsorted(borders, t, side="right") - 1, 0, len(coeffs) - 1)
+    x = np.log10(t)
+    return 10 ** np.array([np.polynomial.polynomial.polyval(xx, coeffs[k]) for xx, k in zip(np.ravel(x), np.ravel(i))]).reshape(np.shape(t))
+
+
+def ignition_impure(t, z, c, brems=True, lines=True):
+    """Ignition n_e T tau_E (keV s m^-3), 50:50 D-T with one impurity (charge z, n_Z/n_e = c).
+
+    Fuel n_e (1 - z c), W = 3/2 (n_e + n_i) T; losses: fuel bremsstrahlung and either the
+    impurity's coronal radiation (lines) or its bremsstrahlung as a fully stripped ion.
+    """
+    t = np.asarray(t, float)
+    fuel = 1 - z * c
+    ions = fuel + c
+    loss = np.zeros_like(t)
+    if brems:
+        loss = C_B * fuel * np.sqrt(t) + (c * cooling_rate(z, t) if lines else C_B * z * z * c * np.sqrt(t))
+    net = fuel**2 / 4 * bosch_hale("DT", t) * E_ALPHA * KEV - loss
+    out = np.full_like(t, np.inf)
+    ok = (net > 0) & (fuel > 0)
+    out[ok] = 1.5 * (1 + ions) * t[ok] ** 2 * KEV / net[ok]
+    return out
+
+
 def q_eng(q, eta_th=0.4, eta_aux=0.4):
     """Engineering gain: all fusion and heating power to heat at eta_th; heating from the grid at eta_aux."""
     return eta_th * eta_aux * (np.asarray(q, float) + 1) - 1
