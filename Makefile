@@ -52,16 +52,14 @@ public/slides/%.pdf: slides/%.typ $(TYP_SHARED) $(S)/figures $(MEDIA)
 $(S)/media: $(MEDIA) scripts/prepare-media.py
 	$(PYTHON) scripts/prepare-media.py public ; touch $@
 
-# One Quarto project directory: renders run one at a time.
-build/notebooks/.staged: $(NB_SHARED) $(QMDS) $(S)/derivations
-	mkdir -p build/notebooks/data
-	cp -p notebooks/_quarto.yml notebooks/*.qmd notebooks/*.js notebooks/*.json notebooks/*.css notebooks/*.html build/notebooks/
-	xargs -a notebooks/data-files.txt cp -p -t build/notebooks/data/
-	touch $@
-public/notebooks/%.html: notebooks/%.qmd $(NB_SHARED) build/notebooks/.staged
-	@mkdir -p $(@D)
-	cd build/notebooks && flock ../notebooks.lock quarto render $*.qmd --quiet
-	cp build/notebooks/_site/$*.html $@
+# Each notebook renders in its own staging copy, so renders run in parallel
+# and a change to one notebook re-renders only that one.
+public/notebooks/%.html: notebooks/%.qmd $(NB_SHARED) $(S)/derivations
+	rm -rf build/notebooks/$* ; mkdir -p build/notebooks/$*/data $(@D)
+	cp -p notebooks/_quarto.yml $< notebooks/*.js notebooks/*.json notebooks/*.css notebooks/*.html build/notebooks/$*/
+	xargs -a notebooks/data-files.txt cp -p -t build/notebooks/$*/data/
+	cd build/notebooks/$* && quarto render $*.qmd --quiet
+	cp build/notebooks/$*/_site/$*.html $@
 
 $(S)/present: $(DECK_PDFS) $(NOTEBOOK_HTML) $(S)/media scripts/build-present.py
 	$(PYTHON) scripts/build-present.py --course "Fusion Physics" --short-name Fusion --strict-metadata
