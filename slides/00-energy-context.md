@@ -12,8 +12,10 @@ HTML player links according to the shared teaching rules.
 ## Opening sequence
 
 The opening connects the country-level GDP/energy plot (page 3), household
-stove examples (page 4), and three matching "Living standards" pages for 1981,
-2000 and 2024 (pages 5–7), before "Micro and macro" on page 8. All income
+stove examples (page 4), and one "Living standards · 2024" page (page 5),
+before "Micro and macro" on page 6. The 1981 and 2000 pages were removed
+from the deck on 2026-11-09 because the 2026 lectures did not show them; their
+figures stay in the reference chapter. All income
 plots use the same four fixed bands and population axis: below 3, 3–12,
 12–48 and at least 48 in 2021 PPP USD per person per day. These are teaching
 bands anchored to the current $3 extreme-poverty line, with fourfold steps;
@@ -36,8 +38,9 @@ distribution's per-person daily scale and from national GDP per person.
 
 ## Consumption boundaries
 
-After "Micro and macro", add one "Energy consumption and electricity" page
-before the energy-mix page. Compare Austria's gross inland, final energy,
+The "Energy consumption and electricity" page was removed from the deck on
+2026-11-09 because the 2026 lectures did not show it; its figure stays in the
+reference chapter. Compare Austria's gross inland, final energy,
 final electricity and household electricity on a common per-person daily
 scale using the preliminary 2025 balance and its annual-average population.
 Electricity and household electricity are nested subsets, not conversion

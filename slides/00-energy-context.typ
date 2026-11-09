@@ -42,36 +42,10 @@
   EIA primary energy: traditional biomass incomplete
 ]
 
-#slide(section: "standards-living", title: [Living standards · 1981])[
-  #at(1, 9, y: 0mm, text(fill: muted)[World population · 4.52 billion])
-  #at(1, 9, y: 12mm, image("/derivations/build/fig/income-levels-1981.svg",
-    width: cols(9), alt: "1981 world population in four fixed income or consumption bands: 2.13, 1.26, 0.87 and 0.26 billion. Thresholds: 3, 12 and 48 in 2021 PPP USD per person per day; bars also show population shares. Same population axis in all three years."))
-  #at(10, 3, y: 16mm, named(text(size: result-size, [—]),
-    [Electricity access \ no series for 1981]))
-  #at(10, 3, y: 72mm, named(text(size: result-size, [—]),
-    [Primary energy \ comparison omitted]))
-  #at(1, 12, y: 125mm, align(center,
-    [Electricity access → lighting, refrigeration, cooking, heating?]))
-  #at(1, 12, y: 144mm, living-standards-sources)
-]
-
-#slide(section: "standards-living", title: [Living standards · 2000])[
-  #at(1, 9, y: 0mm, text(fill: muted)[World population · 6.16 billion])
-  #at(1, 9, y: 12mm, image("/derivations/build/fig/income-levels-2000.svg",
-    width: cols(9), alt: "2000 world population in four fixed income or consumption bands: 2.23, 2.50, 0.94 and 0.48 billion. Thresholds: 3, 12 and 48 in 2021 PPP USD per person per day; bars also show population shares. Same population axis in all three years."))
-  #at(10, 3, y: 16mm, named(text(size: result-size, $78.2 %$),
-    [Electricity access \ world]))
-  #at(10, 3, y: 72mm, named(text(size: result-size, $approx 165 times$),
-    [Primary energy \ per person \ Austria / Ethiopia]))
-  #at(1, 12, y: 125mm, align(center,
-    [Electricity access → lighting, refrigeration, cooking, heating?]))
-  #at(1, 12, y: 144mm, living-standards-sources)
-]
-
 #slide(section: "standards-living", title: [Living standards · 2024])[
   #at(1, 9, y: 0mm, text(fill: muted)[World population · 8.14 billion])
   #at(1, 9, y: 12mm, image("/derivations/build/fig/income-levels-2024.svg",
-    width: cols(9), alt: "2024 world population in four fixed income or consumption bands: 0.82, 3.96, 2.40 and 0.95 billion. Thresholds: 3, 12 and 48 in 2021 PPP USD per person per day; bars also show population shares. Same population axis in all three years."))
+    width: cols(9), alt: "2024 world population in four fixed income or consumption bands: 0.82, 3.96, 2.40 and 0.95 billion. Thresholds: 3, 12 and 48 in 2021 PPP USD per person per day; bars also show population shares."))
   #at(10, 3, y: 16mm, named(text(size: result-size, $91.9 %$),
     [Electricity access \ world]))
   #at(10, 3, y: 72mm, named(text(size: result-size, $approx 50 times$),
@@ -84,16 +58,6 @@
 #slide(section: "energy-demand", title: [Micro and macro])[
   #at(1, 12, y: 0mm, deck-fig("micro_macro"))
   #at(1, 12, y: 128mm, align(center, text(fill: muted)[gross inland = primary; final = delivered to users; Austria 2025, Statistics Austria (preliminary)]))
-]
-#slide(section: "energy-demand", title: [Energy consumption and electricity])[
-  #at(1, 12, y: 0mm, image("/derivations/build/fig/electricity-consumption.svg", width: cols(12),
-    alt: "Austria 2025 preliminary, in kWh per person per day: primary energy 112.0, final energy 87.2, of which electricity 19.0, of which households 6.5. Electricity is 21.8% of final energy; households use 34.2% of electricity and 7.5% of final energy as electricity. Primary minus final comprises 6.4 net transformation loss, 12.0 energy-sector use plus transport losses, and 6.4 non-energy use. Separate assumed 40%-efficient thermal plant without heat recovery: 100 kWh heat gives 40 kWh electricity and 60 kWh rejected heat."))
-  #at(1, 12, y: 140mm, text(size: small-size, fill: muted)[
-    Sources: Statistics Austria,
-    #link("https://www.statistik.at/fileadmin/pages/99/preliminaryEnergyBalancesforAustriaInTerajoule.ods")[2025 energy balance] (rows 8–13, 18),
-    #link("https://www.statistik.at/en/statistics/population-and-society/population/population-stock/annual-average-population")[population]
-    · EIA, #link("https://www.eia.gov/tools/faqs/faq.php?id=107&t=3")[thermal efficiency].
-  ])
 ]
 #slide(section: "energy-demand", title: [Austria's energy mix])[
   #at(1, 12, y: 0mm, deck-fig("austria_mix"))
