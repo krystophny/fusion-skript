@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=7af451bd5cfc8c8f",
+  "pdf": "deck.pdf?v=91331e99b396013d",
   "pages": [
     {
       "src": "page-01.svg?v=d88fe0a72c384221",
@@ -48,10 +48,10 @@
       "background": "light"
     },
     {
-      "src": "page-09.svg?v=bdd8b15d3cb0461a",
+      "src": "page-09.svg?v=98f3fbd16f268bad",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-lawson.html?v=9ba5dbfa25017c90",
+      "widget": "../../notebooks/slide-lawson.html?v=14a4a095bd972611",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
@@ -80,10 +80,10 @@
       "background": "light"
     },
     {
-      "src": "page-14.svg?v=30b9cc859feef8ca",
+      "src": "page-14.svg?v=43be45809731650f",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-limits.html?v=a7acfa948bd0c5d1",
+      "widget": "../../notebooks/slide-limits.html?v=4c4205d0d4a44726",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
@@ -97,10 +97,10 @@
       "background": "light"
     },
     {
-      "src": "page-16.svg?v=db54ce698cf661f0",
+      "src": "page-16.svg?v=d2f0937f3bc9c0d3",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-popcon.html?v=98657762832f4b95",
+      "widget": "../../notebooks/slide-popcon.html?v=d15bc19a9b3f8449",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
@@ -109,10 +109,10 @@
       }
     },
     {
-      "src": "page-17.svg?v=a25e5e6dff062b13",
+      "src": "page-17.svg?v=a1219a581ced5491",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-machines.html?v=31f14b3c67126e96",
+      "widget": "../../notebooks/slide-machines.html?v=344332b8e2ec3aaa",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
