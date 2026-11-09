@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lawson: n τ_E or n T τ_E?</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, d3, html, font, sub, pow, run} from "./widget.js";
+import {reactivity, tripleProduct, E_ALPHA} from "./fusion.js";
+import {INK, GREY, BLUE, ORANGE} from "./plotting.js";
+import rx from "./data/reactivity.json" with {type: "json"};
+
+// Ignition, 50:50 D-T, flat profiles: n T tau_E = 12 T^2 / (<sigma v> E_alpha), optionally with bremsstrahlung.
+const grid = d3.range(0, 4001).map((i) => 2 * 50 ** (i / 4000));
+
+function draw({Tfit, brems, mode}) {
+  const zeff = brems ? 1 : 0;
+  // <sigma v> ~ c T^2, exact at the fit temperature: n T tau_E = 12 / (c E_alpha) is flat, n tau_E falls as 1/T.
+  const c = reactivity(rx, "DT", Tfit) / Tfit ** 2;
+  const flat = 12 / (c * E_ALPHA);
+  const rows = grid.map((T) => {
+    const ntt = tripleProduct(rx, T, Infinity, zeff);
+    return {T, ntt, nt: ntt / T, nttA: flat, ntA: flat / T};
+  }).filter((r) => Number.isFinite(r.ntt));
+  const best = (key) => rows.reduce((a, r) => (r[key] < a[key] ? r : a));
+  const minNTT = best("ntt"), minNT = best("nt");
+  const panel = (key, keyA, label, dom, ticks, active) => sub(Plot.plot({
+    width: 470, height: 380, marginLeft: 70, marginRight: 12, marginTop: 34, marginBottom: 56, style: font, clip: true,
+    x: {type: "log", domain: [2, 100], label: "k_B T [keV]", ticks: [2, 5, 10, 20, 50, 100], tickFormat: String, labelArrow: "none", labelAnchor: "center", labelOffset: 40},
+    y: {type: "log", domain: dom, label, ticks, tickFormat: pow, labelArrow: "none"},
+    marks: [
+      Plot.areaY(rows, {x: "T", y1: (r) => Math.min(r[key], dom[1]), y2: (r) => Math.min(r[keyA], dom[1]), fill: GREY, fillOpacity: 0.22}),
+      Plot.line(rows, {x: "T", y: keyA, stroke: GREY, strokeWidth: 2, strokeDasharray: "6,4"}),
+      Plot.line(rows, {x: "T", y: key, stroke: active ? ORANGE : INK, strokeWidth: 2.6}),
+      Plot.dot([key === "ntt" ? minNTT : minNT], {x: "T", y: key, r: 6, fill: active ? ORANGE : INK}),
+      Plot.text([key === "ntt" ? minNTT : minNT], {x: "T", y: key, dy: 28, fill: active ? ORANGE : INK, stroke: "white", strokeWidth: 5, paintOrder: "stroke", fontSize: 15,
+        text: (r) => `minimum ${r.T.toFixed(1)} keV`}),
+      Plot.ruleX([Tfit], {stroke: BLUE, strokeDasharray: "2,3"}),
+      Plot.frame({stroke: active ? ORANGE : "transparent", strokeWidth: 2}),
+    ],
+  }));
+  return html`<div><div style="display:flex;justify-content:space-between">
+  ${panel("nt", "ntA", "n τ_E [s m^−3]", [5e19, 3e21], [1e20, 1e21], mode === "fixed density")}
+  ${panel("ntt", "nttA", "n k_B T τ_E [keV s m^−3]", [1e21, 3e22], [1e21, 1e22], mode === "fixed pressure")}
+</div>
+<div style="display:flex;gap:1.2rem;font-size:0.72rem;margin:0.1rem 0.6rem;color:#526175">
+<span><span style="color:#17202A">━</span> exact ⟨σv⟩ (Bosch–Hale)</span>
+<span><span style="color:#9AA5B1">╍</span> ⟨σv⟩ ≈ c T², exact at the blue line</span>
+<span style="margin-left:auto">${mode === "fixed pressure"
+  ? html`β limit, <i>p</i> fixed: <i>τ</i><sub>E</sub> = 2 <i>nTτ</i><sub>E</sub>/<i>p</i> → lowest <i>nTτ</i><sub>E</sub> at ${minNTT.T.toFixed(1)} keV`
+  : html`density limit, <i>n</i> fixed: <i>τ</i><sub>E</sub> = <i>nτ</i><sub>E</sub>/<i>n</i> → lowest <i>nτ</i><sub>E</sub> at ${minNT.T.toFixed(1)} keV`}</span>
+</div></div>`;
+}
+
+run({
+  Tfit: Inputs.range([5, 40], {value: 13.5, step: 0.5, label: "fit T [keV]"}),
+  brems: Inputs.toggle({label: "bremsstrahlung", value: false}),
+  mode: Inputs.radio(["fixed pressure", "fixed density"], {value: "fixed pressure", label: "machine holds"}),
+}, draw);
+</script>
+</body>
+</html>

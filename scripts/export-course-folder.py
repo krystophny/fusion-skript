@@ -68,7 +68,7 @@ def export(repo, site, dest):
     notebooks = repo / "notebooks"
     if notebooks.is_dir():
         wanted.update({"notebooks/" + p.name: p for p in notebooks.iterdir() if p.is_file()
-                       and (p.suffix in {".qmd", ".js", ".json", ".css"} or p.name == "_quarto.yml")})
+                       and (p.suffix in {".qmd", ".html", ".js", ".json", ".css"} or p.name == "_quarto.yml")})
         listed = notebooks / "data-files.txt"
         for line in (listed.read_text().split() if listed.is_file() else []):
             wanted["notebooks/data/" + Path(line).name] = repo / line

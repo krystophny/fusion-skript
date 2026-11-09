@@ -1,55 +1,46 @@
----
-title: "Operating space of a D–T device"
-format:
-  html:
-    css: slide-widget.css
-    page-layout: custom
-    title-block-style: none
-    include-after-body: slide-widget.html
----
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operating space of a D–T device</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, html, font, sub, readout, run} from "./widget.js";
+import {reactivity, KEV, E_FUS, E_ALPHA, C_B} from "./fusion.js";
+import {INK, MUTED, GREY, BLUE, ORANGE} from "./plotting.js";
+import rx from "./data/reactivity.json" with {type: "json"};
 
-```{ojs}
-//| output: false
-import {reactivity, KEV, E_FUS, E_ALPHA, C_B} from "./fusion.js"
-import {INK, MUTED, GREY, BLUE, ORANGE, GREEN} from "./plotting.js"
-rx = FileAttachment("data/reactivity.json").json()
-font = ({fontFamily: "'STIX Two Text', serif", fontSize: "16px", color: INK, background: "transparent"})
 // Approximate published design or machine parameters (see the Sources line); M = 2.5 (D-T).
-devices = ({
+const devices = {
   "ITER (tokamak)": {kind: "tok", R: 6.2, a: 2.0, kappa: 1.7, B: 5.3, I: 15, betaN: 3.0, nmax: 2.0},
   "SPARC (tokamak)": {kind: "tok", R: 1.85, a: 0.57, kappa: 1.75, B: 12.2, I: 8.7, betaN: 3.0, nmax: 9.0},
   "ARC (tokamak)": {kind: "tok", R: 3.3, a: 1.13, kappa: 1.84, B: 9.2, I: 7.8, betaN: 3.0, nmax: 3.0},
   "W7-X (stellarator)": {kind: "stel", R: 5.5, a: 0.53, kappa: 1, B: 2.5, iota: 0.9, betaMax: 0.05, nmax: 3.0},
   "HELIAS 5-B (stellarator)": {kind: "stel", R: 22, a: 1.8, kappa: 1, B: 5.6, iota: 0.9, betaMax: 0.05, nmax: 4.0},
-})
-sub = (svg) => {
-  for (const t of svg.querySelectorAll("text")) {
-    if (!/[_^]/.test(t.textContent)) continue;
-    t.innerHTML = t.textContent
-      .replace(/_(\w+)/g, '<tspan baseline-shift="sub" font-size="72%">$1</tspan>')
-      .replace(/\^(\S+)/g, '<tspan baseline-shift="super" font-size="72%">$1</tspan>');
-  }
-  return svg;
-}
-```
+};
 
-```{ojs}
-//| output: false
-dev = ({...devices[device], B: Bfield})
 // Volume-averaged n = n_e and T (T_e = T_i); parabolic profiles
 // n = n0 (1 - s)^an, T = T0 (1 - s)^aT in s = rho^2 (dV = V ds). Powers in MW.
-an = 0.2
-fuel = 0.85   // n_D + n_T = 0.85 n_e (helium ash and impurities); n_i = 0.87 n_e
-aT = 1.0
-nLine = (1 + an) * Math.sqrt(Math.PI) / 2 * Math.exp(lgamma(an + 1) - lgamma(an + 1.5))  // line / volume average
-lgamma = (z) => {  // Lanczos, z > 0
+const an = 0.2;
+const fuel = 0.85;   // n_D + n_T = 0.85 n_e (helium ash and impurities); n_i = 0.87 n_e
+const aT = 1.0;
+const lgamma = (z) => {  // Lanczos, z > 0
   const g = 7, c = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313,
     -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
   z -= 1; let x = c[0]; for (let i = 1; i < 9; i++) x += c[i] / (z + i);
   const t = z + g + 0.5; return 0.5 * Math.log(2 * Math.PI) + (z + 0.5) * Math.log(t) - t + Math.log(x);
-}
-point = (n20, T) => {
-  const d = dev, n = n20 * 1e20, V = 2 * Math.PI ** 2 * d.R * d.a * d.a * d.kappa, K = 24;
+};
+const nLine = (1 + an) * Math.sqrt(Math.PI) / 2 * Math.exp(lgamma(an + 1) - lgamma(an + 1.5));  // line / volume average
+const Tdom = [3, 30];
+
+const model = (d, H) => (n20, T) => {
+  const n = n20 * 1e20, V = 2 * Math.PI ** 2 * d.R * d.a * d.a * d.kappa, K = 24;
   let fus = 0, br = 0;
   for (let k = 0; k < K; k++) {
     const s = (k + 0.5) / K, nk = n * (1 + an) * (1 - s) ** an, Tk = Math.max(T * (1 + aT) * (1 - s) ** aT, 0.05);
@@ -76,19 +67,28 @@ point = (n20, T) => {
     ? Math.max(nl19 / 10 / (d.I / (Math.PI * d.a * d.a)), beta / (d.betaN * 0.01 * d.I / (d.a * d.B)))
     : Math.max(beta / d.betaMax, nl19 / 10 / (0.25 * Math.sqrt(Math.max(Pa + Math.max(Pext, 0), 1e-6) * d.B / (d.a * d.a * d.R))));
   return {Pf, Pa, Pb, P, Pext, Q, tau, beta, W, limit, allowed: limit <= 1};
-}
-Tdom = [3, 30]
-ndom = [0.05, dev.nmax]
-// Sampled on a pixel grid by Plot.raster and Plot.contour (x1..x2, y1..y2).
-cache = (point, new Map())   // rebuilt whenever the device or H changes
-at = (T, n20) => {
-  const key = `${T.toFixed(3)},${n20.toFixed(4)}`;
-  let v = cache.get(key);
-  if (!v) { v = point(n20, T); cache.set(key, v); }
-  return v;
-}
-extent = ({x1: Tdom[0], x2: Tdom[1], y1: ndom[0], y2: ndom[1], width: 110, height: 90})
-best = {
+};
+
+const qLegend = () => Plot.legend({color: {type: "linear", domain: [-1, 1.6], range: ["#FFFFFF", "#7FB2DA"]}, width: 280, label: "gain Q",
+  ticks: [-1, 0, Math.log10(5), 1, Math.log10(30)], tickFormat: (v) => ({"-1": "0.1", "0": "1", "1": "10"}[String(v)] ?? (Math.abs(v - Math.log10(5)) < 1e-9 ? "5" : "30")),
+  style: {fontFamily: "'STIX Two Text', serif", fontSize: "13px"}});
+const qColour = (q) => q === Infinity ? 1.6 : Math.log10(Math.max(q, 0.1));
+
+function draw({device, Bfield, H}, inputs) {
+  readout(inputs.Bfield, `${Bfield.toFixed(1)} T`);
+  readout(inputs.H, H.toFixed(2));
+  const dev = {...devices[device], B: Bfield};
+  const point = model(dev, H);
+  const ndom = [0.05, dev.nmax];
+  // Sampled on a pixel grid by Plot.raster and Plot.contour (x1..x2, y1..y2).
+  const cache = new Map();
+  const at = (T, n20) => {
+    const key = `${T.toFixed(3)},${n20.toFixed(4)}`;
+    let v = cache.get(key);
+    if (!v) { v = point(n20, T); cache.set(key, v); }
+    return v;
+  };
+  const extent = {x1: Tdom[0], x2: Tdom[1], y1: ndom[0], y2: ndom[1], width: 110, height: 90};
   let b = null, ign = false;
   for (let i = 0; i < 110; i++) for (let j = 0; j < 90; j++) {
     const T = Tdom[0] + (Tdom[1] - Tdom[0]) * (i + 0.5) / 110, n20 = ndom[0] + (ndom[1] - ndom[0]) * (j + 0.5) / 90;
@@ -98,20 +98,12 @@ best = {
     if (g.Pext <= 0) { if (!ign || g.Pf > b.Pf) b = cand; ign = true; }
     else if (!ign && (!b || g.Q > b.Q)) b = cand;
   }
-  return {b, ign};
-}
-pLabels = [10, 100, 1000, 3000].map((P) => {
-  const T = Tdom[1], unit = point(1, T).Pf, n20 = Math.sqrt(P / unit);
-  return {T, n20, label: P >= 1000 ? `${P / 1000} GW` : `${P} MW`};
-}).filter((d) => d.n20 > ndom[0] && d.n20 < ndom[1])
-qLegend = Plot.legend({color: {type: "linear", domain: [-1, 1.6], range: ["#FFFFFF", "#7FB2DA"]}, width: 280, label: "gain Q",
-  ticks: [-1, 0, Math.log10(5), 1, Math.log10(30)], tickFormat: (v) => ({"-1": "0.1", "0": "1", "1": "10"}[String(v)] ?? (Math.abs(v - Math.log10(5)) < 1e-9 ? "5" : "30")),
-  style: {fontFamily: "'STIX Two Text', serif", fontSize: "13px"}})
-qColour = (q) => q === Infinity ? 1.6 : Math.log10(Math.max(q, 0.1))
-```
-
-```{ojs}
-html`<div style="display:flex;gap:10px;align-items:flex-start">${sub(Plot.plot({
+  const best = {b, ign};
+  const pLabels = [10, 100, 1000, 3000].map((P) => {
+    const T = Tdom[1], unit = point(1, T).Pf, n20 = Math.sqrt(P / unit);
+    return {T, n20, label: P >= 1000 ? `${P / 1000} GW` : `${P} MW`};
+  }).filter((d) => d.n20 > ndom[0] && d.n20 < ndom[1]);
+  return html`<div style="display:flex;gap:10px;align-items:flex-start">${sub(Plot.plot({
   width: 640, height: 392, marginLeft: 60, marginRight: 64, marginTop: 26, marginBottom: 50, style: font,
   x: {domain: Tdom, label: "⟨k_B T⟩ [keV]", labelAnchor: "center", labelArrow: "none", labelOffset: 40},
   y: {domain: ndom, label: "⟨n⟩ [10^20 m^−3]", labelArrow: "none"},
@@ -128,30 +120,25 @@ html`<div style="display:flex;gap:10px;align-items:flex-start">${sub(Plot.plot({
   ],
 }))}
 <div style="font-size:0.78rem;line-height:1.4;width:300px;color:${INK}">
-  ${qLegend}
-  <div style="color:${MUTED}">blue lines: <i>Q</i> = 1, 5, 10, 30 · orange: <i>P</i><sub>fus</sub> [MW]<br>grey: beyond ${dev.kind === "tok" ? "Greenwald or β<sub>N</sub>" : "β or Sudo density"} limit</div>
-  ${best.b ? html`<div style="margin-top:0.6rem"><b>${best.ign ? "ignited, highest P<sub>fus</sub> ○" : "highest allowed <i>Q</i> ○"}</b><br>
+  ${qLegend()}
+  <div style="color:${MUTED}">blue lines: <i>Q</i> = 1, 5, 10, 30 · orange: <i>P</i><sub>fus</sub> [MW]<br>grey: beyond ${dev.kind === "tok" ? html`Greenwald or β<sub>N</sub>` : "β or Sudo density"} limit</div>
+  ${best.b ? html`<div style="margin-top:0.6rem"><b>${best.ign ? html`ignited, highest P<sub>fus</sub> ○` : html`highest allowed <i>Q</i> ○`}</b><br>
   <i>k</i><sub>B</sub><i>T</i> = ${best.b.T.toFixed(1)} keV, <i>n</i> = ${best.b.n20.toFixed(2)} × 10<sup>20</sup> m<sup>−3</sup><br>
   <i>Q</i> = ${best.ign ? "∞" : best.b.Q.toFixed(1)}, <i>P</i><sub>fus</sub> = ${best.b.Pf.toFixed(0)} MW<br>
   <i>τ</i><sub>E</sub> = ${best.b.tau.toFixed(2)} s, <i>β</i> = ${(100 * best.b.beta).toFixed(1)} %<br>
   <i>P</i><sub>ext</sub> = ${Math.max(best.b.Pext, 0).toFixed(0)} MW, <i>P</i><sub>α</sub> = ${best.b.Pa.toFixed(0)} MW</div>` : html`<div style="margin-top:0.6rem">no allowed point with net heating</div>`}
   <div style="color:${MUTED};margin-top:0.6rem;font-size:0.68rem">0-D, parabolic profiles (<i>α</i><sub>n</sub> = 0.2, <i>α</i><sub>T</sub> = 1), fuel 85 % of <i>n</i><sub>e</sub>, axes volume averages, <i>T</i><sub>e</sub> = <i>T</i><sub>i</sub>, bremsstrahlung only; <i>τ</i><sub>E</sub> = H·IPB98(y,2) or H·ISS04 with <i>P</i> = <i>W</i>/<i>τ</i><sub>E</sub> solved self-consistently. Trends, not design values.</div>
-</div></div>`
-```
-
-```{ojs}
-viewof device = Inputs.select(Object.keys(devices), {value: "ITER (tokamak)", label: "device"})
-viewof Bfield = Inputs.range([1, 20], {value: devices[device].B, step: 0.1, label: html`<i>B</i> [T]`})
-viewof H = Inputs.range([0.5, 2], {value: 1, step: 0.05, label: html`H factor`})
-```
-
-```{ojs}
-//| output: false
-{
-  for (const [view, v] of [[viewof Bfield, `${Bfield.toFixed(1)} T`], [viewof H, H.toFixed(2)]]) {
-    const div = view.querySelector("div");
-    const out = div.querySelector("output") ?? div.appendChild(document.createElement("output"));
-    out.textContent = v;
-  }
+</div></div>`;
 }
-```
+
+const inputs = {
+  device: Inputs.select(Object.keys(devices), {value: "ITER (tokamak)", label: "device"}),
+  Bfield: Inputs.range([1, 20], {value: devices["ITER (tokamak)"].B, step: 0.1, label: html`<i>B</i> [T]`}),
+  H: Inputs.range([0.5, 2], {value: 1, step: 0.05, label: html`H factor`}),
+};
+// A new device starts at its own field, as the slider default did in the notebook.
+inputs.device.addEventListener("input", () => { inputs.Bfield.value = devices[inputs.device.value].B; });
+run(inputs, draw);
+</script>
+</body>
+</html>

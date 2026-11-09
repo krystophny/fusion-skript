@@ -160,7 +160,7 @@ def build(args):
                                       if meta.get("poster") else page["src"])
                     page["loop"] = meta.get("loop", True)
                 if page["kind"] == "widget":
-                    # The Quarto page rendered by build-notebooks.sh, laid over
+                    # The self-contained widget page built by make, laid over
                     # the poster area of the page.
                     rendered = site / "notebooks" / (Path(meta["widget"]).stem + ".html")
                     if not rendered.is_file():

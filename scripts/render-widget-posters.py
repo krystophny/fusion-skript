@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Screenshot each rendered slide widget (notebooks/slide-<name>.qmd) at its
+"""Screenshot each built slide widget (notebooks/slide-<name>.html) at its
 initial slider values as the PDF poster media/posters/slide-<name>.png.
 
 Usage: python3 scripts/render-widget-posters.py [<rendered-notebooks-dir>]
-       (default public/notebooks; render first with scripts/build-notebooks.sh)
+       (default public/notebooks; build first with make -j site)
 Requires Playwright's Python package and Chromium.
 The frame has the aspect of the deck's widget area, 257 mm x 150 mm.
 """
@@ -34,7 +34,7 @@ def main():
     handler = partial(Quiet, directory=str(args.rendered.resolve()))
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
     Thread(target=server.serve_forever, daemon=True).start()
-    names = sorted(p.stem for p in (ROOT / "notebooks").glob("slide-*.qmd"))
+    names = sorted(p.stem for p in (ROOT / "notebooks").glob("slide-*.html"))
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(executable_path=args.chrome, headless=True,
                                               args=["--no-sandbox"])

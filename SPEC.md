@@ -41,9 +41,9 @@ to both remotes and adds to `gh-pages` one commit of the locally built
 commits on `main`.
 
 `scripts/build-site.sh` builds the numbered decks, animation player pages and
-SVG presenter under `public/`; the site root forwards to `present/`. `scripts/build-notebooks.sh` renders the Quarto notebooks in `notebooks/`
+SVG presenter under `public/`; the site root forwards to `present/`. `make` renders the Quarto notebooks in `notebooks/`
 (client-side Observable JS, no kernel) to `public/notebooks/`; `tests/test_notebooks.py`
-checks their model code `notebooks/fusion.js` against the derivations. Slide widgets (`notebooks/slide-<name>.qmd`, added 2026-11-03) are such notebooks reduced to one figure with sliders; a deck places one with `widget-page`, the PDF shows its committed poster `media/posters/slide-<name>.png` (`scripts/render-widget-posters.py`), and the presenter lays the live page over it. The presenter keeps Plasma's appearance and interaction,
+checks their model code `notebooks/fusion.js` against the derivations. Slide widgets (`notebooks/slide-<name>.html`, added 2026-11-03, plain HTML and JavaScript since 2026-11-09) show one figure with sliders and share `notebooks/widget.js`; `scripts/inline-widget.py` packs each with its modules, data and fonts into one self-contained page, as Slopshell does when it serves the source; a deck places one with `widget-page`, the PDF shows its committed poster `media/posters/slide-<name>.png` (`scripts/render-widget-posters.py`), and the presenter lays the live page over it. The presenter keeps Plasma's appearance and interaction,
 reads course/author from `decks.json`, and generates course-specific web-app
 identity and cache names. Every page needs one `<present-page>` metadata
 record from `slides/present-meta.typ`; the build fails otherwise. Media are copied from local staged site

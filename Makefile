@@ -24,8 +24,10 @@ DECK_PDFS := $(patsubst slides/%.typ,public/slides/%.pdf,$(DECKS))
 TYP_SHARED := $(filter-out $(DECKS),$(wildcard slides/*.typ)) $(wildcard fonts/*.otf)
 MEDIA := $(shell git ls-files media)
 QMDS := $(wildcard notebooks/*.qmd)
-NOTEBOOK_HTML := $(patsubst notebooks/%.qmd,public/notebooks/%.html,$(QMDS))
-NB_SHARED := notebooks/_quarto.yml $(wildcard notebooks/*.js notebooks/*.json notebooks/*.css notebooks/*.html) notebooks/data-files.txt
+WIDGETS := $(wildcard notebooks/slide-*.html)
+WIDGET_DEPS := $(wildcard notebooks/*.js notebooks/data/*) notebooks/slide-widget.css fonts/STIXTwoText-Regular.otf fonts/STIXTwoText-Italic.otf scripts/inline-widget.py
+NOTEBOOK_HTML := $(patsubst notebooks/%.qmd,public/notebooks/%.html,$(QMDS)) $(patsubst notebooks/%,public/notebooks/%,$(WIDGETS))
+NB_SHARED := notebooks/_quarto.yml notebooks/fusion.js notebooks/plotting.js notebooks/presets.json notebooks/notebook.css notebooks/data-files.txt
 
 .PHONY: site check
 site: $(S)/present public/index.html public/.nojekyll $(S)/fonts
@@ -52,11 +54,15 @@ public/slides/%.pdf: slides/%.typ $(TYP_SHARED) $(S)/figures $(MEDIA)
 $(S)/media: $(MEDIA) scripts/prepare-media.py
 	$(PYTHON) scripts/prepare-media.py public ; touch $@
 
+# Slide widgets are plain HTML and JavaScript; inlining them takes milliseconds.
+public/notebooks/slide-%.html: notebooks/slide-%.html $(WIDGET_DEPS)
+	$(PYTHON) scripts/inline-widget.py $< $@
+
 # Each notebook renders in its own staging copy, so renders run in parallel
 # and a change to one notebook re-renders only that one.
 public/notebooks/%.html: notebooks/%.qmd $(NB_SHARED) $(S)/derivations
 	rm -rf build/notebooks/$* ; mkdir -p build/notebooks/$*/data $(@D)
-	cp -p notebooks/_quarto.yml $< notebooks/*.js notebooks/*.json notebooks/*.css notebooks/*.html build/notebooks/$*/
+	cp -p $< $(NB_SHARED) build/notebooks/$*/
 	xargs -a notebooks/data-files.txt cp -p -t build/notebooks/$*/data/
 	cd build/notebooks/$* && quarto render $*.qmd --quiet
 	cp build/notebooks/$*/_site/$*.html $@

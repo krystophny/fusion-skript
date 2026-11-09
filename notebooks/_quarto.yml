@@ -1,4 +1,4 @@
-# Rendered by scripts/build-notebooks.sh from a staging copy that adds the data files.
+# Rendered by make from a staging copy per notebook that adds the data files.
 project:
   type: default
   output-dir: _site

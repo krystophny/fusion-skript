@@ -193,7 +193,7 @@
   ]
 }
 
-// Interactive figure: the Quarto/Observable page notebooks/slide-<name>.qmd
+// Interactive figure: the HTML/JavaScript page notebooks/slide-<name>.html
 // fills the area under the title. The PDF shows its committed poster
 // media/posters/slide-<name>.png (initial slider values,
 // scripts/render-widget-posters.py) linked to the published page; the
@@ -203,7 +203,7 @@
   #let area = (x: margin / 297mm, y: (margin + title-band) / 210mm,
     w: text-width / 297mm, h: (text-height - title-band) / 210mm)
   #present-page(kind: "widget", title: title, section: section, slug: "slide-" + name,
-    widget: "notebooks/slide-" + name + ".qmd", region: area)
+    widget: "notebooks/slide-" + name + ".html", region: area)
   #place(top + left, section-heading(section, title: title))
   #place(top + left, dy: title-band, link(widget-url(name),
     image("/media/posters/slide-" + name + ".png", width: text-width, height: text-height - title-band,

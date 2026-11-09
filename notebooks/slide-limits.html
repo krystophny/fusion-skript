@@ -1,55 +1,43 @@
----
-title: "Density and pressure limits"
-format:
-  html:
-    css: slide-widget.css
-    page-layout: custom
-    title-block-style: none
-    include-after-body: slide-widget.html
----
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Density and pressure limits</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, d3, html, font, sub, readout, run} from "./widget.js";
+import {reactivity, KEV, E_FUS, E_ALPHA} from "./fusion.js";
+import {INK, MUTED, GREY, BLUE} from "./plotting.js";
+import rx from "./data/reactivity.json" with {type: "json"};
 
-```{ojs}
-//| output: false
-import {reactivity, KEV, E_FUS, E_ALPHA} from "./fusion.js"
-import {INK, MUTED, GREY, BLUE, ORANGE} from "./plotting.js"
-rx = FileAttachment("data/reactivity.json").json()
-font = ({fontFamily: "'STIX Two Text', serif", fontSize: "16px", color: INK, background: "transparent"})
-sub = (svg) => {
-  for (const t of svg.querySelectorAll("text")) {
-    if (!/[_^]/.test(t.textContent)) continue;
-    t.innerHTML = t.textContent
-      .replace(/_(\w+)/g, '<tspan baseline-shift="sub" font-size="72%">$1</tspan>')
-      .replace(/\^(\S+)/g, '<tspan baseline-shift="super" font-size="72%">$1</tspan>');
-  }
-  return svg;
-}
-```
+const Tdom = [3, 40], ndom = [0.02, 3];
+const extent = {x1: Tdom[0], x2: Tdom[1], y1: ndom[0], y2: ndom[1], width: 160, height: 110};
 
-```{ojs}
-//| output: false
-// Uniform 50:50 D-T, n = n_e, T_e = T_i: tau_E needed for gain Q, 3 n T / tau_E = n^2/4 <sigma v> (E_alpha + E_fus/Q).
-heat = Q === Infinity ? E_ALPHA : E_ALPHA + E_FUS / Q
-tauReq = (T, n20) => 12 * T / (n20 * 1e20 * reactivity(rx, "DT", T) * heat)
-pmax = beta / 100 * B * B / (2 * 4e-7 * Math.PI)          // Pa
-nCap = (T) => Math.min(stellarator ? Infinity : nmax, pmax / (2 * T * KEV) / 1e20)
-Tdom = [3, 40]
-ndom = [0.02, 3]
-best = {
-  let b = null;
+function draw({B, beta, nmax, qsel, stellarator}, inputs) {
+  readout(inputs.B, `${B.toFixed(1)} T`);
+  readout(inputs.beta, `${beta.toFixed(1)} %`);
+  readout(inputs.nmax, `${nmax.toFixed(2)} × 10²⁰ m⁻³`);
+  const Q = qsel === "Q = 1" ? 1 : qsel === "Q = 10" ? 10 : Infinity;
+  // Uniform 50:50 D-T, n = n_e, T_e = T_i: tau_E needed for gain Q, 3 n T / tau_E = n^2/4 <sigma v> (E_alpha + E_fus/Q).
+  const heat = Q === Infinity ? E_ALPHA : E_ALPHA + E_FUS / Q;
+  const tauReq = (T, n20) => 12 * T / (n20 * 1e20 * reactivity(rx, "DT", T) * heat);
+  const pmax = beta / 100 * B * B / (2 * 4e-7 * Math.PI);          // Pa
+  const nCap = (T) => Math.min(stellarator ? Infinity : nmax, pmax / (2 * T * KEV) / 1e20);
+  let best = null;
   for (let i = 0; i <= 600; i++) {
     const T = Tdom[0] * (Tdom[1] / Tdom[0]) ** (i / 600), n20 = nCap(T);
     if (n20 > ndom[1] * 4) continue;
     const t = tauReq(T, n20);
-    if (!b || t < b.tau) b = {T, n20, tau: t};
+    if (!best || t < best.tau) best = {T, n20, tau: t};
   }
-  return b;
-}
-Tx = pmax / (2 * nmax * 1e20) / KEV
-extent = ({x1: Tdom[0], x2: Tdom[1], y1: ndom[0], y2: ndom[1], width: 160, height: 110})
-```
-
-```{ojs}
-html`<div style="display:flex;gap:10px;align-items:flex-start">${sub(Plot.plot({
+  const Tx = pmax / (2 * nmax * 1e20) / KEV;
+  return html`<div style="display:flex;gap:10px;align-items:flex-start">${sub(Plot.plot({
   width: 640, height: 330, marginLeft: 60, marginRight: 70, marginTop: 26, marginBottom: 50, style: font,
   x: {type: "log", domain: Tdom, ticks: [3, 5, 10, 13.5, 20, 25.7, 40], tickFormat: (d) => String(d), label: "k_B T [keV]", labelAnchor: "center", labelArrow: "none", labelOffset: 40},
   y: {domain: ndom, label: "n [10^20 m^−3]", labelArrow: "none"},
@@ -72,25 +60,16 @@ html`<div style="display:flex;gap:10px;align-items:flex-start">${sub(Plot.plot({
   τ<sub>E</sub> = ${best.tau.toFixed(2)} s, <i>p</i> = ${(pmax / 1e5).toFixed(1)} bar</div>
   ${stellarator ? html`<div style="color:${MUTED};margin-top:0.4rem">no density limit: best at the β limit at 13.5 keV</div>`
     : html`<div style="color:${MUTED};margin-top:0.4rem">limits cross at <i>T</i><sub>×</sub> = <i>p</i><sub>max</sub>/2<i>n</i><sub>max</sub> = ${Tx.toFixed(1)} keV<br>optimum = <i>T</i><sub>×</sub> clamped to [13.5, 25.7] keV</div>`}
-</div></div>`
-```
-
-```{ojs}
-viewof B = Inputs.range([2, 20], {value: 6, step: 0.1, label: html`<i>B</i> [T]`})
-viewof beta = Inputs.range([1, 10], {value: 4.5, step: 0.1, label: html`<i>β</i><sub>max</sub> [%]`})
-viewof nmax = Inputs.range([0.3, 3], {value: 1, step: 0.05, label: html`<i>n</i><sub>max</sub> [10<sup>20</sup>]`})
-viewof qsel = Inputs.radio(["Q = 1", "Q = 10", "ignition"], {value: "ignition", label: "target"})
-viewof stellarator = Inputs.toggle({label: "no density limit (stellarator)", value: false})
-```
-
-```{ojs}
-//| output: false
-Q = qsel === "Q = 1" ? 1 : qsel === "Q = 10" ? 10 : Infinity
-{
-  for (const [view, v] of [[viewof B, `${B.toFixed(1)} T`], [viewof beta, `${beta.toFixed(1)} %`], [viewof nmax, `${nmax.toFixed(2)} × 10²⁰ m⁻³`]]) {
-    const div = view.querySelector("div");
-    const out = div.querySelector("output") ?? div.appendChild(document.createElement("output"));
-    out.textContent = v;
-  }
+</div></div>`;
 }
-```
+
+run({
+  B: Inputs.range([2, 20], {value: 6, step: 0.1, label: html`<i>B</i> [T]`}),
+  beta: Inputs.range([1, 10], {value: 4.5, step: 0.1, label: html`<i>β</i><sub>max</sub> [%]`}),
+  nmax: Inputs.range([0.3, 3], {value: 1, step: 0.05, label: html`<i>n</i><sub>max</sub> [10<sup>20</sup>]`}),
+  qsel: Inputs.radio(["Q = 1", "Q = 10", "ignition"], {value: "ignition", label: "target"}),
+  stellarator: Inputs.toggle({label: "no density limit (stellarator)", value: false}),
+}, draw);
+</script>
+</body>
+</html>
