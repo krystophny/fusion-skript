@@ -37,13 +37,14 @@ if ((release)); then
   GIT_INDEX_FILE="$index" git --work-tree=public add -f -A .
   tree=$(GIT_INDEX_FILE="$index" git write-tree)
   rm -f "$index"
-  # The previous deploy is the parent, so the push sends only changed files.
+  # The previous deploy is the parent, so the push sends only changed files;
+  # an unchanged site is not pushed and Pages does not redeploy.
   git fetch -q github gh-pages
-  site=FETCH_HEAD
+  site=""
   if [[ "$(git rev-parse FETCH_HEAD^{tree})" != "$tree" ]]; then
     site=$(git commit-tree "$tree" -p FETCH_HEAD -m "Site built from $(git rev-parse --short HEAD)")
   fi
   git push origin main & origin=$!
-  git push github main "$site:refs/heads/gh-pages"
+  git push github main ${site:+"$site:refs/heads/gh-pages"}
   wait "$origin"
 fi
