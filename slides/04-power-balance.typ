@@ -8,16 +8,9 @@
 #let cite-line(body) = text(size: 12pt, body)
 #let sv = $chevron.l sigma v chevron.r$
 
-#slide(section: "alpha-neutron", title: [Momentum and energy])[
-  #at(1, 12, y: 0mm, steps(
-    r([momentum], $bold(p)_alpha = -bold(p)_n$),
-    r([$E = p^2 \/ 2m$], $E_alpha / E_n = m_n / m_alpha approx 1/4$),
-  ))
-  #at(3, 8, y: 50mm, result-box($E_alpha = 3.5 "MeV", quad E_n = 14.1 "MeV"$, [$alpha$ heats the plasma, $n$ the blanket]))
-]
-
 #slide(section: "alpha-neutron", title: [Alpha and neutron])[
   #at(1, 12, y: 0mm, align(center, deck-fig("alpha_neutron_split", columns: 11)))
+  #at(3, 8, y: 112mm, result-box($E_alpha = 3.5 "MeV", quad E_n = 14.1 "MeV"$, [$alpha$ heats the plasma, $n$ the blanket]))
 ]
 
 #slide(section: "fusion-power", title: [Fusion power density])[
@@ -77,8 +70,12 @@
 #widget-page("lawson", section: "power-balance", title: [$n tau_E$ or $n T tau_E$?])
 
 #slide(section: "power-balance", title: [Lawson plane])[
-  #at(1, 12, y: 0mm, align(center, deck-fig("lawson_plane", columns: 12)))
-  #at(1, 12, y: 130mm, align(center, text(fill: muted)[dashed: with bremsstrahlung (4.9)]))
+  #at(1, 8, y: 0mm, deck-fig("lawson_plane", columns: 8))
+  #at(9, 4, y: 30mm, steps(gap: 7mm,
+    r([gain $Q$], $n T tau_E prop Q / (Q + 5)$),
+  ))
+  #at(9, 4, y: 58mm, result-box([$Q = 10$: #h(1mm) $2\/3$], [of the ignition value; #linebreak() minimum near 13.5 keV]))
+  #at(9, 4, y: 112mm, text(size: 14pt, fill: muted)[dashed: with bremsstrahlung (4.7)])
   #at(1, 12, y: 142mm, cite-line[
     #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] · #link("https://krystophny.github.io/fusion-skript/notebooks/lawson.html")[notebook: Lawson criterion]])
 ]
@@ -121,44 +118,11 @@
     #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)]])
 ]
 
-#slide(section: "pressure-beta", title: [Fixed pressure])[
-  #at(1, 6, y: 0mm, steps(gap: 7mm,
-    r([pressure], $p = 2 n k_B T, quad beta = (2 mu_0 p)/B^2$),
-  ))
-  #at(1, 6, y: 32mm, result-box($p_"fus" prop sv/(k_B T)^2 thin beta^2 B^4$, [maximum of $sv \/ T^2$: 13.5 keV]))
-  #at(1, 6, y: 92mm, steps(gap: 6mm,
-    r([density], [$n_G = I_p \/ (pi a^2)$ #h(3mm) #text(size: 14pt, fill: muted)[$10^20 "m"^(-3)$, MA, m]]),
-  ))
-  #at(7, 6, y: -4mm, deck-fig("fixed_pressure", columns: 6))
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1088/0741-3335/44/8/201")[Greenwald · Plasma Phys. Control. Fusion 44, R27 (2002)]])
-]
-
 #slide(section: "confinement-routes", title: [Density and confinement time])[
   #at(1, 12, y: -2mm, align(center, deck-fig("n_tau_plane", columns: 12)))
   #at(1, 12, y: 146mm, cite-line[
     Data: #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)], Tables 6–8, CC BY 4.0])
 ]
-
-// ------------------------------------------------- 4.8 Where is the optimum? ---
-
-#widget-page("limits", section: "optimum", title: [Density and pressure limits])
-
-#slide(section: "optimum", title: [Limits and confinement scaling])[
-  #at(1, 12, y: 0mm, steps(gap: 7mm,
-    r([limits], $n <= n_G, quad p <= beta_max B^2 \/ 2 mu_0 quad => quad T_times = p_max \/ 2 n_max$),
-    r([tokamak], [$T_times approx 0.39 thin beta_N a B \/ f_"GW" "keV"$ #h(4mm) #text(fill: muted)[ITER 8.8 keV]]),
-    r([IPB98(y,2)], $tau_E prop I^0.93 R^1.97 overline(n)^0.41 P^(-0.69) dots$),
-  ))
-  #at(1, 12, y: 76mm, result-box([$tau_E$ falls with heating power #h(2mm) $=>$ #h(2mm) optimum #box[$approx 6$–$9 "keV"$]], none))
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1088/0029-5515/39/12/302")[ITER Physics Basis · Nucl. Fusion 39, 2175 (1999)] ·
-    #link("https://doi.org/10.1088/0029-5515/45/12/024")[Yamada et al. · Nucl. Fusion 45, 1684 (2005)]])
-]
-
-#widget-page("popcon", section: "optimum", title: [Operating space of a device])
-
-#widget-page("machines", section: "optimum", title: [Where present machines stand])
 
 #slide(section: "bremsstrahlung", title: [Bremsstrahlung and ideal ignition])[
   #at(1, 6, y: 0mm, steps(gap: 7mm,
@@ -195,14 +159,6 @@
     r([concentration], $c_Z = n_Z \/ n_e$),
     r([fixed $n_e$], $p_"fus" prop (1 - sum_Z Z c_Z)^2$),
     r([radiation], $Z_"eff" = 1 + sum_Z Z (Z - 1) c_Z$),
-  ))
-  #at(8, 5, y: 2mm, data-table(
-    ([], [$Z c$], [$p_"fus"$]),
-    (
-      ([0.1 % W], [$0.074$], [$0.86$]),
-      ([5 % He], [$0.10$], [$0.81$]),
-    ),
-    align: (left, right, right),
   ))
   #at(1, 12, y: 84mm, result-box([one W ion displaces 74 fuel ions],
     [W radiates lines: $c_W = 3 times 10^(-5)$ raises the minimum $n T tau_E$ by 20 %]))

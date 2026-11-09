@@ -79,10 +79,9 @@ QS = ((1, "#9AA5B1"), (5, "#5A8DB8"), (10, BLUE), (np.inf, ORANGE))
 
 
 def lawson_plane():
-    """Required n T tau_E vs T for several Q; right: n T tau_E vs Q at the optimum."""
+    """Required n T tau_E vs T for several Q, ignition also with bremsstrahlung."""
     t = np.geomspace(2, 100, 2000)
-    fig, (ax, qx) = plt.subplots(1, 2, figsize=(250 * MM, 120 * MM),
-                                 gridspec_kw={"width_ratios": (1.6, 1), "wspace": .55})
+    fig, ax = plt.subplots(figsize=(175 * MM, 120 * MM))
     for q, color in QS:
         y = pb.triple_product(t, q)
         ax.loglog(t, y, color=color, lw=2.5 if np.isinf(q) else 2)
@@ -107,26 +106,7 @@ def lawson_plane():
     ax.grid(which="major", color=GRID, lw=.6)
     ax.set_axisbelow(True)
 
-    q = np.geomspace(.1, 1000, 400)
-    t0 = np.array([t[i]])
-    ref = pb.triple_product(t0)[0]
-    y = np.array([pb.triple_product(t0, qq)[0] for qq in q])
-    qx.semilogx(q, y / 1e21, color=BLUE, lw=2.5)
-    qx.axhline(ref / 1e21, color=ORANGE, lw=1.5, ls=(0, (5, 3)))
-    qx.text(.12, ref / 1e21 * 1.03, "ignition", color=ORANGE, fontsize=15, va="bottom")
-    for qq, color in QS[:-1]:
-        v = pb.triple_product(t0, qq)[0] / 1e21
-        qx.plot([qq], [v], "o", color=color, ms=7, zorder=5)
-        qx.text(qq * 1.4, v - .07, f"$Q={qq}$", color=INK, fontsize=14, va="top")
-    qx.set_xlim(.1, 1000)
-    qx.xaxis.set_major_formatter(PLAIN)
-    qx.set_ylim(0, 3.2)
-    qx.set_xlabel(r"$Q = P_{\rm fus}/P_{\rm ext}$")
-    qx.set_ylabel(r"$n\,T\,\tau_E$ [$10^{21}$ keV s m$^{-3}$]")
-    qx.text(.97, .04, rf"$k_BT = {t[i]:.1f}$ keV", transform=qx.transAxes, ha="right", fontsize=15)
-    qx.grid(color=GRID, lw=.6)
-    qx.set_axisbelow(True)
-    fig.subplots_adjust(left=.09, right=.965, bottom=.15, top=.97)
+    fig.subplots_adjust(left=.14, right=.84, bottom=.15, top=.97)
     save(fig, "lawson_plane")
     return t[i], ign[i]
 
@@ -338,30 +318,6 @@ def impurity_dilution():
     save(fig, "impurity_dilution")
 
 
-def fixed_pressure():
-    """D-T fusion power density against T at fixed density and at fixed pressure, each scaled to its maximum."""
-    t = np.geomspace(2, 100, 20001)
-    sv = bosch_hale("DT", t)
-    fig, ax = plt.subplots(figsize=HALF)
-    for y, color, ls in ((sv / sv.max(), GREY, (0, (6, 3))), (sv / t**2 / (sv / t**2).max(), ORANGE, "-")):
-        ax.semilogx(t, y, color=color, lw=2.4, ls=ls)
-        i = y.argmax()
-        ax.plot([t[i]], [y[i]], "o", color=color, ms=7, zorder=5)
-        ax.text(t[i], 1.04, f"{t[i]:.0f} keV" if t[i] > 30 else f"{t[i]:.1f} keV", color=INK,
-                fontsize=15, ha="center", va="bottom")
-    ax.text(58, .5, r"fixed $n$:" "\n" r"$\propto \langle\sigma v\rangle$", color=MUTED, fontsize=16, ha="center")
-    ax.text(2.2, .86, r"fixed $p$:" "\n" r"$\propto \langle\sigma v\rangle / T^2$", color=ORANGE, fontsize=16,
-            ha="left")
-    ax.set_xlim(2, 100)
-    ax.xaxis.set_major_formatter(PLAIN)
-    ax.set_ylim(0, 1.15)
-    ax.set_xlabel(r"$k_BT$ [keV]")
-    ax.set_ylabel(r"$p_{\rm fus}$ / maximum")
-    _axes(ax)
-    fig.subplots_adjust(left=.17, right=.93, bottom=.15, top=.97)
-    save(fig, "fixed_pressure")
-
-
 # Labelled experiments and label offsets in points.
 LABELS = {("ZETA", 1957): (-10, -14), ("JET", 1997): (14, 20), ("W7-X", 2017): (-14, -36),
           ("NIF", 2021): (12, 6), ("MagLIF", 2015): (12, -2), ("FuZE", 2018): (-12, 14),
@@ -435,6 +391,5 @@ if __name__ == "__main__":
     q_eng_plot()
     alpha_fraction_plot()
     impurity_dilution()
-    fixed_pressure()
     n_tau_plane()
     print("wrote density_scaling, q_eng, alpha_fraction, impurity_dilution, fixed_pressure, n_tau_plane")

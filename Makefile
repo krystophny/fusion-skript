@@ -49,7 +49,7 @@ $(S)/figures: $(patsubst scripts/plot-%.py,$(S)/plot-%,$(PLOTS)) $(patsubst slid
 public/slides/%.pdf: slides/%.typ $(TYP_SHARED) $(S)/figures $(MEDIA)
 	@mkdir -p $(@D)
 	# Dated by the deck's last commit, so an unchanged deck rebuilds byte-identical.
-	SOURCE_DATE_EPOCH=$$(git log -1 --format=%ct -- $<) $(TYPST) $< $@
+	t=$$(git log -1 --format=%ct -- $<); SOURCE_DATE_EPOCH=$${t:-$$(git log -1 --format=%ct)} $(TYPST) $< $@
 
 $(S)/media: $(MEDIA) scripts/prepare-media.py
 	$(PYTHON) scripts/prepare-media.py public ; touch $@

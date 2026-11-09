@@ -216,11 +216,10 @@ nTτ_E = 12 T² / (⟨σv⟩(E_α + E_fus/Q) − 4C_B√T), with Bosch–Hale �
 Left: required nTτ_E against T for Q = 1, 5, 10 and ignition (Q = ∞) without
 radiation, plus ignition with bremsstrahlung (dashed), whose power density is
 p_brems = C_B n_e² √(k_BT) with C_B = 5.34·10⁻³⁷ W m³ keV^(−1/2) (NRL
-1.69·10⁻³² W cm³ eV^(−1/2)). Right: nTτ_E against Q at the optimum
-temperature 13.5 keV, without radiation, which approaches ignition as
-Q/(Q + E_fus/E_α), E_fus/E_α = 4.94.
-Axes: k_BT [keV] (log, 2–100); nTτ_E [keV s m⁻³] (log); Q (log);
-nTτ_E [10²¹ keV s m⁻³].
+1.69·10⁻³² W cm³ eV^(−1/2)). One panel since 2026-11-09: nTτ_E against Q at
+fixed T is Q/(Q + E_fus/E_α), E_fus/E_α = 4.94, the same curve as
+`alpha_fraction`, so the slide states it in one line instead of a second panel.
+Axes: k_BT [keV] (log, 2–100); nTτ_E [keV s m⁻³] (log).
 The viewer should see a minimum at 13.5–14 keV for every Q, the wall that
 bremsstrahlung builds below about 4.3 keV, and that, without radiation,
 Q = 10 already needs two thirds of the ignition triple product.
@@ -270,7 +269,7 @@ gross electricity recirculated) at Q = 11.5 for 0.4 × 0.4.
 Self-heating fraction f_α = P_α/(P_α + P_ext) = Q/(Q + E_fus/E_α) against Q
 (log, 0.1–1000), E_fus/E_α = 4.94; points at Q = 1, 5, 10 (0.17, 0.50, 0.67,
 the table on the same page) and the ignition limit f_α = 1. Required n T τ_E
-against Q is already the right panel of `lawson_plane`, so it is not repeated.
+against Q at fixed T is the same curve, Q/(Q + 4.94), so it is not drawn again.
 
 ### `impurity_dilution`
 
@@ -281,12 +280,6 @@ C_B Z_eff √T), Z_eff = 1 + 2c. Minima 2.9, 3.6, 4.6 and 6.1·10²¹ keV s m⁻
 (Zc = 0.074, 0.86) and 5 % He (Zc = 0.1, 0.81). Tungsten is drawn only on the
 right: in a reactor core it is not fully ionised and line radiation, not
 bremsstrahlung, dominates its loss, which this model omits.
-
-### `fixed_pressure`
-
-D–T p_fus at fixed density (∝ ⟨σv⟩) and at fixed pressure (∝ ⟨σv⟩/T²), each
-divided by its maximum: maxima at 67 keV and 13.5 keV.
-Axes: k_BT [keV] (log, 2–100); p_fus / maximum.
 
 ### `n_tau_plane`
 

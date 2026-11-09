@@ -14,6 +14,11 @@
       "number": 4,
       "title": "Power balance and Lawson",
       "label": "power-balance-lawson"
+    },
+    {
+      "number": 5,
+      "title": "Magnetic confinement",
+      "label": "magnetic-confinement"
     }
   ],
   "sections": [
@@ -115,33 +120,33 @@
     },
     {
       "number": "4.6",
-      "title": "Pressure and beta",
-      "label": "pressure-beta",
-      "chapter": "power-balance-lawson"
-    },
-    {
-      "number": "4.7",
       "title": "Confinement routes",
       "label": "confinement-routes",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.8",
-      "title": "Where is the optimum?",
-      "label": "optimum",
-      "chapter": "power-balance-lawson"
-    },
-    {
-      "number": "4.9",
+      "number": "4.7",
       "title": "Radiation losses",
       "label": "bremsstrahlung",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.10",
+      "number": "4.8",
       "title": "Impurities and fuel dilution",
       "label": "dilution",
       "chapter": "power-balance-lawson"
+    },
+    {
+      "number": "5.1",
+      "title": "Pressure and density limits",
+      "label": "pressure-beta",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.2",
+      "title": "Where is the optimum?",
+      "label": "optimum",
+      "chapter": "magnetic-confinement"
     }
   ]
 }
