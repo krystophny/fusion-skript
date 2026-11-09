@@ -36,7 +36,7 @@ the `gh-pages` branch at `https://krystophny.github.io/fusion-skript/`. `github`
 `git@github.com:krystophny/fusion-skript.git`; `origin` names the private TU Graz
 mirror `git@gitlab.tugraz.at:plasma/proj/teaching/fusion-skript.git`.
 `scripts/publish.sh` builds, tests and exports; `--release` also pushes `main`
-to both remotes and replaces `gh-pages` with one commit of the locally built
+to both remotes and adds to `gh-pages` one commit of the locally built
 `public/`, which Pages serves without a rebuild. The script never creates
 commits on `main`.
 

@@ -79,7 +79,7 @@ bash scripts/publish.sh --release
 ```
 
 This rebuilds, tests, exports, then pushes `main` to both remotes and
-replaces the `gh-pages` branch with one commit of the local `public/`. Pages
+adds one commit of the local `public/` to the `gh-pages` branch. Pages
 serves that branch directly, so the site is live about a minute after the
 push. It never creates commits on `main`.
 

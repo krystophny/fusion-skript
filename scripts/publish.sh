@@ -3,7 +3,7 @@
 # remotes and deploys the locally built site to the gh-pages branch, which
 # GitHub Pages serves without rebuilding.
 # Never creates commits on main, stages files or changes existing remotes;
-# gh-pages holds one generated commit and is replaced on every release.
+# each gh-pages commit is one generated site whose parent is the previous one.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 release=0
@@ -37,8 +37,13 @@ if ((release)); then
   GIT_INDEX_FILE="$index" git --work-tree=public add -f -A .
   tree=$(GIT_INDEX_FILE="$index" git write-tree)
   rm -f "$index"
-  site=$(git commit-tree "$tree" -m "Site built from $(git rev-parse --short HEAD)")
+  # The previous deploy is the parent, so the push sends only changed files.
+  git fetch -q github gh-pages
+  site=FETCH_HEAD
+  if [[ "$(git rev-parse FETCH_HEAD^{tree})" != "$tree" ]]; then
+    site=$(git commit-tree "$tree" -p FETCH_HEAD -m "Site built from $(git rev-parse --short HEAD)")
+  fi
   git push origin main & origin=$!
-  git push github main "+$site:refs/heads/gh-pages"
+  git push github main "$site:refs/heads/gh-pages"
   wait "$origin"
 fi
