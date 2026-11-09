@@ -10,7 +10,7 @@ release=0
 # GitHub SSH transfers from this network sometimes stall without failing:
 # keepalives end a dead connection, and each network step is retried.
 export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh} -o ServerAliveInterval=5 -o ServerAliveCountMax=3"
-retry() { local i; for i in 1 2 3; do timeout 60 "$@" && return 0; echo "retrying: $*" >&2; done; return 1; }
+retry() { local i; for i in 1 2 3; do timeout "${T:-60}" "$@" && return 0; echo "retrying: $*" >&2; done; return 1; }
 dest="${COURSE_FOLDER:-$HOME/Nextcloud/lv/fusion/2026}"
 while (($#)); do
   case "$1" in
@@ -43,10 +43,11 @@ if ((release)); then
   rm -f "$index"
   # The previous deploy is the parent, so the push sends only changed files;
   # an unchanged site is not pushed and Pages does not redeploy.
-  retry git fetch -q github gh-pages
+  parent=$(T=15 retry git ls-remote github refs/heads/gh-pages | cut -f1)
+  git cat-file -e "$parent^{commit}" 2>/dev/null || retry git fetch -q github gh-pages
   site=""
-  if [[ "$(git rev-parse FETCH_HEAD^{tree})" != "$tree" ]]; then
-    site=$(git commit-tree "$tree" -p FETCH_HEAD -m "Site built from $(git rev-parse --short HEAD)")
+  if [[ "$(git rev-parse "$parent^{tree}")" != "$tree" ]]; then
+    site=$(git commit-tree "$tree" -p "$parent" -m "Site built from $(git rev-parse --short HEAD)")
   fi
   retry git push origin main & origin=$!
   retry git push github main ${site:+"$site:refs/heads/gh-pages"}
