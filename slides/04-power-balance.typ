@@ -1,5 +1,5 @@
 #import "theme.typ": *
-#show: deck.with(chapter: 3)
+#show: deck.with(chapter: 4)
 
 // A formula row: muted step label, then the formula (as in deck 02).
 #let r(name, f) = ([#text(fill: muted, name)], f)
@@ -67,7 +67,7 @@
 
 #slide(section: "power-balance", title: [Lawson plane])[
   #at(1, 12, y: 0mm, align(center, deck-fig("lawson_plane", columns: 12)))
-  #at(1, 12, y: 130mm, align(center, text(fill: muted)[dashed: with bremsstrahlung (3.9)]))
+  #at(1, 12, y: 130mm, align(center, text(fill: muted)[dashed: with bremsstrahlung (4.9)]))
   #at(1, 12, y: 142mm, cite-line[
     #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] · #link("https://krystophny.github.io/fusion-skript/notebooks/lawson.html")[notebook: Lawson criterion]])
 ]

@@ -15,7 +15,7 @@ pages for animations, which carry no title; their route cues are below.
 E is the centre-of-mass energy, m = m₁m₂/(m₁ + m₂) the reduced mass and
 M = m₁ + m₂ the total mass (page 3), σ(E) = (S/E) e^(−√(E_G/E)) with the
 S factor S and the Gamow energy E_G = 2mc²(παZ₁Z₂)² (pages 12–16), k_BT the
-ion temperature. The animations and `03-power-balance-visuals.md` write the
+ion temperature. The animations and `04-power-balance-visuals.md` write the
 reduced mass m_r.
 
 ## Pages
@@ -26,9 +26,9 @@ reduced mass m_r.
 | 3–9 | Two-body problem, head-on collision, Rutherford, classical turning point and cross section; Coulomb-collision animation | Open Lecture 4 with the contact-distance correction (PLAN.md) |
 | 10–16 | Quantum ballpark, WKB slices, Gamow tunnelling, measuring σ, S factor, tunnelling alone, actual σ | — |
 | 17–27 | Measured S, ⁵He resonance, which force, S and R, force ranges, computing S, p–p from wave functions, pionless EFT, comparison, p–p chain (moved from the former Chapter 3 deck), summary diagram | Taught in Lecture 3 |
-| 28 | 2.20 Reactivity (plot `reactivity`) | D–T two orders above the others at 10 keV; ⟨σv⟩/T² maximal at 13.5 keV. Lawson curve n T τ_E ∝ T²/⟨σv⟩ is this curve upside down (Chapter 3). Hotter is not safer below about 70 keV. |
+| 28 | 2.20 Reactivity (plot `reactivity`) | D–T two orders above the others at 10 keV; ⟨σv⟩/T² maximal at 13.5 keV. Lawson curve n T τ_E ∝ T²/⟨σv⟩ is this curve upside down (Chapter 4). Hotter is not safer below about 70 keV. |
 | 29 | Reaction rate: summary | Five steps and the τ²e^(−τ) result. |
-| 30 | Solar core (plot `gamow_peak_pp`), optional | k_BT ≈ 1.3 keV, E₀ ≈ 6 keV ≈ 4.6 k_BT; bridge to the stars chapter (Chapter 11), may be skipped. |
+| 30 | Solar core (plot `gamow_peak_pp`), optional | k_BT ≈ 1.3 keV, E₀ ≈ 6 keV ≈ 4.6 k_BT; bridge to a later stars chapter, may be skipped. |
 
 Section 2.20 is derived on the board (reaction rate per beam particle,
 Maxwell average, reactivity) and the deck keeps only its three result pages.
@@ -45,6 +45,6 @@ reduced-mass convolution, Maxwell prefactor, f_M normalisation and mean,
 log-energy kernel K and its normalisation, Gamow E₀, τ, curvature, Δ, the
 τ²e^(−τ) coefficient 8√6/27 and the low-T form, the D–T numbers, the tail
 fractions and the temperature ladder). Plot and animation descriptions:
-`slides/03-power-balance-visuals.md`. Reactivity data: Bosch and Hale,
+`slides/04-power-balance-visuals.md`. Reactivity data: Bosch and Hale,
 Nucl. Fusion 32, 611 (1992), doi:10.1088/0029-5515/32/4/I07; p–¹¹B: Nevins
 and Swain, Nucl. Fusion 40, 865 (2000), doi:10.1088/0029-5515/40/4/310.

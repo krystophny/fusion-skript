@@ -1,8 +1,8 @@
 # Visuals for reactivity and the start of power balance
 
 Generated assets for the end of Chapter 2 (reaction rate in a thermal plasma),
-the stars application (now Chapter 11) and the opening of Chapter 3 (power balance).
-The reactivity assets are used in deck 02, section 2.20; the power-balance ones in deck 03. Plots are light, A4-landscape slide size, English,
+the optional Chapter 3 (stars) and the opening of Chapter 4 (power balance).
+The reactivity assets are used in deck 02, section 2.20; the power-balance ones in deck 04. Plots are light, A4-landscape slide size, English,
 STIX Two, with direct labels and line styles in addition to colour.
 Animations use the dark canvas of `animations/style.py`.
 

@@ -258,7 +258,7 @@
     edge((4, 0), (4, 1.9), (1, 1.9), (1, 1), "-|>"),
     edge((1, 1), (1, 0), "-|>"),
   ))]
-  #source[Original concept diagram; cooling, exhaust and detailed power balance developed in Chapters 3 and 9.]
+  #source[Original concept diagram; cooling, exhaust and detailed power balance developed in Chapters 4 and 10.]
 ]
 
 #slide(title: [Making the tritium fuel], background: "dark")[
@@ -275,7 +275,7 @@
     node((0, 1), [Return fuel], width: 54mm),
     edge((0, 1), (0, 0), "-|>"),
   ))]
-  #source[This surrounding heat-collecting, tritium-producing region is the breeding blanket. Details: Chapter 9.]
+  #source[This surrounding heat-collecting, tritium-producing region is the breeding blanket. Details: Chapter 10.]
 ]
 
 #slide(title: [Scientific sources], background: "dark")[
