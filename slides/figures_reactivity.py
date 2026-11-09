@@ -137,7 +137,7 @@ REACTIONS = (  # name, label, colour, line style
 
 
 def reactivity():
-    """<sigma v>(T) for five reactions, with the numerical check; <sigma v>/T^2 for D-T."""
+    """<sigma v>(T) for five reactions, with the numerical check; accuracy of <sigma v> ~ c T^2."""
     fig, (ax, opt) = plt.subplots(1, 2, figsize=(250 * MM, 120 * MM),
                                   gridspec_kw={"width_ratios": (1.55, 1), "wspace": .3})
     for name, label, color, ls in REACTIONS:
@@ -168,23 +168,41 @@ def reactivity():
     ax.grid(which="major", color=GRID, lw=.6)
     ax.set_axisbelow(True)
 
-    t = np.linspace(1, 60, 600)
-    ratio = rx.bosch_hale("DT", t) / t**2 / 1e-24
-    i = ratio.argmax()
-    opt.plot(t, ratio, color=ORANGE, lw=2.5)
-    opt.plot([t[i]], [ratio[i]], "o", color=ORANGE, ms=7)
-    opt.axvline(t[i], color=MUTED, lw=.8, ls=":")
-    opt.text(t[i] + 2, ratio[i] * 1.02, rf"{t[i]:.1f} keV", color=INK, fontsize=17, va="bottom")
-    opt.text(58, ratio[i] * .2, "D–T", color=ORANGE, fontsize=17, ha="right")
-    opt.set_xlim(0, 60)
-    opt.set_ylim(0, 1.3 * ratio[i])
+    # How good is <sigma v> ~ c T^2? Each fuel against c T^2 with c the maximum of <sigma v>/T^2.
+    out = {}
+    opt.axhspan(.8, 1.0, color=GREY, alpha=.18, lw=0)
+    for name, label, color, ls, t in (
+            ("DT", "D–T", ORANGE, "-", np.geomspace(1, 100, 600)),
+            ("DD", "D–D", BLUE, (0, (6, 3)), np.geomspace(1, 100, 600)),
+            ("DHe3", "D–³He", PURPLE_W, (0, (8, 2, 2, 2)), np.geomspace(1, 190, 600)),
+            ("p11B", "p–¹¹B", INK, (0, (3, 2)), np.geomspace(20, 500, 160))):
+        if name == "DD":
+            y = rx.bosch_hale("DDn", t) + rx.bosch_hale("DDp", t)
+        elif name == "p11B":
+            y = rx.maxwell_average(name, t)
+        else:
+            y = rx.bosch_hale(name, t)
+        r = y / t**2
+        i = r.argmax()
+        q = r / r[i]
+        opt.semilogx(t, q, color=color, lw=2.3, ls=ls)
+        opt.plot([t[i]], [1], "o", color=color, ms=6)
+        opt.lines[-2].set_label(f"{label}  {t[i]:.1f} keV" if name == "DT" else f"{label}  {t[i]:.0f} keV")
+        ok = t[q >= .8]
+        out[name] = (t[i], r[i], ok.min(), ok.max())
+    opt.text(1.15, .9, "±20 %", color=MUTED, fontsize=13, va="center", ha="left")
+    opt.legend(loc="upper center", ncol=2, fontsize=12, frameon=False, handlelength=2.2, borderaxespad=.2,
+               columnspacing=1.2, title=r"maximum of $\langle\sigma v\rangle/T^2$", title_fontsize=12)
+    opt.set_xlim(1, 500)
+    opt.set_ylim(0, 1.5)
+    opt.set_yticks([0, .2, .4, .6, .8, 1.0])
     opt.set_xlabel(r"$k_BT$ [keV]")
-    opt.set_ylabel(r"$\langle\sigma v\rangle/T^2$ [$10^{-24}$ m$^3$ s$^{-1}$ keV$^{-2}$]", fontsize=16)
+    opt.set_ylabel(r"$\langle\sigma v\rangle / c\,T^2$", fontsize=16)
     opt.grid(color=GRID, lw=.6)
     opt.set_axisbelow(True)
     fig.subplots_adjust(left=.09, right=.98, bottom=.15, top=.97)
     save(fig, "reactivity")
-    return t[i], ratio[i]
+    return out
 
 
 def tail_fuses(t=10.0, n=2_000_000, seed=1):
@@ -244,6 +262,6 @@ if __name__ == "__main__":
     print(f"wrote gamow_peak: E_0 = {e0:.2f} keV, width {dw:.1f} keV")
     e0, dw = gamow("pp", 1.3, 16, "gamow_peak_pp", "p–p, solar core")
     print(f"wrote gamow_peak_pp: E_0 = {e0:.2f} keV, width {dw:.1f} keV")
-    t_opt, peak = reactivity()
-    print(f"wrote reactivity: <sv>/T^2 maximal at {t_opt:.2f} keV ({peak:.3f}e-24)")
+    for name, (t0, c, lo, hi) in reactivity().items():
+        print(f"wrote reactivity: {name} <sv>/T^2 maximal {c:.3e} at {t0:.1f} keV, within 20 % for {lo:.1f}-{hi:.1f} keV")
     print("wrote tail_fuses:", {k: f"{v:.4g}" for k, v in tail_fuses().items()})

@@ -65,6 +65,15 @@
     [$= 5 "bar s"$ ion pressure, #h(2mm) $10 "bar s"$ ion + electron pressure]))
 ]
 
+#slide(section: "power-balance", title: [How good is $sv approx c T^2$?])[
+  #at(1, 12, y: 0mm, align(center, deck-fig("reactivity", columns: 11)))
+  #at(1, 12, y: 116mm, align(center, text(size: 16pt)[within 20 %: #h(2mm) *D–T 8–23 keV* #h(3mm) D–D 7.5–36 keV #h(3mm) D–#super[3]He 36–94 keV #h(3mm) p–#super[11]B 91–218 keV]))
+  #at(1, 12, y: 128mm, align(center, text(size: 14pt, fill: muted)[$c$: maximum of $sv \/ T^2$ for each fuel (grey band)]))
+  #at(1, 12, y: 140mm, cite-line[
+    #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ·
+    #link("https://doi.org/10.1088/0029-5515/40/4/310")[Nevins & Swain · Nucl. Fusion 40, 865 (2000)]])
+]
+
 #widget-page("lawson", section: "power-balance", title: [$n tau_E$ or $n T tau_E$?])
 
 #slide(section: "power-balance", title: [Lawson plane])[

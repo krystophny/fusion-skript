@@ -26,7 +26,7 @@ reduced mass m_r.
 | 3–9 | Two-body problem, head-on collision, Rutherford, classical turning point and cross section; Coulomb-collision animation | Open Lecture 4 with the contact-distance correction (PLAN.md) |
 | 10–16 | Quantum ballpark, WKB slices, Gamow tunnelling, measuring σ, S factor, tunnelling alone, actual σ | — |
 | 17–27 | Measured S, ⁵He resonance, which force, S and R, force ranges, computing S, p–p from wave functions, pionless EFT, comparison, p–p chain (moved from the former Chapter 3 deck), summary diagram | Taught in Lecture 3 |
-| 28 | 2.20 Reactivity (plot `reactivity`) | D–T two orders above the others at 10 keV; ⟨σv⟩/T² maximal at 13.5 keV. Lawson curve n T τ_E ∝ T²/⟨σv⟩ is this curve upside down (Chapter 4). Hotter is not safer below about 70 keV. |
+| 28 | 2.20 Reactivity (plot `reactivity`) | D–T two orders above the others at 10 keV; ⟨σv⟩/T² maximal at 13.5 keV; right panel ⟨σv⟩/(cT²) per fuel with a ±20 % band (discussed in 4.4). Lawson curve n T τ_E ∝ T²/⟨σv⟩ is this curve upside down (Chapter 4). Hotter is not safer below about 70 keV. |
 | 29 | Reaction rate: summary | Five steps and the τ²e^(−τ) result. |
 | 30 | Solar core (plot `gamow_peak_pp`), optional | k_BT ≈ 1.3 keV, E₀ ≈ 6 keV ≈ 4.6 k_BT; bridge to a later stars chapter, may be skipped. |
 
