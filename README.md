@@ -76,9 +76,10 @@ After the pending chapter changes are committed on `main`, release with:
 bash scripts/publish.sh --release
 ```
 
-This rebuilds, tests, exports, then pushes `main` to both remotes. It never
-creates commits or force-pushes. Each GitHub push to `main` deploys Pages
-after the Actions checks pass.
+This rebuilds, tests, exports, then pushes `main` to both remotes and
+replaces the `gh-pages` branch with one commit of the local `public/`. Pages
+serves that branch directly, so the site is live about a minute after the
+push. It never creates commits on `main`.
 
 | Output | URL |
 | --- | --- |
@@ -88,9 +89,9 @@ after the Actions checks pass.
 | Energy presenter | <https://krystophny.github.io/fusion-skript/present/00-energy-context/> |
 | TU Graz mirror | <https://gitlab.tugraz.at/plasma/proj/teaching/fusion-skript> |
 
-The workflow pins Typst 0.15.1, checks derivations and publishing behavior,
-builds the site, decks and presenter, and uploads `public/`. Pull requests
-build without deploying. Plasma's separate Nix workflow checks its flake and
+The workflow pins Typst 0.15.1 and, on pull requests only, checks
+derivations and publishing behavior and builds the site, decks and presenter
+without deploying. Plasma's separate Nix workflow checks its flake and
 VM; Fusion has no such project contract.
 
 ## Animations

@@ -31,13 +31,14 @@ an authenticated platform pilot.
 
 ## Hosting
 
-The public source is `krystophny/fusion-skript` on GitHub, with Actions-based
-Pages at `https://krystophny.github.io/fusion-skript/`. `github` names
+The public source is `krystophny/fusion-skript` on GitHub, with Pages served from
+the `gh-pages` branch at `https://krystophny.github.io/fusion-skript/`. `github` names
 `git@github.com:krystophny/fusion-skript.git`; `origin` names the private TU Graz
 mirror `git@gitlab.tugraz.at:plasma/proj/teaching/fusion-skript.git`.
 `scripts/publish.sh` builds, tests and exports; `--release` also pushes `main`
-to both remotes. Each push to GitHub `main` deploys after workflow checks pass.
-The script never creates commits.
+to both remotes and replaces `gh-pages` with one commit of the locally built
+`public/`, which Pages serves without a rebuild. The script never creates
+commits on `main`.
 
 `scripts/build-site.sh` builds the numbered decks, animation player pages and
 SVG presenter under `public/`; the site root forwards to `present/`. `scripts/build-notebooks.sh` renders the Quarto notebooks in `notebooks/`

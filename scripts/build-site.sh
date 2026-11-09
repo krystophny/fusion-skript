@@ -20,9 +20,13 @@ cp src/index.html public/index.html
 cp fonts/*.otf fonts/OFL.txt public/fonts/
 # Registered animations: posters, checksum-verified MP4s, player pages.
 python3 scripts/prepare-media.py public
-bash scripts/build-slides.sh
-# Notebooks before the presenter, which lays the slide widgets among them over
-# its widget pages.
-bash scripts/build-notebooks.sh
+# Slides and notebooks are independent; both must exist before the presenter,
+# which lays the slide widgets among them over its widget pages.
+bash scripts/build-slides.sh & slides=$!
+bash scripts/build-notebooks.sh & notebooks=$!
+wait "$slides"
+wait "$notebooks"
+# Served as-is from the gh-pages branch, without Jekyll.
+touch public/.nojekyll
 python3 scripts/build-present.py --course "Fusion Physics" --short-name Fusion --strict-metadata
 echo "Lecture decks and presenter written to public/"

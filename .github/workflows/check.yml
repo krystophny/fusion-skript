@@ -1,8 +1,8 @@
-name: Build and deploy to GitHub Pages
+name: Check derivations and site build
 
+# Pages is deployed by scripts/publish.sh --release from the local build
+# (gh-pages branch); this workflow only checks pull requests.
 on:
-  push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -79,28 +79,4 @@ jobs:
         run: uv run python -m pytest -q scripts/test-publishing.py
       - name: Build slides, animation pages, presenter and notebooks
         run: uv run bash scripts/build-site.sh
-      - name: Configure GitHub Pages
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        uses: actions/configure-pages@v5
-      - name: Upload public bundle
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: public
 
-  deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    needs: [site, derivations]
-    runs-on: ubuntu-latest
-    concurrency:
-      group: pages-deploy
-      cancel-in-progress: false
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy main
-        id: deployment
-        uses: actions/deploy-pages@v4
