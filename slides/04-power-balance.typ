@@ -65,6 +65,8 @@
     [$= 5 "bar s"$ ion pressure, #h(2mm) $10 "bar s"$ ion + electron pressure]))
 ]
 
+#widget-page("lawson", section: "power-balance", title: [$n tau_E$ or $n T tau_E$?])
+
 #slide(section: "power-balance", title: [Lawson plane])[
   #at(1, 12, y: 0mm, align(center, deck-fig("lawson_plane", columns: 12)))
   #at(1, 12, y: 130mm, align(center, text(fill: muted)[dashed: with bremsstrahlung (4.9)]))
@@ -130,15 +132,6 @@
 ]
 
 // ------------------------------------------------- 4.8 Where is the optimum? ---
-
-#slide(section: "optimum", title: [Which temperature is optimal?])[
-  #at(1, 12, y: 0mm, steps(gap: 7mm,
-    r([fixed $n, tau_E$], [max $sv \/ T$ #h(3mm) $=>$ #h(2mm) $25.7 "keV"$]),
-    r([fixed $p, tau_E$], [max $sv \/ T^2$ #h(3mm) $=>$ #h(2mm) $13.5 "keV"$]),
-    r([fixed $n$, max $P_"fus"$], [max $sv$ #h(3mm) $=>$ #h(2mm) $66.7 "keV"$]),
-  ))
-  #at(2, 10, y: 66mm, result-box([optimum depends on what is held fixed], [broad: within 10 % for 9.7–19 keV at fixed $p$]))
-]
 
 #widget-page("limits", section: "optimum", title: [Density and pressure limits])
 

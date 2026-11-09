@@ -1,0 +1,79 @@
+---
+title: "Lawson: n τ_E or n T τ_E?"
+format:
+  html:
+    css: slide-widget.css
+    page-layout: custom
+    title-block-style: none
+    include-after-body: slide-widget.html
+---
+
+```{ojs}
+//| output: false
+import {reactivity, tripleProduct, E_ALPHA} from "./fusion.js"
+import {INK, MUTED, GREY, BLUE, ORANGE} from "./plotting.js"
+rx = FileAttachment("data/reactivity.json").json()
+font = ({fontFamily: "'STIX Two Text', serif", fontSize: "16px", color: INK, background: "transparent"})
+sub = (svg) => {
+  for (const t of svg.querySelectorAll("text")) {
+    if (!/[_^]/.test(t.textContent)) continue;
+    t.innerHTML = t.textContent
+      .replace(/_(\w+)/g, '<tspan baseline-shift="sub" font-size="72%">$1</tspan>')
+      .replace(/\^(\S+)/g, '<tspan baseline-shift="super" font-size="72%">$1</tspan>');
+  }
+  return svg;
+}
+pow = (d) => { const e = Math.round(Math.log10(d)); return e === 0 ? "1" : e === 1 ? "10" : "10" + String(e).replace("-", "⁻").replace(/\d/g, (c) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[c]); }
+```
+
+```{ojs}
+//| output: false
+// Ignition, 50:50 D-T, flat profiles: n T tau_E = 12 T^2 / (<sigma v> E_alpha), optionally with bremsstrahlung.
+grid = d3.range(0, 4001).map((i) => 2 * 50 ** (i / 4000))
+zeff = brems ? 1 : 0
+// <sigma v> ~ c T^2, exact at the fit temperature: n T tau_E = 12 / (c E_alpha) is flat, n tau_E falls as 1/T.
+c = reactivity(rx, "DT", Tfit) / Tfit ** 2
+flat = 12 / (c * E_ALPHA)
+rows = grid.map((T) => {
+  const ntt = tripleProduct(rx, T, Infinity, zeff);
+  return {T, ntt, nt: ntt / T, nttA: flat, ntA: flat / T};
+}).filter((r) => Number.isFinite(r.ntt))
+best = (key) => rows.reduce((a, r) => (r[key] < a[key] ? r : a))
+minNTT = best("ntt")
+minNT = best("nt")
+panel = (key, keyA, label, dom, ticks, active) => sub(Plot.plot({
+  width: 470, height: 380, marginLeft: 70, marginRight: 12, marginTop: 34, marginBottom: 56, style: font, clip: true,
+  x: {type: "log", domain: [2, 100], label: "k_B T [keV]", ticks: [2, 5, 10, 20, 50, 100], tickFormat: String, labelArrow: "none", labelAnchor: "center", labelOffset: 40},
+  y: {type: "log", domain: dom, label, ticks, tickFormat: pow, labelArrow: "none"},
+  marks: [
+    Plot.areaY(rows, {x: "T", y1: (r) => Math.min(r[key], dom[1]), y2: (r) => Math.min(r[keyA], dom[1]), fill: GREY, fillOpacity: 0.22}),
+    Plot.line(rows, {x: "T", y: keyA, stroke: GREY, strokeWidth: 2, strokeDasharray: "6,4"}),
+    Plot.line(rows, {x: "T", y: key, stroke: active ? ORANGE : INK, strokeWidth: 2.6}),
+    Plot.dot([key === "ntt" ? minNTT : minNT], {x: "T", y: key, r: 6, fill: active ? ORANGE : INK}),
+    Plot.text([key === "ntt" ? minNTT : minNT], {x: "T", y: key, dy: 28, fill: active ? ORANGE : INK, stroke: "white", strokeWidth: 5, paintOrder: "stroke", fontSize: 15,
+      text: (r) => `minimum ${r.T.toFixed(1)} keV`}),
+    Plot.ruleX([Tfit], {stroke: BLUE, strokeDasharray: "2,3"}),
+    Plot.frame({stroke: active ? ORANGE : "transparent", strokeWidth: 2}),
+  ],
+}))
+```
+
+```{ojs}
+html`<div style="display:flex;justify-content:space-between">
+  ${panel("nt", "ntA", "n τ_E [s m^−3]", [5e19, 3e21], [1e20, 1e21], mode === "fixed density")}
+  ${panel("ntt", "nttA", "n k_B T τ_E [keV s m^−3]", [1e21, 3e22], [1e21, 1e22], mode === "fixed pressure")}
+</div>
+<div style="display:flex;gap:1.2rem;font-size:0.72rem;margin:0.1rem 0.6rem;color:#526175">
+<span><span style="color:#17202A">━</span> exact ⟨σv⟩ (Bosch–Hale)</span>
+<span><span style="color:#9AA5B1">╍</span> ⟨σv⟩ ≈ c T², exact at the blue line</span>
+<span style="margin-left:auto">${mode === "fixed pressure"
+  ? html`β limit, <i>p</i> fixed: <i>τ</i><sub>E</sub> = 2 <i>nTτ</i><sub>E</sub>/<i>p</i> → lowest <i>nTτ</i><sub>E</sub> at ${minNTT.T.toFixed(1)} keV`
+  : html`density limit, <i>n</i> fixed: <i>τ</i><sub>E</sub> = <i>nτ</i><sub>E</sub>/<i>n</i> → lowest <i>nτ</i><sub>E</sub> at ${minNT.T.toFixed(1)} keV`}</span>
+</div>`
+```
+
+```{ojs}
+viewof Tfit = Inputs.range([5, 40], {value: 13.5, step: 0.5, label: "fit T [keV]"})
+viewof brems = Inputs.toggle({label: "bremsstrahlung", value: false})
+viewof mode = Inputs.radio(["fixed pressure", "fixed density"], {value: "fixed pressure", label: "machine holds"})
+```

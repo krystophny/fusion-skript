@@ -46,6 +46,12 @@ out.q5 = T.map(t => m.tripleProduct(rx, t, 5));
 out.zeff2 = T.map(t => m.tripleProduct(rx, t, 10, 2));
 out.he5 = T.map(t => m.ignitionDiluted(rx, t, [[2, 0.05]]));
 out.peak = T.map(t => m.peakTripleProduct(rx, t));
+{
+  // The Lawson widget: minima of n T tau_E and n tau_E over its grid, without and with bremsstrahlung.
+  const grid = Array.from({length: 4001}, (_, i) => 2 * 50 ** (i / 4000));
+  const arg = (f) => grid.reduce((a, t) => (f(t) < f(a) ? t : a));
+  out.lawsonMin = [0, 1].map(z => [arg(t => m.tripleProduct(rx, t, Infinity, z)), arg(t => m.tripleProduct(rx, t, Infinity, z) / t)]);
+}
 out.peakQ1 = T.map(t => m.peakTripleProduct(rx, t, 1, {zeff: 3.4}));
 out.peakFlat = T.map(t => m.peakTripleProduct(rx, t, 5, {zeff: 1, zbar: 1, etaAbs: 1, nuN: 0, nuT: 0}));
 out.lam = m.profileFactors(rx, 20, 1, 1);
@@ -131,6 +137,13 @@ def test_peak_triple_product(js):
     assert np.allclose(finite(js["peakFlat"]), pb.triple_product(t, 5.0, brems=True), rtol=1e-12)
     # Parabolic profiles: closed forms of Eqs. (39)-(40).
     assert js["lam"]["kappa"] == pytest.approx(1 / 3) and js["lam"]["B"] == pytest.approx(2 / 7)
+
+
+def test_lawson_widget_minima(js):
+    """Fixed pressure: lowest n T tau_E at 13.5 keV; fixed density: lowest n tau_E at 25.7 keV."""
+    (ntt, nt), (ntt_br, nt_br) = js["lawsonMin"]
+    assert ntt == pytest.approx(13.5, abs=0.1) and nt == pytest.approx(25.7, abs=0.1)
+    assert ntt_br == pytest.approx(14.2, abs=0.1) and nt_br == pytest.approx(26.0, abs=0.1)
 
 
 def test_peak_values_put_record_shots_below_breakeven():
