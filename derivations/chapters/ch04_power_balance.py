@@ -57,6 +57,34 @@ def triple_product(t, q=np.inf, brems=False):
     return out
 
 
+def profile_factors(t0, nu_n=0.2, nu_t=3.0, points=400):
+    """Wurzel & Hsu (2022) Eqs. (38)-(40) for n, T proportional to (1 - x^2)^nu, x = r/a.
+
+    Returns (lambda_kappa, lambda_F, lambda_B): stored energy, D-T fusion power and
+    bremsstrahlung relative to their values at the peak density and temperature.
+    lambda_F is a midpoint rule in s = x^2; below 0.2 keV the reactivity counts as zero.
+    """
+    s = (np.arange(points) + 0.5) / points
+    ts = t0 * (1 - s) ** nu_t
+    sv = np.where(ts >= 0.2, bosch_hale("DT", np.maximum(ts, 0.2)), 0.0)
+    lam_f = np.sum((1 - s) ** (2 * nu_n) * sv) / points / bosch_hale("DT", t0)
+    return 1 / (1 + nu_n + nu_t), lam_f, 2 / (4 * nu_n + nu_t + 2)
+
+
+def peak_triple_product(t0, q=np.inf, z_eff=1.5, z_bar=1.2, eta_abs=0.9, nu_n=0.2, nu_t=3.0):
+    """Required n_i0 T_i0 tau_E in keV s m^-3 at peak ion temperature t0 (keV).
+
+    Wurzel & Hsu, Phys. Plasmas 29, 062103 (2022), Eq. (45): the gain-Q balance in
+    peak values, for the profiles and impurities (Z_eff, Z_bar = n_e/n_i) of their
+    magnetic-confinement contours; eta_abs is the absorbed fraction of heating power.
+    """
+    lam_k, lam_f, lam_b = profile_factors(t0, nu_n, nu_t)
+    gain = 0.0 if np.isinf(q) else eta_abs * E_FUS / q
+    heat = lam_f * bosch_hale("DT", t0) * (E_ALPHA + gain) / 4 * KEV
+    net = heat - lam_b * C_B * z_eff * z_bar**2 * np.sqrt(t0)
+    return 1.5 * lam_k * (1 + z_bar) * t0**2 * KEV / net if net > 0 else np.inf
+
+
 def ideal_ignition_temperature(z_eff=1.0):
     """T (keV) where alpha heating equals bremsstrahlung, 50:50 D-T; independent of n."""
     tt = np.linspace(2, 20, 180001)

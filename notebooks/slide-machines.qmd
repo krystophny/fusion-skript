@@ -10,7 +10,7 @@ format:
 
 ```{ojs}
 //| output: false
-import {tripleProduct} from "./fusion.js"
+import {peakTripleProduct} from "./fusion.js"
 import {INK, MUTED, GREY, BLUE, ORANGE} from "./plotting.js"
 rx = FileAttachment("data/reactivity.json").json()
 csv = FileAttachment("data/wurzel_hsu_2022.csv").text()
@@ -27,6 +27,13 @@ designs = rows.filter((r) => r.design)
 colour = ({tokamak: BLUE, stellarator: ORANGE, other: GREY})
 // D-T reactor window used in all panels.
 win = ({T: [10, 25], n: [5e19, 3e20], tau: [1, 5]})
+// The data are peak values, so the gain curves are too (Wurzel & Hsu Eq. 45):
+// peaked T, broad n, Z_eff from 1.5 (lower edge) to 3.4 (upper edge).
+ZEFF = [1.5, 3.4]
+tGrid = d3.range(0, 201).map((i) => 1.5 * 40 ** (i / 200))
+band = (q) => tGrid.map((t) => ({t, lo: peakTripleProduct(rx, t, q, {zeff: ZEFF[0]}),
+  hi: Math.min(peakTripleProduct(rx, t, q, {zeff: ZEFF[1]}), 1e23)})).filter((d) => Number.isFinite(d.lo))
+nTauIgnition = peakTripleProduct(rx, 13.5, Infinity, {zeff: ZEFF[0]}) / 13.5
 sub = (svg) => {
   for (const t of svg.querySelectorAll("text")) {
     if (!/[_^]/.test(t.textContent)) continue;
@@ -72,8 +79,8 @@ view === "three cross-sections" ? html`<div style="display:flex;justify-content:
   ]})}
   ${panel("n", "tau", {guides: [
     ...[1e18, 1e19, 1e20].map((nt) => Plot.line([1e17, 3e21], {x: (n) => n, y: (n) => nt / n, stroke: GREY, strokeDasharray: "2,3"})),
-    Plot.line([1e17, 3e21], {x: (n) => n, y: (n) => 2.1e20 / n, stroke: ORANGE, strokeWidth: 1.4}),
-    Plot.text([0], {x: 1e19, y: 2.1e20 / 1e19, text: () => "nτ_E for ignition at 13.5 keV", fill: ORANGE, fontSize: 13, dy: -9, rotate: -42}),
+    Plot.line([1e17, 3e21], {x: (n) => n, y: (n) => nTauIgnition / n, stroke: ORANGE, strokeWidth: 1.4}),
+    Plot.text([0], {x: 2.9e21, y: 15, text: () => "ignition, 13.5 keV", fill: ORANGE, fontSize: 12, textAnchor: "end"}),
   ]})}
   ${panel("T", "tau")}
 </div>` : sub(Plot.plot({
@@ -81,11 +88,11 @@ view === "three cross-sections" ? html`<div style="display:flex;justify-content:
   x: {type: "log", domain: [0.1, 60], label: "k_B T [keV]", tickFormat: pow, ticks: [0.1, 1, 10], labelArrow: "none", labelAnchor: "center", labelOffset: 40},
   y: {type: "log", domain: [1e15, 1e23], label: "n k_B T τ_E [keV s m^−3]", tickFormat: pow, ticks: [1e15, 1e17, 1e19, 1e21, 1e23], labelArrow: "none"},
   marks: [
-    ...[[1, GREY], [10, BLUE], [Infinity, ORANGE]].map(([q, c]) => Plot.line(
-      d3.range(0, 201).map((i) => 1.5 * 40 ** (i / 200)).map((t) => ({t, v: tripleProduct(rx, t, q)})),
-      {x: "t", y: "v", stroke: c, strokeWidth: 2})),
+    ...[[1, GREY], [10, BLUE], [Infinity, ORANGE]].flatMap(([q, c]) => [
+      Plot.areaY(band(q), {x: "t", y1: "lo", y2: "hi", fill: c, fillOpacity: 0.16}),
+      Plot.line(band(q), {x: "t", y: "lo", stroke: c, strokeWidth: 2})]),
     ...[[1, GREY, "Q = 1"], [10, BLUE, "Q = 10"], [Infinity, ORANGE, "ignition"]].map(([q, c, s]) =>
-      Plot.text([0], {x: 60, y: tripleProduct(rx, 60, q), text: () => s, fill: c, dx: 6, dy: q === 10 ? 4 : q === 1 ? 0 : -6, textAnchor: "start", clip: false})),
+      Plot.text([0], {x: 60, y: peakTripleProduct(rx, 60, q, {zeff: ZEFF[0]}), text: () => s, fill: c, dx: 6, dy: q === 10 ? 4 : q === 1 ? 0 : -6, textAnchor: "start", clip: false})),
     Plot.dot(measured.filter((r) => r.group === "other"), {x: "T", y: "nTtau", r: 3.2, fill: GREY, fillOpacity: 0.6}),
     Plot.dot(measured.filter((r) => r.group !== "other"), {x: "T", y: "nTtau", r: 4.5, fill: (r) => colour[r.group], stroke: "white", strokeWidth: 0.6}),
     Plot.dot(designs, {x: "T", y: "nTtau", r: 6, stroke: INK, strokeWidth: 1.6, fill: "white"}),
@@ -102,7 +109,7 @@ view === "three cross-sections" ? html`<div style="display:flex;justify-content:
 <span><span style="color:#9AA5B1">●</span> other magnetic</span>
 <span>○ design</span>
 <span><span style="color:#B55000">▭</span> D–T reactor window</span>
-<span style="margin-left:auto">peak ion density, τ<sub>E</sub>; data: Wurzel &amp; Hsu, Phys. Plasmas 29, 062103 (2022)</span>
+<span style="margin-left:auto">Peak values; gain curves for peaked profiles, Z<sub>eff</sub> 1.5–3.4; data: Wurzel &amp; Hsu, Phys. Plasmas 29, 062103 (2022)</span>
 </div>
 
 ```{ojs}

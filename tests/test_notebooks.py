@@ -45,6 +45,10 @@ out.ignBrems = T.map(t => m.tripleProduct(rx, t, Infinity, 1));
 out.q5 = T.map(t => m.tripleProduct(rx, t, 5));
 out.zeff2 = T.map(t => m.tripleProduct(rx, t, 10, 2));
 out.he5 = T.map(t => m.ignitionDiluted(rx, t, [[2, 0.05]]));
+out.peak = T.map(t => m.peakTripleProduct(rx, t));
+out.peakQ1 = T.map(t => m.peakTripleProduct(rx, t, 1, {zeff: 3.4}));
+out.peakFlat = T.map(t => m.peakTripleProduct(rx, t, 5, {zeff: 1, zbar: 1, etaAbs: 1, nuN: 0, nuT: 0}));
+out.lam = m.profileFactors(rx, 20, 1, 1);
 out.w = m.dilution([[74, 1e-3]]);
 out.fa = [1, 5, 10].map(m.fAlpha);
 out.qeng = [m.qEng(5.25, 0.4, 0.4), m.qEng(11.5, 0.4, 0.4)];
@@ -115,6 +119,25 @@ def test_power_balance(js):
     net = sv * (pb.E_ALPHA + pb.E_FUS / 10) * rx.KEV - 8 * pb.C_B * np.sqrt(t)
     ref = np.where(net > 0, 12 * t**2 * rx.KEV / np.where(net > 0, net, 1), np.inf)
     assert np.allclose(arr(js["zeff2"]), ref, rtol=1e-12)
+
+
+def test_peak_triple_product(js):
+    t = np.array(TEMPS)
+    finite = lambda v: np.array([np.inf if x is None else x for x in v], float)
+    assert np.allclose(finite(js["peak"]), [pb.peak_triple_product(x) for x in t], rtol=1e-12)
+    assert np.allclose(finite(js["peakQ1"]), [pb.peak_triple_product(x, 1.0, z_eff=3.4) for x in t],
+                       rtol=1e-12)
+    # Flat profiles, pure fuel, full absorption: Wurzel & Hsu Eq. (45) is the 0-D balance.
+    assert np.allclose(finite(js["peakFlat"]), pb.triple_product(t, 5.0, brems=True), rtol=1e-12)
+    # Parabolic profiles: closed forms of Eqs. (39)-(40).
+    assert js["lam"]["kappa"] == pytest.approx(1 / 3) and js["lam"]["B"] == pytest.approx(2 / 7)
+
+
+def test_peak_values_put_record_shots_below_breakeven():
+    """Peak-value records against flat-profile curves overstate the gain (Wurzel & Hsu 2022)."""
+    jet_1991 = (18.6, 4.1e19 * 0.8 * 18.6)   # shot 26087: T_i0 [keV], n_i0 T_i0 tau_E* [keV s m^-3]
+    assert jet_1991[1] > pb.triple_product(jet_1991[0], 1.0)
+    assert jet_1991[1] < pb.peak_triple_product(jet_1991[0], 1.0)
 
 
 def test_dilution_and_gain(js):

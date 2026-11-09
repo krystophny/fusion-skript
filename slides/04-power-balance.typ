@@ -138,28 +138,6 @@
     #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)]])
 ]
 
-#slide(section: "plant-gain", title: [Engineering gain])[
-  #at(1, 6, y: 0mm, steps(gap: 7mm,
-    r([heat], $P_"th" = P_"fus" + P_"ext"$),
-    r([electric], $P_"gross" = eta_"th" P_"th"$),
-    r([heating], $P_"recirc" = P_"ext" \/ eta_"aux"$),
-    r([definition], $Q_"eng" = (P_"gross" - P_"recirc")/P_"recirc"$),
-  ))
-  #at(1, 6, y: 72mm, result-box($Q_"eng" = eta_"th" eta_"aux" (Q + 1) - 1$, none))
-  #at(1, 6, y: 108mm, steps(gap: 6mm,
-    r([$Q_"eng" = 0$], $Q = 1\/(eta_"th" eta_"aux") - 1 = 5.25$),
-    r([$Q_"eng" = 1$], $Q = 2\/(eta_"th" eta_"aux") - 1 = 11.5$),
-  ))
-  #at(7, 6, y: -4mm, deck-fig("q_eng", columns: 6))
-  #at(1, 12, y: 134mm, text(fill: muted)[$eta_"th" = eta_"aux" = 0.4$, other plant loads neglected])
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)]])
-]
-
-#slide(section: "plant-gain", title: [Power flow at $Q = 10$])[
-  #at(1, 12, y: 0mm, align(center, deck-fig("power_flow", columns: 11)))
-]
-
 #slide(section: "pressure-beta", title: [Fixed pressure])[
   #at(1, 6, y: 0mm, steps(gap: 7mm,
     r([pressure], $p = 2 n k_B T$),
@@ -222,25 +200,6 @@
 
 #widget-page("machines", section: "optimum", title: [Where present machines stand])
 
-#slide(section: "optimum", title: [What is really optimised?])[
-  #let box(c, title, body) = block(width: 100%, stroke: 0.8pt + c, radius: 1.5mm, inset: 4mm)[
-    #text(fill: c, title) #v(2mm) #text(size: 15pt, body)]
-  #at(1, 3, y: 0mm, box(plot-blue, [plasma], [$n, T, tau_E, beta$ \ $Q, P_"fus"$]))
-  #at(4, 3, y: 0mm, box(ink, [limits], [Greenwald, $beta$, Sudo \ $tau_E (T, P, n, B, "size")$]))
-  #at(7, 3, y: 0mm, box(ink, [technology], [magnet $B$ and stress \ wall load, divertor heat flux, \ tritium breeding, materials]))
-  #at(10, 3, y: 0mm, box(plot-orange, [plant], [$P_"net"$, availability \ EUR / kWh]))
-  #at(1, 12, y: 62mm, steps(gap: 7mm,
-    r([cost], $"EUR"/"kWh" = ("capital" dot "annuity" + "operation")/(P_"net" dot "hours per year")$),
-    r([higher $B$], [$P_"fus" prop beta^2 B^4 V$ #h(3mm) vs. magnet cost and stress]),
-    r([higher $n$], [radiation, divertor load, density limit]),
-    r([higher $T$], [$beta$ limit, lower $tau_E$]),
-    r([larger device], [higher $tau_E$, higher capital cost]),
-  ))
-  #at(1, 12, y: 140mm, text(fill: muted)[broad optimum, decided by technology and cost #h(5mm) limits: Ch. 6 · $tau_E$: Ch. 7 · plants: Ch. 10])
-]
-
-// ---------------------------- 4.9 Bremsstrahlung, 4.10 Impurities (after the optimum) ---
-
 #slide(section: "bremsstrahlung", title: [Bremsstrahlung and ideal ignition])[
   #at(1, 6, y: 0mm, steps(gap: 7mm,
     r([electron–ion], $p_"br" = C_B n_e^2 Z_"eff" sqrt(k_B T)$),
@@ -254,27 +213,6 @@
   #at(1, 12, y: 146mm, cite-line[
     #link("https://doi.org/10.1088/0370-1301/70/1/303")[Lawson · Proc. Phys. Soc. B 70, 6 (1957)] ·
     NRL Plasma Formulary · #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)]])
-]
-
-#slide(section: "dilution", title: [Quasineutrality and dilution])[
-  #at(1, 7, y: 0mm, steps(gap: 7mm,
-    r([quasineutral], $n_e = n_"D" + n_"T" + sum_Z Z n_Z$),
-    r([concentration], $c_Z = n_Z \/ n_e$),
-    r([fuel], $(n_"D" + n_"T") \/ n_e = 1 - sum_Z Z c_Z$),
-    r([fixed $n_e$], $p_"fus" prop (1 - sum_Z Z c_Z)^2$),
-    r([radiation], $Z_"eff" = 1 - sum_Z Z c_Z + sum_Z Z^2 c_Z$),
-  ))
-  #at(8, 5, y: 2mm, data-table(
-    ([], [$Z c$], [fuel], [$p_"fus"$]),
-    (
-      ([0.1 % W], [$0.074$], [$0.926$], [$0.86$]),
-      ([5 % He], [$0.10$], [$0.90$], [$0.81$]),
-    ),
-    align: (left, right, right, right),
-  ))
-  #at(8, 5, y: 48mm, text(fill: muted)[W: line radiation dominates])
-  #at(1, 12, y: 84mm, result-box($p_"fus" \/ p_"fus" (c = 0) = (1 - sum_Z Z c_Z)^2$,
-    [one W ion displaces 74 fuel ions]))
 ]
 
 #slide(section: "dilution", title: [Helium ash])[

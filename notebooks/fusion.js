@@ -109,6 +109,28 @@ export function tripleProduct(rx, t, q = Infinity, zeff = 0) {
   return net > 0 ? 12 * t * t * KEV / net : Infinity;
 }
 
+// Wurzel & Hsu (2022) Eqs. (38)-(40): profile factors for n, T ~ (1 - x^2)^nu; same
+// midpoint rule in s = x^2 as ch04_power_balance.profile_factors.
+export function profileFactors(rx, t0, nuN = 0.2, nuT = 3, points = 400) {
+  let sum = 0;
+  for (let i = 0; i < points; i++) {
+    const s = (i + 0.5) / points, ts = t0 * (1 - s) ** nuT;
+    if (ts >= 0.2) sum += (1 - s) ** (2 * nuN) * reactivity(rx, "DT", ts);
+  }
+  return {kappa: 1 / (1 + nuN + nuT), F: sum / points / reactivity(rx, "DT", t0), B: 2 / (4 * nuN + nuT + 2)};
+}
+
+// Wurzel & Hsu (2022) Eq. (45): n_i0 T_i0 tau_E for gain q in peak values, with the
+// profiles and impurities of their magnetic-confinement contours.
+export function peakTripleProduct(rx, t0, q = Infinity,
+    {zeff = 1.5, zbar = 1.2, etaAbs = 0.9, nuN = 0.2, nuT = 3} = {}) {
+  const lam = profileFactors(rx, t0, nuN, nuT);
+  const gain = Number.isFinite(q) ? etaAbs * E_FUS / q : 0;
+  const net = lam.F * reactivity(rx, "DT", t0) * (E_ALPHA + gain) / 4 * KEV
+    - lam.B * C_B * zeff * zbar * zbar * Math.sqrt(t0);
+  return net > 0 ? 1.5 * lam.kappa * (1 + zbar) * t0 * t0 * KEV / net : Infinity;
+}
+
 export function fAlpha(q) {
   return Number.isFinite(q) ? q / (q + E_FUS / E_ALPHA) : 1;
 }
