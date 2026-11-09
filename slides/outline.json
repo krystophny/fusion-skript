@@ -11,7 +11,7 @@
       "label": "fusion-reactions"
     },
     {
-      "number": 4,
+      "number": 3,
       "title": "Power balance and Lawson",
       "label": "power-balance-lawson"
     }
@@ -84,61 +84,61 @@
       "chapter": "fusion-reactions"
     },
     {
-      "number": "4.1",
+      "number": "3.1",
       "title": "Alpha and neutron energies",
       "label": "alpha-neutron",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.2",
+      "number": "3.2",
       "title": "Fusion power density",
       "label": "fusion-power",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.3",
+      "number": "3.3",
       "title": "Stored energy and confinement time",
       "label": "confinement-time",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.4",
+      "number": "3.4",
       "title": "Power balance and the triple product",
       "label": "power-balance",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.5",
+      "number": "3.5",
       "title": "Lawson's criterion and plant gain",
       "label": "plant-gain",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.6",
+      "number": "3.6",
       "title": "Pressure and beta",
       "label": "pressure-beta",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.7",
+      "number": "3.7",
       "title": "Confinement routes",
       "label": "confinement-routes",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.8",
+      "number": "3.8",
       "title": "Where is the optimum?",
       "label": "optimum",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.9",
+      "number": "3.9",
       "title": "Radiation losses",
       "label": "bremsstrahlung",
       "chapter": "power-balance-lawson"
     },
     {
-      "number": "4.10",
+      "number": "3.10",
       "title": "Impurities and fuel dilution",
       "label": "dilution",
       "chapter": "power-balance-lawson"

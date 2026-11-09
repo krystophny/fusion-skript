@@ -48,8 +48,8 @@ teaching use and retention of the original photographs on 2026-10-13.
   temperature, not a universal threshold for every fuel or operating point.
   Keep its historical 1955 date; cite the 1957 publication.
 - Keep the already agreed introductory plant and tritium-loop slides. Detailed
-  engineering stays in Chapter 10; reaction-rate and Lawson derivations in
-  Chapters 3–4; pressure gradients and force balance in Chapter 6.
+  engineering stays in Chapter 9; reaction-rate and Lawson derivations in
+  Chapters 2–3; pressure gradients and force balance in Chapter 5.
 - Original source slides 4–5 repeat Chapter 0; the Japanese Earth/Sun bridge
   and later SPARC, ITER, equilibrium, transport and research material remain
   outside this chapter’s selected discovery sequence.

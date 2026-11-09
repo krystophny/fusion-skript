@@ -728,7 +728,7 @@
   #at(1, 12, y: 0mm, align(center, deck-fig("reactivity", columns: 11)))
   #at(1, 12, y: 118mm, align(center)[
     D–T, $k_B T = 10 "keV"$: $chevron.l sigma v chevron.r = 1.1 times 10^(-22) "m"^3\/"s"$ #h(10mm)
-    #text(fill: muted)[Lawson (Chapter 4):] $n T tau_E prop T^2 \/ chevron.l sigma v chevron.r$])
+    #text(fill: muted)[Lawson (Chapter 3):] $n T tau_E prop T^2 \/ chevron.l sigma v chevron.r$])
   #at(1, 12, y: 136mm, text(size: 12pt)[
     #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] ·
     #link("https://doi.org/10.1088/0029-5515/40/4/310")[Nevins & Swain · Nucl. Fusion 40, 865 (2000)] ·

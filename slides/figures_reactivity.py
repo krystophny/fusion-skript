@@ -1,7 +1,7 @@
 """Deck figures for the reactivity section: Gamow peak, <sigma v>(T), Monte Carlo tail.
 
 Model: derivations/chapters/ch02_reactivity.py (Bosch-Hale 1992, Nevins-Swain 2000,
-our EXFOR S-factor fit). Descriptions: slides/04-power-balance-visuals.md.
+our EXFOR S-factor fit). Descriptions: slides/03-power-balance-visuals.md.
 Run:  python3 slides/figures_reactivity.py
       -> slides/build/fig/{gamow_peak,gamow_peak_pp,reactivity,tail_fuses}.{svg,png}
 """

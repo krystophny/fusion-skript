@@ -1,7 +1,7 @@
 """Deck figures for the start of power balance: alpha/neutron split, Lawson plane, power flow.
 
 Model: derivations/chapters/ch04_power_balance.py (0-D D-T balance, Bosch-Hale
-<sigma v>, NRL bremsstrahlung). Descriptions: slides/04-power-balance-visuals.md.
+<sigma v>, NRL bremsstrahlung). Descriptions: slides/03-power-balance-visuals.md.
 Run:  python3 slides/figures_power_balance.py
       -> slides/build/fig/{alpha_neutron_split,lawson_plane,power_flow,density_scaling,
          alpha_brems,q_eng,alpha_fraction,impurity_dilution,fixed_pressure,n_tau_plane}.{svg,png}

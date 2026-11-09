@@ -196,7 +196,7 @@ Plot.plot({
 ```
 
 ::: {.note}
-At fixed pressure $p = 2 n k_BT$ the fusion power density scales as $\langle\sigma v\rangle/T^2$ (Chapter 4). The Bosch–Hale fits are valid for 0.2–100 keV (D–T, D–D) and 0.5–190 keV (D–³He).
+At fixed pressure $p = 2 n k_BT$ the fusion power density scales as $\langle\sigma v\rangle/T^2$ (Chapter 3). The Bosch–Hale fits are valid for 0.2–100 keV (D–T, D–D) and 0.5–190 keV (D–³He).
 :::
 
 ## Sources
