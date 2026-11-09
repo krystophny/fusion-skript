@@ -28,13 +28,8 @@ if ((release)); then
     [[ "$(git remote get-url --push --all "$remote")" == "$url" ]]
   done
 fi
-# The derivation tests do not read public/, so they run beside the build.
-log=$(mktemp)
-python3 -m pytest -q >"$log" 2>&1 & tests=$!
-bash scripts/build-site.sh
-wait "$tests" || { cat "$log" >&2; exit 1; }
-tail -1 "$log"
-python3 -m pytest -q scripts/test-publishing.py
+# Only what changed since the last run is rebuilt or retested.
+make -j"$(nproc)" site check
 bash scripts/export-course-folder.sh "$dest"
 if ((release)); then
   export FUSION_PUBLISH_IN_PROGRESS=1

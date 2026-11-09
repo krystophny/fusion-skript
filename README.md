@@ -5,7 +5,9 @@ slide viewer <https://krystophny.github.io/fusion-skript/present/> are the
 course reference. A future script will be written by hand, page by page; the
 earlier generated chapters remain only in Git history.
 
-Build with `bash scripts/build-site.sh` (Typst, Python, SymPy and Matplotlib).
+Build with `make -j site` (Typst, Python, SymPy, Matplotlib and Quarto); it
+rebuilds only the figures, decks and notebooks whose inputs changed, and
+`make -j check` reruns only the affected tests. `scripts/build-site.sh` calls it.
 Read `public/slides/00-energy-context.pdf` and serve `public/present/` over
 HTTP. Chapter and section numbers and titles of the decks are in
 `slides/outline.json`.

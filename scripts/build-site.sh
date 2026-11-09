@@ -1,32 +1,6 @@
 #!/usr/bin/env bash
+# Thin wrapper for CI and habit: the Makefile owns the build graph.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-python3 derivations/energy.py
-python3 derivations/chapters/ch00_energy_context.py
-python3 derivations/chapters/ch00_electricity_costs.py
-python3 derivations/chapters/ch02_fusion_reactions.py
-python3 derivations/chapters/ch02_reactivity.py
-python3 derivations/chapters/ch04_power_balance.py
-python3 scripts/plot-ch00-teaching.py
-python3 scripts/plot-electricity-costs.py
-python3 slides/figures.py >/dev/null
-python3 slides/figures_sfactor.py >/dev/null
-python3 slides/figures_pp.py >/dev/null
-python3 slides/figures_reactivity.py >/dev/null
-python3 slides/figures_power_balance.py >/dev/null
-mkdir -p public/slides public/fonts slides/build
-# The site root forwards to the deck launcher (present/); there is no script.
-cp src/index.html public/index.html
-cp fonts/*.otf fonts/OFL.txt public/fonts/
-# Registered animations: posters, checksum-verified MP4s, player pages.
-python3 scripts/prepare-media.py public
-# Slides and notebooks are independent; both must exist before the presenter,
-# which lays the slide widgets among them over its widget pages.
-bash scripts/build-slides.sh & slides=$!
-bash scripts/build-notebooks.sh & notebooks=$!
-wait "$slides"
-wait "$notebooks"
-# Served as-is from the gh-pages branch, without Jekyll.
-touch public/.nojekyll
-python3 scripts/build-present.py --course "Fusion Physics" --short-name Fusion --strict-metadata
+make -j"$(nproc)" site
 echo "Lecture decks and presenter written to public/"
