@@ -13,7 +13,7 @@
       "background": "light"
     },
     {
-      "src": "page-02.svg?v=44a7342138a3e9fa",
+      "src": "page-02.svg?v=57afd795008dc49d",
       "kind": "static",
       "background": "light"
     },
@@ -23,12 +23,12 @@
       "background": "light"
     },
     {
-      "src": "page-04.svg?v=62ff225dabb1e6e1",
+      "src": "page-04.svg?v=6670a3e832896e89",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-05.svg?v=0303bbc2aa6408c0",
+      "src": "page-05.svg?v=c0fe1361f2650b03",
       "kind": "static",
       "background": "light"
     },
@@ -38,7 +38,7 @@
       "background": "light"
     },
     {
-      "src": "page-07.svg?v=e08e9221358227ca",
+      "src": "page-07.svg?v=9f137b0c7829bd1e",
       "kind": "static",
       "background": "light"
     },
@@ -46,7 +46,7 @@
       "src": "page-08.svg?v=bd04a4f6b7dd0362",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-lawson.html?v=cafa0809eb060764",
+      "widget": "../../notebooks/slide-lawson.html?v=68fc116f1d59c8c9",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
@@ -55,7 +55,7 @@
       }
     },
     {
-      "src": "page-09.svg?v=bd80b84ea97217dc",
+      "src": "page-09.svg?v=c93d4e6bdbcfb373",
       "kind": "static",
       "background": "light"
     },
@@ -65,7 +65,7 @@
       "background": "light"
     },
     {
-      "src": "page-11.svg?v=31570c5701c17c2f",
+      "src": "page-11.svg?v=4e7aa304f45a168d",
       "kind": "static",
       "background": "light"
     },
@@ -73,7 +73,7 @@
       "src": "page-12.svg?v=439ebe90e7d64d2b",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-bremsstrahlung.html?v=050ab554657e0ce7",
+      "widget": "../../notebooks/slide-bremsstrahlung.html?v=2e4e5868f834f40d",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
@@ -87,12 +87,12 @@
       "background": "light"
     },
     {
-      "src": "page-14.svg?v=02bf7b3c2c868000",
+      "src": "page-14.svg?v=d9f486c1b40e228f",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-15.svg?v=09f3008a10dccde5",
+      "src": "page-15.svg?v=4c6c10924429f0bc",
       "kind": "static",
       "background": "light"
     },
@@ -100,7 +100,7 @@
       "src": "page-16.svg?v=2bb11fc360b5cd7a",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-spectrum.html?v=b5dd0e55ee849000",
+      "widget": "../../notebooks/slide-spectrum.html?v=ea3d80b2a66a4c4b",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
@@ -122,7 +122,7 @@
       "src": "page-19.svg?v=5545a6c9a39645a0",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-impurities.html?v=d1a9f55f2de0872b",
+      "widget": "../../notebooks/slide-impurities.html?v=1fe01e82e18631e6",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
@@ -131,7 +131,7 @@
       }
     },
     {
-      "src": "page-20.svg?v=58cdc3ab64a362e4",
+      "src": "page-20.svg?v=b3c00dd90ecaec3a",
       "kind": "static",
       "background": "light"
     }
