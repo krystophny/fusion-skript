@@ -50,7 +50,8 @@ $(S)/figures: $(patsubst scripts/plot-%.py,$(S)/plot-%,$(PLOTS)) $(patsubst slid
 public/slides/%.pdf: slides/%.typ $(TYP_SHARED) $(S)/figures $(MEDIA)
 	@mkdir -p $(@D)
 	# Dated by the deck's last commit, so an unchanged deck rebuilds byte-identical.
-	t=$$(git log -1 --format=%ct -- $<); SOURCE_DATE_EPOCH=$${t:-$$(git log -1 --format=%ct)} $(TYPST) $< $@
+	# The PDF is the handout: each built-up slide only in its final step.
+	t=$$(git log -1 --format=%ct -- $<); SOURCE_DATE_EPOCH=$${t:-$$(git log -1 --format=%ct)} $(TYPST) --input handout=1 $< $@
 
 $(S)/media: $(MEDIA) scripts/prepare-media.py
 	$(PYTHON) scripts/prepare-media.py public ; touch $@

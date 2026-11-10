@@ -49,6 +49,13 @@ identity and cache names. Every page needs one `<present-page>` metadata
 record from `slides/present-meta.typ`; the build fails otherwise. Media are copied from local staged site
 files to same-origin, checksum-versioned URLs; no legacy assets are fetched.
 
+Built-up slides: `build(n, slide(...))` in `slides/theme.typ` sets one page per
+step with the same page number, and `reveal(k)[...]` shows content from step k on
+while keeping its space. The presenter shows every step; the deck PDF (`make`,
+`--input handout=1`) is a handout with each slide in its final step. Widgets
+and notebooks carry the presenter icon as favicon (`scripts/inline-widget.py`,
+`notebooks/_quarto.yml`, `tests/test_favicons.py`).
+
 Chapter and section numbers and titles come from the checked-in
 `slides/outline.json`; edit it by hand when a deck gains a chapter or section.
 A deck whose chapter is not listed there supplies its number and title on the

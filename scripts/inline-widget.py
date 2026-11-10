@@ -22,6 +22,8 @@ QUOTED = re.compile(r"""(["'])(\.\.?/[^"'\s]+)\1""")
 CSS_URL = re.compile(r"""url\((["']?)([^"')]+)\1\)""")
 LINK = re.compile(r"""<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*/?>""")
 SCRIPT = re.compile(r"""(<script\s+type=["']module["']>)(.*?)(</script>)""", re.S)
+# The course icon (the presenter's), so a widget opened on its own has a favicon.
+ICON = ROOT / "src/present/icon.svg"
 
 
 def target(base, ref):
@@ -64,6 +66,8 @@ def inline(page):
         path = target(base, m.group(1))
         return m.group(0) if path is None else f"<style>\n{css(path.read_text(), path.parent)}</style>"
     text = LINK.sub(link, text)
+    if not re.search(r"""<link\s+rel=["']icon["']""", text):
+        text = text.replace("</head>", f'<link rel="icon" href="{data_url(ICON)}">\n</head>', 1)
     return SCRIPT.sub(lambda m: m.group(1) + js(m.group(2), base) + m.group(3), text)
 
 

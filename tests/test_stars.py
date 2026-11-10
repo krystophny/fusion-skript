@@ -48,10 +48,23 @@ def test_our_rates_reproduce_most_of_the_solar_luminosity():
 
 def test_helium_estimate_close_to_network():
     he = st.helium_estimate()
-    k = int(np.argmin(np.abs(np.log(np.array(BBN["final"]["eta"]) / BBN["planck"]["eta"]))))
-    yp_network = 4 * 10 ** BBN["final"]["log10Y"][BBN["species"].index("He4")][k]
+    std = next(r for r in BBN["runs"] if r["N_nu"] == 3)
+    k = int(np.argmin(np.abs(np.log(np.array(std["final"]["eta"]) / BBN["planck"]["eta"]))))
+    yp_network = 4 * 10 ** std["final"]["log10Y"][BBN["species"].index("He4")][k]
     assert yp_network == pytest.approx(BBN["observed"]["Yp"]["value"], abs=3 * BBN["observed"]["Yp"]["sigma"])
     assert he["Yp"] == pytest.approx(yp_network, abs=0.01)
+
+
+def test_helium_counts_neutrino_species():
+    # Each extra light species speeds up the expansion: earlier freeze-out, more helium.
+    he4 = BBN["species"].index("He4")
+    yp = []
+    for run in sorted(BBN["runs"], key=lambda r: r["N_nu"]):
+        k = int(np.argmin(np.abs(np.log(np.array(run["final"]["eta"]) / BBN["planck"]["eta"]))))
+        yp.append(4 * 10 ** run["final"]["log10Y"][he4][k])
+    assert all(0.010 < b - a < 0.016 for a, b in zip(yp, yp[1:]))
+    obs = BBN["observed"]["Yp"]
+    assert [abs(y - obs["value"]) < 2 * obs["sigma"] for y in yp] == [False, True, False, False]
 
 
 def test_pp_branches_and_neutrino_spectra():

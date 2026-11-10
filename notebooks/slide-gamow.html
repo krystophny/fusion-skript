@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamow window of stellar fuels</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, html, font, sub, pow, readout, run} from "./widget.js";
+import {INK, MUTED, GREY} from "./plotting.js";
+import sf from "./data/s-factors.json" with {type: "json"};
+
+// Non-resonant charged-particle reactions: sigma = S/E exp(-sqrt(E_G/E)),
+// E_G = 2 m_r c^2 (pi alpha Z1 Z2)^2 (Chapter 2). Same model as ch03_stars.py.
+const ALPHA = 7.2973525693e-3, UC2 = 931494.10242, KB_KEV = 8.617333262e-8;   // keV per K
+const KEV = 1.602176634e-16, MU = 1.66053906660e-27, MP = 1.67262192e-27, BARN = 1e-28;
+const FORCE = {weak: "#7B3294", electromagnetic: "#0072B2", strong: "#B55000"};
+const FUELS = [
+  {name: "p + p", z: [1, 1], a: [1.00728, 1.00728], force: "weak", burns: "H (pp chain)", T: [10, 25]},
+  {name: "p + ¹⁴N", z: [1, 7], a: [1.00728, 13.9992], force: "electromagnetic", burns: "H (CNO cycle)", T: [15, 40]},
+  {name: "⁴He + ⁸Be", z: [2, 4], a: [4.0015, 8.0031], force: "strong (Hoyle resonance)", burns: "He (triple alpha)", T: [100, 200]},
+  {name: "¹²C + ¹²C", z: [6, 6], a: [12, 12], force: "strong", burns: "C", T: [600, 900]},
+  {name: "¹⁶O + ¹⁶O", z: [8, 8], a: [15.9949, 15.9949], force: "strong", burns: "O", T: [1800, 2300]},
+];
+const eG = (f) => 2 * (f.a[0] * f.a[1] / (f.a[0] + f.a[1])) * UC2 * (Math.PI * ALPHA * f.z[0] * f.z[1]) ** 2;
+
+function sigmaV(f, S0, S1, t) {            // m^3/s, t in keV
+  const mr = f.a[0] * f.a[1] / (f.a[0] + f.a[1]) * MU, g = eG(f), e0 = (g * t * t / 4) ** (1 / 3);
+  const n = 2000, lo = e0 / 50, hi = 8 * e0 + 30 * t;
+  let sum = 0;
+  for (let i = 0; i <= n; i++) {
+    const e = lo + (hi - lo) * i / n, w = i === 0 || i === n ? 0.5 : 1;
+    sum += w * S0 * (1 + S1 * e) * Math.exp(-e / t - Math.sqrt(g / e));
+  }
+  const integral = sum * (hi - lo) / n * BARN * KEV * KEV;
+  return Math.sqrt(8 / (Math.PI * mr)) * (t * KEV) ** -1.5 * integral;
+}
+// Heating at the solar-centre density, X = 0.7, X_CNO = 0.0087 (as ch03_stars.py).
+const RHO = 1.54e5, X = 0.7, XCNO = 0.0087;
+const PP = FUELS[0], CN = FUELS[1];
+const epsPP = (t) => (RHO * X / MP) ** 2 / 2 * sigmaV(PP, 4.01e-22, 11.2e-3, t) * 13.1e3 * KEV / RHO;
+const epsCNO = (t) => (RHO * X / MP) * (RHO * XCNO / (14 * MU)) * sigmaV(CN, 1.66, 0, t) * 25.0e3 * KEV / RHO;
+const TMK = Array.from({length: 61}, (_, i) => 6 * (60 / 6) ** (i / 60));
+const curves = TMK.flatMap((T) => [{T, eps: epsPP(T * 1e6 * KB_KEV), name: "pp"}, {T, eps: epsCNO(T * 1e6 * KB_KEV), name: "CNO"}]);
+
+function draw({fuel, logT}, inputs) {
+  const f = FUELS.find((x) => x.name === fuel), TK = 10 ** logT * 1e6, t = TK * KB_KEV;
+  readout(inputs.logT, `${(10 ** logT).toFixed(10 ** logT < 100 ? 1 : 0)} MK = ${t.toFixed(t < 10 ? 2 : 0)} keV`);
+  const g = eG(f), e0 = (g * t * t / 4) ** (1 / 3), tau = 3 * e0 / t, nu = (tau - 2) / 3;
+  const emax = 3 * e0, pts = Array.from({length: 300}, (_, i) => (i + 1) / 300 * emax);
+  const peak = Math.exp(-e0 / t - Math.sqrt(g / e0));
+  const gw = pts.map((E) => ({E, y: Math.exp(-E / t - Math.sqrt(g / E)) / peak}));
+  const mx = pts.map((E) => ({E, y: Math.exp(-E / t) / Math.exp(-e0 / t) * 1e-3}));
+  const left = sub(Plot.plot({
+    width: 470, height: 360, marginLeft: 60, marginRight: 14, marginTop: 14, marginBottom: 44, style: font,
+    x: {domain: [0, emax], label: "E [keV]", labelAnchor: "center", labelArrow: "none", labelOffset: 36},
+    y: {domain: [0, 1.15], label: "rate per energy (peak = 1)", labelAnchor: "center", labelArrow: "none", labelOffset: 46, ticks: [0, 0.5, 1]},
+    marks: [
+      Plot.areaY(gw, {x: "E", y: "y", fill: FORCE[f.force.split(" ")[0]], fillOpacity: 0.25}),
+      Plot.line(gw, {x: "E", y: "y", stroke: FORCE[f.force.split(" ")[0]], strokeWidth: 2.4}),
+      Plot.ruleX([t], {stroke: MUTED, strokeDasharray: "4,3"}),
+      Plot.text([{E: t, y: 1.08}], {x: "E", y: "y", text: () => "k_B T", dx: 4, textAnchor: "start", fill: MUTED, fontSize: 14}),
+      Plot.ruleX([e0], {stroke: INK}),
+      Plot.text([{E: e0, y: 1.08}], {x: "E", y: "y", text: () => `E_0 = ${e0.toFixed(e0 < 10 ? 1 : 0)} keV`, dx: 4, textAnchor: "start", fontSize: 14}),
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  const tNow = 10 ** logT;
+  const right = sub(Plot.plot({
+    width: 440, height: 300, marginLeft: 60, marginRight: 14, marginTop: 14, marginBottom: 44, style: font,
+    x: {type: "log", domain: [6, 60], label: "T [MK]", labelAnchor: "center", labelArrow: "none", labelOffset: 36, ticks: [6, 10, 15, 20, 30, 60], tickFormat: (d) => String(d)},
+    y: {type: "log", domain: [1e-6, 1e3], label: "ε [W kg^−1]", labelAnchor: "center", labelArrow: "none", labelOffset: 48, tickFormat: pow, ticks: [1e-6, 1e-3, 1, 1e3]},
+    color: {domain: ["pp", "CNO"], range: [FORCE.weak, FORCE.electromagnetic]},
+    marks: [
+      Plot.line(curves, {x: "T", y: "eps", stroke: "name", strokeWidth: 2.4, clip: true}),
+      Plot.text([{T: 8, eps: 3e-2, s: "pp"}, {T: 34, eps: 1e-2, s: "CNO"}], {x: "T", y: "eps", text: "s", fill: (d) => d.s === "pp" ? FORCE.weak : FORCE.electromagnetic, fontSize: 15}),
+      Plot.ruleX([15.7], {stroke: GREY, strokeDasharray: "2,3"}),
+      Plot.text([{T: 15.7, eps: 3e2}], {x: "T", y: "eps", text: () => "Sun", dx: -4, textAnchor: "end", fill: MUTED, fontSize: 13}),
+      tNow >= 6 && tNow <= 60 ? Plot.ruleX([tNow], {stroke: INK, strokeWidth: 2}) : null,
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  const inBand = tNow >= f.T[0] && tNow <= f.T[1];
+  return html`<div style="display:flex;gap:16px;align-items:flex-start"><div style="width:470px;flex:none">${left}
+<div style="font-size:0.8rem;line-height:1.4;color:${INK};margin-left:0.6rem">
+  <i>E</i><sub>G</sub> = ${g >= 1e4 ? (g / 1e3).toFixed(0) + " MeV" : g.toFixed(0) + " keV"}, <i>E</i><sub>0</sub>/<i>k</i><sub>B</sub><i>T</i> = ${(e0 / t).toFixed(1)}, rate ∝ <i>T</i><sup>${nu.toFixed(0)}</sup>
+  · force: <span style="color:${FORCE[f.force.split(" ")[0]]}">${f.force}</span><br>
+  <span style="color:${inBand ? INK : MUTED}">burns ${f.burns} at ${f.T[0]}–${f.T[1]} MK${inBand ? " ✓" : ""}</span>
+</div></div>
+<div style="width:440px;flex:none">${right}
+<div style="font-size:0.72rem;line-height:1.35;color:${MUTED};margin-left:0.6rem">pp: weak first step, S = 4 × 10⁻²² keV b · CNO: ¹⁴N(p,γ), electromagnetic, S = 1.66 keV b · Sun-centre density 1.5 × 10⁵ kg m⁻³, X = 0.7 · ${sf.source.split(",").slice(0, 2).join(",")}</div></div></div>`;
+}
+
+run({
+  fuel: Inputs.radio(FUELS.map((f) => f.name), {value: FUELS[0].name, label: "fuel"}),
+  logT: Inputs.range([Math.log10(5), Math.log10(3000)], {value: Math.log10(15.7), step: 0.005, label: html`<i>T</i>`}),
+}, draw);
+</script>
+</body>
+</html>

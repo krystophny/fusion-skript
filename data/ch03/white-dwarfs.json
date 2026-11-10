@@ -1,0 +1,6 @@
+{"source": "Bond et al., ApJ 848, 16 (2017), doi:10.3847/1538-4357/aa8a63, Table 2 (dynamical masses; Stein 2051 B from gravitational lensing)",
+ "stars": [
+  {"name": "Procyon B", "R_Rsun": 0.01232, "dR": 0.00032, "M": 0.592, "dM": 0.006},
+  {"name": "Sirius B", "R_Rsun": 0.008098, "dR": 0.000046, "M": 1.018, "dM": 0.011},
+  {"name": "Stein 2051 B", "R_Rsun": 0.0114, "dR": 0.0004, "M": 0.675, "dM": 0.051},
+  {"name": "40 Eri B", "R_Rsun": 0.01308, "dR": 0.00020, "M": 0.573, "dM": 0.018}]}

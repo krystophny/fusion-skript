@@ -101,9 +101,36 @@
 #let at(c, n, y: 0mm, body) = place(top + left, dx: col-x(c), dy: y,
   block(width: cols(n), body))
 
+// ------------------------------------------------------------ build-up ---
+// A slide built step by step is one physical page per step; every step shows
+// the same page number. `reveal(k)[...]` shows its body from step k on and
+// keeps its space before. Inside `context`, `build-step()` is the current
+// step (none outside a build) for diagrams that choose their own elements.
+// `typst compile --input handout=1` sets only the last step of each build.
+#let handout = sys.inputs.at("handout", default: "0") == "1"
+#let build-state = state("build-step", none)
+#let build-step() = build-state.get()
+#let shown(k) = { let s = build-state.get(); s == none or s >= k }
+#let reveal(k, body) = context if shown(k) { body } else { hide(body) }
+#let build(n, page) = {
+  for k in range(if handout { n } else { 1 }, n + 1) {
+    build-state.update(k)
+    page
+  }
+  build-state.update(none)
+}
+// Repeated build steps carry a marker; page numbers subtract them.
+#let repeat-marker = context {
+  let s = build-state.get()
+  if s != none and s > (if handout { s } else { 1 }) [#metadata(none) <build-repeat>]
+}
+#let shown-page(loc) = {
+  let repeats = query(<build-repeat>).filter(m => m.location().page() <= loc.page())
+  counter(page).at(loc).first() - repeats.len()
+}
 #let page-number = context {
   place(bottom + right, dx: -margin, dy: -furniture-y,
-    text(size: small-size, fill: muted, counter(page).display()))
+    text(size: small-size, fill: muted, str(shown-page(here()))))
 }
 
 // Positioned metadata binds each presenter entry to its actual paged location.
@@ -127,10 +154,11 @@
   fill: if background == "dark" { black } else { white },
   foreground: if background == "dark" { context {
     place(bottom + right, dx: -margin, dy: -furniture-y,
-      text(size: small-size, fill: white, counter(page).display()))
+      text(size: small-size, fill: white, str(shown-page(here()))))
   } } else { page-number },
 )[
   #set text(fill: if background == "dark" { white } else { ink })
+  #repeat-marker
   #present-page(title: title, section: section, background: background)
   #place(top + left, if section != none { section-heading(section, title: title) } else { text(size: title-size, title) })
   #let y0 = title-band
@@ -438,7 +466,7 @@
     columns: (cols(1), 1fr), column-gutter: gutter, row-gutter: 5mm,
     ..for (key, body, source) in entries {
       (
-        align(right, text(fill: muted, context counter(page).at(label(key)).first())),
+        align(right, text(fill: muted, context str(shown-page(locate(label(key)))))),
         [#body#v(4mm, weak: true)#text(fill: muted, source)],
       )
     },

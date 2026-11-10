@@ -14,6 +14,9 @@ format:
     html-math-method: mathjax
     lang: en
     license: "CC BY"
+    # Same icon as the presenter (public/present/icon.svg) on the published site.
+    include-in-header:
+      text: '<link rel="icon" href="../present/icon.svg" type="image/svg+xml">'
 
 execute:
   echo: false

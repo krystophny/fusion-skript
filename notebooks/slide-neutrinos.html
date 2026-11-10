@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solar neutrinos</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, html, font, sub, pow, run} from "./widget.js";
+import {INK, MUTED, GREY} from "./plotting.js";
+import nu from "./data/neutrinos.json" with {type: "json"};
+import ch3 from "./data/ch03_stars.json" with {type: "json"};
+
+// B16-GS98 fluxes (Vinyoles et al. 2017); continuum shapes from allowed beta decay
+// (derivations/chapters/ch03_stars.py; 8B approximate); lines at their energies.
+const E = ch3.widgets.neutrino_E_MeV, SP = ch3.widgets.neutrino_spectra;
+const SRC = {pp: ["pp", "#B55000", "pp chain"], Be7: ["⁷Be", INK, "pp II"], pep: ["pep", "#4D4D4D", "pp chain"],
+  B8: ["⁸B", "#0072B2", "pp III"], hep: ["hep", "#7B3294", "pp chain"], N13: ["¹³N", "#1B7F5B", "CNO"],
+  O15: ["¹⁵O", "#1B7F5B", "CNO"], F17: ["¹⁷F", "#1B7F5B", "CNO"]};
+const DET = [{name: "none", thr: 0}, ...nu.detectors.map((d) => ({name: d.name, thr: d.threshold_MeV}))];
+
+// Flux above a threshold, per source.
+function above(thr) {
+  const out = {};
+  for (const [k, f] of Object.entries(SP)) {
+    let s = 0;
+    for (let i = 1; i < E.length; i++) if (E[i] > thr) s += 0.5 * (f[i] + f[i - 1]) * (E[i] - Math.max(E[i - 1], thr));
+    out[k] = s;
+  }
+  for (const [k, lines] of Object.entries(nu.lines_MeV)) out[k] = lines.reduce((s, [e, w]) => s + (e > thr ? w * nu.fluxes[k] : 0), 0);
+  return out;
+}
+
+function draw({det}) {
+  const d = DET.find((x) => x.name === det);
+  const cont = Object.entries(SP).flatMap(([k, f]) => E.map((e, i) => ({e, f: f[i] > 0 ? f[i] : NaN, k: SRC[k][0]})));
+  const lines = Object.entries(nu.lines_MeV).flatMap(([k, ls]) => ls.map(([e, w]) => ({e, f: w * nu.fluxes[k], k: SRC[k][0]})));
+  const keys = Object.keys(SRC);
+  const plot = sub(Plot.plot({
+    width: 600, height: 420, marginLeft: 70, marginRight: 14, marginTop: 14, marginBottom: 44, style: font,
+    x: {type: "log", domain: [0.1, 20], label: "neutrino energy [MeV]", labelAnchor: "center", labelArrow: "none", labelOffset: 36, ticks: [0.1, 0.2, 0.5, 1, 2, 5, 10, 20], tickFormat: (x) => String(x)},
+    y: {type: "log", domain: [1e2, 1e13], label: "flux [cm^−2 s^−1 MeV^−1]; lines [cm^−2 s^−1]", labelAnchor: "center", labelArrow: "none", labelOffset: 56, tickFormat: pow, ticks: [1e2, 1e4, 1e6, 1e8, 1e10, 1e12]},
+    color: {domain: keys.map((k) => SRC[k][0]), range: keys.map((k) => SRC[k][1])},
+    marks: [
+      d.thr > 0 ? Plot.rectX([{x1: d.thr, x2: 20}], {x1: "x1", x2: "x2", fill: "#E69F00", fillOpacity: 0.15}) : null,
+      d.thr > 0 ? Plot.ruleX([d.thr], {stroke: "#B55000", strokeWidth: 1.5}) : null,
+      Plot.line(cont, {x: "e", y: "f", stroke: "k", z: "k", strokeWidth: 2.2, clip: true}),
+      Plot.ruleX(lines, {x: "e", y1: 1e2, y2: "f", stroke: "k", strokeWidth: 3}),
+      Plot.text([{e: 0.13, f: 2e11, k: "pp"}, {e: 0.86, f: 9e9, k: "⁷Be"}, {e: 1.44, f: 3e8, k: "pep"}, {e: 0.45, f: 7e8, k: "CNO"},
+        {e: 7, f: 1.5e6, k: "⁸B"}, {e: 12, f: 2e3, k: "hep"}], {x: "e", y: "f", text: "k", fill: (q) => q.k === "CNO" ? "#1B7F5B" : q.k === "pep" || q.k === "⁷Be" ? INK : SRC[Object.keys(SRC).find((k) => SRC[k][0] === q.k)][1], fontSize: 15}),
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  const a = above(d.thr), total = Object.values(a).reduce((s, x) => s + x, 0);
+  const rows = keys.map((k) => ({k, f: a[k]})).filter((r) => r.f > 0).sort((p, q) => q.f - p.f);
+  return html`<div style="display:flex;gap:16px;align-items:flex-start"><div style="width:600px;flex:none">${plot}</div>
+<div style="width:340px;flex:none;font-size:0.82rem;line-height:1.45;color:${INK}">
+  <b>${d.thr > 0 ? `${d.name}: E > ${d.thr} MeV` : "all solar neutrinos"}</b><br>
+  share of the flux (the count rate favours high energies)<br>
+  total ${(total / 1e10).toFixed(total < 1e8 ? 4 : 2)} × 10¹⁰ cm⁻² s⁻¹<br>
+  <table style="font-size:0.78rem;margin-top:0.3rem;border-collapse:collapse">
+  ${rows.map((r) => html`<tr><td style="color:${SRC[r.k][1]};padding-right:0.6rem">${SRC[r.k][0]}</td><td style="text-align:right;padding-right:0.6rem">${(100 * r.f / total).toFixed(r.f / total < 0.01 ? 2 : 0)} %</td><td style="color:${MUTED}">${SRC[r.k][2]}</td></tr>`)}
+  </table>
+  <div style="color:${MUTED};font-size:0.7rem;margin-top:0.4rem">all from weak reactions · B16-GS98 fluxes, Vinyoles et al. 2017 · Ga: GALLEX/SAGE, Cl: Homestake, water: Super-Kamiokande/SNO</div>
+</div></div>`;
+}
+
+run({det: Inputs.radio(DET.map((d) => d.name), {value: "none", label: "detector"})}, draw);
+</script>
+</body>
+</html>

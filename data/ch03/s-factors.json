@@ -1,0 +1,11 @@
+{"source": "Adelberger et al., Rev. Mod. Phys. 83, 195 (2011), doi:10.1103/RevModPhys.83.195, recommended S(0)",
+ "rule": "final state with a neutrino: weak; with a photon: electromagnetic; only nuclei: strong",
+ "reactions": [
+  {"reaction": "p + p → D + e⁺ + ν", "force": "weak", "S0_keV_b": 4.01e-22},
+  {"reaction": "D + p → ³He + γ", "force": "electromagnetic", "S0_keV_b": 2.14e-4},
+  {"reaction": "⁷Be + p → ⁸B + γ", "force": "electromagnetic", "S0_keV_b": 2.08e-2},
+  {"reaction": "³He + ⁴He → ⁷Be + γ", "force": "electromagnetic", "S0_keV_b": 0.56},
+  {"reaction": "¹²C + p → ¹³N + γ", "force": "electromagnetic", "S0_keV_b": 1.34},
+  {"reaction": "¹⁴N + p → ¹⁵O + γ", "force": "electromagnetic", "S0_keV_b": 1.66},
+  {"reaction": "³He + ³He → ⁴He + 2p", "force": "strong", "S0_keV_b": 5210}
+ ]}

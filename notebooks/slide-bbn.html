@@ -21,43 +21,47 @@ const SHOW = [["n", "n", "#9AA5B1"], ["p", "H", "#56B4E9"], ["D", "D", "#B55000"
   ["He3", "³He", "#1B7F5B"], ["He4", "⁴He", "#E69F00"], ["Li7", "⁷Li", "#4D4D4D"], ["Be7", "⁷Be", "#0072B2"]];
 const IDX = Object.fromEntries(bbn.species.map((s, i) => [s, i]));
 const logEta = bbn.eta.map(Math.log10);
+const RUN = (nnu) => bbn.runs.find((r) => r.N_nu === nnu);
 const obs = bbn.observed, planck = bbn.planck;
 
 // Mass fraction X_i = A_i Y_i against time, interpolated in log eta between the runs.
-function history(le) {
+function history(le, R) {
   let j = logEta.findIndex((x) => x >= le);
   j = Math.min(Math.max(j, 1), logEta.length - 1);
   const w = (le - logEta[j - 1]) / (logEta[j] - logEta[j - 1]);
   const out = [];
   for (const [s, name] of SHOW) {
-    const a = bbn.Y[j - 1][IDX[s]], b = bbn.Y[j][IDX[s]];
+    const a = R.Y[j - 1][IDX[s]], b = R.Y[j][IDX[s]];
     // Before the network starts (T > 1 MeV) only n and p are meaningful.
     bbn.t_s.forEach((t, k) => {
-      if (A[s] > 1 && bbn.T_MeV[k] > 0.9) return;
+      if (A[s] > 1 && R.T_MeV[k] > 0.9) return;
       out.push({t, name, X: A[s] * 10 ** ((1 - w) * a[k] + w * b[k])});
     });
   }
   return out;
 }
 
-const fin = bbn.final;
-const finY = (s, k) => 10 ** fin.log10Y[IDX[s]][k];
-const ratios = fin.eta.map((eta, k) => ({eta, Yp: 4 * finY("He4", k),
-  DH: finY("D", k) / finY("p", k), He3H: (finY("He3", k) + finY("T", k)) / finY("p", k),
-  Li7H: (finY("Li7", k) + finY("Be7", k)) / finY("p", k)}));
-const at = (le) => {
+function finals(R) {
+  const fin = R.final, finY = (s, k) => 10 ** fin.log10Y[IDX[s]][k];
+  return fin.eta.map((eta, k) => ({eta, Yp: 4 * finY("He4", k),
+    DH: finY("D", k) / finY("p", k), He3H: (finY("He3", k) + finY("T", k)) / finY("p", k),
+    Li7H: (finY("Li7", k) + finY("Be7", k)) / finY("p", k)}));
+}
+const fin = bbn.runs[0].final;
+const at = (ratios, le) => {
   const k = Math.min(fin.eta.length - 1, Math.max(0, Math.round((le - Math.log10(fin.eta[0])) / (Math.log10(fin.eta.at(-1) / fin.eta[0]) / (fin.eta.length - 1)))));
   return ratios[k];
 };
-const Tlab = [1, 0.3, 0.1, 0.03].map((T) => {
-  const k = bbn.T_MeV.findIndex((x) => x <= T);
+const Tlab = (R) => [1, 0.3, 0.1, 0.03].map((T) => {
+  const k = R.T_MeV.findIndex((x) => x <= T);
   return {t: bbn.t_s[k], T};
 });
 
-function draw({le}, inputs) {
-  const eta = 10 ** le, r = at(le);
+function draw({le, nnu}, inputs) {
+  const R = RUN(nnu), ratios = finals(R), std = finals(RUN(3));
+  const eta = 10 ** le, r = at(ratios, le);
   readout(inputs.le, `η = ${(eta / 1e-10).toFixed(2)} × 10⁻¹⁰`);
-  const h = history(le);
+  const h = history(le, R);
   // End labels, pushed apart to at least 0.42 decades.
   const ends = SHOW.map(([, name]) => ({...h.filter((d) => d.name === name).at(-1)}))
     .filter((d) => d.X > 1e-12).sort((a, b) => b.X - a.X);
@@ -65,27 +69,28 @@ function draw({le}, inputs) {
     ends[i].Xl = Math.min(ends[i].X, (ends[i - 1].Xl ?? ends[i - 1].X) / 10 ** 0.42);
   ends[0].Xl = ends[0].X;
   const left = sub(Plot.plot({
-    width: 520, height: 450, marginLeft: 62, marginRight: 46, marginTop: 34, marginBottom: 44, style: font,
+    width: 520, height: 410, marginLeft: 62, marginRight: 46, marginTop: 34, marginBottom: 44, style: font,
     x: {type: "log", domain: [0.01, 2e4], label: "time after the Big Bang [s]", labelAnchor: "center", labelArrow: "none", labelOffset: 36, tickFormat: pow, ticks: [0.01, 1, 100, 1e4]},
     y: {type: "log", domain: [1e-12, 1.5], label: "mass fraction", labelAnchor: "center", labelArrow: "none", labelOffset: 50, tickFormat: pow, ticks: [1e-12, 1e-9, 1e-6, 1e-3, 1]},
     color: {domain: SHOW.map((s) => s[1]), range: SHOW.map((s) => s[2])},
     marks: [
       Plot.line(h, {x: "t", y: "X", stroke: "name", strokeWidth: 2.2, clip: true}),
       Plot.text(ends, {x: "t", y: "Xl", text: "name", fill: "name", dx: 6, textAnchor: "start", fontSize: 15}),
-      Plot.tickX(Tlab, {x: "t", y1: 1.5, y2: 0.8, stroke: MUTED}),
-      Plot.text(Tlab, {x: "t", y: 1.5, dy: -12, text: (d) => `${d.T} MeV`, fill: MUTED, fontSize: 13}),
+      Plot.tickX(Tlab(R), {x: "t", y1: 1.5, y2: 0.8, stroke: MUTED}),
+      Plot.text(Tlab(R), {x: "t", y: 1.5, dy: -12, text: (d) => `${d.T} MeV`, fill: MUTED, fontSize: 13}),
       Plot.frame({stroke: GREY}),
     ],
   }));
   const xr = {type: "log", domain: [fin.eta[0], fin.eta.at(-1)], label: "baryons per photon η", labelAnchor: "center", labelArrow: "none", labelOffset: 36, tickFormat: pow};
   const pl = Plot.ruleX([planck.eta], {stroke: "#B55000", strokeDasharray: "5,4", strokeWidth: 1.5});
   const yp = sub(Plot.plot({
-    width: 420, height: 140, marginLeft: 62, marginRight: 70, marginTop: 8, marginBottom: 8, style: font,
+    width: 420, height: 125, marginLeft: 62, marginRight: 70, marginTop: 8, marginBottom: 8, style: font,
     x: {...xr, axis: null},
     y: {domain: [0.20, 0.27], label: "Y_p", labelAnchor: "center", labelArrow: "none", labelOffset: 50, ticks: [0.21, 0.25], tickFormat: (d) => d.toFixed(2)},
     marks: [
       pl,
       Plot.rectY([obs.Yp], {y1: (d) => d.value - d.sigma, y2: (d) => d.value + d.sigma, fill: "#E69F00", fillOpacity: 0.35}),
+      nnu !== 3 ? Plot.line(std, {x: "eta", y: "Yp", stroke: GREY, strokeWidth: 1.5, strokeDasharray: "4,3"}) : null,
       Plot.line(ratios, {x: "eta", y: "Yp", stroke: "#E69F00", strokeWidth: 2.4}),
       Plot.text([{eta: fin.eta.at(-1), y: 0.262}], {x: "eta", y: "y", text: () => "⁴He", dx: 8, textAnchor: "start", fill: "#E69F00", fontSize: 15}),
       Plot.ruleX([eta], {stroke: INK, strokeWidth: 2}),
@@ -96,7 +101,7 @@ function draw({le}, inputs) {
   const lines = rat.flatMap(([name, key]) => ratios.map((d) => ({eta: d.eta, name, v: d[key]})));
   const ob = [{...obs.DH, c: "#B55000"}, {...obs.Li7H, c: "#4D4D4D"}];
   const low = sub(Plot.plot({
-    width: 420, height: 300, marginLeft: 62, marginRight: 70, marginTop: 6, marginBottom: 44, style: font,
+    width: 420, height: 262, marginLeft: 62, marginRight: 70, marginTop: 6, marginBottom: 44, style: font,
     x: {...xr, ticks: [1e-10, 1e-9]},
     y: {type: "log", domain: [1e-11, 1e-2], label: "number ratio", labelAnchor: "center", labelArrow: "none", labelOffset: 50, tickFormat: pow, ticks: [1e-10, 1e-8, 1e-6, 1e-4, 1e-2]},
     color: {domain: rat.map((d) => d[0]), range: rat.map((d) => d[2])},
@@ -113,12 +118,14 @@ function draw({le}, inputs) {
 <div style="width:430px;flex:none">${yp}${low}
 <div style="font-size:0.78rem;line-height:1.35;color:${INK};margin-left:0.6rem">
   <i>Y</i><sub>p</sub> = ${r.Yp.toFixed(4)} · D/H = ${(r.DH * 1e5).toFixed(2)} × 10⁻⁵ · ⁷Li/H = ${(r.Li7H * 1e10).toFixed(2)} × 10⁻¹⁰
-  <div style="color:${MUTED}">bands: observed (±2σ for D, Li), dashed: η from the CMB (Planck) · LINX, PRIMAT 2023 network</div>
+  <div>${nnu} neutrino species (N<sub>eff</sub> = ${R.N_eff})${nnu !== 3 ? " · grey dashed: 3 species" : ""}</div>
+  <div style="color:${MUTED};font-size:0.68rem">bands: observed (±2σ for D, Li) · dashed: η from the CMB (Planck) · LINX, PRIMAT 2023 network</div>
 </div></div></div>`;
 }
 
 run({
   le: Inputs.range([Math.log10(fin.eta[0]), Math.log10(fin.eta.at(-1))], {value: Math.log10(planck.eta), step: 0.01, label: html`<i>η</i>`}),
+  nnu: Inputs.radio([2, 3, 4, 5], {value: 3, label: "neutrino species"}),
 }, draw);
 </script>
 </body>

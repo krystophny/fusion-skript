@@ -203,7 +203,8 @@ def helium_estimate(t_freeze=0.8, t_d=None, eta=6.1e-10):
     """n/p frozen at T_f, neutron decay until the deuterium bottleneck opens, Y_p = 2x/(1+x)."""
     x_f = np.exp(-Q_NP_MEV / t_freeze)
     bbn = json.loads((DATA / "bbn.json").read_text())
-    t_s, t_mev = np.array(bbn["t_s"]), np.array(bbn["T_MeV"])
+    run = next(r for r in bbn["runs"] if r["N_nu"] == 3)
+    t_s, t_mev = np.array(bbn["t_s"]), np.array(run["T_MeV"])
     if t_d is None:
         t_d = deuterium_saha_T(eta)
     time_d = float(np.interp(-t_d, -t_mev, t_s))
@@ -369,9 +370,34 @@ def checks():
     write_plotdata(s, t_cross, he, h, mch)
 
 
+def widget_data():
+    """Arrays for the slide widgets: neutrino spectra, white-dwarf mass-radius, reaction energies."""
+    e = np.geomspace(0.05, 20, 400)
+    spectra = {k: [float(f"{x:.4g}") for x in v] for k, v in neutrino_spectra(e).items()}
+    rho = np.geomspace(1e7, 1e15, 60)
+    mr = [white_dwarf(r) for r in rho]
+    reactions = [("D + T → ⁴He + n", [(1, 2), (1, 3)], [(2, 4), (0, 1)]),
+                 ("4 p → ⁴He", [(1, 1)] * 4, [(2, 4)]), ("3 ⁴He → ¹²C", [(2, 4)] * 3, [(6, 12)]),
+                 ("¹²C + ⁴He → ¹⁶O", [(6, 12), (2, 4)], [(8, 16)]),
+                 ("2 ¹²C → ²⁰Ne + ⁴He", [(6, 12)] * 2, [(10, 20), (2, 4)]),
+                 ("2 ¹⁶O → ²⁸Si + ⁴He", [(8, 16)] * 2, [(14, 28), (2, 4)]),
+                 ("2 ²⁸Si → ⁵⁶Ni (net)", [(14, 28)] * 2, [(28, 56)]),
+                 ("n + ²³⁵U → ¹⁴¹Ba + ⁹²Kr + 3 n", [(0, 1), (92, 235)], [(56, 141), (36, 92)] + [(0, 1)] * 3)]
+    rx = []
+    for name, ini, fin in reactions:
+        q = q_value_mev(ini, fin)          # atomic masses: e+ annihilation included
+        rx.append({"name": name, "Q_MeV": round(q, 3), "A": sum(a for _, a in ini),
+                   "from": [list(x) for x in ini], "to": [list(x) for x in fin]})
+    return {"neutrino_E_MeV": [float(f"{x:.4g}") for x in e], "neutrino_spectra": spectra,
+            "wd": {"rho_c": [float(f"{x:.3g}") for x in rho], "M": [round(m, 4) for m, _ in mr],
+                   "R_Rsun": [float(f"{r / R_SUN:.4g}") for _, r in mr], "M_ch": chandrasekhar_mass()},
+            "reactions": rx,
+            "binding": [{"Z": z, "A": a, "el": sym, "BA": round(ba / 1e3, 4)} for z, a, sym, ba in binding_curve()]}
+
+
 def write_plotdata(s, t_cross, he, h, mch):
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "ch03_stars.json").write_text(json.dumps({
+    (OUT / "ch03_stars.json").write_text(json.dumps({"widgets": widget_data(),
         "supernova": supernova_numbers(), "sun": s, "pp_cno_cross_keV": t_cross, "pp_branches": pp_branches(), "bbn": he, "hoyle": h, "M_ch": mch,
         "binding": [{"Z": z, "A": a, "el": sym, "B_per_A_keV": ba} for z, a, sym, ba in binding_curve()],
     }, indent=1, default=float))

@@ -107,38 +107,26 @@
     },
     {
       "number": "3.3",
-      "title": "Proton–proton chain",
-      "label": "pp-chain",
+      "title": "Burning hydrogen",
+      "label": "hydrogen",
       "chapter": "fusion-in-stars"
     },
     {
       "number": "3.4",
-      "title": "CNO cycle",
-      "label": "cno",
-      "chapter": "fusion-in-stars"
-    },
-    {
-      "number": "3.5",
       "title": "Primordial nucleosynthesis",
       "label": "bbn",
       "chapter": "fusion-in-stars"
     },
     {
-      "number": "3.6",
+      "number": "3.5",
       "title": "Helium burning and heavier elements",
       "label": "heavier",
       "chapter": "fusion-in-stars"
     },
     {
-      "number": "3.7",
-      "title": "Degenerate endpoints",
-      "label": "remnants",
-      "chapter": "fusion-in-stars"
-    },
-    {
-      "number": "3.8",
-      "title": "Fusion under extreme conditions",
-      "label": "extreme",
+      "number": "3.6",
+      "title": "Endpoints and extreme conditions",
+      "label": "endpoints",
       "chapter": "fusion-in-stars"
     },
     {
