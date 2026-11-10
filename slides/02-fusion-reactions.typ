@@ -681,26 +681,6 @@
     #link("https://doi.org/10.1103/RevModPhys.83.195")[Adelberger et al. · Rev. Mod. Phys. 83, 195 (2011)]])
 ]
 
-#slide(title: [Proton–proton chain])[
-  #let lab(body) = text(size: 15pt, fill: muted, body)
-  #let branch(x) = (
-    node((x, 0), $"p" + "p"$),
-    edge((x, 0), (x, 1), "-|>", label: lab[$"e"^+ + nu_e$, 0.42 MeV], label-side: if x < 1 { left } else { right }),
-    node((x, 1), $"D" + "p"$),
-    edge((x, 1), (x, 2), "-|>", label: lab[$gamma$, 5.49 MeV], label-side: if x < 1 { left } else { right }),
-    node((x, 2), $""^3"He"$),
-    edge((x, 2), (1, 3), "-|>"),
-  )
-  #at(2, 10, y: 0mm, align(center, diagram(spacing: (34mm, 15mm), node-inset: 4mm,
-    node-stroke: none, edge-stroke: 0.9pt + ink,
-    ..branch(0), ..branch(2),
-    node((1, 3), $""^4"He" + 2 "p"$, stroke: 0.8pt + plot-orange, inset: 5mm),
-    node((1, 2.55), lab[12.86 MeV]),
-  )))
-  #at(1, 12, y: 128mm, align(center)[
-    $4 "p" -> ""^4"He" + 2 "e"^+ + 2 nu_e$ #h(10mm) #text(fill: muted)[26.7 MeV incl. $2 times$ e#super[+]e#super[−] annihilation]])
-]
-
 #slide(title: [From classical to nuclear])[
   #import "@preview/fletcher:0.5.8": diagram, node, edge
   #let n(pos, title, f, c) = node(pos, align(center)[#text(fill: c)[#title] \ #v(2mm) #f],
@@ -759,10 +739,4 @@
     $chevron.l sigma v chevron.r = 1.1 times 10^(-22) "m"^3\/"s"$ \
     #text(fill: muted)[$chevron.l sigma v chevron.r \/ T^2$ maximal at] $13.5 "keV"$
   ]
-]
-
-#slide(section: "reaction-rate", title: [Solar core])[
-  #at(1, 12, y: 0mm, align(center, deck-fig("gamow_peak_pp", columns: 10)))
-  #at(1, 12, y: 134mm, align(center)[
-    p–p: #h(3mm) $E_G = 0.49 "MeV", quad k_B T approx 1.3 "keV" quad => quad E_0 approx 6 "keV" approx 4.6 thin k_B T$])
 ]

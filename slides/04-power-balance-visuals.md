@@ -1,7 +1,7 @@
 # Visuals for reactivity and the start of power balance
 
 Generated assets for the end of Chapter 2 (reaction rate in a thermal plasma),
-the optional Chapter 3 (stars) and the opening of Chapter 4 (power balance).
+Chapter 3 (stars, plot `gamow_peak_pp`) and the opening of Chapter 4 (power balance).
 The reactivity assets are used in deck 02, section 2.20; the power-balance ones in deck 04. Plots are light, A4-landscape slide size, English,
 STIX Two, with direct labels and line styles in addition to colour.
 Animations use the dark canvas of `animations/style.py`.
@@ -72,7 +72,7 @@ Axes: E [keV]; factor (dimensionless, log); density [keV⁻¹].
 Check (of the arithmetic only): E₀ is the numerical maximum of
 −E/k_BT − √(E_G/E) to 10⁻³ keV.
 
-### `gamow_peak_pp` (stars, optional)
+### `gamow_peak_pp` (deck 03, solar core)
 
 The same plot for p–p in the solar core, k_BT = 1.3 keV, E_G = 493 keV:
 E₀ = 5.9 keV, Δ = 6.4 keV, against the expected ≈ 6 keV. The reacting pairs

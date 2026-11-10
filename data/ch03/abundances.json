@@ -1,0 +1,587 @@
+{
+"source": "Asplund, Amarsi & Grevesse, A&A 653, A141 (2021), doi:10.1051/0004-6361/202140445, Table 2 (CC BY 4.0); photosphere for H, He, C, N, O and noble gases, CI chondrites otherwise",
+"note": "log_eps = log10(N_el / N_H) + 12",
+"elements": [
+{
+"Z": 1,
+"element": "H",
+"photosphere": 12.0,
+"meteorite": 8.22,
+"log_eps": 12.0
+},
+{
+"Z": 2,
+"element": "He",
+"photosphere": 10.914,
+"meteorite": 1.29,
+"log_eps": 10.914
+},
+{
+"Z": 3,
+"element": "Li",
+"photosphere": 0.96,
+"meteorite": 3.25,
+"log_eps": 3.25
+},
+{
+"Z": 4,
+"element": "Be",
+"photosphere": 1.38,
+"meteorite": 1.32,
+"log_eps": 1.32
+},
+{
+"Z": 5,
+"element": "B",
+"photosphere": 2.7,
+"meteorite": 2.79,
+"log_eps": 2.79
+},
+{
+"Z": 6,
+"element": "C",
+"photosphere": 8.46,
+"meteorite": 7.39,
+"log_eps": 8.46
+},
+{
+"Z": 7,
+"element": "N",
+"photosphere": 7.83,
+"meteorite": 6.26,
+"log_eps": 7.83
+},
+{
+"Z": 8,
+"element": "O",
+"photosphere": 8.69,
+"meteorite": 8.39,
+"log_eps": 8.69
+},
+{
+"Z": 9,
+"element": "F",
+"photosphere": 4.4,
+"meteorite": 4.42,
+"log_eps": 4.42
+},
+{
+"Z": 10,
+"element": "Ne",
+"photosphere": 8.06,
+"meteorite": -1.12,
+"log_eps": 8.06
+},
+{
+"Z": 11,
+"element": "Na",
+"photosphere": 6.22,
+"meteorite": 6.27,
+"log_eps": 6.27
+},
+{
+"Z": 12,
+"element": "Mg",
+"photosphere": 7.55,
+"meteorite": 7.53,
+"log_eps": 7.53
+},
+{
+"Z": 13,
+"element": "Al",
+"photosphere": 6.43,
+"meteorite": 6.43,
+"log_eps": 6.43
+},
+{
+"Z": 14,
+"element": "Si",
+"photosphere": 7.51,
+"meteorite": 7.51,
+"log_eps": 7.51
+},
+{
+"Z": 15,
+"element": "P",
+"photosphere": 5.41,
+"meteorite": 5.43,
+"log_eps": 5.43
+},
+{
+"Z": 16,
+"element": "S",
+"photosphere": 7.12,
+"meteorite": 7.15,
+"log_eps": 7.15
+},
+{
+"Z": 17,
+"element": "Cl",
+"photosphere": 5.31,
+"meteorite": 5.23,
+"log_eps": 5.23
+},
+{
+"Z": 18,
+"element": "Ar",
+"photosphere": 6.38,
+"meteorite": -0.5,
+"log_eps": 6.38
+},
+{
+"Z": 19,
+"element": "K",
+"photosphere": 5.07,
+"meteorite": 5.08,
+"log_eps": 5.08
+},
+{
+"Z": 20,
+"element": "Ca",
+"photosphere": 6.3,
+"meteorite": 6.29,
+"log_eps": 6.29
+},
+{
+"Z": 21,
+"element": "Sc",
+"photosphere": 3.14,
+"meteorite": 3.04,
+"log_eps": 3.04
+},
+{
+"Z": 22,
+"element": "Ti",
+"photosphere": 4.97,
+"meteorite": 4.9,
+"log_eps": 4.9
+},
+{
+"Z": 23,
+"element": "V",
+"photosphere": 3.9,
+"meteorite": 3.96,
+"log_eps": 3.96
+},
+{
+"Z": 24,
+"element": "Cr",
+"photosphere": 5.62,
+"meteorite": 5.63,
+"log_eps": 5.63
+},
+{
+"Z": 25,
+"element": "Mn",
+"photosphere": 5.42,
+"meteorite": 5.47,
+"log_eps": 5.47
+},
+{
+"Z": 26,
+"element": "Fe",
+"photosphere": 7.46,
+"meteorite": 7.46,
+"log_eps": 7.46
+},
+{
+"Z": 27,
+"element": "Co",
+"photosphere": 4.94,
+"meteorite": 4.87,
+"log_eps": 4.87
+},
+{
+"Z": 28,
+"element": "Ni",
+"photosphere": 6.2,
+"meteorite": 6.2,
+"log_eps": 6.2
+},
+{
+"Z": 29,
+"element": "Cu",
+"photosphere": 4.18,
+"meteorite": 4.25,
+"log_eps": 4.25
+},
+{
+"Z": 30,
+"element": "Zn",
+"photosphere": 4.56,
+"meteorite": 4.61,
+"log_eps": 4.61
+},
+{
+"Z": 31,
+"element": "Ga",
+"photosphere": 3.02,
+"meteorite": 3.07,
+"log_eps": 3.07
+},
+{
+"Z": 32,
+"element": "Ge",
+"photosphere": 3.62,
+"meteorite": 3.58,
+"log_eps": 3.58
+},
+{
+"Z": 33,
+"element": "As",
+"photosphere": null,
+"meteorite": 2.3,
+"log_eps": 2.3
+},
+{
+"Z": 34,
+"element": "Se",
+"photosphere": null,
+"meteorite": 3.34,
+"log_eps": 3.34
+},
+{
+"Z": 35,
+"element": "Br",
+"photosphere": null,
+"meteorite": 2.54,
+"log_eps": 2.54
+},
+{
+"Z": 36,
+"element": "Kr",
+"photosphere": 3.12,
+"meteorite": -2.27,
+"log_eps": 3.12
+},
+{
+"Z": 37,
+"element": "Rb",
+"photosphere": 2.32,
+"meteorite": 2.37,
+"log_eps": 2.37
+},
+{
+"Z": 38,
+"element": "Sr",
+"photosphere": 2.83,
+"meteorite": 2.88,
+"log_eps": 2.88
+},
+{
+"Z": 39,
+"element": "Y",
+"photosphere": 2.21,
+"meteorite": 2.15,
+"log_eps": 2.15
+},
+{
+"Z": 40,
+"element": "Zr",
+"photosphere": 2.59,
+"meteorite": 2.53,
+"log_eps": 2.53
+},
+{
+"Z": 41,
+"element": "Nb",
+"photosphere": 1.47,
+"meteorite": 1.42,
+"log_eps": 1.42
+},
+{
+"Z": 42,
+"element": "Mo",
+"photosphere": 1.88,
+"meteorite": 1.93,
+"log_eps": 1.93
+},
+{
+"Z": 44,
+"element": "Ru",
+"photosphere": 1.75,
+"meteorite": 1.77,
+"log_eps": 1.77
+},
+{
+"Z": 45,
+"element": "Rh",
+"photosphere": 0.78,
+"meteorite": 1.04,
+"log_eps": 1.04
+},
+{
+"Z": 46,
+"element": "Pd",
+"photosphere": 1.57,
+"meteorite": 1.65,
+"log_eps": 1.65
+},
+{
+"Z": 47,
+"element": "Ag",
+"photosphere": 0.96,
+"meteorite": 1.2,
+"log_eps": 1.2
+},
+{
+"Z": 48,
+"element": "Cd",
+"photosphere": null,
+"meteorite": 1.71,
+"log_eps": 1.71
+},
+{
+"Z": 49,
+"element": "In",
+"photosphere": 0.8,
+"meteorite": 0.76,
+"log_eps": 0.76
+},
+{
+"Z": 50,
+"element": "Sn",
+"photosphere": 2.02,
+"meteorite": 2.07,
+"log_eps": 2.07
+},
+{
+"Z": 51,
+"element": "Sb",
+"photosphere": null,
+"meteorite": 1.01,
+"log_eps": 1.01
+},
+{
+"Z": 52,
+"element": "Te",
+"photosphere": null,
+"meteorite": 2.18,
+"log_eps": 2.18
+},
+{
+"Z": 53,
+"element": "I",
+"photosphere": null,
+"meteorite": 1.55,
+"log_eps": 1.55
+},
+{
+"Z": 54,
+"element": "Xe",
+"photosphere": 2.22,
+"meteorite": -1.95,
+"log_eps": 2.22
+},
+{
+"Z": 55,
+"element": "Cs",
+"photosphere": null,
+"meteorite": 1.08,
+"log_eps": 1.08
+},
+{
+"Z": 56,
+"element": "Ba",
+"photosphere": 2.27,
+"meteorite": 2.18,
+"log_eps": 2.18
+},
+{
+"Z": 57,
+"element": "La",
+"photosphere": 1.11,
+"meteorite": 1.17,
+"log_eps": 1.17
+},
+{
+"Z": 58,
+"element": "Ce",
+"photosphere": 1.58,
+"meteorite": 1.58,
+"log_eps": 1.58
+},
+{
+"Z": 59,
+"element": "Pr",
+"photosphere": 0.75,
+"meteorite": 0.76,
+"log_eps": 0.76
+},
+{
+"Z": 60,
+"element": "Nd",
+"photosphere": 1.42,
+"meteorite": 1.45,
+"log_eps": 1.45
+},
+{
+"Z": 62,
+"element": "Sm",
+"photosphere": 0.95,
+"meteorite": 0.94,
+"log_eps": 0.94
+},
+{
+"Z": 63,
+"element": "Eu",
+"photosphere": 0.52,
+"meteorite": 0.52,
+"log_eps": 0.52
+},
+{
+"Z": 64,
+"element": "Gd",
+"photosphere": 1.08,
+"meteorite": 1.05,
+"log_eps": 1.05
+},
+{
+"Z": 65,
+"element": "Tb",
+"photosphere": 0.31,
+"meteorite": 0.31,
+"log_eps": 0.31
+},
+{
+"Z": 66,
+"element": "Dy",
+"photosphere": 1.1,
+"meteorite": 1.13,
+"log_eps": 1.13
+},
+{
+"Z": 67,
+"element": "Ho",
+"photosphere": 0.48,
+"meteorite": 0.47,
+"log_eps": 0.47
+},
+{
+"Z": 68,
+"element": "Er",
+"photosphere": 0.93,
+"meteorite": 0.93,
+"log_eps": 0.93
+},
+{
+"Z": 69,
+"element": "Tm",
+"photosphere": 0.11,
+"meteorite": 0.12,
+"log_eps": 0.12
+},
+{
+"Z": 70,
+"element": "Yb",
+"photosphere": 0.85,
+"meteorite": 0.92,
+"log_eps": 0.92
+},
+{
+"Z": 71,
+"element": "Lu",
+"photosphere": 0.1,
+"meteorite": 0.09,
+"log_eps": 0.09
+},
+{
+"Z": 72,
+"element": "Hf",
+"photosphere": 0.85,
+"meteorite": 0.71,
+"log_eps": 0.71
+},
+{
+"Z": 73,
+"element": "Ta",
+"photosphere": null,
+"meteorite": -0.15,
+"log_eps": -0.15
+},
+{
+"Z": 74,
+"element": "W",
+"photosphere": 0.79,
+"meteorite": 0.65,
+"log_eps": 0.65
+},
+{
+"Z": 75,
+"element": "Re",
+"photosphere": null,
+"meteorite": 0.26,
+"log_eps": 0.26
+},
+{
+"Z": 76,
+"element": "Os",
+"photosphere": 1.35,
+"meteorite": 1.35,
+"log_eps": 1.35
+},
+{
+"Z": 77,
+"element": "Ir",
+"photosphere": null,
+"meteorite": 1.32,
+"log_eps": 1.32
+},
+{
+"Z": 78,
+"element": "Pt",
+"photosphere": null,
+"meteorite": 1.61,
+"log_eps": 1.61
+},
+{
+"Z": 79,
+"element": "Au",
+"photosphere": 0.91,
+"meteorite": 0.81,
+"log_eps": 0.81
+},
+{
+"Z": 80,
+"element": "Hg",
+"photosphere": null,
+"meteorite": 1.17,
+"log_eps": 1.17
+},
+{
+"Z": 81,
+"element": "Tl",
+"photosphere": 0.92,
+"meteorite": 0.77,
+"log_eps": 0.77
+},
+{
+"Z": 82,
+"element": "Pb",
+"photosphere": 1.95,
+"meteorite": 2.03,
+"log_eps": 2.03
+},
+{
+"Z": 83,
+"element": "Bi",
+"photosphere": null,
+"meteorite": 0.65,
+"log_eps": 0.65
+},
+{
+"Z": 90,
+"element": "Th",
+"photosphere": 0.03,
+"meteorite": 0.04,
+"log_eps": 0.04
+},
+{
+"Z": 92,
+"element": "U",
+"photosphere": null,
+"meteorite": -0.54,
+"log_eps": -0.54
+}
+]
+}

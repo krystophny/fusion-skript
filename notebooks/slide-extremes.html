@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where fusion happens</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, html, font, sub, pow, run} from "./widget.js";
+import {INK, MUTED, GREY} from "./plotting.js";
+import cond from "./data/conditions.json" with {type: "json"};
+import mist from "./data/mist.json" with {type: "json"};
+import stages from "./data/stages.json" with {type: "json"};
+import bbn from "./data/bbn.json" with {type: "json"};
+
+// Each literal path is inlined by scripts/inline-widget.py; credits in slides/photos/stars/credits.md.
+const PHOTO = {
+  "sun-sdo-304": ["./data/stars/sun-sdo-304.jpg", "NASA/SDO (AIA), public domain"],
+  "sirius-ab-hubble-illustration": ["./data/stars/sirius-ab-hubble-illustration.jpg", "illustration: NASA, ESA and G. Bacon (STScI), CC BY 4.0"],
+  "gk-per-chandra-xray": ["./data/stars/gk-per-chandra-xray.jpg", "GK Persei, NASA/CXC/RIKEN/D. Takei et al., public domain"],
+  "crab-pulsar-chandra": ["./data/stars/crab-pulsar-chandra.jpg", "Crab pulsar, NASA/CXC/SAO/F. Seward et al., public domain"],
+  "tycho-snr-chandra": ["./data/stars/tycho-snr-chandra.jpg", "Tycho's supernova remnant, NASA/CXC/Rutgers/J. Warren & J. Hughes et al., public domain"],
+  "sn1987a-hubble": ["./data/stars/sn1987a-hubble.jpg", "SN 1987A, NASA, ESA, R. Kirshner, P. Challis, CC BY 4.0"],
+};
+const KB = 1.380649e-23, ME = 9.1093837e-31, HBAR = 1.054571817e-34, MU = 1.66053907e-27, C = 2.99792458e8;
+const SB = 5.670374419e-8, A_RAD = 4 * SB / C;
+const lt = Array.from({length: 61}, (_, i) => 6 + i * 0.1);
+// Electron Fermi energy = k_B T (mu_e = 2) and radiation pressure = gas pressure (mu = 0.62).
+const deg = lt.map((t) => ({t, r: Math.log10((2 * ME * KB * 10 ** t) ** 1.5 / (3 * Math.PI ** 2 * HBAR ** 3) * 2 * MU)}));
+const rad = lt.map((t) => ({t, r: Math.log10(A_RAD * 10 ** (3 * t) / 3 * 0.62 * MU / KB)}));
+const relRho = Math.log10(2 * MU * (ME * C / HBAR) ** 3 / (3 * Math.PI ** 2));
+
+// MIST central tracks (solar metallicity); the 15 and 30 M_sun cores continue along
+// rho ~ T^3 through Ne, O and Si burning (temperatures: Heger et al. 2003, 20 M_sun).
+const sol = mist.sets.find((s) => s.feh === 0);
+const tracks = [1, 15].flatMap((m) => {
+  const t = sol.tracks.find((x) => x.mass === m);
+  const end = t.phase.findIndex((p) => p === 6);
+  const n = end > 0 ? end + 1 : t.phase.length;
+  return t.log_center_T.slice(0, n).map((T, i) => ({m: `${m} M☉`, t: T, r: t.log_center_Rho[i] + 3}));
+});
+const last = tracks.filter((d) => d.m === "15 M☉").at(-1);
+const cont = [{t: last.t, r: last.r}, ...stages.stages.slice(3).map((s) => ({t: Math.log10(s.T_GK * 1e9)}))]
+  .map((d) => ({t: d.t, r: d.r ?? last.r + 3 * (d.t - last.t)}));
+const contLab = stages.stages.slice(3).map((s, i) => ({...cont[i + 1], fuel: s.fuel}));
+// Big Bang: photon temperature and baryon density for eta from Planck, 1 MeV to 30 keV.
+const bb = bbn.T_MeV.map((T, k) => ({T, t: Math.log10(T * 1.160451812e10),
+  r: Math.log10(bbn.planck.eta * 2 * 1.2020569 / Math.PI ** 2 * (T * 1.602176634e-13 / (HBAR * C)) ** 3 * MU)}))
+  .filter((d) => d.T < 1.2 && d.T > 0.02);
+const bands = [["H", 1.3e7, 4e7], ["He", 1e8, 2.2e8], ["C", 6e8, 1e9], ["Ne", 1.3e9, 1.8e9], ["O", 1.8e9, 2.4e9], ["Si", 2.8e9, 4e9]]
+  .map(([f, a, b]) => ({f, a: Math.log10(a), b: Math.log10(b)}));
+const objs = cond.objects.map((o) => ({...o, lr: Math.log10(o.rho), lt: Math.log10(o.T)}));
+const NAMES = objs.map((o) => o.short);
+
+function draw({who}, inputs) {
+  const sel = objs.find((o) => o.short === who);
+  const plot = sub(Plot.plot({
+    width: 610, height: 470, marginLeft: 58, marginRight: 30, marginTop: 10, marginBottom: 44, style: font,
+    x: {domain: [-10, 18], label: "ρ [kg m^−3]", labelAnchor: "center", labelArrow: "none", labelOffset: 36, ticks: [-9, -6, -3, 0, 3, 6, 9, 12, 15, 18], tickFormat: (e) => pow(10 ** e)},
+    y: {domain: [6, 11.3], label: "T [K]", labelAnchor: "center", labelArrow: "none", labelOffset: 46, ticks: [6, 7, 8, 9, 10, 11], tickFormat: (e) => pow(10 ** e)},
+    marks: [
+      Plot.rectY(bands, {x1: -10, x2: 18, y1: "a", y2: "b", fill: "#E69F00", fillOpacity: 0.13}),
+      Plot.text(bands, {x: -9.7, y: (d) => (d.a + d.b) / 2, text: (d) => d.f, textAnchor: "start", fill: "#B55000", fontSize: 13}),
+      Plot.areaX(deg, {y: "t", x1: "r", x2: 18, fill: "#0072B2", fillOpacity: 0.07}),
+      Plot.line(deg, {x: "r", y: "t", stroke: "#0072B2", strokeDasharray: "5,4"}),
+      Plot.text([{x: 11.5, y: 6.25}], {x: "x", y: "y", text: () => "electrons degenerate", fill: "#0072B2", fontSize: 13}),
+      Plot.line(rad, {x: "r", y: "t", stroke: MUTED, strokeDasharray: "2,3", clip: true}),
+      Plot.text([{x: -4.5, y: 9.4}], {x: "x", y: "y", text: () => "radiation pressure wins", fill: MUTED, fontSize: 13, rotate: -62}),
+      Plot.ruleX([relRho], {stroke: "#0072B2", strokeOpacity: 0.4}),
+      Plot.ruleX([Math.log10(2.7e17)], {stroke: INK, strokeOpacity: 0.4}),
+      Plot.text([{x: Math.log10(2.7e17), y: 6.8}], {x: "x", y: "y", text: () => "nuclear density", rotate: -90, dx: -8, fill: MUTED, fontSize: 12}),
+      Plot.line(tracks, {x: "r", y: "t", z: "m", stroke: INK, strokeWidth: 1.6, clip: true}),
+      Plot.line(cont, {x: "r", y: "t", stroke: INK, strokeWidth: 1.6, strokeDasharray: "2,3"}),
+      Plot.text([{x: 3.1, y: 6.25, s: "1 M☉"}, {x: -0.6, y: 6.55, s: "15 M☉"}], {x: "x", y: "y", text: "s", fill: INK, fontSize: 13}),
+      Plot.line(bb, {x: "r", y: "t", stroke: "#1B7F5B", strokeWidth: 2.2}),
+      Plot.text([{x: -3.6, y: 10.3}], {x: "x", y: "y", text: () => "Big Bang, 1 s → 20 min", fill: "#1B7F5B", fontSize: 13}),
+      Plot.dot(objs, {x: "lr", y: "lt", r: 6.5, fill: (d) => d.photo ? "white" : "#B55000", stroke: INK, strokeWidth: 1.8}),
+      Plot.dot([sel], {x: "lr", y: "lt", r: 11, stroke: "#B55000", strokeWidth: 3}),
+      Plot.text(objs.filter((d) => d.label === "right"), {x: "lr", y: "lt", text: "short", dx: 11, textAnchor: "start", fontSize: 13, fill: INK}),
+      Plot.text(objs.filter((d) => d.label === "left"), {x: "lr", y: "lt", text: "short", dx: -11, textAnchor: "end", fontSize: 13, fill: INK}),
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  // Click near a dot to select it.
+  plot.addEventListener("click", (e) => {
+    const box = plot.getBoundingClientRect(), sx = plot.scale("x"), sy = plot.scale("y");
+    const k = box.width / 610, px = (e.clientX - box.left) / k, py = (e.clientY - box.top) / k;
+    let best = null, dmin = 30;
+    for (const o of objs) {
+      const d = Math.hypot(sx.apply(o.lr) - px, sy.apply(o.lt) - py);
+      if (d < dmin) [best, dmin] = [o, d];
+    }
+    if (best) { inputs.who.value = best.short; inputs.who.dispatchEvent(new Event("input", {bubbles: true})); }
+  });
+  const ph = sel.photo && PHOTO[sel.photo];
+  const sci = (x) => { const e = Math.floor(Math.log10(x)); return html`${(x / 10 ** e).toFixed(1)} × 10<sup>${e}</sup>`; };
+  return html`<div style="display:flex;gap:12px;align-items:flex-start"><div style="width:610px;flex:none">${plot}</div>
+<div style="width:340px;flex:none;font-size:0.8rem;line-height:1.35;color:${INK}">
+  ${ph ? html`<img src="${ph[0]}" alt="${sel.name}" style="width:100%;height:190px;object-fit:cover;display:block">
+  <div style="font-size:0.6rem;color:${MUTED}">${ph[1]}</div>` : html`<div style="height:190px;display:flex;align-items:center;color:${MUTED}">fusion on Earth, for comparison</div>`}
+  <div style="margin-top:0.4rem"><b>${sel.name}</b></div>
+  <div><i>ρ</i> ≈ ${sci(sel.rho)} kg m<sup>−3</sup>, <i>T</i> ≈ ${sci(sel.T)} K</div>
+  <div style="margin-top:0.2rem">${sel.fusion}</div>
+  <div style="color:${MUTED};font-size:0.64rem;margin-top:0.3rem">${sel.ref}</div>
+  <div style="color:${MUTED};font-size:0.64rem;margin-top:0.4rem">orange bands: burning temperatures (20 M☉, Heger et al. 2003) · solid: MIST centres · dotted: ρ ∝ T³</div>
+</div></div>`;
+}
+
+run({who: Inputs.radio(NAMES, {value: NAMES[0], label: ""})}, draw);
+</script>
+</body>
+</html>

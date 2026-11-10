@@ -1,0 +1,115 @@
+{
+ "note": "Central (or burning-zone) mass density rho [kg/m^3] and temperature T [K]; order-of-magnitude values for the rho-T widget. 'computed' entries come from derivations/chapters/ch03_stars.py.",
+ "objects": [
+  {
+   "key": "sun",
+   "name": "Sun, centre",
+   "rho": 154000.0,
+   "T": 15700000.0,
+   "fusion": "pp chain (99 %), CNO (1 %)",
+   "photo": "sun-sdo-304",
+   "ref": "Model S, Christensen-Dalsgaard et al., Science 272, 1286 (1996), doi:10.1126/science.272.5266.1286",
+   "short": "Sun",
+   "label": "right"
+  },
+  {
+   "key": "wd",
+   "name": "White dwarf, 0.6 M☉, centre",
+   "rho": 3500000000.0,
+   "T": 10000000.0,
+   "fusion": "none: cooling ash (C, O); pycnonuclear only at much higher density",
+   "photo": "sirius-ab-hubble-illustration",
+   "ref": "rho: our Chandrasekhar equation of state (computed); T: Fontaine, Brassard & Bergeron, PASP 113, 409 (2001), doi:10.1086/319535",
+   "short": "white dwarf",
+   "label": "right"
+  },
+  {
+   "key": "nova",
+   "name": "Classical nova, envelope base at peak",
+   "rho": 5000000.0,
+   "T": 250000000.0,
+   "fusion": "hot CNO runaway on accreted H; limited by β⁺ decays of ¹⁴O, ¹⁵O",
+   "photo": "gk-per-chandra-xray",
+   "ref": "José & Hernanz, ApJ 494, 680 (1998), doi:10.1086/305244",
+   "short": "nova",
+   "label": "left"
+  },
+  {
+   "key": "xrb",
+   "name": "X-ray burst on a neutron star",
+   "rho": 1000000000.0,
+   "T": 1500000000.0,
+   "fusion": "He flash and rp process (rapid proton capture) up to Sn–Te",
+   "photo": "crab-pulsar-chandra",
+   "ref": "Schatz et al., Phys. Rev. Lett. 86, 3471 (2001), doi:10.1103/PhysRevLett.86.3471",
+   "short": "X-ray burst",
+   "label": "left"
+  },
+  {
+   "key": "ia-ign",
+   "name": "Type Ia supernova, carbon ignition",
+   "rho": 2000000000000.0,
+   "T": 700000000.0,
+   "fusion": "¹²C+¹²C runaway in degenerate matter: no thermostat",
+   "photo": "tycho-snr-chandra",
+   "ref": "Hillebrandt & Niemeyer, ARA&A 38, 191 (2000), doi:10.1146/annurev.astro.38.1.191",
+   "short": "SN Ia ignition",
+   "label": "right"
+  },
+  {
+   "key": "ia-burn",
+   "name": "Type Ia supernova, burning front",
+   "rho": 1000000000000.0,
+   "T": 7000000000.0,
+   "fusion": "C, O → ⁵⁶Ni (about 0.6 M☉); ⁵⁶Ni → ⁵⁶Co → ⁵⁶Fe powers the light",
+   "photo": "tycho-snr-chandra",
+   "ref": "Hillebrandt & Niemeyer, ARA&A 38, 191 (2000), doi:10.1146/annurev.astro.38.1.191",
+   "short": "SN Ia burning",
+   "label": "left"
+  },
+  {
+   "key": "bounce",
+   "name": "Core collapse, bounce",
+   "rho": 2.7e+17,
+   "T": 120000000000.0,
+   "fusion": "none: nuclear density, nuclei dissolved; gravity powers the explosion, neutrinos carry 99 %",
+   "photo": "sn1987a-hubble",
+   "ref": "Janka et al., Phys. Rep. 442, 38 (2007), doi:10.1016/j.physrep.2007.02.002",
+   "short": "core bounce",
+   "label": "left"
+  },
+  {
+   "key": "ns-crust",
+   "name": "Accreting neutron-star crust",
+   "rho": 1000000000000000.0,
+   "T": 100000000.0,
+   "fusion": "pycnonuclear: zero-point motion in the lattice, density not temperature",
+   "photo": "crab-pulsar-chandra",
+   "ref": "Haensel & Zdunik, A&A 227, 431 (1990)",
+   "short": "NS crust",
+   "label": "left"
+  },
+  {
+   "key": "iter",
+   "name": "Tokamak plasma (ITER design)",
+   "rho": 4.2e-07,
+   "T": 120000000.0,
+   "fusion": "D–T",
+   "photo": null,
+   "ref": "n = 1e20 m^-3 D-T, k_BT = 10 keV; ITER Physics Basis, Nucl. Fusion 39, 2137 (1999), doi:10.1088/0029-5515/39/12/301",
+   "short": "tokamak",
+   "label": "right"
+  },
+  {
+   "key": "nif",
+   "name": "Laser fusion hot spot (NIF)",
+   "rho": 100000.0,
+   "T": 60000000.0,
+   "fusion": "D–T, inertially confined for about 0.1 ns",
+   "photo": null,
+   "ref": "Betti & Hurricane, Nat. Phys. 12, 435 (2016), doi:10.1038/nphys3736",
+   "short": "NIF hot spot",
+   "label": "left"
+  }
+ ]
+}

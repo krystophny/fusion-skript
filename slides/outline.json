@@ -11,6 +11,11 @@
       "label": "fusion-reactions"
     },
     {
+      "number": 3,
+      "title": "Fusion in stars",
+      "label": "fusion-in-stars"
+    },
+    {
       "number": 4,
       "title": "Power balance and Lawson",
       "label": "power-balance-lawson"
@@ -87,6 +92,54 @@
       "title": "Reaction rate in a thermal plasma",
       "label": "reaction-rate",
       "chapter": "fusion-reactions"
+    },
+    {
+      "number": "3.1",
+      "title": "What powers the Sun",
+      "label": "sun-power",
+      "chapter": "fusion-in-stars"
+    },
+    {
+      "number": "3.2",
+      "title": "Gravitational confinement",
+      "label": "gravity",
+      "chapter": "fusion-in-stars"
+    },
+    {
+      "number": "3.3",
+      "title": "Proton–proton chain",
+      "label": "pp-chain",
+      "chapter": "fusion-in-stars"
+    },
+    {
+      "number": "3.4",
+      "title": "CNO cycle",
+      "label": "cno",
+      "chapter": "fusion-in-stars"
+    },
+    {
+      "number": "3.5",
+      "title": "Primordial nucleosynthesis",
+      "label": "bbn",
+      "chapter": "fusion-in-stars"
+    },
+    {
+      "number": "3.6",
+      "title": "Helium burning and heavier elements",
+      "label": "heavier",
+      "chapter": "fusion-in-stars"
+    },
+    {
+      "number": "3.7",
+      "title": "Degenerate endpoints",
+      "label": "remnants",
+      "chapter": "fusion-in-stars"
+    },
+    {
+      "number": "3.8",
+      "title": "Fusion under extreme conditions",
+      "label": "extreme",
+      "chapter": "fusion-in-stars"
     },
     {
       "number": "4.1",

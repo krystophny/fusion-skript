@@ -1,0 +1,8 @@
+{"source": "Heger, Woosley, Fryer & Langer, Massive star evolution through the ages, in From Twilight to Highlight, ESO Astrophysics Symposia (2003), arXiv:astro-ph/0211062, Table 1 (20 M_sun, Pop I)",
+ "stages": [
+  {"fuel": "H",  "products": "He",     "T_GK": 0.037, "duration_yr": 8.1e6},
+  {"fuel": "He", "products": "O, C",   "T_GK": 0.19,  "duration_yr": 1.2e6},
+  {"fuel": "C",  "products": "Ne, Mg", "T_GK": 0.87,  "duration_yr": 9.8e2},
+  {"fuel": "Ne", "products": "O, Mg",  "T_GK": 1.6,   "duration_yr": 0.60},
+  {"fuel": "O",  "products": "Si, S",  "T_GK": 2.0,   "duration_yr": 1.3},
+  {"fuel": "Si", "products": "Fe",     "T_GK": 3.3,   "duration_yr": 0.031}]}

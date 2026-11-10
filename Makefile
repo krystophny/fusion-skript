@@ -16,6 +16,7 @@ DERIVATIONS := derivations/energy.py \
   derivations/chapters/ch00_electricity_costs.py \
   derivations/chapters/ch02_fusion_reactions.py \
   derivations/chapters/ch02_reactivity.py \
+  derivations/chapters/ch03_stars.py \
   derivations/chapters/ch04_power_balance.py
 PLOTS := scripts/plot-ch00-teaching.py scripts/plot-electricity-costs.py
 FIGURES := $(wildcard slides/figures*.py)

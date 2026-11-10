@@ -1,0 +1,14 @@
+{"source": "B16-GS98 standard solar model, Vinyoles et al., ApJ 835, 202 (2017), doi:10.3847/1538-4357/835/2/202, Table 6",
+ "unit": "cm^-2 s^-1 at Earth",
+ "fluxes": {"pp": 5.98e10, "pep": 1.44e8, "hep": 7.98e3, "Be7": 4.93e9, "B8": 5.46e6, "N13": 2.78e8, "O15": 2.05e8, "F17": 5.29e6},
+ "rel_error": {"pp": 0.006, "pep": 0.01, "hep": 0.30, "Be7": 0.06, "B8": 0.12, "N13": 0.15, "O15": 0.17, "F17": 0.20},
+ "endpoints_MeV": {"pp": 0.4202, "hep": 18.773, "B8": 16.36, "N13": 1.1985, "O15": 1.7317, "F17": 1.7395},
+ "lines_MeV": {"pep": [[1.442, 1.0]], "Be7": [[0.8618, 0.8956], [0.3843, 0.1044]]},
+ "detectors": [
+   {"name": "Ga (GALLEX, SAGE)", "threshold_MeV": 0.233, "ref": "Hampel et al., Phys. Lett. B 447, 127 (1999), doi:10.1016/S0370-2693(98)01579-2"},
+   {"name": "Cl (Homestake)", "threshold_MeV": 0.814, "ref": "Cleveland et al., ApJ 496, 505 (1998), doi:10.1086/305343"},
+   {"name": "water Cherenkov (Super-K, SNO)", "threshold_MeV": 3.5, "ref": "Abe et al. (Super-Kamiokande), Phys. Rev. D 94, 052010 (2016), doi:10.1103/PhysRevD.94.052010"}],
+ "measured": [
+   {"what": "pp neutrinos, Borexino", "ref": "Borexino Collaboration, Nature 512, 383 (2014), doi:10.1038/nature13702"},
+   {"what": "CNO neutrinos, Borexino", "ref": "Borexino Collaboration, Nature 587, 577 (2020), doi:10.1038/s41586-020-2934-0"}]
+}

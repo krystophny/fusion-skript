@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primordial nucleosynthesis</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, html, font, sub, pow, readout, run} from "./widget.js";
+import {INK, MUTED, GREY} from "./plotting.js";
+import bbn from "./data/bbn.json" with {type: "json"};
+
+// LINX runs (Giovanetti et al. 2025, network PRIMAT 2023): Y_i = n_i / n_b against time.
+const A = {n: 1, p: 1, D: 2, T: 3, He3: 3, He4: 4, Li7: 7, Be7: 7};
+const SHOW = [["n", "n", "#9AA5B1"], ["p", "H", "#56B4E9"], ["D", "D", "#B55000"], ["T", "T", "#CC79A7"],
+  ["He3", "³He", "#1B7F5B"], ["He4", "⁴He", "#E69F00"], ["Li7", "⁷Li", "#4D4D4D"], ["Be7", "⁷Be", "#0072B2"]];
+const IDX = Object.fromEntries(bbn.species.map((s, i) => [s, i]));
+const logEta = bbn.eta.map(Math.log10);
+const obs = bbn.observed, planck = bbn.planck;
+
+// Mass fraction X_i = A_i Y_i against time, interpolated in log eta between the runs.
+function history(le) {
+  let j = logEta.findIndex((x) => x >= le);
+  j = Math.min(Math.max(j, 1), logEta.length - 1);
+  const w = (le - logEta[j - 1]) / (logEta[j] - logEta[j - 1]);
+  const out = [];
+  for (const [s, name] of SHOW) {
+    const a = bbn.Y[j - 1][IDX[s]], b = bbn.Y[j][IDX[s]];
+    // Before the network starts (T > 1 MeV) only n and p are meaningful.
+    bbn.t_s.forEach((t, k) => {
+      if (A[s] > 1 && bbn.T_MeV[k] > 0.9) return;
+      out.push({t, name, X: A[s] * 10 ** ((1 - w) * a[k] + w * b[k])});
+    });
+  }
+  return out;
+}
+
+const fin = bbn.final;
+const finY = (s, k) => 10 ** fin.log10Y[IDX[s]][k];
+const ratios = fin.eta.map((eta, k) => ({eta, Yp: 4 * finY("He4", k),
+  DH: finY("D", k) / finY("p", k), He3H: (finY("He3", k) + finY("T", k)) / finY("p", k),
+  Li7H: (finY("Li7", k) + finY("Be7", k)) / finY("p", k)}));
+const at = (le) => {
+  const k = Math.min(fin.eta.length - 1, Math.max(0, Math.round((le - Math.log10(fin.eta[0])) / (Math.log10(fin.eta.at(-1) / fin.eta[0]) / (fin.eta.length - 1)))));
+  return ratios[k];
+};
+const Tlab = [1, 0.3, 0.1, 0.03].map((T) => {
+  const k = bbn.T_MeV.findIndex((x) => x <= T);
+  return {t: bbn.t_s[k], T};
+});
+
+function draw({le}, inputs) {
+  const eta = 10 ** le, r = at(le);
+  readout(inputs.le, `η = ${(eta / 1e-10).toFixed(2)} × 10⁻¹⁰`);
+  const h = history(le);
+  // End labels, pushed apart to at least 0.42 decades.
+  const ends = SHOW.map(([, name]) => ({...h.filter((d) => d.name === name).at(-1)}))
+    .filter((d) => d.X > 1e-12).sort((a, b) => b.X - a.X);
+  for (let i = 1; i < ends.length; i++)
+    ends[i].Xl = Math.min(ends[i].X, (ends[i - 1].Xl ?? ends[i - 1].X) / 10 ** 0.42);
+  ends[0].Xl = ends[0].X;
+  const left = sub(Plot.plot({
+    width: 520, height: 450, marginLeft: 62, marginRight: 46, marginTop: 34, marginBottom: 44, style: font,
+    x: {type: "log", domain: [0.01, 2e4], label: "time after the Big Bang [s]", labelAnchor: "center", labelArrow: "none", labelOffset: 36, tickFormat: pow, ticks: [0.01, 1, 100, 1e4]},
+    y: {type: "log", domain: [1e-12, 1.5], label: "mass fraction", labelAnchor: "center", labelArrow: "none", labelOffset: 50, tickFormat: pow, ticks: [1e-12, 1e-9, 1e-6, 1e-3, 1]},
+    color: {domain: SHOW.map((s) => s[1]), range: SHOW.map((s) => s[2])},
+    marks: [
+      Plot.line(h, {x: "t", y: "X", stroke: "name", strokeWidth: 2.2, clip: true}),
+      Plot.text(ends, {x: "t", y: "Xl", text: "name", fill: "name", dx: 6, textAnchor: "start", fontSize: 15}),
+      Plot.tickX(Tlab, {x: "t", y1: 1.5, y2: 0.8, stroke: MUTED}),
+      Plot.text(Tlab, {x: "t", y: 1.5, dy: -12, text: (d) => `${d.T} MeV`, fill: MUTED, fontSize: 13}),
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  const xr = {type: "log", domain: [fin.eta[0], fin.eta.at(-1)], label: "baryons per photon η", labelAnchor: "center", labelArrow: "none", labelOffset: 36, tickFormat: pow};
+  const pl = Plot.ruleX([planck.eta], {stroke: "#B55000", strokeDasharray: "5,4", strokeWidth: 1.5});
+  const yp = sub(Plot.plot({
+    width: 420, height: 140, marginLeft: 62, marginRight: 70, marginTop: 8, marginBottom: 8, style: font,
+    x: {...xr, axis: null},
+    y: {domain: [0.20, 0.27], label: "Y_p", labelAnchor: "center", labelArrow: "none", labelOffset: 50, ticks: [0.21, 0.25], tickFormat: (d) => d.toFixed(2)},
+    marks: [
+      pl,
+      Plot.rectY([obs.Yp], {y1: (d) => d.value - d.sigma, y2: (d) => d.value + d.sigma, fill: "#E69F00", fillOpacity: 0.35}),
+      Plot.line(ratios, {x: "eta", y: "Yp", stroke: "#E69F00", strokeWidth: 2.4}),
+      Plot.text([{eta: fin.eta.at(-1), y: 0.262}], {x: "eta", y: "y", text: () => "⁴He", dx: 8, textAnchor: "start", fill: "#E69F00", fontSize: 15}),
+      Plot.ruleX([eta], {stroke: INK, strokeWidth: 2}),
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  const rat = [["D/H", "DH", "#B55000"], ["³He/H", "He3H", "#1B7F5B"], ["⁷Li/H", "Li7H", "#4D4D4D"]];
+  const lines = rat.flatMap(([name, key]) => ratios.map((d) => ({eta: d.eta, name, v: d[key]})));
+  const ob = [{...obs.DH, c: "#B55000"}, {...obs.Li7H, c: "#4D4D4D"}];
+  const low = sub(Plot.plot({
+    width: 420, height: 300, marginLeft: 62, marginRight: 70, marginTop: 6, marginBottom: 44, style: font,
+    x: {...xr, ticks: [1e-10, 1e-9]},
+    y: {type: "log", domain: [1e-11, 1e-2], label: "number ratio", labelAnchor: "center", labelArrow: "none", labelOffset: 50, tickFormat: pow, ticks: [1e-10, 1e-8, 1e-6, 1e-4, 1e-2]},
+    color: {domain: rat.map((d) => d[0]), range: rat.map((d) => d[2])},
+    marks: [
+      pl,
+      Plot.rectY(ob, {y1: (d) => d.value - 2 * d.sigma, y2: (d) => d.value + 2 * d.sigma, fill: "c", fillOpacity: 0.3}),
+      Plot.line(lines, {x: "eta", y: "v", stroke: "name", strokeWidth: 2.4}),
+      Plot.text(rat.map(([name, key]) => ({eta: fin.eta.at(-1), v: ratios.at(-1)[key], name})), {x: "eta", y: "v", text: "name", fill: "name", dx: 8, textAnchor: "start", fontSize: 15}),
+      Plot.ruleX([eta], {stroke: INK, strokeWidth: 2}),
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  return html`<div style="display:flex;gap:10px;align-items:flex-start"><div style="width:520px;flex:none">${left}</div>
+<div style="width:430px;flex:none">${yp}${low}
+<div style="font-size:0.78rem;line-height:1.35;color:${INK};margin-left:0.6rem">
+  <i>Y</i><sub>p</sub> = ${r.Yp.toFixed(4)} · D/H = ${(r.DH * 1e5).toFixed(2)} × 10⁻⁵ · ⁷Li/H = ${(r.Li7H * 1e10).toFixed(2)} × 10⁻¹⁰
+  <div style="color:${MUTED}">bands: observed (±2σ for D, Li), dashed: η from the CMB (Planck) · LINX, PRIMAT 2023 network</div>
+</div></div></div>`;
+}
+
+run({
+  le: Inputs.range([Math.log10(fin.eta[0]), Math.log10(fin.eta.at(-1))], {value: Math.log10(planck.eta), step: 0.01, label: html`<i>η</i>`}),
+}, draw);
+</script>
+</body>
+</html>
