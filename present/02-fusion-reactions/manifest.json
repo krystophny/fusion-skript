@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=919fd197911c1615",
+  "pdf": "deck.pdf?v=093a91c6bca00efa",
   "pages": [
     {
       "src": "page-01.svg?v=4f9dbc398aaca034",
@@ -43,7 +43,7 @@
       "background": "light"
     },
     {
-      "src": "page-08.svg?v=49d118c96873d9fb",
+      "src": "page-08.svg?v=6ffca37547ee295a",
       "kind": "static",
       "background": "light"
     },
@@ -81,17 +81,17 @@
       "background": "light"
     },
     {
-      "src": "page-15.svg?v=d64bdd14a91867ff",
+      "src": "page-15.svg?v=99b7b0ca1ec24f65",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-16.svg?v=f0e3cfdf4c7b2734",
+      "src": "page-16.svg?v=05a0a4f0e0032c88",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-17.svg?v=9aedceb48ccc8d8a",
+      "src": "page-17.svg?v=7fe66e7673c016b6",
       "kind": "static",
       "background": "light"
     },
@@ -111,7 +111,7 @@
       "background": "light"
     },
     {
-      "src": "page-21.svg?v=8bed0d51dad70462",
+      "src": "page-21.svg?v=9ff96dede5e6e5db",
       "kind": "static",
       "background": "light"
     },
@@ -121,7 +121,7 @@
       "background": "light"
     },
     {
-      "src": "page-23.svg?v=5474f855d671640d",
+      "src": "page-23.svg?v=53a5ff840f74ab77",
       "kind": "static",
       "background": "light"
     },
@@ -136,27 +136,17 @@
       "background": "light"
     },
     {
-      "src": "page-26.svg?v=093c2f7fbdd096b7",
+      "src": "page-26.svg?v=8f392bd8d9e4e954",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-27.svg?v=3c3053456f2dd090",
+      "src": "page-27.svg?v=5e6759e19ed2913e",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-28.svg?v=20ac98213c0562f1",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-29.svg?v=2c323a970b464765",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-30.svg?v=6f69d9f2d579d271",
+      "src": "page-28.svg?v=7cd7724af189066f",
       "kind": "static",
       "background": "light"
     }

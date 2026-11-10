@@ -20,15 +20,29 @@
       "stem": "02-fusion-reactions",
       "chapter": 2,
       "title": "Fusion reactions",
-      "pages": 30,
+      "pages": 28,
       "cover": "02-fusion-reactions/page-01.svg?v=4f9dbc398aaca034"
+    },
+    {
+      "stem": "03-fusion-in-stars",
+      "chapter": 3,
+      "title": "Fusion in stars",
+      "pages": 35,
+      "cover": "03-fusion-in-stars/page-01.svg?v=ee8678b880c42639"
     },
     {
       "stem": "04-power-balance",
       "chapter": 4,
       "title": "Power balance and Lawson",
-      "pages": 21,
+      "pages": 20,
       "cover": "04-power-balance/page-01.svg?v=d88fe0a72c384221"
+    },
+    {
+      "stem": "05-magnetic-confinement",
+      "chapter": 5,
+      "title": "Magnetic confinement",
+      "pages": 6,
+      "cover": "05-magnetic-confinement/page-1.svg?v=dd4712e0168aa70e"
     }
   ]
 }

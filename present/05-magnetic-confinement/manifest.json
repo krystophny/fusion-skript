@@ -1,0 +1,62 @@
+{
+  "stem": "05-magnetic-confinement",
+  "chapter": 5,
+  "title": "Magnetic confinement",
+  "course": "Fusion Physics",
+  "author": "Christopher Albert",
+  "aspect": 1.414285714286938,
+  "pdf": "deck.pdf?v=3e68756aed6ed2fe",
+  "pages": [
+    {
+      "src": "page-1.svg?v=dd4712e0168aa70e",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-2.svg?v=6cc5ffd9f98e02da",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-3.svg?v=cce55971dee999b9",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-limits.html?v=d2ae94035a1eba3b",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    },
+    {
+      "src": "page-4.svg?v=e0ee0aeb275b0669",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-5.svg?v=bd59765c5591a5ff",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-popcon.html?v=a835217f05781799",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    },
+    {
+      "src": "page-6.svg?v=a201264772dcef99",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-machines.html?v=cab662cfaa9c377d",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    }
+  ]
+}
