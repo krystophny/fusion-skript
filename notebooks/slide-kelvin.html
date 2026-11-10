@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weighing the Sun</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+</head>
+<body>
+<div id="figure"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, html, font, sub, pow, readout, run} from "./widget.js";
+import {INK, MUTED, GREY, BLUE, ORANGE, GREEN} from "./plotting.js";
+import meas from "./data/sun-measurements.json" with {type: "json"};
+import age from "./data/earth-age.json" with {type: "json"};
+import ch3 from "./data/ch03_stars.json" with {type: "json"};
+
+// Kepler: GM_sun = 4 pi^2 d^3/T^2; Earth: GM_E = g R_E^2; R_sun = theta d/2; L = 4 pi d^2 S;
+// t_KH = (GM)^2/(G R L). Same formulas and errors as derivations/chapters/ch03_stars.py.
+const YEAR = 3.15576e7;
+const EXP = {R: {theta: 1, d: 1}, RR: {theta: 1, d: 1, R_E: -1}, Mr: {d: 3, T: -2, g: -1, R_E: -2},
+  M: {d: 3, T: -2, G: -1}, L: {d: 2, S: 1}, t: {d: 3, G: -1, theta: -1, S: -1, T: -4}};
+const SETS = ["home", "1862", "today"];   // numeric keys would sort first
+const SUPS = (n) => String(n).replace("-", "⁻").replace(/\d/g, (c) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[c]);
+const sci = (x, d = 2) => { const e = Math.floor(Math.log10(x)); return `${(x / 10 ** e).toFixed(d)} × 10${SUPS(e)}`; };
+const pct = (e) => e === 0 ? "exact" : e < 0.001 ? "< 0.1 %" : `± ${(100 * e).toFixed(e < 0.01 ? 1 : 0)} %`;
+
+function derive(name, f = 1) {
+  const s = meas.sets[name], m = {}, e = {};
+  for (const [k, v] of Object.entries(s)) if (typeof v === "object") { m[k] = v.value; e[k] = v.rel_err; }
+  m.d *= f;
+  const gm = 4 * Math.PI ** 2 * m.d ** 3 / m.T ** 2, R = m.theta * m.d / 2, L = 4 * Math.PI * m.d ** 2 * m.S;
+  const val = {R, RR: R / m.R_E, Mr: gm / (m.g * m.R_E ** 2), M: gm / m.G, L, t: gm ** 2 / (m.G * R * L) / YEAR};
+  const err = Object.fromEntries(Object.entries(EXP).map(([q, p]) => [q, Math.hypot(...Object.entries(p).map(([x, n]) => n * e[x]))]));
+  return {s, val, err};
+}
+
+const hist = Object.fromEntries(age.history.map((h) => [h.who + h.what, h]));
+const earth = age.ages.find((a) => a.what === "Earth");
+const ROWS = ["Sun by gravity, t_KH", "Kelvin: cooling Earth", "Darwin: erosion", "Earth, radiometric", "Sun by fusion"];
+
+function draw({set, f}, inputs) {
+  readout(inputs.f, f === 1 ? "as measured" : `d × ${f.toFixed(2)}`);
+  const {s, val, err} = derive(set, f);
+  const others = SETS.filter((n) => n !== set).map((n) => ({n, ...derive(n)}));
+  const t = val.t, lo = t / (1 + 2 * err.t), hi = t * (1 + 2 * err.t);
+  const cool = hist["Kelvin 1862cooling of the Earth"], weald = hist["Darwin 1859erosion of the Weald"];
+  const plot = sub(Plot.plot({
+    width: 600, height: 400, marginLeft: 190, marginRight: 20, marginTop: 14, marginBottom: 44, style: font,
+    x: {type: "log", domain: [1e6, 1e11], label: "time [yr]", labelAnchor: "center", labelArrow: "none", labelOffset: 36, tickFormat: pow, ticks: [1e6, 1e7, 1e8, 1e9, 1e10, 1e11]},
+    y: {domain: ROWS, label: null, tickSize: 0},
+    marks: [
+      Plot.ruleX([earth.Gyr * 1e9], {stroke: GREEN, strokeDasharray: "4,4"}),
+      Plot.ruleY(others, {y: () => ROWS[0], x1: (o) => o.val.t / (1 + 2 * o.err.t), x2: (o) => o.val.t * (1 + 2 * o.err.t), stroke: GREY, strokeWidth: 5, strokeOpacity: 0.5, dy: 10}),
+      Plot.ruleY([0], {y: () => ROWS[0], x1: lo, x2: hi, stroke: ORANGE, strokeWidth: 8}),
+      Plot.dot([0], {y: () => ROWS[0], x: t, r: 7, fill: ORANGE, stroke: "white"}),
+      Plot.ruleY([0], {y: () => ROWS[1], x1: cool.yr_min, x2: cool.yr_max, stroke: MUTED, strokeWidth: 8}),
+      Plot.dot([0], {y: () => ROWS[2], x: weald.yr, r: 7, fill: MUTED}),
+      Plot.ruleY([0], {y: () => ROWS[3], x1: (earth.Gyr - earth.err) * 1e9, x2: (earth.Gyr + earth.err) * 1e9, stroke: GREEN, strokeWidth: 8}),
+      Plot.dot([0], {y: () => ROWS[3], x: earth.Gyr * 1e9, r: 7, fill: GREEN}),
+      Plot.dot([0], {y: () => ROWS[4], x: ch3.sun.t_nuc_yr, r: 7, fill: BLUE}),
+      Plot.text([0], {y: () => ROWS[4], x: ch3.sun.t_nuc_yr, text: () => "10 % of H burnt", dx: 12, textAnchor: "start", fill: MUTED, fontSize: 13}),
+      Plot.text([0], {y: () => ROWS[0], x: hi, text: () => `${sci(t, 1)} yr`, dx: 10, textAnchor: "start", fill: ORANGE, fontSize: 15}),
+      Plot.frame({stroke: GREY}),
+    ],
+  }));
+  const row = (q, sym, body) => html`<tr><td style="padding-right:0.5rem">${sym}</td><td>${body}</td><td style="color:${MUTED};padding-left:0.4rem;white-space:nowrap">${pct(err[q])}</td></tr>`;
+  const inp = (k, sym, text) => html`<tr><td style="padding-right:0.5rem">${sym}</td><td>${text}</td><td style="color:${MUTED};padding-left:0.4rem;white-space:nowrap">${pct(s[k].rel_err)}</td></tr>`;
+  return html`<div style="display:flex;gap:16px;align-items:flex-start"><div style="width:600px;flex:none">${plot}</div>
+<div style="width:340px;flex:none;font-size:0.74rem;line-height:1.35;color:${INK}">
+  <b>measured</b> <span style="color:${MUTED}">(${s.label})</span>
+  <table style="border-collapse:collapse;margin:0.15rem 0 0.4rem">
+  ${inp("d", html`<i>d</i>`, html`${sci(s.d.value * f)} m <span style="color:${MUTED}">${s.d.method}</span>`)}
+  ${inp("theta", html`<i>θ</i>`, html`${(s.theta.value * 180 / Math.PI).toFixed(3)}° <span style="color:${MUTED}">${s.theta.method}</span>`)}
+  ${inp("S", html`<i>S</i>`, html`${s.S.value.toFixed(0)} W/m² <span style="color:${MUTED}">${s.S.method}</span>`)}
+  ${inp("R_E", html`<i>R</i><sub>⊕</sub>`, html`${(s.R_E.value / 1e3).toFixed(0)} km <span style="color:${MUTED}">${s.R_E.method}</span>`)}
+  ${inp("G", html`<i>G</i>`, html`${sci(s.G.value)} <span style="color:${MUTED}">${s.G.method}</span>`)}
+  </table>
+  <b>derived</b>
+  <table style="border-collapse:collapse;margin-top:0.15rem">
+  ${row("RR", html`<i>R</i><sub>☉</sub>`, html`<i>θd</i>/2 = ${(Math.round(val.R / 1e6) * 1e3).toLocaleString("en").replace(/,/g, " ")} km = ${val.RR.toFixed(0)} <i>R</i><sub>⊕</sub>`)}
+  ${row("Mr", html`<i>M</i><sub>☉</sub>/<i>M</i><sub>⊕</sub>`, html`4π²<i>d</i>³/(<i>T</i>²<i>gR</i><sub>⊕</sub>²) = ${sci(val.Mr)} <span style="color:${MUTED}">(no <i>G</i>)</span>`)}
+  ${row("M", html`<i>M</i><sub>☉</sub>`, html`4π²<i>d</i>³/(<i>GT</i>²) = ${sci(val.M)} kg`)}
+  ${row("L", html`<i>L</i><sub>☉</sub>`, html`4π<i>d</i>²<i>S</i> = ${sci(val.L)} W`)}
+  ${row("t", html`<b><i>t</i><sub>KH</sub></b>`, html`<b>8π³<i>d</i>³/(<i>GθST</i>⁴) = ${sci(val.t)} yr</b>`)}
+  </table>
+  <div style="color:${MUTED};font-size:0.66rem;margin-top:0.4rem">bars: ± 2σ · grey: the other measurement sets · <i>T</i> = 1 yr · Earth: Dalrymple (2001) · Kelvin, Trans. R. Soc. Edinb. 23, 157 (1862) · Darwin, Origin, ch. 9 (1859)</div>
+</div></div>`;
+}
+
+run({
+  set: Inputs.radio(SETS, {value: "home", label: "measurements", format: (n) => meas.sets[n].label}),
+  f: Inputs.range([0.5, 2], {value: 1, step: 0.01, label: html`distance <i>d</i>`}),
+}, draw);
+</script>
+</body>
+</html>

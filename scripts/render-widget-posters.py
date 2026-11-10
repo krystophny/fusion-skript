@@ -2,7 +2,7 @@
 """Screenshot each built slide widget (notebooks/slide-<name>.html) at its
 initial slider values as the PDF poster media/posters/slide-<name>.png.
 
-Usage: python3 scripts/render-widget-posters.py [<rendered-notebooks-dir>]
+Usage: python3 scripts/render-widget-posters.py [<rendered-notebooks-dir>] [--only NAME ...]
        (default public/notebooks; build first with make -j site)
 Requires Playwright's Python package and Chromium.
 The frame has the aspect of the deck's widget area, 257 mm x 150 mm.
@@ -29,12 +29,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("rendered", type=Path, nargs="?", default=ROOT / "public/notebooks")
     parser.add_argument("--chrome", default=shutil.which("chromium"), help="Chromium executable")
+    parser.add_argument("--only", nargs="+", metavar="NAME", help="widget names without slide- (default: all)")
     args = parser.parse_args()
     # Observable JS does not start from file:// URLs.
     handler = partial(Quiet, directory=str(args.rendered.resolve()))
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
     Thread(target=server.serve_forever, daemon=True).start()
-    names = sorted(p.stem for p in (ROOT / "notebooks").glob("slide-*.html"))
+    names = sorted(p.stem for p in (ROOT / "notebooks").glob("slide-*.html")
+                   if not args.only or p.stem.removeprefix("slide-") in args.only)
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(executable_path=args.chrome, headless=True,
                                               args=["--no-sandbox"])

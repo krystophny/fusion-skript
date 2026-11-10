@@ -88,3 +88,37 @@ def test_conditions_have_references_and_photos_exist():
         assert o["ref"] and o["rho"] > 0 and o["T"] > 0
         if o["photo"]:
             assert (ROOT / "notebooks/data/stars" / f"{o['photo']}.jpg").is_file()
+
+
+def test_kelvin_helmholtz_time_from_measurements():
+    # Closed form with G kept once: t_KH = 8 pi^3 d^3 / (G theta S T^4); linear error
+    # propagation against a Monte Carlo of the home-experiment inputs.
+    for name in ("home", "1862", "today"):
+        m = {k: v["value"] for k, v in st.MEAS["sets"][name].items() if isinstance(v, dict)}
+        closed = 8 * np.pi**3 * m["d"] ** 3 / (m["G"] * m["theta"] * m["S"] * m["T"] ** 4) / st.YEAR
+        assert st.sun_from_measurements(name)["t_KH"]["value"] == pytest.approx(closed, rel=1e-12)
+    sets = st.MEAS["sets"]["home"]
+    rng = np.random.default_rng(0)
+    draw = {k: v["value"] * (1 + v["rel_err"] * rng.standard_normal(200000)) for k, v in sets.items() if isinstance(v, dict)}
+    t = 8 * np.pi**3 * draw["d"] ** 3 / (draw["G"] * draw["theta"] * draw["S"] * draw["T"] ** 4) / st.YEAR
+    lin = st.sun_from_measurements("home")["t_KH"]["rel_err"]
+    assert np.std(np.log(t)) == pytest.approx(lin, rel=0.15)
+    # Even the home result is a factor > 50 short of the age of the Earth.
+    assert st.sun_from_measurements("home")["t_KH"]["value"] * (1 + 3 * lin) < 4.54e9 / 50
+
+
+def test_patterson_isochron_and_earth_lead():
+    # With his 1956 decay constants the fit reproduces Patterson's 4.55 +- 0.07 Gyr, and the
+    # ocean-sediment lead (Earth) lies on the meteorite isochron within the 2 % lead error.
+    old = st.isochron_age(st.AGE["patterson_1956"]["decay_constants_used"])
+    assert abs(old["age_yr"] / 1e9 - 4.55) < 0.07
+    sed = st.AGE["patterson_1956"]["ocean_sediment"]
+    assert old["slope"] * sed["r64"] + old["intercept"] == pytest.approx(sed["r74"], rel=0.02)
+
+
+def test_decay_chain_energies():
+    # Total Q of the chains, Dye, Rev. Geophys. 50, RG3007 (2012), Table 1: 51.698, 46.402, 42.652 MeV.
+    q = st.decay_chains()
+    assert q["U238"] == pytest.approx(51.698, abs=0.01)
+    assert q["U235"] == pytest.approx(46.402, abs=0.01)
+    assert q["Th232"] == pytest.approx(42.652, abs=0.01)

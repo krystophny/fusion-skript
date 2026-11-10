@@ -1,0 +1,41 @@
+{
+ "patterson_1956": {
+  "source": "C. Patterson, Geochim. Cosmochim. Acta 10, 230 (1956), doi:10.1016/0016-7037(56)90036-9, Table 1 and p. 235",
+  "note": "Lead isotope ratios; estimated errors 2 % (stone meteorites) and 1 % (iron meteorites, Henbury and Canyon Diablo). Canyon Diablo lead is from troilite with U238/Pb204 = 0.025, i.e. primordial lead.",
+  "meteorites": [
+   {"name": "Nuevo Laredo", "type": "stone", "r64": 50.28, "r74": 34.86, "r84": 67.97, "rel_err": 0.02},
+   {"name": "Forest City", "type": "stone", "r64": 19.27, "r74": 15.95, "r84": 39.05, "rel_err": 0.02},
+   {"name": "Modoc", "type": "stone", "r64": 19.48, "r74": 15.76, "r84": 38.21, "rel_err": 0.02},
+   {"name": "Henbury", "type": "iron", "r64": 9.55, "r74": 10.38, "r84": 29.54, "rel_err": 0.01},
+   {"name": "Canyon Diablo", "type": "iron (troilite)", "r64": 9.46, "r74": 10.34, "r84": 29.44, "rel_err": 0.01}
+  ],
+  "ocean_sediment": {"r64": 19.0, "r74": 15.8},
+  "decay_constants_used": {"lambda_235_per_yr": 9.72e-10, "lambda_238_per_yr": 1.537e-10, "U238_U235": 137.8},
+  "age_Gyr": 4.55, "age_err_Gyr": 0.07
+ },
+ "decay_constants": {
+  "lambda_238_per_yr": 1.55125e-10, "lambda_235_per_yr": 9.8485e-10,
+  "source": "Jaffey et al., Phys. Rev. C 4, 1889 (1971), doi:10.1103/PhysRevC.4.1889",
+  "U238_U235": 137.818, "U238_U235_source": "Hiess et al., Science 335, 1610 (2012), doi:10.1126/science.1215507"
+ },
+ "half_lives_Gyr": {
+  "U238": 4.468, "U235": 0.704, "Th232": 14.0, "K40": 1.248,
+  "source": "NUBASE2020, Kondev et al., Chin. Phys. C 45, 030001 (2021), doi:10.1088/1674-1137/abddae"
+ },
+ "ages": [
+  {"what": "oldest solids (Ca-Al-rich inclusions)", "Gyr": 4.5673, "err": 0.00016, "source": "Connelly et al., Science 338, 651 (2012), doi:10.1126/science.1226919"},
+  {"what": "Earth", "Gyr": 4.54, "err": 0.05, "source": "Dalrymple, Geol. Soc. London Spec. Publ. 190, 205 (2001), doi:10.1144/GSL.SP.2001.190.01.14"},
+  {"what": "oldest terrestrial mineral (Jack Hills zircon)", "Gyr": 4.404, "err": 0.008, "source": "Wilde et al., Nature 409, 175 (2001), doi:10.1038/35051550"},
+  {"what": "Sun from helioseismology", "Gyr": 4.57, "err": 0.11, "source": "Bonanno, Schlattl & Paternò, A&A 390, 1115 (2002), doi:10.1051/0004-6361:20020749"}
+ ],
+ "earth_heat": {
+  "total_TW": 47, "total_err_TW": 2, "total_source": "Davies & Davies, Solid Earth 1, 5 (2010), doi:10.5194/se-1-5-2010",
+  "kamland_U_Th_TW": [20.0, 8.6, 8.8], "kamland_source": "KamLAND Collaboration, Nature Geosci. 4, 647 (2011), doi:10.1038/ngeo1205",
+  "borexino_radiogenic_TW": [38.2, 12.7, 13.6], "borexino_source": "Borexino Collaboration, Phys. Rev. D 101, 012009 (2020), doi:10.1103/PhysRevD.101.012009"
+ },
+ "history": [
+  {"who": "Darwin 1859", "what": "erosion of the Weald", "yr": 3.0e8, "source": "C. Darwin, On the Origin of Species, 1st ed., ch. 9 (1859)"},
+  {"who": "Kelvin 1862", "what": "cooling of the Earth", "yr_min": 2.0e7, "yr_max": 4.0e8, "source": "W. Thomson, Trans. R. Soc. Edinburgh 23, 157 (1862), doi:10.1017/S0080456800018512"},
+  {"who": "Kelvin 1862", "what": "age of the Sun's heat", "yr_max": 1.0e8, "source": "W. Thomson, Macmillan's Magazine 5, 388 (1862)"}
+ ]
+}

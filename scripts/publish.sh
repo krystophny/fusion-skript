@@ -11,6 +11,24 @@ release=0
 # keepalives end a dead connection, and each network step is retried.
 export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh} -o ServerAliveInterval=5 -o ServerAliveCountMax=3"
 retry() { local i; for i in 1 2 3; do timeout "${T:-60}" "$@" && return 0; echo "retrying: $*" >&2; done; return 1; }
+# GitHub Pages sometimes times out while syncing a large site, or abandons the
+# deployment, and then keeps serving the previous site. Wait for the build of
+# the pushed commit and request a new one until it is live.
+pages_live() {
+  local sha=$1 repo=$2 attempt i status
+  for attempt in 1 2 3; do
+    for i in $(seq 90); do
+      status=$(gh api "repos/$repo/pages/builds/latest" --jq "select(.commit == \"$sha\") | .status" 2>/dev/null || true)
+      [[ "$status" == built ]] && { echo "GitHub Pages serves ${sha:0:7}"; return 0; }
+      [[ "$status" == errored ]] && break
+      sleep 10
+    done
+    echo "GitHub Pages did not deploy ${sha:0:7}; requesting a new build" >&2
+    gh api -X POST "repos/$repo/pages/builds" >/dev/null
+  done
+  echo "GitHub Pages still serves an older site" >&2
+  return 1
+}
 dest="${COURSE_FOLDER:-$HOME/Nextcloud/lv/fusion/2026}"
 while (($#)); do
   case "$1" in
@@ -52,4 +70,5 @@ if ((release)); then
   retry git push origin main & origin=$!
   retry git push github main ${site:+"$site:refs/heads/gh-pages"}
   wait "$origin"
+  pages_live "$(git rev-parse "${site:-$parent}")" krystophny/fusion-skript
 fi

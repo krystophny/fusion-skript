@@ -1,0 +1,44 @@
+{
+ "note": "Inputs to the Kelvin-Helmholtz time from measurements. rel_err is a 1-sigma relative uncertainty; for the home experiments it is our estimate of a careful classroom result, for 1862 the stated or estimated error of the historical value.",
+ "inputs": {
+  "d": {"name": "Earth-Sun distance", "unit": "m"},
+  "theta": {"name": "angular diameter of the Sun", "unit": "rad"},
+  "T": {"name": "year", "unit": "s"},
+  "S": {"name": "solar constant", "unit": "W m^-2"},
+  "g": {"name": "surface gravity", "unit": "m s^-2"},
+  "R_E": {"name": "Earth radius", "unit": "m"},
+  "G": {"name": "gravitational constant", "unit": "m^3 kg^-1 s^-2"}
+ },
+ "sets": {
+  "home": {
+   "label": "home experiments",
+   "d": {"value": 1.5e11, "rel_err": 0.10, "method": "Io eclipse delays (Rømer 1676) × speed of light from a microwave oven", "source": "Stauffer, Phys. Teach. 35, 231 (1997), doi:10.1119/1.2344657"},
+   "theta": {"value": 9.3e-3, "rel_err": 0.03, "method": "pinhole camera: image diameter / distance"},
+   "T": {"value": 3.15581e7, "rel_err": 0.0, "method": "count the days"},
+   "S": {"value": 1.3e3, "rel_err": 0.20, "method": "blackened water can in sunlight, corrected for the atmosphere"},
+   "g": {"value": 9.81, "rel_err": 0.01, "method": "pendulum"},
+   "R_E": {"value": 6.4e6, "rel_err": 0.10, "method": "double sunset: lie down, stand up, time the second sunset", "source": "Rawlins, Am. J. Phys. 47, 126 (1979), doi:10.1119/1.11880"},
+   "G": {"value": 6.7e-11, "rel_err": 0.15, "method": "torsion balance with lead weights and a laser pointer"}
+  },
+  "1862": {
+   "label": "Kelvin, 1862",
+   "d": {"value": 1.5337e11, "rel_err": 0.004, "method": "transits of Venus 1761/1769, solar parallax 8.5776″ (Encke 1824)"},
+   "theta": {"value": 9.305e-3, "rel_err": 0.001, "method": "heliometer"},
+   "T": {"value": 3.15581e7, "rel_err": 0.0, "method": "astronomy"},
+   "S": {"value": 1.23e3, "rel_err": 0.10, "method": "pyrheliometer, 1.7633 cal cm⁻² min⁻¹ (Pouillet 1838)", "source": "C. Pouillet, C. R. Acad. Sci. 7, 24 (1838)"},
+   "g": {"value": 9.81, "rel_err": 0.001, "method": "pendulums"},
+   "R_E": {"value": 6.371e6, "rel_err": 0.001, "method": "arc measurements (Bessel 1841)"},
+   "G": {"value": 6.754e-11, "rel_err": 0.01, "method": "torsion balance, mean density of the Earth 5.448 g cm⁻³ (Cavendish 1798)", "source": "H. Cavendish, Phil. Trans. R. Soc. 88, 469 (1798), doi:10.1098/rstl.1798.0022"}
+  },
+  "today": {
+   "label": "today",
+   "d": {"value": 1.495978707e11, "rel_err": 0.0, "method": "astronomical unit (IAU 2012)"},
+   "theta": {"value": 9.3048e-3, "rel_err": 0.0001, "method": "solar semidiameter 959.63″"},
+   "T": {"value": 3.15581e7, "rel_err": 0.0, "method": "sidereal year"},
+   "S": {"value": 1361.0, "rel_err": 0.0004, "method": "total solar irradiance (SORCE/TIM)", "source": "Kopp & Lean, Geophys. Res. Lett. 38, L01706 (2011), doi:10.1029/2010GL045777"},
+   "g": {"value": 9.8203, "rel_err": 0.0, "method": "GM⊕ / R⊕² with GM⊕ = 3.986004 × 10¹⁴ m³ s⁻²"},
+   "R_E": {"value": 6.371e6, "rel_err": 0.0, "method": "mean Earth radius"},
+   "G": {"value": 6.6743e-11, "rel_err": 2.2e-5, "method": "CODATA 2018"}
+  }
+ }
+}

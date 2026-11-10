@@ -287,6 +287,71 @@ def binding_curve():
     return [best[a] for a in sorted(best)]
 
 
+
+# ---------------------------------------------------- the Sun from measurements ---
+MEAS = json.loads((DATA / "sun-measurements.json").read_text())
+# Exponents of each input in the derived quantity: GM_sun = 4 pi^2 d^3/T^2 (Kepler),
+# GM_earth = g R_E^2, R_sun = theta d/2, L = 4 pi d^2 S, t_KH = (GM)^2/(G R L) = 8 pi^3 d^3/(G theta S T^4).
+EXPONENTS = {
+    "R_sun": {"theta": 1, "d": 1},
+    "R_sun_over_R_E": {"theta": 1, "d": 1, "R_E": -1},
+    "M_ratio": {"d": 3, "T": -2, "g": -1, "R_E": -2},
+    "M_E": {"g": 1, "R_E": 2, "G": -1},
+    "M_sun": {"d": 3, "T": -2, "G": -1},
+    "L_sun": {"d": 2, "S": 1},
+    "t_KH": {"d": 3, "G": -1, "theta": -1, "S": -1, "T": -4},
+}
+
+
+def sun_from_measurements(name):
+    """R, M, L and t_KH of the Sun from one set of measured inputs, with 1-sigma relative errors."""
+    m = {key: v["value"] for key, v in MEAS["sets"][name].items() if isinstance(v, dict)}
+    e = {key: v["rel_err"] for key, v in MEAS["sets"][name].items() if isinstance(v, dict)}
+    gm_sun = 4 * np.pi**2 * m["d"] ** 3 / m["T"] ** 2
+    r_sun = m["theta"] * m["d"] / 2
+    lum = 4 * np.pi * m["d"] ** 2 * m["S"]
+    val = {"R_sun": r_sun, "R_sun_over_R_E": r_sun / m["R_E"], "M_ratio": gm_sun / (m["g"] * m["R_E"] ** 2),
+           "M_E": m["g"] * m["R_E"] ** 2 / m["G"], "M_sun": gm_sun / m["G"], "L_sun": lum,
+           "t_KH": gm_sun**2 / (m["G"] * r_sun * lum) / YEAR}
+    err = {q: float(np.sqrt(sum((p * e[x]) ** 2 for x, p in EXPONENTS[q].items()))) for q in val}
+    return {q: {"value": float(val[q]), "rel_err": err[q]} for q in val}
+
+
+# ------------------------------------------------------------ age of the Earth ---
+AGE = json.loads((DATA / "earth-age.json").read_text())
+
+
+def pb_ratio(t_yr, lam5, lam8, k):
+    """Radiogenic 207Pb*/206Pb* after t: (exp(l5 t) - 1)/(k (exp(l8 t) - 1)), k = 238U/235U today."""
+    return (np.expm1(lam5 * t_yr)) / (k * np.expm1(lam8 * t_yr))
+
+
+def isochron_age(constants=None, n_mc=4000, seed=1):
+    """Least-squares isochron through Patterson's meteorites; age from the slope, error by Monte Carlo."""
+    c = constants or AGE["decay_constants"]
+    lam5, lam8, k = c["lambda_235_per_yr"], c["lambda_238_per_yr"], c["U238_U235"]
+    met = AGE["patterson_1956"]["meteorites"]
+    x = np.array([m["r64"] for m in met])
+    y = np.array([m["r74"] for m in met])
+    rel = np.array([m["rel_err"] for m in met])
+    age = lambda slope: brentq(lambda t: pb_ratio(t, lam5, lam8, k) - slope, 1e8, 1e10)
+    slope, icpt = np.polyfit(x, y, 1)
+    rng = np.random.default_rng(seed)
+    ages = [age(np.polyfit(x * (1 + rel * rng.standard_normal(5)), y * (1 + rel * rng.standard_normal(5)), 1)[0])
+            for _ in range(n_mc)]
+    return {"slope": float(slope), "intercept": float(icpt), "age_yr": age(slope), "age_err_yr": float(np.std(ages))}
+
+
+def decay_chains():
+    """Q of the U/Th chains and 40K from AME2020 atomic masses (beta electrons included)."""
+    he = (2, 4)
+    return {"U238": q_value_mev([(92, 238)], [(82, 206)] + [he] * 8),
+            "U235": q_value_mev([(92, 235)], [(82, 207)] + [he] * 7),
+            "Th232": q_value_mev([(90, 232)], [(82, 208)] + [he] * 6),
+            "K40": q_value_mev([(19, 40)], [(20, 40)]),
+            "U238_alpha": q_value_mev([(92, 238)], [(90, 234), he])}
+
+
 # ------------------------------------------------------------------- checks ---
 def symbolic_checks():
     G_, M_, R_, mu_, mu_u, kT, N = sp.symbols("G M R mu m_u kT N", positive=True)
@@ -367,6 +432,23 @@ def checks():
           "core collapse: 3/5 GM^2/R (1.4 M_sun, 12 km) = {E_cc_J:.1e} J".format(**sn))
     assert 1e44 < sn["E_Ia_J"] < 3e44 and 2e46 < sn["E_cc_J"] < 4e46
 
+    for name in ("home", "1862", "today"):
+        r = sun_from_measurements(name)
+        print(f"Sun from {name}: M = {r['M_sun']['value']:.3e} kg ({r['M_ratio']['value']:.3g} M_E), "
+              f"R = {r['R_sun_over_R_E']['value']:.0f} R_E, L = {r['L_sun']['value']:.3e} W, "
+              f"t_KH = {r['t_KH']['value']:.2e} yr +- {100 * r['t_KH']['rel_err']:.0f} %")
+    today = sun_from_measurements("today")
+    assert abs(today["M_sun"]["value"] / M_SUN - 1) < 1e-3 and abs(today["L_sun"]["value"] / L_SUN - 1) < 2e-3
+    assert abs(today["t_KH"]["value"] / s["t_kh_yr"] - 1) < 3e-3
+
+    iso, iso56 = isochron_age(), isochron_age(AGE["patterson_1956"]["decay_constants_used"])
+    q = decay_chains()
+    print(f"Patterson isochron: slope {iso['slope']:.4f}, age {iso['age_yr'] / 1e9:.2f} +- {iso['age_err_yr'] / 1e9:.2f} Gyr "
+          f"(1956 decay constants: {iso56['age_yr'] / 1e9:.2f} Gyr); chains Q: "
+          + ", ".join(f"{key} {v:.2f} MeV" for key, v in q.items()))
+    assert 4.4e9 < iso["age_yr"] < 4.65e9 and 4.5e9 < iso56["age_yr"] < 4.65e9
+    assert abs(q["U238"] - 51.69) < 0.05 and abs(q["U235"] - 46.40) < 0.05 and abs(q["Th232"] - 42.65) < 0.05
+
     write_plotdata(s, t_cross, he, h, mch)
 
 
@@ -392,6 +474,10 @@ def widget_data():
             "wd": {"rho_c": [float(f"{x:.3g}") for x in rho], "M": [round(m, 4) for m, _ in mr],
                    "R_Rsun": [float(f"{r / R_SUN:.4g}") for _, r in mr], "M_ch": chandrasekhar_mass()},
             "reactions": rx,
+            "kelvin": {name: {"label": MEAS["sets"][name]["label"], "derived": sun_from_measurements(name)}
+                       for name in ("home", "1862", "today")},
+            "isochron": {"fit": isochron_age(), "fit_1956_constants": isochron_age(AGE["patterson_1956"]["decay_constants_used"]),
+                         "chains_Q_MeV": decay_chains()},
             "binding": [{"Z": z, "A": a, "el": sym, "BA": round(ba / 1e3, 4)} for z, a, sym, ba in binding_curve()]}
 
 
