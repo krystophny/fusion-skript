@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stability limits and disruptions</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
+<link rel="stylesheet" href="./slide-widget.css">
+<style>
+  #figure { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.3rem 0.6rem 0 0.6rem; }
+  #section { width: 22rem; flex-shrink: 0; }
+  #section canvas { width: 100%; display: block; }
+  #traces { flex: 1; min-width: 0; position: relative; }
+  #status { font-size: 0.82rem; line-height: 1.35; padding: 0 0.6rem; min-height: 2.3rem; }
+  #status .bad { color: #B55000; }
+  #controls { display: flex; align-items: center; gap: 0.6rem; padding: 0 0.6rem; font-size: 0.9rem; }
+  #controls button { font: inherit; padding: 0.1rem 0.8rem; }
+  #controls input[type=range] { flex: 1; accent-color: #0072B2; }
+  #inputs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.2rem; padding: 0 0.6rem; }
+  #inputs form[class^="inputs-"] { --label-width: 5.6rem; margin: 0.15rem 0; }
+  #inputs form[class^="inputs-"] output { width: 7.5rem; }
+  .cursor { position: absolute; top: 0; width: 0; border-left: 1.5px solid #17202A; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="figure"><div id="section"><canvas id="canvas" width="704" height="800"></canvas></div><div id="traces"></div></div>
+<div id="controls"><button id="play">pause</button><input id="scrub" type="range" min="0" max="1" step="1" value="0"><span id="clock"></span></div>
+<div id="status"></div>
+<div id="inputs"></div>
+<script type="module">
+import {Plot, Inputs, html, font, sub, readout} from "./widget.js";
+import {INK, MUTED, GREY, BLUE, ORANGE, GREEN, PURPLE} from "./plotting.js";
+import createMilcaTokamak from "./wasm/milca_tokamak.mjs";
+
+// Public machine parameters (approximate): major and minor radius, elongation,
+// triangularity, field, current, line density, central temperature, wall
+// radius b/a and vertical wall time.
+const devices = {
+  "ITER": {R: 6.2, a: 2.0, kappa: 1.75, delta: 0.33, B: 5.3, I: 15, n: 1.0, T: 20, wall: 1.3, tauw: 0.3},
+  "JET": {R: 2.96, a: 0.96, kappa: 1.7, delta: 0.3, B: 3.45, I: 3.0, n: 0.7, T: 8, wall: 1.25, tauw: 0.005},
+  "ASDEX Upgrade": {R: 1.65, a: 0.5, kappa: 1.6, delta: 0.25, B: 2.5, I: 1.0, n: 0.7, T: 4, wall: 1.3, tauw: 0.005},
+  "SPARC": {R: 1.85, a: 0.57, kappa: 1.97, delta: 0.54, B: 12.2, I: 8.7, n: 3.1, T: 20, wall: 1.25, tauw: 0.01},
+};
+const PHASES = ["flat-top", "tearing mode grows", "ideal mode grows", "thermal quench",
+  "current quench", "disrupted", "survived"];
+const CAUSES = ["", "overlapping magnetic islands (tearing)", "ideal external kink",
+  "ideal ballooning (pressure limit)", "radiative collapse (density limit)"];
+
+// ---------------------------------------------------------------- MILCA (WASM)
+const mod = await createMilcaTokamak();
+const iptr = mod._malloc(24);
+mod._milca_td_sizes(iptr, iptr + 4, iptr + 8, iptr + 12, iptr + 16, iptr + 20);
+const [NX, NPAR, NOUT, NSER, NPROF, NRAMP] = Array.from(mod.HEAP32.subarray(iptr / 4, iptr / 4 + 6));
+const MAXREC = 4000;
+const f64 = (n) => mod._malloc(8 * n);
+const buf = {par: f64(NPAR), out: f64(NOUT), prof: f64(NX * NPROF), ramp: f64(NRAMP),
+  ser: f64(NSER * MAXREC), pro: f64(NX * NPROF * MAXREC), nrec: mod._malloc(4), st: mod._malloc(4)};
+
+function parameters(v) {
+  const d = devices[v.device];
+  return [d.R, d.a, d.kappa, d.delta, v.B, v.I, v.q0, v.n, 0.3, v.T, 1.0, 1.7, v.fimp / 100,
+    d.wall, d.tauw, 1.0, 2.5, 0.1 * Math.min(1, v.T / 10), 0, 0];
+}
+function limits(par) {
+  mod.HEAPF64.set(par, buf.par / 8);
+  mod._milca_td_limits(buf.par, buf.out, buf.prof, buf.st);
+  const o = Array.from(mod.HEAPF64.subarray(buf.out / 8, buf.out / 8 + NOUT));
+  return {status: mod.HEAP32[buf.st / 4], q0: o[0], q95: o[1], li: o[2], betat: o[3], betaN: o[4],
+    nG: o[6], fGW: o[7], W: o[8], tauE: o[9], Pheat: o[10], Paux: o[12], Prad: o[13],
+    kink: o.slice(16, 20), kinkStatus: o.slice(20, 24), x21: o[28], D21: o[29], x32: o[30], D32: o[31],
+    ballooning: o[32], betaNball: o[35]};
+}
+function simulate(par, ramp) {
+  mod.HEAPF64.set(par, buf.par / 8);
+  mod.HEAPF64.fill(0, buf.ramp / 8, buf.ramp / 8 + NRAMP);
+  mod.HEAPF64.set(ramp, buf.ramp / 8);
+  mod._milca_td_run(buf.par, buf.ramp, MAXREC, buf.nrec, buf.ser, buf.pro, buf.st);
+  const n = mod.HEAP32[buf.nrec / 4];
+  const S = mod.HEAPF64.slice(buf.ser / 8, buf.ser / 8 + NSER * n);
+  const P = mod.HEAPF64.slice(buf.pro / 8, buf.pro / 8 + NX * NPROF * n);
+  const rec = [];
+  for (let i = 0; i < n; i++) {
+    const s = (k) => S[i * NSER + k - 1];
+    rec.push({t: s(1), Ip: s(2), T0: s(3), W: s(4), n: s(5), fGW: s(6), betaN: s(7), q0: s(8),
+      q95: s(9), li: s(10), Z: s(11), aNow: s(12), w21: s(13), w32: s(14), x21: s(15), x32: s(16),
+      Prad: s(17), phase: s(21), cause: s(22), ball: s(23), xi: s(24), m: s(25),
+      T: P.subarray((i * NPROF) * NX, (i * NPROF + 1) * NX)});
+  }
+  return rec;
+}
+
+// ---------------------------------------------------------------- drawing
+const canvas = document.querySelector("#canvas"), ctx = canvas.getContext("2d");
+const heat = (u) => {          // black-red-yellow-white for T/T_max in [0,1]
+  u = Math.max(0, Math.min(1, u));
+  const r = Math.min(1, 2.2 * u), g = Math.max(0, Math.min(1, 2.2 * u - 0.9)), b = Math.max(0, 3 * u - 2);
+  return `rgb(${Math.round(40 + 215 * r)},${Math.round(30 + 225 * g)},${Math.round(40 + 215 * b)})`;
+};
+function section(d, rec, i, Tmax) {
+  const r = rec[i], W = canvas.width, H = canvas.height;
+  const ext = d.a * d.wall * 1.08, scale = Math.min(W / (2 * ext), H / (2 * ext * d.kappa));
+  const X = (R) => W / 2 + (R - d.R) * scale, Y = (Z) => H / 2 - Z * scale;
+  const shape = (rho, theta, dz = 0, dr = 0) => {
+    const R = d.R + dr + d.a * rho * Math.cos(theta + Math.asin(Math.min(d.delta, 0.9)) * rho * Math.sin(theta));
+    return [R, d.kappa * d.a * rho * Math.sin(theta) + dz];
+  };
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, W, H);
+  // vessel wall
+  ctx.beginPath();
+  for (let k = 0; k <= 180; k++) { const [R, Z] = shape(d.wall, 2 * Math.PI * k / 180); k ? ctx.lineTo(X(R), Y(Z)) : ctx.moveTo(X(R), Y(Z)); }
+  ctx.lineWidth = 6; ctx.strokeStyle = GREY; ctx.stroke();
+  const rhoMax = r.aNow / d.a, shafranov = 0.25 * d.a * d.a / d.R * (0.5 + r.li / 2) * Math.min(1, r.W / Math.max(rec[0].W, 1e-9) + 0.1);
+  const quench = r.phase >= 3 && r.phase <= 5;
+  const mode = (rho, th) => {
+    if (r.xi <= 0 || r.phase < 2) return 0;
+    if (r.m >= 10) return r.xi / d.a * Math.cos(10 * th) * Math.exp(-(th * th) / 0.6) * rho;
+    return r.xi / d.a * Math.cos(r.m * th) * rho ** r.m;
+  };
+  // wall clip so the scraped plasma ends at the wall
+  ctx.save();
+  ctx.beginPath();
+  for (let k = 0; k <= 180; k++) { const [R, Z] = shape(d.wall, 2 * Math.PI * k / 180); k ? ctx.lineTo(X(R), Y(Z)) : ctx.moveTo(X(R), Y(Z)); }
+  ctx.clip();
+  const NS = 36;
+  for (let j = NS; j >= 1; j--) {
+    const rho = j / NS;
+    if (rho > 1) continue;
+    const T = r.T[Math.min(NX - 1, Math.round(rho * (NX - 1)))];
+    ctx.beginPath();
+    for (let k = 0; k <= 160; k++) {
+      const th = 2 * Math.PI * k / 160;
+      let rr = rho * (1 + mode(rho, th));
+      if (quench && r.phase === 3) rr *= 1 + 0.04 * Math.sin(17 * th + 31 * rho + 7 * i) * rho;
+      const [R, Z] = shape(rr, th, r.Z, shafranov * (1 - rho * rho));
+      k ? ctx.lineTo(X(R), Y(Z)) : ctx.moveTo(X(R), Y(Z));
+    }
+    ctx.closePath();
+    ctx.fillStyle = heat(Math.log10(1 + 9 * T / Tmax));
+    ctx.globalAlpha = rho <= rhoMax ? 1 : 0.18;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    if (j % 4 === 0 && rho <= rhoMax) { ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,0.35)"; ctx.stroke(); }
+  }
+  // magnetic islands: chains of m lenses on q = m/n, rotating until they lock
+  const lockT = rec.find((x) => x.phase >= 1)?.t ?? Infinity;
+  for (const [w, x, m] of [[r.w21, r.x21, 2], [r.w32, r.x32, 3]]) {
+    if (x <= 0 || r.phase >= 3 || w < 0.004 * d.a) continue;
+    const half = Math.min(0.5 * w / (d.a * Math.sqrt(d.kappa)), 0.3);
+    const rot = r.t < lockT ? 40 * r.t : 40 * lockT;
+    for (let l = 0; l < m; l++) {
+      ctx.beginPath();
+      const c = 2 * Math.PI * l / m + rot;
+      for (let k = 0; k <= 60; k++) {
+        const th = c - Math.PI / m + 2 * Math.PI / m * k / 60;
+        const [R, Z] = shape(x + half * Math.abs(Math.cos(m * (th - c) / 2)), th, r.Z, shafranov * (1 - x * x));
+        k ? ctx.lineTo(X(R), Y(Z)) : ctx.moveTo(X(R), Y(Z));
+      }
+      for (let k = 60; k >= 0; k--) {
+        const th = c - Math.PI / m + 2 * Math.PI / m * k / 60;
+        const [R, Z] = shape(x - half * Math.abs(Math.cos(m * (th - c) / 2)), th, r.Z, shafranov * (1 - x * x));
+        ctx.lineTo(X(R), Y(Z));
+      }
+      ctx.closePath();
+      ctx.fillStyle = "rgba(0,114,178,0.45)"; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = BLUE; ctx.stroke();
+    }
+  }
+  ctx.restore();
+  // halo current where the plasma touches the wall
+  if (r.aNow < d.a * 0.999) {
+    const [R, Z] = shape(d.wall, Math.sign(r.Z || 1) * Math.PI / 2);
+    ctx.beginPath(); ctx.arc(X(R), Y(Z), 26, 0, 2 * Math.PI);
+    ctx.fillStyle = "rgba(181,80,0,0.55)"; ctx.fill();
+  }
+  ctx.fillStyle = INK; ctx.font = "30px 'STIX Two Text', serif";
+  ctx.fillText(PHASES[r.phase] ?? "", 18, 40);
+  ctx.fillStyle = MUTED; ctx.font = "24px 'STIX Two Text', serif";
+  ctx.fillText(`T₀ = ${r.T0 < 1 ? (1000 * r.T0).toFixed(0) + " eV" : r.T0.toFixed(1) + " keV"}`, 18, H - 52);
+  ctx.fillText(`I_p = ${r.Ip.toFixed(2)} MA, Z = ${(100 * r.Z).toFixed(0)} cm`, 18, H - 20);
+}
+
+// Legend text: x_ab becomes a subscript, as sub() does in the plots.
+function label(k) {
+  const span = document.createElement("span");
+  span.innerHTML = k.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/_(\w+)/g, "<sub>$1</sub>");
+  return span;
+}
+function traces(rec, d) {
+  const kq = rec.findIndex((r) => r.phase >= 3 && r.phase <= 5);
+  const t1 = kq < 0 ? rec[rec.length - 1].t : rec[kq].t;
+  const pre = rec.filter((r) => r.t <= t1);
+  const near = (key, f) => pre.map((r) => ({t: r.t, v: f(r), key}));
+  const lines = [
+    ...near("n̄/n_G (Greenwald, empirical)", (r) => r.fGW),
+    ...near("β_N/2.8 (Troyon, empirical)", (r) => r.betaN / 2.8),
+    ...near("2/q₉₅ (kink, q₉₅ = 2)", (r) => 2 / r.q95),
+    ...near("α/α_c (core ballooning, computed)", (r) => r.ball),
+  ];
+  const colors = {domain: [lines[0].key, ...[1, 2, 3].map((k) => lines[k * pre.length].key)], range: [BLUE, ORANGE, GREEN, PURPLE]};
+  const p1 = sub(Plot.plot({
+    width: 560, height: 205, marginLeft: 52, marginRight: 14, marginTop: 14, marginBottom: 38, style: {...font, fontSize: "14px"},
+    x: {label: "t [s]", labelAnchor: "center", labelArrow: "none", labelOffset: 32},
+    y: {domain: [0, 1.6], label: "fraction of limit", labelArrow: "none"},
+    color: colors,
+    marks: [Plot.ruleY([1], {stroke: INK, strokeDasharray: "4,3"}),
+      Plot.line(lines, {x: "t", y: "v", stroke: "key", strokeWidth: 2, clip: true}), Plot.frame({stroke: GREY})],
+  }));
+  let p2;
+  if (kq >= 0) {
+    const t0 = rec[kq].t, Ip0 = rec[Math.max(0, kq - 1)].Ip, W0 = Math.max(rec[Math.max(0, kq - 1)].W, 1e-9);
+    const gap = (d.wall - 1) * d.a * d.kappa;
+    const post = rec.slice(Math.max(0, kq - 20));
+    const ms = (r) => 1000 * (r.t - t0);
+    const l2 = [
+      ...post.map((r) => ({t: ms(r), v: r.W / W0, key: "W/W₀ (thermal energy)"})),
+      ...post.map((r) => ({t: ms(r), v: r.Ip / Ip0, key: "I_p/I_p0 (plasma current)"})),
+      ...post.map((r) => ({t: ms(r), v: Math.min(1.6, Math.abs(r.Z) / gap), key: "|Z|/gap (vertical drift)"})),
+    ];
+    p2 = sub(Plot.plot({
+      width: 560, height: 205, marginLeft: 52, marginRight: 14, marginTop: 14, marginBottom: 38, style: {...font, fontSize: "14px"},
+      x: {label: "t − t_TQ [ms]", labelAnchor: "center", labelArrow: "none", labelOffset: 32},
+      y: {domain: [0, 1.3], label: "normalised", labelArrow: "none"},
+      color: {domain: ["W/W₀ (thermal energy)", "I_p/I_p0 (plasma current)", "|Z|/gap (vertical drift)"], range: [ORANGE, BLUE, PURPLE]},
+      marks: [Plot.line(l2, {x: "t", y: "v", stroke: "key", strokeWidth: 2, clip: true}), Plot.frame({stroke: GREY})],
+    }));
+  } else {
+    p2 = sub(Plot.plot({
+      width: 560, height: 205, marginLeft: 52, marginRight: 14, marginTop: 14, marginBottom: 38, style: {...font, fontSize: "14px"},
+      x: {label: "t [s]", labelAnchor: "center", labelArrow: "none", labelOffset: 32},
+      y: {label: "W [MJ]", labelArrow: "none"},
+      marks: [Plot.line(rec, {x: "t", y: "W", stroke: ORANGE, strokeWidth: 2}), Plot.frame({stroke: GREY})],
+    }));
+  }
+  const legend = html`<div style="font-size:0.7rem;line-height:1.25;color:${MUTED};display:flex;flex-wrap:wrap;gap:0 0.9rem;padding-left:3.2rem">
+    ${colors.domain.map((k, j) => html`<span><span style="color:${colors.range[j]}">━</span> ${label(k)}</span>`)}</div>`;
+  const legend2 = kq >= 0 ? html`<div style="font-size:0.7rem;line-height:1.25;color:${MUTED};display:flex;flex-wrap:wrap;gap:0 0.9rem;padding-left:3.2rem">
+    ${[["W/W₀ (thermal energy)", ORANGE], ["I_p/I_p0 (plasma current)", BLUE], ["|Z|/gap (vertical drift)", PURPLE]].map(([k, c]) => html`<span><span style="color:${c}">━</span> ${label(k)}</span>`)}</div>` : "";
+  return {node: html`<div>${p1}${legend}${p2}${legend2}</div>`, p1, p2, kq};
+}
+
+// ---------------------------------------------------------------- interaction
+const state = {rec: null, d: null, i: 0, playing: true, plots: null, Tmax: 1};
+const scrub = document.querySelector("#scrub"), play = document.querySelector("#play"), clock = document.querySelector("#clock");
+const cursors = [document.createElement("div"), document.createElement("div")];
+for (const c of cursors) c.className = "cursor";
+
+function place() {
+  const {rec, plots, i} = state;
+  if (!rec) return;
+  const r = rec[i];
+  section(state.d, rec, i, state.Tmax);
+  clock.textContent = r.t < 1 ? `t = ${(1000 * r.t).toFixed(r.t < 0.01 ? 3 : 1)} ms` : `t = ${r.t.toFixed(3)} s`;
+  scrub.value = i;
+  const host = document.querySelector("#traces").getBoundingClientRect();
+  plots.forEach((svg, k) => {
+    const c = cursors[k];
+    const box = svg.getBoundingClientRect(), sx = svg.scale("x");
+    const tt = k === 0 ? Math.min(r.t, plots.t1) : 1000 * (r.t - plots.t0);
+    const ok = k === 0 || (plots.kq >= 0 && r.t >= plots.tstart);
+    const px = sx.apply(tt) * box.width / svg.width.baseVal.value;
+    c.style.display = ok && Number.isFinite(px) ? "block" : "none";
+    c.style.left = `${box.left - host.left + px}px`;
+    c.style.top = `${box.top - host.top + 14 * box.height / 205}px`;
+    c.style.height = `${(205 - 52) * box.height / 205}px`;
+  });
+}
+function frame() {
+  if (state.playing && state.rec) {
+    const step = Math.max(1, Math.round(state.rec.length / 500));
+    state.i = Math.min(state.rec.length - 1, state.i + step);
+    if (state.i === state.rec.length - 1) { state.playing = false; play.textContent = "replay"; }
+    place();
+  }
+  requestAnimationFrame(frame);
+}
+play.addEventListener("click", () => {
+  if (!state.rec) return;
+  if (!state.playing && state.i >= state.rec.length - 1) state.i = 0;
+  state.playing = !state.playing;
+  play.textContent = state.playing ? "pause" : "play";
+});
+scrub.addEventListener("input", () => { state.playing = false; play.textContent = "play"; state.i = +scrub.value; place(); });
+
+const inputs = {
+  device: Inputs.select(Object.keys(devices), {value: "ITER", label: "device"}),
+  scenario: Inputs.select(["density ramp", "heating ramp", "current ramp"], {value: "density ramp", label: "scenario"}),
+  target: Inputs.range([0.5, 2.5], {value: 1.6, step: 0.05, label: "ramp to"}),
+  fimp: Inputs.range([0.1, 3], {value: 0.5, step: 0.05, label: "impurity"}),
+  B: Inputs.range([1, 13], {value: 5.3, step: 0.1, label: html`<i>B</i> [T]`}),
+  I: Inputs.range([0.3, 25], {value: 15, step: 0.1, label: html`<i>I</i><sub>p</sub> [MA]`}),
+  n: Inputs.range([0.1, 4], {value: 1.0, step: 0.05, label: html`<i>n̄</i> [10²⁰ m⁻³]`}),
+  T: Inputs.range([1, 30], {value: 20, step: 0.5, label: html`<i>T</i>₀ [keV]`}),
+  q0: Inputs.range([0.8, 2.5], {value: 1.0, step: 0.05, label: html`<i>q</i>₀`}),
+};
+document.querySelector("#inputs").replaceChildren(...Object.values(inputs));
+inputs.device.addEventListener("input", () => {
+  const d = devices[inputs.device.value];
+  inputs.B.value = d.B; inputs.I.value = d.I; inputs.n.value = d.n; inputs.T.value = d.T;
+});
+// Each scenario starts at a target that reaches its limit.
+inputs.scenario.addEventListener("input", () => {
+  inputs.target.value = {"density ramp": 1.6, "heating ramp": 2.0, "current ramp": 0.5}[inputs.scenario.value];
+});
+const values = () => Object.fromEntries(Object.entries(inputs).map(([k, v]) => [k, v.value]));
+
+function recompute() {
+  const v = values(), d = devices[v.device];
+  readout(inputs.B, `${v.B.toFixed(1)} T`);
+  readout(inputs.I, `${v.I.toFixed(1)} MA`);
+  readout(inputs.n, `${v.n.toFixed(2)}`);
+  readout(inputs.T, `${v.T.toFixed(1)} keV`);
+  readout(inputs.q0, v.q0.toFixed(2));
+  readout(inputs.fimp, `${v.fimp.toFixed(2)} % C`);
+  const par = parameters(v), L = limits(par);
+  if (L.status !== 0) { document.querySelector("#status").textContent = "parameters outside the model's range"; return; }
+  const tau = Math.max(L.tauE, 0.02), settle = 2 * tau, dur = 8 * tau;
+  let ramp, what;
+  if (v.scenario === "density ramp") {
+    ramp = [dur, v.target * L.nG, -1, v.I, settle + 1.5 * dur, settle];
+    what = `n̄ → ${(v.target * L.nG).toFixed(2)} × 10²⁰ m⁻³ (${v.target.toFixed(2)} n_G)`;
+  } else if (v.scenario === "heating ramp") {
+    ramp = [dur, v.n, (1 + 3 * v.target) * L.Pheat, v.I, settle + 1.5 * dur, settle];
+    what = `P_aux → ${((1 + 3 * v.target) * L.Pheat).toFixed(0)} MW`;
+  } else {
+    ramp = [dur, v.n, -1, v.I * L.q95 / (1.2 + v.target), settle + 1.5 * dur, settle];
+    what = `I_p → ${(v.I * L.q95 / (1.2 + v.target)).toFixed(1)} MA (q₉₅ → ${(1.2 + v.target).toFixed(2)})`;
+  }
+  readout(inputs.target, v.scenario === "density ramp" ? `${v.target.toFixed(2)} n_G` :
+    v.scenario === "heating ramp" ? `${(1 + 3 * v.target).toFixed(1)} × P` : `q₉₅ ${(1.2 + v.target).toFixed(2)}`);
+  const rec = simulate(par, ramp);
+  const last = rec[rec.length - 1], kq = rec.findIndex((r) => r.phase >= 3 && r.phase <= 5);
+  state.rec = rec; state.d = d; state.i = 0; state.playing = true; play.textContent = "pause";
+  state.Tmax = Math.max(...rec.map((r) => r.T0));
+  const t = traces(rec, d);
+  const host = document.querySelector("#traces");
+  host.replaceChildren(t.node, ...cursors);
+  state.plots = [t.p1, t.p2];
+  state.plots.kq = t.kq;
+  state.plots.t1 = kq < 0 ? last.t : rec[kq].t;
+  state.plots.t0 = kq < 0 ? 0 : rec[kq].t;
+  state.plots.tstart = kq < 0 ? Infinity : rec[Math.max(0, kq - 20)].t;
+  scrub.max = rec.length - 1;
+  const cause = kq >= 0 ? CAUSES[rec[kq].cause] : "";
+  const spike = kq >= 0 ? Math.max(...rec.slice(kq).map((r) => r.Ip)) / rec[Math.max(0, kq - 1)].Ip : 1;
+  const cq = kq >= 0 ? rec.slice(kq).find((r) => r.Ip < 0.2 * rec[kq].Ip) : null;
+  const ballRatio = L.ballooning;
+  document.querySelector("#status").replaceChildren(html`<div>
+    start: <i>q</i>₀ = ${L.q0.toFixed(2)}, <i>q</i>₉₅ = ${L.q95.toFixed(2)}, <i>β</i><sub>N</sub> = ${L.betaN.toFixed(2)}
+    (ballooning limit ${L.betaNball.toFixed(2)}), <i>n̄</i>/<i>n</i><sub>G</sub> = ${L.fGW.toFixed(2)},
+    <i>r</i><sub>s</sub>Δ′<sub>2/1</sub> = ${L.D21.toFixed(1)}, <i>P</i><sub>heat</sub> = ${L.Pheat.toFixed(0)} MW; ramp: ${what}<br>
+    ${kq >= 0 ? html`<span class="bad"><b>disruption</b> at <i>t</i> = ${rec[kq].t.toFixed(3)} s by ${cause}</span>:
+      <i>n̄</i>/<i>n</i><sub>G</sub> = ${rec[kq - 1 >= 0 ? kq - 1 : 0].fGW.toFixed(2)}, <i>β</i><sub>N</sub> = ${rec[kq - 1 >= 0 ? kq - 1 : 0].betaN.toFixed(2)},
+      <i>q</i>₉₅ = ${rec[kq - 1 >= 0 ? kq - 1 : 0].q95.toFixed(2)}; current spike ${(100 * (spike - 1)).toFixed(0)} %,
+      ${cq ? html`current quench to 20 % in ${(1000 * (cq.t - rec[kq].t)).toFixed(0)} ms` : ""}`
+      : html`<b>no disruption</b> within ${last.t.toFixed(2)} s`}</div>`);
+  requestAnimationFrame(place);
+}
+let timer = null;
+for (const input of Object.values(inputs)) input.addEventListener("input", () => {
+  clearTimeout(timer);
+  timer = setTimeout(recompute, 200);
+});
+recompute();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

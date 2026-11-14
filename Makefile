@@ -26,7 +26,7 @@ TYP_SHARED := $(filter-out $(DECKS),$(wildcard slides/*.typ)) $(wildcard fonts/*
 MEDIA := $(shell git ls-files media)
 QMDS := $(wildcard notebooks/*.qmd)
 WIDGETS := $(wildcard notebooks/slide-*.html)
-WIDGET_DEPS := $(wildcard notebooks/*.js notebooks/data/*) notebooks/slide-widget.css fonts/STIXTwoText-Regular.otf fonts/STIXTwoText-Italic.otf scripts/inline-widget.py
+WIDGET_DEPS := $(wildcard notebooks/*.js notebooks/data/* notebooks/wasm/*.mjs) notebooks/slide-widget.css fonts/STIXTwoText-Regular.otf fonts/STIXTwoText-Italic.otf scripts/inline-widget.py
 NOTEBOOK_HTML := $(patsubst notebooks/%.qmd,public/notebooks/%.html,$(QMDS)) $(patsubst notebooks/%,public/notebooks/%,$(WIDGETS))
 NB_SHARED := notebooks/_quarto.yml notebooks/fusion.js notebooks/plotting.js notebooks/presets.json notebooks/notebook.css notebooks/data-files.txt
 
