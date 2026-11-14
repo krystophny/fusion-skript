@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inputs@0.12.0/dist/index.css">
 <link rel="stylesheet" href="./slide-widget.css">
 <style>
+  body { overflow: auto; }
+  #choices { display: flex; flex-wrap: wrap; gap: 0.2rem 1.6rem; padding: 0.3rem 0.6rem 0 0.6rem; }
+  #choices form[class^="inputs-"] { width: auto !important; margin: 0; --label-width: 4.6rem; }
+  #choices form[class^="inputs-"] > div { flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+  #choices label { white-space: nowrap; }
   #figure { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.3rem 0.6rem 0 0.6rem; }
   #section { width: 22rem; flex-shrink: 0; }
   #section canvas { width: 100%; display: block; }
@@ -23,6 +28,7 @@
 </style>
 </head>
 <body>
+<div id="choices"></div>
 <div id="figure"><div id="section"><canvas id="canvas" width="704" height="800"></canvas></div><div id="traces"></div></div>
 <div id="controls"><button id="play">pause</button><input id="scrub" type="range" min="0" max="1" step="1" value="0"><span id="clock"></span></div>
 <div id="status"></div>
@@ -36,10 +42,10 @@ import createMilcaTokamak from "./wasm/milca_tokamak.mjs";
 // triangularity, field, current, line density, central temperature, wall
 // radius b/a and vertical wall time.
 const devices = {
-  "ITER": {R: 6.2, a: 2.0, kappa: 1.75, delta: 0.33, B: 5.3, I: 15, n: 1.0, T: 20, wall: 1.3, tauw: 0.3},
-  "JET": {R: 2.96, a: 0.96, kappa: 1.7, delta: 0.3, B: 3.45, I: 3.0, n: 0.7, T: 8, wall: 1.25, tauw: 0.005},
-  "ASDEX Upgrade": {R: 1.65, a: 0.5, kappa: 1.6, delta: 0.25, B: 2.5, I: 1.0, n: 0.7, T: 4, wall: 1.3, tauw: 0.005},
-  "SPARC": {R: 1.85, a: 0.57, kappa: 1.97, delta: 0.54, B: 12.2, I: 8.7, n: 3.1, T: 20, wall: 1.25, tauw: 0.01},
+  "ITER": {R: 6.2, a: 2.0, kappa: 1.75, delta: 0.33, B: 5.3, I: 15, n: 1.0, T: 20, wall: 1.3, tauw: 0.3, fimp: 0.5},
+  "JET": {R: 2.96, a: 0.96, kappa: 1.7, delta: 0.3, B: 3.45, I: 3.0, n: 0.7, T: 8, wall: 1.25, tauw: 0.005, fimp: 1.5},
+  "ASDEX Upgrade": {R: 1.65, a: 0.5, kappa: 1.6, delta: 0.25, B: 2.5, I: 1.0, n: 0.7, T: 4, wall: 1.3, tauw: 0.005, fimp: 2.0},
+  "SPARC": {R: 1.85, a: 0.57, kappa: 1.97, delta: 0.54, B: 12.2, I: 8.7, n: 3.1, T: 20, wall: 1.25, tauw: 0.01, fimp: 0.5},
 };
 const PHASES = ["flat-top", "tearing mode grows", "ideal mode grows", "thermal quench",
   "current quench", "disrupted", "survived"];
@@ -282,9 +288,15 @@ play.addEventListener("click", () => {
 });
 scrub.addEventListener("input", () => { state.playing = false; play.textContent = "play"; state.i = +scrub.value; place(); });
 
+const SCENARIOS = {
+  "density ramp": "Greenwald / density limit (more density)",
+  "heating ramp": "β limit (more heating)",
+  "current ramp": "q limit / kink (more current)",
+};
 const inputs = {
-  device: Inputs.select(Object.keys(devices), {value: "ITER", label: "device"}),
-  scenario: Inputs.select(["density ramp", "heating ramp", "current ramp"], {value: "density ramp", label: "scenario"}),
+  device: Inputs.radio(Object.keys(devices), {value: "ITER", label: "tokamak"}),
+  scenario: Inputs.radio(Object.keys(SCENARIOS), {value: "density ramp", label: "aim at",
+    format: (k) => SCENARIOS[k]}),
   target: Inputs.range([0.5, 2.5], {value: 1.6, step: 0.05, label: "ramp to"}),
   fimp: Inputs.range([0.1, 3], {value: 0.5, step: 0.05, label: "impurity"}),
   B: Inputs.range([1, 13], {value: 5.3, step: 0.1, label: html`<i>B</i> [T]`}),
@@ -293,14 +305,17 @@ const inputs = {
   T: Inputs.range([1, 30], {value: 20, step: 0.5, label: html`<i>T</i>₀ [keV]`}),
   q0: Inputs.range([0.8, 2.5], {value: 1.0, step: 0.05, label: html`<i>q</i>₀`}),
 };
-document.querySelector("#inputs").replaceChildren(...Object.values(inputs));
+document.querySelector("#choices").replaceChildren(inputs.device, inputs.scenario);
+document.querySelector("#inputs").replaceChildren(...Object.entries(inputs)
+  .filter(([k]) => k !== "device" && k !== "scenario").map(([, v]) => v));
 inputs.device.addEventListener("input", () => {
   const d = devices[inputs.device.value];
   inputs.B.value = d.B; inputs.I.value = d.I; inputs.n.value = d.n; inputs.T.value = d.T;
+  inputs.fimp.value = d.fimp;
 });
 // Each scenario starts at a target that reaches its limit.
 inputs.scenario.addEventListener("input", () => {
-  inputs.target.value = {"density ramp": 1.6, "heating ramp": 2.0, "current ramp": 0.5}[inputs.scenario.value];
+  inputs.target.value = {"density ramp": 1.6, "heating ramp": 2.5, "current ramp": 0.5}[inputs.scenario.value];
 });
 const values = () => Object.fromEntries(Object.entries(inputs).map(([k, v]) => [k, v.value]));
 

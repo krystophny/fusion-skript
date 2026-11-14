@@ -17,6 +17,7 @@ from threading import Thread
 from playwright.sync_api import sync_playwright
 
 REPO = Path(__file__).resolve().parents[1]
+LABELS = {'density ramp': 'Greenwald / density limit', 'heating ramp': 'β limit', 'current ramp': 'q limit / kink'}
 
 
 class Quiet(SimpleHTTPRequestHandler):
@@ -55,8 +56,8 @@ def main():
                     page.screenshot(path=str(shots / f"slide-disruption-{tag}.png"))
                 for device in ["ITER", "JET", "ASDEX Upgrade", "SPARC"]:
                     for scenario in ["density ramp", "heating ramp", "current ramp"]:
-                        page.select_option("form:has-text(\"device\") select", device)
-                        page.select_option("form:has-text(\"scenario\") select", scenario)
+                        page.locator("#choices label", has_text=device).first.click()
+                        page.locator("#choices label", has_text=LABELS[scenario]).first.click()
                         page.wait_for_timeout(250)
                         page.wait_for_function("!document.querySelector(\"#status\").textContent.includes(\"outside\")", timeout=30000)
                         page.wait_for_timeout(1200)
