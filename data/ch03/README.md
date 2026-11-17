@@ -1,7 +1,7 @@
 # Chapter 3 data: fusion in stars
 
 All files are inputs to `derivations/chapters/ch03_stars.py`, `slides/figures_stars.py`
-and the slide widgets `notebooks/slide-*.html` of Chapter 3 (kelvin, isochron, star, sun, gamow, neutrinos, bbn, binding, whitedwarf, extremes). Numerical data are
+and the slide widgets `notebooks/slide-*.html` of Chapter 3 (kelvin, isochron, sun, binding). Numerical data are
 credited to their providers; our reductions, plots and widgets are CC BY 4.0.
 
 | File | Content | Source and terms | Made by |

@@ -82,12 +82,10 @@ def test_white_dwarfs_approach_the_chandrasekhar_mass():
     assert masses[-1] == pytest.approx(st.chandrasekhar_mass(), rel=0.05)
 
 
-def test_conditions_have_references_and_photos_exist():
+def test_conditions_have_references():
     cond = json.loads((ROOT / "data/ch03/conditions.json").read_text())
     for o in cond["objects"]:
         assert o["ref"] and o["rho"] > 0 and o["T"] > 0
-        if o["photo"]:
-            assert (ROOT / "notebooks/data/stars" / f"{o['photo']}.jpg").is_file()
 
 
 def test_kelvin_helmholtz_time_from_measurements():

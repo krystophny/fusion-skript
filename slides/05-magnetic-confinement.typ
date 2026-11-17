@@ -28,7 +28,6 @@
     [], text(fill: muted)[fluid], text(fill: muted)[particles],
     table.hline(stroke: 0.6pt + rule),
     text(fill: muted)[model], $rho_m (dif bold(u))/(dif t) = bold(j) times bold(B) - nabla p$, $m (dif bold(v))/(dif t) = q (bold(E) + bold(v) times bold(B))$,
-    text(fill: muted)[gives], [magnetic pressure, pinch, \ sausage, kink], [gyration, mirror, \ end losses, drifts],
     table.hline(stroke: 0.6pt + rule),
   ))
   #at(1, 12, y: 140mm, note[$rho_m$ mass density, $bold(u)$ flow velocity, $bold(j)$ current density])

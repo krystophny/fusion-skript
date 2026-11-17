@@ -22,8 +22,7 @@ In a deck, use `/slides/build/fig/<name>.svg`.
 Sources: H.-S. Bosch and G. M. Hale, Nucl. Fusion 32, 611 (1992),
 doi:10.1088/0029-5515/32/4/I07 (D–T, D–D, D–³He S factors and reactivities);
 W. M. Nevins and R. Swain, Nucl. Fusion 40, 865 (2000),
-doi:10.1088/0029-5515/40/4/310 (p–¹¹B); NRL Plasma Formulary (2018), eq. (30),
-p. 58 (bremsstrahlung); CODATA masses from `scipy.constants`; our EXFOR S-factor
+doi:10.1088/0029-5515/40/4/310 (p–¹¹B); CODATA masses from `scipy.constants`; our EXFOR S-factor
 fit `derivations/chapters/ch02_s_factor_fit.py`. Coefficients are in
 `data/ch02/reactivity.json`.
 
@@ -191,7 +190,7 @@ Check: the quadrature equals the reduced-mass Gaussian to a relative 10⁻⁹.
 
 Zero-dimensional (0-D) model: 50:50 D–T with densities n_D = n_T = n/2,
 electron density n_e = n, equal electron and ion temperatures T_e = T_i = T,
-flat profiles, steady state, effective charge Z_eff = 1. Lower-case p are
+flat profiles, steady state. Lower-case p are
 powers per volume, capital P totals. W = 3nk_BT is the thermal energy per
 volume (ions and electrons), τ_E the energy confinement time, so conduction
 and convection lose W/τ_E. p_fus = n_D n_T ⟨σv⟩ E_fus with E_fus = 17.59 MeV
@@ -211,25 +210,19 @@ Diagram; the bar is in MeV.
 
 ### `lawson_plane` (hero plot)
 
-From 3nk_BT/τ_E + p_brems = (n²⟨σv⟩/4)(E_α + E_fus/Q):
-nTτ_E = 12 T² / (⟨σv⟩(E_α + E_fus/Q) − 4C_B√T), with Bosch–Hale ⟨σv⟩.
-Left: required nTτ_E against T for Q = 1, 5, 10 and ignition (Q = ∞) without
-radiation, plus ignition with bremsstrahlung (dashed), whose power density is
-p_brems = C_B n_e² √(k_BT) with C_B = 5.34·10⁻³⁷ W m³ keV^(−1/2) (NRL
-1.69·10⁻³² W cm³ eV^(−1/2)). One panel since 2026-11-09: nTτ_E against Q at
+From 3nk_BT/τ_E = (n²⟨σv⟩/4)(E_α + E_fus/Q):
+nTτ_E = 12 T² / (⟨σv⟩(E_α + E_fus/Q)), with Bosch–Hale ⟨σv⟩.
+Required nTτ_E against T for Q = 1, 5, 10 and ignition (Q = ∞). One panel since 2026-11-09: nTτ_E against Q at
 fixed T is Q/(Q + E_fus/E_α), E_fus/E_α = 4.94, the same curve as
 `alpha_fraction`, so the slide states it in one line instead of a second panel.
 Axes: k_BT [keV] (log, 2–100); nTτ_E [keV s m⁻³] (log).
-The viewer should see a minimum at 13.5–14 keV for every Q, the wall that
-bremsstrahlung builds below about 4.3 keV, and that, without radiation,
+The viewer should see a minimum at 13.5–14 keV for every Q and that
 Q = 10 already needs two thirds of the ignition triple product.
-Check: the ignition minimum is 2.74·10²¹ keV s m⁻³ at 13.5 keV (2.92·10²¹ at
-14.2 keV with bremsstrahlung), against the lecture's ≈ 3·10²¹ at ≈ 14 keV:
-−9 % (−3 %). The lecture value follows from the approximation
+Check: the ignition minimum is 2.74·10²¹ keV s m⁻³ at 13.5 keV, against the
+lecture's ≈ 3·10²¹ at ≈ 14 keV: −9 %. The lecture value follows from the approximation
 ⟨σv⟩ ≈ 1.1·10⁻²⁴ T² m³/s (T in keV): 12/(1.1·10⁻²⁴ · 3561) = 3.1·10²¹. The
 Bosch–Hale ⟨σv⟩/T² peaks at 1.23·10⁻²⁴, which gives the lower minimum.
-Q = 1, 5 and 10 need 0.46, 1.38 and 1.84·10²¹. The ideal
-ignition temperature (alpha heating = bremsstrahlung) is 4.28 keV. No machine
+Q = 1, 5 and 10 need 0.46, 1.38 and 1.84·10²¹. No machine
 points are drawn, because no published values have been checked.
 
 ### `power_flow`
@@ -239,9 +232,7 @@ proportional to power: P_ext = 50 MW in, P_α = 101 MW from the fusion
 reactions back into the plasma, P_loss = W/τ_E = P_ext + P_α = 151 MW to the
 wall and divertor, and P_n = 399 MW to the blanket. Only Q and the
 relativistic 20.2/79.8 % split set the ratios. The 500 MW scale is
-illustrative. Here P_loss lumps all losses, radiation included, into W/τ_E,
-unlike the bremsstrahlung curve of `lawson_plane`, where radiation is
-separate.
+illustrative. Here P_loss lumps all losses, radiation included, into W/τ_E.
 Diagram; powers in MW.
 
 ### `density_scaling`
@@ -250,12 +241,6 @@ At k_BT = 14 keV: alpha heating p_α = (n²/4)⟨σv⟩E_α against the conducti
 3nk_BT/τ_E for τ_E = 0.1, 1 and 10 s. Slopes 2 and 1 on log axes; the crossings
 are at n = 12k_BT/(⟨σv⟩E_α τ_E) = 2·10²¹, 2·10²⁰ and 2·10¹⁹ m⁻³.
 Axes: n [m⁻³] (log); power density [W m⁻³] (log).
-
-### `alpha_brems`
-
-p_α/n_e² = ⟨σv⟩E_α/4 and p_br/n_e² = C_B √(k_BT) (Z_eff = 1) against T; n_e²
-cancels, so they cross at the ideal ignition temperature 4.28 keV for any density.
-Axes: k_BT [keV] (log, 1–100); p/n_e² [W m³] (log).
 
 ### `q_eng`
 
@@ -270,16 +255,6 @@ Self-heating fraction f_α = P_α/(P_α + P_ext) = Q/(Q + E_fus/E_α) against Q
 (log, 0.1–1000), E_fus/E_α = 4.94; points at Q = 1, 5, 10 (0.17, 0.50, 0.67,
 the table on the same page) and the ignition limit f_α = 1. Required n T τ_E
 against Q at fixed T is the same curve, Q/(Q + 4.94), so it is not drawn again.
-
-### `impurity_dilution`
-
-Left: ignition n_eTτ_E(T) with bremsstrahlung for 0, 5, 10 and 15 % helium
-(c = n_He/n_e), from n_eTτ_E = (3/2)(1 + n_i/n_e)T² / ((1 − 2c)²⟨σv⟩E_α/4 −
-C_B Z_eff √T), Z_eff = 1 + 2c. Minima 2.9, 3.6, 4.6 and 6.1·10²¹ keV s m⁻³ near
-14–15 keV. Right: p_fus/p_fus(c = 0) = (1 − Zc)² at fixed n_e, with 0.1 % W
-(Zc = 0.074, 0.86) and 5 % He (Zc = 0.1, 0.81). Tungsten is drawn only on the
-right: in a reactor core it is not fully ionised and line radiation, not
-bremsstrahlung, dominates its loss, which this model omits.
 
 ### `n_tau_plane`
 

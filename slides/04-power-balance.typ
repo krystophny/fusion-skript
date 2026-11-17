@@ -75,7 +75,6 @@
     r([gain $Q$], $n T tau_E prop Q / (Q + 5)$),
   ))
   #at(9, 4, y: 58mm, result-box([$Q = 10$: #h(1mm) $2\/3$], [of the ignition value; #linebreak() minimum near 13.5 keV]))
-  #at(9, 4, y: 112mm, text(size: 14pt, fill: muted)[dashed: with bremsstrahlung (4.7)])
   #at(1, 12, y: 142mm, cite-line[
     #link("https://doi.org/10.1088/0029-5515/32/4/I07")[Bosch & Hale · Nucl. Fusion 32, 611 (1992)] · #link("https://krystophny.github.io/fusion-skript/notebooks/lawson.html")[notebook: Lawson criterion]])
 ]
@@ -122,82 +121,4 @@
   #at(1, 12, y: -2mm, align(center, deck-fig("n_tau_plane", columns: 12)))
   #at(1, 12, y: 146mm, cite-line[
     Data: #link("https://doi.org/10.1063/5.0083990")[Wurzel & Hsu · Phys. Plasmas 29, 062103 (2022)], Tables 6–8, CC BY 4.0])
-]
-
-#widget-page("bremsstrahlung", section: "bremsstrahlung", title: [How bremsstrahlung arises])
-
-#slide(section: "bremsstrahlung", title: [Bremsstrahlung from one pass])[
-  #at(1, 12, y: 0mm, steps(gap: 6mm,
-    r([Larmor], $P = (e^2 a^2)/(6 pi epsilon_0 c^3)$),
-    r([Coulomb kick], [$a approx (Z e^2)/(4 pi epsilon_0 m_e b^2), quad Delta t approx (2 b)/v$]),
-    r([one pass], $Delta E = P Delta t prop Z^2 / (b^3 v)$),
-    r([passes], [$n_i v thin 2 pi b thin d b$ #h(3mm) per second, #h(2mm) $b >= b_"min" = ℏ \/ (m_e v)$]),
-    r([one electron], $P_e = integral_(b_"min")^infinity Delta E thin n_i v thin 2 pi b thin d b prop Z^2 n_i / b_"min" prop Z^2 n_i v$),
-  ))
-  #at(2, 10, y: 98mm, result-box($p_"br" = C_B thin Z^2 n_e n_i sqrt(k_B T)$, [Maxwell: $chevron.l v chevron.r prop sqrt(T)$ #h(3mm) estimate $8.4$, exact $5.34 times 10^(-37) "W m"^3 "keV"^(-1\/2)$]))
-  #at(1, 12, y: 146mm, cite-line[NRL Plasma Formulary · Jackson, Classical Electrodynamics, §15.2])
-]
-
-#slide(section: "bremsstrahlung", title: [Bremsstrahlung and ideal ignition])[
-  #at(1, 6, y: 0mm, steps(gap: 7mm,
-    r([electron–ion], $p_"br" = C_B n_e^2 Z_"eff" sqrt(k_B T)$),
-    r([$p_alpha = p_"br"$], [$sv E_alpha = 4 C_B Z_"eff" sqrt(k_B T)$ #h(3mm) #text(fill: muted)[$n$ cancels]]),
-  ))
-  #at(1, 6, y: 50mm, result-box($k_B T_"ideal" = 4.3 "keV"$, [D–T, $Z_"eff" = 1$, any density]))
-  #at(7, 6, y: -4mm, deck-fig("alpha_brems", columns: 6))
-  #at(1, 12, y: 134mm, text(size: 14pt, fill: muted)[$C_B = 5.34 times 10^(-37) "W m"^3 "keV"^(-1\/2)$])
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1088/0370-1301/70/1/303")[Lawson · Proc. Phys. Soc. B 70, 6 (1957)] · NRL Plasma Formulary])
-]
-
-#slide(section: "bremsstrahlung", title: [Line radiation])[
-  #at(1, 6, y: 0mm, steps(gap: 6mm,
-    r([excite], [electron hits ion, bound electron jumps up]),
-    r([decay], [photon $h nu = E_"upper" - E_"lower"$]),
-    r([coronal], [every excitation ends in a photon]),
-    r([power], $p_Z = n_e n_Z L_Z (T_e)$),
-  ))
-  #at(1, 6, y: 72mm, result-box([needs bound electrons], [light ions bare at 10 keV: $L_Z -> Z^2 C_B sqrt(T)$ #linebreak() W keeps electrons: $L_W approx 10^(-31) "W m"^3$]))
-  #at(7, 6, y: -4mm, deck-fig("cooling_rates", columns: 6))
-  #at(1, 12, y: 146mm, cite-line[Mavrin · Radiat. Eff. Defects Solids 173, 388 (2018) · Pütterich et al. · Nucl. Fusion 50, 025012 (2010)])
-]
-
-#widget-page("spectrum", section: "bremsstrahlung", title: [Where a plasma radiates])
-
-#slide(section: "bremsstrahlung", title: [Cyclotron radiation])[
-  #at(1, 12, y: 0mm, steps(gap: 7mm,
-    r([one electron], $P = (e^4 B^2 v_perp^2)/(6 pi epsilon_0 m_e^2 c^3)$),
-    r([Maxwellian], $p_"cyc" approx 6.2 times 10^(-17) thin n_e thin k_B T_e thin B^2 thick "W m"^(-3)$),
-  ))
-  #at(1, 12, y: 46mm, text(fill: muted)[$10^20 "m"^(-3)$, $10 "keV"$, $5 "T"$ #h(2mm) [MW m#super[−3]]:])
-  #at(3, 8, y: 56mm, data-table(
-    ([$p_"fus"$], [$p_"br"$], [$p_"cyc"$ emitted]),
-    (([0.8], [0.017], [1.6]),),
-    align: (center, center, center),
-  ))
-  #at(2, 10, y: 86mm, result-box([optically thick: mostly reabsorbed, walls reflect],
-    [grows with $T_e$ and $B$: a main loss for D–#super[3]He and p–#super[11]B]))
-  #at(1, 12, y: 134mm, text(size: 14pt, fill: muted)[$n_e$ in m#super[−3], $k_B T_e$ in keV, $B$ in T #h(6mm) pairs need $2 m_e c^2 = 1.02 "MeV"$: negligible for $k_B T << 511 "keV"$])
-  #at(1, 12, y: 146mm, cite-line[NRL Plasma Formulary])
-]
-
-#slide(section: "dilution", title: [Quasineutrality and dilution])[
-  #at(1, 12, y: 0mm, steps(gap: 6mm,
-    r([quasineutral], [$n_e = n_"D" + n_"T" + sum_Z Z n_Z$ #h(3mm) $c_Z = n_Z \/ n_e$]),
-    r([fuel], [$f = (n_"D" + n_"T") \/ n_e = 1 - sum_Z Z c_Z$, #h(3mm) $p_"fus" prop f^2 n_e^2$]),
-    r([stored], $W = 3/2 (n_e + n_i) k_B T$),
-    r([losses], [$C_B f n_e^2 sqrt(T)$ (fuel) #h(2mm) $+ sum_Z n_e n_Z L_Z (T)$ (impurities)]),
-  ))
-  #at(1, 12, y: 66mm, result-box($n_e T tau_E = (3/2 (1 + n_i \/ n_e) T^2)/(f^2 sv E_alpha \/ 4 - C_B f sqrt(T) - sum_Z c_Z L_Z (T))$,
-    [W: displaces 74 fuel ions and radiates; $c_W = 3 times 10^(-5)$: minimum +9 % (0-D, coronal)]))
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1088/0029-5515/50/2/025012")[Pütterich et al. · Nucl. Fusion 50, 025012 (2010)] · Mavrin · Radiat. Eff. Defects Solids 173, 388 (2018)])
-]
-
-#widget-page("impurities", section: "dilution", title: [Impurities: dilution and radiation])
-
-#slide(section: "dilution", title: [Helium ash])[
-  #at(1, 12, y: 0mm, align(center, deck-fig("impurity_dilution", columns: 12)))
-  #at(1, 12, y: 130mm, align(center, text(fill: muted)[helium concentration $c$: #h(2mm) fuel $1 - 2c$, #h(2mm) $Z_"eff" = 1 + 2c$]))
-  #at(1, 12, y: 146mm, cite-line[#link("https://krystophny.github.io/fusion-skript/notebooks/impurities.html")[notebook: impurities and fuel dilution]])
 ]
