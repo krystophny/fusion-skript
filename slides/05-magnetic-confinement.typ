@@ -36,23 +36,7 @@
 // --------------------------------------------- 5.2 Magnetic pressure, pinches
 
 #slide(section: "magnetic-pressure", title: [Magnetic pressure and $beta$])[
-  #at(1, 5, y: 0mm, pane({
-    import draw: *
-    let c = (50, 50)
-    circle(c, radius: 44, stroke: 3pt + ink)
-    circle(c, radius: 22, fill: soft, stroke: 0.8pt + plot-orange)
-    let dotb(p) = { circle(p, radius: 1.7, stroke: 0.6pt + ink); circle(p, radius: 0.5, fill: ink, stroke: none) }
-    for i in range(-6, 7) { for j in range(-6, 7) {
-      let (x, y) = (i * 6.5, j * 6.5)
-      let rr = calc.sqrt(x * x + y * y)
-      if rr > 26 and rr < 41 { dotb((50 + x, 50 + y)) }
-    }}
-    for (x, y) in ((-9, -9), (9, -9), (-9, 9), (9, 9)) { dotb((50 + x, 50 + y)) }
-    content((50, 50), lbl[$p$])
-    content((50, -1), anchor: "north", lbl[coil · $bold(B)$ out of the page])
-    content((84, 88), lbl[$B_"ext"$])
-    content((58, 41), lbl[$B_"in"$])
-  }))
+  #at(1, 5, y: 0mm, deck-fig("theta_pinch", columns: 5))
   #at(6, 7, y: 0mm, steps(gap: 7mm,
     r([force], $bold(j) times bold(B) = underbrace(- nabla B^2/(2 mu_0), "pressure") + underbrace((bold(B) dot nabla) bold(B) \/ mu_0, "tension")$),
     r([straight $bold(B)$], $p + B_"in"^2/(2 mu_0) = B_"ext"^2/(2 mu_0)$),
@@ -63,52 +47,27 @@
 ]
 
 #slide(section: "magnetic-pressure", title: [Z-pinch])[
-  #at(1, 5, y: 0mm, pane({
-    import draw: *
-    let c = (50, 50)
-    for rr in (24, 32, 40) {
-      arc(c, start: 100deg, stop: 440deg, radius: rr, anchor: "origin", stroke: 0.8pt + plot-blue,
-        mark: (end: "stealth", fill: plot-blue, scale: 1.2))
-    }
-    circle(c, radius: 14, fill: soft, stroke: 0.8pt + plot-orange)
-    circle(c, radius: 3.2, stroke: 0.8pt + ink); circle(c, radius: 1, fill: ink, stroke: none)
-    for a in (45deg, 135deg, 225deg, 315deg) {
-      line((50 + 21 * calc.cos(a), 50 + 21 * calc.sin(a)), (50 + 15 * calc.cos(a), 50 + 15 * calc.sin(a)),
-        stroke: 1.6pt + plot-orange, mark: (end: "stealth", fill: plot-orange))
-    }
-    content((50, 44), lbl[$I$])
-    content((92, 62), lbl[$B_theta$])
-    content((50, 26), lbl[$bold(j) times bold(B)$])
-  }))
+  #at(1, 5, y: 0mm, deck-fig("z_pinch", columns: 5))
   #at(6, 7, y: 0mm, steps(gap: 7mm,
     r([force balance], $(dif p)/(dif r) = - j_z B_theta$),
     r([Ampère], $B_theta = (mu_0 I(r))/(2 pi r)$),
     r([Bennett], $(mu_0 I^2)/(8 pi) = N k_B (T_e + T_i)$),
     r([average], $chevron.l p chevron.r = B_theta (a)^2 \/ (2 mu_0)$),
   ))
-  #at(6, 7, y: 104mm, result-box($I = 0.45 "MA"$, [$n = 10^20 "m"^(-3)$, $a = 10 "cm"$, $k_B T = 10 "keV"$]))
+  #at(1, 12, y: 86mm, result-box([$I = 0.45 "MA"$ #h(2mm) #text(size: 18pt)[axial current that holds the column]], [$n = 10^20 "m"^(-3)$, $a = 10 "cm"$, $k_B T = 10 "keV"$: #h(1mm) $B_theta (a) = 0.9 "T"$, #h(1mm) $B_theta^2 \/ 2 mu_0 = 3.2 "bar" = 2 n k_B T$]))
   #at(1, 12, y: 140mm, note[$N = n pi a^2$ ions per length, $a$ column radius])
   #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1103/PhysRev.45.890")[Bennett · Phys. Rev. 45, 890 (1934)]])
+]
+
+#slide(section: "magnetic-pressure", title: [Screw pinch])[
+  #at(1, 12, y: 0mm, deck-fig("screw_pinch", columns: 12))
+  #at(1, 12, y: 122mm, align(center, $q = (2 pi a B_z)/(L B_theta)$))
 ]
 
 // ------------------------------------------------- 5.3 Gyration and mirrors
 
 #slide(section: "mirrors", title: [Gyration and magnetic mirror])[
-  #at(1, 6, y: 6mm, pane({
-    import draw: *
-    let bx(x) = 1 + 3 * calc.pow((x - 62.5) / 50.5, 2)
-    for y0 in (-24, -16, -8, 8, 16, 24) {
-      let pts = range(0, 35).map(i => { let x = 12 + i * 101 / 34; (x, 35 + y0 / calc.sqrt(bx(x))) })
-      line(..pts, stroke: 0.8pt + plot-blue)
-    }
-    for x in (12, 113) { for s in (1, -1) {
-      rect((x - 5, 35 + s * 15), (x + 5, 35 + s * 23), fill: muted, stroke: none)
-    }}
-    content((12, 62), lbl[$B_"max"$])
-    content((113, 62), lbl[$B_"max"$])
-    content((62.5, 62), lbl[$B_"min"$])
-    content((62.5, 2), lbl[coils])
-  }))
+  #at(1, 6, y: 0mm, deck-fig("mirror_3d", columns: 6))
   #at(7, 6, y: 0mm, steps(gap: 7mm,
     r([gyration], [$rho = (m v_perp)/(abs(q) B)$ #h(3mm) #text(fill: muted)[D, 10 keV, 5 T: 4 mm]]),
     r([invariant], $mu = (m v_perp^2)/(2 B)$),
@@ -234,6 +193,12 @@
     #link("https://doi.org/10.1103/PhysRevLett.33.1139")[Taylor · Phys. Rev. Lett. 33, 1139 (1974)]])
 ]
 
+#slide(section: "concepts", title: [Tokamak: ITER coil set])[
+  #at(1, 12, y: 0mm, deck-fig("tokamak_3d", columns: 12))
+  #at(1, 12, y: 140mm, cite-line[CS, PF: ITER, #link("https://github.com/PrincetonUniversity/M3DC1")[M3D-C1 device data] ·
+    plasma $R_0 = 6.2 "m"$, $a = 2 "m"$, $kappa = 1.7$: #link("https://doi.org/10.1088/0029-5515/39/12/301")[ITER Physics Basis (1999)] · TF: schematic D, 18 coils])
+]
+
 #slide(section: "concepts", title: [Tokamak])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
     r([fields], [$B_phi$ from coils, #h(1mm) $B_theta$ from the plasma current $I_p$ (transformer)]),
@@ -243,6 +208,11 @@
   ))
   #at(2, 10, y: 100mm, result-box($B_theta \/ B_phi = epsilon \/ q approx 0.1$, [strong $B_phi$, current inside the window]))
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1038/224488a0")[Peacock et al. · Nature 224, 488 (1969)]])
+]
+
+#slide(section: "concepts", title: [Stellarator: NCSX modular coils])[
+  #at(1, 12, y: 0mm, deck-fig("stellarator_3d", columns: 12))
+  #at(1, 12, y: 140mm, cite-line[NCSX modular coils and VMEC boundary: #link("https://github.com/PrincetonUniversity/STELLOPT")[STELLOPT benchmark data] · field line: $theta + lambda = theta_0 + iota phi$, $iota = 0.65$ · front coils removed])
 ]
 
 #slide(section: "concepts", title: [Stellarator])[
