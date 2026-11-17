@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=554cf8149d9f3cf8",
+  "pdf": "deck.pdf?v=5a0a64f5b4cb02d5",
   "pages": [
     {
       "src": "page-01.svg?v=d88fe0a72c384221",
@@ -13,7 +13,7 @@
       "background": "light"
     },
     {
-      "src": "page-02.svg?v=180556d5b2673d8d",
+      "src": "page-02.svg?v=d4180b8e86b2c4aa",
       "kind": "static",
       "background": "light"
     },
@@ -23,12 +23,12 @@
       "background": "light"
     },
     {
-      "src": "page-04.svg?v=3f30e3f415ff33d3",
+      "src": "page-04.svg?v=96d26df702435994",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-05.svg?v=1267cc137c5ac65a",
+      "src": "page-05.svg?v=7b7e1856506d6b9d",
       "kind": "static",
       "background": "light"
     },
@@ -38,7 +38,7 @@
       "background": "light"
     },
     {
-      "src": "page-07.svg?v=cad718c3cb4ef066",
+      "src": "page-07.svg?v=034740d86a947fa8",
       "kind": "static",
       "background": "light"
     },
@@ -55,7 +55,7 @@
       }
     },
     {
-      "src": "page-09.svg?v=c61c9b6db53e22d8",
+      "src": "page-09.svg?v=63ff7f21cadf563b",
       "kind": "static",
       "background": "light"
     },
@@ -65,73 +65,7 @@
       "background": "light"
     },
     {
-      "src": "page-11.svg?v=f2ead3195b9ecef5",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-12.svg?v=439ebe90e7d64d2b",
-      "kind": "widget",
-      "background": "light",
-      "widget": "../../notebooks/slide-bremsstrahlung.html?v=2e4e5868f834f40d",
-      "region": {
-        "x": 0.06734006734006734,
-        "y": 0.19047619047619047,
-        "w": 0.8653198653198653,
-        "h": 0.7142857142857143
-      }
-    },
-    {
-      "src": "page-13.svg?v=64b1180567c78654",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-14.svg?v=eafc6d1eecec37c2",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-15.svg?v=facccba9d72fc311",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-16.svg?v=2bb11fc360b5cd7a",
-      "kind": "widget",
-      "background": "light",
-      "widget": "../../notebooks/slide-spectrum.html?v=ea3d80b2a66a4c4b",
-      "region": {
-        "x": 0.06734006734006734,
-        "y": 0.19047619047619047,
-        "w": 0.8653198653198653,
-        "h": 0.7142857142857143
-      }
-    },
-    {
-      "src": "page-17.svg?v=18c01378fdeba390",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-18.svg?v=74af448f263262a2",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-19.svg?v=5545a6c9a39645a0",
-      "kind": "widget",
-      "background": "light",
-      "widget": "../../notebooks/slide-impurities.html?v=1fe01e82e18631e6",
-      "region": {
-        "x": 0.06734006734006734,
-        "y": 0.19047619047619047,
-        "w": 0.8653198653198653,
-        "h": 0.7142857142857143
-      }
-    },
-    {
-      "src": "page-20.svg?v=e81aa5e6af69cdd2",
+      "src": "page-11.svg?v=b9982740cf07308c",
       "kind": "static",
       "background": "light"
     }
