@@ -5,7 +5,7 @@ from data/ch05/iter-coils.json, TF coils and plasma as D shapes of ITER size.
 Stellarator: NCSX modular coils and VMEC boundary from data/ch05/ncsx.json.
 Provenance in data/ch05/README.md.
 Run:  python3 slides/figures_devices.py
-      -> slides/build/fig/{theta_pinch,z_pinch,screw_pinch,mirror_3d,tokamak_3d,stellarator_3d}.{svg,png}
+      -> slides/build/fig/{theta_pinch,z_pinch,screw_pinch,mirror_3d,zeta_3d,tokamak_3d,stellarator_3d}.{svg,png}
 
 Rendering: every surface, coil, field line and arrow becomes shaded quadrilaterals,
 which are depth-sorted together (painter's algorithm) and drawn in an orthographic view.
@@ -408,6 +408,63 @@ def tokamak_3d():
     save(fig, "tokamak_3d")
 
 
+def box(lo, hi, n=8):
+    """Axis-aligned box from corner lo to corner hi, faces subdivided for depth sorting."""
+    lo, hi = np.asarray(lo, float), np.asarray(hi, float)
+    t = np.linspace(0, 1, n + 1)
+    faces = []
+    for k in range(3):
+        i, j = [m for m in range(3) if m != k]
+        u, v = np.meshgrid(lo[i] + t * (hi[i] - lo[i]), lo[j] + t * (hi[j] - lo[j]), indexing="ij")
+        for w in (lo[k], hi[k]):
+            p = np.empty(u.shape + (3,))
+            p[..., i], p[..., j], p[..., k] = u, v, w
+            faces.append(grid_quads(p))
+    return np.concatenate(faces)
+
+
+def zeta_3d():
+    """Toroidal pinch on an iron-core transformer, ZETA dimensions R = 1.5 m, a = 0.5 m."""
+    r0, a, ap = 1.5, 0.5, 0.25
+    s = Scene(elev=24, azim=-62)
+    front = np.radians(-62)
+    th = np.linspace(0, 2 * np.pi, 49)
+    circ = lambda r: np.column_stack([r0 + r * np.cos(th), r * np.sin(th)])  # noqa: E731
+    s.add(revolve_z(circ(a), n=160), GLASS, alpha=0.12, ambient=0.8, spec=0)
+    s.add(revolve_z(circ(ap), n=160), ORANGE, alpha=0.45, ambient=0.55, spec=0)
+    w, h = 0.36, 1.7
+    s.add(box([-w, -w, -h - 0.5], [w, w, h + 0.5]), MUTED)
+    ex = -3.4
+    s.add(box([ex - w, -w, -h - 0.5], [ex + w, w, h + 0.5]), MUTED)
+    s.add(box([ex + w, -w, h], [-w, w, h + 0.5]), MUTED)
+    s.add(box([ex + w, -w, -h - 0.5], [-w, w, -h]), MUTED)
+    for z in np.linspace(-0.6, 0.6, 5):
+        s.add(ring_z(w * 1.5 + 0.05, z, 0.1, 0.18), COPPER)
+    for k in range(10):
+        ph = 2 * np.pi * k / 10 + 0.3
+        loop = np.stack([(r0 + (a + 0.06) * np.cos(th)) * np.cos(ph), (r0 + (a + 0.06) * np.cos(th)) * np.sin(ph),
+                         (a + 0.06) * np.sin(th)], -1)
+        s.add(tube(loop, 0.02, closed=True), COPPER)
+    q = 0.25
+    phi = np.linspace(0, 2 * np.pi, 1600)
+    tl = 0.4 - phi / q
+    rl = r0 + 1.02 * ap * np.cos(tl)
+    line = np.stack([rl * np.cos(phi), rl * np.sin(phi), 1.02 * ap * np.sin(tl)], -1)
+    s.add(tube(line, 0.012), BLUE, spec=0.1)
+    ph = np.linspace(front - 0.5, front + 0.1, 40)
+    s.add(path_arrow(np.stack([r0 * np.cos(ph), r0 * np.sin(ph), np.zeros_like(ph)], -1), 0.03, 0.18, 0.075), INK)
+    fig, ax = s.figure(257, 128, pad=(0.06, 0.06, 0.03, 0.05))
+    s.label(ax, "iron core", [ex - w, 0, 0], dx=-12, ha="right")
+    s.label(ax, "primary", [w * 1.5 * np.cos(front), w * 1.5 * np.sin(front), 0.6], dx=-90, dy=50, leader=True)
+    s.label(ax, r"$B_\varphi$ coils, weak", [(r0 + a) * np.cos(front + 0.9), (r0 + a) * np.sin(front + 0.9), 0.3],
+            dx=110, dy=50, leader=True)
+    s.label(ax, "$I$", [r0 * np.cos(front + 0.1), r0 * np.sin(front + 0.1), 0], dx=40, dy=-62, leader=True)
+    s.label(ax, r"$q(a) \ll 1$", line[200], dx=120, dy=-40, color=BLUE, leader=True)
+    s.label(ax, "plasma", [r0 * np.cos(front + 0.5), r0 * np.sin(front + 0.5), -ap], dx=170, dy=-50, color=ORANGE,
+            leader=True)
+    save(fig, "zeta_3d")
+
+
 def vmec_surface(b, theta, phi):
     m, n = np.array(b["xm"]), np.array(b["xn"])
     ang = theta[..., None] * m - phi[..., None] * n
@@ -462,5 +519,5 @@ def stellarator_3d():
 
 if __name__ == "__main__":
     style()
-    for f in sys.argv[1:] or ["z_pinch", "theta_pinch", "screw_pinch", "mirror_3d", "tokamak_3d", "stellarator_3d"]:
+    for f in sys.argv[1:] or ["z_pinch", "theta_pinch", "screw_pinch", "mirror_3d", "zeta_3d", "tokamak_3d", "stellarator_3d"]:
         globals()[f]()
