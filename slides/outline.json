@@ -179,12 +179,48 @@
     },
     {
       "number": "5.1",
+      "title": "Fluid and particle pictures",
+      "label": "two-pictures",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.2",
+      "title": "Magnetic pressure and pinches",
+      "label": "magnetic-pressure",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.3",
+      "title": "Gyration and mirrors",
+      "label": "mirrors",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.4",
+      "title": "Torus and twisted field lines",
+      "label": "torus",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.5",
+      "title": "Sausage and kink",
+      "label": "kink-sausage",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.6",
+      "title": "Toroidal pinch, tokamak, stellarator",
+      "label": "concepts",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.7",
       "title": "Pressure and density limits",
       "label": "pressure-beta",
       "chapter": "magnetic-confinement"
     },
     {
-      "number": "5.2",
+      "number": "5.8",
       "title": "Where is the optimum?",
       "label": "optimum",
       "chapter": "magnetic-confinement"
