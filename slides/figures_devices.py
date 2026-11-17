@@ -5,7 +5,7 @@ from data/ch05/iter-coils.json, TF coils and plasma as D shapes of ITER size.
 Stellarator: NCSX modular coils and VMEC boundary from data/ch05/ncsx.json.
 Provenance in data/ch05/README.md.
 Run:  python3 slides/figures_devices.py
-      -> slides/build/fig/{theta_pinch,z_pinch,screw_pinch,mirror_3d,zeta_3d,tokamak_3d,stellarator_3d}.{svg,png}
+      -> slides/build/fig/{theta_pinch,z_pinch,screw_pinch,mirror_3d,zeta_3d,torus_tf_3d,tokamak_3d,stellarator_3d}.{svg,png}
 
 Rendering: every surface, coil, field line and arrow becomes shaded quadrilaterals,
 which are depth-sorted together (painter's algorithm) and drawn in an orthographic view.
@@ -517,7 +517,57 @@ def stellarator_3d():
     save(fig, "stellarator_3d")
 
 
+def torus_tf_3d():
+    """Torus with only toroidal-field coils: B_phi ~ 1/R, front wedge cut open."""
+    r0, a, rc, n_tf = 3.0, 1.0, 1.45, 12
+    azim, cut = -62.0, np.radians(38)
+    s = Scene(elev=28, azim=azim)
+    front = np.radians(azim)
+    a0, a1 = front + cut, front - cut + 2 * np.pi
+    s.add(straight_arrow([0, 0, -2.2], [0, 0, 2.4], 0.025, 0.3, 0.1), MUTED)
+    tt = np.linspace(0, 2 * np.pi, 120)[::-1]  # clockwise in (R, Z): up the inner leg, B_phi > 0
+    for k in range(n_tf):
+        phi = 2 * np.pi * k / n_tf + 0.5 * np.pi / n_tf
+        if in_cut(phi, front, cut + 0.06):
+            continue
+        rr, zz = r0 + rc * np.cos(tt), rc * np.sin(tt)
+        path = np.stack([rr * np.cos(phi), rr * np.sin(phi), zz], -1)
+        tg = unit(np.gradient(path, axis=0))
+        v = np.broadcast_to([-np.sin(phi), np.cos(phi), 0.0], path.shape)
+        s.add(sweep_rect(path, np.cross(tg, v), v, 0.14, 0.3), GREY, spec=0.15)
+    th = np.linspace(0, 2 * np.pi, 60)
+    prof = np.column_stack([r0 + a * np.cos(th), a * np.sin(th)])
+    s.add(revolve_z(prof, a0, a1, 200), ORANGE, alpha=0.32, ambient=0.55, spec=0)
+    rg, tg2 = np.meshgrid(np.linspace(0, a, 8), th, indexing="ij")
+    for ang in (a0, a1):
+        R = r0 + rg * np.cos(tg2)
+        cap = np.stack([R * np.cos(ang), R * np.sin(ang), rg * np.sin(tg2)], -1)
+        s.add(grid_quads(cap), ORANGE, alpha=0.75, ambient=0.6, spec=0)
+    for rl in (r0 - 0.55, r0, r0 + 0.55):
+        ph = np.linspace(a0 + 0.05, a1 - 0.05, 300)
+        line = np.stack([rl * np.cos(ph), rl * np.sin(ph), np.full_like(ph, 0.02)], -1)
+        s.add(tube(line[:-20], 0.035), BLUE, spec=0.1)
+        s.add(cone(line[-20], line[-1] - line[-20], 0.35, 0.12), BLUE)
+    kept = [2 * np.pi * k / n_tf + 0.5 * np.pi / n_tf for k in range(n_tf)]
+    kept = [f for f in kept if not in_cut(f, front, cut + 0.06)]
+    phc = min(kept, key=lambda f: abs((f - a0 - 0.55 + np.pi) % (2 * np.pi) - np.pi))
+    arc = np.linspace(0.35, -0.35, 30)
+    rr, zz = r0 + (rc + 0.32) * np.cos(arc), (rc + 0.32) * np.sin(arc)
+    s.add(path_arrow(np.stack([rr * np.cos(phc), rr * np.sin(phc), zz], -1), 0.04, 0.3, 0.12), INK)
+    fig, ax = s.figure(257, 128, pad=(0.12, 0.06, 0.1, 0.05))
+    s.label(ax, "axis", [0, 0, 2.5], dx=28, dy=-6, color=MUTED)
+    pht = min(kept, key=lambda f: abs((f - a1 + 0.5 + np.pi) % (2 * np.pi) - np.pi))
+    s.label(ax, "TF coils", [r0 * np.cos(pht), r0 * np.sin(pht), rc + 0.07], dx=-70, dy=55, leader=True)
+    s.label(ax, r"$I_{\rm TF}$", [(r0 + rc + 0.32) * np.cos(phc), (r0 + rc + 0.32) * np.sin(phc), 0], dx=34, dy=-10)
+    s.label(ax, "plasma", [(r0 + 0.5) * np.cos(a0 + 0.4), (r0 + 0.5) * np.sin(a0 + 0.4), -0.85], dx=40, dy=-45,
+            color=ORANGE, leader=True)
+    s.label(ax, "cross-section", [r0 * np.cos(a1), r0 * np.sin(a1), -0.5], dx=-120, dy=-40, leader=True)
+    s.label(ax, r"$B_\varphi \propto 1/R$", [r0 * np.cos(a1 - 0.45), r0 * np.sin(a1 - 0.45), 0],
+            dx=-140, dy=60, color=BLUE, leader=True)
+    save(fig, "torus_tf_3d")
+
+
 if __name__ == "__main__":
     style()
-    for f in sys.argv[1:] or ["z_pinch", "theta_pinch", "screw_pinch", "mirror_3d", "zeta_3d", "tokamak_3d", "stellarator_3d"]:
+    for f in sys.argv[1:] or ["z_pinch", "theta_pinch", "screw_pinch", "mirror_3d", "zeta_3d", "torus_tf_3d", "tokamak_3d", "stellarator_3d"]:
         globals()[f]()
