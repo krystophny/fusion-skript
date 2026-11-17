@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=d1563d279d18f02f",
+  "pdf": "deck.pdf?v=04f44916648a6203",
   "pages": [
     {
       "src": "page-01.svg?v=dd4712e0168aa70e",
@@ -90,10 +90,10 @@
       "background": "light"
     },
     {
-      "src": "page-16.svg?v=b8399481505ce82c",
+      "src": "page-16.svg?v=08d2672a3332652f",
       "kind": "widget",
       "background": "light",
-      "widget": "../../notebooks/slide-popcon.html?v=edde75b0a6e67100",
+      "widget": "../../notebooks/slide-popcon.html?v=72f0d61662c9c1a8",
       "region": {
         "x": 0.06734006734006734,
         "y": 0.19047619047619047,
