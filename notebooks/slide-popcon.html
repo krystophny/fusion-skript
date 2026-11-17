@@ -12,7 +12,7 @@
 <div id="inputs"></div>
 <script type="module">
 import {Plot, Inputs, html, font, sub, readout, run} from "./widget.js";
-import {reactivity, KEV, E_FUS, E_ALPHA, C_B} from "./fusion.js";
+import {reactivity, KEV, E_FUS, E_ALPHA} from "./fusion.js";
 import {INK, MUTED, GREY, BLUE, ORANGE} from "./plotting.js";
 import rx from "./data/reactivity.json" with {type: "json"};
 
@@ -28,7 +28,6 @@ const devices = {
 // Volume-averaged n = n_e and T (T_e = T_i); parabolic profiles
 // n = n0 (1 - s)^an, T = T0 (1 - s)^aT in s = rho^2 (dV = V ds). Powers in MW.
 const an = 0.2;
-const fuel = 0.85;   // n_D + n_T = 0.85 n_e (helium ash and impurities); n_i = 0.87 n_e
 const aT = 1.0;
 const lgamma = (z) => {  // Lanczos, z > 0
   const g = 7, c = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313,
@@ -41,15 +40,14 @@ const Tdom = [3, 30];
 
 const model = (d, H) => (n20, T) => {
   const n = n20 * 1e20, V = 2 * Math.PI ** 2 * d.R * d.a * d.a * d.kappa, K = 24;
-  let fus = 0, br = 0;
+  let fus = 0;
   for (let k = 0; k < K; k++) {
     const s = (k + 0.5) / K, nk = n * (1 + an) * (1 - s) ** an, Tk = Math.max(T * (1 + aT) * (1 - s) ** aT, 0.05);
-    fus += (fuel * nk) ** 2 / 4 * reactivity(rx, "DT", Tk) / K;
-    br += nk * nk * Math.sqrt(Tk) / K;
+    fus += nk ** 2 / 4 * reactivity(rx, "DT", Tk) / K;
   }
-  const W = 1.5 * (1 + fuel + 0.02) * n * T * KEV * V / 1e6 * (1 + an) * (1 + aT) / (1 + an + aT);   // MJ
+  const W = 1.5 * 2 * n * T * KEV * V / 1e6 * (1 + an) * (1 + aT) / (1 + an + aT);   // MJ
   const Pf = fus * E_FUS * KEV * V / 1e6;
-  const Pa = Pf * E_ALPHA / E_FUS, Pb = C_B * br * V / 1e6;
+  const Pa = Pf * E_ALPHA / E_FUS;
   const nl19 = 10 * n20 * nLine;
   // tau_E = A P^-alpha with the loss power P = W / tau_E solved exactly: P = (W/A)^(1/(1-alpha)).
   let A, alpha;
@@ -61,12 +59,12 @@ const model = (d, H) => (n20, T) => {
     alpha = 0.61;
   }
   const P = (W / A) ** (1 / (1 - alpha)), tau = W / P;
-  const Pext = P + Pb - Pa, Q = Pext > 0 ? Pf / Pext : Infinity;
+  const Pext = P - Pa, Q = Pext > 0 ? Pf / Pext : Infinity;
   const beta = 2 * 4e-7 * Math.PI * 2 * W * 1e6 / 3 / V / (d.B * d.B);
   const limit = d.kind === "tok"
     ? Math.max(nl19 / 10 / (d.I / (Math.PI * d.a * d.a)), beta / (d.betaN * 0.01 * d.I / (d.a * d.B)))
     : Math.max(beta / d.betaMax, nl19 / 10 / (0.25 * Math.sqrt(Math.max(Pa + Math.max(Pext, 0), 1e-6) * d.B / (d.a * d.a * d.R))));
-  return {Pf, Pa, Pb, P, Pext, Q, tau, beta, W, limit, allowed: limit <= 1};
+  return {Pf, Pa, P, Pext, Q, tau, beta, W, limit, allowed: limit <= 1};
 };
 
 const qLegend = () => Plot.legend({color: {type: "linear", domain: [-1, 1.6], range: ["#FFFFFF", "#7FB2DA"]}, width: 280, label: "gain Q",
@@ -127,7 +125,7 @@ function draw({device, Bfield, H}, inputs) {
   <i>Q</i> = ${best.ign ? "∞" : best.b.Q.toFixed(1)}, <i>P</i><sub>fus</sub> = ${best.b.Pf.toFixed(0)} MW<br>
   <i>τ</i><sub>E</sub> = ${best.b.tau.toFixed(2)} s, <i>β</i> = ${(100 * best.b.beta).toFixed(1)} %<br>
   <i>P</i><sub>ext</sub> = ${Math.max(best.b.Pext, 0).toFixed(0)} MW, <i>P</i><sub>α</sub> = ${best.b.Pa.toFixed(0)} MW</div>` : html`<div style="margin-top:0.6rem">no allowed point with net heating</div>`}
-  <div style="color:${MUTED};margin-top:0.6rem;font-size:0.68rem">0-D, parabolic profiles (<i>α</i><sub>n</sub> = 0.2, <i>α</i><sub>T</sub> = 1), fuel 85 % of <i>n</i><sub>e</sub>, axes volume averages, <i>T</i><sub>e</sub> = <i>T</i><sub>i</sub>, bremsstrahlung only; <i>τ</i><sub>E</sub> = H·IPB98(y,2) or H·ISS04 with <i>P</i> = <i>W</i>/<i>τ</i><sub>E</sub> solved self-consistently. Trends, not design values.</div>
+  <div style="color:${MUTED};margin-top:0.6rem;font-size:0.68rem">0-D, parabolic profiles (<i>α</i><sub>n</sub> = 0.2, <i>α</i><sub>T</sub> = 1), pure D–T 50:50, axes volume averages, <i>T</i><sub>e</sub> = <i>T</i><sub>i</sub>, no radiation; <i>τ</i><sub>E</sub> = H·IPB98(y,2) or H·ISS04 with <i>P</i> = <i>W</i>/<i>τ</i><sub>E</sub> solved self-consistently. Trends, not design values.</div>
 </div></div>`;
 }
 
