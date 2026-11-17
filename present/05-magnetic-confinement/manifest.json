@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=2d1094cfbf0dccbe",
+  "pdf": "deck.pdf?v=254174aa84cc4c05",
   "pages": [
     {
       "src": "page-01.svg?v=dd4712e0168aa70e",
@@ -83,22 +83,34 @@
       "background": "light"
     },
     {
-      "src": "page-16.svg?v=f46d14d306cf9949",
+      "src": "page-16.svg?v=c270d6a9d0d2d75a",
+      "kind": "widget",
+      "background": "light",
+      "widget": "../../notebooks/slide-tokamak-exb.html?v=0cd28cbb2afe10f6",
+      "region": {
+        "x": 0.06734006734006734,
+        "y": 0.19047619047619047,
+        "w": 0.8653198653198653,
+        "h": 0.7142857142857143
+      }
+    },
+    {
+      "src": "page-17.svg?v=626e4256ed1e5c5f",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-17.svg?v=0f2a8304aa94657e",
+      "src": "page-18.svg?v=47f7f2e7e674e09a",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-18.svg?v=267c26db0810a3d5",
+      "src": "page-19.svg?v=83c2e74dec2dd034",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-19.svg?v=b43d08be4ade4276",
+      "src": "page-20.svg?v=9a116049d58f86e7",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-limits.html?v=4dd364df15d51981",
@@ -110,12 +122,12 @@
       }
     },
     {
-      "src": "page-20.svg?v=29270acdf31688ac",
+      "src": "page-21.svg?v=eed49c7746027d3d",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-21.svg?v=8fa3f2fecf1c2854",
+      "src": "page-22.svg?v=2fb88f244bbe5009",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-popcon.html?v=72f0d61662c9c1a8",
@@ -127,7 +139,7 @@
       }
     },
     {
-      "src": "page-22.svg?v=cd50b66340a3f1d6",
+      "src": "page-23.svg?v=2d55036477bf7c55",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-machines.html?v=f76970437704a0a7",
