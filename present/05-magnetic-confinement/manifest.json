@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=2ff33f7e0f949b85",
+  "pdf": "deck.pdf?v=2d1094cfbf0dccbe",
   "pages": [
     {
       "src": "page-01.svg?v=dd4712e0168aa70e",
@@ -58,42 +58,47 @@
       "background": "light"
     },
     {
-      "src": "page-11.svg?v=30c90d1c6ef63076",
+      "src": "page-11.svg?v=4ff5e25e1cd44a55",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-12.svg?v=955017ebe1ccc052",
+      "src": "page-12.svg?v=7a5db7ac2cf55176",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-13.svg?v=22267925a22accef",
+      "src": "page-13.svg?v=7fc7e04e9711675d",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-14.svg?v=17c48cfb3994f9fb",
+      "src": "page-14.svg?v=2d7f57adb8d3cc9a",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-15.svg?v=393298123bbd4fc0",
+      "src": "page-15.svg?v=2527b2186e398fab",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-16.svg?v=7d73e72f278009db",
+      "src": "page-16.svg?v=f46d14d306cf9949",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-17.svg?v=0218e99b7cc6ecd1",
+      "src": "page-17.svg?v=0f2a8304aa94657e",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-18.svg?v=05478db7fe4dde95",
+      "src": "page-18.svg?v=267c26db0810a3d5",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-19.svg?v=b43d08be4ade4276",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-limits.html?v=4dd364df15d51981",
@@ -105,12 +110,12 @@
       }
     },
     {
-      "src": "page-19.svg?v=9df19978679c184f",
+      "src": "page-20.svg?v=29270acdf31688ac",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-20.svg?v=619e3c6fce564936",
+      "src": "page-21.svg?v=8fa3f2fecf1c2854",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-popcon.html?v=72f0d61662c9c1a8",
@@ -122,7 +127,7 @@
       }
     },
     {
-      "src": "page-21.svg?v=0d130761ad0980a2",
+      "src": "page-22.svg?v=cd50b66340a3f1d6",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-machines.html?v=f76970437704a0a7",
