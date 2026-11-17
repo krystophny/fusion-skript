@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=d6e2f24703d30c11",
+  "pdf": "deck.pdf?v=753a24495aca75bb",
   "pages": [
     {
       "src": "page-01.svg?v=dd4712e0168aa70e",
@@ -18,62 +18,42 @@
       "background": "light"
     },
     {
-      "src": "page-03.svg?v=19b205112ff6c23e",
+      "src": "page-03.svg?v=3937845ebf4dcd0b",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-04.svg?v=80d74db6de2a899a",
+      "src": "page-04.svg?v=4a868d82db0dfc5a",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-05.svg?v=72d15d2164c80b08",
+      "src": "page-05.svg?v=763882f0d51b6d97",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-06.svg?v=7be398ee0ddf6986",
+      "src": "page-06.svg?v=fb292cb6c5db6c89",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-07.svg?v=8f3aac7bfbb5ab48",
+      "src": "page-07.svg?v=9f1b7fc407f07602",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-08.svg?v=ab54f49a26106bcf",
+      "src": "page-08.svg?v=5bc2bb0dfd398ec8",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-09.svg?v=615193939b294661",
+      "src": "page-09.svg?v=e85a34b5a36e995a",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-10.svg?v=5183c7a58fb2f3bf",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-11.svg?v=5fa9dae88d523fc8",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-12.svg?v=f4cc6e1c92f0a4c6",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-13.svg?v=6bba4d8ff7e2a596",
-      "kind": "static",
-      "background": "light"
-    },
-    {
-      "src": "page-14.svg?v=d032ae3852024bb0",
+      "src": "page-10.svg?v=9fab95c2d43834fe",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-tokamak-exb.html?v=0cd28cbb2afe10f6",
@@ -85,32 +65,57 @@
       }
     },
     {
-      "src": "page-15.svg?v=25b5373518481eac",
+      "src": "page-11.svg?v=9ecf109b3e1c23fa",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-16.svg?v=de4060c90231b1c7",
+      "src": "page-12.svg?v=48ce1f8776f55f30",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-17.svg?v=fcb174b69d26ad2c",
+      "src": "page-13.svg?v=5add3175c21152e1",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-18.svg?v=4325c8cf032fa0ef",
+      "src": "page-14.svg?v=7f1f2f0bb6ed10bb",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-19.svg?v=5a966ae68760ca74",
+      "src": "page-15.svg?v=20bb4052a54e0793",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-20.svg?v=1cdfc8206f707284",
+      "src": "page-16.svg?v=fc2aa89e871a596d",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-17.svg?v=31fbb6864048641c",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-18.svg?v=12636d7173c706d1",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-19.svg?v=746dd7e3e71a55f6",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-20.svg?v=79cfd64a36931c70",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-21.svg?v=b5e55c6a9ea9aa57",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-limits.html?v=4dd364df15d51981",
@@ -122,12 +127,12 @@
       }
     },
     {
-      "src": "page-21.svg?v=03a62f9edd8d208e",
+      "src": "page-22.svg?v=a25bf646041faa0d",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-22.svg?v=ab2ca92229132f8a",
+      "src": "page-23.svg?v=fef8164e26950080",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-popcon.html?v=72f0d61662c9c1a8",
@@ -139,7 +144,7 @@
       }
     },
     {
-      "src": "page-23.svg?v=bc27abf6d7867530",
+      "src": "page-24.svg?v=26e21528ab7d465a",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-machines.html?v=f76970437704a0a7",
