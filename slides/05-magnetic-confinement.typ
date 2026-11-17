@@ -177,6 +177,23 @@
   #at(1, 12, y: 146mm, note[$q_95$: $q$ on the flux surface enclosing 95 % of the poloidal flux])
 ]
 
+#slide(section: "kink-sausage", title: [Stability and losses])[
+  #at(1, 12, y: 4mm, table(columns: (62mm, 1fr, 1fr), inset: (x: 4mm, y: 4.2mm), stroke: none,
+    align: (right + horizon, left + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    [], text(fill: muted)[stable], text(fill: muted)[losses],
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[Z-pinch], [no: kink, sausage], [—],
+    text(fill: muted)[$theta$-pinch], [yes], [ends],
+    text(fill: muted)[screw pinch], [$q(a) > 1$], [ends],
+    text(fill: muted)[mirror], [interchange unless minimum-$B$], [loss cone],
+    text(fill: muted)[torus, only $B_phi$], [no equilibrium], [drift, $E times B$],
+    text(fill: muted)[tokamak], [$1 < q(a) lt.tilde 3$], [—],
+    table.hline(stroke: 0.6pt + rule),
+  ))
+  #at(1, 12, y: 140mm, note[minimum-$B$: $B$ grows in every direction away from the plasma centre (Ioffe bars, baseball coil)])
+]
+
 // ------------------------------------- 5.6 Toroidal pinch, tokamak, stellarator
 
 #slide(section: "concepts", title: [Toroidal pinch on a transformer])[
