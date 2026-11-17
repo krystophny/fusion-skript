@@ -19,7 +19,7 @@
 
 #slide(section: "two-pictures", title: [Fluid and particle pictures])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
-    r([Lawson], [$p tau_E >= 9 "bar s"$ #h(4mm) at #h(1mm) $k_B T approx 15 "keV"$]),
+    r([Lawson], [$p tau_E >= 10 "bar s"$ #h(4mm) at #h(1mm) $k_B T approx 15 "keV"$]),
     r([pressure], [$p = 2 n k_B T = 4.8 "bar"$ #h(4mm) #text(fill: muted)[$n = 10^20 "m"^(-3)$]]),
   ))
   #at(1, 12, y: 44mm, table(columns: (52mm, 1fr, 1fr), inset: (x: 4mm, y: 4mm), stroke: none,
@@ -60,7 +60,7 @@
     r([$beta$], $beta = (2 mu_0 p)/B_"ext"^2 <= 1$),
     r([$5.3 "T"$], $B^2 \/ (2 mu_0) = 112 "bar"$),
   ))
-  #at(6, 7, y: 112mm, result-box($tau_E >= (9 "bar s")/(beta dot 112 "bar") = 3.2 "s"$, [$beta = 2.5 %$]))
+  #at(6, 7, y: 112mm, result-box($tau_E >= (10 "bar s")/(beta dot 112 "bar") = 3.6 "s"$, [$beta = 2.5 %$]))
 ]
 
 #slide(section: "magnetic-pressure", title: [Z-pinch])[
