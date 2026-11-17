@@ -14,7 +14,7 @@ and last the limits of a real machine (pages moved from Chapter 4).
 | Page | Content | Lecturer cue |
 |---|---|---|
 | 1 | Title | — |
-| 2 | 5.1 Fluid and particle pictures | Recap p tau_E >= 10 bar s at 15 keV, p = 4.8 bar at 1e20 m^-3. Two models: fluid (j x B - grad p) gives magnetic pressure, pinch, sausage, kink; particles (Lorentz force) give gyration, mirror, end losses, drifts. |
+| 2 | 5.1 Fluid and particle pictures | Recap p tau_E >= 10 bar s at 15 keV, p = 4.8 bar at 1e20 m^-3. Two models: fluid (j x B - grad p) and particles (Lorentz force). |
 | 3 | 5.2 Magnetic pressure and beta | j x B = pressure + tension. Theta-pinch with straight B: p + B_in^2/2mu0 = B_ext^2/2mu0, so beta <= 1 with the external field (local beta can be infinite where B = 0). 5.3 T: 112 bar; beta = 2.5 % gives tau_E >= 3.6 s. |
 | 4 | 5.2 Z-pinch | dp/dr = -j_z B_theta, Ampere, Bennett mu0 I^2/8pi = N k_B (T_e + T_i), <p> = B_theta(a)^2/2mu0 (beta_p = 1, held by tension). 0.45 MA for 1e20 m^-3, 10 cm, 10 keV. |
 | 5 | 5.3 Gyration and magnetic mirror | rho = 4 mm for D at 10 keV, 5 T. mu conserved, reflection sin^2 theta > 1/R_m, loss cone 13 % at R_m = 4; collisions refill it, so bend into a torus. |
