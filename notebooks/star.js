@@ -1,4 +1,4 @@
-// Star widgets (slide-star, slide-sun; MIT): MIST v1.2 centre of a star against time.
+// Star widget (slide-sun; MIT): MIST v1.2 centre of a star against time.
 import {Plot, Inputs, html, font, sub, pow, readout, run} from "./widget.js";
 import {INK, MUTED, GREY} from "./plotting.js";
 import mist from "./data/mist.json" with {type: "json"};

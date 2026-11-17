@@ -1,10 +1,10 @@
 """Deck figures for the start of power balance: alpha/neutron split, Lawson plane, power flow.
 
 Model: derivations/chapters/ch04_power_balance.py (0-D D-T balance, Bosch-Hale
-<sigma v>, NRL bremsstrahlung). Descriptions: slides/04-power-balance-visuals.md.
+<sigma v>). Descriptions: slides/04-power-balance-visuals.md.
 Run:  python3 slides/figures_power_balance.py
       -> slides/build/fig/{alpha_neutron_split,lawson_plane,power_flow,density_scaling,
-         alpha_brems,q_eng,alpha_fraction,impurity_dilution,fixed_pressure,n_tau_plane}.{svg,png}
+         q_eng,alpha_fraction,n_tau_plane}.{svg,png}
 Measured points: Wurzel and Hsu, Phys. Plasmas 29, 062103 (2022), CC BY 4.0.
 """
 import sys
@@ -79,7 +79,7 @@ QS = ((1, "#9AA5B1"), (5, "#5A8DB8"), (10, BLUE), (np.inf, ORANGE))
 
 
 def lawson_plane():
-    """Required n T tau_E vs T for several Q, ignition also with bremsstrahlung."""
+    """Required n T tau_E vs T for several Q."""
     t = np.geomspace(2, 100, 2000)
     fig, ax = plt.subplots(figsize=(175 * MM, 120 * MM))
     for q, color in QS:
@@ -88,9 +88,6 @@ def lawson_plane():
         lab = "ignition" if np.isinf(q) else f"$Q = {q}$"
         nudge = {1: 1.0, 5: .82, 10: 1.05, np.inf: 1.3}[q]
         ax.text(108, y[-1] * nudge, lab, color=color, fontsize=15, ha="left", va="center", clip_on=False)
-    yb = pb.triple_product(t, brems=True)
-    ax.loglog(t, yb, color=ORANGE, lw=1.8, ls=(0, (5, 3)))
-    ax.text(5.6, 6e22, "ignition with\nbremsstrahlung", color=ORANGE, fontsize=15, ha="left", va="center")
     ign = pb.triple_product(t)
     i = ign.argmin()
     ax.plot([t[i]], [ign[i]], "o", color=ORANGE, ms=8, zorder=5)
@@ -206,52 +203,6 @@ def density_scaling(t=14.0):
     save(fig, "density_scaling")
 
 
-def alpha_brems():
-    """p_alpha / n_e^2 and p_br / n_e^2 against T: they cross at the ideal ignition temperature."""
-    t = np.geomspace(1, 100, 600)
-    fig, ax = plt.subplots(figsize=HALF)
-    a = bosch_hale("DT", t) / 4 * pb.E_ALPHA * KEV
-    b = pb.C_B * np.sqrt(t)
-    ax.loglog(t, a, color=ORANGE, lw=2.5)
-    ax.loglog(t, b, color=BLUE, lw=2.2, ls=(0, (6, 3)))
-    ti = pb.ideal_ignition_temperature()
-    ax.axvline(ti, color=MUTED, lw=.8, ls=":")
-    ax.plot([ti], [pb.C_B * np.sqrt(ti)], "o", color=INK, ms=7, zorder=5)
-    ax.text(ti * 1.12, 2.2e-38, f"{ti:.1f} keV", fontsize=16, color=INK)
-    ax.text(30, 4.5e-36, r"$p_\alpha / n_e^2$", color=ORANGE, fontsize=18, ha="center")
-    ax.text(25, 1.3e-36, r"$p_{\rm br} / n_e^2$", color=BLUE, fontsize=18, ha="center", va="top")
-    ax.set_xlim(1, 100)
-    ax.xaxis.set_major_formatter(PLAIN)
-    ax.set_ylim(1e-39, 1e-35)
-    ax.set_xlabel(r"$k_BT$ [keV]")
-    ax.set_ylabel(r"$p / n_e^2$ [W m$^3$]")
-    ax.text(.04, .95, r"$Z_{\rm eff} = 1$", transform=ax.transAxes, fontsize=15, color=MUTED, va="top")
-    _axes(ax)
-    fig.subplots_adjust(left=.2, right=.93, bottom=.15, top=.97)
-    save(fig, "alpha_brems")
-    return ti
-
-
-def cooling_rates():
-    """Coronal cooling rate L_Z(T) (Mavrin 2018) against bremsstrahlung of the stripped ion, Z^2 C_B sqrt(T)."""
-    t = np.geomspace(0.5, 100, 600)
-    fig, ax = plt.subplots(figsize=HALF)
-    for z, name, color in ((4, "Be", GREEN), (6, "C", INK), (8, "O", BLUE), (74, "W", PURPLE_W)):
-        lz = pb.cooling_rate(z, t)
-        ax.loglog(t, lz, color=color, lw=2.4)
-        ax.loglog(t, pb.C_B * z * z * np.sqrt(t), color=color, lw=1.2, ls=(0, (4, 3)))
-        ax.text(110, lz[-1], name, color=color, fontsize=16, va="center", clip_on=False)
-    ax.set_xlim(0.5, 100)
-    ax.xaxis.set_major_formatter(PLAIN)
-    ax.set_ylim(1e-36, 1e-30)
-    ax.set_xlabel(r"$k_BT_e$ [keV]")
-    ax.set_ylabel(r"$L_Z$ [W m$^3$]")
-    ax.text(.04, .04, "dashed: bremsstrahlung only", transform=ax.transAxes, fontsize=14, color=MUTED)
-    _axes(ax)
-    fig.subplots_adjust(left=.2, right=.88, bottom=.15, top=.97)
-    save(fig, "cooling_rates")
-
-
 def q_eng_plot():
     """Engineering gain against plasma gain for two efficiency products."""
     q = np.geomspace(1, 100, 400)
@@ -301,41 +252,6 @@ def alpha_fraction_plot():
 
 
 HE = ((0.0, ORANGE, "-"), (0.05, "#5A8DB8", (0, (6, 3))), (0.10, BLUE, (0, (2, 2))), (0.15, INK, (0, (6, 2, 1, 2))))
-
-
-def impurity_dilution():
-    """Left: ignition n_e T tau_E with helium ash; right: fusion power against Z c at fixed n_e."""
-    t = np.geomspace(3, 100, 2000)
-    fig, (ax, bx) = plt.subplots(1, 2, figsize=(250 * MM, 120 * MM),
-                                 gridspec_kw={"width_ratios": (1.5, 1), "wspace": .42})
-    for c, color, ls in HE:
-        y = pb.ignition_diluted(t, [(2, c)] if c else [])
-        ax.loglog(t, y, color=color, lw=2.2, ls=ls)
-        i = np.argmin(y)
-        ax.plot([t[i]], [y[i]], "o", color=color, ms=6, zorder=5)
-        ax.text(108, y[-1], f"{100 * c:.0f} % He", color=color, fontsize=15, va="center", clip_on=False)
-    ax.set_xlim(3, 100)
-    ax.xaxis.set_major_formatter(PLAIN)
-    ax.set_ylim(1e21, 1e23)
-    ax.set_xlabel(r"$k_BT$ [keV]")
-    ax.set_ylabel(r"ignition $n_e T \tau_E$ [keV s m$^{-3}$]")
-    ax.text(.04, .05, "with bremsstrahlung", transform=ax.transAxes, fontsize=15, color=MUTED)
-    _axes(ax)
-
-    zc = np.linspace(0, 0.3, 200)
-    bx.plot(zc, (1 - zc) ** 2, color=INK, lw=2.2)
-    for z, c, lab, dx, dy in ((74, 1e-3, "0.1 % W", .012, .02), (2, .05, "5 % He", .012, .02)):
-        f = 1 - z * c
-        bx.plot([z * c], [f**2], "o", color=ORANGE if z == 74 else BLUE, ms=8, zorder=5)
-        bx.text(z * c + dx, f**2 + dy, lab, fontsize=15, color=ORANGE if z == 74 else BLUE)
-    bx.set_xlim(0, .3)
-    bx.set_ylim(.4, 1.02)
-    bx.set_xlabel(r"$Z c$")
-    bx.set_ylabel(r"$p_{\rm fus} / p_{\rm fus}(c = 0)$")
-    bx.text(.95, .93, r"$(1 - Zc)^2$", transform=bx.transAxes, fontsize=17, ha="right", va="top")
-    _axes(bx)
-    fig.subplots_adjust(left=.1, right=.98, bottom=.15, top=.97)
-    save(fig, "impurity_dilution")
 
 
 # Labelled experiments and label offsets in points.
@@ -407,10 +323,7 @@ if __name__ == "__main__":
     print(f"wrote lawson_plane: ignition minimum {ign:.3e} keV s m^-3 at {t_min:.2f} keV")
     print("wrote power_flow:", {k: f"{v:.1f} MW" for k, v in power_flow().items()})
     density_scaling()
-    print(f"wrote alpha_brems: ideal ignition at {alpha_brems():.2f} keV")
     q_eng_plot()
     alpha_fraction_plot()
-    impurity_dilution()
-    cooling_rates()
     n_tau_plane()
-    print("wrote density_scaling, q_eng, alpha_fraction, impurity_dilution, fixed_pressure, n_tau_plane")
+    print("wrote density_scaling, q_eng, alpha_fraction, n_tau_plane")

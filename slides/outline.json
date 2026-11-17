@@ -113,20 +113,8 @@
     },
     {
       "number": "3.4",
-      "title": "Primordial nucleosynthesis",
-      "label": "bbn",
-      "chapter": "fusion-in-stars"
-    },
-    {
-      "number": "3.5",
       "title": "Helium burning and heavier elements",
       "label": "heavier",
-      "chapter": "fusion-in-stars"
-    },
-    {
-      "number": "3.6",
-      "title": "Endpoints and extreme conditions",
-      "label": "endpoints",
       "chapter": "fusion-in-stars"
     },
     {
@@ -163,18 +151,6 @@
       "number": "4.6",
       "title": "Confinement routes",
       "label": "confinement-routes",
-      "chapter": "power-balance-lawson"
-    },
-    {
-      "number": "4.7",
-      "title": "Radiation losses",
-      "label": "bremsstrahlung",
-      "chapter": "power-balance-lawson"
-    },
-    {
-      "number": "4.8",
-      "title": "Impurities and fuel dilution",
-      "label": "dilution",
       "chapter": "power-balance-lawson"
     },
     {
