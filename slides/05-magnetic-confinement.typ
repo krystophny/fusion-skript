@@ -179,6 +179,11 @@
 
 // ------------------------------------- 5.6 Toroidal pinch, tokamak, stellarator
 
+#slide(section: "concepts", title: [Toroidal pinch on a transformer])[
+  #at(1, 12, y: 0mm, deck-fig("zeta_3d", columns: 12))
+  #at(1, 12, y: 140mm, cite-line[schematic, ZETA size: $R = 1.5 "m"$, $a = 0.5 "m"$ · iron-core transformer drives $I$ · field line drawn for $q(a) = 0.25$])
+]
+
 #slide(section: "concepts", title: [Toroidal pinch and ZETA])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
     r([toroidal pinch], [strong $I$, weak $B_phi$ #h(3mm) $=>$ #h(3mm) $q(a) << 1$]),
