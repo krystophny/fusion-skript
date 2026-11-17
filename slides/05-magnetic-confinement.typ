@@ -1,8 +1,8 @@
 #import "theme.typ": *
 #show: deck.with(chapter: 5)
 
-// Route (2026-11-17): linear devices (pinches, mirror), torus and twist,
-// tokamak and stellarator, then the limits of a real machine.
+// Route (2026-11-17): pinches (fluid), mirror (particles), torus and twist,
+// toroidal pinch, tokamak, stellarator, then the limits of a real machine.
 #let r(name, f) = ([#text(fill: muted, name)], f)
 #let steps(..items, gap: 8mm) = grid(columns: (auto, 1fr), column-gutter: 7mm, row-gutter: gap,
   align: (right + horizon, left + horizon), ..items.pos().flatten())
@@ -79,17 +79,20 @@
   #at(6, 7, y: 0mm, steps(gap: 7mm,
     r([sausage], [$B_theta prop 1\/r$: #h(1mm) neck pinches further]),
     r([kink], [$B_theta$ crowds inside the bend]),
-    r([axial $B_z$], [$B_z^2 > B_theta^2 \/ 2$ #h(2mm) #text(fill: muted)[sausage stable]]),
-    r([Kruskal–Shafranov], $q(a) = (2 pi a B_z)/(L B_theta (a)) > 1$),
   ))
-  #at(1, 12, y: 100mm, result-box([$q(a) > 1$ #h(4mm) #text(fill: muted)[torus: $L = 2 pi R$]], [fluid: $q$ not too small]))
-  #at(1, 12, y: 140mm, note[blue arrows: magnetic pressure on the column · $m$ poloidal mode number · $L$ column length])
-  #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1098/rspa.1954.0120")[Kruskal & Schwarzschild · Proc. R. Soc. A 223, 348 (1954)] · Shafranov · Sov. J. At. Energy 1, 709 (1956)])
+  #at(1, 12, y: 100mm, result-box([pure Z-pinch: unstable], [no axial field]))
+  #at(1, 12, y: 140mm, note[blue arrows: magnetic pressure on the column · $m$ poloidal mode number])
 ]
 
 #slide(section: "magnetic-pressure", title: [Screw pinch])[
-  #at(1, 12, y: 0mm, deck-fig("screw_pinch", columns: 12))
-  #at(1, 12, y: 122mm, align(center, $q = (2 pi a B_z)/(L B_theta)$))
+  #at(1, 6, y: 6mm, deck-fig("screw_pinch", columns: 6))
+  #at(7, 6, y: 4mm, steps(gap: 8mm,
+    r([axial $B_z$], [$B_z^2 > B_theta^2 \/ 2$: #h(1mm) sausage stable]),
+    r([field-line pitch], $q(a) = (2 pi a B_z)/(L B_theta (a))$),
+    r([Kruskal–Shafranov], [$q(a) > 1$: #h(1mm) kink stable]),
+  ))
+  #at(1, 12, y: 100mm, result-box([$q(a) > 1$ #h(4mm) #text(fill: muted)[torus: $L = 2 pi R$]], [fluid: $q$ not too small]))
+  #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1098/rspa.1954.0120")[Kruskal & Schwarzschild · Proc. R. Soc. A 223, 348 (1954)] · Shafranov · Sov. J. At. Energy 1, 709 (1956)])
 ]
 
 // ---------------------------------------------------- 5.3 Gyration and mirrors
@@ -107,6 +110,11 @@
 
 // ------------------------------------------- 5.4 Torus and twisted field lines
 #slide(section: "torus", title: [Torus with a toroidal field])[
+  #at(1, 12, y: 0mm, deck-fig("torus_tf_3d", columns: 12))
+  #at(1, 12, y: 140mm, cite-line[schematic: 12 toroidal-field coils, front sector removed])
+]
+
+#slide(section: "torus", title: [Drift in a toroidal field])[
   #at(1, 5, y: 0mm, pane({
     import draw: *
     line((6, 4), (6, 100), stroke: (paint: muted, thickness: 0.8pt, dash: "dashed"))
@@ -136,6 +144,8 @@
   #at(1, 12, y: 146mm, note[$bold(B)$ into the page · $N_c I_c$ total coil current · $v_parallel$, $v_perp$ along and across $bold(B)$])
 ]
 
+#widget-page("tokamak-exb", section: "torus", title: [Torus: drift, charge separation, $E times B$])
+
 #slide(section: "torus", title: [Twisted field lines])[
   #at(1, 6, y: 6mm, pane({
     import draw: *
@@ -157,12 +167,26 @@
   #at(1, 12, y: 146mm, note[$Delta phi$ toroidal angle per poloidal turn, $Delta$ orbit width, $B_theta$ poloidal field])
 ]
 
-#slide(section: "torus", title: [Toroidal pinch on a transformer])[
+#slide(section: "torus", title: [Window for the twist])[
+  #at(1, 12, y: 4mm, table(columns: (52mm, 1fr, 1fr), inset: (x: 4mm, y: 5mm), stroke: none,
+    align: (right + horizon, left + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    [], text(fill: muted)[particles], text(fill: muted)[fluid],
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[$q$ too small], [—], [kink: $q(a) < 1$],
+    text(fill: muted)[$q$ too large], [orbits leave: $q rho \/ sqrt(epsilon) tilde a$], [—],
+    table.hline(stroke: 0.6pt + rule),
+  ))
+  #at(2, 10, y: 76mm, result-box($1 < q(a) << a sqrt(epsilon) \/ rho$, [fluid: not too small · particles: not too large]))
+]
+
+// ------------------------------------ 5.5 Toroidal pinch, tokamak, stellarator
+#slide(section: "concepts", title: [Toroidal pinch on a transformer])[
   #at(1, 12, y: 0mm, deck-fig("zeta_3d", columns: 12))
   #at(1, 12, y: 140mm, cite-line[schematic, ZETA size: $R = 1.5 "m"$, $a = 0.5 "m"$ · iron-core transformer drives $I$ · field line drawn for $q(a) = 0.25$])
 ]
 
-#slide(section: "torus", title: [Toroidal pinch and ZETA])[
+#slide(section: "concepts", title: [Toroidal pinch and ZETA])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
     r([toroidal pinch], [strong $I$, weak $B_phi$ #h(3mm) $=>$ #h(3mm) $q(a) << 1$]),
     r([ZETA, Harwell 1957], [$R = 1.5 "m"$, #h(1mm) $a = 0.5 "m"$ #h(3mm) neutrons reported January 1958]),
@@ -176,7 +200,6 @@
     #link("https://doi.org/10.1103/PhysRevLett.33.1139")[Taylor · Phys. Rev. Lett. 33, 1139 (1974)]])
 ]
 
-// ------------------------------------------------- 5.5 Tokamak and stellarator
 #slide(section: "concepts", title: [Tokamak: ITER coil set])[
   #at(1, 12, y: 0mm, deck-fig("tokamak_3d", columns: 12))
   #at(1, 12, y: 140mm, cite-line[CS, PF: ITER, #link("https://github.com/PrincetonUniversity/M3DC1")[M3D-C1 device data] ·
@@ -192,22 +215,6 @@
   ))
   #at(2, 10, y: 100mm, result-box($B_theta \/ B_phi = epsilon \/ q approx 0.1$, [strong $B_phi$, current inside the window]))
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1038/224488a0")[Peacock et al. · Nature 224, 488 (1969)]])
-]
-
-#widget-page("tokamak-exb", section: "concepts", title: [Tokamak: drift, charge separation, $E times B$])
-
-#slide(section: "concepts", title: [Window for the twist])[
-  #at(1, 12, y: 4mm, table(columns: (52mm, 1fr, 1fr), inset: (x: 4mm, y: 5mm), stroke: none,
-    align: (right + horizon, left + horizon, left + horizon),
-    table.hline(stroke: 0.6pt + rule),
-    [], text(fill: muted)[particles], text(fill: muted)[fluid],
-    table.hline(stroke: 0.6pt + rule),
-    text(fill: muted)[$q$ too small], [—], [kink: $q(a) < 1$],
-    text(fill: muted)[$q$ too large], [orbits leave: $q rho \/ sqrt(epsilon) tilde a$], [—],
-    table.hline(stroke: 0.6pt + rule),
-  ))
-  #at(2, 10, y: 76mm, result-box($1 < q(a) << a sqrt(epsilon) \/ rho$, [tokamak: $q_95 approx 3$]))
-  #at(1, 12, y: 146mm, note[$q_95$: $q$ on the flux surface enclosing 95 % of the poloidal flux])
 ]
 
 #slide(section: "concepts", title: [Stellarator: NCSX modular coils])[
