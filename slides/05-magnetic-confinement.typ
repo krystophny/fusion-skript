@@ -1,8 +1,8 @@
 #import "theme.typ": *
 #show: deck.with(chapter: 5)
 
-// Route (2026-11-17): fluid and particle pictures, pinch, mirror, torus,
-// kink and sausage, then the concepts and the limits of a real machine.
+// Route (2026-11-17): linear devices (pinches, mirror), torus and twist,
+// tokamak and stellarator, then the limits of a real machine.
 #let r(name, f) = ([#text(fill: muted, name)], f)
 #let steps(..items, gap: 8mm) = grid(columns: (auto, 1fr), column-gutter: 7mm, row-gutter: gap,
   align: (right + horizon, left + horizon), ..items.pos().flatten())
@@ -15,8 +15,7 @@
 #let soft = plot-orange.lighten(82%)
 #let pane(body) = canvas(length: 1mm, body)
 
-// -------------------------------------------- 5.1 Fluid and particle pictures
-
+// --------------------------------------------- 5.1 Fluid and particle pictures
 #slide(section: "two-pictures", title: [Fluid and particle pictures])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
     r([Lawson], [$p tau_E >= 10 "bar s"$ #h(4mm) at #h(1mm) $k_B T approx 15 "keV"$]),
@@ -33,8 +32,7 @@
   #at(1, 12, y: 140mm, note[$rho_m$ mass density, $bold(u)$ flow velocity, $bold(j)$ current density])
 ]
 
-// --------------------------------------------- 5.2 Magnetic pressure, pinches
-
+// ------------------------------------------- 5.2 Magnetic pressure and pinches
 #slide(section: "magnetic-pressure", title: [Magnetic pressure and $beta$])[
   #at(1, 5, y: 0mm, deck-fig("theta_pinch", columns: 5))
   #at(6, 7, y: 0mm, steps(gap: 7mm,
@@ -59,13 +57,42 @@
   #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1103/PhysRev.45.890")[Bennett · Phys. Rev. 45, 890 (1934)]])
 ]
 
+#slide(section: "magnetic-pressure", title: [Sausage and kink])[
+  #at(1, 5, y: 0mm, canvas(length: 0.85mm, {
+    import draw: *
+    let n = 60
+    let top = range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, 70 + 9 + 4 * calc.cos(2 * calc.pi * (x - 5) / 36.7)) })
+    let bot = range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, 70 - 9 - 4 * calc.cos(2 * calc.pi * (x - 5) / 36.7)) })
+    line(..top, stroke: 1pt + plot-orange); line(..bot, stroke: 1pt + plot-orange)
+    for x0 in (23.35, 60.05, 96.75) {
+      line((x0, 95), (x0, 81), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
+      line((x0, 45), (x0, 59), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
+    }
+    content((60, 100), lbl[sausage, $m = 0$])
+    let mid(x) = 22 + 7 * calc.sin(2 * calc.pi * (x - 5) / 110)
+    line(..range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, mid(x) + 7) }), stroke: 1pt + plot-orange)
+    line(..range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, mid(x) - 7) }), stroke: 1pt + plot-orange)
+    line((32.5, 4), (32.5, 18), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
+    line((87.5, 40), (87.5, 26), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
+    content((60, 42), lbl[kink, $m = 1$])
+  }))
+  #at(6, 7, y: 0mm, steps(gap: 7mm,
+    r([sausage], [$B_theta prop 1\/r$: #h(1mm) neck pinches further]),
+    r([kink], [$B_theta$ crowds inside the bend]),
+    r([axial $B_z$], [$B_z^2 > B_theta^2 \/ 2$ #h(2mm) #text(fill: muted)[sausage stable]]),
+    r([Kruskal–Shafranov], $q(a) = (2 pi a B_z)/(L B_theta (a)) > 1$),
+  ))
+  #at(1, 12, y: 100mm, result-box([$q(a) > 1$ #h(4mm) #text(fill: muted)[torus: $L = 2 pi R$]], [fluid: $q$ not too small]))
+  #at(1, 12, y: 140mm, note[blue arrows: magnetic pressure on the column · $m$ poloidal mode number · $L$ column length])
+  #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1098/rspa.1954.0120")[Kruskal & Schwarzschild · Proc. R. Soc. A 223, 348 (1954)] · Shafranov · Sov. J. At. Energy 1, 709 (1956)])
+]
+
 #slide(section: "magnetic-pressure", title: [Screw pinch])[
   #at(1, 12, y: 0mm, deck-fig("screw_pinch", columns: 12))
   #at(1, 12, y: 122mm, align(center, $q = (2 pi a B_z)/(L B_theta)$))
 ]
 
-// ------------------------------------------------- 5.3 Gyration and mirrors
-
+// ---------------------------------------------------- 5.3 Gyration and mirrors
 #slide(section: "mirrors", title: [Gyration and magnetic mirror])[
   #at(1, 6, y: 0mm, deck-fig("mirror_3d", columns: 6))
   #at(7, 6, y: 0mm, steps(gap: 7mm,
@@ -78,8 +105,7 @@
   #at(1, 12, y: 146mm, note[$theta$ pitch angle at $B_"min"$, $R_m$ mirror ratio, $a$ plasma radius])
 ]
 
-// ---------------------------------------------- 5.4 Torus and field-line twist
-
+// ------------------------------------------- 5.4 Torus and twisted field lines
 #slide(section: "torus", title: [Torus with a toroidal field])[
   #at(1, 5, y: 0mm, pane({
     import draw: *
@@ -131,77 +157,12 @@
   #at(1, 12, y: 146mm, note[$Delta phi$ toroidal angle per poloidal turn, $Delta$ orbit width, $B_theta$ poloidal field])
 ]
 
-// ------------------------------------------------------ 5.5 Sausage and kink
-
-#slide(section: "kink-sausage", title: [Sausage and kink])[
-  #at(1, 5, y: 0mm, canvas(length: 0.85mm, {
-    import draw: *
-    let n = 60
-    let top = range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, 70 + 9 + 4 * calc.cos(2 * calc.pi * (x - 5) / 36.7)) })
-    let bot = range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, 70 - 9 - 4 * calc.cos(2 * calc.pi * (x - 5) / 36.7)) })
-    line(..top, stroke: 1pt + plot-orange); line(..bot, stroke: 1pt + plot-orange)
-    for x0 in (23.35, 60.05, 96.75) {
-      line((x0, 95), (x0, 81), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
-      line((x0, 45), (x0, 59), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
-    }
-    content((60, 100), lbl[sausage, $m = 0$])
-    let mid(x) = 22 + 7 * calc.sin(2 * calc.pi * (x - 5) / 110)
-    line(..range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, mid(x) + 7) }), stroke: 1pt + plot-orange)
-    line(..range(0, n + 1).map(i => { let x = 5 + i * 110 / n; (x, mid(x) - 7) }), stroke: 1pt + plot-orange)
-    line((32.5, 4), (32.5, 18), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
-    line((87.5, 40), (87.5, 26), stroke: 1.4pt + plot-blue, mark: (end: "stealth", fill: plot-blue))
-    content((60, 42), lbl[kink, $m = 1$])
-  }))
-  #at(6, 7, y: 0mm, steps(gap: 7mm,
-    r([sausage], [$B_theta prop 1\/r$: #h(1mm) neck pinches further]),
-    r([kink], [$B_theta$ crowds inside the bend]),
-    r([axial $B_z$], [$B_z^2 > B_theta^2 \/ 2$ #h(2mm) #text(fill: muted)[sausage stable]]),
-    r([Kruskal–Shafranov], $q(a) = (2 pi a B_z)/(L B_theta (a)) > 1$),
-  ))
-  #at(1, 12, y: 100mm, result-box([$q(a) > 1$ #h(4mm) #text(fill: muted)[torus: $L = 2 pi R$]], [fluid: $q$ not too small]))
-  #at(1, 12, y: 140mm, note[blue arrows: magnetic pressure on the column · $m$ poloidal mode number · $L$ column length])
-  #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1098/rspa.1954.0120")[Kruskal & Schwarzschild · Proc. R. Soc. A 223, 348 (1954)] · Shafranov · Sov. J. At. Energy 1, 709 (1956)])
-]
-
-#slide(section: "kink-sausage", title: [Window for the twist])[
-  #at(1, 12, y: 4mm, table(columns: (52mm, 1fr, 1fr), inset: (x: 4mm, y: 5mm), stroke: none,
-    align: (right + horizon, left + horizon, left + horizon),
-    table.hline(stroke: 0.6pt + rule),
-    [], text(fill: muted)[particles], text(fill: muted)[fluid],
-    table.hline(stroke: 0.6pt + rule),
-    text(fill: muted)[$q$ too small], [—], [kink: $q(a) < 1$],
-    text(fill: muted)[$q$ too large], [orbits leave: $q rho \/ sqrt(epsilon) tilde a$], [—],
-    table.hline(stroke: 0.6pt + rule),
-  ))
-  #at(2, 10, y: 76mm, result-box($1 < q(a) << a sqrt(epsilon) \/ rho$, [tokamak: $q_95 approx 3$]))
-  #at(1, 12, y: 146mm, note[$q_95$: $q$ on the flux surface enclosing 95 % of the poloidal flux])
-]
-
-#slide(section: "kink-sausage", title: [Stability and losses])[
-  #at(1, 12, y: 4mm, table(columns: (62mm, 1fr, 1fr), inset: (x: 4mm, y: 4.2mm), stroke: none,
-    align: (right + horizon, left + horizon, left + horizon),
-    table.hline(stroke: 0.6pt + rule),
-    [], text(fill: muted)[stable], text(fill: muted)[losses],
-    table.hline(stroke: 0.6pt + rule),
-    text(fill: muted)[Z-pinch], [no: kink, sausage], [—],
-    text(fill: muted)[$theta$-pinch], [yes], [ends],
-    text(fill: muted)[screw pinch], [$q(a) > 1$], [ends],
-    text(fill: muted)[mirror], [interchange unless minimum-$B$], [loss cone],
-    text(fill: muted)[torus, only $B_phi$], [no equilibrium], [drift, $E times B$],
-    text(fill: muted)[tokamak], [$1 < q(a) lt.tilde 3$], [—],
-    table.hline(stroke: 0.6pt + rule),
-  ))
-  #at(1, 12, y: 140mm, note[minimum-$B$: $B$ grows in every direction away from the plasma centre (Ioffe bars, baseball coil)])
-]
-
-// ------------------------------------- 5.6 Toroidal pinch, tokamak, stellarator
-
-#slide(section: "concepts", title: [Toroidal pinch on a transformer])[
+#slide(section: "torus", title: [Toroidal pinch on a transformer])[
   #at(1, 12, y: 0mm, deck-fig("zeta_3d", columns: 12))
   #at(1, 12, y: 140mm, cite-line[schematic, ZETA size: $R = 1.5 "m"$, $a = 0.5 "m"$ · iron-core transformer drives $I$ · field line drawn for $q(a) = 0.25$])
 ]
 
-#slide(section: "concepts", title: [Toroidal pinch and ZETA])[
+#slide(section: "torus", title: [Toroidal pinch and ZETA])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
     r([toroidal pinch], [strong $I$, weak $B_phi$ #h(3mm) $=>$ #h(3mm) $q(a) << 1$]),
     r([ZETA, Harwell 1957], [$R = 1.5 "m"$, #h(1mm) $a = 0.5 "m"$ #h(3mm) neutrons reported January 1958]),
@@ -215,6 +176,7 @@
     #link("https://doi.org/10.1103/PhysRevLett.33.1139")[Taylor · Phys. Rev. Lett. 33, 1139 (1974)]])
 ]
 
+// ------------------------------------------------- 5.5 Tokamak and stellarator
 #slide(section: "concepts", title: [Tokamak: ITER coil set])[
   #at(1, 12, y: 0mm, deck-fig("tokamak_3d", columns: 12))
   #at(1, 12, y: 140mm, cite-line[CS, PF: ITER, #link("https://github.com/PrincetonUniversity/M3DC1")[M3D-C1 device data] ·
@@ -234,6 +196,20 @@
 
 #widget-page("tokamak-exb", section: "concepts", title: [Tokamak: drift, charge separation, $E times B$])
 
+#slide(section: "concepts", title: [Window for the twist])[
+  #at(1, 12, y: 4mm, table(columns: (52mm, 1fr, 1fr), inset: (x: 4mm, y: 5mm), stroke: none,
+    align: (right + horizon, left + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    [], text(fill: muted)[particles], text(fill: muted)[fluid],
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[$q$ too small], [—], [kink: $q(a) < 1$],
+    text(fill: muted)[$q$ too large], [orbits leave: $q rho \/ sqrt(epsilon) tilde a$], [—],
+    table.hline(stroke: 0.6pt + rule),
+  ))
+  #at(2, 10, y: 76mm, result-box($1 < q(a) << a sqrt(epsilon) \/ rho$, [tokamak: $q_95 approx 3$]))
+  #at(1, 12, y: 146mm, note[$q_95$: $q$ on the flux surface enclosing 95 % of the poloidal flux])
+]
+
 #slide(section: "concepts", title: [Stellarator: NCSX modular coils])[
   #at(1, 12, y: 0mm, deck-fig("stellarator_3d", columns: 12))
   #at(1, 12, y: 140mm, cite-line[NCSX modular coils and VMEC boundary: #link("https://github.com/PrincetonUniversity/STELLOPT")[STELLOPT benchmark data] · field line: $theta + lambda = theta_0 + iota phi$, $iota = 0.65$ · front coils removed])
@@ -248,6 +224,24 @@
   ))
   #at(2, 10, y: 100mm, result-box([twist from coils], [orbits need three-dimensional optimisation]))
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1063/1.1705883")[Spitzer · Phys. Fluids 1, 253 (1958)]])
+]
+
+#slide(section: "concepts", title: [Stability and losses])[
+  #at(1, 12, y: 4mm, table(columns: (62mm, 1fr, 1fr), inset: (x: 4mm, y: 4.2mm), stroke: none,
+    align: (right + horizon, left + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    [], text(fill: muted)[stable], text(fill: muted)[losses],
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[Z-pinch], [no: kink, sausage], [—],
+    text(fill: muted)[$theta$-pinch], [yes], [ends],
+    text(fill: muted)[screw pinch], [$q(a) > 1$], [ends],
+    text(fill: muted)[mirror], [interchange unless minimum-$B$], [loss cone],
+    text(fill: muted)[torus, only $B_phi$], [no equilibrium], [drift, $E times B$],
+    text(fill: muted)[tokamak], [$1 < q(a) lt.tilde 3$], [—],
+    text(fill: muted)[stellarator], [no current-driven kink], [3D orbits: optimised shape],
+    table.hline(stroke: 0.6pt + rule),
+  ))
+  #at(1, 12, y: 140mm, note[minimum-$B$: $B$ grows in every direction away from the plasma centre (Ioffe bars, baseball coil)])
 ]
 
 
