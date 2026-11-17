@@ -232,6 +232,8 @@
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1038/224488a0")[Peacock et al. · Nature 224, 488 (1969)]])
 ]
 
+#widget-page("tokamak-exb", section: "concepts", title: [Tokamak: drift, charge separation, $E times B$])
+
 #slide(section: "concepts", title: [Stellarator: NCSX modular coils])[
   #at(1, 12, y: 0mm, deck-fig("stellarator_3d", columns: 12))
   #at(1, 12, y: 140mm, cite-line[NCSX modular coils and VMEC boundary: #link("https://github.com/PrincetonUniversity/STELLOPT")[STELLOPT benchmark data] · field line: $theta + lambda = theta_0 + iota phi$, $iota = 0.65$ · front coils removed])
