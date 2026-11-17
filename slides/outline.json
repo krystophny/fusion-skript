@@ -179,24 +179,18 @@
     },
     {
       "number": "5.5",
-      "title": "Sausage and kink",
-      "label": "kink-sausage",
-      "chapter": "magnetic-confinement"
-    },
-    {
-      "number": "5.6",
-      "title": "Toroidal pinch, tokamak, stellarator",
+      "title": "Tokamak and stellarator",
       "label": "concepts",
       "chapter": "magnetic-confinement"
     },
     {
-      "number": "5.7",
+      "number": "5.6",
       "title": "Pressure and density limits",
       "label": "pressure-beta",
       "chapter": "magnetic-confinement"
     },
     {
-      "number": "5.8",
+      "number": "5.7",
       "title": "Where is the optimum?",
       "label": "optimum",
       "chapter": "magnetic-confinement"
