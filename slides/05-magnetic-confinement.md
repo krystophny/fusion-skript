@@ -52,6 +52,7 @@ the toroidal screw pinch, mirror with mu, trapped–passing boundary and loss co
 | 21 | 5.6 Pressure limit: beta | Pressure-driven kink and ballooning (bad curvature outboard). Troyon beta_max[%] = beta_N I_p/(a B), beta_N ~ 2.8 (up to ~4 with wall and profile). ITER: 4 % limit, design 2.5 % (same 2.5 % as page 3). Stellarator: coils set equilibrium and stability, W7-X design <beta> ~ 5 %. |
 | 22 | 5.6 Density limit: Greenwald and Sudo | n_G = I_p/(pi a^2): ITER 1.2e20, operation ~0.85 n_G. Mechanism: radiating edge shrinks the current channel, MHD, disruption. Sudo n_c = 0.25 sqrt(P B/(a^2 R)); W7-X 5 MW, 2.5 T: 0.7e20. Tokamak hard limit, stellarator soft. |
 | 23 | 5.6 Disruption | Thermal quench ~1 ms (ITER W ~ 350 MJ), current quench tens of ms with forces, runaway electrons; avoid and mitigate (gas, pellets). Stellarator: none. |
+| 23a | Widget `disruption` | MILCA in WebAssembly (`notebooks/wasm/milca_tokamak.mjs`): tokamak operating point against q, beta and density limits, and the disruption that follows when a start lies beyond a limit. |
 | 24 | Widget `limits` | as before. |
 | 25 | Widget `machines` | as before. |
 | 26 | 5.8 Tokamak, built up | Eight build steps, one component group each, exploded (CS lifted 10 m, upper/lower PF spread 2.5 m, heating pulled out): plasma, TF, CS, PF, vessel + blanket, divertor (54 cassettes), NBI + ICRH + ECRH, cryostat. Figure `figures_tokamak_parts.py`. |

@@ -310,6 +310,8 @@
   #at(2, 10, y: 92mm, result-box([limits of a tokamak are hard limits], [stellarator: no plasma current, no disruption]))
 ]
 
+#widget-page("disruption", section: "pressure-beta", title: [Stability limits and disruptions])
+
 // ------------------------------------------------- 5.7 Where is the optimum? ---
 
 #widget-page("limits", section: "optimum", title: [Density and pressure limits])
