@@ -185,7 +185,7 @@
     },
     {
       "number": "5.6",
-      "title": "Pressure and density limits",
+      "title": "Stability limits: pressure and density",
       "label": "pressure-beta",
       "chapter": "magnetic-confinement"
     },
@@ -193,6 +193,12 @@
       "number": "5.7",
       "title": "Where is the optimum?",
       "label": "optimum",
+      "chapter": "magnetic-confinement"
+    },
+    {
+      "number": "5.8",
+      "title": "Components of a tokamak and a stellarator",
+      "label": "components",
       "chapter": "magnetic-confinement"
     }
   ]
