@@ -233,6 +233,19 @@
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1063/1.1705883")[Spitzer · Phys. Fluids 1, 253 (1958)]])
 ]
 
+#slide(section: "concepts", title: [Principles of toroidal confinement])[
+  #at(1, 7, y: 0mm, steps(gap: 7mm,
+    r([force balance], $nabla p = bold(j) times bold(B)$),
+    r([$bold(B) dot$], [$bold(B) dot nabla p = 0$: #h(1mm) field lines lie on surfaces $p = "const"$]),
+    r([$bold(j) dot$], [$bold(j) dot nabla p = 0$: #h(1mm) currents too]),
+    r([twist], [each line covers its surface: #h(1mm) drifts average out]),
+    r([closed], [no field line leaves: #h(1mm) no end losses]),
+  ))
+  #at(1, 7, y: 104mm, result-box([nested toroidal flux surfaces], [$beta = 2 mu_0 p \/ B^2 << 1$: #h(1mm) $bold(B)$ almost force-free]))
+  #at(8, 5, y: -6mm, deck-fig("tokamak_section", columns: 5))
+  #at(1, 7, y: 146mm, note[schematic ITER-size cross-section: closed surfaces inside the separatrix, open field lines outside])
+]
+
 #slide(section: "concepts", title: [Stability and losses])[
   #at(1, 12, y: 4mm, table(columns: (62mm, 1fr, 1fr), inset: (x: 4mm, y: 4.2mm), stroke: none,
     align: (right + horizon, left + horizon, left + horizon),
@@ -252,32 +265,157 @@
 ]
 
 
+// ------------------------------------------------ 5.6 Stability limits ---
 #slide(section: "pressure-beta", title: [Pressure and density limits])[
   #at(1, 12, y: 0mm, steps(gap: 8mm,
     r([pressure], $p = 2 n k_B T, quad beta = (2 mu_0 p)/B^2 quad => quad p <= beta_max B^2 \/ 2 mu_0$),
-    r([density], [$n <= n_G = I_p \/ (pi a^2)$ #h(3mm) #text(size: 14pt, fill: muted)[$10^20 "m"^(-3)$, MA, m]]),
+    r([fusion power], $p_"fus" prop sv \/ (k_B T)^2 thin p^2 prop beta^2 B^4$),
   ))
-  #at(2, 10, y: 62mm, result-box($p_"fus" prop sv/(k_B T)^2 thin beta^2 B^4$, [fixed $p$: optimum 13.5 keV #h(2mm) (4.4) #h(4mm) twice $B$: 16 times $p_"fus"$]))
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1088/0741-3335/44/8/201")[Greenwald · Plasma Phys. Control. Fusion 44, R27 (2002)]])
+  #at(2, 10, y: 62mm, result-box([twice $B$: #h(1mm) 16 times $p_"fus"$], [fixed $p$: optimum 13.5 keV (4.4) #h(3mm) what limits $beta$ and $n$?]))
 ]
 
-// ------------------------------------------------- 5.2 Where is the optimum? ---
+#slide(section: "pressure-beta", title: [Pressure limit: $beta$])[
+  #at(1, 12, y: 0mm, steps(gap: 7mm,
+    r([cause], [pressure gradient drives kink and ballooning modes #h(2mm) #text(fill: muted)[bad curvature outboard]]),
+    r([Troyon], [$beta_max = beta_N I_p \/ (a B)$ #h(3mm) #text(fill: muted)[$beta$ in %, $I_p$ in MA, $a$ in m, $B$ in T]]),
+    r([ideal MHD], [$beta_N approx 2.8$ #h(3mm) #text(fill: muted)[wall and current profile: up to $approx 4$]]),
+    r([ITER], [$I_p = 15 "MA"$, $a = 2 "m"$, $B = 5.3 "T"$: #h(1mm) $beta_max approx 4 %$, #h(1mm) design $beta approx 2.5 %$]),
+    r([stellarator], [no current: equilibrium and stability set by the coils #h(2mm) #text(fill: muted)[W7-X design $chevron.l beta chevron.r approx 5 %$]]),
+  ))
+  #at(2, 10, y: 110mm, result-box($beta_max prop I_p \/ (a B)$, [more current, more pressure, but $q(a) > 2$ caps $I_p$]))
+  #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1088/0741-3335/26/1A/319")[Troyon et al. · Plasma Phys. Control. Fusion 26, 209 (1984)]])
+]
+
+#slide(section: "pressure-beta", title: [Density limit: Greenwald and Sudo])[
+  #at(1, 12, y: 0mm, steps(gap: 7mm,
+    r([tokamak], [$n_G = I_p \/ (pi a^2)$ #h(3mm) #text(fill: muted)[$10^20 "m"^(-3)$, MA, m; empirical]]),
+    r([ITER], [$n_G = 15 \/ (pi dot 4) = 1.2 times 10^20 "m"^(-3)$ #h(3mm) #text(fill: muted)[operation near $0.85 thin n_G$]]),
+    r([mechanism], [cold, radiating edge shrinks the current channel #h(1mm) $->$ #h(1mm) MHD modes #h(1mm) $->$ #h(1mm) disruption]),
+    r([stellarator], [$n_c = 0.25 sqrt(P B \/ (a^2 R))$ #h(3mm) #text(fill: muted)[Sudo; MW, T, m]]),
+    r([W7-X], [$P = 5 "MW"$, $B = 2.5 "T"$, $a = 0.53 "m"$, $R = 5.5 "m"$: #h(1mm) $n_c approx 0.7 times 10^20 "m"^(-3)$]),
+  ))
+  #at(2, 10, y: 104mm, result-box([tokamak: hard limit #h(6mm) stellarator: soft limit], [set by $I_p$ · set by the heating power]))
+  #at(1, 12, y: 150mm, cite-line[
+    #link("https://doi.org/10.1088/0741-3335/44/8/201")[Greenwald · Plasma Phys. Control. Fusion 44, R27 (2002)] ·
+    #link("https://doi.org/10.1088/0029-5515/30/1/002")[Sudo et al. · Nucl. Fusion 30, 11 (1990)]])
+]
+
+#slide(section: "pressure-beta", title: [Disruption])[
+  #at(1, 12, y: 0mm, steps(gap: 7mm,
+    r([thermal quench], [stored energy lost in $approx 1 "ms"$ #h(2mm) #text(fill: muted)[ITER $W approx 350 "MJ"$]]),
+    r([current quench], [$I_p$ decays in tens of ms: #h(1mm) eddy currents, forces on the vessel]),
+    r([runaways], [the induced field accelerates electrons to MeV energies]),
+    r([control], [stay inside the limits, #h(1mm) mitigate by massive gas or pellet injection]),
+  ))
+  #at(2, 10, y: 92mm, result-box([limits of a tokamak are hard limits], [stellarator: no plasma current, no disruption]))
+]
+
+// ------------------------------------------------- 5.7 Where is the optimum? ---
 
 #widget-page("limits", section: "optimum", title: [Density and pressure limits])
 
-#slide(section: "optimum", title: [Limits and confinement scaling])[
-  #at(1, 12, y: 0mm, steps(gap: 7mm,
-    r([limits], $n <= n_G, quad p <= beta_max B^2 \/ 2 mu_0 quad => quad T_times = p_max \/ 2 n_max$),
-    r([tokamak], [$T_times approx 0.39 thin beta_N a B \/ f_"GW" "keV"$ #h(4mm) #text(fill: muted)[ITER 8.8 keV]]),
-    r([IPB98(y,2)], $tau_E prop I^0.93 R^1.97 overline(n)^0.41 P^(-0.69) dots$),
+#widget-page("machines", section: "optimum", title: [Where present machines stand])
+
+// ----------------------------------------------------- 5.8 Components ---
+#build(8, slide(section: "components", title: [Tokamak, built up])[
+  #context {
+    let k = build-step()
+    let k = if k == none { 8 } else { k }
+    at(1, 12, y: -4mm, deck-fig("tokamak_explode_" + str(k), columns: 12))
+  }
+  #at(1, 12, y: 146mm, cite-line[schematic, ITER size: CS and PF from M3D-C1 device data, plasma from the ITER Physics Basis · vessel, blanket, divertor and heating schematic · exploded: CS lifted, PF coils spread])
+])
+
+#slide(section: "components", title: [Magnets])[
+  #at(1, 12, y: 0mm, table(columns: (40mm, 1fr, 1fr), inset: (x: 4mm, y: 4.2mm), stroke: none,
+    align: (right + horizon, left + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    [], text(fill: muted)[job], text(fill: muted)[ITER],
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[TF coils], [toroidal field $B_phi$ #h(1mm) (5.4)], [18 coils, Nb#sub[3]Sn, 11.8 T peak, 5.3 T on axis, 41 GJ],
+    text(fill: muted)[central solenoid], [transformer: drives $I_p$], [6 modules, Nb#sub[3]Sn, 13 T, 6.4 GJ],
+    text(fill: muted)[PF coils], [shape and position of the plasma], [6 rings, NbTi, up to 24 m diameter, 6 T],
+    text(fill: muted)[correction coils], [cancel field errors], [18 coils],
+    text(fill: muted)[in-vessel coils], [fast vertical stability, ELM control], [copper, inside the vessel],
+    table.hline(stroke: 0.6pt + rule),
   ))
-  #at(1, 12, y: 76mm, result-box([$tau_E$ falls with heating power #h(2mm) $=>$ #h(2mm) optimum #box[$approx 6$–$9 "keV"$]], none))
-  #at(1, 12, y: 146mm, cite-line[
-    #link("https://doi.org/10.1088/0029-5515/39/12/302")[ITER Physics Basis · Nucl. Fusion 39, 2175 (1999)] ·
-    #link("https://doi.org/10.1088/0029-5515/45/12/024")[Yamada et al. · Nucl. Fusion 45, 1684 (2005)]])
+  #at(1, 12, y: 118mm, result-box([superconductors at 4 K behind thermal shields], [all magnets: 51 GJ, about 10 000 t]))
+  #at(1, 12, y: 156mm, cite-line[#link("https://www.iter.org/machine/magnets")[ITER Organization: magnets]])
 ]
 
-#widget-page("popcon", section: "optimum", title: [Operating space of a device])
+#slide(section: "components", title: [Plasma current: inductive and non-inductive])[
+  #at(1, 12, y: 0mm, steps(gap: 7mm,
+    r([transformer], [$U_"loop" = - dif Psi_"CS" \/ dif t$ #h(3mm) #text(fill: muted)[finite flux swing $Psi_"CS"$: pulsed]]),
+    r([ITER], [15 MA for 300–500 s]),
+    r([current drive], [push electrons or ions toroidally: #h(1mm) NBCD, ECCD, LHCD]),
+    r([bootstrap], [pressure gradient + trapped particles drive current by themselves]),
+    r([steady state], [$I_p = I_"CD" + I_"bs"$ #h(3mm) #text(fill: muted)[costs recirculating power]]),
+  ))
+  #at(2, 10, y: 108mm, result-box([tokamak: pulsed or paid-for current], [stellarator: no plasma current needed]))
+  #at(1, 12, y: 156mm, cite-line[#link("https://www.iter.org/machine/magnets")[ITER Organization: central solenoid]])
+]
 
-#widget-page("machines", section: "optimum", title: [Where present machines stand])
+#slide(section: "components", title: [Heating])[
+  #at(1, 12, y: 0mm, table(columns: (36mm, 1fr, 1fr), inset: (x: 4mm, y: 4.4mm), stroke: none,
+    align: (right + horizon, left + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    [], text(fill: muted)[physics], text(fill: muted)[ITER],
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[Ohmic], [$P = eta j^2$, #h(1mm) $eta prop T_e^(-3\/2)$: fades above a few keV], [start-up],
+    text(fill: muted)[NBI], [fast neutrals cross $bold(B)$, ionise, slow down by collisions], [2 × 16.5 MW, 1 MeV D from D#super[−] ions],
+    text(fill: muted)[ECRH], [wave at $f_"ce" = e B \/ (2 pi m_e) = 28 "GHz/T"$], [170 GHz, 40 MW → 67 MW],
+    text(fill: muted)[ICRH], [wave at $f_"ci" = Z e B \/ (2 pi m_i)$, #h(1mm) D: 7.6 MHz/T], [40–55 MHz, 20 MW],
+    text(fill: muted)[alphas], [3.5 MeV $alpha$ slow down on electrons], [$P_alpha = P_"fus" \/ 5 = 100 "MW"$],
+    table.hline(stroke: 0.6pt + rule),
+  ))
+  #at(1, 12, y: 122mm, result-box([resonance: frequency selects species and location], [$B prop 1\/R$: the resonance $f = f_c (R)$ sits on one vertical line]))
+  #at(1, 12, y: 158mm, cite-line[#link("https://www.iter.org/machine/supporting-systems/external-heating-systems")[ITER Organization: external heating systems (2024 baseline)]])
+]
+
+#slide(section: "components", title: [Wall, blanket and divertor])[
+  #at(1, 7, y: 0mm, steps(gap: 6mm,
+    r([separatrix], [last closed surface; #h(1mm) X-point from a divertor coil]),
+    r([scrape-off layer], [open field lines guide the exhaust to the targets]),
+    r([width], [$lambda_q approx 1 "mm"$ at the outer midplane]),
+    r([targets], [tungsten, 10 MW/m² steady, 54 cassettes]),
+    r([first wall], [440 blanket modules, 600 m², water 736 MW]),
+  ))
+  #at(1, 7, y: 104mm, result-box([$P_"sep" tilde 100 "MW"$ onto a few m²], [radiate most of it before the target]))
+  #at(8, 5, y: -6mm, deck-fig("tokamak_section", columns: 5))
+  #at(1, 12, y: 150mm, cite-line[
+    #link("https://doi.org/10.1088/0029-5515/53/9/093031")[Eich et al. · Nucl. Fusion 53, 093031 (2013)] ·
+    #link("https://www.iter.org/machine/divertor")[ITER: divertor] · #link("https://www.iter.org/machine/blanket")[blanket]])
+]
+
+#slide(section: "components", title: [Stellarator: what changes])[
+  #at(1, 12, y: 0mm, table(columns: (46mm, 1fr, 1fr), inset: (x: 4mm, y: 4.4mm), stroke: none,
+    align: (right + horizon, left + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    [], text(fill: muted)[tokamak], text(fill: muted)[stellarator (W7-X)],
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[twist], [plasma current $I_p$], [3D coils: 50 non-planar, 20 planar],
+    text(fill: muted)[central solenoid], [yes], [none],
+    text(fill: muted)[current drive], [for steady state], [not needed],
+    text(fill: muted)[exhaust], [poloidal divertor], [island divertor, 10 units],
+    text(fill: muted)[main heating], [NBI, ICRH, ECRH], [ECRH 140 GHz (2nd harmonic at 2.5 T), NBI],
+    text(fill: muted)[limits], [Greenwald, disruptions], [Sudo, no disruptions],
+    table.hline(stroke: 0.6pt + rule),
+  ))
+  #at(2, 10, y: 118mm, result-box([simpler operation, harder coils], [3D shape optimised for orbits and stability]))
+]
+
+#slide(section: "components", title: [Components at a glance])[
+  #at(1, 12, y: 0mm, table(columns: (52mm, 1fr), inset: (x: 4mm, y: 4.0mm), stroke: none,
+    align: (right + horizon, left + horizon),
+    table.hline(stroke: 0.6pt + rule),
+    text(fill: muted)[confine], [TF coils, plasma current or 3D coils: twisted, closed surfaces],
+    text(fill: muted)[drive current], [central solenoid; NBI, ECCD, LHCD; bootstrap],
+    text(fill: muted)[shape and hold], [PF coils, in-vessel coils, feedback control],
+    text(fill: muted)[heat], [Ohmic, NBI, ECRH, ICRH; then alphas],
+    text(fill: muted)[exhaust], [separatrix, scrape-off layer, divertor, pumps],
+    text(fill: muted)[protect], [first wall, blanket shield, vacuum vessel],
+    text(fill: muted)[keep cold], [thermal shields, cryostat at $10^(-4)$ Pa],
+    table.hline(stroke: 0.6pt + rule),
+  ))
+  #at(1, 12, y: 132mm, note[next lectures: heating and current drive · exhaust and divertor · diagnostics · from tokamak to power plant (breeding blanket, tritium, thermal cycle, maintenance)])
+]

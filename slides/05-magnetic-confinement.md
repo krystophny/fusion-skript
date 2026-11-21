@@ -9,6 +9,21 @@ losses, toroidal drift and E x B, which need a twist with q not too large. Fluid
 again: sausage and kink, q not too small. Then ZETA, tokamak and stellarator,
 and last the limits of a real machine (pages moved from Chapter 4).
 
+Extended 2026-11-21 for Lecture 7 (24 Nov), which starts at page 8 (torus):
+principles of toroidal confinement (nested flux surfaces from force balance),
+stability limits (beta: Troyon; density: Greenwald for tokamaks, Sudo for
+stellarators; disruption), and section 5.8 with every main component seen once in
+an exploded 3D build-up of an ITER-size tokamak (plasma, TF, CS, PF, vessel and
+blanket, divertor, heating, cryostat), then magnets, plasma current and current
+drive, heating, wall/blanket/divertor with a poloidal cross-section, the stellarator
+differences and a one-page overview. Details follow in later lectures (heating and
+current drive, exhaust, diagnostics, power plant). The confinement-scaling page and
+the `popcon` widget left this deck; they return with transport in Chapter 7.
+
+Lecture 6 (17 Nov) covered pages 2–7 on the board (fluid and particle model,
+theta- and Z-pinch, sausage and kink, screw pinch with q, ZETA and the tokamak as
+the toroidal screw pinch, mirror with mu, trapped–passing boundary and loss cone).
+
 ## Pages
 
 | Page | Content | Lecturer cue |
@@ -32,8 +47,17 @@ and last the limits of a real machine (pages moved from Chapter 4).
 | 17 | 5.5 Stellarator: NCSX modular coils | 3D: 12 of the 18 NCSX modular coils (front ones removed), VMEC boundary, one field line from theta + lambda = theta_0 + iota phi (iota = 0.65). Data: STELLOPT benchmark. |
 | 18 | 5.5 Stellarator | Twist from 3D coils, no current: no current-driven kink, no disruptions, steady state; orbits need 3D optimisation. Model C -> ST 1970, W7-AS, W7-X. |
 | 19 | 5.5 Stability and losses | Table: Z-pinch unstable (kink always, sausage unless the pressure profile is gentle, Kadomtsev); theta-pinch ideal-MHD stable but end losses; screw pinch stable for q(a) > 1, end losses; mirror interchange-unstable unless minimum-B, loss cone refilled by collisions; torus with only B_phi has no equilibrium (drift, E x B); tokamak 1 < q(a) <~ 3. Z-pinch at Lawson n, T would need tau_E = 3 s but lives microseconds. |
-| 20 | 5.6 Pressure and density limits | Opening question: Chapter 4 placed the reactor in the Lawson landscape; what decides where a machine can sit is how high it can go in pressure and density. Pressure, not density, is what the magnet holds: p = 2nk_BT, so p_fus ∝ p²⟨σv⟩/T² — the 13.5 keV optimum of section 2.20 is a fixed-pressure optimum. With β: P_fus ∝ β²B⁴V, doubling B gives 16 times the power density. Density limit as one line (Greenwald, empirical); scaling laws come with transport. |
-| 21 | Widget `limits` | Fixed τ_E: colour = τ_E needed for Q; density line n_max, pressure line p_max = β_max B²/2μ₀. Optimum = crossing T× = p_max/2n_max clamped to [13.5, 25.7] keV; stellarator toggle drops the density limit → 13.5 keV. Defaults B = 6 T, β = 4.5 %, n_max = 10²⁰: 20 keV, 1.55 s. |
-| 22 | Limits and confinement scaling | Tokamak T× ≈ 0.39 β_N a B/f_GW keV (I_p cancels): ITER 8.8 keV, EU-DEMO 13.8 keV. IPB98(y,2) and ISS04 with coefficients; τ_E falls with heating power, so at the β limit τ_E ∝ T^−1.3 and the optimum moves to 6–9 keV. |
-| 23 | Widget `popcon` | 0-D operating space with parabolic profiles, pure D-T 50:50 and no radiation (both not yet taught), tau_E = H IPB98 or H ISS04 solved with P = W/tau_E. Presets ITER, SPARC, ARC, W7-X, HELIAS 5-B; B and H sliders. Best point sits on a limit. Without radiation and dilution the model is optimistic: ITER ignites at H = 1 (1.4 GW at 10 keV on the Greenwald line) and still at H = 0.85; H = 0.8 gives Q of about 80. Say that radiation and impurities lower this and come later. |
-| 24 | Widget `machines` | Wurzel & Hsu records in n–T, n–τ_E, T–τ_E and the Lawson plane; no present machine reaches the reactor window in all three at once; ITER and SPARC design points. Q bands are in peak values like the data (Wurzel & Hsu Eq. 45: peaked T, broad n, Z_eff 1.5–3.4, fixed 2026-11-09 after Lecture 4): the JET 1991 and JT-60U records fall below Q = 1, not above; the ITER and SPARC design points lie in the Q ≈ 10 to ignition band. |
+| 19a | 5.5 Principles of toroidal confinement | grad p = j x B, so B.grad p = 0 and j.grad p = 0: field lines and currents lie on surfaces p = const; twist covers each surface, closed lines, no ends. Result: nested flux surfaces, beta << 1. Figure: poloidal cross-section `tokamak_section` (same figure as on the divertor page). |
+| 20 | 5.6 Pressure and density limits | p = 2 n k_B T, p <= beta_max B^2/2mu0; p_fus ~ <sigma v>/T^2 p^2 ~ beta^2 B^4: twice B gives 16 times p_fus. Question: what limits beta and n? |
+| 21 | 5.6 Pressure limit: beta | Pressure-driven kink and ballooning (bad curvature outboard). Troyon beta_max[%] = beta_N I_p/(a B), beta_N ~ 2.8 (up to ~4 with wall and profile). ITER: 4 % limit, design 2.5 % (same 2.5 % as page 3). Stellarator: coils set equilibrium and stability, W7-X design <beta> ~ 5 %. |
+| 22 | 5.6 Density limit: Greenwald and Sudo | n_G = I_p/(pi a^2): ITER 1.2e20, operation ~0.85 n_G. Mechanism: radiating edge shrinks the current channel, MHD, disruption. Sudo n_c = 0.25 sqrt(P B/(a^2 R)); W7-X 5 MW, 2.5 T: 0.7e20. Tokamak hard limit, stellarator soft. |
+| 23 | 5.6 Disruption | Thermal quench ~1 ms (ITER W ~ 350 MJ), current quench tens of ms with forces, runaway electrons; avoid and mitigate (gas, pellets). Stellarator: none. |
+| 24 | Widget `limits` | as before. |
+| 25 | Widget `machines` | as before. |
+| 26 | 5.8 Tokamak, built up | Eight build steps, one component group each, exploded (CS lifted 10 m, upper/lower PF spread 2.5 m, heating pulled out): plasma, TF, CS, PF, vessel + blanket, divertor (54 cassettes), NBI + ICRH + ECRH, cryostat. Figure `figures_tokamak_parts.py`. |
+| 27 | 5.8 Magnets | Table TF, CS, PF, correction, in-vessel: job and ITER number (iter.org magnets page). |
+| 28 | 5.8 Plasma current | U_loop = -dPsi_CS/dt, pulsed: ITER 15 MA for 300–500 s; NBCD, ECCD, LHCD; bootstrap; steady state I_p = I_CD + I_bs. |
+| 29 | 5.8 Heating | Ohmic (eta ~ T^-3/2), NBI (neutrals cross B; 2 x 16.5 MW, 1 MeV from negative ions), ECRH (28 GHz/T; 170 GHz, 40 → 67 MW in the 2024 baseline), ICRH (D 7.6 MHz/T; 40–55 MHz, 20 MW), alphas 100 MW. Resonance on a vertical line since B ~ 1/R. |
+| 30 | 5.8 Wall, blanket and divertor | Separatrix, X-point, SOL, lambda_q ~ 1 mm (Eich 2013), targets 10 MW/m2, 440 blanket modules 736 MW. P_sep ~ 100 MW onto a few m2: radiate most. Figure `tokamak_section`. |
+| 31 | 5.8 Stellarator: what changes | Table tokamak vs W7-X: twist, CS, current drive, exhaust (island divertor), heating (ECRH 140 GHz second harmonic at 2.5 T), limits. |
+| 32 | 5.8 Components at a glance | Confine, drive current, shape, heat, exhaust, protect, keep cold. Outlook line: heating/CD, exhaust, diagnostics, power plant. |
