@@ -2,10 +2,12 @@
 
 Pinches and mirror are schematic. Tokamak: ITER PF and CS coil positions and sizes
 from data/ch05/iter-coils.json, TF coils and plasma as D shapes of ITER size.
+Classical stellarator: schematic l = 2 helical windings on circular TF coils.
 Stellarator: NCSX modular coils and VMEC boundary from data/ch05/ncsx.json.
 Provenance in data/ch05/README.md.
 Run:  python3 slides/figures_devices.py
-      -> slides/build/fig/{theta_pinch,z_pinch,screw_pinch,mirror_3d,zeta_3d,torus_tf_3d,tokamak_3d,stellarator_3d}.{svg,png}
+      -> slides/build/fig/{theta_pinch,z_pinch,screw_pinch,mirror_3d,zeta_3d,torus_tf_3d,tokamak_3d,
+         classical_stellarator_3d,stellarator_3d}.{svg,png}
 
 Rendering: every surface, coil, field line and arrow becomes shaded quadrilaterals,
 which are depth-sorted together (painter's algorithm) and drawn in an orthographic view.
@@ -517,6 +519,70 @@ def stellarator_3d():
     save(fig, "stellarator_3d")
 
 
+def classical_stellarator_3d():
+    """Classical stellarator: circular TF coils plus l = 2 helical windings, front wedge cut open.
+
+    Schematic: 2l = 4 helical conductors with alternating current on a torus between plasma and TF coils,
+    m = 5 field periods, poloidal angle of conductor k: theta = (m/l) phi + k pi/l. The plasma surface is the
+    l = 2 ellipse that turns with the windings; the field line uses rotational transform iota = 0.4.
+    """
+    r0, a, rh, rc, n_tf, ell, m, iota = 4.0, 0.7, 1.05, 1.4, 12, 2, 5, 0.4
+    azim, cut = -62.0, np.radians(32)
+    s = Scene(elev=38, azim=azim)
+    front = np.radians(azim)
+    a0, a1 = front + cut, front - cut + 2 * np.pi
+
+    def rad(th, ph):  # l = 2 ellipse that turns with the windings
+        return a * (1 + 0.25 * np.cos(ell * th - m * ph))
+
+    tt = np.linspace(0, 2 * np.pi, 120)[::-1]
+    kept = []
+    for k in range(n_tf):
+        phi = 2 * np.pi * k / n_tf + 0.5 * np.pi / n_tf
+        if in_cut(phi, front, cut + 0.06):
+            continue
+        kept.append(phi)
+        rr, zz = r0 + rc * np.cos(tt), rc * np.sin(tt)
+        path = np.stack([rr * np.cos(phi), rr * np.sin(phi), zz], -1)
+        tg = unit(np.gradient(path, axis=0))
+        v = np.broadcast_to([-np.sin(phi), np.cos(phi), 0.0], path.shape)
+        s.add(sweep_rect(path, np.cross(tg, v), v, 0.08, 0.16), GLASS, alpha=0.55, ambient=0.6, spec=0.1)
+    ph = np.linspace(a0, a1, 1400)
+    helix = []
+    for k in range(2 * ell):
+        th = m / ell * ph + k * np.pi / ell
+        p = np.stack([(r0 + rh * np.cos(th)) * np.cos(ph), (r0 + rh * np.cos(th)) * np.sin(ph), rh * np.sin(th)], -1)
+        s.add(tube(p, 0.07, sides=10), COPPER if k % 2 == 0 else INK, spec=0.25)
+        helix.append(p)
+    th2, ph2 = np.meshgrid(np.linspace(0, 2 * np.pi, 72), np.linspace(a0, a1, 260), indexing="xy")
+    r = rad(th2, ph2)
+    R = r0 + r * np.cos(th2)
+    s.add(grid_quads(np.stack([R * np.cos(ph2), R * np.sin(ph2), r * np.sin(th2)], -1)), ORANGE, alpha=0.32,
+          ambient=0.55, spec=0)
+    th1 = np.linspace(0, 2 * np.pi, 72)
+    for ang in (a0, a1):
+        rg, tg2 = np.meshgrid(np.linspace(0, 1, 8), th1, indexing="ij")
+        rr = rg * rad(tg2, ang)
+        Rc = r0 + rr * np.cos(tg2)
+        s.add(grid_quads(np.stack([Rc * np.cos(ang), Rc * np.sin(ang), rr * np.sin(tg2)], -1)), ORANGE, alpha=0.75,
+              ambient=0.6, spec=0)
+    phl = np.linspace(a0 + 0.02, a1 - 0.02, 1600)
+    thl = 0.6 + iota * (phl - a0)
+    rl = 0.97 * rad(thl, phl)
+    line = np.stack([(r0 + rl * np.cos(thl)) * np.cos(phl), (r0 + rl * np.cos(thl)) * np.sin(phl), rl * np.sin(thl)],
+                    -1)
+    s.add(tube(line, 0.04), BLUE, spec=0.1)
+    fig, ax = s.figure(257, 128, pad=(0.08, 0.05, 0.08, 0.05))
+    pht = min(kept, key=lambda f: abs((f - a1 + 0.5 + np.pi) % (2 * np.pi) - np.pi))
+    pht = max(kept, key=lambda f: -((r0 + rc) * np.cos(f - np.radians(azim) - np.pi / 2)))
+    s.label(ax, "TF coils", [(r0 + rc) * np.cos(pht), (r0 + rc) * np.sin(pht), 0], dx=-70, dy=-20, leader=True)
+    i = int(0.5 * len(ph))
+    s.label(ax, r"helical windings, $+I$ and $-I$", helix[0][i], dx=40, dy=90, color=COPPER, leader=True)
+    s.label(ax, "plasma", [r0 * np.cos(a0) + 0.0, r0 * np.sin(a0), -0.3], dx=60, dy=-60, color=ORANGE, leader=True)
+    s.label(ax, "field line", line[int(0.9 * len(line))], dx=120, dy=-30, color=BLUE, leader=True)
+    save(fig, "classical_stellarator_3d")
+
+
 def torus_tf_3d():
     """Torus with only toroidal-field coils: B_phi ~ 1/R, front wedge cut open."""
     r0, a, rc, n_tf = 3.0, 1.0, 1.45, 12
@@ -569,5 +635,5 @@ def torus_tf_3d():
 
 if __name__ == "__main__":
     style()
-    for f in sys.argv[1:] or ["z_pinch", "theta_pinch", "screw_pinch", "mirror_3d", "zeta_3d", "torus_tf_3d", "tokamak_3d", "stellarator_3d"]:
+    for f in sys.argv[1:] or ["z_pinch", "theta_pinch", "screw_pinch", "mirror_3d", "zeta_3d", "torus_tf_3d", "tokamak_3d", "classical_stellarator_3d", "stellarator_3d"]:
         globals()[f]()
