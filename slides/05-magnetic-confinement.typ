@@ -324,13 +324,13 @@
 #widget-page("machines", section: "optimum", title: [Where present machines stand])
 
 // ----------------------------------------------------- 5.8 Components ---
-#build(11, slide(section: "components", title: [Tokamak, built up])[
+#build(8, slide(section: "components", title: [Tokamak, built up])[
   #context {
     let k = build-step()
-    let k = if k == none { 11 } else { k }
+    let k = if k == none { 8 } else { k }
     at(1, 12, y: -4mm, deck-fig("tokamak_explode_" + str(k), columns: 12))
   }
-  #at(1, 12, y: 146mm, cite-line[schematic, ITER size: CS and PF from M3D-C1 device data, plasma from the ITER Physics Basis · vessel, blanket, divertor and heating schematic · assembled, then exploded: CS lifted, PF coils spread, heating pulled out])
+  #at(1, 12, y: 146mm, cite-line[schematic, ITER size: CS and PF from M3D-C1 device data, plasma from the ITER Physics Basis · vessel, blanket, divertor and heating schematic])
 ])
 
 #slide(section: "components", title: [Magnets])[

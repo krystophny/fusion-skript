@@ -56,7 +56,7 @@ the toroidal screw pinch, mirror with mu, trapped–passing boundary and loss co
 | 23a | Widget `disruption` | MILCA in WebAssembly (`notebooks/wasm/milca_tokamak.mjs`): tokamak operating point against q, beta and density limits, and the disruption that follows when a start lies beyond a limit. |
 | 24 | Widget `limits` | as before. |
 | 25 | Widget `machines` | as before. |
-| 26 | 5.8 Tokamak, built up | Eleven build steps: steps 1-8 add one component group each in its assembled position (plasma, TF, CS, PF, vessel + blanket, divertor with 54 cassettes, NBI + ICRH + ECRH, cryostat); steps 9-11 explode it one group at a time (CS lifted 10 m, upper/lower PF spread 2.5 m, heating pulled out). Figure `figures_tokamak_parts.py`. |
+| 26 | 5.8 Tokamak, built up | Eight build steps, one component group each in its assembled position: plasma, TF, CS, PF, vessel + blanket, divertor (54 cassettes), NBI + ICRH + ECRH, cryostat. Figure `figures_tokamak_parts.py`. |
 | 27 | 5.8 Magnets | Table TF, CS, PF, correction, in-vessel: job and ITER number (iter.org magnets page). |
 | 28 | 5.8 Plasma current | U_loop = -dPsi_CS/dt, pulsed: ITER 15 MA for 300–500 s; NBCD, ECCD, LHCD; bootstrap; steady state I_p = I_CD + I_bs. |
 | 29 | 5.8 Heating | Ohmic (eta ~ T^-3/2), NBI (neutrals cross B; 2 x 16.5 MW, 1 MeV from negative ions), ECRH (28 GHz/T; 170 GHz, 40 → 67 MW in the 2024 baseline), ICRH (D 7.6 MHz/T; 40–55 MHz, 20 MW), alphas 100 MW. Resonance on a vertical line since B ~ 1/R. |

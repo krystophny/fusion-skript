@@ -1,11 +1,10 @@
 """Deck figures for Chapter 5: tokamak components.
 
-tokamak_explode_<k> (k = 1..11): 3D build-up of an ITER-sized tokamak. Steps 1-8 add one component
-group each in its assembled position: plasma, TF coils, central solenoid, PF coils, vacuum vessel with
-blanket, divertor, heating systems, cryostat. Steps 9-11 explode it one group at a time: central
-solenoid lifted, PF coils spread, heating systems pulled out. CS, PF and plasma from data/ch05/iter-coils.json (as in tokamak_3d);
+tokamak_explode_<k> (k = 1..8): 3D build-up of an ITER-sized tokamak, one component group per step in
+its assembled position: plasma, TF coils, central solenoid, PF coils, vacuum vessel with blanket,
+divertor, heating systems, cryostat. CS, PF and plasma from data/ch05/iter-coils.json (as in tokamak_3d);
 vessel, blanket, divertor, heating and cryostat are schematic, sized after the ITER numbers
-quoted on the slides. Exploded offsets are drawing choices, not positions.
+quoted on the slides.
 
 tokamak_section: poloidal cross-section with a lower single-null separatrix. The flux function is
 that of straight line currents in the (R, Z) plane: a distributed plasma current and a divertor
@@ -13,7 +12,7 @@ coil below it carrying current in the same direction produce the X-point between
 qualitative model (no toroidal correction, no free-boundary equilibrium).
 
 Run:  python3 slides/figures_tokamak_parts.py
-      -> slides/build/fig/{tokamak_explode_1..11,tokamak_section}.{svg,png}
+      -> slides/build/fig/{tokamak_explode_1..8,tokamak_section}.{svg,png}
 """
 import json
 import sys
@@ -39,11 +38,7 @@ A0, A1 = FRONT + CUT, FRONT - CUT + 2 * np.pi
 
 VV_SHAPE = (6.32, 3.0, 1.66, 0.38)  # R0, a, kappa, delta of the vacuum vessel [m]
 FW_SHAPE = (6.25, 2.7, 1.62, 0.36)  # first wall (blanket surface)
-# exploded offsets [m]
-DZ_CS, DZ_PF_UP, DZ_PF_LO, DZ_DIV = 10.0, 2.5, -2.5, 0.0
-DR_NBI, DR_ICRH, DZ_ECRH = 5.0, 4.0, 3.0
-EX_CS, EX_PF, EX_HEAT = 9, 10, 11  # step at which each group moves to its exploded position
-N_STEPS = 11
+N_STEPS = 8
 
 
 def shell(rr, zz, thick, a0=A0, a1=A1, n=200, keep=None):
@@ -80,10 +75,10 @@ def oriented_box(centre, ex, ey, ez, lx, ly, lz):
 def tokamak_parts():
     pl = ITER["plasma"]
     tf = ITER["tf_schematic"]
-    parts = []  # (step, quads, colour, move, kwargs); move = (step, offset) or None
+    parts = []  # (step, quads, colour, kwargs)
 
-    def add(step, quads, colour, move=None, **kw):
-        parts.append((step, np.asarray(quads, float), colour, move, kw))
+    def add(step, quads, colour, **kw):
+        parts.append((step, quads, colour, kw))
 
     # 1 plasma
     pr, pz = d_shape(pl["R0"], pl["a"], pl["kappa"], pl["delta"], 90)
@@ -98,13 +93,12 @@ def tokamak_parts():
         t = unit(np.gradient(path, axis=0))
         v = np.broadcast_to([-np.sin(phi), np.cos(phi), 0.0], path.shape)
         add(2, sweep_rect(path, np.cross(t, v), v, tf["radial"], tf["toroidal"]), GREY, spec=0.15)
-    # 3 central solenoid, lifted
+    # 3 central solenoid
     for c in ITER["cs"]:
-        add(3, ring_z(c["R"], c["Z"], c["dR"], c["dZ"] * 0.97), MUTED, move=(EX_CS, [0, 0, DZ_CS]))
-    # 4 PF coils, upper ones lifted and lower ones lowered
+        add(3, ring_z(c["R"], c["Z"], c["dR"], c["dZ"] * 0.97), MUTED)
+    # 4 PF coils
     for c in ITER["pf"]:
-        dz = DZ_PF_UP if c["Z"] > 4 else DZ_PF_LO if c["Z"] < -4 else 0.0
-        add(4, ring_z(c["R"], c["Z"], c["dR"], c["dZ"], A0, A1), GREEN, move=(EX_PF, [0, 0, dz]) if dz else None)
+        add(4, ring_z(c["R"], c["Z"], c["dR"], c["dZ"], A0, A1), GREEN)
     # 5 vacuum vessel and blanket (open at the bottom for the divertor)
     vr, vz = d_shape(*VV_SHAPE, 240)
     add(5, shell(vr, vz, 0.35), VESSEL, alpha=0.55, ambient=0.6, spec=0.05)
@@ -112,44 +106,42 @@ def tokamak_parts():
     br, bz = d_shape(*FW_SHAPE, 240)
     keep = np.abs(((th - 1.5 * np.pi) + np.pi) % (2 * np.pi) - np.pi) > 0.75
     add(5, shell(br, bz, 0.3, keep=keep), BLANKET, alpha=0.85, ambient=0.55, spec=0.05)
-    # 6 divertor: 54 cassettes, lowered
+    # 6 divertor: 54 cassettes
     n_div = 54
     for k in range(n_div):
         a = 2 * np.pi * (k + 0.5) / n_div
         if in_cut(a, FRONT, CUT):
             continue
         da = 2 * np.pi / n_div * 0.42
-        add(6, ring_z(5.55, -4.35 + DZ_DIV, 1.9, 0.6, a - da, a + da, n=6), TUNGSTEN, spec=0.3)
+        add(6, ring_z(5.55, -4.35, 1.9, 0.6, a - da, a + da, n=6), TUNGSTEN, spec=0.3)
     # 7 heating systems
     # NBI: tangential, tangency radius 5.3 m, exits on the right
     rt = 5.3
     e_t = np.array([np.cos(FRONT), np.sin(FRONT), 0.0])
     d_b = np.array([-np.sin(FRONT), np.cos(FRONT), 0.0])
     s_port = np.sqrt(9.3 ** 2 - rt ** 2)
-    nbi_out = (EX_HEAT, DR_NBI * d_b)
     p0 = rt * e_t + (s_port - 0.4) * d_b
     p1 = rt * e_t + (s_port + 3.5) * d_b
-    add(7, tube(np.linspace(p0, p1, 10), 0.55, sides=16), BLUE, move=nbi_out, spec=0.2)
+    add(7, tube(np.linspace(p0, p1, 10), 0.55, sides=16), BLUE, spec=0.2)
     add(7, oriented_box(rt * e_t + (s_port + 8.5) * d_b, d_b, np.cross([0, 0, 1], d_b), [0, 0, 1],
-                        10.0, 3.2, 4.0), BLUE, move=nbi_out, ambient=0.5, spec=0.1)
+                        10.0, 3.2, 4.0), BLUE, ambient=0.5, spec=0.1)
     beam = np.linspace(rt * e_t + 1.5 * d_b, rt * e_t + (s_port - 0.6) * d_b, 20)
     add(7, tube(beam, 0.18, sides=10), BLUE, alpha=0.45, ambient=0.7, spec=0)
     # ICRH: equatorial port on the left, antenna pulled out radially
     a_ic = FRONT + np.pi + 0.95
     e_r = np.array([np.cos(a_ic), np.sin(a_ic), 0.0])
     e_p = np.array([-np.sin(a_ic), np.cos(a_ic), 0.0])
-    icrh_out = (EX_HEAT, DR_ICRH * e_r)
-    add(7, oriented_box(9.6 * e_r, e_r, e_p, [0, 0, 1], 2.6, 2.2, 2.4), PURPLE, move=icrh_out, spec=0.15)
+    add(7, oriented_box(9.6 * e_r, e_r, e_p, [0, 0, 1], 2.6, 2.2, 2.4), PURPLE, spec=0.15)
     for k in (-0.6, 0.0, 0.6):
         a = 11.0 * e_r + k * e_p
-        add(7, tube(np.linspace(a, a + 3.0 * e_r, 6), 0.16, sides=10), PURPLE, move=icrh_out)
+        add(7, tube(np.linspace(a, a + 3.0 * e_r, 6), 0.16, sides=10), PURPLE)
     # ECRH: two upper launchers, lifted, with their beams
     for da in (0.55, 1.15):
         a = FRONT + np.pi + da
         er = np.array([np.cos(a), np.sin(a), 0.0])
         top = 7.6 * er + np.array([0, 0, 5.4])
         add(7, tube(np.linspace(top, top + np.array([0, 0, 2.8]) + 1.2 * er, 8), 0.45, sides=14), ORANGE,
-            move=(EX_HEAT, [0, 0, DZ_ECRH]), spec=0.2)
+            spec=0.2)
         tgt = 6.4 * er + np.array([0, 0, 0.6])
         add(7, tube(np.linspace(7.4 * er + np.array([0, 0, 4.3]), tgt, 12), 0.1, sides=8), ORANGE, alpha=0.5,
             ambient=0.7, spec=0)
@@ -163,45 +155,33 @@ def tokamak_parts():
 D_B = np.array([-np.sin(FRONT), np.cos(FRONT), 0.0])
 A_ICRH, A_ECRH = FRONT + np.pi + 0.95, FRONT + np.pi + 0.55
 E_ICRH = np.array([np.cos(A_ICRH), np.sin(A_ICRH), 0.0])
-# (text, assembled anchor, label offset [pt], colour, (step, offset) at which the anchor moves, step shown)
+# (text, anchor, label offset [pt], colour, step from which it is shown)
 LABELS = [
-    ("plasma", [7.9 * np.cos(FRONT + 0.25), 7.9 * np.sin(FRONT + 0.25), -1.6], (170, -70), ORANGE, None, 1),
-    ("TF coils", [10.8 * np.cos(FRONT + CUT + 0.18), 10.8 * np.sin(FRONT + CUT + 0.18), 3.0], (90, 40), INK,
-     None, 2),
-    ("central solenoid", [-0.9 * np.sin(FRONT), 0.9 * np.cos(FRONT), 4.0], (150, 10), MUTED,
-     (EX_CS, [0, 0, DZ_CS]), 3),
-    ("PF coils", [8.4 * np.cos(A0 + 0.05), 8.4 * np.sin(A0 + 0.05), 6.6], (110, 20), GREEN,
-     (EX_PF, [0, 0, DZ_PF_UP]), 4),
-    ("vessel, blanket", [8.9 * np.cos(A1), 8.9 * np.sin(A1), -1.0], (-40, -125), MUTED, None, 5),
-    ("divertor", [6.5 * np.cos(A1 - 0.1), 6.5 * np.sin(A1 - 0.1), -3.9 + DZ_DIV], (-150, -10), TUNGSTEN, None, 6),
+    ("plasma", [7.9 * np.cos(FRONT + 0.25), 7.9 * np.sin(FRONT + 0.25), -1.6], (170, -70), ORANGE, 1),
+    ("TF coils", [10.8 * np.cos(FRONT + CUT + 0.18), 10.8 * np.sin(FRONT + CUT + 0.18), 3.0], (90, 40), INK, 2),
+    ("central solenoid", [-0.9 * np.sin(FRONT), 0.9 * np.cos(FRONT), 4.0], (120, 115), MUTED, 3),
+    ("PF coils", [8.4 * np.cos(A0 + 0.05), 8.4 * np.sin(A0 + 0.05), 6.6], (110, 20), GREEN, 4),
+    ("vessel, blanket", [8.9 * np.cos(A1), 8.9 * np.sin(A1), -1.0], (-40, -125), MUTED, 5),
+    ("divertor", [6.5 * np.cos(A1 - 0.1), 6.5 * np.sin(A1 - 0.1), -3.9], (-150, -10), TUNGSTEN, 6),
     ("NBI", list(5.3 * np.array([np.cos(FRONT), np.sin(FRONT), 0]) + (np.sqrt(9.3 ** 2 - 5.3 ** 2) + 12.0) * D_B
-                 + np.array([0, 0, 2.4])), (20, 40), BLUE, (EX_HEAT, DR_NBI * D_B), 7),
-    ("ICRH", list(12.0 * E_ICRH + np.array([0, 0, 1.4])), (-30, 40), PURPLE, (EX_HEAT, DR_ICRH * E_ICRH), 7),
-    ("ECRH", [8.2 * np.cos(A_ECRH), 8.2 * np.sin(A_ECRH), 8.2], (-110, 10), ORANGE, (EX_HEAT, [0, 0, DZ_ECRH]), 7),
-    ("cryostat", [14.0 * np.cos(A0 + 0.1), 14.0 * np.sin(A0 + 0.1), -5.0], (110, 0), MUTED, None, 8),
+                 + np.array([0, 0, 2.4])), (20, 40), BLUE, 7),
+    ("ICRH", list(12.0 * E_ICRH + np.array([0, 0, 1.4])), (-30, 40), PURPLE, 7),
+    ("ECRH", [8.2 * np.cos(A_ECRH), 8.2 * np.sin(A_ECRH), 8.2], (-110, 10), ORANGE, 7),
+    ("cryostat", [14.0 * np.cos(A0 + 0.1), 14.0 * np.sin(A0 + 0.1), -5.0], (110, 0), MUTED, 8),
 ]
-
-
-def placed(q, move, step):
-    return q + np.asarray(move[1], float) if move and step >= move[0] else q
 
 
 def tokamak_explode():
     parts = tokamak_parts()
     for step in range(1, N_STEPS + 1):
         s = Scene(elev=ELEV, azim=AZIM)
-        for st, q, col, move, kw in parts:
-            if st <= step:
-                s.add(placed(q, move, step), col, **kw)
-        # fix the frame to the fully exploded drawing so that the view does not jump between steps
-        for st, q, col, move, kw in parts:
-            s.add(placed(q, move, N_STEPS), "white", alpha=0.0)
+        # fix the frame to the complete drawing so that the view does not jump between steps
+        for st, q, col, kw in parts:
+            s.add(q, col, **kw) if st <= step else s.add(q, "white", alpha=0.0)
         fig, ax = s.figure(257, 138, pad=(0.02, 0.02, 0.02, 0.02))
-        for text, at, (dx, dy), col, move, shown in LABELS:
+        for text, at, (dx, dy), col, shown in LABELS:
             if shown <= step:
-                if text == "central solenoid" and step < EX_CS:
-                    dx, dy = 120, 115  # in place, the exploded offset would land on the TF label
-                s.label(ax, text, placed(np.asarray(at, float), move, step), dx=dx, dy=dy, color=col, leader=True)
+                s.label(ax, text, at, dx=dx, dy=dy, color=col, leader=True)
         save(fig, f"tokamak_explode_{step}")
 
 
