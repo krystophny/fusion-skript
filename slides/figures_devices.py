@@ -23,7 +23,7 @@ from matplotlib.patches import FancyArrowPatch
 from matplotlib.colors import to_rgb
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from figures import BLUE, GREEN, GREY, INK, MM, MUTED, ORANGE, ROOT, save, style  # noqa: E402
+from figures import BLUE, GREEN, GREY, INK, MM, MUTED, ORANGE, OUT, ROOT, save, style  # noqa: E402
 
 DATA = ROOT / "data/ch05"
 COPPER = "#B87333"
@@ -147,6 +147,8 @@ class Scene:
         self.e2 = np.cross(self.c, self.e1)
         self.light = unit(self.c + 0.7 * self.e2 - 0.4 * self.e1)
         self.quads, self.rgba, self.edge = [], [], []
+        # build steps: every add() and note() belongs to the current self.step; render() writes one image per step
+        self.step, self.steps, self.notes = 1, [], []
 
     def add(self, quads, color, alpha=1.0, ambient=0.45, spec=0.25):
         quads = np.asarray(quads, float) @ self.rot.T
@@ -159,6 +161,7 @@ class Scene:
         self.quads.append(quads)
         self.rgba.append(np.column_stack([rgb, np.full(len(quads), alpha)]))
         self.edge.append(np.full(len(quads), alpha >= 1))
+        self.steps.append(np.full(len(quads), self.step))
 
     def proj(self, p):
         return np.stack([p @ self.e1, p @ self.e2], -1)
@@ -166,13 +169,15 @@ class Scene:
     def screen(self, p):
         return self.proj(np.asarray(p, float) @ self.rot.T)
 
-    def figure(self, width_mm, height_mm, pad=(0.02, 0.02, 0.02, 0.02)):
+    def figure(self, width_mm, height_mm, pad=(0.02, 0.02, 0.02, 0.02), upto=None):
         q = np.concatenate(self.quads)
         rgba = np.concatenate(self.rgba)
         edge = np.concatenate(self.edge)
         order = np.argsort(q.mean(axis=1) @ self.c)
-        xy = self.proj(q)[order]
-        rgba, edge = rgba[order], edge[order]
+        xy_all = self.proj(q)[order]
+        shown = np.concatenate(self.steps)[order] <= (upto or np.inf)
+        # the frame follows the complete drawing, so that the view does not jump between build steps
+        xy, rgba, edge = xy_all[shown], rgba[order][shown], edge[order][shown]
         fig = plt.figure(figsize=(width_mm * MM, height_mm * MM), dpi=250)
         ax = fig.add_axes([0, 0, 1, 1])
         ax.axis("off")
@@ -182,7 +187,7 @@ class Scene:
         ec[~edge, 3] = 0
         ax.add_collection(PolyCollection(xy, facecolors=rgba, edgecolors=ec, linewidths=np.where(edge, 0.3, 0),
                                          antialiased=True, rasterized=True))
-        lo, hi = xy.reshape(-1, 2).min(0), xy.reshape(-1, 2).max(0)
+        lo, hi = xy_all.reshape(-1, 2).min(0), xy_all.reshape(-1, 2).max(0)
         span = hi - lo
         left, right, bottom, top = pad
         x0, x1 = lo[0] - left * span[0], hi[0] + right * span[0]
@@ -197,6 +202,23 @@ class Scene:
         ax.set_xlim(x0, x1)
         ax.set_ylim(y0, y1)
         return fig, ax
+
+    def note(self, text, at, **kw):
+        """Label drawn by render() from the current build step on."""
+        self.notes.append((self.step, text, at, kw))
+
+    def render(self, name, width_mm, height_mm, pad=(0.02, 0.02, 0.02, 0.02)):
+        """Save name_1 .. name_n, one per build step, and name, the complete drawing."""
+        n = int(max(st.max() for st in self.steps))
+        for k in range(1, n + 1):
+            fig, ax = self.figure(width_mm, height_mm, pad, upto=k)
+            for st, text, at, kw in self.notes:
+                if st <= k:
+                    self.label(ax, text, at, **kw)
+            if k == n:
+                fig.savefig(OUT / f"{name}.svg")
+                fig.savefig(OUT / f"{name}.png", dpi=110)
+            save(fig, f"{name}_{k}") if n > 1 else plt.close(fig)
 
     def label(self, ax, text, at, dx=0, dy=0, color=INK, size=LABEL, leader=False, **kw):
         xy = self.screen(at)
@@ -356,11 +378,17 @@ def tokamak_3d():
     azim, cut = -58.0, np.radians(62)
     s = Scene(elev=24, azim=azim)
     front = np.radians(azim)
-    for c in itr["cs"]:
-        s.add(ring_z(c["R"], c["Z"], c["dR"], c["dZ"] * 0.97), MUTED)
     a0, a1 = front + cut, front - cut + 2 * np.pi
-    for c in itr["pf"]:
-        s.add(ring_z(c["R"], c["Z"], c["dR"], c["dZ"], a0, a1), GREEN)
+    pl = itr["plasma"]
+    pr, pz = d_shape(pl["R0"], pl["a"], pl["kappa"], pl["delta"], 90)
+    s.add(revolve_z(np.column_stack([pr, pz]), n=180), ORANGE, alpha=0.3, ambient=0.55, spec=0)
+    ph = np.linspace(front - 0.45, front + 0.15, 40)
+    r_ax = pl["R0"] + 0.2
+    s.add(path_arrow(np.stack([r_ax * np.cos(ph), r_ax * np.sin(ph), np.zeros_like(ph)], -1), 0.09, 0.7, 0.28), INK)
+    s.note("plasma", [(pl["R0"] + 1.2) * np.cos(front - 0.5), (pl["R0"] + 1.2) * np.sin(front - 0.5),
+                      -0.6 * pl["kappa"] * pl["a"]], dx=-150, dy=-40, color=ORANGE, leader=True)
+    s.note(r"$I_p$", [r_ax * np.cos(front + 0.15), r_ax * np.sin(front + 0.15), 0], dx=16, dy=10)
+    s.step = 2
     tf = itr["tf_schematic"]
     rr, zz = d_shape(tf["R_centre"], tf["half_width"], tf["kappa"], tf["delta"])
     rr, zz = rr[::-1], zz[::-1]  # clockwise in (R, Z): up the inner leg, so B_phi > 0
@@ -373,9 +401,25 @@ def tokamak_3d():
         v = np.broadcast_to([-np.sin(phi), np.cos(phi), 0.0], path.shape)
         u = np.cross(t, v)
         s.add(sweep_rect(path, u, v, tf["radial"], tf["toroidal"]), GREY, spec=0.15)
-    pl = itr["plasma"]
-    pr, pz = d_shape(pl["R0"], pl["a"], pl["kappa"], pl["delta"], 90)
-    s.add(revolve_z(np.column_stack([pr, pz]), n=180), ORANGE, alpha=0.3, ambient=0.55, spec=0)
+    kept = [2 * np.pi * k / tf["n"] for k in range(tf["n"]) if not in_cut(2 * np.pi * k / tf["n"], front, cut)]
+    phe = min(kept, key=lambda f: abs((f - front + cut + np.pi) % (2 * np.pi) - np.pi))
+    zz_a = np.linspace(2.0, -2.0, 20)
+    r_out = tf["R_centre"] + tf["half_width"] + 0.8
+    s.add(path_arrow(np.stack([np.full(20, r_out * np.cos(phe)), np.full(20, r_out * np.sin(phe)), zz_a], -1),
+                     0.08, 0.6, 0.24), INK)
+    s.note("TF", [(r_out - 0.8) * np.cos(phe), (r_out - 0.8) * np.sin(phe), 3.5], dx=-60, dy=40, leader=True)
+    s.note(r"$I_{\rm TF}$", [r_out * np.cos(phe), r_out * np.sin(phe), 0], dx=24)
+    s.step = 3
+    for c in itr["cs"]:
+        s.add(ring_z(c["R"], c["Z"], c["dR"], c["dZ"] * 0.97), MUTED)
+    s.note("CS", [0, 0, 5.6], dx=-290, dy=50, leader=True, color=MUTED)
+    s.step = 4
+    for c in itr["pf"]:
+        s.add(ring_z(c["R"], c["Z"], c["dR"], c["dZ"], a0, a1), GREEN)
+    pf3 = itr["pf"][2]
+    s.note("PF", [pf3["R"] * np.cos(front + cut + 0.05), pf3["R"] * np.sin(front + cut + 0.05), pf3["Z"]], dx=60,
+           dy=4, color=GREEN, leader=True)
+    s.step = 5
     q = 3.0
     phi = np.linspace(0, 2 * np.pi * q, 1400)
     th = 0.6 - phi / q  # B_theta from I_p along +phi turns the line towards -theta
@@ -386,28 +430,9 @@ def tokamak_3d():
     for f in (front - 0.25, front + 2 * np.pi + 0.35, front + 4 * np.pi - 0.1):
         i = np.argmin(np.abs(phi - (f % (6 * np.pi))))
         s.add(cone(line[i], line[i + 3] - line[i - 3], 0.55, 0.2), BLUE)
-    ph = np.linspace(front - 0.45, front + 0.15, 40)
-    r_ax = pl["R0"] + 0.2
-    s.add(path_arrow(np.stack([r_ax * np.cos(ph), r_ax * np.sin(ph), np.zeros_like(ph)], -1), 0.09, 0.7, 0.28), INK)
-    kept = [2 * np.pi * k / tf["n"] for k in range(tf["n"]) if not in_cut(2 * np.pi * k / tf["n"], front, cut)]
-    phe = min(kept, key=lambda f: abs((f - front + cut + np.pi) % (2 * np.pi) - np.pi))
-    zz_a = np.linspace(2.0, -2.0, 20)
-    r_out = tf["R_centre"] + tf["half_width"] + 0.8
-    s.add(path_arrow(np.stack([np.full(20, r_out * np.cos(phe)), np.full(20, r_out * np.sin(phe)), zz_a], -1),
-                     0.08, 0.6, 0.24), INK)
-    fig, ax = s.figure(257, 128, pad=(0.08, 0.08, 0.02, 0.04))
-    s.label(ax, "CS", [0, 0, 5.6], dx=-290, dy=50, leader=True, color=MUTED)
-    s.label(ax, "TF", [(r_out - 0.8) * np.cos(phe), (r_out - 0.8) * np.sin(phe), 3.5], dx=-60, dy=40, leader=True)
-    s.label(ax, r"$I_{\rm TF}$", [r_out * np.cos(phe), r_out * np.sin(phe), 0], dx=24)
-    pf3 = itr["pf"][2]
-    s.label(ax, "PF", [pf3["R"] * np.cos(front + cut + 0.05), pf3["R"] * np.sin(front + cut + 0.05), pf3["Z"]], dx=60,
-            dy=4, color=GREEN, leader=True)
-    s.label(ax, "plasma", [(pl["R0"] + 1.2) * np.cos(front - 0.5), (pl["R0"] + 1.2) * np.sin(front - 0.5),
-                           -0.6 * pl["kappa"] * pl["a"]], dx=-150, dy=-40, color=ORANGE, leader=True)
-    s.label(ax, r"$I_p$", [r_ax * np.cos(front + 0.15), r_ax * np.sin(front + 0.15), 0], dx=16, dy=10)
     i = np.argmin(np.abs(phi - (front + 2 * np.pi + 0.8)))
-    s.label(ax, "$q = 3$", line[i], dx=110, dy=-30, color=BLUE, leader=True)
-    save(fig, "tokamak_3d")
+    s.note("$q = 3$", line[i], dx=110, dy=-30, color=BLUE, leader=True)
+    s.render("tokamak_3d", 257, 128, pad=(0.08, 0.08, 0.02, 0.04))
 
 
 def box(lo, hi, n=8):
@@ -426,14 +451,15 @@ def box(lo, hi, n=8):
 
 
 def zeta_3d():
-    """Toroidal pinch on an iron-core transformer, ZETA dimensions R = 1.5 m, a = 0.5 m."""
+    """Toroidal pinch on an iron-core transformer, ZETA dimensions R = 1.5 m, a = 0.5 m.
+
+    Build steps: transformer, plasma with its current, weak B_phi coils, field line.
+    """
     r0, a, ap = 1.5, 0.5, 0.25
     s = Scene(elev=24, azim=-62)
     front = np.radians(-62)
     th = np.linspace(0, 2 * np.pi, 49)
     circ = lambda r: np.column_stack([r0 + r * np.cos(th), r * np.sin(th)])  # noqa: E731
-    s.add(revolve_z(circ(a), n=160), GLASS, alpha=0.12, ambient=0.8, spec=0)
-    s.add(revolve_z(circ(ap), n=160), ORANGE, alpha=0.45, ambient=0.55, spec=0)
     w, h = 0.36, 1.7
     s.add(box([-w, -w, -h - 0.5], [w, w, h + 0.5]), MUTED)
     ex = -3.4
@@ -442,29 +468,33 @@ def zeta_3d():
     s.add(box([ex + w, -w, -h - 0.5], [-w, w, -h]), MUTED)
     for z in np.linspace(-0.6, 0.6, 5):
         s.add(ring_z(w * 1.5 + 0.05, z, 0.1, 0.18), COPPER)
+    s.note("iron core", [ex - w, 0, 0], dx=-12, ha="right")
+    s.note("primary", [w * 1.5 * np.cos(front), w * 1.5 * np.sin(front), 0.6], dx=-90, dy=50, leader=True)
+    s.step = 2
+    s.add(revolve_z(circ(a), n=160), GLASS, alpha=0.12, ambient=0.8, spec=0)
+    s.add(revolve_z(circ(ap), n=160), ORANGE, alpha=0.45, ambient=0.55, spec=0)
+    ph = np.linspace(front - 0.5, front + 0.1, 40)
+    s.add(path_arrow(np.stack([r0 * np.cos(ph), r0 * np.sin(ph), np.zeros_like(ph)], -1), 0.03, 0.18, 0.075), INK)
+    s.note("$I$", [r0 * np.cos(front + 0.1), r0 * np.sin(front + 0.1), 0], dx=40, dy=-62, leader=True)
+    s.note("plasma", [r0 * np.cos(front + 0.5), r0 * np.sin(front + 0.5), -ap], dx=170, dy=-50, color=ORANGE,
+           leader=True)
+    s.step = 3
     for k in range(10):
         ph = 2 * np.pi * k / 10 + 0.3
         loop = np.stack([(r0 + (a + 0.06) * np.cos(th)) * np.cos(ph), (r0 + (a + 0.06) * np.cos(th)) * np.sin(ph),
                          (a + 0.06) * np.sin(th)], -1)
         s.add(tube(loop, 0.02, closed=True), COPPER)
+    s.note(r"$B_\varphi$ coils, weak", [(r0 + a) * np.cos(front + 0.9), (r0 + a) * np.sin(front + 0.9), 0.3],
+           dx=110, dy=50, leader=True)
+    s.step = 4
     q = 0.25
     phi = np.linspace(0, 2 * np.pi, 1600)
     tl = 0.4 - phi / q
     rl = r0 + 1.02 * ap * np.cos(tl)
     line = np.stack([rl * np.cos(phi), rl * np.sin(phi), 1.02 * ap * np.sin(tl)], -1)
     s.add(tube(line, 0.012), BLUE, spec=0.1)
-    ph = np.linspace(front - 0.5, front + 0.1, 40)
-    s.add(path_arrow(np.stack([r0 * np.cos(ph), r0 * np.sin(ph), np.zeros_like(ph)], -1), 0.03, 0.18, 0.075), INK)
-    fig, ax = s.figure(257, 128, pad=(0.06, 0.06, 0.03, 0.05))
-    s.label(ax, "iron core", [ex - w, 0, 0], dx=-12, ha="right")
-    s.label(ax, "primary", [w * 1.5 * np.cos(front), w * 1.5 * np.sin(front), 0.6], dx=-90, dy=50, leader=True)
-    s.label(ax, r"$B_\varphi$ coils, weak", [(r0 + a) * np.cos(front + 0.9), (r0 + a) * np.sin(front + 0.9), 0.3],
-            dx=110, dy=50, leader=True)
-    s.label(ax, "$I$", [r0 * np.cos(front + 0.1), r0 * np.sin(front + 0.1), 0], dx=40, dy=-62, leader=True)
-    s.label(ax, r"$q(a) \ll 1$", line[200], dx=120, dy=-40, color=BLUE, leader=True)
-    s.label(ax, "plasma", [r0 * np.cos(front + 0.5), r0 * np.sin(front + 0.5), -ap], dx=170, dy=-50, color=ORANGE,
-            leader=True)
-    save(fig, "zeta_3d")
+    s.note(r"$q(a) \ll 1$", line[200], dx=120, dy=-40, color=BLUE, leader=True)
+    s.render("zeta_3d", 257, 128, pad=(0.06, 0.06, 0.03, 0.05))
 
 
 def vmec_surface(b, theta, phi):
@@ -497,6 +527,8 @@ def stellarator_3d():
     th, ph = np.meshgrid(np.linspace(0, 2 * np.pi, 64), np.linspace(0, 2 * np.pi, 241), indexing="xy")
     r, z, _ = vmec_surface(b, th, ph)
     s.add(grid_quads(np.stack([r * np.cos(ph), r * np.sin(ph), z], -1)), ORANGE, alpha=0.4, ambient=0.55, spec=0)
+    s.note("plasma", [1.45 * np.cos(front + 0.1), 1.45 * np.sin(front + 0.1), -0.25], dy=-30, color=ORANGE, leader=True)
+    s.step = 2
     shown = []
     for c in d["modular_coils"]:
         p = np.array(c["xyz_m"])
@@ -505,18 +537,15 @@ def stellarator_3d():
             continue
         s.add(tube(p, 0.03, closed=True), GREY, spec=0.15)
         shown.append(p)
-    line = field_line(b, 0.3, np.linspace(0, 2 * np.pi * 2, 1600))
-    s.add(tube(line, 0.009), BLUE, spec=0.1)
-    fig, ax = s.figure(257, 128, pad=(0.04, 0.04, 0.02, 0.04))
     phis = [np.arctan2(p[:, 1].mean(), p[:, 0].mean()) for p in shown]
     k = int(np.argmin([abs((f - front - cut - 0.3 + np.pi) % (2 * np.pi) - np.pi) for f in phis]))
     top = shown[k][np.argmax(shown[k][:, 2])]
-    s.label(ax, "modular coils", top, dx=150, dy=10, leader=True)
-    s.label(ax, "plasma", [1.45 * np.cos(front + 0.1), 1.45 * np.sin(front + 0.1), -0.25], dy=-30, color=ORANGE,
-            leader=True)
-    i = 1600 // 4 + 60
-    s.label(ax, "field line", line[i], dx=-170, dy=-30, color=BLUE, leader=True)
-    save(fig, "stellarator_3d")
+    s.note("modular coils", top, dx=150, dy=10, leader=True)
+    s.step = 3
+    line = field_line(b, 0.3, np.linspace(0, 2 * np.pi * 2, 1600))
+    s.add(tube(line, 0.009), BLUE, spec=0.1)
+    s.note("field line", line[1600 // 4 + 60], dx=-170, dy=-30, color=BLUE, leader=True)
+    s.render("stellarator_3d", 257, 128, pad=(0.04, 0.04, 0.02, 0.04))
 
 
 def classical_stellarator_3d():
@@ -536,6 +565,7 @@ def classical_stellarator_3d():
         return a * (1 + 0.25 * np.cos(ell * th - m * ph))
 
     tt = np.linspace(0, 2 * np.pi, 120)[::-1]
+    s.step = 2  # build steps: plasma, TF coils, helical windings, field line
     kept = []
     for k in range(n_tf):
         phi = 2 * np.pi * k / n_tf + 0.5 * np.pi / n_tf
@@ -547,6 +577,7 @@ def classical_stellarator_3d():
         tg = unit(np.gradient(path, axis=0))
         v = np.broadcast_to([-np.sin(phi), np.cos(phi), 0.0], path.shape)
         s.add(sweep_rect(path, np.cross(tg, v), v, 0.08, 0.16), GLASS, alpha=0.55, ambient=0.6, spec=0.1)
+    s.step = 3
     ph = np.linspace(a0, a1, 1400)
     helix = []
     for k in range(2 * ell):
@@ -554,6 +585,7 @@ def classical_stellarator_3d():
         p = np.stack([(r0 + rh * np.cos(th)) * np.cos(ph), (r0 + rh * np.cos(th)) * np.sin(ph), rh * np.sin(th)], -1)
         s.add(tube(p, 0.07, sides=10), COPPER if k % 2 == 0 else INK, spec=0.25)
         helix.append(p)
+    s.step = 1
     th2, ph2 = np.meshgrid(np.linspace(0, 2 * np.pi, 72), np.linspace(a0, a1, 260), indexing="xy")
     r = rad(th2, ph2)
     R = r0 + r * np.cos(th2)
@@ -566,21 +598,25 @@ def classical_stellarator_3d():
         Rc = r0 + rr * np.cos(tg2)
         s.add(grid_quads(np.stack([Rc * np.cos(ang), Rc * np.sin(ang), rr * np.sin(tg2)], -1)), ORANGE, alpha=0.75,
               ambient=0.6, spec=0)
+    s.step = 4
     phl = np.linspace(a0 + 0.02, a1 - 0.02, 1600)
     thl = 0.6 + iota * (phl - a0)
     rl = 0.97 * rad(thl, phl)
     line = np.stack([(r0 + rl * np.cos(thl)) * np.cos(phl), (r0 + rl * np.cos(thl)) * np.sin(phl), rl * np.sin(thl)],
                     -1)
     s.add(tube(line, 0.04), BLUE, spec=0.1)
-    fig, ax = s.figure(257, 128, pad=(0.08, 0.05, 0.08, 0.05))
     pht = min(kept, key=lambda f: abs((f - a1 + 0.5 + np.pi) % (2 * np.pi) - np.pi))
     pht = max(kept, key=lambda f: -((r0 + rc) * np.cos(f - np.radians(azim) - np.pi / 2)))
-    s.label(ax, "TF coils", [(r0 + rc) * np.cos(pht), (r0 + rc) * np.sin(pht), 0], dx=-70, dy=-20, leader=True)
+    s.step = 2
+    s.note("TF coils", [(r0 + rc) * np.cos(pht), (r0 + rc) * np.sin(pht), 0], dx=-70, dy=-20, leader=True)
     i = int(0.5 * len(ph))
-    s.label(ax, r"helical windings, $+I$ and $-I$", helix[0][i], dx=40, dy=90, color=COPPER, leader=True)
-    s.label(ax, "plasma", [r0 * np.cos(a0) + 0.0, r0 * np.sin(a0), -0.3], dx=60, dy=-60, color=ORANGE, leader=True)
-    s.label(ax, "field line", line[int(0.9 * len(line))], dx=120, dy=-30, color=BLUE, leader=True)
-    save(fig, "classical_stellarator_3d")
+    s.step = 3
+    s.note(r"helical windings, $+I$ and $-I$", helix[0][i], dx=40, dy=90, color=COPPER, leader=True)
+    s.step = 1
+    s.note("plasma", [r0 * np.cos(a0), r0 * np.sin(a0), -0.3], dx=60, dy=-60, color=ORANGE, leader=True)
+    s.step = 4
+    s.note("field line", line[int(0.9 * len(line))], dx=120, dy=-30, color=BLUE, leader=True)
+    s.render("classical_stellarator_3d", 257, 128, pad=(0.08, 0.05, 0.08, 0.05))
 
 
 def torus_tf_3d():

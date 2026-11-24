@@ -112,6 +112,11 @@
 #let build-step() = build-state.get()
 #let shown(k) = { let s = build-state.get(); s == none or s >= k }
 #let reveal(k, body) = context if shown(k) { body } else { hide(body) }
+// Inside `build(n, ...)`: figure `name_k` at step k, the complete `name` at the last step and in the handout.
+#let fig-steps(name, n, columns: 12) = context {
+  let k = build-step()
+  deck-fig(if k == none or k >= n { name } else { name + "_" + str(k) }, columns: columns)
+}
 #let build(n, page) = {
   for k in range(if handout { n } else { 1 }, n + 1) {
     build-state.update(k)

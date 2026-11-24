@@ -181,10 +181,10 @@
 ]
 
 // ------------------------------------ 5.5 Toroidal pinch, tokamak, stellarator
-#slide(section: "concepts", title: [Toroidal pinch on a transformer])[
-  #at(1, 12, y: 0mm, deck-fig("zeta_3d", columns: 12))
+#build(4, slide(section: "concepts", title: [Toroidal pinch on a transformer])[
+  #at(1, 12, y: 0mm, fig-steps("zeta_3d", 4))
   #at(1, 12, y: 140mm, cite-line[schematic, ZETA size: $R = 1.5 "m"$, $a = 0.5 "m"$ · iron-core transformer drives $I$ · field line drawn for $q(a) = 0.25$])
-]
+])
 
 #slide(section: "concepts", title: [Toroidal pinch and ZETA])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
@@ -200,11 +200,11 @@
     #link("https://doi.org/10.1103/PhysRevLett.33.1139")[Taylor · Phys. Rev. Lett. 33, 1139 (1974)]])
 ]
 
-#slide(section: "concepts", title: [Tokamak: ITER coil set])[
-  #at(1, 12, y: 0mm, deck-fig("tokamak_3d", columns: 12))
+#build(5, slide(section: "concepts", title: [Tokamak: ITER coil set])[
+  #at(1, 12, y: 0mm, fig-steps("tokamak_3d", 5))
   #at(1, 12, y: 140mm, cite-line[CS, PF: ITER, #link("https://github.com/PrincetonUniversity/M3DC1")[M3D-C1 device data] ·
     plasma $R_0 = 6.2 "m"$, $a = 2 "m"$, $kappa = 1.7$: #link("https://doi.org/10.1088/0029-5515/39/12/301")[ITER Physics Basis (1999)] · TF: schematic D, 18 coils])
-]
+])
 
 #slide(section: "concepts", title: [Tokamak])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
@@ -217,15 +217,15 @@
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1038/224488a0")[Peacock et al. · Nature 224, 488 (1969)]])
 ]
 
-#slide(section: "concepts", title: [Classical stellarator: helical windings])[
-  #at(1, 12, y: 0mm, deck-fig("classical_stellarator_3d", columns: 12))
+#build(4, slide(section: "concepts", title: [Classical stellarator: helical windings])[
+  #at(1, 12, y: 0mm, fig-steps("classical_stellarator_3d", 4))
   #at(1, 12, y: 140mm, cite-line[schematic: $l = 2$ helical windings with alternating current, 5 field periods, on circular TF coils · field line with $iota = 0.4$ · front sector removed])
-]
+])
 
-#slide(section: "concepts", title: [Stellarator: NCSX modular coils])[
-  #at(1, 12, y: 0mm, deck-fig("stellarator_3d", columns: 12))
+#build(3, slide(section: "concepts", title: [Stellarator: NCSX modular coils])[
+  #at(1, 12, y: 0mm, fig-steps("stellarator_3d", 3))
   #at(1, 12, y: 140mm, cite-line[NCSX modular coils and VMEC boundary: #link("https://github.com/PrincetonUniversity/STELLOPT")[STELLOPT benchmark data] · field line: $theta + lambda = theta_0 + iota phi$, $iota = 0.65$ · front coils removed])
-]
+])
 
 #slide(section: "concepts", title: [Stellarator])[
   #at(1, 12, y: 0mm, steps(gap: 7mm,
@@ -234,7 +234,6 @@
     r([orbits], [the vertical drift does not average out by itself #h(2mm) $=>$ optimised shape]),
     r([machines], [Model C → ST tokamak 1970 #h(3mm) W7-AS 1988 #h(3mm) W7-X 2015]),
   ))
-  #at(2, 10, y: 100mm, result-box([twist from coils], [orbits need three-dimensional optimisation]))
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1063/1.1705883")[Spitzer · Phys. Fluids 1, 253 (1958)]])
 ]
 
@@ -285,7 +284,7 @@
     r([Troyon], [$beta_max = beta_N I_p \/ (a B)$ #h(3mm) #text(fill: muted)[$beta$ in %, $I_p$ in MA, $a$ in m, $B$ in T]]),
     r([ideal MHD], [$beta_N approx 2.8$ #h(3mm) #text(fill: muted)[wall and current profile: up to $approx 4$]]),
     r([ITER], [$I_p = 15 "MA"$, $a = 2 "m"$, $B = 5.3 "T"$: #h(1mm) $beta_max approx 4 %$, #h(1mm) design $beta approx 2.5 %$]),
-    r([stellarator], [no current: equilibrium and stability set by the coils #h(2mm) #text(fill: muted)[W7-X design $chevron.l beta chevron.r approx 5 %$]]),
+    r([stellarator], [the coils set equilibrium and stability #h(2mm) #text(fill: muted)[W7-X design $chevron.l beta chevron.r approx 5 %$]]),
   ))
   #at(2, 10, y: 110mm, result-box($beta_max prop I_p \/ (a B)$, [more current, more pressure, but $q(a) > 2$ caps $I_p$]))
   #at(1, 12, y: 150mm, cite-line[#link("https://doi.org/10.1088/0741-3335/26/1A/319")[Troyon et al. · Plasma Phys. Control. Fusion 26, 209 (1984)]])
@@ -312,10 +311,9 @@
     r([runaways], [the induced field accelerates electrons to MeV energies]),
     r([control], [stay inside the limits, #h(1mm) mitigate by massive gas or pellet injection]),
   ))
-  #at(2, 10, y: 92mm, result-box([limits of a tokamak are hard limits], [stellarator: no plasma current, no disruption]))
 ]
 
-#widget-page("disruption", section: "pressure-beta", title: [Stability limits and disruptions])
+#widget-page("disruption", section: "pressure-beta", title: [Operating point and disruption])
 
 // ------------------------------------------------- 5.7 Where is the optimum? ---
 
@@ -324,13 +322,9 @@
 #widget-page("machines", section: "optimum", title: [Where present machines stand])
 
 // ----------------------------------------------------- 5.8 Components ---
-#build(8, slide(section: "components", title: [Tokamak, built up])[
-  #context {
-    let k = build-step()
-    let k = if k == none { 8 } else { k }
-    at(1, 12, y: -4mm, deck-fig("tokamak_explode_" + str(k), columns: 12))
-  }
-  #at(1, 12, y: 146mm, cite-line[schematic, ITER size: CS and PF from M3D-C1 device data, plasma from the ITER Physics Basis · vessel, blanket, divertor and heating schematic])
+#build(5, slide(section: "components", title: [Tokamak: beyond the coil set])[
+  #at(1, 12, y: -4mm, fig-steps("tokamak_plant", 5))
+  #at(1, 12, y: 146mm, cite-line[schematic, ITER size: coil set and plasma as in 5.5 · vessel, blanket, divertor, heating and cryostat schematic])
 ])
 
 #slide(section: "components", title: [Magnets])[
@@ -358,7 +352,6 @@
     r([bootstrap], [pressure gradient + trapped particles drive current by themselves]),
     r([steady state], [$I_p = I_"CD" + I_"bs"$ #h(3mm) #text(fill: muted)[costs recirculating power]]),
   ))
-  #at(2, 10, y: 108mm, result-box([tokamak: pulsed or paid-for current], [stellarator: no plasma current needed]))
   #at(1, 12, y: 156mm, cite-line[#link("https://www.iter.org/machine/magnets")[ITER Organization: central solenoid]])
 ]
 
@@ -402,13 +395,11 @@
     table.hline(stroke: 0.6pt + rule),
     text(fill: muted)[twist], [plasma current $I_p$], [3D coils: 50 non-planar, 20 planar],
     text(fill: muted)[central solenoid], [yes], [none],
-    text(fill: muted)[current drive], [for steady state], [not needed],
     text(fill: muted)[exhaust], [poloidal divertor], [island divertor, 10 units],
     text(fill: muted)[main heating], [NBI, ICRH, ECRH], [ECRH 140 GHz (2nd harmonic at 2.5 T), NBI],
-    text(fill: muted)[limits], [Greenwald, disruptions], [Sudo, no disruptions],
     table.hline(stroke: 0.6pt + rule),
   ))
-  #at(2, 10, y: 118mm, result-box([simpler operation, harder coils], [3D shape optimised for orbits and stability]))
+  #at(2, 10, y: 118mm, result-box([simpler operation, harder coils], none))
 ]
 
 #slide(section: "components", title: [Components at a glance])[
