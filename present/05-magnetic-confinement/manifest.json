@@ -5,7 +5,7 @@
   "course": "Fusion Physics",
   "author": "Christopher Albert",
   "aspect": 1.414285714286938,
-  "pdf": "deck.pdf?v=d265a6fd7364a9f4",
+  "pdf": "deck.pdf?v=82431b73f4fd0dae",
   "pages": [
     {
       "src": "page-01.svg?v=dd4712e0168aa70e",
@@ -18,12 +18,12 @@
       "background": "light"
     },
     {
-      "src": "page-03.svg?v=bed18247edbb2725",
+      "src": "page-03.svg?v=2c6eb07fd0db0b32",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-04.svg?v=e64fbf01fbbc79fe",
+      "src": "page-04.svg?v=4938834e8cad5e63",
       "kind": "static",
       "background": "light"
     },
@@ -33,17 +33,17 @@
       "background": "light"
     },
     {
-      "src": "page-06.svg?v=c1ee974b4455471a",
+      "src": "page-06.svg?v=bcfcaa13e023bf13",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-07.svg?v=e0c622df4db2e3af",
+      "src": "page-07.svg?v=3e8bc91005ba167b",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-08.svg?v=5fdc7fad50eedb4b",
+      "src": "page-08.svg?v=cc75c42d04aae562",
       "kind": "static",
       "background": "light"
     },
@@ -75,7 +75,7 @@
       "background": "light"
     },
     {
-      "src": "page-13.svg?v=b3b5cd58071ebac6",
+      "src": "page-13.svg?v=b8c9d164e18c0875",
       "kind": "static",
       "background": "light"
     },
@@ -85,7 +85,7 @@
       "background": "light"
     },
     {
-      "src": "page-15.svg?v=c01d8e994dd76b86",
+      "src": "page-15.svg?v=948c2795337cdf48",
       "kind": "static",
       "background": "light"
     },
@@ -95,47 +95,52 @@
       "background": "light"
     },
     {
-      "src": "page-17.svg?v=95fc97d6bf99a477",
+      "src": "page-17.svg?v=78d81ae7bdb6b2a2",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-18.svg?v=12636d7173c706d1",
+      "src": "page-18.svg?v=a38cf04ccf3bd61b",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-19.svg?v=08b7e38c3263e660",
+      "src": "page-19.svg?v=cc0fce77c778af6d",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-20.svg?v=00da48ed1b29015d",
+      "src": "page-20.svg?v=173a65a4013bf5d8",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-21.svg?v=9bb4cdd39a9e140a",
+      "src": "page-21.svg?v=50933bdc15ec488c",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-22.svg?v=8233ffea80ddeea6",
+      "src": "page-22.svg?v=4ce67d2b80299941",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-23.svg?v=670ac75689e554b3",
+      "src": "page-23.svg?v=11c630b21bdbc45f",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-24.svg?v=e216910d9033957a",
+      "src": "page-24.svg?v=0fc680a0c052336b",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-25.svg?v=f0d0de2ee07375f1",
+      "src": "page-25.svg?v=d7fa7c5b088c9533",
+      "kind": "static",
+      "background": "light"
+    },
+    {
+      "src": "page-26.svg?v=4502eefb904ef1dd",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-disruption.html?v=2fa71d1198795bbd",
@@ -147,7 +152,7 @@
       }
     },
     {
-      "src": "page-26.svg?v=170a7b51204d5182",
+      "src": "page-27.svg?v=3f6a7cee3b4d2ea6",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-limits.html?v=4dd364df15d51981",
@@ -159,7 +164,7 @@
       }
     },
     {
-      "src": "page-27.svg?v=424e5acda3717fc6",
+      "src": "page-28.svg?v=0317bbac90cb0c6d",
       "kind": "widget",
       "background": "light",
       "widget": "../../notebooks/slide-machines.html?v=f76970437704a0a7",
@@ -171,72 +176,72 @@
       }
     },
     {
-      "src": "page-28.svg?v=2e7f6424d8e375e6",
+      "src": "page-29.svg?v=c0e16d324829f9da",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-29.svg?v=c73783da13ffd540",
+      "src": "page-30.svg?v=bd802e82f6341dfa",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-30.svg?v=f2a4ad9f6c384b85",
+      "src": "page-31.svg?v=283c89df94004307",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-31.svg?v=f36ec9654c9812cd",
+      "src": "page-32.svg?v=e3e50ce1b8eba060",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-32.svg?v=9efd990ac9acceb8",
+      "src": "page-33.svg?v=1fc553c6d5df90b3",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-33.svg?v=179d172bcbd738b3",
+      "src": "page-34.svg?v=6f456c6b1ed48441",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-34.svg?v=834d61885ab8ba57",
+      "src": "page-35.svg?v=eae6753eafb4df9e",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-35.svg?v=05b73d5ca7b34678",
+      "src": "page-36.svg?v=e92d14a99da67401",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-36.svg?v=a0db8fe26f8b9995",
+      "src": "page-37.svg?v=03398467be899f4a",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-37.svg?v=cecd1dbb5f41d6e4",
+      "src": "page-38.svg?v=558c7fa6aacd6801",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-38.svg?v=e83f493a51f2b3ee",
+      "src": "page-39.svg?v=a22f0a0fd97b318c",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-39.svg?v=8eb0d729ea0d37bd",
+      "src": "page-40.svg?v=0ab1e44036694317",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-40.svg?v=160f87e9c2703ea2",
+      "src": "page-41.svg?v=e5dc7e9caa585d8a",
       "kind": "static",
       "background": "light"
     },
     {
-      "src": "page-41.svg?v=bf377ed26db32447",
+      "src": "page-42.svg?v=ff39eb30ff39db90",
       "kind": "static",
       "background": "light"
     }
