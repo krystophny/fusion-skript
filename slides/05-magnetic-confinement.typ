@@ -217,6 +217,11 @@
   #at(1, 12, y: 146mm, cite-line[#link("https://doi.org/10.1038/224488a0")[Peacock et al. · Nature 224, 488 (1969)]])
 ]
 
+#slide(section: "concepts", title: [Classical stellarator: helical windings])[
+  #at(1, 12, y: 0mm, deck-fig("classical_stellarator_3d", columns: 12))
+  #at(1, 12, y: 140mm, cite-line[schematic: $l = 2$ helical windings with alternating current, 5 field periods, on circular TF coils · field line with $iota = 0.4$ · front sector removed])
+]
+
 #slide(section: "concepts", title: [Stellarator: NCSX modular coils])[
   #at(1, 12, y: 0mm, deck-fig("stellarator_3d", columns: 12))
   #at(1, 12, y: 140mm, cite-line[NCSX modular coils and VMEC boundary: #link("https://github.com/PrincetonUniversity/STELLOPT")[STELLOPT benchmark data] · field line: $theta + lambda = theta_0 + iota phi$, $iota = 0.65$ · front coils removed])
@@ -319,13 +324,13 @@
 #widget-page("machines", section: "optimum", title: [Where present machines stand])
 
 // ----------------------------------------------------- 5.8 Components ---
-#build(8, slide(section: "components", title: [Tokamak, built up])[
+#build(11, slide(section: "components", title: [Tokamak, built up])[
   #context {
     let k = build-step()
-    let k = if k == none { 8 } else { k }
+    let k = if k == none { 11 } else { k }
     at(1, 12, y: -4mm, deck-fig("tokamak_explode_" + str(k), columns: 12))
   }
-  #at(1, 12, y: 146mm, cite-line[schematic, ITER size: CS and PF from M3D-C1 device data, plasma from the ITER Physics Basis · vessel, blanket, divertor and heating schematic · exploded: CS lifted, PF coils spread])
+  #at(1, 12, y: 146mm, cite-line[schematic, ITER size: CS and PF from M3D-C1 device data, plasma from the ITER Physics Basis · vessel, blanket, divertor and heating schematic · assembled, then exploded: CS lifted, PF coils spread, heating pulled out])
 ])
 
 #slide(section: "components", title: [Magnets])[
